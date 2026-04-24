@@ -10,7 +10,12 @@ export interface VaultEntry {
 }
 
 function toBase64(buf: ArrayBuffer): string {
-  return btoa(String.fromCharCode(...new Uint8Array(buf)));
+  const bytes = new Uint8Array(buf);
+  let binary = '';
+  for (let i = 0; i < bytes.byteLength; i++) {
+    binary += String.fromCharCode(bytes[i]);
+  }
+  return btoa(binary);
 }
 
 function fromBase64(b64: string): Uint8Array {
@@ -77,8 +82,19 @@ export function loadVaultEntries(): VaultEntry[] {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) return [];
-    return JSON.parse(raw) as VaultEntry[];
+    const parsed = JSON.parse(raw);
+    if (!Array.isArray(parsed)) return [];
+    return parsed.filter(
+      (e): e is VaultEntry =>
+        typeof e?.provider === 'string' &&
+        typeof e?.ciphertext === 'string' &&
+        typeof e?.iv === 'string' &&
+        typeof e?.salt === 'string'
+    );
   } catch {
+    if (process.env.NODE_ENV !== 'production') {
+      console.warn('[vault] Failed to parse localStorage entry');
+    }
     return [];
   }
 }

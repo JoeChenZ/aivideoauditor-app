@@ -51,6 +51,12 @@ describe('vault encryption', () => {
     expect(typeof entry.iv).toBe('string');
     expect(typeof entry.salt).toBe('string');
   });
+
+  it('throws on tampered ciphertext (GCM authentication tag failure)', async () => {
+    const entry = await encryptApiKey('sk-test', 'pass', 'runway');
+    const tampered = { ...entry, ciphertext: entry.ciphertext.slice(0, -4) + 'AAAA' };
+    await expect(decryptApiKey(tampered, 'pass')).rejects.toThrow();
+  });
 });
 
 describe('vault storage', () => {
