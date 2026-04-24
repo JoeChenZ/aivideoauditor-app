@@ -1,6 +1,11 @@
 import Link from 'next/link';
+import { createClient } from '@/lib/supabase/server';
+import AuthButton from './auth-button';
 
-export default function Nav() {
+export default async function Nav() {
+  const supabase = createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+
   return (
     <nav className="fixed top-0 inset-x-0 z-50 border-b border-border bg-void/80 backdrop-blur-sm">
       <div className="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
@@ -17,6 +22,7 @@ export default function Nav() {
           >
             Dashboard →
           </Link>
+          <AuthButton user={user} />
         </div>
       </div>
     </nav>
