@@ -6,6 +6,8 @@ import type { KlingModel, KlingMode, KlingDuration } from '@/components/dashboar
 import { CostTicker } from '@/components/dashboard/cost-ticker';
 import { VideoResult } from '@/components/dashboard/video-result';
 import type { GenState } from '@/components/dashboard/video-result';
+import { HealthBoard } from '@/components/dashboard/health-board';
+import { RoutingSuggestion } from '@/components/dashboard/routing-suggestion';
 import Link from 'next/link';
 
 export default function DashboardPage() {
@@ -93,6 +95,12 @@ export default function DashboardPage() {
     }
   }
 
+  function handleApplyRouting(m: KlingModel, mo: KlingMode, d: KlingDuration) {
+    setModel(m);
+    setMode(mo);
+    setDuration(d);
+  }
+
   const hasKey    = decryptedKey.length > 0;
   const canGen    = hasKey && prompt.trim().length > 0 && genState === 'idle';
   const isRunning = genState === 'submitting' || genState === 'processing';
@@ -111,6 +119,8 @@ export default function DashboardPage() {
             Manage keys →
           </Link>
         </div>
+
+        <HealthBoard />
 
         {!hasKey && (
           <div className="bg-surface border border-border rounded-xl p-6">
@@ -168,6 +178,8 @@ export default function DashboardPage() {
               className="w-full bg-elevated border border-border rounded-lg px-3 py-2 text-sm text-ink-primary focus:outline-none focus:border-neon-purple placeholder:text-ink-muted resize-none disabled:opacity-60"
             />
           </div>
+
+          <RoutingSuggestion prompt={prompt} onApply={handleApplyRouting} />
 
           <ModelSelector
             model={model}       onModelChange={setModel}
