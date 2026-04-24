@@ -74,8 +74,9 @@ describe('getECtSRecommendation', () => {
     expect(rec.model).toBe('kling-v1-5');
   });
 
-  it('estimatedCost is a positive number', () => {
-    const rec = getECtSRecommendation('some prompt');
-    expect(rec.estimatedCost).toBeGreaterThan(0);
+  it('estimatedCost reflects ECtS (greater than raw price due to success_rate < 1)', () => {
+    const rec = getECtSRecommendation('cinematic aerial landscape'); // general → kling-v1:std:5
+    const rawPrice = 0.07;
+    expect(rec.estimatedCost).toBeGreaterThan(rawPrice);
   });
 });

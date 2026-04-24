@@ -17,6 +17,8 @@ const PRODUCT_KEYWORDS  = ['product', 'logo', 'text', 'brand', 'commercial', 'ad
 
 export function analyzePrompt(prompt: string): PromptCategory {
   const lower = prompt.toLowerCase();
+  // action checked first: motion-dominant prompts (e.g. "woman dancing fast") route to pro
+  // even when they contain portrait keywords — motion quality matters more for reroll cost
   if (ACTION_KEYWORDS.some(k => lower.includes(k)))   return 'action';
   if (PORTRAIT_KEYWORDS.some(k => lower.includes(k))) return 'portrait';
   if (PRODUCT_KEYWORDS.some(k => lower.includes(k)))  return 'product';
@@ -48,6 +50,7 @@ const CATEGORY_MODELS: Record<PromptCategory, { model: KlingModel; mode: KlingMo
 export function getECtSRecommendation(prompt: string): Recommendation {
   const category = analyzePrompt(prompt);
   const { model, mode, duration, reason } = CATEGORY_MODELS[category];
-  const estimatedCost = PRICING[`${model}:${mode}:${duration}`] ?? 0.07;
+  // Use ECtS (cost / success_rate) — represents expected spend per successful output
+  const estimatedCost = ECTS[`${model}:${mode}:${duration}`] ?? 0.07;
   return { model, mode, duration, reason, estimatedCost };
 }
