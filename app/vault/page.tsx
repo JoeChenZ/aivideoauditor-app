@@ -59,6 +59,7 @@ export default function VaultPage() {
               </h2>
               <button
                 onClick={handleClearAll}
+                aria-label="Remove all stored API keys"
                 className="text-xs text-ink-muted hover:text-neon-red transition-colors"
               >
                 Clear All

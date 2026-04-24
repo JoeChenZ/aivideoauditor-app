@@ -22,6 +22,7 @@ export function KeyBadge({
       <span className="text-xs text-ink-muted font-mono tracking-widest">••••••••••••</span>
       <button
         onClick={() => onRemove(provider)}
+        aria-label={`Remove ${LABELS[provider]} API key`}
         className="ml-auto text-xs text-ink-muted hover:text-neon-red transition-colors"
       >
         Remove
