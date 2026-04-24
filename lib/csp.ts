@@ -7,7 +7,7 @@ export function buildCSP(): string {
     'style-src':                 ["'self'", "'unsafe-inline'"],
     'img-src':                   ["'self'", 'data:'],
     'font-src':                  ["'self'", 'https://fonts.gstatic.com'],
-    'connect-src':               ["'self'"],
+    'connect-src':               ["'self'", 'https://*.supabase.co'],
     'media-src':                 ["'self'", 'https://*.klingai.com'],
     'frame-src':                 ["'none'"],
     'object-src':                ["'none'"],
