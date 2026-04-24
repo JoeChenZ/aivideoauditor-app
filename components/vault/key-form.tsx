@@ -43,10 +43,16 @@ export function KeyForm({ onSaved }: { onSaved: () => void }) {
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
-        <label className="block text-xs font-medium text-ink-secondary mb-1">Provider</label>
+        <label htmlFor="provider" className="block text-xs font-medium text-ink-secondary mb-1">Provider</label>
         <select
+          id="provider"
           value={provider}
-          onChange={e => setProvider(e.target.value as Provider)}
+          onChange={e => {
+            const value = e.target.value;
+            if (['runway', 'kling', 'seedance', 'luma'].includes(value)) {
+              setProvider(value as Provider);
+            }
+          }}
           className="w-full bg-elevated border border-border rounded-lg px-3 py-2 text-ink-primary text-sm focus:outline-none focus:border-neon-purple"
         >
           {PROVIDERS.map(p => (
@@ -56,8 +62,9 @@ export function KeyForm({ onSaved }: { onSaved: () => void }) {
       </div>
 
       <div>
-        <label className="block text-xs font-medium text-ink-secondary mb-1">API Key</label>
+        <label htmlFor="api-key" className="block text-xs font-medium text-ink-secondary mb-1">API Key</label>
         <input
+          id="api-key"
           type="password"
           value={apiKey}
           onChange={e => setApiKey(e.target.value)}
@@ -68,8 +75,9 @@ export function KeyForm({ onSaved }: { onSaved: () => void }) {
       </div>
 
       <div>
-        <label className="block text-xs font-medium text-ink-secondary mb-1">Vault Password</label>
+        <label htmlFor="vault-password" className="block text-xs font-medium text-ink-secondary mb-1">Vault Password</label>
         <input
+          id="vault-password"
           type="password"
           value={password}
           onChange={e => setPassword(e.target.value)}
