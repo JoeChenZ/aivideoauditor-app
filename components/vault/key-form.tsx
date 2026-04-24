@@ -68,10 +68,15 @@ export function KeyForm({ onSaved }: { onSaved: () => void }) {
           type="password"
           value={apiKey}
           onChange={e => setApiKey(e.target.value)}
-          placeholder="sk-..."
+          placeholder={provider === 'kling' ? 'accessKeyId:accessKeySecret' : 'sk-...'}
           autoComplete="off"
           className="w-full bg-elevated border border-border rounded-lg px-3 py-2 text-ink-primary text-sm font-mono focus:outline-none focus:border-neon-purple placeholder:text-ink-muted"
         />
+        {provider === 'kling' && (
+          <p className="text-xs text-ink-muted mt-1">
+            Format: <code className="font-mono">accessKeyId:accessKeySecret</code> (from Kling developer console)
+          </p>
+        )}
       </div>
 
       <div>
