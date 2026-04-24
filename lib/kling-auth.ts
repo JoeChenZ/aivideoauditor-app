@@ -7,7 +7,7 @@ export interface KlingCredentials {
 
 export function parseApiKey(apiKey: string): KlingCredentials {
   const colonIndex = apiKey.indexOf(':');
-  if (colonIndex === -1) {
+  if (colonIndex <= 0 || colonIndex === apiKey.length - 1) {
     throw new Error('Kling API key must be in format accessKeyId:accessKeySecret');
   }
   return {
@@ -17,6 +17,9 @@ export function parseApiKey(apiKey: string): KlingCredentials {
 }
 
 export function generateKlingJWT(accessKeyId: string, accessKeySecret: string): string {
+  if (!accessKeyId || !accessKeySecret) {
+    throw new Error('accessKeyId and accessKeySecret are required');
+  }
   const header = Buffer.from(JSON.stringify({ alg: 'HS256', typ: 'JWT' })).toString('base64url');
   const now = Math.floor(Date.now() / 1000);
   const payload = Buffer.from(

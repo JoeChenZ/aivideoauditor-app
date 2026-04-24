@@ -22,6 +22,14 @@ describe('parseApiKey', () => {
   it('throws on empty string', () => {
     expect(() => parseApiKey('')).toThrow();
   });
+
+  it('throws if accessKeyId is empty (:secret)', () => {
+    expect(() => parseApiKey(':mysecret')).toThrow();
+  });
+
+  it('throws if accessKeySecret is empty (id:)', () => {
+    expect(() => parseApiKey('myid:')).toThrow();
+  });
 });
 
 describe('generateKlingJWT', () => {
@@ -55,11 +63,13 @@ describe('generateKlingJWT', () => {
     expect(payload.nbf).toBeLessThanOrEqual(Math.floor(Date.now() / 1000));
   });
 
-  it('two calls with same args produce identical structure', () => {
-    const t1 = generateKlingJWT('id', 'secret');
-    const t2 = generateKlingJWT('id', 'secret');
-    const p1 = JSON.parse(Buffer.from(t1.split('.')[1], 'base64url').toString());
-    const p2 = JSON.parse(Buffer.from(t2.split('.')[1], 'base64url').toString());
-    expect(p1.iss).toBe(p2.iss);
+  it('different secrets produce different signatures', () => {
+    const t1 = generateKlingJWT('id', 'secret-a');
+    const t2 = generateKlingJWT('id', 'secret-b');
+    expect(t1.split('.')[2]).not.toBe(t2.split('.')[2]);
+  });
+
+  it('throws if accessKeySecret is empty', () => {
+    expect(() => generateKlingJWT('myid', '')).toThrow();
   });
 });
