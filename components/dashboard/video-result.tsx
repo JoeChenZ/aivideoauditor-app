@@ -1,15 +1,25 @@
+// components/dashboard/video-result.tsx
 'use client';
+import type { Provider } from '@/lib/providers';
 
 export type GenState = 'idle' | 'submitting' | 'processing' | 'done' | 'error';
+
+const PROVIDER_LABELS: Record<Provider, string> = {
+  kling:    'Kling AI',
+  runway:   'Runway Gen-4',
+  seedance: 'Seedance',
+};
 
 export function VideoResult({
   state,
   videoUrl,
   error,
+  provider = 'kling',
 }: {
-  state:     GenState;
-  videoUrl?: string;
-  error?:    string;
+  state:      GenState;
+  videoUrl?:  string;
+  error?:     string;
+  provider?:  Provider;
 }) {
   if (state === 'idle') return null;
 
@@ -18,7 +28,9 @@ export function VideoResult({
       <div className="bg-surface border border-border rounded-xl p-8 text-center">
         <div className="inline-flex items-center gap-3 text-ink-secondary text-sm">
           <span className="h-4 w-4 border-2 border-neon-purple border-t-transparent rounded-full animate-spin inline-block" />
-          {state === 'submitting' ? 'Submitting to Kling AI...' : 'Generating your video...'}
+          {state === 'submitting'
+            ? `Submitting to ${PROVIDER_LABELS[provider]}...`
+            : 'Generating your video...'}
         </div>
         <p className="text-xs text-ink-muted mt-2">This typically takes 1–3 minutes</p>
       </div>
