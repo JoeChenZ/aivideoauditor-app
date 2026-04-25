@@ -1,3 +1,4 @@
+// app/api/health/route.ts
 import { NextResponse } from 'next/server';
 import { checkVendorHealth } from '@/lib/vendor-health';
 
@@ -12,7 +13,11 @@ export interface VendorStatus {
 }
 
 export async function GET() {
-  const klingResult = await checkVendorHealth('https://api.klingai.com', 5000);
+  const [klingResult, runwayResult, seedanceResult] = await Promise.all([
+    checkVendorHealth('https://api.klingai.com', 5000),
+    checkVendorHealth('https://api.dev.runwayml.com', 5000),
+    checkVendorHealth('https://ark.cn-beijing.volces.com', 5000),
+  ]);
 
   const statuses: VendorStatus[] = [
     {
@@ -25,14 +30,16 @@ export async function GET() {
     {
       vendor: 'runway',
       label: 'Runway Gen-4',
-      up: false,
-      available: false,
+      up: runwayResult.up,
+      latencyMs: runwayResult.latencyMs,
+      available: true,
     },
     {
       vendor: 'seedance',
       label: 'Seedance',
-      up: false,
-      available: false,
+      up: seedanceResult.up,
+      latencyMs: seedanceResult.latencyMs,
+      available: true,
     },
   ];
 
