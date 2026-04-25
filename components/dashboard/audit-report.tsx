@@ -1,5 +1,4 @@
 // components/dashboard/audit-report.tsx
-'use client';
 import { aggregatorCostsFor } from '@/lib/aggregator-prices';
 import type { GenerationSettings } from '@/lib/cost';
 
@@ -14,7 +13,8 @@ export function AuditReport({
 
   const competitors = aggregatorCostsFor(settings.duration);
 
-  function savingsPct(competitor: number): number {
+  function savingsPct(competitor: number): number | null {
+    if (competitor <= 0) return null;
     return Math.round((1 - actualCost / competitor) * 100);
   }
 
@@ -39,7 +39,13 @@ export function AuditReport({
               <span className="text-xs text-ink-muted">{c.label}</span>
               <div className="flex items-center gap-3">
                 <span className="text-xs text-ink-muted line-through">${c.cost.toFixed(2)}</span>
-                <span className="text-xs font-semibold text-neon-green">−{savingsPct(c.cost)}%</span>
+                {(() => {
+                  const pct = savingsPct(c.cost);
+                  if (pct === null) return null;
+                  return pct >= 0
+                    ? <span className="text-xs font-semibold text-neon-green">−{pct}%</span>
+                    : <span className="text-xs font-semibold text-neon-red">+{Math.abs(pct)}% over</span>;
+                })()}
               </div>
             </div>
           ))}
