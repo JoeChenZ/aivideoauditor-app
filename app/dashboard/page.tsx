@@ -14,6 +14,9 @@ import type { KlingModel, KlingDuration } from '@/lib/cost';
 import { providerFor } from '@/lib/providers';
 import type { Provider, TaskStatus } from '@/lib/providers';
 import Link from 'next/link';
+import { AuditReport } from '@/components/dashboard/audit-report';
+import { calculateCost } from '@/lib/cost';
+import type { GenerationSettings } from '@/lib/cost';
 
 const PROVIDER_LABELS: Record<Provider, string> = {
   kling: 'Kling AI',
@@ -35,6 +38,7 @@ export default function DashboardPage() {
   const [videoUrl, setVideoUrl] = useState('');
   const [genError, setGenError] = useState('');
   const [activeProvider, setActiveProvider] = useState<Provider>('kling');
+  const [lastGenSettings, setLastGenSettings] = useState<GenerationSettings | null>(null);
 
   const pollRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
@@ -68,6 +72,8 @@ export default function DashboardPage() {
 
   async function handleGenerate() {
     if (!activeKey || !prompt.trim() || genState !== 'idle') return;
+    const settings: GenerationSettings = { model, mode, duration };
+    setLastGenSettings(settings);
     setGenState('submitting');
     setGenError('');
     setVideoUrl('');
@@ -254,11 +260,18 @@ export default function DashboardPage() {
           </button>
         </div>
 
-        <VideoResult state={genState} videoUrl={videoUrl} error={genError} />
+        <VideoResult state={genState} videoUrl={videoUrl} error={genError} provider={activeProvider} />
+
+        {genState === 'done' && lastGenSettings && (
+          <AuditReport
+            settings={lastGenSettings}
+            actualCost={calculateCost(lastGenSettings)}
+          />
+        )}
 
         {(genState === 'done' || genState === 'error') && (
           <button
-            onClick={() => { setGenState('idle'); setVideoUrl(''); setGenError(''); }}
+            onClick={() => { setGenState('idle'); setVideoUrl(''); setGenError(''); setLastGenSettings(null); }}
             className="w-full text-xs text-ink-muted hover:text-neon-purple transition-colors py-2"
           >
             Generate another →
