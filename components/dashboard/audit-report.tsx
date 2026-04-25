@@ -42,7 +42,8 @@ export function AuditReport({
                 {(() => {
                   const pct = savingsPct(c.cost);
                   if (pct === null) return null;
-                  return pct >= 0
+                  if (pct === 0) return <span className="text-xs text-ink-muted">same cost</span>;
+                  return pct > 0
                     ? <span className="text-xs font-semibold text-neon-green">−{pct}%</span>
                     : <span className="text-xs font-semibold text-neon-red">+{Math.abs(pct)}% over</span>;
                 })()}
