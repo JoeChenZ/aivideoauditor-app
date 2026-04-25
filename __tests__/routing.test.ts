@@ -29,9 +29,10 @@ describe('analyzePrompt', () => {
 });
 
 describe('SUCCESS_RATES', () => {
-  it('all keys follow model:mode format', () => {
+  it('all keys follow model:mode or model format', () => {
     Object.keys(SUCCESS_RATES).forEach(key => {
-      expect(key.split(':')).toHaveLength(2);
+      const parts = key.split(':');
+      expect([1, 2]).toContain(parts.length);
     });
   });
 

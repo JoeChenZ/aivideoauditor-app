@@ -26,16 +26,22 @@ export function analyzePrompt(prompt: string): PromptCategory {
 }
 
 export const SUCCESS_RATES: Record<string, number> = {
-  'kling-v1:std':   0.85,
-  'kling-v1:pro':   0.90,
-  'kling-v1-5:std': 0.88,
-  'kling-v1-5:pro': 0.93,
+  'kling-v1:std':      0.85,
+  'kling-v1:pro':      0.90,
+  'kling-v1-5:std':    0.88,
+  'kling-v1-5:pro':    0.93,
+  'runway-gen4':       0.92,
+  'seedance-1-lite':   0.86,
+  'seedance-1-pro':    0.91,
 };
 
 export const ECTS: Record<string, number> = Object.fromEntries(
   Object.entries(PRICING).map(([key, price]) => {
-    const [model, mode] = key.split(':');
-    const rate = SUCCESS_RATES[`${model}:${mode}`] ?? 0.85;
+    const parts = key.split(':');
+    // Kling key: model:mode:duration — rate key is model:mode
+    // Runway/Seedance key: model:duration — rate key is model
+    const rateKey = parts.length === 3 ? `${parts[0]}:${parts[1]}` : parts[0];
+    const rate = SUCCESS_RATES[rateKey] ?? 0.85;
     return [key, parseFloat((price / rate).toFixed(4))];
   })
 );
