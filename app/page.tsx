@@ -93,6 +93,22 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Pricing Calculator callout */}
+      <section className="bg-void py-12 px-6">
+        <div className="max-w-3xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 bg-elevated border border-border rounded-2xl px-8 py-6">
+          <div>
+            <p className="text-ink-primary font-semibold mb-1">AI Video Pricing Calculator</p>
+            <p className="text-ink-muted text-sm">Compare per-generation costs across Kling, Runway, Pika, and more before you commit to a plan.</p>
+          </div>
+          <Link
+            href="/calculator"
+            className="shrink-0 inline-flex items-center gap-2 bg-surface hover:bg-elevated border border-border text-ink-secondary font-medium px-6 py-3 rounded-xl transition-all text-sm"
+          >
+            Open Calculator →
+          </Link>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="bg-surface border-t border-border py-20 px-6 text-center">
         <h2 className="text-3xl font-bold text-ink-primary mb-4">Ready to stop overpaying?</h2>

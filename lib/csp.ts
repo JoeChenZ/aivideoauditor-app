@@ -5,7 +5,7 @@ export function buildCSP(): string {
     'default-src':               ["'self'"],
     'script-src':                ["'self'"],
     'style-src':                 ["'self'", "'unsafe-inline'"],
-    'img-src':                   ["'self'", 'data:'],
+    'img-src':                   ["'self'", 'data:', 'https://www.google.com', 'https://api.qrserver.com'],
     'font-src':                  ["'self'", 'https://fonts.gstatic.com'],
     'connect-src':               [
       "'self'",
