@@ -2,5 +2,13 @@
   "framework": "nextjs",
   "buildCommand": "npm run build",
   "installCommand": "npm install",
-  "outputDirectory": ".next"
+  "outputDirectory": ".next",
+  "redirects": [
+    { "source": "/compare", "destination": "/comparisons/index.html", "permanent": false },
+    { "source": "/compare/", "destination": "/comparisons/index.html", "permanent": false },
+    { "source": "/methodology", "destination": "/calculator", "permanent": false },
+    { "source": "/methodology/", "destination": "/calculator", "permanent": false },
+    { "source": "/blog", "destination": "/", "permanent": false },
+    { "source": "/blog/", "destination": "/", "permanent": false }
+  ]
 }
