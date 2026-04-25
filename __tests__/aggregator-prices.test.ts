@@ -36,7 +36,9 @@ describe('aggregatorCostsFor', () => {
 
   it('returns correct 10s prices sorted cheapest first', () => {
     const entries = aggregatorCostsFor(10);
+    expect(entries[0].key).toBe('runway_standard');
     expect(entries[0].cost).toBe(1.20);
+    expect(entries[1].key).toBe('pika_pro');
     expect(entries[1].cost).toBe(1.60);
   });
 
