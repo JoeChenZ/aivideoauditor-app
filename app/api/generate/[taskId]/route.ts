@@ -1,5 +1,9 @@
+// app/api/generate/[taskId]/route.ts
 import { NextRequest, NextResponse } from 'next/server';
-import { getTaskStatus } from '@/lib/kling-client';
+import { getTaskStatus as klingStatus } from '@/lib/kling-client';
+import { getTaskStatus as runwayStatus } from '@/lib/runway-client';
+import { getTaskStatus as seedanceStatus } from '@/lib/seedance-client';
+import type { Provider } from '@/lib/providers';
 
 export async function GET(
   request: NextRequest,
@@ -10,8 +14,17 @@ export async function GET(
     return NextResponse.json({ error: 'x-api-key header required' }, { status: 401 });
   }
 
+  const provider = (request.headers.get('x-provider') ?? 'kling') as Provider;
+
   try {
-    const status = await getTaskStatus(apiKey, params.taskId);
+    let status;
+    if (provider === 'runway') {
+      status = await runwayStatus(apiKey, params.taskId);
+    } else if (provider === 'seedance') {
+      status = await seedanceStatus(apiKey, params.taskId);
+    } else {
+      status = await klingStatus(apiKey, params.taskId);
+    }
     return NextResponse.json(status);
   } catch (error) {
     const msg = error instanceof Error ? error.message : 'Status check failed';
