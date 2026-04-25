@@ -77,6 +77,16 @@ export function KeyForm({ onSaved }: { onSaved: () => void }) {
             Format: <code className="font-mono">accessKeyId:accessKeySecret</code> (from Kling developer console)
           </p>
         )}
+        {provider === 'runway' && (
+          <p className="text-xs text-ink-muted mt-1">
+            Bearer token from runway.ml developer console
+          </p>
+        )}
+        {provider === 'seedance' && (
+          <p className="text-xs text-ink-muted mt-1">
+            Bearer token from Volcengine ARK console
+          </p>
+        )}
       </div>
 
       <div>

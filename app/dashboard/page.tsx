@@ -1,45 +1,65 @@
+// app/dashboard/page.tsx
 'use client';
 import { useState, useEffect, useRef } from 'react';
 import { loadVaultEntries, decryptApiKey } from '@/lib/vault';
 import { ModelSelector } from '@/components/dashboard/model-selector';
 import type { VideoModel } from '@/components/dashboard/model-selector';
-import type { KlingMode, KlingDuration } from '@/lib/cost';
+import type { KlingMode } from '@/lib/cost';
 import { CostTicker } from '@/components/dashboard/cost-ticker';
 import { VideoResult } from '@/components/dashboard/video-result';
 import type { GenState } from '@/components/dashboard/video-result';
 import { HealthBoard } from '@/components/dashboard/health-board';
 import { RoutingSuggestion } from '@/components/dashboard/routing-suggestion';
+import type { KlingModel, KlingDuration } from '@/lib/cost';
+import { providerFor } from '@/lib/providers';
+import type { Provider } from '@/lib/providers';
 import Link from 'next/link';
+
+const PROVIDER_LABELS: Record<Provider, string> = {
+  kling: 'Kling AI',
+  runway: 'Runway Gen-4',
+  seedance: 'Seedance',
+};
 
 export default function DashboardPage() {
   const [prompt,   setPrompt]   = useState('');
   const [model,    setModel]    = useState<VideoModel>('kling-v1');
   const [mode,     setMode]     = useState<KlingMode | null>('std');
-  const [duration, setDuration] = useState<KlingDuration>(5);
+  const [duration, setDuration] = useState<5 | 10>(5);
 
   const [vaultPassword, setVaultPassword] = useState('');
-  const [decryptedKey,  setDecryptedKey]  = useState('');
+  const [decryptedKeys, setDecryptedKeys] = useState<Partial<Record<Provider, string>>>({});
   const [keyError,      setKeyError]      = useState('');
 
   const [genState, setGenState] = useState<GenState>('idle');
   const [videoUrl, setVideoUrl] = useState('');
   const [genError, setGenError] = useState('');
+  const [activeProvider, setActiveProvider] = useState<Provider>('kling');
 
   const pollRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   useEffect(() => () => { if (pollRef.current) clearInterval(pollRef.current); }, []);
 
+  // Derive provider whenever model changes
+  const currentProvider = providerFor(model);
+  const activeKey = decryptedKeys[currentProvider] ?? '';
+  const hasKey = activeKey.length > 0;
+  const providerLabel = PROVIDER_LABELS[currentProvider];
+
+  // Check if this provider has a vault entry
+  const vaultEntries = loadVaultEntries();
+  const hasVaultEntry = vaultEntries.some(e => e.provider === currentProvider);
+
   async function handleUnlock() {
     setKeyError('');
-    const entries = loadVaultEntries();
-    const klingEntry = entries.find(e => e.provider === 'kling');
-    if (!klingEntry) {
-      setKeyError('No Kling API key found in Vault. Go to /vault and add one first.');
+    const entry = vaultEntries.find(e => e.provider === currentProvider);
+    if (!entry) {
+      setKeyError(`No ${providerLabel} key found in Vault.`);
       return;
     }
     try {
-      const key = await decryptApiKey(klingEntry, vaultPassword);
-      setDecryptedKey(key);
+      const key = await decryptApiKey(entry, vaultPassword);
+      setDecryptedKeys(prev => ({ ...prev, [currentProvider]: key }));
       setVaultPassword('');
     } catch {
       setKeyError('Incorrect vault password.');
@@ -47,19 +67,28 @@ export default function DashboardPage() {
   }
 
   async function handleGenerate() {
-    if (!decryptedKey || !prompt.trim() || genState !== 'idle') return;
+    if (!activeKey || !prompt.trim() || genState !== 'idle') return;
     setGenState('submitting');
     setGenError('');
     setVideoUrl('');
+    const provider = currentProvider;
+    setActiveProvider(provider);
 
     try {
       const res = await fetch('/api/generate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ apiKey: decryptedKey, prompt: prompt.trim(), model, mode, duration }),
+        body: JSON.stringify({
+          apiKey: activeKey,
+          prompt: prompt.trim(),
+          model,
+          mode,
+          duration,
+          provider,
+        }),
       });
       const data = await res.json();
-      if (!res.ok) throw new Error(data.error ?? 'Submit failed');
+      if (!res.ok) throw new Error((data as { error?: string }).error ?? 'Submit failed');
 
       const { taskId } = data as { taskId: string };
       setGenState('processing');
@@ -67,19 +96,22 @@ export default function DashboardPage() {
       pollRef.current = setInterval(async () => {
         try {
           const statusRes = await fetch(`/api/generate/${taskId}`, {
-            headers: { 'x-api-key': decryptedKey },
+            headers: {
+              'x-api-key': activeKey,
+              'x-provider': provider,
+            },
           });
           const status = await statusRes.json();
 
-          if (status.status === 'succeed' && status.videoUrl) {
+          if ((status as { status: string }).status === 'succeed' && (status as { videoUrl?: string }).videoUrl) {
             clearInterval(pollRef.current!);
             pollRef.current = null;
-            setVideoUrl(status.videoUrl as string);
+            setVideoUrl((status as { videoUrl: string }).videoUrl);
             setGenState('done');
-          } else if (status.status === 'failed') {
+          } else if ((status as { status: string }).status === 'failed') {
             clearInterval(pollRef.current!);
             pollRef.current = null;
-            setGenError('Generation failed on Kling AI servers.');
+            setGenError(`Generation failed on ${PROVIDER_LABELS[provider]} servers.`);
             setGenState('error');
           }
         } catch {
@@ -96,13 +128,12 @@ export default function DashboardPage() {
     }
   }
 
-  function handleApplyRouting(m: VideoModel, mo: KlingMode | null, d: KlingDuration) {
+  function handleApplyRouting(m: KlingModel, mo: KlingMode, d: KlingDuration) {
     setModel(m);
     setMode(mo);
     setDuration(d);
   }
 
-  const hasKey    = decryptedKey.length > 0;
   const canGen    = hasKey && prompt.trim().length > 0 && genState === 'idle';
   const isRunning = genState === 'submitting' || genState === 'processing';
 
@@ -123,15 +154,35 @@ export default function DashboardPage() {
 
         <HealthBoard />
 
-        {!hasKey && (
+        {/* No vault entry for this provider */}
+        {!hasVaultEntry && (
           <div className="bg-surface border border-border rounded-xl p-6">
-            <h2 className="text-sm font-semibold text-ink-secondary mb-3">Unlock Kling API Key</h2>
+            <h2 className="text-sm font-semibold text-ink-secondary mb-2">
+              No {providerLabel} key in Vault
+            </h2>
+            <p className="text-xs text-ink-muted mb-4">
+              Add your {providerLabel} API key to start generating with this model.
+            </p>
+            <Link
+              href="/vault"
+              className="inline-flex items-center gap-1.5 bg-neon-purple/20 hover:bg-neon-purple/30 border border-neon-purple/40 text-neon-purple text-xs font-semibold px-4 py-2 rounded-lg transition-all"
+            >
+              Go to Vault →
+            </Link>
+          </div>
+        )}
+
+        {/* Vault entry exists but not yet unlocked */}
+        {hasVaultEntry && !hasKey && (
+          <div className="bg-surface border border-border rounded-xl p-6">
+            <h2 className="text-sm font-semibold text-ink-secondary mb-3">
+              Unlock {providerLabel} Key
+            </h2>
             <p className="text-xs text-ink-muted mb-3">
-              Enter your vault password to decrypt your Kling key for this session.
+              Enter your vault password to decrypt your {providerLabel} key for this session.
             </p>
             <div className="flex gap-2">
               <input
-                id="vault-password"
                 type="password"
                 value={vaultPassword}
                 onChange={e => setVaultPassword(e.target.value)}
@@ -154,9 +205,9 @@ export default function DashboardPage() {
         {hasKey && (
           <div className="flex items-center gap-2 bg-neon-green/5 border border-neon-green/20 rounded-lg px-4 py-2">
             <span className="h-2 w-2 rounded-full bg-neon-green flex-shrink-0 animate-pulse" />
-            <span className="text-xs text-ink-secondary">Kling API key active for this session</span>
+            <span className="text-xs text-ink-secondary">{providerLabel} key active for this session</span>
             <button
-              onClick={() => setDecryptedKey('')}
+              onClick={() => setDecryptedKeys(prev => { const n = { ...prev }; delete n[currentProvider]; return n; })}
               className="ml-auto text-xs text-ink-muted hover:text-neon-red transition-colors"
             >
               Lock
@@ -196,7 +247,7 @@ export default function DashboardPage() {
             className="w-full bg-neon-purple/20 hover:bg-neon-purple/30 border border-neon-purple/40 text-neon-purple font-semibold py-3 rounded-lg transition-all disabled:opacity-40 disabled:cursor-not-allowed text-sm"
           >
             {!hasKey
-              ? '🔒 Unlock key above first'
+              ? `🔒 Unlock ${providerLabel} key above first`
               : isRunning
               ? 'Generating...'
               : 'Generate Video →'}
