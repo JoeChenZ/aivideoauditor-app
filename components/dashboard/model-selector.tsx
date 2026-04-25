@@ -16,7 +16,7 @@ interface ModelEntry {
 const ALL_MODELS: ModelEntry[] = [
   { id: 'kling-v1',        label: 'Kling v1',   badge: 'Standard', provider: 'kling'    },
   { id: 'kling-v1-5',      label: 'Kling v1.5', badge: 'Enhanced', provider: 'kling'    },
-  { id: 'runway-gen4',     label: 'Runway',      badge: 'Gen-4',    provider: 'runway'   },
+  { id: 'runway-gen4',     label: 'Runway Gen-4', badge: 'Turbo',    provider: 'runway'   },
   { id: 'seedance-1-lite', label: 'Seedance',    badge: 'Lite',     provider: 'seedance' },
   { id: 'seedance-1-pro',  label: 'Seedance',    badge: 'Pro',      provider: 'seedance' },
 ];
