@@ -2,7 +2,8 @@
 import { useState, useEffect, useRef } from 'react';
 import { loadVaultEntries, decryptApiKey } from '@/lib/vault';
 import { ModelSelector } from '@/components/dashboard/model-selector';
-import type { KlingModel, KlingMode, KlingDuration } from '@/components/dashboard/model-selector';
+import type { VideoModel } from '@/components/dashboard/model-selector';
+import type { KlingMode, KlingDuration } from '@/lib/cost';
 import { CostTicker } from '@/components/dashboard/cost-ticker';
 import { VideoResult } from '@/components/dashboard/video-result';
 import type { GenState } from '@/components/dashboard/video-result';
@@ -12,8 +13,8 @@ import Link from 'next/link';
 
 export default function DashboardPage() {
   const [prompt,   setPrompt]   = useState('');
-  const [model,    setModel]    = useState<KlingModel>('kling-v1');
-  const [mode,     setMode]     = useState<KlingMode>('std');
+  const [model,    setModel]    = useState<VideoModel>('kling-v1');
+  const [mode,     setMode]     = useState<KlingMode | null>('std');
   const [duration, setDuration] = useState<KlingDuration>(5);
 
   const [vaultPassword, setVaultPassword] = useState('');
@@ -95,7 +96,7 @@ export default function DashboardPage() {
     }
   }
 
-  function handleApplyRouting(m: KlingModel, mo: KlingMode, d: KlingDuration) {
+  function handleApplyRouting(m: VideoModel, mo: KlingMode | null, d: KlingDuration) {
     setModel(m);
     setMode(mo);
     setDuration(d);
