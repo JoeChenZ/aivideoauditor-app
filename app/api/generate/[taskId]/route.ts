@@ -14,7 +14,9 @@ export async function GET(
     return NextResponse.json({ error: 'x-api-key header required' }, { status: 401 });
   }
 
-  const provider = (request.headers.get('x-provider') ?? 'kling') as Provider;
+  const rawProvider = request.headers.get('x-provider') ?? 'kling';
+  const VALID_PROVIDERS = new Set<string>(['kling', 'runway', 'seedance']);
+  const provider = (VALID_PROVIDERS.has(rawProvider) ? rawProvider : 'kling') as Provider;
 
   try {
     let status;

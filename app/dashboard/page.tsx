@@ -1,6 +1,6 @@
 // app/dashboard/page.tsx
 'use client';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import { loadVaultEntries, decryptApiKey } from '@/lib/vault';
 import { ModelSelector } from '@/components/dashboard/model-selector';
 import type { VideoModel } from '@/components/dashboard/model-selector';
@@ -12,7 +12,7 @@ import { HealthBoard } from '@/components/dashboard/health-board';
 import { RoutingSuggestion } from '@/components/dashboard/routing-suggestion';
 import type { KlingModel, KlingDuration } from '@/lib/cost';
 import { providerFor } from '@/lib/providers';
-import type { Provider } from '@/lib/providers';
+import type { Provider, TaskStatus } from '@/lib/providers';
 import Link from 'next/link';
 
 const PROVIDER_LABELS: Record<Provider, string> = {
@@ -47,7 +47,7 @@ export default function DashboardPage() {
   const providerLabel = PROVIDER_LABELS[currentProvider];
 
   // Check if this provider has a vault entry
-  const vaultEntries = loadVaultEntries();
+  const vaultEntries = useMemo(() => loadVaultEntries(), []);
   const hasVaultEntry = vaultEntries.some(e => e.provider === currentProvider);
 
   async function handleUnlock() {
@@ -101,14 +101,14 @@ export default function DashboardPage() {
               'x-provider': provider,
             },
           });
-          const status = await statusRes.json();
+          const status = await statusRes.json() as TaskStatus;
 
-          if ((status as { status: string }).status === 'succeed' && (status as { videoUrl?: string }).videoUrl) {
+          if (status.status === 'succeed' && status.videoUrl) {
             clearInterval(pollRef.current!);
             pollRef.current = null;
-            setVideoUrl((status as { videoUrl: string }).videoUrl);
+            setVideoUrl(status.videoUrl);
             setGenState('done');
-          } else if ((status as { status: string }).status === 'failed') {
+          } else if (status.status === 'failed') {
             clearInterval(pollRef.current!);
             pollRef.current = null;
             setGenError(`Generation failed on ${PROVIDER_LABELS[provider]} servers.`);

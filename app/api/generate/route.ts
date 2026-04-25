@@ -24,6 +24,15 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'prompt is required' }, { status: 400 });
   }
 
+  const VALID_MODELS = new Set(['kling-v1', 'kling-v1-5', 'runway-gen4', 'seedance-1-lite', 'seedance-1-pro']);
+  if (typeof model !== 'string' || !VALID_MODELS.has(model)) {
+    return NextResponse.json({ error: 'Invalid model' }, { status: 400 });
+  }
+
+  if (duration !== 5 && duration !== 10) {
+    return NextResponse.json({ error: 'duration must be 5 or 10' }, { status: 400 });
+  }
+
   const videoModel = (model as VideoModel) ?? 'kling-v1';
   const provider: Provider = providerFor(videoModel);
   const dur = (duration as 5 | 10) ?? 5;
