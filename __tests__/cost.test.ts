@@ -33,10 +33,38 @@ describe('calculateCost', () => {
 });
 
 describe('PRICING keys', () => {
-  it('all pricing keys follow model:mode:duration format', () => {
+  it('all pricing keys follow model:mode:duration or model:duration format', () => {
     Object.keys(PRICING).forEach(key => {
       const parts = key.split(':');
-      expect(parts).toHaveLength(3);
+      expect([2, 3]).toContain(parts.length);
     });
+  });
+});
+
+describe('Runway pricing', () => {
+  it('runway-gen4 5s = $0.50', () => {
+    expect(calculateCost({ model: 'runway-gen4', mode: null, duration: 5 })).toBe(0.50);
+  });
+
+  it('runway-gen4 10s = $1.00', () => {
+    expect(calculateCost({ model: 'runway-gen4', mode: null, duration: 10 })).toBe(1.00);
+  });
+});
+
+describe('Seedance pricing', () => {
+  it('seedance-1-lite 5s = $0.08', () => {
+    expect(calculateCost({ model: 'seedance-1-lite', mode: null, duration: 5 })).toBe(0.08);
+  });
+
+  it('seedance-1-lite 10s = $0.16', () => {
+    expect(calculateCost({ model: 'seedance-1-lite', mode: null, duration: 10 })).toBe(0.16);
+  });
+
+  it('seedance-1-pro 5s = $0.20', () => {
+    expect(calculateCost({ model: 'seedance-1-pro', mode: null, duration: 5 })).toBe(0.20);
+  });
+
+  it('seedance-1-pro 10s = $0.40', () => {
+    expect(calculateCost({ model: 'seedance-1-pro', mode: null, duration: 10 })).toBe(0.40);
   });
 });
