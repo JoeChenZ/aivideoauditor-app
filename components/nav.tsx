@@ -11,8 +11,8 @@ export default async function Nav() {
     <nav className="fixed top-0 inset-x-0 z-50 border-b border-border bg-void/80 backdrop-blur-sm">
       <div className="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2.5">
-          <Image src="/icon.png" alt="AIVideoAuditor" width={32} height={32} className="rounded-lg" />
-          <span className="text-sm font-bold tracking-widest text-neon-purple uppercase">AI Video Auditor</span>
+          <Image src="/icon.png" alt="AIVideoAuditor" width={34} height={34} className="rounded-xl" />
+          <span className="text-base font-bold text-ink-primary">AIVideoAuditor</span>
         </Link>
         <div className="flex items-center gap-6 text-sm text-ink-secondary">
           <Link href="/why-byok" className="hover:text-ink-primary transition-colors">Why BYOK</Link>

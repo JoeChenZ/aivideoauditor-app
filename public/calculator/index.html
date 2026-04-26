@@ -14,14 +14,14 @@
 <meta property="og:url" content="https://aivideoauditor.com/">
 <meta property="og:title" content="AI Video Cost Calculator — Compare Runway, Kling, Veo, Sora Pricing">
 <meta property="og:description" content="Stop overpaying for AI video — audit your real monthly cost across 8 platforms: Runway, Kling AI, Sora, Pika, Veo 3, HappyHorse, Jimeng, Tongyi. Free, 2 minutes.">
-<meta property="og:image" content="https://aivideoauditor.com/icon.png?v=3">
+<meta property="og:image" content="https://aivideoauditor.com/icon.png?v=4">
 <meta property="og:site_name" content="AIVideoAuditor">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AI Video Cost Calculator — Compare Runway, Kling, Veo, Sora">
 <meta name="twitter:description" content="Free calculator. Find your exact AI video monthly cost across 8 platforms in under 2 minutes.">
-<meta name="twitter:image" content="https://aivideoauditor.com/icon.png?v=3">
+<meta name="twitter:image" content="https://aivideoauditor.com/icon.png?v=4">
 
 <!-- Structured Data: WebApplication -->
 <script type="application/ld+json">
@@ -99,10 +99,10 @@
 }
 </script>
 
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=3">
-<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png?v=3">
-  <link rel="icon" type="image/png" sizes="512x512" href="/icon.png?v=3">
-  <link rel="apple-touch-icon" sizes="192x192" href="/icon-192.png?v=3">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=4">
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png?v=4">
+  <link rel="icon" type="image/png" sizes="512x512" href="/icon.png?v=4">
+  <link rel="apple-touch-icon" sizes="192x192" href="/icon-192.png?v=4">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-0LCK3EXTR0"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -439,7 +439,7 @@
 
 <nav>
   <div class="logo" style="display:flex;align-items:center;gap:10px;">
-    <img src="/icon.png?v=3" alt="AIVideoAuditor" style="width:36px;height:36px;border-radius:8px;object-fit:cover;">
+    <img src="/icon.png?v=4" alt="AIVideoAuditor" style="width:36px;height:36px;border-radius:8px;object-fit:cover;">
     <span>AIVideoAuditor</span>
   </div>
   <div style="display:flex;align-items:center;gap:16px;">
@@ -1255,7 +1255,7 @@ async function shareResult() {
 
   // Load app icon + QR code in parallel
   const [icon, qrImg] = await Promise.all([
-    new Promise(res => { const img = new Image(); img.onload = ()=>res(img); img.onerror = ()=>res(null); img.src = '/icon.png?v=3'; }),
+    new Promise(res => { const img = new Image(); img.onload = ()=>res(img); img.onerror = ()=>res(null); img.src = '/icon.png?v=4'; }),
     new Promise(res => { const img = new Image(); img.crossOrigin='anonymous'; img.onload = ()=>res(img); img.onerror = ()=>res(null); img.src = 'https://api.qrserver.com/v1/create-qr-code/?size=110x110&data=https://aivideoauditor.com/&bgcolor=050508&color=a78bfa&margin=4'; })
   ]);
 
@@ -1577,7 +1577,7 @@ document.getElementById('heroSection').querySelector('.hero-cta').addEventListen
 <!-- Footer -->
 <footer style="position:relative;z-index:1;border-top:1px solid rgba(139,92,246,0.1);padding:28px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
   <div style="display:flex;align-items:center;gap:10px;">
-    <img src="/icon.png?v=3" alt="AIVideoAuditor" style="width:24px;height:24px;border-radius:6px;object-fit:cover;opacity:0.7;">
+    <img src="/icon.png?v=4" alt="AIVideoAuditor" style="width:24px;height:24px;border-radius:6px;object-fit:cover;opacity:0.7;">
     <span id="footerCopy" style="font-size:0.75rem;color:#334155;">© 2026 AIVideoAuditor · Pricing data updated Apr 2026</span>
   </div>
   <div style="display:flex;gap:20px;">
