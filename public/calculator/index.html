@@ -215,9 +215,10 @@
     backdrop-filter:blur(24px);
     box-shadow:0 0 80px rgba(139,92,246,0.07),0 0 0 1px rgba(255,255,255,0.02) inset;
     padding: 36px 38px;
-    opacity:0; transform:translateY(24px);
+    opacity:1; transform:translateY(0);
     transition:opacity .45s cubic-bezier(.4,0,.2,1), transform .45s cubic-bezier(.4,0,.2,1);
   }
+  .q-card.exiting-pre { opacity:0; transform:translateY(24px); }
   .q-card.visible { opacity:1; transform:translateY(0); }
   .q-card.exiting { opacity:0; transform:translateY(-16px); transition:opacity .26s ease,transform .26s ease; }
 
@@ -469,14 +470,14 @@
     <a href="/comparisons/" style="display:inline-flex;align-items:center;gap:6px;padding:0.75rem 1.5rem;border:1px solid rgba(139,92,246,0.4);border-radius:12px;color:#a78bfa;font-size:0.9rem;font-weight:600;text-decoration:none;transition:all 0.2s;background:rgba(139,92,246,0.08)" onmouseover="this.style.background='rgba(139,92,246,0.18)'" onmouseout="this.style.background='rgba(139,92,246,0.08)'">Browse 73 comparisons →</a>
   </div>
   <div class="hero-platforms">
-    <img src="https://www.google.com/s2/favicons?domain=runwayml.com&sz=64" title="Runway">
-    <img src="https://www.google.com/s2/favicons?domain=klingai.com&sz=64" title="Kling AI">
-    <img src="https://www.google.com/s2/favicons?domain=jimeng.jianying.com&sz=64" title="Jimeng">
-    <img src="https://www.google.com/s2/favicons?domain=deepmind.google&sz=64" title="Veo">
-    <img src="https://www.google.com/s2/favicons?domain=happyhorse.app&sz=64" title="HappyHorse">
-    <img src="https://www.google.com/s2/favicons?domain=pika.art&sz=64" title="Pika">
-    <img src="https://www.google.com/s2/favicons?domain=openai.com&sz=64" title="Sora">
-    <img src="https://www.google.com/s2/favicons?domain=tongyi.aliyun.com&sz=64" title="Tongyi">
+    <img src="https://icons.duckduckgo.com/ip3/runwayml.com.ico" title="Runway">
+    <img src="https://icons.duckduckgo.com/ip3/klingai.com.ico" title="Kling AI">
+    <img src="https://icons.duckduckgo.com/ip3/jimeng.jianying.com.ico" title="Jimeng">
+    <img src="https://icons.duckduckgo.com/ip3/deepmind.google.ico" title="Veo">
+    <img src="https://icons.duckduckgo.com/ip3/happyhorse.app.ico" title="HappyHorse">
+    <img src="https://icons.duckduckgo.com/ip3/pika.art.ico" title="Pika">
+    <img src="https://icons.duckduckgo.com/ip3/openai.com.ico" title="Sora">
+    <img src="https://icons.duckduckgo.com/ip3/tongyi.aliyun.com.ico" title="Tongyi">
   </div>
 </div>
 
@@ -485,7 +486,7 @@
   <div class="progress-wrap">
     <div class="progress-top">
       <div class="progress-label" id="progressLabel">Platform</div>
-      <div class="progress-fraction">Step <em id="stepNum">1</em> of <em id="stepTotal">6</em></div>
+      <div class="progress-fraction">Step <em id="stepNum">1</em> of <em id="stepTotal">8</em></div>
     </div>
     <div class="pdots" id="pdots"></div>
   </div>
@@ -669,14 +670,14 @@ function renderFAQ() {
 
 // ─── Platforms — ordered: Runway, Kling, Jimeng | Veo, HappyHorse, [gap] | Pika, Sora, Tongyi
 const PLATFORMS = [
-  { id:'runway',     name:'Runway',           desc:'Monthly subscription · Global',  descZh:'月度订阅 · 全球',  tag:'tag-blue',   tagText:'Global',      tagTextZh:'全球',    favicon:'https://www.google.com/s2/favicons?domain=runwayml.com&sz=64',           type:'subscription' },
-  { id:'kling',      name:'可灵 Kling AI',     desc:'Monthly subscription · Global',  descZh:'月度订阅 · 全球',  tag:'tag-blue',   tagText:'Global',      tagTextZh:'全球',    favicon:'https://www.google.com/s2/favicons?domain=klingai.com&sz=64',            type:'subscription' },
-  { id:'jimeng',     name:'即夢 Jimeng',       desc:'Monthly subscription · China',   descZh:'月度订阅 · 中国',  tag:'tag-purple', tagText:'China',       tagTextZh:'中国',    favicon:'https://www.google.com/s2/favicons?domain=jimeng.jianying.com&sz=64',    type:'subscription' },
-  { id:'veo-api',    name:'Veo 3 API',         desc:'Pay-per-second · Global',        descZh:'按秒计费 · 全球',  tag:'tag-cyan',   tagText:'API · Global',tagTextZh:'API·全球',favicon:'https://www.google.com/s2/favicons?domain=deepmind.google&sz=64',        type:'api'          },
-  { id:'happyhorse', name:'HappyHorse',        desc:'Monthly subscription · Global',  descZh:'月度订阅 · 全球',  tag:'tag-blue',   tagText:'Global',      tagTextZh:'全球',    favicon:'https://www.google.com/s2/favicons?domain=happyhorse.app&sz=64',         type:'subscription' },
-  { id:'pika',       name:'Pika Labs',         desc:'Monthly subscription · Global',  descZh:'月度订阅 · 全球',  tag:'tag-blue',   tagText:'Global',      tagTextZh:'全球',    favicon:'https://www.google.com/s2/favicons?domain=pika.art&sz=64',               type:'subscription' },
-  { id:'sora',       name:'Sora 2',            desc:'Pay-per-second · Global',        descZh:'按秒计费 · 全球',  tag:'tag-cyan',   tagText:'API · Global',tagTextZh:'API·全球',favicon:'https://www.google.com/s2/favicons?domain=openai.com&sz=64',             type:'api'          },
-  { id:'tongyi',     name:'通义万象 Tongyi',    desc:'Monthly subscription · China',   descZh:'月度订阅 · 中国',  tag:'tag-purple', tagText:'China',       tagTextZh:'中国',    favicon:'https://www.google.com/s2/favicons?domain=tongyi.aliyun.com&sz=64',      type:'subscription' },
+  { id:'runway',     name:'Runway',           desc:'Monthly subscription · Global',  descZh:'月度订阅 · 全球',  tag:'tag-blue',   tagText:'Global',      tagTextZh:'全球',    favicon:'https://icons.duckduckgo.com/ip3/runwayml.com.ico',           type:'subscription' },
+  { id:'kling',      name:'可灵 Kling AI',     desc:'Monthly subscription · Global',  descZh:'月度订阅 · 全球',  tag:'tag-blue',   tagText:'Global',      tagTextZh:'全球',    favicon:'https://icons.duckduckgo.com/ip3/klingai.com.ico',            type:'subscription' },
+  { id:'jimeng',     name:'即夢 Jimeng',       desc:'Monthly subscription · China',   descZh:'月度订阅 · 中国',  tag:'tag-purple', tagText:'China',       tagTextZh:'中国',    favicon:'https://icons.duckduckgo.com/ip3/jimeng.jianying.com.ico',    type:'subscription' },
+  { id:'veo-api',    name:'Veo 3 API',         desc:'Pay-per-second · Global',        descZh:'按秒计费 · 全球',  tag:'tag-cyan',   tagText:'API · Global',tagTextZh:'API·全球',favicon:'https://icons.duckduckgo.com/ip3/deepmind.google.ico',        type:'api'          },
+  { id:'happyhorse', name:'HappyHorse',        desc:'Monthly subscription · Global',  descZh:'月度订阅 · 全球',  tag:'tag-blue',   tagText:'Global',      tagTextZh:'全球',    favicon:'https://icons.duckduckgo.com/ip3/happyhorse.app.ico',         type:'subscription' },
+  { id:'pika',       name:'Pika Labs',         desc:'Monthly subscription · Global',  descZh:'月度订阅 · 全球',  tag:'tag-blue',   tagText:'Global',      tagTextZh:'全球',    favicon:'https://icons.duckduckgo.com/ip3/pika.art.ico',               type:'subscription' },
+  { id:'sora',       name:'Sora 2',            desc:'Pay-per-second · Global',        descZh:'按秒计费 · 全球',  tag:'tag-cyan',   tagText:'API · Global',tagTextZh:'API·全球',favicon:'https://icons.duckduckgo.com/ip3/openai.com.ico',             type:'api'          },
+  { id:'tongyi',     name:'通义万象 Tongyi',    desc:'Monthly subscription · China',   descZh:'月度订阅 · 中国',  tag:'tag-purple', tagText:'China',       tagTextZh:'中国',    favicon:'https://icons.duckduckgo.com/ip3/tongyi.aliyun.com.ico',      type:'subscription' },
 ];
 
 const STEPS = [
