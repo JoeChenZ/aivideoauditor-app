@@ -94,16 +94,16 @@ export default function HomePage() {
       </section>
 
       {/* Pricing Calculator callout */}
-      <section className="bg-surface border-y border-border py-10 px-6">
-        <div className="max-w-3xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
+      <section className="bg-void py-16 px-6">
+        <div className="max-w-3xl mx-auto border border-neon-purple/30 bg-neon-purple/5 rounded-2xl px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-6">
           <div>
             <p className="text-xs font-bold tracking-widest text-neon-purple uppercase mb-2">Free Tool</p>
-            <p className="text-ink-primary font-semibold text-lg mb-1">AI Video Pricing Calculator</p>
-            <p className="text-ink-secondary text-sm">Compare per-generation costs across Kling, Runway, Pika, and more before you commit to a plan.</p>
+            <p className="text-ink-primary font-semibold text-xl mb-2">AI Video Pricing Calculator</p>
+            <p className="text-ink-secondary text-sm leading-relaxed">Compare per-generation costs across Kling, Runway, Pika, and more before you commit to a plan.</p>
           </div>
           <Link
             href="/calculator"
-            className="shrink-0 inline-flex items-center gap-2 bg-neon-purple/20 hover:bg-neon-purple/30 border border-neon-purple/40 text-neon-purple font-semibold px-6 py-3 rounded-xl transition-all text-sm"
+            className="shrink-0 inline-flex items-center gap-2 bg-neon-purple/20 hover:bg-neon-purple/30 border border-neon-purple/40 text-neon-purple font-semibold px-7 py-3.5 rounded-xl transition-all"
           >
             Open Calculator →
           </Link>
