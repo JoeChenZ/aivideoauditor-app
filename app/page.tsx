@@ -94,15 +94,16 @@ export default function HomePage() {
       </section>
 
       {/* Pricing Calculator callout */}
-      <section className="bg-void py-12 px-6">
-        <div className="max-w-3xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 bg-elevated border border-border rounded-2xl px-8 py-6">
+      <section className="bg-surface border-y border-border py-10 px-6">
+        <div className="max-w-3xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
           <div>
-            <p className="text-ink-primary font-semibold mb-1">AI Video Pricing Calculator</p>
-            <p className="text-ink-muted text-sm">Compare per-generation costs across Kling, Runway, Pika, and more before you commit to a plan.</p>
+            <p className="text-xs font-bold tracking-widest text-neon-purple uppercase mb-2">Free Tool</p>
+            <p className="text-ink-primary font-semibold text-lg mb-1">AI Video Pricing Calculator</p>
+            <p className="text-ink-secondary text-sm">Compare per-generation costs across Kling, Runway, Pika, and more before you commit to a plan.</p>
           </div>
           <Link
             href="/calculator"
-            className="shrink-0 inline-flex items-center gap-2 bg-surface hover:bg-elevated border border-border text-ink-secondary font-medium px-6 py-3 rounded-xl transition-all text-sm"
+            className="shrink-0 inline-flex items-center gap-2 bg-neon-purple/20 hover:bg-neon-purple/30 border border-neon-purple/40 text-neon-purple font-semibold px-6 py-3 rounded-xl transition-all text-sm"
           >
             Open Calculator →
           </Link>
