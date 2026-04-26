@@ -40,11 +40,14 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(loginUrl);
   }
 
-  supabaseResponse.headers.set('Content-Security-Policy', buildCSP());
-  supabaseResponse.headers.set('X-Frame-Options', 'DENY');
-  supabaseResponse.headers.set('X-Content-Type-Options', 'nosniff');
-  supabaseResponse.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
-  supabaseResponse.headers.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
+  const isStaticPage = pathname.startsWith('/calculator') || pathname.startsWith('/comparisons');
+  if (!isStaticPage) {
+    supabaseResponse.headers.set('Content-Security-Policy', buildCSP());
+    supabaseResponse.headers.set('X-Frame-Options', 'DENY');
+    supabaseResponse.headers.set('X-Content-Type-Options', 'nosniff');
+    supabaseResponse.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
+    supabaseResponse.headers.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
+  }
 
   return supabaseResponse;
 }
