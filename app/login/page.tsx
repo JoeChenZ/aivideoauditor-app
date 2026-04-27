@@ -8,6 +8,7 @@ function LoginForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const redirectTo = searchParams.get('redirectTo') ?? '/dashboard';
+  const authError = searchParams.get('error');
   const supabase = createClient();
 
   const [email, setEmail] = useState('');
@@ -75,6 +76,7 @@ function LoginForm() {
         <form onSubmit={handleEmailAuth} className="space-y-4">
           <input
             type="email"
+            name="email"
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -83,6 +85,7 @@ function LoginForm() {
           />
           <input
             type="password"
+            name="password"
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -90,8 +93,10 @@ function LoginForm() {
             className="w-full bg-elevated border border-border rounded-xl px-4 py-2.5 text-sm text-ink-primary placeholder:text-ink-muted focus:outline-none focus:border-neon-purple/50 transition-colors"
           />
 
-          {error && (
-            <p className="text-neon-red text-xs">{error}</p>
+          {(error || authError) && (
+            <p className="text-neon-red text-xs">
+              {error || (authError === 'auth_failed' ? 'Google sign-in failed. Please try again.' : 'Authentication error.')}
+            </p>
           )}
 
           <button
