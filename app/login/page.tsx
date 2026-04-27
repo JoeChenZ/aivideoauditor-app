@@ -18,10 +18,13 @@ function LoginForm() {
   const [loading, setLoading] = useState(false);
 
   async function handleGoogle() {
+    if (redirectTo && redirectTo !== '/dashboard') {
+      sessionStorage.setItem('authRedirectTo', redirectTo);
+    }
     await supabase.auth.signInWithOAuth({
       provider: 'google',
       options: {
-        redirectTo: `${location.origin}/auth/callback?next=${redirectTo}`,
+        redirectTo: `${location.origin}/auth/callback`,
       },
     });
   }
