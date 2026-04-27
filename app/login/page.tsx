@@ -95,7 +95,7 @@ function LoginForm() {
 
           {(error || authError) && (
             <p className="text-neon-red text-xs">
-              {error || (authError === 'auth_failed' ? 'Google sign-in failed. Please try again.' : 'Authentication error.')}
+              {error || authError || 'Authentication error.'}
             </p>
           )}
 
