@@ -17,16 +17,11 @@ function LoginForm() {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
-  async function handleGoogle() {
-    if (redirectTo && redirectTo !== '/dashboard') {
-      sessionStorage.setItem('authRedirectTo', redirectTo);
-    }
-    await supabase.auth.signInWithOAuth({
-      provider: 'google',
-      options: {
-        redirectTo: `${location.origin}/auth/callback`,
-      },
-    });
+  function handleGoogle() {
+    const params = redirectTo && redirectTo !== '/dashboard'
+      ? `?redirectTo=${encodeURIComponent(redirectTo)}`
+      : '';
+    window.location.href = `/api/auth/google${params}`;
   }
 
   async function handleEmailAuth(e: React.FormEvent) {

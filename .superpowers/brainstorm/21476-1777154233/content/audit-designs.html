@@ -1,0 +1,97 @@
+<h2>Audit Report card design</h2>
+<p class="subtitle">Appears inline below the video after generation completes. Same Quiet Luxury dark theme.</p>
+
+<div class="cards">
+
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#0a0a0f;padding:16px">
+      <!-- Design A: Minimal headline with expandable breakdown -->
+      <div style="background:#0d0d1a;border:1px solid #22c55e33;border-radius:10px;overflow:hidden;font-family:system-ui">
+        <div style="padding:14px 16px;display:flex;align-items:center;justify-content:space-between">
+          <div style="display:flex;align-items:center;gap:10px">
+            <div style="width:8px;height:8px;border-radius:50%;background:#22c55e"></div>
+            <span style="font-size:13px;color:#e2e8f0;font-weight:600">You saved <span style="color:#86efac">$0.73</span> vs Pika Pro</span>
+          </div>
+          <span style="font-size:11px;color:#555;cursor:pointer">details ↓</span>
+        </div>
+        <div style="border-top:1px solid #1a2a1a;padding:10px 16px;display:flex;gap:20px">
+          <div style="font-size:11px;color:#555">You paid <span style="color:#a78bfa">$0.07</span></div>
+          <div style="font-size:11px;color:#555">Pika Pro <span style="color:#666">$0.80</span></div>
+          <div style="font-size:11px;color:#555">Runway Std <span style="color:#666">$0.60</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A — Minimal</h3>
+      <p>One headline number, secondary details below. Glanceable. Doesn't compete with the video for attention.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#0a0a0f;padding:16px">
+      <!-- Design B: Full comparison table -->
+      <div style="background:#0d0d1a;border:1px solid #2d2d3a;border-radius:10px;overflow:hidden;font-family:system-ui">
+        <div style="padding:12px 16px;border-bottom:1px solid #1e1e2e">
+          <span style="font-size:11px;font-weight:700;letter-spacing:0.08em;color:#a78bfa;text-transform:uppercase">Cost Audit</span>
+        </div>
+        <div style="padding:12px 16px;display:flex;flex-direction:column;gap:8px">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <span style="font-size:12px;color:#94a3b8">✓ You (Kling v1 std 5s)</span>
+            <span style="font-size:13px;font-weight:700;color:#86efac">$0.07</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <span style="font-size:12px;color:#64748b">Pika Pro equivalent</span>
+            <span style="font-size:12px;color:#64748b;text-decoration:line-through">$0.80</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <span style="font-size:12px;color:#64748b">Runway Standard equivalent</span>
+            <span style="font-size:12px;color:#64748b;text-decoration:line-through">$0.60</span>
+          </div>
+          <div style="border-top:1px solid #1e1e2e;margin-top:4px;padding-top:8px;display:flex;justify-content:space-between;align-items:center">
+            <span style="font-size:12px;color:#94a3b8">Saved vs cheapest</span>
+            <span style="font-size:14px;font-weight:700;color:#22c55e">$0.53 (88%)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B — Full breakdown</h3>
+      <p>Clear table — your price, each competitor struck through, savings at bottom. Most informative.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="c" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#0a0a0f;padding:16px">
+      <!-- Design C: Big savings number, scorecard -->
+      <div style="background:#0d0d1a;border:1px solid #2d2d3a;border-radius:10px;overflow:hidden;font-family:system-ui">
+        <div style="padding:16px;display:flex;gap:12px;align-items:stretch">
+          <div style="flex:1;text-align:center;padding:10px;background:#0a1a0a;border:1px solid #22c55e22;border-radius:8px">
+            <div style="font-size:10px;color:#555;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px">You paid</div>
+            <div style="font-size:22px;font-weight:800;color:#86efac">$0.07</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px;flex:2">
+            <div style="background:#111;border-radius:6px;padding:7px 10px;display:flex;justify-content:space-between">
+              <span style="font-size:11px;color:#555">Pika Pro</span>
+              <div style="display:flex;align-items:center;gap:8px">
+                <span style="font-size:11px;color:#64748b;text-decoration:line-through">$0.80</span>
+                <span style="font-size:11px;color:#22c55e;font-weight:600">−91%</span>
+              </div>
+            </div>
+            <div style="background:#111;border-radius:6px;padding:7px 10px;display:flex;justify-content:space-between">
+              <span style="font-size:11px;color:#555">Runway Std</span>
+              <div style="display:flex;align-items:center;gap:8px">
+                <span style="font-size:11px;color:#64748b;text-decoration:line-through">$0.60</span>
+                <span style="font-size:11px;color:#22c55e;font-weight:600">−88%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C — Scorecard</h3>
+      <p>Big "You paid" number on left, competitor rows on right with % savings. High visual impact, shareable.</p>
+    </div>
+  </div>
+
+</div>

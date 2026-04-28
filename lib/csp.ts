@@ -3,7 +3,7 @@
 export function buildCSP(): string {
   const directives: Record<string, string[]> = {
     'default-src':               ["'self'"],
-    'script-src':                ["'self'"],
+    'script-src':                ["'self'", "'unsafe-inline'"],
     'style-src':                 ["'self'", "'unsafe-inline'"],
     'img-src':                   ["'self'", 'data:', 'https://www.google.com', 'https://api.qrserver.com'],
     'font-src':                  ["'self'", 'https://fonts.gstatic.com'],
