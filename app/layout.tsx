@@ -15,8 +15,8 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'AI Video Auditor — BYOK Infrastructure Manager',
-  description: 'Bring your own API keys. Route smarter. Pay less.',
+  title: 'AIVideoAuditor — Stop Burning Money on Broken AI Videos',
+  description: 'Chrome extension that intercepts physical errors in Luma and Runway prompts before you generate. One-click refund letters when it fails anyway.',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
