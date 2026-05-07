@@ -30,7 +30,7 @@ export default async function Nav() {
           </Link>
 
           <a
-            href="https://chromewebstore.google.com"
+            href="https://chromewebstore.google.com/detail/aivideoauditor/dnehhjbgpfjdihfigahimmpgnemplljn"
             target="_blank"
             rel="noopener noreferrer"
             className="ml-1 px-4 py-1.5 bg-neon-green/20 hover:bg-neon-green/30 border border-neon-green/40 text-neon-green font-mono font-bold text-xs rounded-lg transition-all whitespace-nowrap"

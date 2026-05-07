@@ -15,8 +15,14 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'AIVideoAuditor — Stop Burning Money on Broken AI Videos',
-  description: 'Chrome extension that intercepts physical errors in Luma and Runway prompts before you generate. One-click refund letters when it fails anyway.',
+  title: 'AIVideoAuditor — Stop Losing Runway Credits to Failed AI Videos',
+  description: 'Free Chrome extension for Runway Gen-4. Flags bad prompts before you generate, diagnoses failures with AI, and drafts your refund email in one click.',
+  keywords: 'runway gen-4, ai video generation, runway credits refund, ai video failure, runway ml refund, ai video auditor',
+  openGraph: {
+    title: 'AIVideoAuditor — Stop Losing Runway Credits',
+    description: 'Free AI failure diagnosis + one-click refund email for Runway Gen-4. Protect your credits before and after generation.',
+    type: 'website',
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
