@@ -65,7 +65,7 @@ const FEATURES = [
   {
     icon: '📧',
     title: 'One-Click Refund Email',
-    body: 'Auto-generates a Runway or Luma support email with your generation ID, L1 failure flags, marked frame evidence, and credit cost — pre-filled and ready to send in seconds.',
+    body: 'Auto-generates a Runway support email with your generation ID, L1 failure flags, marked frame evidence, and credit cost — pre-filled and ready to send in seconds.',
     accent: 'border-neon-green/30 hover:border-neon-green/60',
     label: 'text-neon-green',
   },
@@ -120,7 +120,7 @@ export default function HomePage() {
         <div className="relative z-10 max-w-4xl mx-auto text-center">
           <div className="inline-flex items-center gap-2 bg-neon-green/10 border border-neon-green/30 text-neon-green text-xs font-mono font-bold px-4 py-1.5 rounded-full mb-8 tracking-widest uppercase">
             <span className="w-1.5 h-1.5 rounded-full bg-neon-green animate-pulse" />
-            Built for Runway & Luma · Free Chrome Extension
+            Built for Runway Gen-4 · Free Chrome Extension
           </div>
 
           <h1 className="font-mono text-5xl md:text-6xl font-bold text-ink-primary mb-6 leading-tight">
@@ -196,7 +196,7 @@ export default function HomePage() {
               Catch it. Diagnose it. Claim it back.
             </h2>
             <p className="text-ink-secondary max-w-xl mx-auto">
-              From risky prompt to refund email — handled inside the extension while you&apos;re on Runway or Luma.
+              From risky prompt to refund email — handled inside the extension while you&apos;re on Runway.
             </p>
           </div>
 
@@ -351,8 +351,8 @@ export default function HomePage() {
             {[
               {
                 n: '01',
-                title: 'Install & Open Runway or Luma',
-                body: 'Install the extension, open Runway Gen-4 or Luma Dream Machine, and click the AVA panel. It activates automatically on both platforms — no setup required.',
+                title: 'Install & Open Runway',
+                body: 'Install the extension, open Runway Gen-4, and click the AVA panel. It activates automatically — no setup required.',
                 accent: 'text-neon-purple',
               },
               {
@@ -370,7 +370,7 @@ export default function HomePage() {
               {
                 n: '04',
                 title: 'One-Click Refund Email + Follow-Up',
-                body: 'AVA pre-fills a Runway or Luma support email with your generation ID, L1 failure flags, marked frame evidence, credit cost, and timestamp. After you send, AVA asks "Did you get your refund?" — so you can track what works.',
+                body: 'AVA pre-fills a Runway support email with your generation ID, L1 failure flags, marked frame evidence, credit cost, and timestamp. After you send, AVA asks "Did you get your refund?" — so you can track what works.',
                 accent: 'text-neon-green',
               },
             ].map((step, i, arr) => (
