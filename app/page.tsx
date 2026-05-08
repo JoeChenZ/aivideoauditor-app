@@ -120,7 +120,7 @@ export default function HomePage() {
         <div className="relative z-10 max-w-4xl mx-auto text-center">
           <div className="inline-flex items-center gap-2 bg-neon-green/10 border border-neon-green/30 text-neon-green text-xs font-mono font-bold px-4 py-1.5 rounded-full mb-8 tracking-widest uppercase">
             <span className="w-1.5 h-1.5 rounded-full bg-neon-green animate-pulse" />
-            Built for Runway Gen-4 · Free Chrome Extension
+            Built for Runway · Free Chrome Extension
           </div>
 
           <h1 className="font-mono text-5xl md:text-6xl font-bold text-ink-primary mb-6 leading-tight">
@@ -261,7 +261,7 @@ export default function HomePage() {
               Test Your Runway Prompt.
             </h2>
             <p className="text-ink-secondary max-w-xl mx-auto">
-              Paste what you&apos;re about to send to Runway Gen-4. The same heuristic engine
+              Paste what you&apos;re about to send to Runway. The same heuristic engine
               that runs inside the extension checks it in real time — no install required.
             </p>
           </div>
@@ -352,7 +352,7 @@ export default function HomePage() {
               {
                 n: '01',
                 title: 'Install & Open Runway',
-                body: 'Install the extension, open Runway Gen-4, and click the AVA panel. It activates automatically — no setup required.',
+                body: 'Install the extension, open Runway, and click the AVA panel. It activates automatically across all Runway models — no setup required.',
                 accent: 'text-neon-purple',
               },
               {
