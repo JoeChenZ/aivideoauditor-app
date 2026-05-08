@@ -58,21 +58,14 @@ const FEATURES = [
   {
     icon: '⚑',
     title: 'Mark Anomaly Frames',
-    body: 'Hover any video and click ⚑ to tag broken frames by type — limb artifact, physics collapse, face distortion, and more. Marked frames go first in diagnosis for maximum precision.',
+    body: 'Hover the failed video and click ⚑ to tag the broken frames by type — limb artifact, physics collapse, face distortion, and more. Your marks become the evidence in the refund email.',
     accent: 'border-neon-red/30 hover:border-neon-red/60',
     label: 'text-neon-red',
   },
   {
-    icon: '🔍',
-    title: 'FREE AI Failure Diagnosis',
-    body: 'One click captures keyframes and runs a full VLM visual analysis. Pinpoints the exact artifact, the affected frames, and what to change next time.',
-    accent: 'border-neon-amber/30 hover:border-neon-amber/60',
-    label: 'text-neon-amber',
-  },
-  {
     icon: '📧',
     title: 'One-Click Refund Email',
-    body: 'Auto-generates a Runway or Luma support email with your generation ID, failure type, AI confidence score, and cost — pre-filled and ready to send in seconds.',
+    body: 'Auto-generates a Runway or Luma support email with your generation ID, L1 failure flags, marked frame evidence, and credit cost — pre-filled and ready to send in seconds.',
     accent: 'border-neon-green/30 hover:border-neon-green/60',
     label: 'text-neon-green',
   },
@@ -139,11 +132,11 @@ export default function HomePage() {
           <p className="text-ink-secondary text-lg leading-relaxed mb-4 max-w-2xl mx-auto">
             AVA is the free Chrome extension that{' '}
             <em className="text-ink-primary not-italic font-semibold">flags bad prompts before you generate</em>,
-            diagnoses failures with AI, and drafts your Runway refund email in one click.
+            lets you mark exactly what broke after generation, and drafts your refund email in one click.
           </p>
 
           <p className="text-ink-muted text-sm font-mono mb-10">
-            FREE AI diagnosis · Mark anomaly frames · One-click refund email · Sign in to unlock
+            Pre-flight risk check · Mark anomaly frames · One-click refund email · Sign in to unlock
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
@@ -203,11 +196,11 @@ export default function HomePage() {
               Catch it. Diagnose it. Claim it back.
             </h2>
             <p className="text-ink-secondary max-w-xl mx-auto">
-              The full loop from risky prompt to refund email — handled inside the extension while you&apos;re on Runway.
+              From risky prompt to refund email — handled inside the extension while you&apos;re on Runway or Luma.
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {FEATURES.map((f) => (
               <div key={f.title} className={`bg-elevated border rounded-2xl p-5 transition-colors ${f.accent}`}>
                 <div className="text-2xl mb-3">{f.icon}</div>
@@ -219,30 +212,29 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── FREE DIAGNOSIS CTA ────────────────────────────────────────────── */}
+      {/* ── MARK & REFUND CTA ─────────────────────────────────────────────── */}
       <section className="bg-void py-16 px-6">
         <div className="max-w-3xl mx-auto">
           <div className="bg-surface border border-neon-purple/20 rounded-2xl p-8 md:p-10 text-center relative overflow-hidden">
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-neon-purple/5 to-transparent" />
             <div className="relative z-10">
-              <div className="text-3xl mb-4">🔍</div>
+              <div className="text-3xl mb-4">⚑</div>
               <h2 className="font-mono text-2xl md:text-3xl font-bold text-ink-primary mb-3">
                 Don&apos;t let that credit go to waste.
               </h2>
               <p className="text-ink-secondary mb-3 leading-relaxed max-w-xl mx-auto">
-                Sign in for{' '}
-                <strong className="text-neon-purple">FREE AI failure analysis</strong> — we pinpoint exactly what went wrong,
-                document it, and auto-generate your Runway refund email in seconds.
+                Sign in, mark the broken frames by failure type, and let AVA{' '}
+                <strong className="text-neon-purple">auto-generate your refund email</strong> — pre-filled with your generation ID, L1 failure flags, and marked evidence.
               </p>
               <p className="text-ink-muted text-sm font-mono mb-8">
-                📁 Every diagnosis is saved to your account history.
+                📁 Every refund request is saved to your account history.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <Link
                   href="/login?redirectTo=/auth/extension-callback"
                   className="inline-flex items-center justify-center gap-2 bg-neon-purple/20 hover:bg-neon-purple/30 border border-neon-purple/40 text-neon-purple font-mono font-bold px-8 py-3 rounded-xl transition-all"
                 >
-                  Get FREE Analysis →
+                  Sign In &amp; Start Claiming →
                 </Link>
                 <a
                   href={CHROME_EXT_URL}
@@ -371,14 +363,14 @@ export default function HomePage() {
               },
               {
                 n: '03',
-                title: 'Mark Broken Frames & Diagnose',
-                body: 'Hover the failed video and click ⚑ to tag specific frames by failure type — limb artifact, physics collapse, face distortion, and more. Then click "Diagnose & Refund". Marked frames go first, giving the VLM the clearest evidence of what broke.',
+                title: 'Mark the Broken Frames',
+                body: 'Hover the failed video and click ⚑ to tag the exact frames that broke — limb artifact, physics collapse, face distortion, text rendering failure, and more. Your marks become the evidence attached to the refund request.',
                 accent: 'text-neon-blue',
               },
               {
                 n: '04',
                 title: 'One-Click Refund Email + Follow-Up',
-                body: 'AVA pre-fills a Runway or Luma support email with your generation ID, failure type, AI confidence score, credit cost, and timestamp. After you send, AVA asks "Did you get your refund?" — tracking outcomes so you know what works.',
+                body: 'AVA pre-fills a Runway or Luma support email with your generation ID, L1 failure flags, marked frame evidence, credit cost, and timestamp. After you send, AVA asks "Did you get your refund?" — so you can track what works.',
                 accent: 'text-neon-green',
               },
             ].map((step, i, arr) => (
