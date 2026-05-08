@@ -56,16 +56,23 @@ const FEATURES = [
     label: 'text-neon-purple',
   },
   {
+    icon: '⚑',
+    title: 'Mark Anomaly Frames',
+    body: 'Hover any video and click ⚑ to tag broken frames by type — limb artifact, physics collapse, face distortion, and more. Marked frames go first in diagnosis for maximum precision.',
+    accent: 'border-neon-red/30 hover:border-neon-red/60',
+    label: 'text-neon-red',
+  },
+  {
     icon: '🔍',
     title: 'FREE AI Failure Diagnosis',
-    body: 'When it fails anyway, one click submits your video frames for a full visual analysis. Pinpoints the exact artifact, the cause, and what to change next time.',
+    body: 'One click captures keyframes and runs a full VLM visual analysis. Pinpoints the exact artifact, the affected frames, and what to change next time.',
     accent: 'border-neon-amber/30 hover:border-neon-amber/60',
     label: 'text-neon-amber',
   },
   {
     icon: '📧',
     title: 'One-Click Refund Email',
-    body: 'Auto-generates a Runway support email with your generation ID, failure type, AI confidence score, and cost — pre-filled and ready to send in seconds.',
+    body: 'Auto-generates a Runway or Luma support email with your generation ID, failure type, AI confidence score, and cost — pre-filled and ready to send in seconds.',
     accent: 'border-neon-green/30 hover:border-neon-green/60',
     label: 'text-neon-green',
   },
@@ -82,8 +89,8 @@ const FEATURES = [
 const TRUST = [
   {
     icon: '🔒',
-    title: 'No keys required.',
-    body: 'Sign in with Google or email. The free tier runs on our cloud quota — no API key needed to start diagnosing.',
+    title: 'Encrypted at rest.',
+    body: 'Your session token is encrypted with AES-GCM before being stored — only your browser can read it. No plaintext credentials ever touch local storage.',
   },
   {
     icon: '👁️',
@@ -120,7 +127,7 @@ export default function HomePage() {
         <div className="relative z-10 max-w-4xl mx-auto text-center">
           <div className="inline-flex items-center gap-2 bg-neon-green/10 border border-neon-green/30 text-neon-green text-xs font-mono font-bold px-4 py-1.5 rounded-full mb-8 tracking-widest uppercase">
             <span className="w-1.5 h-1.5 rounded-full bg-neon-green animate-pulse" />
-            Built for Runway Gen-4 · Free Chrome Extension
+            Built for Runway & Luma · Free Chrome Extension
           </div>
 
           <h1 className="font-mono text-5xl md:text-6xl font-bold text-ink-primary mb-6 leading-tight">
@@ -136,7 +143,7 @@ export default function HomePage() {
           </p>
 
           <p className="text-ink-muted text-sm font-mono mb-10">
-            FREE AI diagnosis · Diagnosis history · One-click refund email · Sign in to unlock
+            FREE AI diagnosis · Mark anomaly frames · One-click refund email · Sign in to unlock
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
@@ -200,7 +207,7 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
             {FEATURES.map((f) => (
               <div key={f.title} className={`bg-elevated border rounded-2xl p-5 transition-colors ${f.accent}`}>
                 <div className="text-2xl mb-3">{f.icon}</div>
@@ -345,15 +352,15 @@ export default function HomePage() {
             <p className="text-xs font-mono font-bold tracking-widest text-neon-purple uppercase mb-3">
               Under the Hood
             </p>
-            <h2 className="font-mono text-3xl font-bold text-ink-primary">How It Works on Runway</h2>
+            <h2 className="font-mono text-3xl font-bold text-ink-primary">How It Works</h2>
           </div>
 
           <div className="space-y-0">
             {[
               {
                 n: '01',
-                title: 'Install & Open Runway',
-                body: 'Install the extension, open Runway Gen-4, and click the AVA panel. It activates automatically — no setup required.',
+                title: 'Install & Open Runway or Luma',
+                body: 'Install the extension, open Runway Gen-4 or Luma Dream Machine, and click the AVA panel. It activates automatically on both platforms — no setup required.',
                 accent: 'text-neon-purple',
               },
               {
@@ -364,14 +371,14 @@ export default function HomePage() {
               },
               {
                 n: '03',
-                title: 'AI Visual Diagnosis (Free)',
-                body: 'When generation still fails, click "Diagnose & Refund". AVA captures keyframes and runs a vision model diagnosis: what broke, which frames, and the likely cause.',
+                title: 'Mark Broken Frames & Diagnose',
+                body: 'Hover the failed video and click ⚑ to tag specific frames by failure type — limb artifact, physics collapse, face distortion, and more. Then click "Diagnose & Refund". Marked frames go first, giving the VLM the clearest evidence of what broke.',
                 accent: 'text-neon-blue',
               },
               {
                 n: '04',
-                title: 'One-Click Refund Email',
-                body: 'AVA pre-fills a Runway support email with your generation ID, failure type, AI confidence score, credit cost, and timestamp. Click "Open Refund Email" and send.',
+                title: 'One-Click Refund Email + Follow-Up',
+                body: 'AVA pre-fills a Runway or Luma support email with your generation ID, failure type, AI confidence score, credit cost, and timestamp. After you send, AVA asks "Did you get your refund?" — tracking outcomes so you know what works.',
                 accent: 'text-neon-green',
               },
             ].map((step, i, arr) => (
@@ -401,7 +408,7 @@ export default function HomePage() {
               Free to use. Nothing to trust us with.
             </h2>
             <p className="text-ink-secondary max-w-xl mx-auto">
-              Sign in with Google or email — that&apos;s it. No API keys, no payment info, no prompts stored on our servers.
+              Sign in with Google or email — that&apos;s it. Your token is AES-GCM encrypted locally. No API keys, no payment info, no prompts stored on our servers.
             </p>
           </div>
 
