@@ -197,19 +197,20 @@ export default function HomePage() {
           {/* ── Same-prompt-multi-platform comparison grid ────────────── */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 max-w-4xl mx-auto mb-10">
             {[
-              { src: '/demo-videos/kling.mp4',    platform: 'Kling 1.6',        accent: 'border-neon-amber/30',  textColor: 'text-neon-amber' },
-              { src: '/demo-videos/veo.mp4',      platform: 'Google Veo 3.1',   accent: 'border-neon-cyan/30',   textColor: 'text-neon-cyan' },
-              { src: '/demo-videos/seedance.mp4', platform: 'Seedance 2.0',     accent: 'border-neon-red/30',    textColor: 'text-neon-red' },
-              { src: '/demo-videos/vidu.mp4',     platform: 'Vidu Q2 Pro',      accent: 'border-neon-purple/30', textColor: 'text-neon-purple' },
+              { name: 'kling',    platform: 'Kling 1.6',      accent: 'border-neon-amber/30',  textColor: 'text-neon-amber' },
+              { name: 'veo',      platform: 'Google Veo 3.1', accent: 'border-neon-cyan/30',   textColor: 'text-neon-cyan' },
+              { name: 'seedance', platform: 'Seedance 2.0',   accent: 'border-neon-red/30',    textColor: 'text-neon-red' },
+              { name: 'vidu',     platform: 'Vidu Q2 Pro',    accent: 'border-neon-purple/30', textColor: 'text-neon-purple' },
             ].map((v) => (
               <div key={v.platform} className={`relative aspect-[9/16] rounded-xl overflow-hidden border ${v.accent} bg-surface group shadow-2xl`}>
                 <video
-                  src={v.src}
+                  src={`/demo-videos/${v.name}.mp4`}
+                  poster={`/demo-videos/${v.name}.jpg`}
                   autoPlay
                   muted
                   loop
                   playsInline
-                  preload="metadata"
+                  preload="auto"
                   className="w-full h-full object-cover"
                 />
                 {/* Failure-marker badge — top-right corner */}
@@ -217,7 +218,7 @@ export default function HomePage() {
                   ⚑ Spot the fail
                 </div>
                 {/* Bottom platform label with gradient */}
-                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-void via-void/85 to-transparent px-3 py-2.5">
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-void via-void/85 to-transparent px-3 py-2.5 z-10">
                   <div className={`font-mono text-[11px] md:text-xs font-bold ${v.textColor}`}>{v.platform}</div>
                   <div className="text-[9px] font-mono text-ink-muted mt-0.5">Same prompt</div>
                 </div>
