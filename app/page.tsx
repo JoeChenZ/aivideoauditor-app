@@ -165,6 +165,31 @@ export default function HomePage() {
       type="application/ld+json"
       dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareAppSchema) }}
     />
+    {/* Autoplay fallback — many fresh-visit Chrome sessions block autoplay
+        on zero-MEI sites. Try immediate play; if that's rejected, trigger
+        play on the very first user gesture (click/scroll/touch/key). */}
+    <script
+      dangerouslySetInnerHTML={{
+        __html: `(function(){
+          function play(){
+            document.querySelectorAll('main section video[autoplay]').forEach(function(v){
+              var p=v.play(); if(p&&p.catch) p.catch(function(){});
+            });
+          }
+          if (document.readyState==='loading') {
+            document.addEventListener('DOMContentLoaded', play);
+          } else {
+            play();
+          }
+          var events=['click','scroll','touchstart','keydown'];
+          function handler(){
+            play();
+            events.forEach(function(e){ document.removeEventListener(e, handler, true); });
+          }
+          events.forEach(function(e){ document.addEventListener(e, handler, {capture:true, passive:true}); });
+        })();`,
+      }}
+    />
     <main className="min-h-screen overflow-x-hidden">
 
       {/* ── HERO ──────────────────────────────────────────────────────────── */}
