@@ -42,7 +42,7 @@ const STEPS = [
   {
     n: '05',
     title: 'Generate your refund request',
-    body: 'Runway has no email support — the working refund channels are the in-app support chat (help widget in the bottom-right of app.runwayml.com) and the Runway Discord (#support channel). Open the chat or Discord, paste the message template below as your first post, and attach the PDF audit report. The attached PDF is what turns a vague complaint into a documented refund-ready ticket.',
+    body: "Runway has no direct-email intake. The path depends on your plan tier. Pro+ users: open the in-app AI Assistant (help widget bottom-right of app.runwayml.com) and submit a refund ticket — Runway support replies via email after the ticket opens. Free/Standard users don't get human support — your channel is the Runway Discord #community-help channel where moderators triage. Either way, paste the message template below as your first post and attach the PDF audit report. The PDF is what turns a vague complaint into a documented refund-ready ticket.",
     tip: null,
   },
   {
@@ -239,12 +239,15 @@ export default function GuidePage() {
           <section className="mb-16">
             <h2 className="text-xl font-bold text-ink-primary mb-4">Refund Message Template</h2>
             <p className="text-ink-secondary text-sm mb-4">
-              Runway has no email support — paste this as your first message in
-              the <strong className="text-ink-primary">in-app support chat</strong> (help
-              widget in the bottom-right of app.runwayml.com) or in the
-              <strong className="text-ink-primary"> #support</strong> channel of the
-              Runway Discord. Attach the PDF audit report AVA generates. Fill the
-              bracketed fields — AVA populates them automatically with your real data.
+              Runway has no direct-email intake. Pro+ users: paste this into the
+              <strong className="text-ink-primary"> in-app AI Assistant </strong>
+              chat (help widget bottom-right of app.runwayml.com) to open a refund
+              ticket; the support team replies via email after the ticket opens.
+              Free/Standard users: post in the Runway Discord
+              <strong className="text-ink-primary"> #community-help </strong>
+              channel and ping <strong>@On Call - Moderators</strong>. Attach the
+              PDF audit report AVA generates either way. Fill the bracketed fields —
+              AVA populates them automatically with your real data.
             </p>
             <div className="bg-elevated border border-border rounded-xl p-5 font-mono text-xs text-ink-secondary leading-relaxed whitespace-pre-wrap">
 {`Refund request — technical failure on a paid generation.
