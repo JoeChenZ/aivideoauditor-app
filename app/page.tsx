@@ -16,7 +16,6 @@ const SHAME_CARDS = [
     ],
     cost: '$0.70',
     color: 'from-cyan-900/40 to-teal-900/20',
-    glitch: 'cyan',
   },
   {
     platform: 'RUNWAY GEN-4',
@@ -29,7 +28,6 @@ const SHAME_CARDS = [
     ],
     cost: '$1.40',
     color: 'from-violet-900/40 to-purple-900/20',
-    glitch: 'purple',
   },
   {
     platform: 'RUNWAY GEN-4',
@@ -42,7 +40,6 @@ const SHAME_CARDS = [
     ],
     cost: '$2.10',
     color: 'from-red-900/40 to-orange-900/20',
-    glitch: 'red',
   },
 ];
 
@@ -51,30 +48,30 @@ const FEATURES = [
   {
     icon: '🛡️',
     title: 'Pre-Flight Risk Check',
-    body: 'Before you hit Generate, the L1 engine scans your prompt for known Runway failure patterns — fingers, text, physics, motion — instantly, with zero API calls.',
+    body: 'Before you hit Generate, the L1 engine scans your prompt for known Runway failure patterns — fingers, text, physics, motion — instantly, zero API calls, as you type.',
     accent: 'border-neon-purple/30 hover:border-neon-purple/60',
     label: 'text-neon-purple',
   },
   {
     icon: '⚑',
-    title: 'Mark Anomaly Frames',
-    body: 'Hover the failed video and click ⚑ to tag the broken frames by type — limb artifact, physics collapse, face distortion, and more. Your marks become the evidence in the refund email.',
+    title: 'Mark Failure Frames',
+    body: 'Hover the failed video and click ⚑ to tag the exact broken frames — limb artifact, physics collapse, face distortion, text failure. Screenshots are captured with zero CORS issues.',
     accent: 'border-neon-red/30 hover:border-neon-red/60',
     label: 'text-neon-red',
   },
   {
-    icon: '📧',
-    title: 'One-Click Refund Email',
-    body: 'Auto-generates a Runway support email with your generation ID, L1 failure flags, marked frame evidence, and credit cost — pre-filled and ready to send in seconds.',
+    icon: '📋',
+    title: 'Professional Refund Letter',
+    body: 'Free tier auto-generates a professional refund letter with engineering-grade failure terminology — "Anatomical Topology Failure" lands better than "the arm looks weird". Ready to copy and paste.',
     accent: 'border-neon-green/30 hover:border-neon-green/60',
     label: 'text-neon-green',
   },
   {
-    icon: '📁',
-    title: 'Diagnosis History',
-    body: 'Every analysis is saved to your account. Track patterns across your projects, see which prompts fail most, and build a record for recurring refund claims.',
-    accent: 'border-neon-blue/30 hover:border-neon-blue/60',
-    label: 'text-neon-blue',
+    icon: '📄',
+    title: 'PDF Audit Report (Pro)',
+    body: 'Pro tier generates a formal Technical Diagnostic Report PDF with your generation ID, share link, annotated failure frames, engineering diagnosis, and credit refund calculation — built to look like an official audit.',
+    accent: 'border-neon-amber/30 hover:border-neon-amber/60',
+    label: 'text-neon-amber',
   },
 ];
 
@@ -83,12 +80,12 @@ const TRUST = [
   {
     icon: '🔒',
     title: 'Encrypted at rest.',
-    body: 'Your session token is encrypted with AES-GCM before being stored — only your browser can read it. No plaintext credentials ever touch local storage.',
+    body: 'Your session token is encrypted with AES-GCM before being stored locally — only your browser can read it. No plaintext credentials ever touch storage.',
   },
   {
-    icon: '👁️',
-    title: 'PII-free analysis.',
-    body: 'Names, emails, and URLs are stripped from your prompt before any analysis is sent. The engine only sees the risk pattern.',
+    icon: '🚫',
+    title: 'Zero AI vision cost.',
+    body: 'The new scope has no cloud AI vision calls. All diagnosis is local (L1 heuristics) + your manual marks. Your credits stay on Runway, not our servers.',
   },
   {
     icon: '⚡',
@@ -98,12 +95,76 @@ const TRUST = [
   {
     icon: '🛡️',
     title: 'Open to audit.',
-    body: 'The extension source is readable. No obfuscation. What you install is exactly what you see.',
+    body: 'The extension source is readable. No obfuscation. CustomEvent-only communication between page and extension — no postMessage XSS surface.',
   },
 ];
 
+/* ── Pricing tiers ────────────────────────────────────────────────────── */
+const TIERS = [
+  {
+    name: 'Free',
+    price: '$0',
+    period: 'forever',
+    accent: 'border-border',
+    badge: null,
+    features: [
+      '✓ Generation ID & share link capture',
+      '✓ Pre-flight L1 prompt risk scanner',
+      '✓ Mark failure frames (all types)',
+      '✓ Professional refund letter (copy & paste)',
+      '✓ Refund outcome tracking',
+      '✓ Unlimited generations monitored',
+    ],
+    cta: { label: 'Add to Chrome — Free', href: CHROME_EXT_URL, style: 'bg-elevated hover:bg-elevated/80 border border-border text-ink-primary' },
+  },
+  {
+    name: 'Pro',
+    price: '$9',
+    period: 'per month',
+    accent: 'border-neon-amber/50 shadow-neon-amber/10 shadow-lg',
+    badge: 'Most Effective',
+    features: [
+      '✓ Everything in Free',
+      '✓ Red-box annotation tool on failure frames',
+      '✓ PDF Technical Audit Report download',
+      '✓ Annotated screenshots embedded in PDF',
+      '✓ Refund history cloud sync',
+      '✓ Advanced L1 full analysis mode',
+    ],
+    cta: { label: 'Upgrade to Pro →', href: '/pricing', style: 'bg-neon-amber/20 hover:bg-neon-amber/30 border border-neon-amber/40 text-neon-amber font-bold' },
+  },
+];
+
+const softwareAppSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'AIVideoAuditor',
+  applicationCategory: 'BrowserApplication',
+  operatingSystem: 'Chrome',
+  offers: [
+    { '@type': 'Offer', price: '0', priceCurrency: 'USD', name: 'Free' },
+    { '@type': 'Offer', price: '9', priceCurrency: 'USD', priceSpecification: { '@type': 'UnitPriceSpecification', billingDuration: 'P1M' }, name: 'Pro' },
+  ],
+  description: 'Free Chrome extension for Runway ML and Luma AI. Flags bad prompts before you generate, marks broken frames, and builds a Technical Audit PDF Report to maximize credit refund success.',
+  url: 'https://www.aivideoauditor.com',
+  downloadUrl: 'https://chromewebstore.google.com/detail/aivideoauditor/dnehhjbgpfjdihfigahimmpgnemplljn',
+  aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.8', ratingCount: '47' },
+  featureList: [
+    'Generation ID & share link capture',
+    'Pre-flight prompt risk scanner',
+    'Mark failure frames with red-box annotation',
+    'Professional refund letter generator',
+    'PDF Technical Audit Report (Pro)',
+  ],
+};
+
 export default function HomePage() {
   return (
+    <>
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareAppSchema) }}
+    />
     <main className="min-h-screen overflow-x-hidden">
 
       {/* ── HERO ──────────────────────────────────────────────────────────── */}
@@ -130,13 +191,14 @@ export default function HomePage() {
           </h1>
 
           <p className="text-ink-secondary text-lg leading-relaxed mb-4 max-w-2xl mx-auto">
-            AVA is the free Chrome extension that{' '}
-            <em className="text-ink-primary not-italic font-semibold">flags bad prompts before you generate</em>,
-            lets you mark exactly what broke after generation, and drafts your refund email in one click.
+            AVA flags bad prompts before you generate, lets you mark exactly what broke,
+            and builds a{' '}
+            <em className="text-ink-primary not-italic font-semibold">Technical Audit Report</em>{' '}
+            that gets your credits back — free refund letter or a Pro PDF that looks like an official diagnostic document.
           </p>
 
           <p className="text-ink-muted text-sm font-mono mb-10">
-            Pre-flight risk check · Mark anomaly frames · One-click refund email · Sign in to unlock
+            Pre-flight risk check · Mark failure frames · Refund letter · PDF Audit Report (Pro)
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
@@ -151,16 +213,16 @@ export default function HomePage() {
               </svg>
               Add to Chrome — It&apos;s Free
             </a>
-            <Link
-              href="/login?redirectTo=/dashboard"
-              className="inline-flex items-center justify-center gap-2 bg-neon-purple/10 hover:bg-neon-purple/20 border border-neon-purple/30 text-neon-purple font-mono font-semibold px-8 py-3.5 rounded-xl transition-all text-sm"
+            <a
+              href="#upgrade"
+              className="inline-flex items-center justify-center gap-2 bg-neon-amber/10 hover:bg-neon-amber/20 border border-neon-amber/30 text-neon-amber font-mono font-semibold px-8 py-3.5 rounded-xl transition-all text-sm"
             >
-              Sign In &amp; Track Diagnoses →
-            </Link>
+              ✦ See Pro PDF Reports →
+            </a>
           </div>
 
           <p className="mt-5 text-ink-muted text-xs font-mono">
-            No credit card · Works on Chrome · Brave · Edge · Arc
+            No credit card for free tier · Works on Chrome · Brave · Edge · Arc
           </p>
         </div>
       </section>
@@ -169,7 +231,7 @@ export default function HomePage() {
       <section className="bg-neon-red/5 border-y border-neon-red/20 py-8 px-6 overflow-x-hidden">
         <div className="max-w-5xl mx-auto flex flex-wrap items-center justify-center gap-6 text-center sm:text-left">
           <div className="flex items-center gap-3">
-            <span className="text-3xl font-mono font-bold text-neon-red">$0.70–$5</span>
+            <span className="text-3xl font-mono font-bold text-neon-red">$0.20–$5</span>
             <span className="text-sm text-ink-muted font-mono">per failed<br/>Runway generation</span>
           </div>
           <div className="w-px h-8 bg-border hidden sm:block" />
@@ -196,7 +258,7 @@ export default function HomePage() {
               Catch it. Diagnose it. Claim it back.
             </h2>
             <p className="text-ink-secondary max-w-xl mx-auto">
-              From risky prompt to refund email — handled inside the extension while you&apos;re on Runway.
+              From risky prompt to PDF audit report — handled inside the extension while you&apos;re on Runway.
             </p>
           </div>
 
@@ -212,46 +274,110 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── MARK & REFUND CTA ─────────────────────────────────────────────── */}
-      <section className="bg-void py-16 px-6">
+      {/* ── HOW IT WORKS ──────────────────────────────────────────────────── */}
+      <section id="how-it-works" className="bg-void py-20 px-6">
         <div className="max-w-3xl mx-auto">
-          <div className="bg-surface border border-neon-purple/20 rounded-2xl p-8 md:p-10 text-center relative overflow-hidden">
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-neon-purple/5 to-transparent" />
-            <div className="relative z-10">
-              <div className="text-3xl mb-4">⚑</div>
-              <h2 className="font-mono text-2xl md:text-3xl font-bold text-ink-primary mb-3">
-                Don&apos;t let that credit go to waste.
-              </h2>
-              <p className="text-ink-secondary mb-3 leading-relaxed max-w-xl mx-auto">
-                Sign in, mark the broken frames by failure type, and let AVA{' '}
-                <strong className="text-neon-purple">auto-generate your refund email</strong> — pre-filled with your generation ID, L1 failure flags, and marked evidence.
-              </p>
-              <p className="text-ink-muted text-sm font-mono mb-8">
-                📁 Every refund request is saved to your account history.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                <Link
-                  href="/login?redirectTo=/auth/extension-callback"
-                  className="inline-flex items-center justify-center gap-2 bg-neon-purple/20 hover:bg-neon-purple/30 border border-neon-purple/40 text-neon-purple font-mono font-bold px-8 py-3 rounded-xl transition-all"
-                >
-                  Sign In &amp; Start Claiming →
-                </Link>
+          <div className="text-center mb-12">
+            <p className="text-xs font-mono font-bold tracking-widest text-neon-purple uppercase mb-3">
+              Under the Hood
+            </p>
+            <h2 className="font-mono text-3xl font-bold text-ink-primary">How It Works</h2>
+          </div>
+
+          <div className="space-y-0">
+            {[
+              {
+                n: '01',
+                title: 'Install & Open Runway',
+                body: 'Install the extension, open Runway, and the AVA panel activates automatically. The network interceptor silently captures your generation ID and share link in the background — no setup required.',
+                accent: 'text-neon-purple',
+              },
+              {
+                n: '02',
+                title: 'L1 Pre-Flight Screen',
+                body: 'As you type your prompt, AVA scans for Runway\'s highest-cost failure modes: text in frame, complex physics, finger artifacts, slow-motion conflicts. Warnings appear instantly with no API calls — pure in-browser heuristics.',
+                accent: 'text-neon-amber',
+              },
+              {
+                n: '03',
+                title: 'Mark the Broken Frames',
+                body: 'Hover the failed video and click ⚑ to tag the exact broken frames by failure type. A red-box annotation tool (Pro) lets you circle the exact defect area. Screenshots are captured CORS-safely via the extension.',
+                accent: 'text-neon-blue',
+              },
+              {
+                n: '04',
+                title: 'Build Your Audit Report',
+                body: 'Free: copy a professional refund letter with engineering-grade failure terminology. Pro: download a PDF Technical Diagnostic Report with annotated screenshots, technical IDs, failure analysis, and credit refund calculation — built to escalate support priority.',
+                accent: 'text-neon-green',
+              },
+            ].map((step, i, arr) => (
+              <div key={step.n} className="flex gap-6 items-start relative">
+                {i < arr.length - 1 && (
+                  <div className="absolute left-4 top-10 bottom-0 w-px bg-border" />
+                )}
+                <span className={`font-mono font-bold text-sm shrink-0 w-8 mt-0.5 ${step.accent}`}>{step.n}</span>
+                <div className="pb-10">
+                  <h3 className="font-mono font-semibold text-ink-primary mb-1.5">{step.title}</h3>
+                  <p className="text-ink-secondary text-sm leading-relaxed">{step.body}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── PRICING ───────────────────────────────────────────────────────── */}
+      <section id="upgrade" className="bg-surface py-20 px-6">
+        <div className="max-w-3xl mx-auto">
+          <div className="text-center mb-12">
+            <p className="text-xs font-mono font-bold tracking-widest text-neon-amber uppercase mb-3">
+              Pricing
+            </p>
+            <h2 className="font-mono text-3xl md:text-4xl font-bold text-ink-primary mb-4">
+              Free gets you the letter.<br />Pro gets you the evidence.
+            </h2>
+            <p className="text-ink-secondary max-w-xl mx-auto">
+              The PDF Audit Report is designed to look like an official diagnostic document.
+              Visual authority gets your ticket escalated faster.
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 gap-6">
+            {TIERS.map((tier) => (
+              <div key={tier.name} className={`bg-elevated border rounded-2xl p-7 relative ${tier.accent}`}>
+                {tier.badge && (
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-neon-amber text-black text-xs font-mono font-bold px-4 py-1 rounded-full">
+                    {tier.badge}
+                  </div>
+                )}
+                <div className="mb-6">
+                  <p className="font-mono font-bold text-ink-primary text-lg mb-1">{tier.name}</p>
+                  <div className="flex items-baseline gap-2">
+                    <span className="font-mono text-4xl font-bold text-ink-primary">{tier.price}</span>
+                    <span className="text-ink-muted text-sm font-mono">{tier.period}</span>
+                  </div>
+                </div>
+                <ul className="space-y-2.5 mb-8">
+                  {tier.features.map((f) => (
+                    <li key={f} className="text-xs font-mono text-ink-secondary leading-relaxed">{f}</li>
+                  ))}
+                </ul>
                 <a
-                  href={CHROME_EXT_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 bg-elevated hover:bg-elevated/80 border border-border text-ink-secondary font-mono text-sm px-8 py-3 rounded-xl transition-all"
+                  href={tier.cta.href}
+                  target={tier.cta.href.startsWith('http') ? '_blank' : undefined}
+                  rel={tier.cta.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                  className={`block text-center py-3 px-6 rounded-xl font-mono text-sm transition-all ${tier.cta.style}`}
                 >
-                  Install Extension First ↗
+                  {tier.cta.label}
                 </a>
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* ── PLAYGROUND ────────────────────────────────────────────────────── */}
-      <section id="playground" className="bg-surface py-20 px-6">
+      <section id="playground" className="bg-void py-20 px-6">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
             <p className="text-xs font-mono font-bold tracking-widest text-neon-purple uppercase mb-3">
@@ -269,13 +395,13 @@ export default function HomePage() {
           <InteractiveAuditor />
 
           <p className="text-center text-xs text-ink-muted font-mono mt-6">
-            L1 checks heuristic rules only. Install the extension for VLM visual diagnosis + one-click refund email.
+            L1 checks heuristic rules only. Install the extension to mark failure frames + generate your audit report.
           </p>
         </div>
       </section>
 
       {/* ── WALL OF SHAME ─────────────────────────────────────────────────── */}
-      <section id="wall-of-shame" className="bg-void py-20 px-6">
+      <section id="wall-of-shame" className="bg-surface py-20 px-6">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
             <p className="text-xs font-mono font-bold tracking-widest text-neon-red uppercase mb-3">
@@ -292,7 +418,7 @@ export default function HomePage() {
 
           <div className="grid md:grid-cols-3 gap-5">
             {SHAME_CARDS.map((card) => (
-              <div key={card.title} className="bg-surface border border-border rounded-2xl overflow-hidden group hover:border-neon-red/30 transition-colors">
+              <div key={card.title} className="bg-elevated border border-border rounded-2xl overflow-hidden group hover:border-neon-red/30 transition-colors">
                 <div className={`relative h-40 bg-gradient-to-br ${card.color} overflow-hidden`}>
                   <div className="absolute inset-0 opacity-40"
                     style={{
@@ -337,58 +463,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── HOW IT WORKS ──────────────────────────────────────────────────── */}
-      <section id="how-it-works" className="bg-surface py-20 px-6">
-        <div className="max-w-3xl mx-auto">
-          <div className="text-center mb-12">
-            <p className="text-xs font-mono font-bold tracking-widest text-neon-purple uppercase mb-3">
-              Under the Hood
-            </p>
-            <h2 className="font-mono text-3xl font-bold text-ink-primary">How It Works</h2>
-          </div>
-
-          <div className="space-y-0">
-            {[
-              {
-                n: '01',
-                title: 'Install & Open Runway',
-                body: 'Install the extension, open Runway, and click the AVA panel. It activates automatically across all Runway models — no setup required.',
-                accent: 'text-neon-purple',
-              },
-              {
-                n: '02',
-                title: 'L1 Pre-Flight Screen',
-                body: 'As you type your prompt, AVA scans for Runway\'s highest-cost failure modes: text in frame, complex physics, finger artifacts, slow-motion conflicts. Warnings appear instantly.',
-                accent: 'text-neon-amber',
-              },
-              {
-                n: '03',
-                title: 'Mark the Broken Frames',
-                body: 'Hover the failed video and click ⚑ to tag the exact frames that broke — limb artifact, physics collapse, face distortion, text rendering failure, and more. Your marks become the evidence attached to the refund request.',
-                accent: 'text-neon-blue',
-              },
-              {
-                n: '04',
-                title: 'One-Click Refund Email + Follow-Up',
-                body: 'AVA pre-fills a Runway support email with your generation ID, L1 failure flags, marked frame evidence, credit cost, and timestamp. After you send, AVA asks "Did you get your refund?" — so you can track what works.',
-                accent: 'text-neon-green',
-              },
-            ].map((step, i, arr) => (
-              <div key={step.n} className="flex gap-6 items-start relative">
-                {i < arr.length - 1 && (
-                  <div className="absolute left-4 top-10 bottom-0 w-px bg-border" />
-                )}
-                <span className={`font-mono font-bold text-sm shrink-0 w-8 mt-0.5 ${step.accent}`}>{step.n}</span>
-                <div className="pb-10">
-                  <h3 className="font-mono font-semibold text-ink-primary mb-1.5">{step.title}</h3>
-                  <p className="text-ink-secondary text-sm leading-relaxed">{step.body}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ── TRUST ─────────────────────────────────────────────────────────── */}
       <section id="trust" className="bg-void py-20 px-6">
         <div className="max-w-5xl mx-auto">
@@ -400,7 +474,8 @@ export default function HomePage() {
               Free to use. Nothing to trust us with.
             </h2>
             <p className="text-ink-secondary max-w-xl mx-auto">
-              Sign in with Google or email — that&apos;s it. Your token is AES-GCM encrypted locally. No API keys, no payment info, no prompts stored on our servers.
+              Sign in with Google or email — that&apos;s it. Your token is AES-GCM encrypted locally.
+              No cloud AI vision calls, no prompts stored on our servers.
             </p>
           </div>
 
@@ -429,7 +504,7 @@ export default function HomePage() {
           </h2>
           <p className="text-ink-secondary mb-10 text-lg">
             Install in 30 seconds. Sign in free. The L1 engine starts protecting
-            your credits on your very next Runway prompt.
+            your credits on your very next Runway prompt — and the PDF report is ready when you need it.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <a
@@ -440,19 +515,20 @@ export default function HomePage() {
             >
               Add to Chrome — Free
             </a>
-            <Link
-              href="/login?redirectTo=/dashboard"
-              className="inline-flex items-center justify-center gap-2 bg-neon-purple/10 hover:bg-neon-purple/20 border border-neon-purple/30 text-neon-purple font-mono font-semibold px-10 py-4 rounded-xl transition-all"
+            <a
+              href="#upgrade"
+              className="inline-flex items-center justify-center gap-2 bg-neon-amber/10 hover:bg-neon-amber/20 border border-neon-amber/30 text-neon-amber font-mono font-semibold px-10 py-4 rounded-xl transition-all"
             >
-              Sign In &amp; Track Diagnoses →
-            </Link>
+              ✦ See Pro PDF Reports →
+            </a>
           </div>
           <p className="mt-5 text-ink-muted text-sm font-mono">
-            No credit card · Works on Chrome · Brave · Edge · Arc
+            No credit card for free tier · Works on Chrome · Brave · Edge · Arc
           </p>
         </div>
       </section>
 
     </main>
+    </>
   );
 }
