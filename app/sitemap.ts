@@ -3,6 +3,7 @@ import { MetadataRoute } from 'next';
 const BASE = 'https://www.aivideoauditor.com';
 
 const FAILURE_SLUGS = [
+  // Runway
   'runway-limb-artifact',
   'runway-physics-collapse',
   'runway-face-distortion',
@@ -11,6 +12,16 @@ const FAILURE_SLUGS = [
   'runway-hallucinated-text',
   'runway-camera-jitter',
   'runway-color-drift',
+  // Luma
+  'luma-physics-collapse',
+  'luma-face-distortion',
+  // Google Veo
+  'veo-text-rendering-failure',
+  'veo-hand-artifact',
+  // Kling
+  'kling-anatomy-artifact',
+  // Seedance
+  'seedance-motion-drift',
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

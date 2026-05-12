@@ -372,6 +372,290 @@ export const FAILURES: FailureData[] = [
       },
     ],
   },
+
+  // ── Luma Dream Machine ─────────────────────────────────────────────────
+  {
+    slug: 'luma-physics-collapse',
+    title: 'Luma Dream Machine Physics Collapse — Get a Credit Refund',
+    metaTitle: 'Luma AI Physics Refund — Fluid Inversion, Gravity Bug',
+    metaDesc:
+      'Luma Dream Machine generated water flowing upward, smoke imploding, or gravity violations? This is a Physics Simulation Constraint Violation — Luma\'s most common failure category.',
+    technicalTerm: 'Physics Simulation Constraint Violation',
+    risk: 'MAJOR',
+    shortDesc: 'Particularly common on Luma: water flowing upward, smoke imploding, cloth interpenetration, particle drift.',
+    longDesc:
+      'Luma\'s fluid and particle physics is its single most visible weakness. Generations that involve water, smoke, fog, dust, hair, or any soft-body simulation frequently produce non-physical behavior — fluid inversion, smoke moving against airflow, particles that interpenetrate solid surfaces. The model has clearly seen these phenomena in training but lacks a real physics constraint at inference time, so the output drifts toward "plausible-looking-pixels" rather than "physically-coherent-motion." For a refund request, this category has high precedent — Luma support recognises Physics Simulation Constraint Violation as a documented failure mode.',
+    symptoms: [
+      'Water flowing upward or sideways without gravity cause',
+      'Smoke or fog moving against indicated air direction',
+      'Falling objects that pause mid-air before resuming',
+      'Cloth interpenetrating bodies or solid props',
+      'Particles drifting in opposite directions within the same frame',
+    ],
+    examples: [
+      {
+        prompt: '"Slow-motion water fountain exploding upward, cinematic"',
+        failure: 'Water at 0:03 reverses direction, falls UPWARD against gravity, then resumes downward at 0:04',
+        timestamp: '0:03',
+      },
+      {
+        prompt: '"Smoke rising from a campfire on a still night"',
+        failure: 'Smoke drifts left at 0:01, right at 0:03 without wind cue; net motion incoherent',
+        timestamp: '0:01 → 0:03',
+      },
+    ],
+    refundStrength: 'HIGH — Luma support recognises physics failures as a documented refund category; well-timestamped reports approve in 1-3 business days.',
+    faq: [
+      {
+        q: 'Will Luma refund credits for physics failures?',
+        a: 'Yes. Cite "Physics Simulation Constraint Violation", include the Asset ID, attach a PDF audit report or video clip showing the timestamp where physics violates. Luma support has refund precedent for this category.',
+      },
+      {
+        q: 'Why does Luma struggle with physics?',
+        a: 'Video diffusion models learn appearance correlations from training data — they don\'t maintain a runtime physics constraint solver. Without explicit physical priors, fluid, smoke, and particle motion drift toward visually-plausible but physically-incoherent trajectories.',
+      },
+      {
+        q: 'Which prompts trigger physics failures most often?',
+        a: 'Slow-motion water, smoke trails, soft-body materials (cloth, hair), falling objects, complex camera motion through fluids. AVA flags these prompt patterns as high-physics-risk before you spend credits.',
+      },
+    ],
+  },
+  {
+    slug: 'luma-face-distortion',
+    title: 'Luma Dream Machine Face Distortion — Get a Credit Refund',
+    metaTitle: 'Luma AI Face Distortion Refund — Asymmetric Eyes, Drift',
+    metaDesc:
+      'Luma Dream Machine produced a video with morphing facial features, asymmetric eye placement, or jaw drift between frames? This is a Facial Landmark Regression Failure.',
+    technicalTerm: 'Facial Landmark Regression Failure',
+    risk: 'CRITICAL',
+    shortDesc: 'Asymmetric eye placement, jaw drift between frames, non-Euclidean facial proportions in Luma generations.',
+    longDesc:
+      'Luma renders faces well in static frames but struggles to maintain landmark stability across the temporal axis. Eyes drift apart or together, jawlines shift, ears morph in size. This is a Facial Landmark Regression Failure — the model\'s per-frame inference is internally coherent but globally drifts. For commercial use (any clip with a recognisable subject), this single failure mode makes a clip unusable. Luma support classifies this as a critical generation defect.',
+    symptoms: [
+      'Eye spacing changes visibly across the clip',
+      'Jawline reshapes mid-motion',
+      'Ear size or position drifts',
+      'Skin texture pixelates or smooths inconsistently',
+      'Facial expression "lerps" through inconsistent intermediate forms',
+    ],
+    examples: [
+      {
+        prompt: '"Close-up portrait of a young woman smiling, warm light"',
+        failure: 'Left eye drifts inward by 0:02, jawline narrows by 0:04, expression mismatch between halves',
+        timestamp: '0:02',
+      },
+      {
+        prompt: '"Man speaking into camera, documentary lighting"',
+        failure: 'Mouth shape inconsistent with prompted speech; lip-sync drift through 0:01-0:03',
+        timestamp: '0:01 - 0:03',
+      },
+    ],
+    refundStrength: 'VERY HIGH — Luma support treats face distortion as a critical-tier failure; documentation with timestamps approves quickly.',
+    faq: [
+      {
+        q: 'Will Luma refund credits for face distortion?',
+        a: 'Yes. Use "Facial Landmark Regression Failure" terminology, cite the Asset ID, timestamp the worst drift moment, and attach the PDF audit report. This category has high precedent for refund approval.',
+      },
+      {
+        q: 'Why does Luma distort faces?',
+        a: 'Diffusion video models inherit facial-landmark inconsistency from their training distribution. The denoising step is largely per-frame; temporal regularisation tries to smooth across frames but with limited success on small high-detail features like eyes.',
+      },
+      {
+        q: 'Which Luma prompts highest-risk for face distortion?',
+        a: 'Close-up portraits, multi-character scenes, fast head motion, side profiles. AVA\'s pre-flight check flags these patterns.',
+      },
+    ],
+  },
+
+  // ── Google Veo ─────────────────────────────────────────────────────────
+  {
+    slug: 'veo-text-rendering-failure',
+    title: 'Google Veo Hallucinated Text — Get a Credit Refund',
+    metaTitle: 'Google Veo Text Refund — Signs, Labels, Subtitles Garbled',
+    metaDesc:
+      'Google Veo 3 produced a video where the sign, label, or screen text renders as garbled non-letters? This is a Glyph Synthesis Failure. Document and request a refund.',
+    technicalTerm: 'Glyph Synthesis & Semantic Adherence Failure',
+    risk: 'MAJOR',
+    shortDesc: 'Text in the prompt renders as non-letters, mirrored glyphs, or unrelated characters in Veo generations.',
+    longDesc:
+      'Like all video diffusion models, Google Veo struggles with in-scene text rendering. Signs, labels, screen UI, and t-shirt graphics frequently produce shapes that resemble letters but don\'t form readable words. Veo 3 marginally improved on Gen-3 here but still fails on text >5 characters and on cursive / stylised typography. This is a Glyph Synthesis Failure, and because Veo is a Google product with the most rigorous refund process of the major platforms, well-documented requests approve at a higher rate than competitors.',
+    symptoms: [
+      'Storefront sign reads as garbled non-letters',
+      'Same word changes characters frame-to-frame',
+      'Subtitles show wrong words or mirrored glyphs',
+      'T-shirt or product label text is unreadable',
+      'Numbers render incorrectly even when explicitly prompted',
+    ],
+    examples: [
+      {
+        prompt: '"Coffee shop storefront with a neon sign reading OPEN 24 HOURS"',
+        failure: 'Sign reads "OPΞИ 24 HOIIRS" with mirrored second-letter forms',
+        timestamp: '0:00 - 0:08',
+      },
+      {
+        prompt: '"Whiteboard with the words BRAINSTORM SESSION written on it"',
+        failure: 'Whiteboard text is illegible glyphs; letter shapes morph between frames',
+        timestamp: '0:02',
+      },
+    ],
+    refundStrength: 'HIGH — Google\'s refund process is the most structured of major AI video platforms; well-documented text-failure cases approve consistently.',
+    faq: [
+      {
+        q: 'Will Google Veo refund credits for garbled text?',
+        a: 'Yes, when your prompt specified exact text and the output produced glyph noise. Cite "Glyph Synthesis Failure" plus the Generation ID, quote both the prompt text and what was actually rendered, and attach the PDF audit report.',
+      },
+      {
+        q: 'Why does Veo hallucinate letters?',
+        a: 'Video diffusion training emphasises natural imagery; text is sparse in the training set and rarely temporally stable, so the model produces letter-shaped artefacts rather than coherent typography.',
+      },
+      {
+        q: 'How do I render text correctly on Veo?',
+        a: 'Use short text (1-3 letters), avoid cursive, use large display fonts. Veo handles text marginally better than Runway Gen-4 but still fails > 5 characters most of the time. AVA flags any prompt with quoted text as high-text-risk before generation.',
+      },
+    ],
+  },
+  {
+    slug: 'veo-hand-artifact',
+    title: 'Google Veo Hand & Anatomy Artifact — Get a Credit Refund',
+    metaTitle: 'Google Veo Hand Refund — Six Fingers, Limb Distortion',
+    metaDesc:
+      'Google Veo 3 generated a video with six fingers, fused digits, or impossible hand geometry? This is an Anatomical Topology Failure — refund precedent on the Google support side.',
+    technicalTerm: 'Anatomical Topology & Coherence Failure',
+    risk: 'CRITICAL',
+    shortDesc: 'Extra fingers, fused digits, impossible hand geometry in Veo close-up shots.',
+    longDesc:
+      'Google Veo represents a generational improvement on hand rendering vs. earlier models, but anatomical topology failures still occur on close-up shots and rapid hand motion. The failure manifests as: supernumerary fingers (6+), fingers fusing together, impossible knuckle articulation, or thumb-finger interpenetration. Veo\'s refund process is structured and well-documented; cases with frame-level evidence consistently approve.',
+    symptoms: [
+      '6+ fingers visible on a hand',
+      'Fingers fused into a single mass',
+      'Knuckle bending in physically impossible direction',
+      'Thumb penetrating palm geometry',
+      'Hand morphing between frames during motion',
+    ],
+    examples: [
+      {
+        prompt: '"Close-up of hands typing on a laptop keyboard, soft lighting"',
+        failure: 'Right hand shows 6 fingers at 0:02; finger geometry morphs through 0:03-0:05',
+        timestamp: '0:02',
+      },
+      {
+        prompt: '"Person holding a coffee cup, gentle motion"',
+        failure: 'Thumb interpenetrates cup at 0:01, fingers fuse at 0:04',
+        timestamp: '0:01',
+      },
+    ],
+    refundStrength: 'VERY HIGH — Google\'s refund process recognises anatomical topology failures as a critical-tier defect with strong refund precedent.',
+    faq: [
+      {
+        q: 'Will Google Veo refund credits for hand artifacts?',
+        a: 'Yes. Cite "Anatomical Topology Failure", attach a PDF audit report with annotated frames, include the Generation ID. Google\'s structured refund process treats this as a critical-tier defect.',
+      },
+      {
+        q: 'Why does Veo still produce hand artifacts?',
+        a: 'Hands have high articulation complexity. Despite Veo\'s training improvements, the per-frame denoising process produces non-manifold mesh topology in cases where the model has insufficient signal — close-ups, multi-finger contact, and motion blur all amplify the failure rate.',
+      },
+      {
+        q: 'Which Veo prompts have highest hand-failure risk?',
+        a: 'Close-up hand shots, hands-on-objects, multi-hand scenes, rapid finger motion. AVA\'s pre-flight check flags these patterns.',
+      },
+    ],
+  },
+
+  // ── Kling ──────────────────────────────────────────────────────────────
+  {
+    slug: 'kling-anatomy-artifact',
+    title: 'Kling AI Anatomy & Motion Artifact — Get a Credit Refund',
+    metaTitle: 'Kling AI Refund — Limb Distortion, Motion Failures',
+    metaDesc:
+      'Kling 1.6 or 2.0 produced limb morphing, extra joints, or motion that violates anatomical constraints? This is an Anatomical Topology Failure — request a refund.',
+    technicalTerm: 'Anatomical Topology & Coherence Failure',
+    risk: 'CRITICAL',
+    shortDesc: 'Limbs morphing, extra joints, anatomy that violates constraints during Kling motion sequences.',
+    longDesc:
+      'Kling produces strong static frames but anatomy degrades quickly under motion. Common failures: arms that bend in two directions, legs that detach and reattach mid-stride, fingers that count up or down across frames, torso geometry collapsing during rotation. Kling\'s refund process is less structured than Google\'s but the platform does honour technical-failure refunds when documented properly.',
+    symptoms: [
+      'Limb count changes across frames',
+      'Joint articulation reverses direction mid-motion',
+      'Body geometry collapses during rotation',
+      'Foot or hand detaches from limb',
+      'Subject morphs through multiple body shapes',
+    ],
+    examples: [
+      {
+        prompt: '"Dancer performing a slow grand jeté, soft stage light"',
+        failure: 'Third arm appears at 0:02, right leg geometry collapses during landing at 0:04',
+        timestamp: '0:02',
+      },
+      {
+        prompt: '"Runner mid-stride on a beach at sunrise"',
+        failure: 'Left foot detaches from leg at 0:03; reattaches incorrectly at 0:04',
+        timestamp: '0:03',
+      },
+    ],
+    refundStrength: 'HIGH — Kling honours technical-failure refunds; well-documented requests with specific terminology approve within 2-5 business days.',
+    faq: [
+      {
+        q: 'Will Kling AI refund credits for anatomy failures?',
+        a: 'Yes. Use "Anatomical Topology Failure" terminology, cite the Generation ID, timestamp the failure, and submit through Kling\'s support flow. Attach the PDF audit report for fastest processing.',
+      },
+      {
+        q: 'Why does Kling produce limb artifacts on motion?',
+        a: 'Kling\'s temporal consistency budget is allocated more aggressively to surface texture than to articulated-body topology. Under fast motion, the per-frame denoising drifts toward locally-plausible but globally-incoherent skeletal configurations.',
+      },
+      {
+        q: 'Which Kling prompts highest-risk for anatomy failures?',
+        a: 'Dance, sports, sprinting, multi-figure scenes, close-up hands. AVA\'s pre-flight scanner flags these patterns.',
+      },
+    ],
+  },
+
+  // ── Seedance / ByteDance ───────────────────────────────────────────────
+  {
+    slug: 'seedance-motion-drift',
+    title: 'ByteDance Seedance Motion Drift — Get a Credit Refund',
+    metaTitle: 'Seedance Refund — Motion Drift, Tempo Failure',
+    metaDesc:
+      'ByteDance Seedance 2.0 generated motion that doesn\'t match the prompted action? This is a Motion Coherence Failure. Document the failure for a credit refund.',
+    technicalTerm: 'Motion Coherence & Tempo Failure',
+    risk: 'MAJOR',
+    shortDesc: 'Motion direction or tempo doesn\'t match the prompt; speed shifts or motion stalls during Seedance generations.',
+    longDesc:
+      'Seedance produces high visual fidelity but motion coherence is its weak point. Prompted "smooth dolly forward" generates a stutter; "slow pan" accelerates non-linearly; "walking" turns into a jerky shuffle. This is a Motion Coherence & Tempo Failure — the model interprets motion direction from prompt but allocates frame budget inconsistently across the temporal axis. Seedance\'s refund process is reachable through ByteDance\'s in-app support; technical documentation routes faster than complaint-style descriptions.',
+    symptoms: [
+      'Smooth motion prompts produce stutter or pause',
+      'Motion tempo changes within the clip',
+      'Subject motion reverses direction mid-clip',
+      'Camera motion accelerates non-linearly',
+      'Motion blur misaligned with implied movement',
+    ],
+    examples: [
+      {
+        prompt: '"Smooth dolly forward into a city street at golden hour"',
+        failure: 'Camera pauses at 0:02, jumps forward at 0:03, resumes smooth motion — visible cut not in prompt',
+        timestamp: '0:02',
+      },
+      {
+        prompt: '"Person walking calmly down a hallway"',
+        failure: 'Walk tempo varies from 1.2x at 0:01 to 0.6x at 0:03; gait inconsistent',
+        timestamp: '0:01 → 0:03',
+      },
+    ],
+    refundStrength: 'MEDIUM-HIGH — Seedance honours motion-failure refunds when the prompt explicitly specified motion behavior. Quote the prompt\'s motion language in your request.',
+    faq: [
+      {
+        q: 'Will Seedance refund credits for motion failures?',
+        a: 'Yes, when the prompt specified motion behavior the output violated. Quote the prompt\'s motion language ("smooth", "slow pan", "walking calmly"), cite "Motion Coherence Failure", timestamp the failure, attach the PDF audit report.',
+      },
+      {
+        q: 'Why does Seedance produce inconsistent motion?',
+        a: 'Seedance allocates per-frame compute aggressively to visual detail. The temporal-coherence module sometimes loses budget when scene complexity is high, causing motion-tempo drift even with explicit motion prompts.',
+      },
+      {
+        q: 'Which Seedance prompts highest-risk for motion failures?',
+        a: 'Long-duration motion (>5s), continuous camera moves, multi-subject coordinated motion, fast tempo changes. AVA flags ambiguous motion language in prompts before generation.',
+      },
+    ],
+  },
 ];
 
 export function getFailure(slug: string): FailureData | undefined {
