@@ -8,6 +8,9 @@ const FAILURE_SLUGS = [
   'runway-face-distortion',
   'runway-text-rendering-failure',
   'runway-temporal-flicker',
+  'runway-hallucinated-text',
+  'runway-camera-jitter',
+  'runway-color-drift',
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
