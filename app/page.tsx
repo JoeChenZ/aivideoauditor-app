@@ -178,27 +178,56 @@ export default function HomePage() {
         <div className="pointer-events-none absolute -top-32 left-1/2 -translate-x-1/2 w-[700px] h-[700px] rounded-full bg-neon-purple/5 blur-3xl" />
         <div className="pointer-events-none absolute top-20 right-0 w-[300px] h-[300px] rounded-full bg-neon-red/5 blur-3xl" />
 
-        <div className="relative z-10 max-w-4xl mx-auto text-center">
+        <div className="relative z-10 max-w-5xl mx-auto text-center">
           <div className="inline-flex items-center gap-2 bg-neon-green/10 border border-neon-green/30 text-neon-green text-xs font-mono font-bold px-4 py-1.5 rounded-full mb-8 tracking-widest uppercase">
             <span className="w-1.5 h-1.5 rounded-full bg-neon-green animate-pulse" />
-            Built for Runway · Free Chrome Extension
+            Runway · Luma · Veo · Kling · Seedance · Vidu — Free Chrome Extension
           </div>
 
-          <h1 className="font-mono text-5xl md:text-6xl font-bold text-ink-primary mb-6 leading-tight">
-            Runway Ate Your Credits.<br />
-            <span className="text-neon-red line-through decoration-2">Again.</span>{' '}
-            <span className="text-neon-amber">We Fix That.</span>
+          <h1 className="font-mono text-5xl md:text-6xl font-bold text-ink-primary mb-6 leading-[1.05] tracking-tight">
+            Same prompt. <br/>
+            <span className="text-neon-amber">Four AI tools.</span>{' '}
+            <span className="text-neon-red">Four different failures.</span>
           </h1>
 
-          <p className="text-ink-secondary text-lg leading-relaxed mb-4 max-w-2xl mx-auto">
-            AVA flags bad prompts before you generate, lets you mark exactly what broke,
-            and builds a{' '}
-            <em className="text-ink-primary not-italic font-semibold">Technical Audit Report</em>{' '}
-            that gets your credits back — free refund letter or a Pro PDF that looks like an official diagnostic document.
+          <p className="text-ink-secondary text-lg leading-relaxed mb-8 max-w-2xl mx-auto">
+            Every AI video tool fails. They just fail <em className="text-ink-primary not-italic font-semibold">differently</em> — and they all charge you for the broken output. AVA spots the failure, classifies it with engineering-grade terminology, and builds the refund-ready audit report.
           </p>
 
-          <p className="text-ink-muted text-sm font-mono mb-10">
-            Pre-flight risk check · Mark failure frames · Refund letter · PDF Audit Report (Pro)
+          {/* ── Same-prompt-multi-platform comparison grid ────────────── */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 max-w-4xl mx-auto mb-10">
+            {[
+              { src: '/demo-videos/kling.mp4',    platform: 'Kling 1.6',        accent: 'border-neon-amber/30',  textColor: 'text-neon-amber' },
+              { src: '/demo-videos/veo.mp4',      platform: 'Google Veo 3.1',   accent: 'border-neon-cyan/30',   textColor: 'text-neon-cyan' },
+              { src: '/demo-videos/seedance.mp4', platform: 'Seedance 2.0',     accent: 'border-neon-red/30',    textColor: 'text-neon-red' },
+              { src: '/demo-videos/vidu.mp4',     platform: 'Vidu Q2 Pro',      accent: 'border-neon-purple/30', textColor: 'text-neon-purple' },
+            ].map((v) => (
+              <div key={v.platform} className={`relative aspect-[9/16] rounded-xl overflow-hidden border ${v.accent} bg-surface group shadow-2xl`}>
+                <video
+                  src={v.src}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
+                  className="w-full h-full object-cover"
+                />
+                {/* Failure-marker badge — top-right corner */}
+                <div className="absolute top-2 right-2 bg-void/85 backdrop-blur-sm border border-neon-red/40 text-neon-red font-mono text-[9px] font-bold px-2 py-0.5 rounded-md uppercase tracking-wider z-10">
+                  ⚑ Spot the fail
+                </div>
+                {/* Bottom platform label with gradient */}
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-void via-void/85 to-transparent px-3 py-2.5">
+                  <div className={`font-mono text-[11px] md:text-xs font-bold ${v.textColor}`}>{v.platform}</div>
+                  <div className="text-[9px] font-mono text-ink-muted mt-0.5">Same prompt</div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <p className="text-ink-muted text-xs md:text-sm font-mono mb-8 max-w-3xl mx-auto leading-relaxed">
+            Watch them play. Each tool failed in a different way on identical input — broken motion, garbled signs, melted hands, color drift.{' '}
+            <span className="text-ink-secondary">AVA tags each one with the technical taxonomy support teams escalate fast.</span>
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
@@ -213,12 +242,12 @@ export default function HomePage() {
               </svg>
               Add to Chrome — It&apos;s Free
             </a>
-            <a
-              href="#upgrade"
+            <Link
+              href="/pricing"
               className="inline-flex items-center justify-center gap-2 bg-neon-amber/10 hover:bg-neon-amber/20 border border-neon-amber/30 text-neon-amber font-mono font-semibold px-8 py-3.5 rounded-xl transition-all text-sm"
             >
               ✦ See Pro PDF Reports →
-            </a>
+            </Link>
           </div>
 
           <p className="mt-5 text-ink-muted text-xs font-mono">
