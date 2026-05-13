@@ -6,7 +6,7 @@ import { createClient } from '@/lib/supabase/client';
 // Published Chrome Web Store ID + any active dev/unpacked IDs.
 // The bridge tries each in order and uses the first one that responds.
 const EXTENSION_IDS = [
-  'dnehhjbgpfjdihfigahimmpgnemplljn', // published Chrome Web Store
+  'ecomchbdfkgakaoponipjgpnjfpimdef', // published Chrome Web Store
   'mglommjmfhpnoeibkfmpmjiebmcclnnl', // local unpacked dev (v1.1.0)
 ];
 

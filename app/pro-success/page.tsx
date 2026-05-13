@@ -69,7 +69,7 @@ export default function ProSuccessPage() {
           </ol>
           <div className="mt-4">
             <a
-              href="https://chromewebstore.google.com/detail/aivideoauditor/dnehhjbgpfjdihfigahimmpgnemplljn"
+              href="https://chromewebstore.google.com/detail/aivideoauditor/ecomchbdfkgakaoponipjgpnjfpimdef"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-neon-green/20 hover:bg-neon-green/30 border border-neon-green/40 text-neon-green font-mono font-bold px-5 py-2.5 rounded-xl transition-all text-sm"

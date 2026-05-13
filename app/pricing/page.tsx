@@ -132,7 +132,7 @@ export default async function PricingPage() {
               <span className="text-ink-muted ml-2">forever</span>
             </div>
             <a
-              href="https://chromewebstore.google.com/detail/aivideoauditor/dnehhjbgpfjdihfigahimmpgnemplljn"
+              href="https://chromewebstore.google.com/detail/aivideoauditor/ecomchbdfkgakaoponipjgpnjfpimdef"
               target="_blank"
               rel="noopener noreferrer"
               className="block w-full text-center bg-elevated hover:bg-elevated/80 border border-border text-ink-primary font-mono font-semibold px-6 py-3 rounded-xl transition-all mb-6"

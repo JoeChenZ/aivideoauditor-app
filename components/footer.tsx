@@ -11,7 +11,7 @@ export default function Footer() {
         <div>
           <p className="text-ink-secondary font-semibold mb-3">Extension</p>
           <ul className="space-y-2 text-ink-muted">
-            <li><a href="https://chromewebstore.google.com/detail/aivideoauditor/dnehhjbgpfjdihfigahimmpgnemplljn" target="_blank" rel="noopener noreferrer" className="hover:text-ink-primary transition-colors">Install Free</a></li>
+            <li><a href="https://chromewebstore.google.com/detail/aivideoauditor/ecomchbdfkgakaoponipjgpnjfpimdef" target="_blank" rel="noopener noreferrer" className="hover:text-ink-primary transition-colors">Install Free</a></li>
             <li><Link href="/#upgrade" className="hover:text-ink-primary transition-colors">Pro Plan</Link></li>
           </ul>
         </div>

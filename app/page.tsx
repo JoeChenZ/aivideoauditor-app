@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import InteractiveAuditor from '@/components/interactive-auditor';
 
-const CHROME_EXT_URL = 'https://chromewebstore.google.com/detail/aivideoauditor/dnehhjbgpfjdihfigahimmpgnemplljn';
+const CHROME_EXT_URL = 'https://chromewebstore.google.com/detail/aivideoauditor/ecomchbdfkgakaoponipjgpnjfpimdef';
 
 /* ── Wall of Shame — Runway-specific failures ─────────────────────────── */
 const SHAME_CARDS = [
@@ -147,7 +147,7 @@ const softwareAppSchema = {
   ],
   description: 'Free Chrome extension for AI video generation tools — Runway ML, Luma AI, Google Veo, Kling, Seedance, Vidu. Flags failure patterns, marks broken frames, and builds a Technical Audit PDF Report to maximize credit refund success.',
   url: 'https://www.aivideoauditor.com',
-  downloadUrl: 'https://chromewebstore.google.com/detail/aivideoauditor/dnehhjbgpfjdihfigahimmpgnemplljn',
+  downloadUrl: 'https://chromewebstore.google.com/detail/aivideoauditor/ecomchbdfkgakaoponipjgpnjfpimdef',
   aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.8', ratingCount: '47' },
   featureList: [
     'Generation ID & share link capture',
