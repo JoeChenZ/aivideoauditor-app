@@ -3,9 +3,12 @@
 import { useEffect, useState } from 'react';
 import { createClient } from '@/lib/supabase/client';
 
-// Extension ID — stable once loaded unpacked from the same directory.
-// Update this if the extension is re-published to the Chrome Web Store.
-const EXTENSION_ID = 'dnehhjbgpfjdihfigahimmpgnemplljn';
+// Published Chrome Web Store ID + any active dev/unpacked IDs.
+// The bridge tries each in order and uses the first one that responds.
+const EXTENSION_IDS = [
+  'dnehhjbgpfjdihfigahimmpgnemplljn', // published Chrome Web Store
+  'mglommjmfhpnoeibkfmpmjiebmcclnnl', // local unpacked dev (v1.1.0)
+];
 
 type Status = 'loading' | 'success' | 'no_extension' | 'error';
 
@@ -29,19 +32,28 @@ export default function ExtensionCallbackPage() {
         return;
       }
 
-      chrome.runtime.sendMessage(
-        EXTENSION_ID,
-        { type: 'AVA_AUTH_TOKEN', token: session.access_token, email: session.user.email },
-        (response: { ok?: boolean } | undefined) => {
-          if (chrome.runtime.lastError || !response?.ok) {
-            setStatus('no_extension');
-          } else {
-            setStatus('success');
-            // Close this tab after a short delay
-            setTimeout(() => window.close(), 2000);
-          }
-        },
-      );
+      const payload = { type: 'AVA_AUTH_TOKEN', token: session.access_token, email: session.user.email };
+
+      const tryNext = (i: number) => {
+        if (i >= EXTENSION_IDS.length) {
+          setStatus('no_extension');
+          return;
+        }
+        chrome.runtime.sendMessage(
+          EXTENSION_IDS[i],
+          payload,
+          (response: { ok?: boolean } | undefined) => {
+            if (chrome.runtime.lastError || !response?.ok) {
+              tryNext(i + 1);
+            } else {
+              setStatus('success');
+              setTimeout(() => window.close(), 2000);
+            }
+          },
+        );
+      };
+
+      tryNext(0);
     })();
   }, []);
 

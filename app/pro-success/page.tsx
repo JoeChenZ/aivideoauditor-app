@@ -84,7 +84,7 @@ export default function ProSuccessPage() {
             7-day money-back guarantee
           </h2>
           <p className="text-sm text-ink-secondary leading-relaxed">
-            If AVA Pro doesn&apos;t help you recover at least the $9 subscription cost in approved refunds within your first 7 days, reply to your Stripe receipt or email <a href="mailto:hello@aivideoauditor.com" className="text-neon-purple underline">hello@aivideoauditor.com</a> and we&apos;ll refund the subscription. No questions asked.
+            If AVA Pro doesn&apos;t help you recover at least the $19 subscription cost in approved refunds within your first 7 days, reply to your Stripe receipt or email <a href="mailto:hello@aivideoauditor.com" className="text-neon-purple underline">hello@aivideoauditor.com</a> and we&apos;ll refund the subscription. No questions asked.
           </p>
         </div>
 

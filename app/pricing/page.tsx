@@ -1,44 +1,94 @@
-'use client';
-
-import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { createClient } from '@/lib/supabase/client';
+import { CheckoutButton } from './CheckoutButtons';
 
 const EXTENSION_API = 'https://aivideoauditor-extension.vercel.app';
 
+type TierPrice = {
+  tier: string;
+  priceId: string | null;
+  amountCents: number;
+  currency: string;
+  interval: string;
+  fallback?: boolean;
+};
+
+type PricesResponse = {
+  tiers: { free: TierPrice; pro: TierPrice; business: TierPrice };
+  fallback: boolean;
+};
+
+const FALLBACK_PRICES: PricesResponse = {
+  tiers: {
+    free:     { tier: 'free',     priceId: null, amountCents: 0,    currency: 'usd', interval: 'month' },
+    pro:      { tier: 'pro',      priceId: null, amountCents: 1900, currency: 'usd', interval: 'month' },
+    business: { tier: 'business', priceId: null, amountCents: 7900, currency: 'usd', interval: 'month' },
+  },
+  fallback: true,
+};
+
+export const revalidate = 3600;
+
+async function getPrices(): Promise<PricesResponse> {
+  try {
+    const res = await fetch(`${EXTENSION_API}/api/prices`, { next: { revalidate: 3600 } });
+    if (!res.ok) return FALLBACK_PRICES;
+    return await res.json();
+  } catch {
+    return FALLBACK_PRICES;
+  }
+}
+
+function formatPrice(p: TierPrice): string {
+  if (p.amountCents === 0) return '$0';
+  const dollars = p.amountCents / 100;
+  return `$${dollars % 1 === 0 ? dollars.toFixed(0) : dollars.toFixed(2)}`;
+}
+
 const FREE_FEATURES = [
-  'Frame-mark broken generations on Runway and Luma',
+  '10 audits per month',
+  'Frame-mark broken generations on Runway + Luma',
   'Generation ID + Asset ID auto-capture',
   'Professional refund letter (copy & paste)',
   'Pre-flight L1 prompt risk scanner',
   'Refund outcome tracking',
-  'Unlimited generations monitored',
 ];
 
 const PRO_FEATURES = [
   'Everything in Free, plus:',
-  'PDF Technical Audit Report (Pro)',
+  '300 audits per month',
+  'PDF Technical Audit Report',
   'Engineering-grade failure classification',
-  'Annotated failure-frame screenshots in the report',
+  'Annotated failure-frame screenshots',
   'Credit refund calculation',
-  'BYOK AI summary (bring your own Gemini key)',
   'Advanced L1 full-analysis mode',
   'Refund-success rate tracker',
+];
+
+const BUSINESS_FEATURES = [
+  'Everything in Pro, plus:',
+  'Fair-use unlimited audits',
+  'Team seats (coming soon)',
+  'Priority refund-letter review',
+  'Slack / email support SLA',
+  'API access for high-volume teams',
 ];
 
 const FAQ = [
   {
     q: 'How does the 7-day money-back guarantee work?',
-    a: 'Subscribe and try every Pro feature. If you don\'t recover at least the $9 subscription cost in approved refunds within 7 days, email hello@aivideoauditor.com and we refund the subscription. No questions asked.',
+    a: 'Subscribe and use the PDF audit report on real failures. If you don\'t recover at least the subscription cost in approved refunds within 7 days, email hello@aivideoauditor.com — we refund the subscription, no questions asked.',
   },
   {
     q: 'Can I cancel anytime?',
-    a: 'Yes. Cancel in one click from your dashboard or via the Stripe-managed billing portal. You keep Pro access until the end of the current billing period.',
+    a: 'Yes. Cancel in one click from your dashboard or via the Stripe-managed billing portal. You keep Pro / Business access until the end of the current billing period.',
   },
   {
-    q: 'Do I need to use my own API key?',
-    a: 'Only if you enable the optional AI-summarized failure analysis. The core refund workflow (frame marking, refund letter generation, technical taxonomy) works without any external API. The BYOK path is for users who want AI-summarized reports — your Gemini key, your bill, no resale.',
+    q: 'What does "fair-use unlimited" mean on Business?',
+    a: 'No hard cap on audits. We monitor for automated abuse (scripted spam against the same generation IDs); legitimate human-driven volume is fine even if you run hundreds of audits a month.',
+  },
+  {
+    q: 'Do I need my own AI API key?',
+    a: 'No. All AI analysis runs on our servers, gated by your subscription tier. There is nothing to configure — sign up, install the extension, run the audit.',
   },
   {
     q: 'Will this work for [Sora / Hailuo / Kling / Pika]?',
@@ -46,73 +96,31 @@ const FAQ = [
   },
   {
     q: 'Is my data shared with you?',
-    a: 'No. Your Generation IDs and frame screenshots stay on your device or in your private vault. No analytics, no advertising, no third-party tracking. See the privacy policy at /privacy.',
+    a: 'Audit frames are sent to our server only for the duration of the AI analysis call (multimodal Gemini) and are not stored. Generation IDs and refund outcomes are stored against your account so the dashboard works. No third-party analytics, no advertising, no resale. See /privacy.',
   },
 ];
 
-export default function PricingPage() {
-  const supabase = createClient();
-  const router = useRouter();
-  const [signedIn, setSignedIn] = useState<boolean | null>(null);
-  const [busy, setBusy] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSignedIn(!!session);
-    });
-  }, [supabase]);
-
-  async function startCheckout() {
-    setError(null);
-    setBusy(true);
-    try {
-      const { data: { session } } = await supabase.auth.getSession();
-      if (!session) {
-        router.push('/login?redirectTo=/pricing');
-        return;
-      }
-
-      const res = await fetch(`${EXTENSION_API}/api/stripe-checkout`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${session.access_token}`,
-        },
-      });
-
-      if (!res.ok) {
-        const data = await res.json().catch(() => ({}));
-        throw new Error((data as { error?: string }).error ?? `Checkout failed (${res.status})`);
-      }
-
-      const { url } = await res.json();
-      if (!url) throw new Error('No checkout URL returned');
-      window.location.href = url;
-    } catch (e) {
-      setError(e instanceof Error ? e.message : 'Checkout failed');
-      setBusy(false);
-    }
-  }
+export default async function PricingPage() {
+  const { tiers } = await getPrices();
 
   return (
     <main className="min-h-screen py-20 px-6">
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-6xl mx-auto">
 
         <div className="text-center mb-12">
           <p className="text-xs font-mono font-bold tracking-widest text-neon-amber uppercase mb-4">
             Pricing
           </p>
           <h1 className="text-4xl font-bold text-ink-primary mb-3 leading-tight">
-            Pay $9 to recover $50 in credits.
+            Recover more in credits than you spend on the subscription.
           </h1>
-          <p className="text-ink-secondary text-lg max-w-xl mx-auto">
-            The Free tier covers the workflow. Pro gives you the PDF audit report
-            Runway and Luma support take seriously.
+          <p className="text-ink-secondary text-lg max-w-2xl mx-auto">
+            Free gets you started. Pro is what professional creators use to claim refunds.
+            Business is fair-use unlimited for teams running high audit volume.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6 mb-16">
+        <div className="grid md:grid-cols-3 gap-6 mb-16">
 
           {/* FREE */}
           <div className="bg-surface border border-border rounded-2xl p-8">
@@ -120,7 +128,7 @@ export default function PricingPage() {
               Free
             </p>
             <div className="mb-6">
-              <span className="text-4xl font-bold text-ink-primary">$0</span>
+              <span className="text-4xl font-bold text-ink-primary">{formatPrice(tiers.free)}</span>
               <span className="text-ink-muted ml-2">forever</span>
             </div>
             <a
@@ -145,38 +153,47 @@ export default function PricingPage() {
           <div className="bg-surface border border-neon-amber/40 shadow-lg shadow-neon-amber/10 rounded-2xl p-8 relative">
             <div className="absolute -top-3 left-8 bg-neon-amber/20 border border-neon-amber/40 px-3 py-1 rounded-full">
               <span className="text-xs font-mono font-bold tracking-widest text-neon-amber uppercase">
-                Most Effective
+                Most Popular
               </span>
             </div>
             <p className="text-xs font-mono font-bold tracking-widest text-neon-amber uppercase mb-2">
               Pro
             </p>
             <div className="mb-6">
-              <span className="text-4xl font-bold text-ink-primary">$9</span>
-              <span className="text-ink-muted ml-2">per month</span>
+              <span className="text-4xl font-bold text-ink-primary">{formatPrice(tiers.pro)}</span>
+              <span className="text-ink-muted ml-2">per {tiers.pro.interval}</span>
             </div>
-            <button
-              onClick={startCheckout}
-              disabled={busy || signedIn === null}
-              className="block w-full text-center bg-neon-amber/20 hover:bg-neon-amber/30 disabled:bg-neon-amber/10 disabled:cursor-not-allowed border border-neon-amber/40 text-neon-amber font-mono font-bold px-6 py-3 rounded-xl transition-all mb-2"
-            >
-              {busy ? 'Loading checkout…'
-                : signedIn === null ? 'Checking session…'
-                : signedIn ? 'Upgrade to Pro →'
-                : 'Sign in to subscribe →'}
-            </button>
+            <CheckoutButton tier="pro" label="Upgrade to Pro" variant="amber" />
             <p className="text-xs text-ink-muted text-center mb-6">
               7-day money-back guarantee · Cancel anytime
             </p>
-            {error && (
-              <div className="mb-4 bg-neon-red/10 border border-neon-red/30 rounded-lg px-4 py-2">
-                <p className="text-xs text-neon-red">{error}</p>
-              </div>
-            )}
             <ul className="space-y-2">
               {PRO_FEATURES.map((f, i) => (
                 <li key={f} className={`flex gap-2 text-sm ${i === 0 ? 'text-ink-muted italic' : 'text-ink-secondary'}`}>
                   {i > 0 && <span className="text-neon-amber flex-shrink-0">✓</span>}
+                  <span>{f}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* BUSINESS */}
+          <div className="bg-surface border border-neon-purple/40 rounded-2xl p-8">
+            <p className="text-xs font-mono font-bold tracking-widest text-neon-purple uppercase mb-2">
+              Business
+            </p>
+            <div className="mb-6">
+              <span className="text-4xl font-bold text-ink-primary">{formatPrice(tiers.business)}</span>
+              <span className="text-ink-muted ml-2">per {tiers.business.interval}</span>
+            </div>
+            <CheckoutButton tier="business" label="Upgrade to Business" variant="primary" />
+            <p className="text-xs text-ink-muted text-center mb-6">
+              Fair-use unlimited · Cancel anytime
+            </p>
+            <ul className="space-y-2">
+              {BUSINESS_FEATURES.map((f, i) => (
+                <li key={f} className={`flex gap-2 text-sm ${i === 0 ? 'text-ink-muted italic' : 'text-ink-secondary'}`}>
+                  {i > 0 && <span className="text-neon-purple flex-shrink-0">✓</span>}
                   <span>{f}</span>
                 </li>
               ))}
@@ -188,7 +205,7 @@ export default function PricingPage() {
         {/* Cost-justification */}
         <div className="bg-elevated border border-border rounded-2xl p-8 mb-16">
           <h2 className="text-xl font-bold text-ink-primary mb-4">
-            The math: $9/mo if you generate at all
+            The math: Pro pays for itself in week 1
           </h2>
           <div className="grid sm:grid-cols-3 gap-6">
             <div>
