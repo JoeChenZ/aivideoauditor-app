@@ -1400,6 +1400,144 @@ export const FAILURES: FailureData[] = [
       },
     ],
   },
+  {
+    slug: 'sora-watermark-bleed-failure',
+    title: 'OpenAI Sora Watermark Bleed — Refund Guide',
+    metaTitle: 'Sora Watermark Bleed Refund — Logo Persists in Paid Output',
+    metaDesc:
+      'OpenAI Sora generated clips with the C2PA-style watermark or Sora logo bleeding into the visible frame on paid output? This is Provenance Tag Leakage Failure. Refund guide.',
+    technicalTerm: 'Provenance Tag Leakage Failure',
+    risk: 'MAJOR',
+    shortDesc: 'C2PA provenance watermark or Sora logo persists in the visible frame on paid-tier output where it should be invisible or removable.',
+    longDesc:
+      'Provenance Tag Leakage Failure on Sora occurs when the model\'s C2PA-style provenance watermark — designed to be invisible or removable for paid users — bleeds into the visible frame, leaving a logo, corner mark, or visible texture pattern on output the customer paid to be clean. Distinct from intentional watermarking on free-tier output because the paid tier explicitly markets clean output.',
+    symptoms: [
+      'Sora corner logo visible on paid-tier export',
+      'Faint repeating texture pattern across frame (C2PA stamp)',
+      'Watermark intensity varies across the clip',
+      'Watermark persists after the documented removal pass',
+      'Logo overlaps subject in the lower-right region',
+    ],
+    examples: [
+      {
+        prompt: '"Cinematic drone shot of a coastline at sunset, no text, no logos, no watermarks"',
+        failure: 'Faint Sora corner mark visible at bottom-right throughout the clip',
+        timestamp: 'full duration',
+      },
+      {
+        prompt: '"Close-up of a hand holding a coffee cup, clean output"',
+        failure: 'Repeating C2PA-style texture pattern visible in the smooth out-of-focus background',
+        timestamp: '0:00 → 0:05',
+      },
+    ],
+    refundStrength: 'HIGH — Sora paid-tier marketing explicitly promises clean output. Watermark leakage on a paid generation is a clear product defect.',
+    faq: [
+      {
+        q: 'Does OpenAI refund Sora watermark bleed?',
+        a: 'Yes — OpenAI support treats visible provenance-tag leakage on paid-tier output as a defect. Cite "Provenance Tag Leakage Failure" and attach a still showing the visible watermark.',
+      },
+      {
+        q: 'Why does Sora watermarking sometimes show on paid output?',
+        a: 'Sora applies a C2PA-style watermarking layer at render time. On paid-tier, a removal pass strips the visible component, but if the removal pass fails or partially applies, the watermark bleeds into the final encode.',
+      },
+      {
+        q: 'How do I prove Sora watermark bleed for a refund?',
+        a: 'Export a single frame at full resolution, zoom into the affected region, and attach to your refund ticket. AVA auto-detects watermark bleed and generates the still + region annotation.',
+      },
+    ],
+  },
+  {
+    slug: 'runway-prompt-ignored-failure',
+    title: 'Runway Prompt Ignored — Refund Guide',
+    metaTitle: 'Runway Prompt Ignored Refund — Text Conditioning Discarded',
+    metaDesc:
+      'Runway Gen-3 generated a clip that ignores the prompt entirely, producing generic output unrelated to the text input? This is Text Conditioning Collapse. Refund guide.',
+    technicalTerm: 'Text Conditioning Collapse',
+    risk: 'CRITICAL',
+    shortDesc: 'Runway output ignores the prompt entirely, producing generic motion unrelated to the requested subject, action, or scene.',
+    longDesc:
+      'Text Conditioning Collapse on Runway Gen-3 occurs when the text-encoder embedding fails to influence the diffusion process, resulting in output that ignores the prompt entirely. The model produces visually plausible motion — but the subject, action, environment, and style bear no relation to the input text. Distinct from partial prompt adherence: this is total collapse, where the output is indistinguishable from an unconditional sample.',
+    symptoms: [
+      'Output subject completely different from prompt subject',
+      'Action described in prompt is absent',
+      'Scene / environment unrelated to prompt',
+      'Style descriptors (cinematic, anime, etc.) ignored',
+      'Output resembles unconditional generation from the model',
+    ],
+    examples: [
+      {
+        prompt: '"Red sports car drifting around a mountain hairpin turn, golden hour, cinematic"',
+        failure: 'Output shows a static landscape with no car, no motion, no hairpin road',
+        timestamp: 'full duration',
+      },
+      {
+        prompt: '"Anime-style girl with pink hair drinking tea in a Japanese cafe"',
+        failure: 'Output is a photorealistic street scene with no person, no anime style, no cafe',
+        timestamp: 'full duration',
+      },
+    ],
+    refundStrength: 'HIGH — Total prompt-adherence collapse is the strongest refund case. Runway support cannot defend output that ignores the input entirely.',
+    faq: [
+      {
+        q: 'Does Runway refund prompt-ignored generations?',
+        a: 'Yes — Runway support recognises total text-conditioning collapse as a defect. Submit the prompt + output side-by-side and cite "Text Conditioning Collapse".',
+      },
+      {
+        q: 'Why does Runway ignore prompts sometimes?',
+        a: 'Gen-3 conditions the diffusion process on a text-encoder embedding. Under specific prompt structures (highly stylised, multi-clause, contradictory adjectives, or rare vocabulary), the embedding can collapse to a near-zero vector, causing the diffusion to produce an unconditional sample.',
+      },
+      {
+        q: 'How do I avoid Runway prompt collapse?',
+        a: 'Use concrete subject + action + environment + style in that order. Avoid contradictory adjectives ("photoreal cartoon"), rare proper nouns, and overly nested clauses. AVA flags prompt structures with high collapse risk before generation.',
+      },
+    ],
+  },
+  {
+    slug: 'veo-camera-motion-ignored-failure',
+    title: 'Google Veo Camera Motion Ignored — Refund Guide',
+    metaTitle: 'Veo Camera Motion Refund — Dolly Pan Crane Instruction Discarded',
+    metaDesc:
+      'Google Veo generated a clip where the requested camera motion (dolly, pan, crane, tracking shot) was ignored and the camera stayed static? This is Camera-Conditioning Failure. Refund guide.',
+    technicalTerm: 'Camera-Conditioning Embedding Failure',
+    risk: 'MAJOR',
+    shortDesc: 'Veo output uses a static camera or generic camera motion instead of the dolly, pan, crane, or tracking shot specified in the prompt.',
+    longDesc:
+      'Camera-Conditioning Embedding Failure on Veo occurs when the camera-motion instructions in the prompt fail to influence the trajectory of the rendered virtual camera. Veo markets cinematographic camera control as a headline feature — dolly-ins, crane shots, tracking shots, push-pulls. When the model ignores these and falls back to a static or generic motion, paid output is a clear feature defect.',
+    symptoms: [
+      'Camera stays static despite explicit dolly / pan / crane request',
+      'Camera motion direction is wrong (left when right was requested)',
+      'Camera motion magnitude is far smaller than specified',
+      'Camera motion happens but applied to wrong subject framing',
+      'Tracking shot loses the subject within 1 second',
+    ],
+    examples: [
+      {
+        prompt: '"Slow dolly-in toward a chess piece on a wooden board, cinematic"',
+        failure: 'Camera stays completely static for the full duration; no dolly motion',
+        timestamp: '0:00 → 0:05',
+      },
+      {
+        prompt: '"Tracking shot following a runner left-to-right through a forest path"',
+        failure: 'Camera stays static and the runner exits frame at 0:02',
+        timestamp: '0:00 → 0:03',
+      },
+    ],
+    refundStrength: 'HIGH — Camera control is a marketed Veo capability. Refund tickets citing camera-conditioning failure on a paid generation are honoured.',
+    faq: [
+      {
+        q: 'Does Google refund Veo camera motion failures?',
+        a: 'Yes — Veo support recognises camera-conditioning failures on paid output as a defect. Cite "Camera-Conditioning Embedding Failure" with the prompt and a still showing static framing.',
+      },
+      {
+        q: 'Why does Veo ignore camera motion sometimes?',
+        a: 'Veo encodes camera instructions through a dedicated conditioning channel separate from the subject prompt. Under specific subject + motion combinations (especially close-up macro shots and abstract subjects), the camera channel can be down-weighted, producing static output.',
+      },
+      {
+        q: 'How do I phrase camera motion to maximise Veo compliance?',
+        a: 'State the camera motion FIRST, before subject. Use canonical cinematography vocabulary (dolly-in, dolly-out, crane up, push, pull, orbit). Avoid metaphorical motion verbs ("the camera dances"). AVA pre-flights camera-motion prompts.',
+      },
+    ],
+  },
 ];
 
 export function getFailure(slug: string): FailureData | undefined {
