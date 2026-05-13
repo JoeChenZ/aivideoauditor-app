@@ -50,10 +50,44 @@ export default function FailurePage({ params }: { params: { slug: string } }) {
     },
   };
 
+  const howToSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: `How to Document ${f.technicalTerm} for a Refund`,
+    description: `Step-by-step process to document ${f.technicalTerm} and submit a refund-grade evidence package to support.`,
+    step: [
+      {
+        '@type': 'HowToStep',
+        position: 1,
+        name: 'Capture your Generation ID',
+        text: 'Find it in the URL or share link. Without this, support cannot verify the generation on their end.',
+      },
+      {
+        '@type': 'HowToStep',
+        position: 2,
+        name: 'Note the exact timestamp',
+        text: `Note the exact time when the ${f.technicalTerm} first appears (e.g., "failure first visible at 1.2s"). Timestamped evidence is significantly stronger than a general complaint.`,
+      },
+      {
+        '@type': 'HowToStep',
+        position: 3,
+        name: 'Use the correct technical term',
+        text: `In your refund request, describe this failure as "${f.technicalTerm}". This term maps to a recognised internal workflow in the support system.`,
+      },
+      {
+        '@type': 'HowToStep',
+        position: 4,
+        name: 'Submit through the correct support channel',
+        text: 'Pro+ tier: in-app AI Assistant on app.runwayml.com (help widget bottom-right). Free / Standard tier: Discord #community-help. Attach your evidence package either way.',
+      },
+    ],
+  };
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
 
       <main className="min-h-screen py-20 px-6">
         <div className="max-w-3xl mx-auto">
