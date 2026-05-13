@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { getFailure, FAILURES } from './data';
+import { getFailure, FAILURES, getRelatedFailures } from './data';
+// FAILURES still referenced by generateStaticParams below.
 
 export async function generateStaticParams() {
   return FAILURES.map((f) => ({ slug: f.slug }));
@@ -191,25 +192,35 @@ export default function FailurePage({ params }: { params: { slug: string } }) {
             </div>
           </div>
 
-          {/* Related failures */}
+          {/* Related failures (cross-model) */}
           <section className="mt-12">
-            <h2 className="text-lg font-bold text-ink-primary mb-4">Other Runway Failure Types</h2>
+            <h2 className="text-lg font-bold text-ink-primary mb-2">Related Failures Across Models</h2>
+            <p className="text-ink-muted text-sm mb-4">
+              If you&rsquo;re seeing this failure, you may also encounter these on other models:
+            </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {FAILURES.filter((other) => other.slug !== f.slug).map((other) => (
-                <Link
-                  key={other.slug}
-                  href={`/failures/${other.slug}`}
-                  className="bg-elevated border border-border rounded-xl p-4 hover:border-neon-red/30 transition-colors"
-                >
-                  <div className="flex items-center justify-between mb-1">
-                    <p className="font-mono font-bold text-ink-primary text-sm">{other.technicalTerm.split(' ')[0]}</p>
-                    <span className={`text-xs font-mono font-bold ${other.risk === 'CRITICAL' ? 'text-neon-red' : 'text-neon-amber'}`}>
-                      {other.risk}
-                    </span>
-                  </div>
-                  <p className="text-ink-muted text-xs">{other.shortDesc.substring(0, 60)}…</p>
-                </Link>
-              ))}
+              {getRelatedFailures(f.slug, 6).map((other) => {
+                const model = other.slug.split('-')[0];
+                const modelLabel = model.charAt(0).toUpperCase() + model.slice(1);
+                return (
+                  <Link
+                    key={other.slug}
+                    href={`/failures/${other.slug}`}
+                    className="bg-elevated border border-border rounded-xl p-4 hover:border-neon-red/30 transition-colors"
+                  >
+                    <div className="flex items-center justify-between mb-1">
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs font-mono text-neon-purple uppercase tracking-wider">{modelLabel}</span>
+                        <p className="font-mono font-bold text-ink-primary text-sm">{other.technicalTerm.split(' ')[0]}</p>
+                      </div>
+                      <span className={`text-xs font-mono font-bold ${other.risk === 'CRITICAL' ? 'text-neon-red' : 'text-neon-amber'}`}>
+                        {other.risk}
+                      </span>
+                    </div>
+                    <p className="text-ink-muted text-xs">{other.shortDesc.substring(0, 70)}…</p>
+                  </Link>
+                );
+              })}
             </div>
           </section>
 

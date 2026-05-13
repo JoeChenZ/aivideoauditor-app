@@ -11,6 +11,7 @@ export type FailureData = {
   examples: { prompt: string; failure: string; timestamp?: string }[];
   refundStrength: string;
   faq: { q: string; a: string }[];
+  relatedFailures?: string[];
 };
 
 export const FAILURES: FailureData[] = [
@@ -1542,4 +1543,96 @@ export const FAILURES: FailureData[] = [
 
 export function getFailure(slug: string): FailureData | undefined {
   return FAILURES.find((f) => f.slug === slug);
+}
+
+// Cross-model failure clusters. Used by the page renderer to surface
+// thematically-related failures on other models below the CTA. Routes
+// internal PageRank between sibling pages (e.g. Sora watermark ←→ Runway
+// watermark) rather than dumping all 32 other slugs as a flat grid.
+export const FAILURE_CLUSTERS: Record<string, string[]> = {
+  watermark: ['runway-watermark-bleed', 'sora-watermark-bleed-failure'],
+  physics: ['runway-physics-collapse', 'luma-physics-collapse', 'sora-physics-collapse'],
+  face: ['runway-face-distortion', 'luma-face-distortion', 'seedance-face-distortion'],
+  text: [
+    'runway-text-rendering-failure',
+    'veo-text-rendering-failure',
+    'kling-text-rendering-failure',
+    'runway-hallucinated-text',
+  ],
+  anatomy: [
+    'runway-limb-artifact',
+    'veo-hand-artifact',
+    'kling-anatomy-artifact',
+    'hailuo-anatomy-artifact',
+  ],
+  promptAdherence: [
+    'sora-prompt-adherence-failure',
+    'runway-prompt-ignored-failure',
+    'veo-camera-motion-ignored-failure',
+  ],
+  camera: [
+    'runway-camera-jitter',
+    'luma-camera-path-drift',
+    'hailuo-camera-shake-artifact',
+    'veo-camera-motion-ignored-failure',
+  ],
+  motion: [
+    'pika-motion-failure',
+    'seedance-motion-drift',
+    'kling-motion-blur-overload',
+    'runway-temporal-flicker',
+  ],
+  audioLipSync: [
+    'runway-audio-sync-drift',
+    'veo-audio-generation-failure',
+    'pika-lip-sync-failure',
+    'luma-lip-sync-failure',
+  ],
+};
+
+// Reverse map: slug → cluster name. Computed once at module load.
+const SLUG_TO_CLUSTER: Record<string, string> = (() => {
+  const map: Record<string, string> = {};
+  for (const [cluster, slugs] of Object.entries(FAILURE_CLUSTERS)) {
+    for (const s of slugs) map[s] = cluster;
+  }
+  return map;
+})();
+
+// Return up to `limit` sibling failures: explicit `relatedFailures` first,
+// then cluster siblings, then same-model fillers. Excludes the input slug.
+export function getRelatedFailures(slug: string, limit = 6): FailureData[] {
+  const current = getFailure(slug);
+  if (!current) return [];
+
+  const seen = new Set<string>([slug]);
+  const out: FailureData[] = [];
+
+  const push = (s: string) => {
+    if (seen.has(s) || out.length >= limit) return;
+    const f = getFailure(s);
+    if (!f) return;
+    seen.add(s);
+    out.push(f);
+  };
+
+  // 1. Explicit relatedFailures (highest authority)
+  for (const s of current.relatedFailures ?? []) push(s);
+
+  // 2. Cluster siblings (same failure type, different model — best SEO signal)
+  const cluster = SLUG_TO_CLUSTER[slug];
+  if (cluster) {
+    for (const s of FAILURE_CLUSTERS[cluster]) push(s);
+  }
+
+  // 3. Same-model fillers (different failure type, same model)
+  const model = slug.split('-')[0];
+  for (const f of FAILURES) {
+    if (f.slug.startsWith(model + '-')) push(f.slug);
+  }
+
+  // 4. Anything left to hit the limit
+  for (const f of FAILURES) push(f.slug);
+
+  return out;
 }
