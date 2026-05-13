@@ -942,6 +942,464 @@ export const FAILURES: FailureData[] = [
       },
     ],
   },
+  {
+    slug: 'runway-audio-sync-drift',
+    title: 'Runway Gen-3 Audio-Video Sync Drift — Refund Guide',
+    metaTitle: 'Runway Audio Drift Refund — Lip Sync Failure, Audio Out of Sync',
+    metaDesc:
+      'Runway Gen-3 generated a clip where audio drifts out of sync with mouth movement, action, or footstep timing? This is Audio-Visual Temporal Misalignment. Here\'s how to get refunded.',
+    technicalTerm: 'Audio-Visual Temporal Misalignment',
+    risk: 'CRITICAL',
+    shortDesc: 'Audio drift relative to mouth movement, footsteps, or scene events; cumulative timing error across the clip.',
+    longDesc:
+      'Audio-Visual Temporal Misalignment occurs when Runway\'s generated soundtrack desynchronises from the visual track. The decoder operates at a different effective frame rate than the audio sampler, so a clip that starts in-sync drifts by 100–400ms by the end. The failure is most severe on clips longer than 6s with prominent speech, percussive action (footsteps, hammer strikes, clapping), or any sound cue tied to a specific visual frame.',
+    symptoms: [
+      'Lip movement leads or trails dialogue audio',
+      'Footstep sound plays before or after foot contact',
+      'Audio cue fires on the wrong frame relative to prompt-specified beats',
+      'Drift accumulates — sync OK at 0s, broken by 6s',
+      'Background music tempo mismatches visible rhythm',
+    ],
+    examples: [
+      {
+        prompt: '"Drummer playing a snare roll, close-up of hands and sticks"',
+        failure: 'Audio leads visual stick contact by 280ms at 0:04; drift increases through clip',
+        timestamp: '0:04',
+      },
+      {
+        prompt: '"Woman speaking directly to camera, professional lighting"',
+        failure: 'Lip movement lags audio by ~180ms at 0:02, ~340ms by 0:06',
+        timestamp: '0:02 → 0:06',
+      },
+    ],
+    refundStrength: 'HIGH — Runway support recognises audio drift as a generation-pipeline defect, especially when measurable in milliseconds. Always cite the drift magnitude and timestamp.',
+    faq: [
+      {
+        q: 'Does Runway refund audio-sync failures?',
+        a: 'Yes. When you can quote the drift in milliseconds and timestamp the offset, Runway support routinely refunds. Use the term "Audio-Visual Temporal Misalignment" and attach the AVA audit report.',
+      },
+      {
+        q: 'Why does Runway audio go out of sync?',
+        a: 'The video decoder and audio sampler don\'t share a unified clock during generation; their effective rates drift relative to one another, especially across longer clips with high motion.',
+      },
+      {
+        q: 'Which Runway prompts are highest risk for sync drift?',
+        a: 'Anything with speech, percussion, or precise visual-audio events. AVA flags audio-bearing prompts longer than 5 seconds for pre-generation review.',
+      },
+    ],
+  },
+  {
+    slug: 'luma-camera-path-drift',
+    title: 'Luma Dream Machine Camera Path Drift — Refund Guide',
+    metaTitle: 'Luma Camera Drift Refund — Camera Trajectory Failure Dream Machine',
+    metaDesc:
+      'Luma Dream Machine ignored your camera direction (orbit, dolly, push-in) and drifted along a different path? This is Cinematographic Trajectory Failure. Refund guide here.',
+    technicalTerm: 'Cinematographic Trajectory Failure',
+    risk: 'CRITICAL',
+    shortDesc: 'Specified camera move (orbit, dolly, push-in, crane) drifts off the requested path mid-clip.',
+    longDesc:
+      'Cinematographic Trajectory Failure occurs when Luma\'s diffusion model fails to maintain the camera path specified in the prompt. A "slow dolly in" becomes a pan; an "orbit around subject" curves into a crab; a "static lock-off" introduces parasitic drift. The internal camera-conditioning network operates as a soft prior, not a hard constraint, so when scene content competes for representational capacity, the camera path degrades first.',
+    symptoms: [
+      'Camera path diverges from prompt instruction within 2s',
+      'Specified orbit becomes a pan or crab',
+      'Static lock-off introduces parasitic drift',
+      'Push-in stops or reverses mid-clip',
+      'Camera height changes without instruction',
+    ],
+    examples: [
+      {
+        prompt: '"Slow dolly-in toward a candle on a wooden table, shallow depth of field"',
+        failure: 'Camera dollies in for 0:01, then arcs left into a pan from 0:02 to 0:05',
+        timestamp: '0:02',
+      },
+      {
+        prompt: '"Orbit slowly around a sports car parked on a desert road"',
+        failure: 'Orbit arc collapses into a left-to-right crab at 0:03; no rotation in second half',
+        timestamp: '0:03',
+      },
+    ],
+    refundStrength: 'VERY HIGH — Luma\'s support staff treat camera-path failure as a recognised flagship-feature defect (camera control is a marketed differentiator).',
+    faq: [
+      {
+        q: 'Does Luma refund credits for camera path failures?',
+        a: 'Yes — camera control is a marketed Dream Machine feature, so support takes path-failure complaints seriously. Cite the prompt\'s camera language verbatim and timestamp the divergence.',
+      },
+      {
+        q: 'Why does Luma ignore my camera direction?',
+        a: 'The camera-conditioning model is a soft prior, not a hard constraint. When scene complexity demands representational capacity, the camera path is the first thing to degrade.',
+      },
+      {
+        q: 'Which Luma camera prompts are highest risk?',
+        a: 'Multi-second continuous moves (>4s), complex orbits, push-ins through scene elements, and any move involving multiple axes. AVA scans for camera-conditioning ambiguity in prompts.',
+      },
+    ],
+  },
+  {
+    slug: 'veo-audio-generation-failure',
+    title: 'Google Veo 3 Audio Generation Failure — Refund Guide',
+    metaTitle: 'Veo 3 Audio Failure Refund — Silent, Mismatched, or Wrong Style Audio',
+    metaDesc:
+      'Veo 3 produced silent, mismatched, or stylistically wrong audio despite generating it natively? This is Multimodal Audio-Visual Conditioning Failure. Refund process here.',
+    technicalTerm: 'Multimodal Audio-Visual Conditioning Failure',
+    risk: 'CRITICAL',
+    shortDesc: 'Veo 3 outputs silent track, mismatched ambience, or stylistically wrong audio relative to prompt.',
+    longDesc:
+      'Multimodal Audio-Visual Conditioning Failure occurs when Veo 3\'s audio decoder fails to produce sound matched to the visual content and prompt specification. The model is marketed as natively multimodal — audio generation is a headline differentiator — so when it ships silent, generates wrong-genre ambience, or produces a stylistic mismatch (e.g., daytime urban ambience for a quiet forest scene), the failure is treatable as a marketed-feature defect.',
+    symptoms: [
+      'Output is completely silent despite a prompt specifying sound',
+      'Ambient track mismatches visible environment (city sounds in forest)',
+      'Music genre or instrument set unrelated to prompt instruction',
+      'Speech/dialogue absent when prompt specified it',
+      'Audio cuts out mid-clip or has clipping artifacts',
+    ],
+    examples: [
+      {
+        prompt: '"Quiet forest stream with birdsong and rustling leaves"',
+        failure: 'Output contained city traffic ambience instead of forest sounds',
+        timestamp: '0:00 → 0:08',
+      },
+      {
+        prompt: '"Jazz trio performing in a dimly lit lounge, upright bass prominent"',
+        failure: 'Audio track was solo piano with no bass and no drum kit — wrong instrumentation',
+        timestamp: 'full duration',
+      },
+    ],
+    refundStrength: 'VERY HIGH — Native audio is Google\'s marketed differentiator for Veo 3. Failure is treatable as feature-defect, not creative-variance.',
+    faq: [
+      {
+        q: 'Does Google refund Veo 3 audio failures?',
+        a: 'Yes. Veo 3\'s native audio is a marketed flagship capability; support and Google Cloud teams accept feature-defect refunds when prompt-spec mismatch is documented.',
+      },
+      {
+        q: 'Why does Veo 3 ship wrong-content audio?',
+        a: 'The audio-visual conditioning shares representational bandwidth with visual fidelity. Under load, the audio decoder defaults to nearest-neighbour ambience instead of prompt-conditioned synthesis.',
+      },
+      {
+        q: 'Which Veo 3 audio prompts are highest risk?',
+        a: 'Specific instrumentation, specific dialect/language speech, environment-mismatched scenes, and any prompt where audio carries narrative weight. AVA pre-scans audio specifications in Veo prompts.',
+      },
+    ],
+  },
+  {
+    slug: 'kling-motion-blur-overload',
+    title: 'Kling Motion Blur Overload — Refund Guide',
+    metaTitle: 'Kling Motion Blur Refund — Excessive Blur in Static Scenes',
+    metaDesc:
+      'Kling generated a clip with heavy motion blur applied to static or slow-moving elements? This is Inappropriate Motion-Vector Field Application. Refund guide.',
+    technicalTerm: 'Inappropriate Motion-Vector Field Application',
+    risk: 'MAJOR',
+    shortDesc: 'Heavy motion blur applied to static frames, slow-moving subjects, or background elements that should be sharp.',
+    longDesc:
+      'Inappropriate Motion-Vector Field Application occurs when Kling\'s motion-blur module over-allocates blur to regions of the frame that should remain sharp. The motion-vector predictor mis-estimates per-pixel velocity for static or near-static elements, then applies temporal smoothing as if those pixels were moving fast. Result: unusable footage where a still subject is rendered with motion-blur trails, or a static background goes soft behind moving foreground.',
+    symptoms: [
+      'Static subject rendered with motion-blur trails',
+      'Background goes soft while foreground stays sharp (inverted)',
+      'Slow camera pan produces extreme blur as if rapid',
+      'Sharp objects become smeared between frames',
+      'Detail loss localised to wrong region of the frame',
+    ],
+    examples: [
+      {
+        prompt: '"Static product shot of a watch on a marble surface, no movement"',
+        failure: 'Watch face rendered with horizontal motion-blur trails despite static prompt',
+        timestamp: '0:00 → 0:04',
+      },
+      {
+        prompt: '"Slow camera pan across a still bookshelf"',
+        failure: 'Book spines rendered with motion-blur as if camera were sprinting, spines unreadable',
+        timestamp: 'full duration',
+      },
+    ],
+    refundStrength: 'MEDIUM-HIGH — Kling support recognises motion-vector misapplication when you can demonstrate static prompt + blurred output side-by-side.',
+    faq: [
+      {
+        q: 'Does Kling refund credits for motion-blur over-application?',
+        a: 'Yes, when the prompt specified static or slow motion and the output shows aggressive blur. Cite "Inappropriate Motion-Vector Field Application" and attach the prompt + frame stills.',
+      },
+      {
+        q: 'Why does Kling over-apply motion blur?',
+        a: 'The motion-vector predictor estimates per-pixel velocity probabilistically. Texture-rich static surfaces (marble, wood grain, fabric) can produce false-positive velocity estimates, triggering temporal smoothing.',
+      },
+      {
+        q: 'Which Kling prompts are highest risk?',
+        a: 'Static product shots, slow camera moves, texture-rich surfaces, and any prompt where sharpness is critical. AVA scans for motion-vector ambiguity in static-scene prompts.',
+      },
+    ],
+  },
+  {
+    slug: 'sora-multi-character-interaction',
+    title: 'Sora 2 Multi-Character Interaction Failure — Refund Guide',
+    metaTitle: 'Sora 2 Multi-Character Refund — Body Merging, Identity Collapse',
+    metaDesc:
+      'Sora 2 merged two characters\' bodies during interaction, or lost identity coherence across both subjects? This is Multi-Agent Topology Collapse. Refund guide.',
+    technicalTerm: 'Multi-Agent Topology Collapse',
+    risk: 'CRITICAL',
+    shortDesc: 'Two or more subjects merging, identity-swapping, or losing geometric separation during interaction.',
+    longDesc:
+      'Multi-Agent Topology Collapse occurs when Sora 2\'s character-conditioning model fails to maintain identity and body separation across multiple subjects in close-range interaction. Bodies fuse where they should overlap, faces swap features between subjects, or one character\'s clothing migrates onto the other. The failure is most pronounced in hugs, handshakes, dance partners, fight choreography, and any scene where two subjects share a contact region.',
+    symptoms: [
+      'Two characters\' bodies fusing where they should overlap',
+      'Facial features swapping between subjects',
+      'Clothing migrating from one character to another',
+      'Limbs from different characters interpenetrating',
+      'One character\'s identity collapsing into the other',
+    ],
+    examples: [
+      {
+        prompt: '"Two old friends hugging at an airport arrivals gate"',
+        failure: 'Shoulders fused at contact, one face features migrated to the other by 0:02',
+        timestamp: '0:02',
+      },
+      {
+        prompt: '"Couple slow-dancing in a candlelit room"',
+        failure: 'Hand-holding region collapsed into single fused hand at 0:01; identity drift at 0:04',
+        timestamp: '0:01 → 0:04',
+      },
+    ],
+    refundStrength: 'VERY HIGH — Sora 2 markets identity preservation across subjects; multi-agent collapse is a recognised flagship-feature defect.',
+    faq: [
+      {
+        q: 'Does OpenAI refund Sora 2 multi-character failures?',
+        a: 'Yes. OpenAI support treats multi-agent topology failures seriously because identity preservation is a Sora 2 marketed capability. Cite the technical term, document with frame stills, and submit through the Sora support portal.',
+      },
+      {
+        q: 'Why does Sora 2 merge characters?',
+        a: 'The character-conditioning model shares latent capacity across all subjects in a scene. When contact regions enter the same patch tokens, identity features bleed between subjects.',
+      },
+      {
+        q: 'Which Sora 2 prompts are highest risk?',
+        a: 'Hugs, handshakes, fight choreography, dance partners, and any close-contact multi-subject scene. AVA flags multi-character interaction prompts for elevated risk scoring.',
+      },
+    ],
+  },
+  {
+    slug: 'pika-lip-sync-failure',
+    title: 'Pika Labs Lip Sync Failure — Refund Guide',
+    metaTitle: 'Pika Lip Sync Refund — Mouth Movement Mismatch with Audio',
+    metaDesc:
+      'Pika Labs generated a talking-head clip where mouth shapes don\'t match the audio phonemes? This is Phoneme-Visem Mapping Failure. Refund guide.',
+    technicalTerm: 'Phoneme-Viseme Mapping Failure',
+    risk: 'CRITICAL',
+    shortDesc: 'Mouth shapes (visemes) don\'t correspond to audio phonemes — closed mouth on vowels, open mouth on consonants.',
+    longDesc:
+      'Phoneme-Viseme Mapping Failure occurs when Pika\'s lip-sync module produces mouth geometry uncorrelated with the input audio. The model has learned generic mouth-movement priors but fails to align them with the specific phoneme sequence in the audio track. Closed mouths appear on vowels that require open shapes; mouth stays still through entire words; tongue position is wrong for fricatives and dentals.',
+    symptoms: [
+      'Mouth closed during open-vowel phonemes (a, e, o)',
+      'Mouth stays still through entire spoken words',
+      'Lip rounding wrong for "oo" or "oh" sounds',
+      'Teeth position incorrect for fricatives (f, v, s, z)',
+      'Mouth movement timing drifts from audio over the clip',
+    ],
+    examples: [
+      {
+        prompt: '"Narrator speaking the word \\"hello\\" directly to camera, audio attached"',
+        failure: 'Mouth stays closed through "he-llo" duration; brief opening at 0:01 unrelated to phoneme',
+        timestamp: '0:00 → 0:01',
+      },
+      {
+        prompt: '"Person reading a paragraph from a book, lip-sync to attached audio"',
+        failure: 'Mouth movement is generic chewing motion, no correlation to phoneme sequence',
+        timestamp: 'full duration',
+      },
+    ],
+    refundStrength: 'HIGH — Pika markets lip-sync as a paid-tier feature. Documented phoneme mismatch is grounds for refund.',
+    faq: [
+      {
+        q: 'Does Pika refund lip-sync failures?',
+        a: 'Yes — lip-sync is a paid-tier marketed feature on Pika. Support refunds when the user can demonstrate audio-phoneme to visual-viseme mismatch. Reference "Phoneme-Viseme Mapping Failure" in the ticket.',
+      },
+      {
+        q: 'Why does Pika lip-sync fail?',
+        a: 'The viseme-prediction model is trained on generic mouth shapes and fine-tuned to align with phoneme sequences. Under audio with strong accents, fast speech, or non-English phonemes, the alignment degrades.',
+      },
+      {
+        q: 'Which Pika lip-sync prompts are highest risk?',
+        a: 'Fast speech, non-English audio, accented speech, multi-speaker audio tracks, and dialogue with heavy fricatives or dentals. AVA flags lip-sync prompts with high phoneme complexity.',
+      },
+    ],
+  },
+  {
+    slug: 'hailuo-camera-shake-artifact',
+    title: 'MiniMax Hailuo Camera Shake Artifact — Refund Guide',
+    metaTitle: 'Hailuo Camera Shake Refund — Involuntary Jitter on Static Shots',
+    metaDesc:
+      'Hailuo generated a static or slow-moving clip with involuntary camera shake or jitter? This is Parasitic Camera-Pose Variance. Refund guide.',
+    technicalTerm: 'Parasitic Camera-Pose Variance',
+    risk: 'MAJOR',
+    shortDesc: 'Camera pose jitters or shakes unprompted on static / slow-moving shots, creating unwanted handheld feel.',
+    longDesc:
+      'Parasitic Camera-Pose Variance occurs when Hailuo\'s diffusion model introduces unrequested high-frequency camera-pose noise. The temporal prior assumes some camera motion across frames; on prompts specifying static or slow-moving shots, this prior leaks through as involuntary jitter. Output looks like uncorrected handheld footage where a tripod was specified.',
+    symptoms: [
+      'Unprompted jitter on tripod / static shots',
+      'High-frequency micro-shake at 5–8 Hz across frames',
+      'Slow pan rendered with handheld bobble overlay',
+      'Stable subject appears to vibrate against camera',
+      'Background edges show frame-to-frame parallax in static shots',
+    ],
+    examples: [
+      {
+        prompt: '"Locked-off tripod shot of a vase on a table, no movement"',
+        failure: 'Camera jitters at ~6 Hz throughout the clip; vase appears to vibrate against background',
+        timestamp: '0:00 → 0:08',
+      },
+      {
+        prompt: '"Slow smooth pan across a landscape, professional gimbal feel"',
+        failure: 'Pan executes but with handheld micro-bobble overlaid; not smooth',
+        timestamp: 'full duration',
+      },
+    ],
+    refundStrength: 'MEDIUM-HIGH — Hailuo support honours camera-stability refunds when prompt explicitly specified static or smooth motion.',
+    faq: [
+      {
+        q: 'Does Hailuo refund camera-shake failures?',
+        a: 'Yes when the prompt specified static / tripod / smooth motion. Quote the prompt\'s stability language verbatim and timestamp the jitter onset.',
+      },
+      {
+        q: 'Why does Hailuo add unwanted camera shake?',
+        a: 'The temporal prior assumes some inter-frame motion. On static-prompt generations, this prior leaks through as residual jitter — most visible at the 5–8 Hz band.',
+      },
+      {
+        q: 'Which Hailuo prompts are highest risk?',
+        a: 'Tripod shots, locked-off compositions, slow gimbal moves, and any prompt where stability is critical (product shots, talking heads). AVA flags stability-critical prompts.',
+      },
+    ],
+  },
+  {
+    slug: 'seedance-style-preset-failure',
+    title: 'ByteDance Seedance Style Preset Failure — Refund Guide',
+    metaTitle: 'Seedance Style Preset Refund — Style Ignored, Default Render',
+    metaDesc:
+      'Seedance ignored your chosen style preset (anime, photoreal, cinematic) and rendered in the default style? This is Style Conditioning Bypass. Refund guide.',
+    technicalTerm: 'Style Conditioning Bypass',
+    risk: 'MAJOR',
+    shortDesc: 'Selected style preset (anime, cinematic, photoreal) is ignored; output uses the model\'s default visual style.',
+    longDesc:
+      'Style Conditioning Bypass occurs when Seedance\'s style-selector input fails to propagate to the diffusion backbone. The chosen preset is registered in the UI and metadata but never applied to the latent at denoising time. Output looks like the model\'s default visual style regardless of what preset was clicked. Affects paid preset tiers most visibly because users are paying specifically for the style choice.',
+    symptoms: [
+      '"Anime" preset produces photorealistic output',
+      '"Cinematic" preset produces flat / TV-look output',
+      '"Photoreal" preset produces stylized / illustrative output',
+      'No visible difference between adjacent preset selections on same prompt',
+      'Metadata shows preset selected but render contradicts it',
+    ],
+    examples: [
+      {
+        prompt: '"Samurai in a bamboo forest" + Anime preset selected',
+        failure: 'Output rendered in photoreal style; no anime cel-shading, no flat colour fills',
+        timestamp: '0:00 → 0:06',
+      },
+      {
+        prompt: '"Coffee shop interior" + Cinematic preset selected',
+        failure: 'Output rendered in flat-bright lighting style; cinematic colour grading absent',
+        timestamp: 'full duration',
+      },
+    ],
+    refundStrength: 'HIGH — Style presets are paid feature tiers. Bypass failures are treatable as feature-defect.',
+    faq: [
+      {
+        q: 'Does Seedance refund style-preset failures?',
+        a: 'Yes — style presets are paid feature tiers, so bypass is a feature-defect refund. Provide the preset selection metadata + visual evidence of style mismatch.',
+      },
+      {
+        q: 'Why does Seedance ignore style presets?',
+        a: 'The style-conditioning vector is injected at specific cross-attention layers. Under high-complexity prompts, the style vector\'s contribution is overwhelmed by content conditioning, producing a default-style render.',
+      },
+      {
+        q: 'Which Seedance style prompts are highest risk?',
+        a: 'High-detail content prompts paired with style presets, multi-style requests (mixing presets), and presets selected for first-time generations. AVA flags style+content competition in prompts.',
+      },
+    ],
+  },
+  {
+    slug: 'runway-watermark-bleed',
+    title: 'Runway Watermark Bleed-Through — Refund Guide',
+    metaTitle: 'Runway Watermark Refund — Paid Tier Showing Free Watermark',
+    metaDesc:
+      'Runway Standard or Pro plan output showing the free-tier watermark? This is Watermark Pipeline Misrouting. Definitive refund grounds. Guide here.',
+    technicalTerm: 'Watermark Pipeline Misrouting',
+    risk: 'CRITICAL',
+    shortDesc: 'Paid-tier output is delivered with the free-tier watermark visible — a billing-feature defect.',
+    longDesc:
+      'Watermark Pipeline Misrouting occurs when Runway\'s post-generation watermarking module fails to recognise the user as a paid-tier subscriber and applies the free-tier watermark anyway. This is the single strongest refund-grounds defect because it directly contradicts the paid-tier deliverable. Affects users immediately after plan upgrades, billing renewals, or session boundary crossings.',
+    symptoms: [
+      'Visible Runway watermark in corner of paid-plan output',
+      'Watermark appears even though billing dashboard shows active paid plan',
+      'First few generations after plan upgrade still watermarked',
+      'Some generations watermarked, others not, in the same session',
+      'Watermark removal tool reveals trace residue in pixels',
+    ],
+    examples: [
+      {
+        prompt: 'Any prompt on a Standard or Pro tier account immediately after upgrade',
+        failure: 'Output delivered with bottom-right Runway watermark visible despite paid tier',
+      },
+      {
+        prompt: 'Bulk generation session — 5 of 12 outputs watermarked',
+        failure: 'Inconsistent watermarking within single session despite continuous paid status',
+      },
+    ],
+    refundStrength: 'VERY HIGH — strongest refund grounds in the Runway product. Billing-feature defect, no creative-variance defense available.',
+    faq: [
+      {
+        q: 'Does Runway refund watermark-bleed failures?',
+        a: 'Yes — this is the strongest refund grounds in the product. Billing-feature defects are not subject to creative-variance defenses. Refunds are routinely instant.',
+      },
+      {
+        q: 'Why does the free watermark appear on paid output?',
+        a: 'The watermarking module reads user-tier state from a cached entitlements lookup. On session boundaries or plan upgrades, this cache may serve stale free-tier state.',
+      },
+      {
+        q: 'When is watermark-bleed risk highest?',
+        a: 'Immediately after plan upgrade, immediately after billing renewal, on first generation of a new session, or after a long idle period. AVA checks tier metadata against rendered output automatically.',
+      },
+    ],
+  },
+  {
+    slug: 'luma-lip-sync-failure',
+    title: 'Luma Dream Machine Lip Sync Failure — Refund Guide',
+    metaTitle: 'Luma Lip Sync Refund — Mouth Movement Mismatched with Speech',
+    metaDesc:
+      'Luma Dream Machine generated dialogue clips where lip movement does not match the spoken audio? This is Phoneme-Viseme Mapping Failure. Refund guide.',
+    technicalTerm: 'Phoneme-Viseme Mapping Failure',
+    risk: 'CRITICAL',
+    shortDesc: 'Lip movement does not correspond to spoken phonemes; mouth opens on consonants, closes on vowels.',
+    longDesc:
+      'Phoneme-Viseme Mapping Failure on Luma Dream Machine occurs when the lip-shape predictor outputs visemes uncorrelated with the input or generated audio. Mouth opens on consonants, closes on vowels, lips fail to round on "oh" sounds, and overall lip-movement timing drifts from audio. Distinct from prompt-adherence failures because the audio track itself is correct — only the visual mouth-shape sequence is wrong.',
+    symptoms: [
+      'Mouth shape uncorrelated with audio phoneme',
+      'Closed mouth during open vowels',
+      'Lip rounding wrong for "oo" / "oh"',
+      'Mouth motion timing drifts from audio across clip',
+      'Generic chewing motion replaces phoneme-specific visemes',
+    ],
+    examples: [
+      {
+        prompt: '"Woman saying \\"good morning\\" directly to camera, professional lighting"',
+        failure: 'Mouth stays nearly closed through entire phrase; brief opening at 0:01 not aligned with phonemes',
+        timestamp: '0:00 → 0:02',
+      },
+      {
+        prompt: '"News anchor delivering a single sentence, lip-synced to audio"',
+        failure: 'Mouth motion is generic chewing pattern; no correlation with audio sentence structure',
+        timestamp: 'full duration',
+      },
+    ],
+    refundStrength: 'HIGH — Luma Dream Machine markets dialogue capability; lip-sync failure on paid output is treatable as feature defect.',
+    faq: [
+      {
+        q: 'Does Luma refund lip-sync failures?',
+        a: 'Yes — Luma support recognises lip-sync as a marketed Dream Machine capability. Cite "Phoneme-Viseme Mapping Failure", attach the audio + visual stills.',
+      },
+      {
+        q: 'Why does Luma lip-sync fail?',
+        a: 'The viseme-prediction network is conditioned on audio embeddings. Under fast speech, accented audio, or non-English phonemes, the embedding-to-viseme mapping degrades, producing generic mouth motion.',
+      },
+      {
+        q: 'Which Luma dialogue prompts are highest risk?',
+        a: 'Fast speech, non-English audio, accented dialogue, multi-speaker scenes, and any prompt where lip-sync is narratively load-bearing. AVA flags lip-sync prompts before generation.',
+      },
+    ],
+  },
 ];
 
 export function getFailure(slug: string): FailureData | undefined {
