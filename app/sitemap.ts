@@ -1,32 +1,11 @@
 import { MetadataRoute } from 'next';
+import { FAILURES } from './failures/[slug]/data';
 
 const BASE = 'https://www.aivideoauditor.com';
 
-const FAILURE_SLUGS = [
-  // Runway
-  'runway-limb-artifact',
-  'runway-physics-collapse',
-  'runway-face-distortion',
-  'runway-text-rendering-failure',
-  'runway-temporal-flicker',
-  'runway-hallucinated-text',
-  'runway-camera-jitter',
-  'runway-color-drift',
-  // Luma
-  'luma-physics-collapse',
-  'luma-face-distortion',
-  // Google Veo
-  'veo-text-rendering-failure',
-  'veo-hand-artifact',
-  // Kling
-  'kling-anatomy-artifact',
-  // Seedance
-  'seedance-motion-drift',
-];
-
 export default function sitemap(): MetadataRoute.Sitemap {
-  const failurePages: MetadataRoute.Sitemap = FAILURE_SLUGS.map((slug) => ({
-    url: `${BASE}/failures/${slug}`,
+  const failurePages: MetadataRoute.Sitemap = FAILURES.map((f) => ({
+    url: `${BASE}/failures/${f.slug}`,
     lastModified: new Date(),
     changeFrequency: 'monthly',
     priority: 0.8,

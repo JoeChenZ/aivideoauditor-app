@@ -610,6 +610,292 @@ export const FAILURES: FailureData[] = [
   },
 
   // ── Seedance / ByteDance ───────────────────────────────────────────────
+  // ── OpenAI Sora ────────────────────────────────────────────────────────
+  {
+    slug: 'sora-physics-collapse',
+    title: 'OpenAI Sora Physics Collapse — Get a Credit Refund',
+    metaTitle: 'OpenAI Sora Physics Refund — Fluid, Gravity, Object Interaction Failures',
+    metaDesc:
+      'OpenAI Sora 2 generated water flowing upward, objects passing through walls, or gravity violations? This is a Physics Simulation Constraint Violation. Document for a credit refund.',
+    technicalTerm: 'Physics Simulation Constraint Violation',
+    risk: 'MAJOR',
+    shortDesc: 'Fluid inversion, gravity violations, object interpenetration, and impossible collision behavior in Sora generations.',
+    longDesc:
+      'OpenAI Sora produces the highest fidelity output of any commercial video model, but physics simulation remains a structural weakness. Sora has no runtime physics solver — it learns Newtonian behavior statistically from training data. Common failures: liquids that arc upward against gravity, falling objects that pause mid-air, characters walking through solid props, and collisions that produce no physical response. The failure rate climbs sharply on clips longer than 8 seconds, in scenes with multi-body interaction, and in slow-motion prompts. OpenAI\'s refund pathway routes through ChatGPT support; technically-documented requests with Generation IDs and timestamps approve at a meaningfully higher rate than complaint-style submissions.',
+    symptoms: [
+      'Water, smoke, or fluid moving against gravity vector',
+      'Character or object passing through wall/floor geometry',
+      'Falling object pauses mid-air without prompted reason',
+      'Collision between props produces no physical reaction',
+      'Slow-motion liquid loses momentum coherence',
+    ],
+    examples: [
+      {
+        prompt: '"A glass of milk shattering on a wooden floor, slow motion, cinematic"',
+        failure: 'Milk droplets reverse direction at 0:02, rising upward; shards interpenetrate floor geometry at 0:03',
+        timestamp: '0:02',
+      },
+      {
+        prompt: '"Ocean waves crashing onto a rocky shoreline at golden hour"',
+        failure: 'Wave crest pauses mid-collapse at 0:04, water flows backward into the wave at 0:05',
+        timestamp: '0:04',
+      },
+    ],
+    refundStrength: 'HIGH — OpenAI honours technical-failure refunds when documented with Generation ID, prompt, and frame-timestamped failure evidence. Physics violations are objectively verifiable.',
+    faq: [
+      {
+        q: 'Will OpenAI Sora refund credits for physics failures?',
+        a: 'Yes. Route the request through ChatGPT support, cite "Physics Simulation Constraint Violation", include the Generation ID, quote the prompt, and timestamp the moment physics breaks. Objectively-verifiable failures (e.g., fluid moving upward) approve fastest.',
+      },
+      {
+        q: 'Why does Sora still produce physics failures?',
+        a: 'Sora is a diffusion transformer trained on video — it learns physical behavior as a statistical correlation, not via a runtime physics solver. Complex multi-body interactions, fluid dynamics, and slow-motion prompts exceed the model\'s learned distribution.',
+      },
+      {
+        q: 'Which Sora prompts have highest physics-failure risk?',
+        a: 'Slow-motion fluid shots, multi-object collisions, prompts longer than 8 seconds, soft-body materials (cloth, hair, water), and complex camera movement through physical scenes. AVA\'s L1 scanner flags these patterns before generation.',
+      },
+    ],
+  },
+  {
+    slug: 'sora-prompt-adherence-failure',
+    title: 'OpenAI Sora Prompt Adherence Failure — Get a Credit Refund',
+    metaTitle: 'OpenAI Sora Prompt Adherence Refund — Output Ignores Prompt Instructions',
+    metaDesc:
+      'OpenAI Sora 2 ignored your prompt — wrong subject, missing element, wrong setting, or wrong action? This is a Semantic Adherence Failure. Document for a credit refund.',
+    technicalTerm: 'Semantic Adherence & Prompt Conditioning Failure',
+    risk: 'MAJOR',
+    shortDesc: 'Sora output ignores or contradicts explicit prompt instructions — wrong subject, missing key element, wrong setting, or wrong action.',
+    longDesc:
+      'Semantic Adherence & Prompt Conditioning Failure occurs when Sora\'s output diverges materially from the prompt specification. Examples: a prompt for "a black cat on a red sofa" returns a tabby on a beige couch; "person waving" returns the person standing still; "rainy night street" returns a sunny afternoon scene. This failure is distinct from physics or anatomy errors — the output may look beautiful and physically coherent while bearing no resemblance to what was requested. The cause is conditioning collapse: the model\'s prompt-encoder loses signal to its visual prior on complex or compound prompts. Adherence failure is the highest-leverage refund category because it\'s objectively verifiable against the prompt text.',
+    symptoms: [
+      'Subject in output differs from subject in prompt (different breed, color, age)',
+      'Prompted action absent or replaced with a different action',
+      'Setting or environment swapped (e.g., indoor instead of outdoor)',
+      'Compound prompts: most elements present but one explicit detail missing',
+      'Style or mood directive ignored (e.g., "cinematic" returns flat lighting)',
+    ],
+    examples: [
+      {
+        prompt: '"A black cat sleeping on a red leather sofa in a dimly lit room"',
+        failure: 'Output shows orange tabby cat, beige fabric sofa, brightly-lit room — three of four explicit specifications ignored',
+        timestamp: '0:00 - 0:08',
+      },
+      {
+        prompt: '"Astronaut planting a flag on a desert dune at sunset"',
+        failure: 'Astronaut walks but never plants flag; flag never appears in shot',
+        timestamp: '0:00 - 0:10',
+      },
+    ],
+    refundStrength: 'VERY HIGH — Prompt adherence is the most objectively-verifiable refund category. The prompt is the contract; the output either matches it or it doesn\'t.',
+    faq: [
+      {
+        q: 'Will OpenAI Sora refund credits when the output ignored my prompt?',
+        a: 'Yes. This is the most clear-cut refund category. Quote your exact prompt and itemise which explicit specifications the output ignored. Cite "Semantic Adherence Failure" and include the Generation ID. Adherence failures approve at the highest rate of any category.',
+      },
+      {
+        q: 'Why does Sora ignore explicit prompt instructions?',
+        a: 'On compound prompts, the prompt-encoder\'s conditioning signal competes with the model\'s visual prior. When a specific detail conflicts with the model\'s "most likely visual" learned from training, the prior often wins. The longer and more compound your prompt, the higher the adherence-failure risk.',
+      },
+      {
+        q: 'How do I write Sora prompts that adhere reliably?',
+        a: 'Lead with the most important specification. Keep prompts under 35 words. Avoid contradictory details (e.g., "dimly lit" + "bright sunset"). AVA\'s prompt-risk scanner predicts adherence-failure probability before generation.',
+      },
+    ],
+  },
+
+  // ── Pika Labs ──────────────────────────────────────────────────────────
+  {
+    slug: 'pika-motion-failure',
+    title: 'Pika Labs Motion Failure — Get a Credit Refund',
+    metaTitle: 'Pika Labs Motion Refund — Stalled Motion, Tempo Drift, Static Output',
+    metaDesc:
+      'Pika 2.0 generated stalled motion, jittery movement, or output where the subject barely moves? This is a Motion Coherence Failure. Document for a credit refund.',
+    technicalTerm: 'Motion Coherence & Temporal Allocation Failure',
+    risk: 'MAJOR',
+    shortDesc: 'Stalled motion, jittery movement, near-static output, or tempo drift on Pika generations.',
+    longDesc:
+      'Motion Coherence & Temporal Allocation Failure is Pika\'s most reported failure category. The model frequently allocates its temporal budget aggressively toward visual fidelity at the cost of motion magnitude — prompts for "running", "dancing", or "falling" return outputs where the subject is nearly stationary. The reverse also occurs: prompts for "slow", "calm", "gentle" return jittery, over-energetic motion. Pika\'s refund pathway is through their Discord support flow and in-app submission; technical-failure-coded requests route faster than generic complaints.',
+    symptoms: [
+      'Subject moves significantly less than the prompt requests',
+      'Tempo or speed of motion contradicts prompted pace',
+      'Motion stalls or pauses without prompted cause',
+      'Jittery micro-motion replaces requested smooth motion',
+      'Camera motion absent when explicitly requested',
+    ],
+    examples: [
+      {
+        prompt: '"Person sprinting across a finish line at full speed"',
+        failure: 'Subject jogs slowly with minimal forward motion across 5s clip; no sprint tempo observed',
+        timestamp: '0:00 - 0:05',
+      },
+      {
+        prompt: '"Gentle breeze rustling leaves on a tree, calm morning"',
+        failure: 'Leaves shake erratically as if in storm-force wind throughout clip',
+        timestamp: '0:00 - 0:04',
+      },
+    ],
+    refundStrength: 'HIGH — Motion failures are objectively verifiable against the prompt language. Pika\'s support honours technical-failure refunds when the prompt-output mismatch is quoted explicitly.',
+    faq: [
+      {
+        q: 'Will Pika Labs refund credits for motion failures?',
+        a: 'Yes. Submit through Pika\'s in-app support or Discord. Quote the motion-related language in your prompt ("sprinting", "gentle breeze") and itemise the actual observed motion. Cite "Motion Coherence Failure" and include the Generation ID.',
+      },
+      {
+        q: 'Why does Pika allocate motion poorly?',
+        a: 'Pika prioritises visual detail in its temporal-budget allocation. On prompts with implicit motion magnitude, the model defaults toward "most-likely visual" rather than "most-likely-correct motion tempo" — the result is mismatched motion energy.',
+      },
+      {
+        q: 'Which Pika prompts highest-risk for motion failures?',
+        a: 'Prompts with implicit motion magnitude ("running", "diving", "falling"), prompts longer than 5 seconds, multi-subject coordinated motion, and prompts mixing motion and detailed visual description. AVA flags these patterns.',
+      },
+    ],
+  },
+
+  // ── MiniMax Hailuo ─────────────────────────────────────────────────────
+  {
+    slug: 'hailuo-anatomy-artifact',
+    title: 'MiniMax Hailuo Anatomy Artifact — Get a Credit Refund',
+    metaTitle: 'MiniMax Hailuo Refund — Limb Distortion, Face Drift, Anatomy Failures',
+    metaDesc:
+      'MiniMax Hailuo generated limb distortions, fused fingers, or facial drift across frames? This is an Anatomical Topology Failure. Document for a credit refund.',
+    technicalTerm: 'Anatomical Topology & Coherence Failure',
+    risk: 'CRITICAL',
+    shortDesc: 'Limb distortion, fused fingers, supernumerary digits, or facial morphology drift in Hailuo generations.',
+    longDesc:
+      'Anatomical Topology & Coherence Failure is Hailuo\'s most common critical-tier failure. The model produces high-quality static frames but anatomy degrades across motion: fingers fuse or multiply, limbs reshape, facial proportions drift between frames. Hailuo (MiniMax) refunds via their developer console support flow; the support team recognises anatomical topology failures as a documented refund category when accompanied by Generation ID, prompt text, and timestamped frame evidence.',
+    symptoms: [
+      '6+ fingers or fused digits visible on hand',
+      'Limb count changes across the clip duration',
+      'Facial proportions drift between frames',
+      'Joint articulation reverses direction',
+      'Body topology collapses during rotation or fast motion',
+    ],
+    examples: [
+      {
+        prompt: '"Dancer performing a pirouette in a sunlit studio"',
+        failure: 'Left hand shows 6 fingers at 0:02; right arm geometry collapses during rotation at 0:04',
+        timestamp: '0:02',
+      },
+      {
+        prompt: '"Close-up of a chef chopping vegetables with a knife"',
+        failure: 'Fingers fuse into a single mass at 0:03; reseparate incorrectly at 0:04',
+        timestamp: '0:03',
+      },
+    ],
+    refundStrength: 'VERY HIGH — Hailuo support classifies anatomical topology failures as a critical-tier refund category. Well-documented requests approve within 1-3 business days.',
+    faq: [
+      {
+        q: 'Will MiniMax Hailuo refund credits for anatomy failures?',
+        a: 'Yes. Submit through the Hailuo developer console support flow. Cite "Anatomical Topology Failure", include the Generation ID, quote the prompt, and timestamp the frame where anatomy breaks. Attach a PDF audit report for fastest processing.',
+      },
+      {
+        q: 'Why does Hailuo produce anatomy failures?',
+        a: 'Hailuo\'s diffusion architecture inherits the same per-frame denoising limitations as other video models. Articulated-body topology degrades under motion because the model lacks a runtime skeletal constraint solver — finger-count and limb-count are emergent rather than enforced.',
+      },
+      {
+        q: 'Which Hailuo prompts highest-risk for anatomy failures?',
+        a: 'Close-up hand shots, dance and sports, multi-subject scenes, prompts with detailed facial expression, and rapid motion. AVA flags these patterns before generation.',
+      },
+    ],
+  },
+
+  // ── Kling text-specific gap-fill ───────────────────────────────────────
+  {
+    slug: 'kling-text-rendering-failure',
+    title: 'Kling AI Text Rendering Failure — Get a Credit Refund',
+    metaTitle: 'Kling AI Text Refund — Garbled Signs, Labels, Subtitles',
+    metaDesc:
+      'Kling 1.6 or 2.0 produced a video where the prompted text renders as garbled glyphs or wrong characters? This is a Glyph Synthesis Failure. Get refunded.',
+    technicalTerm: 'Glyph Synthesis & Semantic Adherence Failure',
+    risk: 'MAJOR',
+    shortDesc: 'Prompted in-scene text renders as garbled glyphs, mirrored letters, or unrelated characters in Kling generations.',
+    longDesc:
+      'Kling renders typography poorly across both 1.6 and 2.0 model versions. Storefront signs, product labels, screen UI, and t-shirt graphics commonly produce shapes that resemble letters but don\'t form readable words. This is a Glyph Synthesis & Semantic Adherence Failure — and because the prompt explicitly specified the text, it\'s objectively verifiable as a prompt-adherence violation. Kling honours text-failure refunds when documented properly through their support flow.',
+    symptoms: [
+      'Sign or label text renders as garbled non-letters',
+      'Same word changes characters frame-to-frame',
+      'Mirrored or flipped glyphs in the output',
+      'T-shirt text or screen UI text is unreadable',
+      'Wrong language characters appear (e.g., Cyrillic-like in a Latin prompt)',
+    ],
+    examples: [
+      {
+        prompt: '"A bookstore window with a sign reading GRAND OPENING"',
+        failure: 'Sign reads "GRRND OPENINK" with mirrored second N and shifting glyphs across frames',
+        timestamp: '0:00 - 0:06',
+      },
+      {
+        prompt: '"Whiteboard with the word DEMO written on it, office setting"',
+        failure: 'Whiteboard text renders as "DΞMO" with morphing first character across 0:02-0:04',
+        timestamp: '0:02',
+      },
+    ],
+    refundStrength: 'HIGH — Text rendering failures are objectively verifiable against the prompt. Kling support honours these refunds when the prompt\'s exact text and the output\'s rendered text are both quoted.',
+    faq: [
+      {
+        q: 'Will Kling refund credits for garbled text?',
+        a: 'Yes, when your prompt specified the exact text that should render. Quote both the prompt text and the actual rendered text in your support request. Cite "Glyph Synthesis Failure" and include the Generation ID.',
+      },
+      {
+        q: 'Why can\'t Kling render text correctly?',
+        a: 'Like all video diffusion models, Kling synthesizes text pixel-by-pixel through the denoising process. Coherent glyph synthesis across temporal frames is an unsolved problem at current model scales — text in training data is sparse and temporally unstable.',
+      },
+      {
+        q: 'Is there a way to get text into a Kling video?',
+        a: 'Generate the video without text, then composite the text in post-production using CapCut, DaVinci Resolve, or After Effects. AVA\'s L1 scanner flags any prompt containing quoted text as high-text-failure-risk before generation.',
+      },
+    ],
+  },
+
+  // ── Seedance face gap-fill ─────────────────────────────────────────────
+  {
+    slug: 'seedance-face-distortion',
+    title: 'ByteDance Seedance Face Distortion — Get a Credit Refund',
+    metaTitle: 'Seedance Face Refund — Asymmetric Eyes, Facial Drift',
+    metaDesc:
+      'ByteDance Seedance 2.0 generated facial morphing, asymmetric eyes, or expression drift across frames? This is a Facial Landmark Regression Failure.',
+    technicalTerm: 'Facial Landmark Regression Failure',
+    risk: 'CRITICAL',
+    shortDesc: 'Asymmetric eye placement, facial morphing across frames, expression drift in Seedance close-up generations.',
+    longDesc:
+      'Seedance produces strong static facial renders but landmark stability degrades across the temporal axis. Eye spacing shifts, jaw geometry reshapes, ear position drifts, and skin texture pixelates inconsistently. The failure is most severe in close-up shots and during head motion or facial expression changes. Seedance\'s refund process is reachable through ByteDance\'s in-app support flow; technical-failure-coded requests with attached PDF audit reports route faster than generic complaints.',
+    symptoms: [
+      'Eye spacing changes visibly across the clip',
+      'Jawline reshapes during head motion',
+      'Ear size or position drifts between frames',
+      'Skin texture quality inconsistent across frames',
+      'Facial expression interpolates through inconsistent intermediate forms',
+    ],
+    examples: [
+      {
+        prompt: '"Close-up of a woman smiling, soft window light"',
+        failure: 'Left eye drifts inward by 0:02; jawline narrows by 0:04; expression mismatch between frame halves',
+        timestamp: '0:02',
+      },
+      {
+        prompt: '"Man laughing at a dinner table, warm restaurant lighting"',
+        failure: 'Mouth shape inconsistent with prompted laugh; right ear morphs in size across 0:01-0:03',
+        timestamp: '0:01',
+      },
+    ],
+    refundStrength: 'VERY HIGH — Seedance support classifies facial landmark regression as a critical-tier failure. Documented requests with frame-level evidence approve quickly.',
+    faq: [
+      {
+        q: 'Will Seedance refund credits for face distortion?',
+        a: 'Yes. Submit through ByteDance\'s in-app support flow. Use "Facial Landmark Regression Failure" terminology, cite the Generation ID, timestamp the worst-drift frame, and attach a PDF audit report. This is a high-precedent refund category.',
+      },
+      {
+        q: 'Why does Seedance distort faces across frames?',
+        a: 'Seedance allocates per-frame compute aggressively to visual detail. The temporal-coherence module has limited budget for small high-frequency features (eye spacing, jaw geometry, ear placement), so these drift across the clip.',
+      },
+      {
+        q: 'Which Seedance prompts highest-risk for face distortion?',
+        a: 'Close-up portraits, prompts with facial expression changes, side profiles, multi-character scenes, and fast head motion. AVA\'s pre-flight scanner flags these patterns before generation.',
+      },
+    ],
+  },
+
   {
     slug: 'seedance-motion-drift',
     title: 'ByteDance Seedance Motion Drift — Get a Credit Refund',
