@@ -221,6 +221,64 @@ export default function FailuresHubPage() {
             </section>
           )}
 
+          {/* Continue exploring — cross-links to other AVA surfaces */}
+          <section className="mt-16" aria-label="Continue exploring">
+            <h2 className="text-xl font-bold text-ink-primary mb-2">Continue exploring</h2>
+            <p className="text-ink-muted text-sm mb-6">
+              The failure reference is the deepest part of the site. These four surfaces help you act on it.
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <Link
+                href="/compare"
+                className="bg-elevated border border-border rounded-xl p-5 hover:border-neon-purple/30 transition-colors block"
+              >
+                <p className="text-xs font-mono font-bold tracking-widest text-neon-purple uppercase mb-2">
+                  Head-to-head comparisons
+                </p>
+                <p className="text-ink-primary font-bold text-sm mb-1">Pick the right tool per shot type</p>
+                <p className="text-ink-muted text-xs">
+                  Runway vs Luma. Sora vs Veo. Kling vs Runway. Compare by failure profile, not by leaderboard.
+                </p>
+              </Link>
+              <Link
+                href="/case-studies"
+                className="bg-elevated border border-border rounded-xl p-5 hover:border-neon-green/30 transition-colors block"
+              >
+                <p className="text-xs font-mono font-bold tracking-widest text-neon-green uppercase mb-2">
+                  Case studies
+                </p>
+                <p className="text-ink-primary font-bold text-sm mb-1">$84-612/mo recovered by real users</p>
+                <p className="text-ink-muted text-xs">
+                  Anonymized stories — solo creator, agency, brand account. Refund breakdowns + workflow changes.
+                </p>
+              </Link>
+              <Link
+                href="/tools/credit-calculator"
+                className="bg-elevated border border-border rounded-xl p-5 hover:border-neon-green/30 transition-colors block"
+              >
+                <p className="text-xs font-mono font-bold tracking-widest text-neon-green uppercase mb-2">
+                  Free calculator
+                </p>
+                <p className="text-ink-primary font-bold text-sm mb-1">How much are you leaving on the table?</p>
+                <p className="text-ink-muted text-xs">
+                  Estimate your monthly refund recovery based on spend and primary failure mode. No signup.
+                </p>
+              </Link>
+              <Link
+                href="/graveyard"
+                className="bg-elevated border border-border rounded-xl p-5 hover:border-neon-red/30 transition-colors block"
+              >
+                <p className="text-xs font-mono font-bold tracking-widest text-neon-red uppercase mb-2">
+                  AI Tool Graveyard
+                </p>
+                <p className="text-ink-primary font-bold text-sm mb-1">Refund deadlines + migration paths</p>
+                <p className="text-ink-muted text-xs">
+                  Tracked record of every shut-down AI tool. Sora 2 refund window closes 2026-05-23.
+                </p>
+              </Link>
+            </div>
+          </section>
+
           {/* CTA */}
           <div className="bg-surface border border-neon-green/20 rounded-2xl p-8 text-center mt-16">
             <p className="text-xs font-mono font-bold tracking-widest text-neon-green uppercase mb-3">
