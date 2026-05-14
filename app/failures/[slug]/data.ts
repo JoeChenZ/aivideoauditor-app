@@ -1999,6 +1999,292 @@ export const FAILURES: FailureData[] = [
       },
     ],
   },
+  {
+    slug: 'pika-watermark-bleed',
+    title: 'Pika Watermark Bleed — Refund Guide',
+    metaTitle: 'Pika Watermark Refund — Free-Tier Watermark on Paid Output',
+    metaDesc:
+      'Pika Labs generated a paid clip that still has a watermark? This is Tier-Conditional Watermark Routing failure. Refund guide with template.',
+    technicalTerm: 'Tier-Conditional Watermark Routing',
+    risk: 'MAJOR',
+    shortDesc: 'Pika Labs output retains a corner watermark or "Pika" branding even on paid Standard / Pro tier where the watermark is supposed to be stripped.',
+    longDesc:
+      'Tier-Conditional Watermark Routing on Pika occurs when the post-generation watermark-strip pipeline fails to read the user\'s subscription tier from the request envelope. The watermark is added during generation and removed in a post-process step keyed on subscription state. When the auth header race-condition fires (rare, but well-documented in Pika user reports), the strip step skips and a paid clip ships with the free-tier watermark visible.',
+    symptoms: [
+      'Pika logo visible in bottom-right corner on paid Standard/Pro output',
+      'Faint watermark texture across the clip',
+      'Watermark appears on some clips in a batch but not others (request-level race)',
+      'Re-running the identical prompt produces watermark-free output',
+    ],
+    examples: [
+      {
+        prompt: '"A sailing yacht at sunset, slow dolly forward"',
+        failure: 'Bottom-right Pika watermark visible throughout the 4-second clip',
+        timestamp: '0:00 → 0:04',
+      },
+    ],
+    refundStrength: 'HIGH — Pika support refunds watermark-on-paid as a billing error within 24h with the generation ID.',
+    faq: [
+      {
+        q: 'Will Pika refund credits for watermarked paid output?',
+        a: 'Yes — open a ticket citing "watermark on paid tier output" with the generation ID. Pika treats this as a billing-system bug and refunds credits without question.',
+      },
+      {
+        q: 'Why does the Pika watermark sometimes appear on paid clips?',
+        a: 'The watermark-strip step is keyed on subscription state read from request metadata. Under specific routing conditions the metadata read can fail-open and the strip step is skipped.',
+      },
+      {
+        q: 'How do I avoid the Pika watermark bug?',
+        a: 'Re-run the same prompt — the bug is request-level, not prompt-level. AVA flags watermark-present output before you publish.',
+      },
+    ],
+  },
+  {
+    slug: 'kling-physics-collapse',
+    title: 'Kling Physics Collapse — Refund Guide',
+    metaTitle: 'Kling Physics Refund — Gravity, Mass, Collision Failures',
+    metaDesc:
+      'Kling generated a clip that violates basic physics — falling objects float, water doesn\'t splash, characters pass through walls? Refund guide with template.',
+    technicalTerm: 'Physics Prior Degeneration',
+    risk: 'MAJOR',
+    shortDesc: 'Kling output violates Newtonian physics — gravity inverts, mass conservation breaks, characters phase through solid objects, or fluid dynamics fail.',
+    longDesc:
+      'Physics Prior Degeneration on Kling is a known weakness of Kuaishou\'s diffusion model — physics is encoded statistically through training video, not via a simulation prior. Under fast motion, multiple interacting objects, or fluid scenes, the model produces output that is visually plausible frame-by-frame but physically impossible across frames. Common in sports, cooking, and action prompts.',
+    symptoms: [
+      'Falling object hovers or accelerates upward',
+      'Water splash dissipates before contact with surface',
+      'Character passes through wall, floor, or door',
+      'Thrown object changes mass mid-flight',
+      'Liquid pours upward or stops mid-air',
+    ],
+    examples: [
+      {
+        prompt: '"A basketball player dunking, slow motion"',
+        failure: 'Ball passes through the rim from above without contact',
+        timestamp: '0:02',
+      },
+      {
+        prompt: '"Hot coffee being poured into a cup"',
+        failure: 'Coffee stream stops mid-air 5cm above the cup, then resumes',
+        timestamp: '0:01',
+      },
+    ],
+    refundStrength: 'MODERATE — Kling refunds physics-violation tickets when the failure is unambiguous and timestamped. Ambiguous physics edge-cases get debate from support.',
+    faq: [
+      {
+        q: 'Does Kling refund credits for physics failures?',
+        a: 'Yes for clear violations (objects passing through walls, gravity inversion). Open a ticket citing "Physics Prior Degeneration" with the timestamp.',
+      },
+      {
+        q: 'Why does Kling produce physics-violating output?',
+        a: 'Kling has no physics simulation — physics is encoded statistically through training video. Under fast motion or multi-object interaction the prior degenerates and produces locally plausible but globally impossible motion.',
+      },
+      {
+        q: 'How do I reduce physics failures on Kling?',
+        a: 'Avoid prompts with rapid object interaction (sports, splashing liquids, collisions). Slower motion + simpler scenes have a much higher success rate.',
+      },
+    ],
+  },
+  {
+    slug: 'hailuo-physics-collapse',
+    title: 'Hailuo (Minimax) Physics Collapse — Refund Guide',
+    metaTitle: 'Hailuo Physics Refund — Minimax Physics Failures',
+    metaDesc:
+      'Minimax Hailuo generated a clip with gravity inversion or mass-conservation failures? Refund guide for paid output.',
+    technicalTerm: 'Statistical Physics Prior Failure',
+    risk: 'MAJOR',
+    shortDesc: 'Minimax Hailuo output produces motion that violates basic physics — objects float, mass changes, fluids defy gravity — on paid output.',
+    longDesc:
+      'Statistical Physics Prior Failure on Hailuo is the same class of issue as Kling — Minimax\'s model has no physics simulation step. The model is particularly weak on multi-object scenes and fluid dynamics. Hailuo refund policy treats these as defects when timestamped and the prompt didn\'t explicitly request the impossible behaviour.',
+    symptoms: [
+      'Object falls upward or stops mid-fall',
+      'Liquid pour discontinues',
+      'Two objects pass through each other',
+      'Character\'s feet float above the ground while walking',
+    ],
+    examples: [
+      {
+        prompt: '"A child throwing a ball into the air"',
+        failure: 'Ball leaves hand, continues upward, exits frame — never falls',
+        timestamp: '0:00 → 0:03',
+      },
+    ],
+    refundStrength: 'MODERATE — Hailuo refunds clear physics violations on paid Pro tier output with timestamp evidence.',
+    faq: [
+      {
+        q: 'Does Minimax refund Hailuo credits for physics failures?',
+        a: 'Yes for unambiguous violations. Open a ticket citing physics-prior failure with the generation ID and a still.',
+      },
+      {
+        q: 'Why does Hailuo violate physics?',
+        a: 'Minimax\'s diffusion model encodes physics statistically through training video — there is no underlying physics engine. Under fast motion or fluid scenes the prior produces wrong output.',
+      },
+      {
+        q: 'How do I avoid Hailuo physics failures?',
+        a: 'Prefer slow, single-object scenes. Avoid liquids and collisions in the prompt. AVA pre-flights physics-risk prompts.',
+      },
+    ],
+  },
+  {
+    slug: 'veo-face-distortion',
+    title: 'Veo Face Distortion — Refund Guide',
+    metaTitle: 'Google Veo Face Refund — Identity Drift & Feature Distortion',
+    metaDesc:
+      'Google Veo generated a clip where the face distorts mid-scene or changes identity across cuts? Refund guide for paid Veo output.',
+    technicalTerm: 'Identity Embedding Drift',
+    risk: 'CRITICAL',
+    shortDesc: 'Google Veo output shows facial feature distortion mid-clip or identity change across cuts on paid output — face morphs subtly between frames or fully changes identity in a multi-shot prompt.',
+    longDesc:
+      'Identity Embedding Drift on Veo occurs because video diffusion models encode face structure as a regional likelihood prior rather than as a persistent identity embedding. Across frames, the per-frame face-likelihood prior re-rolls and the rendered face drifts in eye spacing, jaw shape, or skin texture. In multi-shot prompts the drift compounds across cuts and the character becomes unrecognisable. This is a critical defect for any branded or character-consistent use case.',
+    symptoms: [
+      'Eye spacing or jaw shape shifts between frames of a continuous shot',
+      'Skin texture re-rolls — pore pattern changes per frame',
+      'Character identity fully changes between two cuts of the same person',
+      'Facial expression shifts independent of prompt direction',
+    ],
+    examples: [
+      {
+        prompt: '"Close-up of a woman smiling, then turning to the side"',
+        failure: 'Jaw line and eye spacing visibly change during the turn — feels like two different people',
+        timestamp: '0:02',
+      },
+    ],
+    refundStrength: 'HIGH — Google Veo support refunds face-drift tickets on paid output when timestamps are provided.',
+    faq: [
+      {
+        q: 'Does Google refund Veo credits for face distortion?',
+        a: 'Yes — Veo treats identity drift on paid output as a defect. Cite "Identity Embedding Drift" with a still frame showing the change.',
+      },
+      {
+        q: 'Why does Veo distort faces across frames?',
+        a: 'Video diffusion has no persistent identity embedding — face structure is a per-frame likelihood prior that re-rolls. Across long clips or cuts, the rolls drift and identity changes.',
+      },
+      {
+        q: 'How do I avoid Veo face drift?',
+        a: 'Keep face on screen for shorter durations. Avoid cuts within a single generation. Use reference images where supported.',
+      },
+    ],
+  },
+  {
+    slug: 'sora-camera-control-failure',
+    title: 'Sora Camera Control Failure — Refund Guide',
+    metaTitle: 'Sora Camera Refund — Camera Motion Ignored on Paid Output',
+    metaDesc:
+      'OpenAI Sora ignored your camera motion direction (dolly, pan, crane)? Refund guide for paid Sora camera-conditioning failures.',
+    technicalTerm: 'Camera Conditioning Bypass',
+    risk: 'MAJOR',
+    shortDesc: 'OpenAI Sora ignores explicit camera motion direction (dolly-in, pan, crane, orbit) and produces a static or differently-moving shot.',
+    longDesc:
+      'Camera Conditioning Bypass on Sora occurs when the camera-motion conditioning channel is down-weighted relative to the subject prompt during generation. Sora encodes camera instructions separately from subject prompts; under certain prompt structures (especially when the subject prompt is long or visually complex) the camera channel can be effectively ignored. Result: you ask for a dolly-in and get a static medium shot.',
+    symptoms: [
+      'Prompt asks for dolly-in, output is locked-off static',
+      'Prompt asks for orbit, output is a pan or no motion',
+      'Camera motion magnitude is smaller than requested',
+      'Camera motion direction is wrong (left instead of right)',
+    ],
+    examples: [
+      {
+        prompt: '"Slow dolly-in to a chef plating a dish in a fine-dining kitchen"',
+        failure: 'Output is a locked-off medium shot — no dolly motion at all',
+        timestamp: '0:00 → 0:05',
+      },
+    ],
+    refundStrength: 'HIGH — OpenAI refunds Sora camera-conditioning failures on paid output with timestamp + prompt evidence.',
+    faq: [
+      {
+        q: 'Does OpenAI refund Sora credits for ignored camera motion?',
+        a: 'Yes — Sora camera-conditioning failures on paid output are honoured by OpenAI support when the prompt explicitly named the camera motion.',
+      },
+      {
+        q: 'Why does Sora ignore camera motion?',
+        a: 'Camera conditioning is a separate channel from the subject prompt. Under complex subject prompts the camera channel can be down-weighted to zero effective influence.',
+      },
+      {
+        q: 'How do I make Sora respect camera motion?',
+        a: 'Put the camera motion FIRST in the prompt before subject. Use canonical cinematography terms (dolly-in, dolly-out, crane up, orbit). Avoid combining camera motion with complex subject choreography.',
+      },
+    ],
+  },
+  {
+    slug: 'luma-motion-failure',
+    title: 'Luma Dream Machine Motion Failure — Refund Guide',
+    metaTitle: 'Luma Motion Refund — Dream Machine Motion Drift & Stutter',
+    metaDesc:
+      'Luma Dream Machine output has stuttering motion, frozen frames, or motion drift on paid generation? Refund guide.',
+    technicalTerm: 'Temporal Coherence Degradation',
+    risk: 'MAJOR',
+    shortDesc: 'Luma Dream Machine output exhibits motion stutter, frame freezing, or directional drift mid-clip on paid output.',
+    longDesc:
+      'Temporal Coherence Degradation on Luma occurs when the temporal attention window between frames partially collapses, causing the model to either freeze on a single frame for multiple time-steps or to drift motion direction without prompt change. This is particularly common past the 4-second mark on Dream Machine — the longer the clip, the more attention windows have an opportunity to degenerate.',
+    symptoms: [
+      'Mid-clip frame freeze for 200-500ms',
+      'Motion direction changes without prompt change',
+      'Motion stutter (forward, back, forward) in a clip that should be unidirectional',
+      'Final second of a 5-second clip noticeably degraded vs first second',
+    ],
+    examples: [
+      {
+        prompt: '"A skateboarder rolling forward down a street"',
+        failure: 'Skateboarder freezes at 0:03, resumes at 0:04 in a slightly different position',
+        timestamp: '0:03',
+      },
+    ],
+    refundStrength: 'HIGH — Luma refunds temporal-coherence failures on paid Dream Machine output with timestamps.',
+    faq: [
+      {
+        q: 'Does Luma refund credits for motion stutter?',
+        a: 'Yes — temporal coherence failures are refundable on paid output. Cite "Temporal Coherence Degradation" with the timestamp.',
+      },
+      {
+        q: 'Why does Luma stutter or freeze mid-clip?',
+        a: 'Temporal attention windows between frames partially collapse, causing the model to repeat or freeze on a single frame for multiple decoder steps.',
+      },
+      {
+        q: 'How do I reduce Luma motion failures?',
+        a: 'Keep clips under 4 seconds where possible. Avoid complex multi-direction motion in a single prompt. AVA pre-flights long-duration motion prompts.',
+      },
+    ],
+  },
+  {
+    slug: 'seedance-prompt-adherence-failure',
+    title: 'Seedance (ByteDance) Prompt Adherence Failure — Refund Guide',
+    metaTitle: 'Seedance Prompt Refund — ByteDance Prompt Ignored on Paid Output',
+    metaDesc:
+      'ByteDance Seedance ignored major parts of your prompt on paid output? Refund guide for prompt-adherence failures.',
+    technicalTerm: 'Cross-Attention Prompt Drop',
+    risk: 'MAJOR',
+    shortDesc: 'ByteDance Seedance produces output that ignores significant parts of the prompt — wrong subject, wrong setting, wrong action — on paid output.',
+    longDesc:
+      'Cross-Attention Prompt Drop on Seedance is a known limitation of ByteDance\'s diffusion model. The model uses a cross-attention text encoder to condition generation on the prompt; under specific prompt structures (long prompts, prompts with multiple subjects, or prompts mixing concrete + abstract concepts) the cross-attention can drop entire prompt clauses. The output then reflects only a subset of the prompt with the rest silently ignored.',
+    symptoms: [
+      'Output shows wrong subject (asked for cat, got dog)',
+      'Setting completely different from prompt (asked for beach, got forest)',
+      'Multiple-subject prompts produce only one subject',
+      'Action verb ignored (asked for running, got standing)',
+    ],
+    examples: [
+      {
+        prompt: '"A red panda and a fox playing chess at a wooden table in a forest"',
+        failure: 'Output shows a single red panda alone at a table — fox and chess board absent',
+        timestamp: '0:00 → 0:05',
+      },
+    ],
+    refundStrength: 'HIGH — ByteDance Seedance support refunds prompt-adherence failures on paid output with the prompt and output evidence.',
+    faq: [
+      {
+        q: 'Does Seedance refund credits for ignored prompts?',
+        a: 'Yes — prompt-adherence failures on paid Seedance output are refundable. Cite "Cross-Attention Prompt Drop" with the prompt and the failing clip.',
+      },
+      {
+        q: 'Why does Seedance ignore parts of the prompt?',
+        a: 'The cross-attention text encoder can drop entire prompt clauses under long or compositionally complex prompts. There is no signal in the output that this happened.',
+      },
+      {
+        q: 'How do I improve Seedance prompt adherence?',
+        a: 'Keep prompts short and single-subject. Put the most important element FIRST. Avoid mixing abstract and concrete concepts in the same prompt. AVA pre-flights compositional risk.',
+      },
+    ],
+  },
 ];
 
 export function getFailure(slug: string): FailureData | undefined {
@@ -2010,19 +2296,27 @@ export function getFailure(slug: string): FailureData | undefined {
 // internal PageRank between sibling pages (e.g. Sora watermark ←→ Runway
 // watermark) rather than dumping all 32 other slugs as a flat grid.
 export const FAILURE_CLUSTERS: Record<string, string[]> = {
-  watermark: ['runway-watermark-bleed', 'sora-watermark-bleed-failure', 'kling-watermark-bleed'],
+  watermark: [
+    'runway-watermark-bleed',
+    'sora-watermark-bleed-failure',
+    'kling-watermark-bleed',
+    'pika-watermark-bleed',
+  ],
   physics: [
     'runway-physics-collapse',
     'luma-physics-collapse',
     'sora-physics-collapse',
     'veo-physics-collapse',
     'pika-physics-collapse',
+    'kling-physics-collapse',
+    'hailuo-physics-collapse',
   ],
   face: [
     'runway-face-distortion',
     'luma-face-distortion',
     'seedance-face-distortion',
     'sora-face-distortion',
+    'veo-face-distortion',
   ],
   text: [
     'runway-text-rendering-failure',
@@ -2043,12 +2337,14 @@ export const FAILURE_CLUSTERS: Record<string, string[]> = {
     'runway-prompt-ignored-failure',
     'veo-camera-motion-ignored-failure',
     'luma-prompt-adherence-failure',
+    'seedance-prompt-adherence-failure',
   ],
   camera: [
     'runway-camera-jitter',
     'luma-camera-path-drift',
     'hailuo-camera-shake-artifact',
     'veo-camera-motion-ignored-failure',
+    'sora-camera-control-failure',
   ],
   motion: [
     'pika-motion-failure',
@@ -2056,6 +2352,7 @@ export const FAILURE_CLUSTERS: Record<string, string[]> = {
     'kling-motion-blur-overload',
     'runway-temporal-flicker',
     'veo-motion-failure',
+    'luma-motion-failure',
   ],
   audioLipSync: [
     'runway-audio-sync-drift',
