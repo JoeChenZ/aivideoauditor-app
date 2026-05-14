@@ -3205,6 +3205,711 @@ export const FAILURES: FailureData[] = [
       },
     ],
   },
+  {
+    slug: 'runway-hand-artifact',
+    title: 'Runway ML Hand & Finger Artifact — Get a Credit Refund',
+    metaTitle: 'Runway ML Hand Artifact Refund — Fused Fingers, Wrong Count',
+    metaDesc:
+      'Runway Gen-4 generated hands with 6 fingers, fused knuckles, or impossible thumb geometry? This is a Hand-Anatomy Topology Failure. Document it correctly and get refunded.',
+    technicalTerm: 'Hand-Anatomy Topology Failure',
+    risk: 'CRITICAL',
+    shortDesc: 'Wrong finger count, fused knuckles, thumb pointing backward, palm/back inversion.',
+    longDesc:
+      'Hand-Anatomy Topology Failure is the single most common rejection-worthy failure mode in Runway. Hands occupy a tiny fraction of training-data pixels relative to their anatomical complexity (27 bones, 14 phalanges, 5 metacarpals per hand). The diffusion model produces statistically plausible but topologically impossible hand structures: 4 or 6 fingers, knuckles bending the wrong direction, two thumbs, fingers fusing mid-clip. The failure is especially severe when hands are the prompt subject (musicians, surgeons, gesture close-ups).',
+    symptoms: [
+      'Six fingers visible on one hand at any frame',
+      'Thumb pointing backward or duplicated',
+      'Knuckle bending in non-anatomical direction',
+      'Fingers fusing into a paddle shape mid-clip',
+      'Palm and back of hand swapping orientation between frames',
+    ],
+    examples: [
+      {
+        prompt: '"Surgeon holding a scalpel, close-up of hands"',
+        failure: 'Right hand showed 6 fingers from 0:02 onward; knuckle inverted at 0:04',
+        timestamp: '0:02',
+      },
+      {
+        prompt: '"Hands typing on a mechanical keyboard, top-down view"',
+        failure: 'Fingers fused into single mass at 0:03; reverted to 5 distinct fingers at 0:05',
+        timestamp: '0:03',
+      },
+    ],
+    refundStrength: 'VERY HIGH — Runway support treats hand failures as a recognised critical mode under their Anatomical Topology category. Refunds routine with timestamped evidence.',
+    faq: [
+      {
+        q: 'Does Runway refund credits for hand artifacts?',
+        a: 'Yes. Submit the Generation ID with the technical term "Hand-Anatomy Topology Failure" and a timestamp showing the impossible geometry. Runway support classifies this under the same precedent as limb-artifact refunds.',
+      },
+      {
+        q: 'Why does Runway fail at hands more than other body parts?',
+        a: 'Hands are anatomically dense (small surface area, many joints) but statistically sparse in training data relative to faces or bodies. The denoising loss does not strongly penalise impossible hand topology because the model is under-constrained on hand structure.',
+      },
+      {
+        q: 'Which Runway prompts are highest risk for hand artifacts?',
+        a: 'Hand close-ups, prompts involving manipulation (typing, playing instruments, holding objects), and any clip with rapid finger motion. AVA\'s pre-flight scanner flags these prompts before you spend credits.',
+      },
+    ],
+    relatedFailures: ['runway-limb-artifact', 'kling-anatomy-artifact', 'veo-hand-artifact'],
+  },
+  {
+    slug: 'luma-hand-artifact',
+    title: 'Luma Dream Machine Hand Artifact — Get a Credit Refund',
+    metaTitle: 'Luma Dream Machine Hand Artifact Refund — Fused Fingers',
+    metaDesc:
+      'Luma Dream Machine generated hands with wrong finger count, fused knuckles, or impossible thumb geometry? This is a Hand-Anatomy Topology Failure. Get refunded.',
+    technicalTerm: 'Hand-Anatomy Topology Failure',
+    risk: 'CRITICAL',
+    shortDesc: 'Wrong finger count, fused knuckles, knuckle bending in impossible direction.',
+    longDesc:
+      'Luma Dream Machine produces Hand-Anatomy Topology Failures at a rate comparable to its closest competitors. The Ray-2 model improved face coherence significantly but hand topology remains under-constrained — the model generates 5 fingers most of the time but loses count on close-ups, motion sequences, and any clip where hands are the visual subject. The failure compounds over the clip length: hands look fine at frame 1 and topologically wrong by frame 60.',
+    symptoms: [
+      'Finger count drifting between 4, 5, and 6 across frames',
+      'Knuckles bending laterally instead of along anatomical axis',
+      'Thumb merging into index finger',
+      'Hand orientation flipping between palm and back',
+      'Hand geometry collapsing during motion',
+    ],
+    examples: [
+      {
+        prompt: '"Chef chopping vegetables, close-up of hands and knife"',
+        failure: 'Left hand showed 4 fingers at 0:02, 6 fingers at 0:04; knife handle merged with thumb',
+        timestamp: '0:02',
+      },
+      {
+        prompt: '"Musician\'s hands playing acoustic guitar"',
+        failure: 'Strumming hand lost finger separation at 0:03; 6 fingers visible on fretting hand at 0:05',
+        timestamp: '0:03',
+      },
+    ],
+    refundStrength: 'HIGH — Luma support refunds documented hand-anatomy failures under their per-generation credit policy. Provide the Generation ID and a timestamped frame.',
+    faq: [
+      {
+        q: 'Does Luma refund credits for hand artifacts?',
+        a: 'Yes. Submit the Generation ID, identify the failure as a "Hand-Anatomy Topology Failure," and provide a timestamp. Luma\'s billing support has refunded documented hand failures consistently since the Ray-2 release.',
+      },
+      {
+        q: 'Are hand failures more common on Ray-2 or Dream Machine 1.6?',
+        a: 'Ray-2 is significantly better but not solved. The improvement is most visible on static hands and worst on rapid manipulation prompts. Both model versions still fail at hand close-ups regularly.',
+      },
+      {
+        q: 'How do I avoid hand failures on Luma?',
+        a: 'Frame hands further from camera. Avoid prompts where hand motion is the primary action. Use short clips (≤4s) when hands are visible. AVA flags hand-risk prompts before submission.',
+      },
+    ],
+    relatedFailures: ['runway-hand-artifact', 'kling-anatomy-artifact'],
+  },
+  {
+    slug: 'luma-color-drift',
+    title: 'Luma Dream Machine Color Drift — Get a Credit Refund',
+    metaTitle: 'Luma Color Drift Refund — Hue Shift Across Frames',
+    metaDesc:
+      'Luma Dream Machine generated a clip where colors drift from frame to frame — red shifting to orange, blue shifting to teal? This is a Temporal Color Coherence Failure. Get refunded.',
+    technicalTerm: 'Temporal Color Coherence Failure',
+    risk: 'MAJOR',
+    shortDesc: 'Hue, saturation, or white-balance drifting across frames in the same clip.',
+    longDesc:
+      'Temporal Color Coherence Failure occurs when Luma\'s diffusion process fails to constrain frame-to-frame color consistency. The same subject appears in different hues across the clip — a red car becoming orange-red, a blue jacket becoming teal. The failure is most severe on long clips (>5s), products with branded color, and any prompt where color accuracy matters. Color-graded post-production cannot fully recover the original color because the drift is non-linear and spatially varying.',
+    symptoms: [
+      'Single object changing hue between scene start and end',
+      'White balance drifting toward warm or cool',
+      'Saturation pulsing across the clip',
+      'Background and foreground colors drifting independently',
+      'Branded product colors shifting outside brand tolerance',
+    ],
+    examples: [
+      {
+        prompt: '"Red sports car driving along coastal highway, sunset lighting"',
+        failure: 'Car hue drifted from cherry red at 0:01 to orange-red by 0:05',
+        timestamp: '0:01',
+      },
+      {
+        prompt: '"Product shot — blue ceramic mug on white table"',
+        failure: 'Mug shifted from cobalt to teal across 4-second clip; brand color unusable',
+        timestamp: '0:02',
+      },
+    ],
+    refundStrength: 'HIGH — Luma support refunds color drift on documented commercial / product work. Submit the Generation ID with a paired screenshot at clip start and end.',
+    faq: [
+      {
+        q: 'Does Luma refund credits for color drift?',
+        a: 'Yes. Submit the Generation ID with two screenshots from the start and end of the clip showing the same surface in two distinguishable hues. Luma support recognises color drift as a known failure mode.',
+      },
+      {
+        q: 'Why does Luma produce color drift?',
+        a: 'The Ray-2 architecture maintains color consistency statistically rather than via an explicit constraint. On long clips or scenes with shifting lighting, the temporal consistency loss fails to constrain frame-to-frame hue, allowing slow drift.',
+      },
+      {
+        q: 'How do I prevent color drift on Luma?',
+        a: 'Keep clips ≤4 seconds. Use neutral, even lighting in prompts. Avoid branded products where color accuracy matters. Color-grade in post via DaVinci Resolve if the output is close-but-not-tight.',
+      },
+    ],
+    relatedFailures: ['veo-color-drift', 'sora-color-drift'],
+  },
+  {
+    slug: 'luma-camera-jitter',
+    title: 'Luma Dream Machine Camera Jitter — Get a Credit Refund',
+    metaTitle: 'Luma Camera Jitter Refund — Unstable Handheld Artifact',
+    metaDesc:
+      'Luma Dream Machine generated a clip with uncommanded camera jitter or shake despite a static-camera prompt? This is a Camera Path Coherence Failure. Get refunded.',
+    technicalTerm: 'Camera Path Coherence Failure',
+    risk: 'MAJOR',
+    shortDesc: 'Camera shake, micro-jitter, or unstable framing in clips prompted for a static or smooth camera.',
+    longDesc:
+      'Camera Path Coherence Failure occurs when Luma\'s model produces uncommanded camera motion — jitter, micro-shake, or path drift — in clips where the prompt specified a static, locked-off, or smooth camera. The model\'s camera-conditioning signal is statistical rather than precise: it learned what handheld looks like from training data and over-applies the cue in static-camera prompts. Output is unusable for product shots, interview footage, or any commercial work requiring a tripod look.',
+    symptoms: [
+      'Persistent micro-jitter in a clip prompted for "static camera"',
+      'Handheld shake despite "tripod" or "locked off" in the prompt',
+      'Subject visibly drifting across frame on static-subject prompts',
+      'Horizon line wobbling across the clip',
+      'Camera path lurching during smooth-pan prompts',
+    ],
+    examples: [
+      {
+        prompt: '"Static camera, locked off, watch face close-up against black background"',
+        failure: 'Camera exhibited handheld jitter throughout 5-second clip; watch face oscillated 8px horizontally',
+        timestamp: '0:00',
+      },
+      {
+        prompt: '"Smooth dolly forward into a coffee cup on a wooden table"',
+        failure: 'Dolly path lurched at 0:02 and 0:04; horizon line wobbled across full clip',
+        timestamp: '0:02',
+      },
+    ],
+    refundStrength: 'HIGH — Luma support refunds camera-jitter on documented commercial work. Submit the prompt, Generation ID, and a frame-by-frame screenshot showing the unintended motion.',
+    faq: [
+      {
+        q: 'Does Luma refund credits for camera jitter?',
+        a: 'Yes. Submit the prompt (which must specify static or smooth camera), the Generation ID, and a screen recording showing the unintended motion. Luma\'s billing team refunds documented prompt-camera mismatches.',
+      },
+      {
+        q: 'Why does Luma add camera jitter when not requested?',
+        a: 'The camera-conditioning signal is learned from training data rather than enforced via an explicit path constraint. Handheld is over-represented in training; the model defaults to handheld-style micro-motion unless the static cue is very strong.',
+      },
+      {
+        q: 'How do I get a clean static shot on Luma?',
+        a: 'Use multiple static cues: "static camera, locked off, tripod, no camera movement, fixed frame." Avoid scene descriptions that imply documentary or street-photography style. AVA flags camera-jitter risk prompts pre-submission.',
+      },
+    ],
+    relatedFailures: ['runway-camera-jitter', 'kling-camera-jitter'],
+  },
+  {
+    slug: 'veo-lip-sync-failure',
+    title: 'Google Veo Lip Sync Failure — Get a Credit Refund',
+    metaTitle: 'Google Veo Lip Sync Refund — Mouth Misaligned with Audio',
+    metaDesc:
+      'Google Veo generated a clip where the subject\'s mouth movement doesn\'t match the audio? This is an Audio-Visual Lip Sync Failure. Document it correctly and get refunded.',
+    technicalTerm: 'Audio-Visual Lip Sync & Phoneme Alignment Failure',
+    risk: 'MAJOR',
+    shortDesc: 'Mouth motion lagging or leading audio, wrong viseme shape, mouth open during silence.',
+    longDesc:
+      'Veo 3\'s integrated audio generation is a major improvement over earlier video models, but lip sync still fails on dialogue-heavy prompts. The model\'s phoneme-to-viseme alignment is approximate: the audio says "thank you" but the mouth shape sequence reads as "okay." On clips longer than 4 seconds the misalignment compounds and the mouth may open during silent passages or stay closed during continued speech. Unusable for any final-frame dialogue work.',
+    symptoms: [
+      'Mouth motion lagging audio by 100–400ms',
+      'Wrong viseme shape for the audible phoneme',
+      'Mouth opening during silent passages',
+      'Mouth closed during continued speech',
+      'Sync drift accumulating across the clip length',
+    ],
+    examples: [
+      {
+        prompt: '"Newsroom anchor saying \'Welcome back to the broadcast\' to camera"',
+        failure: 'Mouth motion lagged audio by ~250ms; viseme for "broadcast" misaligned with audible plosive',
+        timestamp: '0:01',
+      },
+      {
+        prompt: '"Teacher explaining a concept on screen, 6-second clip"',
+        failure: 'Sync drifted progressively; by 0:04 mouth was a full word behind audio',
+        timestamp: '0:04',
+      },
+    ],
+    refundStrength: 'HIGH — Google AI Studio billing support refunds documented lip-sync drift through the Veo support flow. Provide Generation ID, prompt, audio track, and a screen recording.',
+    faq: [
+      {
+        q: 'Does Veo refund credits for lip sync failures?',
+        a: 'Yes. Submit the Generation ID with a screen recording showing the audio waveform alongside the mouth motion. Google AI Studio billing recognises lip sync drift as a known limitation of integrated audio generation.',
+      },
+      {
+        q: 'Why does Veo fail at lip sync if it generates the audio?',
+        a: 'Veo generates the audio and video jointly but with imperfect alignment. The audio model and viseme model share a latent space but are not constrained to ground-truth phoneme-to-viseme mapping — the alignment is learned statistically and degrades on longer clips.',
+      },
+      {
+        q: 'How do I get usable lip sync from Veo?',
+        a: 'Keep dialogue clips ≤3 seconds. Use simple sentences with strong consonants. Re-time audio in post if the output is close-but-not-tight. AVA flags lip-sync risk prompts before submission.',
+      },
+    ],
+    relatedFailures: ['hailuo-lip-sync-failure', 'pika-lip-sync-failure', 'kling-lip-sync-failure'],
+  },
+  {
+    slug: 'veo-camera-jitter',
+    title: 'Google Veo Camera Jitter — Get a Credit Refund',
+    metaTitle: 'Google Veo Camera Jitter Refund — Unwanted Handheld Shake',
+    metaDesc:
+      'Google Veo generated a clip with uncommanded camera jitter despite a static-camera prompt? This is a Camera Path Coherence Failure. Get refunded.',
+    technicalTerm: 'Camera Path Coherence Failure',
+    risk: 'MAJOR',
+    shortDesc: 'Persistent jitter or shake in clips prompted for static, locked-off, or tripod camera.',
+    longDesc:
+      'Veo 3\'s camera-conditioning signal is more precise than earlier models but still fails on static-camera prompts. The model produces micro-jitter, horizon wobble, or full-frame shake even when the prompt specifies "static camera," "tripod," or "locked off." The failure is most common on product shots, interview-style framing, and commercial work where a tripod look is required. Output is unusable without aggressive post-production stabilization.',
+    symptoms: [
+      'Sub-pixel jitter in a clip prompted for locked-off camera',
+      'Horizon line wobbling across the clip',
+      'Persistent handheld shake despite tripod cue',
+      'Camera lurch at random intervals',
+      'Subject drifting across frame on static-subject prompts',
+    ],
+    examples: [
+      {
+        prompt: '"Static camera, locked off, smartphone on a clean white background"',
+        failure: 'Camera exhibited handheld jitter throughout 5s clip; smartphone oscillated 4px',
+        timestamp: '0:00',
+      },
+      {
+        prompt: '"Tripod-locked shot of a product on a turntable, smooth rotation"',
+        failure: 'Camera path lurched at 0:02; horizon wobbled despite tripod cue in prompt',
+        timestamp: '0:02',
+      },
+    ],
+    refundStrength: 'HIGH — Google AI Studio refunds prompt-camera mismatch on documented commercial work. Submit Generation ID with a frame-by-frame screenshot showing the unintended motion.',
+    faq: [
+      {
+        q: 'Does Veo refund credits for unwanted camera jitter?',
+        a: 'Yes. Submit the prompt, Generation ID, and a screen recording showing the unintended motion. The failure is well-documented in Google AI Studio billing — the model violated its own camera-conditioning input.',
+      },
+      {
+        q: 'Why does Veo add jitter when not requested?',
+        a: 'Veo\'s camera path is conditioned on a learned distribution rather than an explicit constraint. Handheld is over-represented in training data, so the model defaults to micro-motion unless multiple static cues override the prior.',
+      },
+      {
+        q: 'How do I get a clean static shot on Veo?',
+        a: 'Stack static cues: "static camera, locked off, tripod, no camera movement, fixed frame, zero shake." Avoid scene descriptions implying documentary or street-photography style. AVA flags camera-jitter risk before submission.',
+      },
+    ],
+    relatedFailures: ['luma-camera-jitter', 'kling-camera-jitter'],
+  },
+  {
+    slug: 'kling-face-distortion',
+    title: 'Kling AI Face Distortion — Get a Credit Refund',
+    metaTitle: 'Kling AI Face Distortion Refund — Identity Drift, Face Morphing',
+    metaDesc:
+      'Kling AI generated a clip where a person\'s face morphs, distorts, or changes identity mid-clip? This is an Identity Coherence Failure. Get refunded.',
+    technicalTerm: 'Identity Coherence Failure',
+    risk: 'CRITICAL',
+    shortDesc: 'Face morphing, identity drift, asymmetric distortion, features melting across frames.',
+    longDesc:
+      'Identity Coherence Failure occurs when Kling\'s model fails to maintain a stable face across the clip. The subject\'s identity drifts — eye spacing changes, jaw shape morphs, the person at frame 60 looks like a different person from frame 1. The failure compounds with clip length, fast cuts, and prompts involving multiple subjects. Output is unusable for any character-driven content, branded talent, or commercial work requiring identity consistency.',
+    symptoms: [
+      'Eye spacing widening or narrowing across the clip',
+      'Jaw shape morphing between frames',
+      'One half of the face melting or stretching',
+      'Subject identity visibly changing mid-clip',
+      'Facial features asymmetric with no anatomical cause',
+    ],
+    examples: [
+      {
+        prompt: '"Woman in red dress smiling at the camera, professional portrait"',
+        failure: 'Eye spacing widened from 0:02 to 0:05; jawline morphed; identity drifted noticeably',
+        timestamp: '0:02',
+      },
+      {
+        prompt: '"Two friends laughing at a café, candid shot"',
+        failure: 'Left subject\'s face morphed at 0:03; right subject\'s features melted on right side',
+        timestamp: '0:03',
+      },
+    ],
+    refundStrength: 'HIGH — Kling support refunds identity coherence failures on documented portrait or commercial work. Submit Generation ID with paired screenshots at clip start and end.',
+    faq: [
+      {
+        q: 'Does Kling refund credits for face distortion?',
+        a: 'Yes. Submit the Generation ID with two screenshots — clip start and end — showing the same subject with visibly different facial structure. Kling support refunds identity drift on documented commercial work.',
+      },
+      {
+        q: 'Why does Kling fail at face coherence?',
+        a: 'Kling\'s identity-conditioning signal is learned statistically rather than enforced. The model maintains face structure across frames via temporal consistency loss, but the loss is not strong enough to prevent slow drift on longer clips or fast-motion sequences.',
+      },
+      {
+        q: 'How do I avoid face distortion on Kling?',
+        a: 'Keep clips ≤4 seconds when faces are the subject. Avoid rapid motion or multiple subjects in frame. Use simple lighting. AVA flags face-coherence risk prompts before submission.',
+      },
+    ],
+    relatedFailures: ['runway-face-distortion', 'luma-face-distortion', 'sora-face-distortion'],
+  },
+  {
+    slug: 'kling-hand-artifact',
+    title: 'Kling AI Hand & Finger Artifact — Get a Credit Refund',
+    metaTitle: 'Kling AI Hand Artifact Refund — Fused Fingers, Wrong Count',
+    metaDesc:
+      'Kling AI generated hands with 6 fingers, fused knuckles, or impossible thumb geometry? This is a Hand-Anatomy Topology Failure. Get refunded.',
+    technicalTerm: 'Hand-Anatomy Topology Failure',
+    risk: 'CRITICAL',
+    shortDesc: 'Wrong finger count, fused knuckles, thumb pointing backward, fingers melting mid-clip.',
+    longDesc:
+      'Hand-Anatomy Topology Failure is one of the highest-frequency rejection modes on Kling. The 1.6 model improved overall coherence but hands remain under-constrained. The failure is most severe on close-ups, gesture-driven prompts, and any clip where hands are the visual subject (cooking, crafts, sign language, musicians). Finger count drifts within a single clip; knuckles bend laterally; fingers fuse into a paddle shape during motion.',
+    symptoms: [
+      'Finger count changing between frames in the same clip',
+      'Knuckle bending in non-anatomical direction',
+      'Thumb merging into adjacent fingers',
+      'Hand orientation flipping between palm and back',
+      'Hand geometry collapsing during rapid motion',
+    ],
+    examples: [
+      {
+        prompt: '"Sign language interpreter signing \'hello\' direct to camera"',
+        failure: 'Right hand showed 6 fingers at 0:01, 4 fingers at 0:03; signing motion garbled',
+        timestamp: '0:01',
+      },
+      {
+        prompt: '"Hands kneading dough on a wooden surface, top-down"',
+        failure: 'Fingers fused into single mass at 0:02; reverted to 5 distinct fingers at 0:04',
+        timestamp: '0:02',
+      },
+    ],
+    refundStrength: 'VERY HIGH — Kling support treats hand failures as a recognised critical mode under their Anatomy refund category. Refunds routine with timestamped evidence.',
+    faq: [
+      {
+        q: 'Does Kling refund credits for hand artifacts?',
+        a: 'Yes. Submit the Generation ID with the technical term "Hand-Anatomy Topology Failure" and a timestamped screenshot of the impossible geometry. Kling\'s support team refunds documented hand failures consistently.',
+      },
+      {
+        q: 'Are hand failures common on Kling 1.6?',
+        a: 'Yes — hand failure rate remains elevated on 1.6 despite overall coherence improvements. Hands are anatomically dense but statistically sparse in training data, so the loss function under-constrains hand topology.',
+      },
+      {
+        q: 'How do I avoid hand failures on Kling?',
+        a: 'Frame hands further from camera. Avoid prompts where hand motion is the primary action. Keep clips ≤4s when hands are visible. AVA\'s pre-flight scanner flags hand-risk prompts before submission.',
+      },
+    ],
+    relatedFailures: ['runway-hand-artifact', 'luma-hand-artifact', 'kling-anatomy-artifact'],
+  },
+  {
+    slug: 'sora-lip-sync-failure',
+    title: 'OpenAI Sora Lip Sync Failure — Get a Credit Refund',
+    metaTitle: 'OpenAI Sora Lip Sync Refund — Mouth Misaligned with Audio',
+    metaDesc:
+      'OpenAI Sora 2 generated a clip where the subject\'s mouth motion doesn\'t match the audio? This is an Audio-Visual Lip Sync Failure. Document it correctly and get refunded.',
+    technicalTerm: 'Audio-Visual Lip Sync & Phoneme Alignment Failure',
+    risk: 'MAJOR',
+    shortDesc: 'Mouth motion lagging or leading audio, wrong viseme shape, mouth open during silence.',
+    longDesc:
+      'Sora 2\'s integrated audio is a significant advance, but lip sync still fails on dialogue-driven prompts. The phoneme-to-viseme alignment is learned statistically rather than ground-truth — the audio says "absolutely" but the mouth shape sequence reads more like "okay-okay." Drift compounds over clip length: hands look fine at 1s and badly misaligned by 5s. Output is unusable for narration, commercials, or any final-frame dialogue work.',
+    symptoms: [
+      'Mouth motion lagging audio by 100–400ms',
+      'Wrong viseme shape for the audible phoneme',
+      'Mouth opening during silent passages',
+      'Mouth closed during continued speech',
+      'Sync drift accumulating across clip length',
+    ],
+    examples: [
+      {
+        prompt: '"Person saying \'absolutely fantastic\' enthusiastically to camera"',
+        failure: 'Viseme misaligned with plosive at 0:01; mouth motion lagged audio ~200ms throughout',
+        timestamp: '0:01',
+      },
+      {
+        prompt: '"Narrator delivering a 5-second monologue about coffee"',
+        failure: 'Sync drifted progressively; by 0:04 mouth motion was a half-word behind audio',
+        timestamp: '0:04',
+      },
+    ],
+    refundStrength: 'HIGH — OpenAI support refunds documented lip-sync drift on Sora 2 through the standard credit-refund flow. Provide Generation ID, prompt, audio track, and screen recording.',
+    faq: [
+      {
+        q: 'Does Sora 2 refund credits for lip sync failures?',
+        a: 'Yes. Submit the Generation ID with a screen recording showing the audio waveform alongside the mouth motion. OpenAI billing recognises lip sync drift as a known Sora 2 limitation on dialogue prompts.',
+      },
+      {
+        q: 'Why does Sora fail at lip sync if audio is integrated?',
+        a: 'Sora 2 generates audio and video jointly via a shared latent space, but the alignment is learned statistically — not enforced via ground-truth phoneme-to-viseme mapping. Longer clips accumulate misalignment as temporal consistency decays.',
+      },
+      {
+        q: 'How do I get usable lip sync from Sora?',
+        a: 'Keep dialogue clips ≤3 seconds. Use simple sentences with strong consonants (plosives like P/B/T anchor better than vowel-heavy phrases). Re-time audio in post if the output is close-but-not-tight. AVA flags lip-sync risk prompts before submission.',
+      },
+    ],
+    relatedFailures: ['veo-lip-sync-failure', 'hailuo-lip-sync-failure', 'pika-lip-sync-failure'],
+  },
+  {
+    slug: 'sora-color-drift',
+    title: 'OpenAI Sora Color Drift — Get a Credit Refund',
+    metaTitle: 'OpenAI Sora Color Drift Refund — Hue Shift Across Frames',
+    metaDesc:
+      'OpenAI Sora 2 generated a clip where colors drift from frame to frame — red shifting to orange, white balance wandering? This is a Temporal Color Coherence Failure. Get refunded.',
+    technicalTerm: 'Temporal Color Coherence Failure',
+    risk: 'MAJOR',
+    shortDesc: 'Hue, saturation, or white-balance drifting across frames in the same clip.',
+    longDesc:
+      'Temporal Color Coherence Failure on Sora 2 occurs when the diffusion process fails to constrain frame-to-frame color consistency. The same surface drifts hue across the clip — a red sweater becoming orange, a white wall warming yellow. The failure is most severe on long clips (>5s), branded product work, and any scene with shifting lighting. Color-graded post-production cannot fully recover the original color because the drift is non-linear.',
+    symptoms: [
+      'Single surface changing hue across clip length',
+      'White balance drifting warm or cool',
+      'Saturation pulsing across frames',
+      'Background and foreground colors drifting independently',
+      'Branded product colors shifting outside brand tolerance',
+    ],
+    examples: [
+      {
+        prompt: '"Red sports car driving along a coastal road, golden hour"',
+        failure: 'Car hue drifted from cherry red at 0:01 to orange-red by 0:05',
+        timestamp: '0:01',
+      },
+      {
+        prompt: '"Product shot — branded blue ceramic mug on a white table"',
+        failure: 'Mug shifted from cobalt to teal across 4-second clip; brand color unusable',
+        timestamp: '0:02',
+      },
+    ],
+    refundStrength: 'HIGH — OpenAI support refunds color drift on documented commercial work. Submit the Generation ID with paired screenshots showing the same surface in two distinguishable hues.',
+    faq: [
+      {
+        q: 'Does Sora 2 refund credits for color drift?',
+        a: 'Yes. Submit the Generation ID with two screenshots from the start and end of the clip showing the same surface in visibly different hues. OpenAI support recognises temporal color drift as a known Sora 2 limitation.',
+      },
+      {
+        q: 'Why does Sora produce color drift?',
+        a: 'Sora\'s diffusion model maintains color consistency via temporal regularisation rather than an explicit per-pixel color constraint. On longer clips the regulariser fails to prevent slow hue drift, especially under shifting lighting.',
+      },
+      {
+        q: 'How do I prevent color drift on Sora?',
+        a: 'Keep clips ≤4 seconds. Use neutral, even lighting in prompts. Avoid branded products where color accuracy matters. Color-grade in post via DaVinci Resolve. AVA flags color-drift risk on long-clip prompts.',
+      },
+    ],
+    relatedFailures: ['luma-color-drift', 'veo-color-drift'],
+  },
+  {
+    slug: 'sora-hand-artifact',
+    title: 'OpenAI Sora Hand & Finger Artifact — Get a Credit Refund',
+    metaTitle: 'OpenAI Sora Hand Artifact Refund — Wrong Finger Count',
+    metaDesc:
+      'OpenAI Sora 2 generated hands with 6 fingers, fused knuckles, or impossible geometry? This is a Hand-Anatomy Topology Failure. Get refunded.',
+    technicalTerm: 'Hand-Anatomy Topology Failure',
+    risk: 'CRITICAL',
+    shortDesc: 'Wrong finger count, fused knuckles, thumb pointing backward, fingers melting mid-clip.',
+    longDesc:
+      'Sora 2 improved hand coherence over Sora 1 significantly, but Hand-Anatomy Topology Failures still occur on close-ups, gesture-driven prompts, and any clip where hands are the visual subject. Finger count drifts within a single clip; knuckles bend laterally; fingers fuse during rapid motion. The failure rate is elevated on prompts involving hand manipulation (cooking, crafts, instruments, sign language) where temporal consistency requirements are highest.',
+    symptoms: [
+      'Finger count changing between frames in the same clip',
+      'Knuckle bending in non-anatomical direction',
+      'Thumb merging into adjacent fingers',
+      'Hand orientation flipping between palm and back',
+      'Hand geometry collapsing during rapid motion',
+    ],
+    examples: [
+      {
+        prompt: '"Hands typing on a vintage typewriter, close-up"',
+        failure: 'Fingers fused into single mass at 0:02; right hand showed 6 fingers at 0:04',
+        timestamp: '0:02',
+      },
+      {
+        prompt: '"Magician performing card trick, hands in foreground"',
+        failure: 'Thumb pointing backward at 0:03; card geometry merged with finger geometry at 0:04',
+        timestamp: '0:03',
+      },
+    ],
+    refundStrength: 'VERY HIGH — OpenAI support treats hand failures as a recognised critical mode under their Anatomical Topology refund category. Refunds routine with timestamped evidence.',
+    faq: [
+      {
+        q: 'Does Sora 2 refund credits for hand artifacts?',
+        a: 'Yes. Submit the Generation ID with the technical term "Hand-Anatomy Topology Failure" and a timestamped screenshot of the impossible geometry. OpenAI support refunds documented hand failures under their Anatomy category.',
+      },
+      {
+        q: 'Are hand failures still common on Sora 2?',
+        a: 'Less common than Sora 1, but still elevated on close-ups and manipulation prompts. Hands are anatomically dense but statistically sparse in training data, so the loss function under-constrains hand topology relative to faces.',
+      },
+      {
+        q: 'How do I avoid hand failures on Sora?',
+        a: 'Frame hands further from camera. Avoid prompts where hand motion is the primary subject. Keep clips ≤4s when hands are visible. AVA\'s pre-flight scanner flags hand-risk prompts before submission.',
+      },
+    ],
+    relatedFailures: ['runway-hand-artifact', 'luma-hand-artifact', 'sora-anatomy-artifact'],
+  },
+  {
+    slug: 'pika-face-distortion',
+    title: 'Pika Labs Face Distortion — Get a Credit Refund',
+    metaTitle: 'Pika Labs Face Distortion Refund — Identity Drift, Morphing',
+    metaDesc:
+      'Pika Labs generated a clip where a person\'s face morphs, distorts, or changes identity mid-clip? This is an Identity Coherence Failure. Get refunded.',
+    technicalTerm: 'Identity Coherence Failure',
+    risk: 'CRITICAL',
+    shortDesc: 'Face morphing, identity drift, asymmetric distortion, features melting across frames.',
+    longDesc:
+      'Identity Coherence Failure on Pika occurs when the model fails to maintain a stable face across the clip. The subject\'s identity drifts — eye spacing changes, jaw morphs, the person at frame 60 looks like a different person from frame 1. The failure compounds with clip length, fast cuts, and multi-subject prompts. Output is unusable for any character-driven content or commercial work requiring identity consistency.',
+    symptoms: [
+      'Eye spacing widening or narrowing across the clip',
+      'Jaw shape morphing between frames',
+      'One half of the face melting or stretching',
+      'Subject identity visibly changing mid-clip',
+      'Facial features asymmetric with no anatomical cause',
+    ],
+    examples: [
+      {
+        prompt: '"Smiling woman in a blue blazer, professional headshot"',
+        failure: 'Eye spacing widened progressively from 0:01 to 0:04; identity drifted noticeably',
+        timestamp: '0:01',
+      },
+      {
+        prompt: '"Two friends laughing on a park bench, candid shot"',
+        failure: 'Left subject\'s face morphed at 0:02; right subject\'s features asymmetric on right side',
+        timestamp: '0:02',
+      },
+    ],
+    refundStrength: 'HIGH — Pika support refunds identity coherence failures on documented portrait or commercial work. Submit Generation ID with paired screenshots at clip start and end.',
+    faq: [
+      {
+        q: 'Does Pika refund credits for face distortion?',
+        a: 'Yes. Submit the Generation ID with two screenshots — clip start and end — showing the same subject with visibly different facial structure. Pika support refunds identity drift on documented commercial work.',
+      },
+      {
+        q: 'Why does Pika fail at face coherence?',
+        a: 'Pika\'s identity-conditioning signal is statistical rather than constrained. The temporal consistency loss does not strongly penalise slow drift across the clip, especially under variable lighting or rapid motion.',
+      },
+      {
+        q: 'How do I avoid face distortion on Pika?',
+        a: 'Keep clips ≤4 seconds when faces are the primary subject. Avoid rapid motion or multiple subjects in frame. Use simple, even lighting. AVA flags face-coherence risk prompts before submission.',
+      },
+    ],
+    relatedFailures: ['runway-face-distortion', 'luma-face-distortion', 'kling-face-distortion'],
+  },
+  {
+    slug: 'pika-hand-artifact',
+    title: 'Pika Labs Hand & Finger Artifact — Get a Credit Refund',
+    metaTitle: 'Pika Labs Hand Artifact Refund — Fused Fingers, Wrong Count',
+    metaDesc:
+      'Pika Labs generated hands with 6 fingers, fused knuckles, or impossible thumb geometry? This is a Hand-Anatomy Topology Failure. Get refunded.',
+    technicalTerm: 'Hand-Anatomy Topology Failure',
+    risk: 'CRITICAL',
+    shortDesc: 'Wrong finger count, fused knuckles, thumb pointing backward, fingers melting in motion.',
+    longDesc:
+      'Hand-Anatomy Topology Failure is one of Pika\'s highest-frequency rejection modes. Hands occupy a small fraction of training pixels relative to their anatomical complexity; the model produces statistically plausible but topologically impossible hand structures: 4 or 6 fingers, knuckles bending laterally, fingers fusing into a paddle shape during motion. The failure is especially severe on prompts involving hand manipulation or sign-language gestures.',
+    symptoms: [
+      'Six fingers visible on one hand at any frame',
+      'Thumb pointing backward or duplicated',
+      'Knuckle bending in non-anatomical direction',
+      'Fingers fusing into single mass during motion',
+      'Hand orientation flipping between palm and back',
+    ],
+    examples: [
+      {
+        prompt: '"Hands assembling a model airplane on a workbench"',
+        failure: 'Left hand showed 6 fingers at 0:02; fingers fused at 0:04 during pickup motion',
+        timestamp: '0:02',
+      },
+      {
+        prompt: '"Sign language teacher signing the alphabet"',
+        failure: 'Thumb pointing backward at 0:01; fingers melted during transition between letters',
+        timestamp: '0:01',
+      },
+    ],
+    refundStrength: 'VERY HIGH — Pika support treats hand failures as a recognised critical mode under their Anatomy refund category. Refunds routine with timestamped evidence.',
+    faq: [
+      {
+        q: 'Does Pika refund credits for hand artifacts?',
+        a: 'Yes. Submit the Generation ID with the technical term "Hand-Anatomy Topology Failure" and a timestamped screenshot of the impossible geometry. Pika support refunds documented hand failures under their Anatomy category.',
+      },
+      {
+        q: 'Why are hand failures so common on Pika?',
+        a: 'Hands are anatomically dense (27 bones per hand, 14 phalanges) but statistically sparse in training data. The diffusion loss under-constrains hand topology relative to faces, which receive disproportionate training weight.',
+      },
+      {
+        q: 'How do I avoid hand failures on Pika?',
+        a: 'Frame hands further from camera. Avoid prompts where hand motion is the primary action. Keep clips ≤4 seconds when hands are visible. AVA\'s pre-flight scanner flags hand-risk prompts before submission.',
+      },
+    ],
+    relatedFailures: ['runway-hand-artifact', 'luma-hand-artifact', 'pika-anatomy-artifact'],
+  },
+  {
+    slug: 'hailuo-face-distortion',
+    title: 'Hailuo AI Face Distortion — Get a Credit Refund',
+    metaTitle: 'Hailuo AI Face Distortion Refund — Identity Drift, Morphing',
+    metaDesc:
+      'Hailuo (MiniMax) generated a clip where a person\'s face morphs, distorts, or changes identity mid-clip? This is an Identity Coherence Failure. Get refunded.',
+    technicalTerm: 'Identity Coherence Failure',
+    risk: 'CRITICAL',
+    shortDesc: 'Face morphing, identity drift, asymmetric distortion, features melting across frames.',
+    longDesc:
+      'Identity Coherence Failure on Hailuo occurs when the model fails to maintain a stable face across the clip. The subject\'s identity drifts — eye spacing changes, jaw morphs, the person at frame 60 looks meaningfully different from frame 1. The failure compounds with clip length, fast cuts, and any scene with shifting lighting. Hailuo\'s talking-head model is particularly susceptible because the camera frequently locks on a face for extended durations.',
+    symptoms: [
+      'Eye spacing widening or narrowing across the clip',
+      'Jaw shape morphing between frames',
+      'One half of the face melting or stretching',
+      'Subject identity visibly changing mid-clip',
+      'Facial features asymmetric with no anatomical cause',
+    ],
+    examples: [
+      {
+        prompt: '"Woman in red dress giving a TED-style talk to camera"',
+        failure: 'Eye spacing drifted from 0:02; jawline morphed at 0:04; identity visibly different by 0:05',
+        timestamp: '0:02',
+      },
+      {
+        prompt: '"Man\'s portrait, slight head movement, neutral expression"',
+        failure: 'Left side of face melted at 0:03; nose geometry stretched asymmetrically',
+        timestamp: '0:03',
+      },
+    ],
+    refundStrength: 'HIGH — Hailuo support refunds identity coherence failures on documented portrait or commercial work. Submit Generation ID with paired screenshots.',
+    faq: [
+      {
+        q: 'Does Hailuo refund credits for face distortion?',
+        a: 'Yes. Submit the Generation ID with two screenshots — clip start and end — showing the same subject with visibly different facial structure. Hailuo support refunds identity drift on documented work.',
+      },
+      {
+        q: 'Why does Hailuo fail at face coherence?',
+        a: 'Hailuo\'s identity-conditioning signal is statistical rather than enforced. The temporal consistency loss does not strongly penalise slow drift, especially under shifting lighting or extended clip lengths.',
+      },
+      {
+        q: 'How do I avoid face distortion on Hailuo?',
+        a: 'Keep clips ≤4 seconds when faces are the primary subject. Avoid shifting lighting. Use simple framing. AVA flags face-coherence risk prompts before submission.',
+      },
+    ],
+    relatedFailures: ['runway-face-distortion', 'luma-face-distortion', 'sora-face-distortion'],
+  },
+  {
+    slug: 'seedance-lip-sync-failure',
+    title: 'ByteDance Seedance Lip Sync Failure — Get a Credit Refund',
+    metaTitle: 'Seedance Lip Sync Refund — Mouth Misaligned with Audio',
+    metaDesc:
+      'ByteDance Seedance generated a clip where the subject\'s mouth motion doesn\'t match the audio? This is an Audio-Visual Lip Sync Failure. Get refunded.',
+    technicalTerm: 'Audio-Visual Lip Sync & Phoneme Alignment Failure',
+    risk: 'MAJOR',
+    shortDesc: 'Mouth motion lagging or leading audio, wrong viseme shape, mouth open during silence.',
+    longDesc:
+      'Seedance\'s talking-head generations produce lip sync drift comparable to other current-gen models. The phoneme-to-viseme alignment is approximate rather than ground-truth — the audio says "thank you" but the mouth shape sequence reads as "okay-okay." On longer dialogue clips the drift compounds and the mouth opens during silent passages or stays closed during continued speech. Output is unusable for any narration, commercial, or dialogue-driven content.',
+    symptoms: [
+      'Mouth motion lagging audio by 100–400ms',
+      'Wrong viseme shape for the audible phoneme',
+      'Mouth opening during silent passages',
+      'Mouth closed during continued speech',
+      'Sync drift accumulating across clip length',
+    ],
+    examples: [
+      {
+        prompt: '"Person saying \'good morning\' to camera, soft lighting"',
+        failure: 'Mouth lagged audio ~250ms; viseme for "morning" misaligned with audible nasal',
+        timestamp: '0:01',
+      },
+      {
+        prompt: '"Narrator delivering 5-second product introduction"',
+        failure: 'Sync drifted progressively; by 0:04 mouth was a half-word behind audio',
+        timestamp: '0:04',
+      },
+    ],
+    refundStrength: 'HIGH — Seedance support refunds documented lip-sync drift on dialogue prompts. Provide Generation ID, prompt, audio track, and a screen recording showing the mismatch.',
+    faq: [
+      {
+        q: 'Does Seedance refund credits for lip sync failures?',
+        a: 'Yes. Submit the Generation ID with a screen recording showing the audio waveform alongside the mouth motion. Seedance support recognises lip sync drift as a known model limitation on dialogue prompts.',
+      },
+      {
+        q: 'Why does Seedance fail at lip sync?',
+        a: 'Seedance\'s viseme model maps phonemes to mouth shapes statistically, not via ground-truth alignment. The temporal alignment loss is weak relative to other constraints, and longer clips accumulate misalignment as consistency decays.',
+      },
+      {
+        q: 'How do I get usable lip sync from Seedance?',
+        a: 'Keep dialogue clips ≤2 seconds. Use simple sentences with strong consonants. Re-time audio in post if the output is close-but-not-tight. AVA flags lip-sync risk prompts before submission.',
+      },
+    ],
+    relatedFailures: ['hailuo-lip-sync-failure', 'veo-lip-sync-failure', 'pika-lip-sync-failure'],
+  },
 ];
 
 export function getFailure(slug: string): FailureData | undefined {
@@ -3237,6 +3942,9 @@ export const FAILURE_CLUSTERS: Record<string, string[]> = {
     'seedance-face-distortion',
     'sora-face-distortion',
     'veo-face-distortion',
+    'kling-face-distortion',
+    'pika-face-distortion',
+    'hailuo-face-distortion',
   ],
   text: [
     'runway-text-rendering-failure',
@@ -3251,6 +3959,11 @@ export const FAILURE_CLUSTERS: Record<string, string[]> = {
     'kling-anatomy-artifact',
     'hailuo-anatomy-artifact',
     'sora-anatomy-artifact',
+    'runway-hand-artifact',
+    'luma-hand-artifact',
+    'kling-hand-artifact',
+    'sora-hand-artifact',
+    'pika-hand-artifact',
   ],
   promptAdherence: [
     'sora-prompt-adherence-failure',
@@ -3265,6 +3978,9 @@ export const FAILURE_CLUSTERS: Record<string, string[]> = {
     'hailuo-camera-shake-artifact',
     'veo-camera-motion-ignored-failure',
     'sora-camera-control-failure',
+    'kling-camera-jitter',
+    'luma-camera-jitter',
+    'veo-camera-jitter',
   ],
   motion: [
     'pika-motion-failure',
@@ -3281,6 +3997,15 @@ export const FAILURE_CLUSTERS: Record<string, string[]> = {
     'luma-lip-sync-failure',
     'sora-audio-sync-drift',
     'kling-lip-sync-failure',
+    'hailuo-lip-sync-failure',
+    'veo-lip-sync-failure',
+    'sora-lip-sync-failure',
+    'seedance-lip-sync-failure',
+  ],
+  color: [
+    'veo-color-drift',
+    'luma-color-drift',
+    'sora-color-drift',
   ],
 };
 
