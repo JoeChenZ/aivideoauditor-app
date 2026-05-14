@@ -54,7 +54,37 @@ export default function AlternativesIndex() {
           ))}
         </div>
 
-        <section className="mt-16 bg-elevated border border-border rounded-2xl p-8">
+        {/* Continue exploring — cross-links */}
+        <section className="mt-12" aria-label="Continue exploring">
+          <h2 className="text-xl font-bold text-ink-primary mb-2">Continue exploring</h2>
+          <p className="text-ink-muted text-sm mb-6">
+            More resources for picking the right tool and recovering credits when things go wrong.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <Link href="/compare" className="bg-elevated border border-border rounded-xl p-5 hover:border-neon-purple/30 transition-colors block">
+              <p className="text-xs font-mono font-bold tracking-widest text-neon-purple uppercase mb-2">Head-to-head comparisons</p>
+              <p className="text-ink-primary font-bold text-sm mb-1">Detailed pairwise comparisons</p>
+              <p className="text-ink-muted text-xs">Runway vs Luma, Sora vs Veo, Kling vs Runway, and more.</p>
+            </Link>
+            <Link href="/failures" className="bg-elevated border border-border rounded-xl p-5 hover:border-neon-red/30 transition-colors block">
+              <p className="text-xs font-mono font-bold tracking-widest text-neon-red uppercase mb-2">Failure reference</p>
+              <p className="text-ink-primary font-bold text-sm mb-1">94 documented failure modes</p>
+              <p className="text-ink-muted text-xs">Refund-eligible categories across 8 providers, with the technical names support recognises.</p>
+            </Link>
+            <Link href="/case-studies" className="bg-elevated border border-border rounded-xl p-5 hover:border-neon-green/30 transition-colors block">
+              <p className="text-xs font-mono font-bold tracking-widest text-neon-green uppercase mb-2">Case studies</p>
+              <p className="text-ink-primary font-bold text-sm mb-1">$84-612/mo recovered by real users</p>
+              <p className="text-ink-muted text-xs">Anonymized stories — solo creator, agency, brand account.</p>
+            </Link>
+            <Link href="/graveyard" className="bg-elevated border border-border rounded-xl p-5 hover:border-neon-amber/30 transition-colors block">
+              <p className="text-xs font-mono font-bold tracking-widest text-neon-amber uppercase mb-2">AI Tool Graveyard</p>
+              <p className="text-ink-primary font-bold text-sm mb-1">17 shut-down or deprecated tools</p>
+              <p className="text-ink-muted text-xs">Refund windows, migration paths, what each tool meant.</p>
+            </Link>
+          </div>
+        </section>
+
+        <section className="mt-12 bg-elevated border border-border rounded-2xl p-8">
           <h2 className="text-xl font-bold text-ink-primary mb-4">Why pick by shot type, not by leaderboard</h2>
           <p className="text-ink-secondary text-sm leading-relaxed mb-3">
             Most &ldquo;best AI video tool&rdquo; rankings sort by demo quality. That&apos;s misleading for
