@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { COMPARISONS } from './[slug]/data';
+import LeadCaptureForm from '@/components/lead-capture-form';
 
 export const metadata: Metadata = {
   title: 'AI Video Model Comparisons — Head-to-Head by Failure Profile',
@@ -101,6 +102,16 @@ export default function CompareIndex() {
               </Link>
             </div>
           </section>
+
+          {/* Lead capture — converts comparison-shopping buyers */}
+          <div className="mt-12">
+            <LeadCaptureForm
+              source="compare-index"
+              heading="Want to skip the pairwise comparison? AVA Pro routes for you."
+              blurb="These pairwise comparisons help you pick one tool. AVA Pro picks the right tool per prompt — based on your historical hit-rate. Pre-register for a 30% lifetime discount on launch day."
+              cta="Notify me on launch →"
+            />
+          </div>
 
           <section className="mt-12 bg-elevated border border-border rounded-2xl p-8">
             <h2 className="text-xl font-bold text-ink-primary mb-4">Why compare by failure mode</h2>

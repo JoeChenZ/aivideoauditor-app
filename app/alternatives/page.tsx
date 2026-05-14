@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ALTERNATIVES } from './[slug]/data';
+import LeadCaptureForm from '@/components/lead-capture-form';
 
 export const metadata: Metadata = {
   title: 'AI Video Tool Alternatives — Honest Comparison Guide (2026)',
@@ -83,6 +84,16 @@ export default function AlternativesIndex() {
             </Link>
           </div>
         </section>
+
+        {/* Lead capture — converts alternatives shoppers */}
+        <div className="mt-12">
+          <LeadCaptureForm
+            source="alternatives-index"
+            heading="Want AVA Pro to pick the right tool for you, automatically?"
+            blurb="AVA Pro routes each prompt to whichever provider fails least on that shot type based on your historical hit-rate. Stripe LIVE is shipping soon; pre-register for a 30% lifetime discount on launch day."
+            cta="Notify me on launch →"
+          />
+        </div>
 
         <section className="mt-12 bg-elevated border border-border rounded-2xl p-8">
           <h2 className="text-xl font-bold text-ink-primary mb-4">Why pick by shot type, not by leaderboard</h2>
