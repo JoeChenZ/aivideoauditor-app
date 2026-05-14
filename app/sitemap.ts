@@ -2,6 +2,7 @@ import { MetadataRoute } from 'next';
 import { FAILURES } from './failures/[slug]/data';
 import { SHUTDOWNS } from './graveyard/[slug]/data';
 import { COMPARISONS } from './compare/[slug]/data';
+import { CASE_STUDIES } from './case-studies/[slug]/data';
 
 const BASE = 'https://www.aivideoauditor.com';
 
@@ -27,10 +28,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.85,
   }));
 
+  const caseStudyPages: MetadataRoute.Sitemap = CASE_STUDIES.map((c) => ({
+    url: `${BASE}/case-studies/${c.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly',
+    priority: 0.85,
+  }));
+
   return [
     { url: BASE, lastModified: new Date(), changeFrequency: 'weekly', priority: 1.0 },
     { url: `${BASE}/pricing`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.95 },
     { url: `${BASE}/failures`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.92 },
+    { url: `${BASE}/case-studies`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.91 },
     { url: `${BASE}/compare`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.9 },
     { url: `${BASE}/graveyard`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.9 },
     { url: `${BASE}/guide`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.9 },
@@ -40,5 +49,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...failurePages,
     ...graveyardPages,
     ...comparePages,
+    ...caseStudyPages,
   ];
 }
