@@ -3910,6 +3910,429 @@ export const FAILURES: FailureData[] = [
     ],
     relatedFailures: ['hailuo-lip-sync-failure', 'veo-lip-sync-failure', 'pika-lip-sync-failure'],
   },
+  {
+    slug: 'kling-color-drift',
+    title: 'Kling AI Color Drift — Get a Credit Refund',
+    metaTitle: 'Kling AI Color Drift Refund — Hue Shift Across Frames',
+    metaDesc:
+      'Kling 1.6 generated a clip where colors drift from frame to frame — red shifting to orange, white balance wandering? This is a Temporal Color Coherence Failure. Get refunded.',
+    technicalTerm: 'Temporal Color Coherence Failure',
+    risk: 'MAJOR',
+    shortDesc: 'Hue, saturation, or white-balance drifting across frames in the same clip.',
+    longDesc:
+      'Temporal Color Coherence Failure on Kling 1.6 occurs when the model fails to constrain frame-to-frame color consistency. The same surface drifts hue across the clip — a red car becoming orange, a white wall warming yellow. The failure is most severe on long clips (>5s), branded products, and any scene with shifting lighting. Kling\'s hybrid diffusion+autoregressive architecture helps with motion but doesn\'t fully prevent color drift.',
+    symptoms: [
+      'Single surface changing hue across clip length',
+      'White balance drifting warm or cool',
+      'Saturation pulsing across frames',
+      'Background and foreground colors drifting independently',
+      'Branded product colors shifting outside brand tolerance',
+    ],
+    examples: [
+      {
+        prompt: '"Red Ferrari driving on coastal highway, golden hour"',
+        failure: 'Car hue drifted from cherry red at 0:01 to orange-red by 0:05',
+        timestamp: '0:01',
+      },
+      {
+        prompt: '"Branded blue mug on white table, product shot"',
+        failure: 'Mug shifted from cobalt to teal across 4-second clip; brand color unusable',
+        timestamp: '0:02',
+      },
+    ],
+    refundStrength: 'HIGH — Kling support refunds color drift on documented commercial work. Submit Generation ID with paired screenshots from clip start and end.',
+    faq: [
+      {
+        q: 'Does Kling refund credits for color drift?',
+        a: 'Yes. Submit the Generation ID with two screenshots from the start and end of the clip showing the same surface in visibly different hues. Kling support recognises temporal color drift as a known model limitation on long clips.',
+      },
+      {
+        q: 'Why does Kling produce color drift if it has motion priors?',
+        a: 'Kling\'s motion + physics priors are strong, but color coherence is a separate constraint. The model maintains color statistically via temporal regularisation rather than an explicit per-pixel color constraint — on longer clips the regulariser fails to prevent slow hue drift.',
+      },
+      {
+        q: 'How do I prevent color drift on Kling?',
+        a: 'Keep clips ≤4 seconds when color accuracy matters. Use neutral lighting in prompts. Avoid branded products. Color-grade in post via DaVinci Resolve if the output is close-but-not-tight. AVA flags color-drift risk on long-clip prompts.',
+      },
+    ],
+    relatedFailures: ['luma-color-drift', 'sora-color-drift', 'veo-color-drift'],
+  },
+  {
+    slug: 'pika-color-drift',
+    title: 'Pika Labs Color Drift — Get a Credit Refund',
+    metaTitle: 'Pika Labs Color Drift Refund — Hue Shift Across Frames',
+    metaDesc:
+      'Pika Labs generated a clip where colors drift from frame to frame — red shifting to orange, white balance wandering? This is a Temporal Color Coherence Failure. Get refunded.',
+    technicalTerm: 'Temporal Color Coherence Failure',
+    risk: 'MAJOR',
+    shortDesc: 'Hue, saturation, or white-balance drifting across frames in the same clip.',
+    longDesc:
+      'Pika 2.0\'s color coherence is constrained statistically rather than via an explicit per-frame color constraint. On clips longer than 4 seconds, branded products, or scenes with shifting lighting, the same surface drifts hue across frames — a red sweater becoming orange, a white wall warming yellow. The failure is most pronounced on Pika\'s stylized rendering modes where the color palette is non-photoreal to begin with.',
+    symptoms: [
+      'Single surface changing hue across clip length',
+      'White balance drifting warm or cool',
+      'Saturation pulsing across frames',
+      'Background and foreground colors drifting independently',
+      'Stylized palette drifting between renders of the same prompt',
+    ],
+    examples: [
+      {
+        prompt: '"Red apple on a marble countertop, soft lighting"',
+        failure: 'Apple hue drifted from crimson at 0:01 to orange-red by 0:04',
+        timestamp: '0:01',
+      },
+      {
+        prompt: '"Brand-colored sneaker, studio lighting, 360 rotation"',
+        failure: 'Sneaker color shifted outside brand tolerance across rotation; unusable for commercial',
+        timestamp: '0:02',
+      },
+    ],
+    refundStrength: 'HIGH — Pika support refunds color drift on documented commercial work. Submit Generation ID with paired screenshots showing the same surface in distinguishable hues.',
+    faq: [
+      {
+        q: 'Does Pika refund credits for color drift?',
+        a: 'Yes. Submit the Generation ID with two screenshots from the start and end of the clip showing the same surface in visibly different hues. Pika support recognises color drift as a known temporal coherence issue.',
+      },
+      {
+        q: 'Why does Pika produce color drift?',
+        a: 'Color consistency on Pika is maintained via soft temporal regularisation, not an explicit per-frame constraint. The regulariser weakens on long clips and stylized prompts where the color palette has more room to drift.',
+      },
+      {
+        q: 'How do I prevent color drift on Pika?',
+        a: 'Keep clips ≤4 seconds. Use neutral lighting. Avoid branded products. Use photoreal style prompts (less color latitude than stylized modes). Color-grade in post if the output is close-but-not-tight.',
+      },
+    ],
+    relatedFailures: ['luma-color-drift', 'sora-color-drift', 'veo-color-drift', 'kling-color-drift'],
+  },
+  {
+    slug: 'hailuo-color-drift',
+    title: 'Hailuo AI Color Drift — Get a Credit Refund',
+    metaTitle: 'Hailuo Color Drift Refund — Hue Shift Across Frames',
+    metaDesc:
+      'Hailuo (MiniMax) generated a clip where colors drift from frame to frame — red shifting to orange, white balance wandering? This is a Temporal Color Coherence Failure. Get refunded.',
+    technicalTerm: 'Temporal Color Coherence Failure',
+    risk: 'MAJOR',
+    shortDesc: 'Hue, saturation, or white-balance drifting across frames in the same clip.',
+    longDesc:
+      'Temporal Color Coherence Failure on Hailuo (MiniMax) occurs when the model\'s diffusion process fails to constrain frame-to-frame color consistency. The failure is most severe on Hailuo\'s talking-head model where the camera frequently locks on a face for extended durations — the temporal regularisation has more frames to fail across. Skin tone drift is the most common manifestation and the most damaging for commercial work.',
+    symptoms: [
+      'Skin tone drifting warm or cool across the clip',
+      'White balance shifting on backgrounds',
+      'Single surface changing hue across clip length',
+      'Saturation pulsing across frames',
+      'Branded product or wardrobe colors shifting outside tolerance',
+    ],
+    examples: [
+      {
+        prompt: '"Woman in red blazer giving a presentation, indoor lighting"',
+        failure: 'Blazer hue drifted from cherry red at 0:01 to orange-red by 0:05; skin tone warmed simultaneously',
+        timestamp: '0:01',
+      },
+      {
+        prompt: '"Man in blue shirt seated, neutral office background"',
+        failure: 'Shirt drifted from cobalt to teal across 5-second clip; background warmed beige',
+        timestamp: '0:02',
+      },
+    ],
+    refundStrength: 'HIGH — Hailuo support refunds color drift on documented commercial work. Skin-tone drift is treated as a recognised failure mode under their color-coherence refund policy.',
+    faq: [
+      {
+        q: 'Does Hailuo refund credits for color drift?',
+        a: 'Yes. Submit the Generation ID with two screenshots showing the same surface (especially skin) in visibly different hues. Hailuo billing recognises temporal color drift, especially on talking-head outputs.',
+      },
+      {
+        q: 'Why is skin tone drift so common on Hailuo?',
+        a: 'Hailuo\'s talking-head model locks on faces for extended durations. The temporal coherence loss has more frames to fail across than on short clips, and skin tone is on the edge of the color manifold the model is trained to maintain — small drift becomes visually obvious.',
+      },
+      {
+        q: 'How do I prevent color drift on Hailuo?',
+        a: 'Keep talking-head clips ≤4 seconds. Use neutral, even lighting. Avoid bright wardrobe colors that emphasise drift. Color-grade in post if the output is close-but-not-tight. AVA flags color-drift risk on long talking-head prompts.',
+      },
+    ],
+    relatedFailures: ['luma-color-drift', 'sora-color-drift', 'kling-color-drift', 'pika-color-drift'],
+  },
+  {
+    slug: 'seedance-color-drift',
+    title: 'ByteDance Seedance Color Drift — Get a Credit Refund',
+    metaTitle: 'Seedance Color Drift Refund — Hue Shift Across Frames',
+    metaDesc:
+      'ByteDance Seedance generated a clip where colors drift from frame to frame? This is a Temporal Color Coherence Failure. Get refunded.',
+    technicalTerm: 'Temporal Color Coherence Failure',
+    risk: 'MAJOR',
+    shortDesc: 'Hue, saturation, or white-balance drifting across frames in the same clip.',
+    longDesc:
+      'Temporal Color Coherence Failure on Seedance shows up on clips longer than 4 seconds, scenes with shifting lighting, and any commercial work involving branded color. Seedance\'s diffusion model uses a soft temporal regularisation for color consistency rather than an explicit per-frame constraint, so on long clips a single surface can drift hue across the duration. The failure is non-linear so post-production color-grade cannot fully recover the original.',
+    symptoms: [
+      'Single surface changing hue across clip length',
+      'White balance drifting warm or cool',
+      'Saturation pulsing across frames',
+      'Background and foreground colors drifting independently',
+      'Branded product colors shifting outside brand tolerance',
+    ],
+    examples: [
+      {
+        prompt: '"Red sports car parked on coastal highway, sunset"',
+        failure: 'Car hue drifted from cherry red at 0:01 to orange-red by 0:05',
+        timestamp: '0:01',
+      },
+      {
+        prompt: '"Branded teal product on white background, studio shot"',
+        failure: 'Product shifted from teal to seafoam across 4-second clip; brand unusable',
+        timestamp: '0:02',
+      },
+    ],
+    refundStrength: 'HIGH — Seedance support refunds color drift on documented commercial work. Submit Generation ID with paired screenshots showing the same surface in distinguishable hues.',
+    faq: [
+      {
+        q: 'Does Seedance refund credits for color drift?',
+        a: 'Yes. Submit the Generation ID with two screenshots from the start and end of the clip showing the same surface in visibly different hues. Seedance support recognises temporal color drift as a known limitation on long clips.',
+      },
+      {
+        q: 'Why does Seedance produce color drift?',
+        a: 'Color consistency is maintained statistically via temporal regularisation rather than an explicit per-pixel constraint. On longer clips the regulariser fails to prevent slow hue drift, especially under shifting lighting or stylized rendering modes.',
+      },
+      {
+        q: 'How do I prevent color drift on Seedance?',
+        a: 'Keep clips ≤4 seconds when color accuracy matters. Use neutral, even lighting. Avoid branded products. Color-grade in post via DaVinci Resolve. AVA flags color-drift risk on long-clip prompts.',
+      },
+    ],
+    relatedFailures: ['luma-color-drift', 'sora-color-drift', 'kling-color-drift', 'pika-color-drift'],
+  },
+  {
+    slug: 'pika-camera-jitter',
+    title: 'Pika Labs Camera Jitter — Get a Credit Refund',
+    metaTitle: 'Pika Labs Camera Jitter Refund — Unwanted Handheld Shake',
+    metaDesc:
+      'Pika Labs generated a clip with uncommanded camera jitter despite a static-camera prompt? This is a Camera Path Coherence Failure. Get refunded.',
+    technicalTerm: 'Camera Path Coherence Failure',
+    risk: 'MAJOR',
+    shortDesc: 'Camera shake, micro-jitter, or unstable framing in clips prompted for a static or smooth camera.',
+    longDesc:
+      'Camera Path Coherence Failure occurs when Pika 2.0 produces uncommanded camera motion in clips where the prompt specified a static, locked-off, or tripod camera. The model\'s camera-conditioning signal is statistical — it learned what handheld looks like from training data and over-applies the cue in static-camera prompts. Output is unusable for product shots, interview-style framing, or any commercial work requiring a tripod look.',
+    symptoms: [
+      'Persistent micro-jitter in clips prompted "static camera" or "tripod"',
+      'Handheld shake despite explicit static cues',
+      'Subject visibly drifting across frame on static-subject prompts',
+      'Horizon line wobbling across the clip',
+      'Camera path lurching at random intervals',
+    ],
+    examples: [
+      {
+        prompt: '"Static camera, locked off, smartphone on white background"',
+        failure: 'Camera exhibited handheld jitter throughout 5s clip; smartphone oscillated 5px horizontally',
+        timestamp: '0:00',
+      },
+      {
+        prompt: '"Smooth dolly forward into a coffee cup, cinematic"',
+        failure: 'Dolly path lurched at 0:02 and 0:04; horizon wobbled despite tripod cue',
+        timestamp: '0:02',
+      },
+    ],
+    refundStrength: 'HIGH — Pika support refunds camera-jitter on documented commercial work. Submit prompt + Generation ID + frame-by-frame screenshot showing unintended motion.',
+    faq: [
+      {
+        q: 'Does Pika refund credits for camera jitter?',
+        a: 'Yes. Submit the prompt (must specify static or smooth camera), Generation ID, and a screen recording showing the unintended motion. Pika support refunds documented prompt-camera mismatches.',
+      },
+      {
+        q: 'Why does Pika add camera jitter when not requested?',
+        a: 'The camera-conditioning signal is learned from training data rather than enforced via an explicit path constraint. Handheld is over-represented in training; the model defaults to handheld-style micro-motion unless the static cue is very strong.',
+      },
+      {
+        q: 'How do I get a clean static shot on Pika?',
+        a: 'Stack multiple static cues: "static camera, locked off, tripod, no camera movement, fixed frame." Avoid scene descriptions that imply documentary or street-photography style. AVA flags camera-jitter risk prompts pre-submission.',
+      },
+    ],
+    relatedFailures: ['runway-camera-jitter', 'luma-camera-jitter', 'veo-camera-jitter', 'kling-camera-jitter'],
+  },
+  {
+    slug: 'seedance-camera-jitter',
+    title: 'ByteDance Seedance Camera Jitter — Get a Credit Refund',
+    metaTitle: 'Seedance Camera Jitter Refund — Unwanted Handheld Shake',
+    metaDesc:
+      'ByteDance Seedance generated a clip with uncommanded camera jitter despite a static-camera prompt? This is a Camera Path Coherence Failure. Get refunded.',
+    technicalTerm: 'Camera Path Coherence Failure',
+    risk: 'MAJOR',
+    shortDesc: 'Camera shake, micro-jitter, or unstable framing in clips prompted for static or smooth camera.',
+    longDesc:
+      'Seedance\'s camera-conditioning is more precise than earlier generation models but still fails on static-camera prompts. The model produces micro-jitter, horizon wobble, or full-frame shake even when the prompt specifies "static camera" or "tripod." The failure is most common on product shots and commercial framing where a tripod look is required. Output is unusable without aggressive post-production stabilization.',
+    symptoms: [
+      'Sub-pixel jitter in a clip prompted for locked-off camera',
+      'Horizon line wobbling across the clip',
+      'Persistent handheld shake despite tripod cue',
+      'Camera lurch at random intervals',
+      'Subject drifting across frame on static-subject prompts',
+    ],
+    examples: [
+      {
+        prompt: '"Tripod-locked shot of a product on a turntable, smooth rotation"',
+        failure: 'Camera path lurched at 0:02; horizon wobbled despite tripod cue in prompt',
+        timestamp: '0:02',
+      },
+      {
+        prompt: '"Locked-off camera, watch face close-up against black"',
+        failure: 'Camera exhibited persistent handheld jitter throughout 5s clip',
+        timestamp: '0:00',
+      },
+    ],
+    refundStrength: 'HIGH — Seedance support refunds prompt-camera mismatch on documented commercial work. Submit Generation ID with frame-by-frame screenshot showing unintended motion.',
+    faq: [
+      {
+        q: 'Does Seedance refund credits for unwanted camera jitter?',
+        a: 'Yes. Submit the prompt, Generation ID, and screen recording showing the unintended motion. The failure is well-documented — the model violated its own camera-conditioning input.',
+      },
+      {
+        q: 'Why does Seedance add jitter when not requested?',
+        a: 'Camera path is conditioned on a learned distribution rather than an explicit constraint. Handheld is over-represented in training so the model defaults to micro-motion unless multiple static cues override the prior.',
+      },
+      {
+        q: 'How do I get a clean static shot on Seedance?',
+        a: 'Stack static cues: "static camera, locked off, tripod, no camera movement, fixed frame, zero shake." Avoid scene descriptions implying documentary or handheld style. AVA flags camera-jitter risk before submission.',
+      },
+    ],
+    relatedFailures: ['runway-camera-jitter', 'luma-camera-jitter', 'veo-camera-jitter', 'pika-camera-jitter'],
+  },
+  {
+    slug: 'seedance-watermark-bleed',
+    title: 'ByteDance Seedance Watermark Bleed — Get a Credit Refund',
+    metaTitle: 'Seedance Watermark Bleed Refund — Visible Brand Overlay',
+    metaDesc:
+      'ByteDance Seedance output has a visible watermark, logo, or brand bleed despite paid-tier generation? This is a Watermark Bleed Failure. Get refunded.',
+    technicalTerm: 'Watermark Bleed Failure',
+    risk: 'MAJOR',
+    shortDesc: 'Visible Seedance watermark, brand logo, or training-data brand bleed in paid-tier output.',
+    longDesc:
+      'Watermark Bleed Failure occurs when Seedance\'s output includes either the platform\'s own watermark (despite paid-tier credit charge) or unintended brand overlays bleeding through from training data. Brand-bleed is the more insidious form — logos, product packaging, or trademarked imagery appear faintly in backgrounds because the model memorised them during training and they\'re emerging from the latent space. Both forms make the output legally unusable.',
+    symptoms: [
+      'Seedance / ByteDance watermark visible on paid-tier output',
+      'Brand logo bleeding through background textures',
+      'Product packaging artifacts appearing in unrelated scenes',
+      'Trademarked imagery emerging faintly across frames',
+      'Watermark appearing intermittently across the clip',
+    ],
+    examples: [
+      {
+        prompt: '"Café scene with coffee cups, soft natural lighting"',
+        failure: 'Starbucks-style logo bled through on cup at 0:02; faint Seedance watermark visible bottom-right throughout',
+        timestamp: '0:02',
+      },
+      {
+        prompt: '"Person walking past storefronts in a city street"',
+        failure: 'Multiple recognisable brand logos bled through on storefront signs; legally unusable for commercial',
+        timestamp: '0:03',
+      },
+    ],
+    refundStrength: 'VERY HIGH — Seedance support treats watermark bleed as a recognised critical failure (legal exposure for the user). Refunds routine with Generation ID + screenshot.',
+    faq: [
+      {
+        q: 'Does Seedance refund credits for watermark bleed?',
+        a: 'Yes. Submit the Generation ID with a screenshot showing the watermark or brand bleed. Seedance treats this as a critical failure category — the output is legally unusable, so refunds are processed quickly.',
+      },
+      {
+        q: 'Why does Seedance produce brand bleed?',
+        a: 'The model memorised branded imagery during training. Under certain prompts (cafés, retail scenes, urban environments) the brand priors emerge faintly in the latent space output, sometimes overlapping with the requested content.',
+      },
+      {
+        q: 'How do I avoid watermark bleed on Seedance?',
+        a: 'Avoid prompts featuring retail, urban storefronts, or generic product categories where brand priors are dense in training data. Use abstract or non-commercial scene descriptions. AVA flags brand-bleed-risk prompts before submission.',
+      },
+    ],
+    relatedFailures: ['runway-watermark-bleed', 'sora-watermark-bleed-failure', 'kling-watermark-bleed', 'pika-watermark-bleed'],
+  },
+  {
+    slug: 'seedance-hand-artifact',
+    title: 'ByteDance Seedance Hand & Finger Artifact — Get a Credit Refund',
+    metaTitle: 'Seedance Hand Artifact Refund — Fused Fingers, Wrong Count',
+    metaDesc:
+      'ByteDance Seedance generated hands with 6 fingers, fused knuckles, or impossible thumb geometry? This is a Hand-Anatomy Topology Failure. Get refunded.',
+    technicalTerm: 'Hand-Anatomy Topology Failure',
+    risk: 'CRITICAL',
+    shortDesc: 'Wrong finger count, fused knuckles, knuckles bending laterally, fingers melting in motion.',
+    longDesc:
+      'Hand-Anatomy Topology Failure is one of Seedance\'s highest-frequency rejection modes. Hands occupy a small fraction of training-data pixels relative to their anatomical complexity. The diffusion model produces statistically plausible but topologically impossible hand structures: 4 or 6 fingers, knuckles bending laterally, fingers fusing into a paddle shape during motion. The failure is especially severe on close-ups and gesture-driven prompts.',
+    symptoms: [
+      'Six fingers visible on one hand at any frame',
+      'Thumb pointing backward or duplicated',
+      'Knuckle bending in non-anatomical direction',
+      'Fingers fusing into single mass during motion',
+      'Hand orientation flipping between palm and back',
+    ],
+    examples: [
+      {
+        prompt: '"Hands typing on a laptop keyboard, top-down view"',
+        failure: 'Fingers fused into single mass at 0:02; right hand showed 6 fingers at 0:04',
+        timestamp: '0:02',
+      },
+      {
+        prompt: '"Chef chopping vegetables, close-up of hands and knife"',
+        failure: 'Thumb pointing backward at 0:01; knife handle merged with finger geometry at 0:03',
+        timestamp: '0:01',
+      },
+    ],
+    refundStrength: 'VERY HIGH — Seedance support treats hand failures as a recognised critical mode under their Anatomical Topology refund category. Refunds routine with timestamped evidence.',
+    faq: [
+      {
+        q: 'Does Seedance refund credits for hand artifacts?',
+        a: 'Yes. Submit the Generation ID with the technical term "Hand-Anatomy Topology Failure" and a timestamped screenshot of the impossible geometry. Seedance support refunds documented hand failures consistently.',
+      },
+      {
+        q: 'Why are hand failures so common on Seedance?',
+        a: 'Hands are anatomically dense (27 bones per hand, 14 phalanges) but statistically sparse in training data relative to faces. The diffusion loss under-constrains hand topology — the model has not learned to maintain finger count across frames reliably.',
+      },
+      {
+        q: 'How do I avoid hand failures on Seedance?',
+        a: 'Frame hands further from camera. Avoid prompts where hand motion is the primary action. Keep clips ≤4 seconds when hands are visible. AVA\'s pre-flight scanner flags hand-risk prompts before submission.',
+      },
+    ],
+    relatedFailures: ['runway-hand-artifact', 'luma-hand-artifact', 'kling-hand-artifact', 'sora-hand-artifact', 'pika-hand-artifact'],
+  },
+  {
+    slug: 'hailuo-hand-artifact',
+    title: 'Hailuo AI Hand & Finger Artifact — Get a Credit Refund',
+    metaTitle: 'Hailuo AI Hand Artifact Refund — Fused Fingers, Wrong Count',
+    metaDesc:
+      'Hailuo (MiniMax) generated hands with 6 fingers, fused knuckles, or impossible thumb geometry? This is a Hand-Anatomy Topology Failure. Get refunded.',
+    technicalTerm: 'Hand-Anatomy Topology Failure',
+    risk: 'CRITICAL',
+    shortDesc: 'Wrong finger count, fused knuckles, knuckles bending laterally, fingers melting in motion.',
+    longDesc:
+      'Hailuo\'s hand-anatomy failures are common on close-ups and manipulation prompts. The model produces topologically impossible hand structures: 4 or 6 fingers, knuckles bending laterally, fingers fusing during motion. The failure rate is especially elevated on talking-head prompts where hands enter and exit the frame — the hand model receives less training weight than the face model, so transient hands produce the worst output.',
+    symptoms: [
+      'Six fingers visible on one hand at any frame',
+      'Thumb pointing backward or duplicated',
+      'Knuckle bending in non-anatomical direction',
+      'Fingers fusing into single mass during motion',
+      'Hand orientation flipping between palm and back',
+    ],
+    examples: [
+      {
+        prompt: '"Person gesturing while explaining a concept on screen"',
+        failure: 'Left hand showed 6 fingers at 0:02; right hand fingers fused during gesture at 0:04',
+        timestamp: '0:02',
+      },
+      {
+        prompt: '"Musician\'s hands playing piano keys"',
+        failure: 'Knuckle bending laterally at 0:01; thumb merged into index finger at 0:03',
+        timestamp: '0:01',
+      },
+    ],
+    refundStrength: 'VERY HIGH — Hailuo support treats hand failures as a recognised critical mode under their Anatomical Topology refund category. Refunds routine with timestamped evidence.',
+    faq: [
+      {
+        q: 'Does Hailuo refund credits for hand artifacts?',
+        a: 'Yes. Submit the Generation ID with the technical term "Hand-Anatomy Topology Failure" and a timestamped screenshot. Hailuo support refunds documented hand failures consistently under their Anatomy category.',
+      },
+      {
+        q: 'Why are hands worst on Hailuo\'s talking-head model?',
+        a: 'The talking-head model concentrates training weight on the face. Transient hands entering and exiting the frame receive less reinforcement, so hand-topology constraints are weaker on those prompts than on hand-focused clips.',
+      },
+      {
+        q: 'How do I avoid hand failures on Hailuo?',
+        a: 'Keep hands out of frame on talking-head prompts unless they\'re the main subject. Frame hands further from camera. Use ≤4s clips when hands are visible. AVA\'s pre-flight scanner flags hand-risk prompts before submission.',
+      },
+    ],
+    relatedFailures: ['runway-hand-artifact', 'luma-hand-artifact', 'kling-hand-artifact', 'sora-hand-artifact', 'pika-hand-artifact'],
+  },
 ];
 
 export function getFailure(slug: string): FailureData | undefined {
@@ -3926,6 +4349,7 @@ export const FAILURE_CLUSTERS: Record<string, string[]> = {
     'sora-watermark-bleed-failure',
     'kling-watermark-bleed',
     'pika-watermark-bleed',
+    'seedance-watermark-bleed',
   ],
   physics: [
     'runway-physics-collapse',
@@ -3964,6 +4388,8 @@ export const FAILURE_CLUSTERS: Record<string, string[]> = {
     'kling-hand-artifact',
     'sora-hand-artifact',
     'pika-hand-artifact',
+    'seedance-hand-artifact',
+    'hailuo-hand-artifact',
   ],
   promptAdherence: [
     'sora-prompt-adherence-failure',
@@ -3981,6 +4407,8 @@ export const FAILURE_CLUSTERS: Record<string, string[]> = {
     'kling-camera-jitter',
     'luma-camera-jitter',
     'veo-camera-jitter',
+    'pika-camera-jitter',
+    'seedance-camera-jitter',
   ],
   motion: [
     'pika-motion-failure',
@@ -4006,6 +4434,10 @@ export const FAILURE_CLUSTERS: Record<string, string[]> = {
     'veo-color-drift',
     'luma-color-drift',
     'sora-color-drift',
+    'kling-color-drift',
+    'pika-color-drift',
+    'hailuo-color-drift',
+    'seedance-color-drift',
   ],
 };
 
