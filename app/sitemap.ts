@@ -55,6 +55,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/graveyard`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.9 },
     { url: `${BASE}/guide`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.9 },
     { url: `${BASE}/luma-refund-guide`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.9 },
+    { url: `${BASE}/guide-refund-categories`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.92 },
     { url: `${BASE}/security`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.6 },
     { url: `${BASE}/privacy`, lastModified: new Date(), changeFrequency: 'yearly', priority: 0.4 },
     ...failurePages,
