@@ -2745,6 +2745,236 @@ export const FAILURES: FailureData[] = [
       },
     ],
   },
+  {
+    slug: 'luma-text-rendering-failure',
+    title: 'Luma Dream Machine Text Rendering Failure — Get a Credit Refund',
+    metaTitle: 'Luma Text Rendering Refund — Garbled Signs, Unreadable Letters',
+    metaDesc:
+      'Luma Dream Machine produced a video with garbled signage, scrambled letters, or unreadable on-screen text? This is a Glyph Synthesis Failure. Document it and reclaim your credits.',
+    technicalTerm: 'Glyph Synthesis & Typographic Coherence Failure',
+    risk: 'MAJOR',
+    shortDesc: 'Storefront signs as glyph smears, brand names misspelled, screen UI illegible.',
+    longDesc:
+      'Luma Dream Machine shares the typographic limitation common to diffusion video models: no character-level encoder. Letters are synthesized as visual texture rather than reconstructed from characters. Any prompt requesting readable signage, packaging copy, screen UI, or printed text produces marks that look text-shaped but spell nothing. Failure is reliably reproducible on any prompt with explicit text.',
+    symptoms: [
+      'Storefront signs rendered as glyph-shaped smudges',
+      'Letters mirroring or inverting between frames',
+      'Brand names substituted with letter-shaped nonsense',
+      'Screen UI showing illegible mock-text',
+      'Numbers shuffling between frames on the same surface',
+    ],
+    examples: [
+      {
+        prompt: '"Cafe storefront with sign reading \'COFFEE\', morning light"',
+        failure: 'Sign rendered as glyph-shaped smudge with no readable characters at 0:00–0:05',
+        timestamp: '0:00',
+      },
+      {
+        prompt: '"Open book showing the words \'Chapter One\'"',
+        failure: 'Page rendered with letter-shaped marks that do not spell any word at 0:02',
+        timestamp: '0:02',
+      },
+    ],
+    refundStrength: 'HIGH — Luma support recognises text-rendering as a current model limitation; refunds are routinely granted with a documented Generation ID.',
+    faq: [
+      {
+        q: 'Does Luma refund credits for text rendering failures?',
+        a: 'Yes. Submit the generation ID, prompt text, and a screenshot of the unreadable text region. Luma support recognises Glyph Synthesis Failure as a known mode.',
+      },
+      {
+        q: 'Why can\'t Luma render readable text?',
+        a: 'Luma synthesizes text as visual patterns through diffusion rather than reconstructing glyphs from a character-level tokenizer. Without a text-conditioned encoder in the pipeline, legible typography is statistically unlikely.',
+      },
+      {
+        q: 'What\'s the workaround for Luma text rendering?',
+        a: 'Avoid prompts that require readable signage, packaging text, or book pages. Add text in post via After Effects or Premiere. AVA flags text-rendering risk in your prompt before submission.',
+      },
+    ],
+  },
+  {
+    slug: 'veo-prompt-adherence-failure',
+    title: 'Google Veo Prompt Adherence Failure — Get a Credit Refund',
+    metaTitle: 'Veo Prompt Adherence Refund — Dropped Subjects, Ignored Clauses',
+    metaDesc:
+      'Google Veo ignored your prompt — wrong subject, dropped clauses, missing scene elements? This is a Compositional Prompt Adherence Failure. Reclaim your credits.',
+    technicalTerm: 'Compositional Prompt Adherence Failure',
+    risk: 'MAJOR',
+    shortDesc: 'Dropped clauses, wrong setting, missing named subjects, generic output ignoring specifics.',
+    longDesc:
+      'Veo 2 and Veo 3 use a fixed-length text encoder that silently truncates compositionally complex prompts. The encoder drops the most-distant clauses from the latent before generation, producing output that looks fine on inspection but ignores the exact elements the user asked for. The failure is reliable on prompts that exceed ~30 words or include 3+ distinct visual entities. There is no signal at submission time that compression happened.',
+    symptoms: [
+      'Last clause of prompt has no visible effect',
+      'Named objects mentioned in prompt are missing entirely',
+      'Setting reverted to a generic version of the request',
+      'Multi-subject prompts losing one or more subjects',
+      'Style modifiers ("noir", "anamorphic") ignored',
+    ],
+    examples: [
+      {
+        prompt: '"Cyberpunk Tokyo alley at midnight, neon signs, lone figure in a red coat, holographic billboard"',
+        failure: 'Figure rendered but red coat became grey; holographic billboard absent entirely',
+        timestamp: '0:00',
+      },
+      {
+        prompt: '"1920s ballroom, three couples dancing, jazz band visible in background"',
+        failure: 'Ballroom + one couple rendered; jazz band missing, other two couples absent',
+        timestamp: '0:00',
+      },
+    ],
+    refundStrength: 'HIGH — Google support refunds compositional drops when the missing element is explicit in the prompt; cite the prompt text and Generation ID.',
+    faq: [
+      {
+        q: 'Does Google Veo refund credits for prompt adherence failures?',
+        a: 'Yes — when the dropped element is explicit in the prompt and absent in the output. Submit the prompt text, generation ID, and a screenshot showing the missing element through the Google AI Studio billing portal.',
+      },
+      {
+        q: 'Why does Veo drop clauses from my prompt?',
+        a: 'The text encoder compresses the prompt to a fixed latent dimension. Content beyond that capacity is silently truncated — typically the highest-distance or rarest clause first.',
+      },
+      {
+        q: 'How do I improve Veo prompt adherence?',
+        a: 'Keep prompts under 30 words. Put the most important visual element FIRST. Limit to 3 distinct subjects per prompt. Avoid mixing abstract and concrete clauses. AVA pre-flights compositional risk.',
+      },
+    ],
+  },
+  {
+    slug: 'pika-anatomy-artifact',
+    title: 'Pika Labs Anatomy Artifact — Get a Credit Refund',
+    metaTitle: 'Pika Anatomy Artifact Refund — Extra Limbs, Finger Failures',
+    metaDesc:
+      'Pika Labs generated a video with extra fingers, fused limbs, or impossible joint geometry? This is an Anatomical Topology Failure. Reclaim your credits.',
+    technicalTerm: 'Anatomical Topology & Coherence Failure',
+    risk: 'CRITICAL',
+    shortDesc: 'Six-finger hands, elbows hinging backwards, limb-through-torso geometry.',
+    longDesc:
+      'Pika 1.5\'s diffusion model produces non-manifold mesh geometry for human anatomy when the scene includes motion-heavy close-ups. The failure is most reproducible in hand close-ups (extra or fused fingers, paddle-shaped palms) and articulated joint motion (elbows or knees hinging the wrong direction). Multi-character physical contact frequently produces limb-through-body interpenetration. Output is unusable for any human-subject commercial work.',
+    symptoms: [
+      'Six or seven fingers on a single hand',
+      'Elbow articulating backwards mid-motion',
+      'Arm or leg phasing through torso',
+      'Fingers fusing into a paddle shape',
+      'Joint disappearing during fast motion',
+    ],
+    examples: [
+      {
+        prompt: '"Close-up of pianist\'s hands on the keys, soft lighting"',
+        failure: 'Right hand grew a sixth finger at 0:01; thumb hinged backwards at 0:03',
+        timestamp: '0:01',
+      },
+      {
+        prompt: '"Two children hugging in a sunlit field"',
+        failure: 'Arms interpenetrated through torsos at 0:04',
+        timestamp: '0:04',
+      },
+    ],
+    refundStrength: 'VERY HIGH — anatomy failures are a recognised critical mode; Pika support refunds with the generation ID and timestamped artifact.',
+    faq: [
+      {
+        q: 'Does Pika refund credits for anatomy artifacts?',
+        a: 'Yes. Submit the generation ID, the technical term "Anatomical Topology & Coherence Failure", and a timestamped failure point through Pika support. The failure mode is recognised and routinely refunded.',
+      },
+      {
+        q: 'Why does Pika generate extra fingers?',
+        a: 'Pika\'s diffusion model lacks an explicit skeletal prior — finger count is statistical, not enforced. Close-up hand shots and articulated motion push the model into low-probability regions where topology fails.',
+      },
+      {
+        q: 'How can I avoid Pika anatomy failures?',
+        a: 'Avoid close-up hand shots, finger-detail actions, and multi-character physical contact. AVA flags high-risk anatomy prompts before submission.',
+      },
+    ],
+  },
+  {
+    slug: 'hailuo-watermark-bleed',
+    title: 'Hailuo AI Watermark Bleed — Get a Credit Refund',
+    metaTitle: 'Hailuo Watermark Bleed Refund — Ghost Logos, Training-Data Leaks',
+    metaDesc:
+      'Hailuo (MiniMax) generated a video with a ghost logo, training-data watermark, or stock-footage bleed? This is a Training-Data Watermark Leak. Get refunded.',
+    technicalTerm: 'Training-Data Watermark Leak',
+    risk: 'MAJOR',
+    shortDesc: 'Faint stock-agency logos, translucent timecode strips, ghost broadcast marks in clean prompts.',
+    longDesc:
+      'Hailuo\'s training corpus includes substantial licensed broadcast and stock footage. Under generic cinematic prompts the model regurgitates faint watermark patterns — translucent agency logos, timecode bleed, and broadcast-network marks. The user never asked for them and they prevent commercial use of the output. The failure is most reproducible on aerial / drone / establishing-shot prompts.',
+    symptoms: [
+      'Faint translucent logo in a frame corner',
+      'Stock-agency name strip along the bottom edge',
+      'Translucent timecode bleed at the top of frame',
+      'Watermark intensity changing through the clip',
+      'Letter-shaped marks resembling a watermark logo',
+    ],
+    examples: [
+      {
+        prompt: '"Aerial drone shot of a mountain range at sunrise"',
+        failure: 'Translucent "STORYBLOCKS" logo bled into upper-left at 0:00–0:06',
+        timestamp: '0:00',
+      },
+      {
+        prompt: '"Wide cinematic shot of a beach at golden hour"',
+        failure: 'Timecode strip visible along top of frame; faint broadcast-network mark in lower-right',
+        timestamp: '0:00',
+      },
+    ],
+    refundStrength: 'VERY HIGH — training-data bleed in commercial output is unambiguously refundable; submit the Generation ID with a screenshot.',
+    faq: [
+      {
+        q: 'Does Hailuo refund credits for watermark bleed?',
+        a: 'Yes. Watermark bleed is a deliverability defect that blocks commercial use. Submit the generation ID with a clear screenshot of the leaked mark through Hailuo support.',
+      },
+      {
+        q: 'Why does Hailuo produce stock-footage watermarks?',
+        a: 'Hailuo\'s training data includes substantial licensed stock and broadcast material. The diffusion model memorises frequent patterns — watermarks among them — and reproduces them when the latent drifts toward those training samples.',
+      },
+      {
+        q: 'How do I prevent watermark bleed in Hailuo generations?',
+        a: 'Avoid generic cinematic establishing-shot prompts. Add specific, unusual style anchors ("hand-painted look", "anamorphic vintage glass") to push the latent away from common stock-footage neighborhoods. AVA flags high-bleed-risk prompts.',
+      },
+    ],
+  },
+  {
+    slug: 'kling-camera-jitter',
+    title: 'Kling Camera Jitter & Tremor Failure — Get a Credit Refund',
+    metaTitle: 'Kling Camera Jitter Refund — Shaky Footage, Unrequested Tremor',
+    metaDesc:
+      'Kling generated a video with shaky, jittery, or unrequested handheld-tremor motion? This is a Camera Path Stability Failure. Reclaim your credits.',
+    technicalTerm: 'Camera Path Stability Failure',
+    risk: 'MAJOR',
+    shortDesc: 'Unrequested handheld shake, jittery camera path, micro-tremors despite "smooth" or "tripod" cues.',
+    longDesc:
+      'Kling v1.5 and v2 frequently introduce camera-path instability that the user never requested. The output looks like handheld footage even when the prompt explicitly specifies "smooth tripod shot" or "Steadicam glide." Root cause is the camera-trajectory prior baked into the model: it was trained predominantly on handheld and gimbal footage, and the camera-stability signal in the text encoder is weak. The failure produces motion-sick output unusable for client work.',
+    symptoms: [
+      'Unrequested handheld shake throughout the clip',
+      'Camera "drifts" in 3D space despite a static-camera prompt',
+      'Micro-tremors visible at high zoom even when prompt asked for tripod',
+      'Stuttering frame-to-frame motion that looks like dropped frames',
+      'Camera path moves opposite to the requested direction',
+    ],
+    examples: [
+      {
+        prompt: '"Smooth tripod-locked shot of a sleeping cat, no camera motion"',
+        failure: 'Camera introduced visible handheld micro-tremor throughout; cat appeared to vibrate',
+        timestamp: '0:00',
+      },
+      {
+        prompt: '"Steadicam push-in toward a parked car, smooth"',
+        failure: 'Camera drift bounced off-axis at 0:02, then over-corrected back at 0:04',
+        timestamp: '0:02',
+      },
+    ],
+    refundStrength: 'HIGH — Kling support recognises camera-stability failures when the prompt explicitly specifies stable framing.',
+    faq: [
+      {
+        q: 'Does Kling refund credits for camera jitter?',
+        a: 'Yes — when the prompt explicitly specifies "tripod", "smooth", "Steadicam", or "no camera motion" and the output ignores it. Submit the prompt text + Generation ID through Kling support.',
+      },
+      {
+        q: 'Why does Kling generate handheld camera motion?',
+        a: 'Kling\'s training corpus skews toward handheld and gimbal footage. The camera-stability signal in the text encoder is weak, so explicit "tripod" or "smooth" prompts are statistically ignored.',
+      },
+      {
+        q: 'How do I get smoother camera in Kling?',
+        a: 'Combine multiple stability cues in the prompt: "locked-off tripod, no camera movement, fixed framing". Generate at higher seed counts and pick the most stable output. AVA flags camera-stability risk before submission.',
+      },
+    ],
+  },
 ];
 
 export function getFailure(slug: string): FailureData | undefined {
