@@ -9,22 +9,29 @@ export default function Footer() {
           <p className="text-ink-muted leading-relaxed">Free Chrome extension. Mark broken AI video frames, generate a refund letter or PDF audit report.</p>
         </div>
         <div>
-          <p className="text-ink-secondary font-semibold mb-3">Extension</p>
+          <p className="text-ink-secondary font-semibold mb-3">Product</p>
           <ul className="space-y-2 text-ink-muted">
             <li><a href="https://chromewebstore.google.com/detail/aivideoauditor/ecomchbdfkgakaoponipjgpnjfpimdef" target="_blank" rel="noopener noreferrer" className="hover:text-ink-primary transition-colors">Install Free</a></li>
-            <li><Link href="/#upgrade" className="hover:text-ink-primary transition-colors">Pro Plan</Link></li>
+            <li><Link href="/pricing" className="hover:text-ink-primary transition-colors">Pricing</Link></li>
+            <li><Link href="/tools/credit-calculator" className="hover:text-ink-primary transition-colors">Credit Calculator</Link></li>
+            <li><Link href="/tools/refund-letter-generator" className="hover:text-ink-primary transition-colors">Refund Letter Generator</Link></li>
           </ul>
         </div>
         <div>
-          <p className="text-ink-secondary font-semibold mb-3">Learn</p>
+          <p className="text-ink-secondary font-semibold mb-3">Content</p>
           <ul className="space-y-2 text-ink-muted">
-            <li><Link href="/guide" className="hover:text-ink-primary transition-colors">Refund Guide</Link></li>
-            <li><Link href="/failures/runway-limb-artifact" className="hover:text-ink-primary transition-colors">Failure Types</Link></li>
+            <li><Link href="/failures" className="hover:text-ink-primary transition-colors">Failure Reference</Link></li>
+            <li><Link href="/compare" className="hover:text-ink-primary transition-colors">Head-to-Head Compare</Link></li>
+            <li><Link href="/alternatives" className="hover:text-ink-primary transition-colors">Alternatives Guides</Link></li>
+            <li><Link href="/case-studies" className="hover:text-ink-primary transition-colors">Case Studies</Link></li>
+            <li><Link href="/graveyard" className="hover:text-ink-primary transition-colors">AI Tool Graveyard</Link></li>
+            <li><Link href="/guide-refund-categories" className="hover:text-ink-primary transition-colors">Refund Categories Guide</Link></li>
           </ul>
         </div>
         <div>
           <p className="text-ink-secondary font-semibold mb-3">Trust</p>
           <ul className="space-y-2 text-ink-muted">
+            <li><Link href="/guide" className="hover:text-ink-primary transition-colors">Refund Guide</Link></li>
             <li><Link href="/security" className="hover:text-ink-primary transition-colors">Security</Link></li>
             <li><Link href="/privacy" className="hover:text-ink-primary transition-colors">Privacy Policy</Link></li>
           </ul>
