@@ -1724,6 +1724,236 @@ export const FAILURES: FailureData[] = [
     ],
   },
   {
+    slug: 'sora-text-rendering-failure',
+    title: 'OpenAI Sora Text Rendering Failure — Refund Guide',
+    metaTitle: 'Sora Text Rendering Refund — Garbled Letters & Wrong Words',
+    metaDesc:
+      'OpenAI Sora rendered text as garbled glyphs, wrong words, or unreadable letters in your paid clip? This is OCR-Coupled Token Drift. Refund guide.',
+    technicalTerm: 'OCR-Coupled Token Drift',
+    risk: 'MAJOR',
+    shortDesc: 'Sora output contains visible text that is misspelled, illegible, or replaced with non-Latin pseudo-letterforms despite an explicit string in the prompt.',
+    longDesc:
+      'OCR-Coupled Token Drift on Sora occurs when the model attempts to render explicit text from the prompt but the diffusion process collapses character-level detail. Sora treats text as a visual texture rather than a string, so prompt tokens for "OPEN" can render as "OPLN" or "OPΣN" with character drift increasing on letters wider than 4 chars. Most common on signage, book covers, and screens shown in the foreground.',
+    symptoms: [
+      'Words missing or duplicating letters (e.g. "COFFEE" → "COFFFE")',
+      'Mixed Latin / non-Latin glyphs in a single word',
+      'Letter shapes morph mid-clip',
+      'Numbers swapped (e.g. "Exit 12" → "Exit 1Z")',
+      'Sign content readable in early frames, unreadable by 0:03',
+    ],
+    examples: [
+      {
+        prompt: '"A neon sign that reads OPEN 24 HOURS in a rainy street"',
+        failure: 'Sign reads "OPLN 24 HOLRS" — characters drift after first frame',
+        timestamp: '0:01 → 0:05',
+      },
+      {
+        prompt: '"Book cover with the title The Great Gatsby on a wooden desk"',
+        failure: 'Title renders as "The Greaι Gatsby" with mixed Greek and Latin characters',
+        timestamp: '0:00 → 0:04',
+      },
+    ],
+    refundStrength: 'HIGH — Text rendering is a documented Sora weakness and OpenAI honours refund tickets when failure is shown in a still frame.',
+    faq: [
+      {
+        q: 'Does OpenAI refund Sora credits for unreadable text?',
+        a: 'Yes — submit a refund ticket citing "OCR-Coupled Token Drift" with the generation ID and a still frame. OpenAI support typically credits within 48 hours.',
+      },
+      {
+        q: 'Why does Sora struggle to render readable text?',
+        a: 'Sora has no explicit OCR head — text is rendered as visual texture through the same diffusion process that paints faces and clouds. Strings longer than 4 characters drift because per-character supervision is sparse in the training data.',
+      },
+      {
+        q: 'How can I get Sora to render text correctly?',
+        a: 'Use short strings (≤ 4 chars), keep text in the centre of frame, and avoid backgrounds with high visual entropy. AVA flags text-heavy prompts before generation.',
+      },
+    ],
+  },
+  {
+    slug: 'sora-anatomy-artifact',
+    title: 'OpenAI Sora Anatomy Artifact — Refund Guide',
+    metaTitle: 'Sora Anatomy Refund — Extra Fingers, Limbs & Body Distortion',
+    metaDesc:
+      'OpenAI Sora generated a clip with extra fingers, doubled limbs, or impossible body geometry? This is Skeletal Prior Collapse. Refund guide with evidence template.',
+    technicalTerm: 'Skeletal Prior Collapse',
+    risk: 'CRITICAL',
+    shortDesc: 'Sora output contains anatomically impossible human or animal bodies — extra fingers, doubled limbs, missing joints, or rotated skeletal connections — on paid output.',
+    longDesc:
+      'Skeletal Prior Collapse on Sora occurs when the model fails to maintain joint count and skeletal topology across frames. Sora learns body structure statistically from training video; under specific conditions (fast motion, multiple people, close-up of hands) the prior degenerates and produces output with 6 fingers, doubled arms, or limbs joined at impossible angles. Common in promotional clips of athletes, dancers, and crowd scenes.',
+    symptoms: [
+      'Six or seven fingers on a clearly framed hand',
+      'Two left arms or two right legs on the same body',
+      'Limbs joining torso at impossible angles (e.g. arm exits from waist)',
+      'Joint flickering — knee or elbow appears and disappears between frames',
+      'Crowd members merging into single multi-headed figure',
+    ],
+    examples: [
+      {
+        prompt: '"Pianist playing a Steinway grand piano, close-up of hands on keys"',
+        failure: 'Right hand has 6 fingers throughout the clip, visible on the keys',
+        timestamp: '0:00 → 0:05',
+      },
+      {
+        prompt: '"Three friends laughing at a cafe table, candid shot"',
+        failure: 'Centre friend has two left arms — one on the table, one gesturing',
+        timestamp: '0:02',
+      },
+    ],
+    refundStrength: 'HIGH — Anatomy artifacts on paid Sora output are visually undeniable and refund tickets are honoured by OpenAI support when timestamp evidence is provided.',
+    faq: [
+      {
+        q: 'Does OpenAI refund Sora credits for anatomy artifacts?',
+        a: 'Yes — submit a refund ticket citing "Skeletal Prior Collapse" with the generation ID and a still frame showing the artifact. Credit usually issues within 48 hours.',
+      },
+      {
+        q: 'Why does Sora generate bodies with extra fingers or limbs?',
+        a: 'Sora has no explicit skeletal model — body structure is learned statistically through diffusion. Under fast motion or hand close-ups, per-finger or per-joint detail is undertrained, so the prior produces a topologically wrong but locally plausible result.',
+      },
+      {
+        q: 'How do I reduce anatomy artifacts on Sora?',
+        a: 'Avoid extreme close-ups of hands and feet. Reduce motion magnitude. Specify visible body part counts ("two hands, five fingers each"). AVA flags hand-heavy and crowd prompts as anatomy-risk before generation.',
+      },
+    ],
+  },
+  {
+    slug: 'sora-audio-sync-drift',
+    title: 'OpenAI Sora Audio Sync Drift — Refund Guide',
+    metaTitle: 'Sora Audio Sync Refund — Sound Lags or Leads Visual',
+    metaDesc:
+      'OpenAI Sora generated a clip where the audio drifts out of sync with the visual after a few seconds? This is Audio-Visual Temporal Misalignment. Refund guide.',
+    technicalTerm: 'Audio-Visual Temporal Misalignment',
+    risk: 'MAJOR',
+    shortDesc: 'Sora-generated audio drifts out of sync with the visual stream — footsteps land before feet touch ground, voices precede or lag mouth movement, ambient cues misfire.',
+    longDesc:
+      'Audio-Visual Temporal Misalignment on Sora occurs when the generated audio track and visual track are produced as loosely coupled streams. Sora 2 introduced native audio generation but synchronisation is statistical, not strict. On longer clips (≥ 4 seconds) or scenes with multiple discrete audio events (footsteps, impacts, dialogue), the audio can lead or lag the visual by 100-500ms — small enough to be subconsciously jarring, large enough to fail any professional QC.',
+    symptoms: [
+      'Footstep audio fires before foot lands on the ground',
+      'Door slam audio precedes the visual door closing',
+      'Voice plays while mouth is closed or stationary',
+      'Ambient audio (rain, traffic) starts or stops outside visual cue',
+      'Drift increases over the duration of the clip',
+    ],
+    examples: [
+      {
+        prompt: '"A man walking down a wooden hallway, footsteps echoing"',
+        failure: 'Footstep audio fires 200ms before each foot lands — gets worse over 5 seconds',
+        timestamp: '0:01 → 0:05',
+      },
+      {
+        prompt: '"Coffee shop scene, barista calling out an order"',
+        failure: 'Barista voice plays for 1.2s while mouth is closed; mouth movement starts at 0:03',
+        timestamp: '0:02 → 0:04',
+      },
+    ],
+    refundStrength: 'HIGH — Audio sync is a marketed Sora 2 capability. Refund tickets citing temporal misalignment on paid clips are honoured with timestamp evidence.',
+    faq: [
+      {
+        q: 'Does OpenAI refund Sora audio sync failures?',
+        a: 'Yes — Sora support honours refunds when audio-visual misalignment is documented with paired timestamps (audio event time vs visual event time). Cite "Audio-Visual Temporal Misalignment" in the ticket.',
+      },
+      {
+        q: 'Why does Sora audio drift out of sync?',
+        a: 'Sora generates audio and visual through separate but cross-conditioned diffusion paths. There is no strict alignment constraint, so per-event timing drifts statistically — most visible on percussive events (footsteps, impacts) where 100ms is perceptible.',
+      },
+      {
+        q: 'How do I avoid audio sync drift on Sora?',
+        a: 'Keep clips short (≤ 4 seconds). Avoid scenes with multiple discrete audio events. Prefer continuous audio (music, ambient noise) over percussive cues. AVA flags percussive-heavy prompts as audio-sync risk.',
+      },
+    ],
+  },
+  {
+    slug: 'veo-motion-failure',
+    title: 'Google Veo Motion Failure — Refund Guide',
+    metaTitle: 'Veo Motion Failure Refund — Stilted, Frozen, or Repeating Motion',
+    metaDesc:
+      'Google Veo generated a clip where motion stalls, repeats, or freezes mid-clip? This is Motion Prior Degeneration. Refund guide with evidence template.',
+    technicalTerm: 'Motion Prior Degeneration',
+    risk: 'MAJOR',
+    shortDesc: 'Veo output contains stilted, repeating, or frozen motion segments — subjects move 1 second then freeze for 2, or loop the same 0.5s motion repeatedly.',
+    longDesc:
+      'Motion Prior Degeneration on Veo occurs when the temporal coherence model fails to maintain progressive motion across the clip duration. The model can lock into a short looping motion pattern, or simply stop generating new motion mid-clip while the visual remains rendered. Most common on Veo clips longer than 4 seconds with single-subject motion (dancing, walking, sports).',
+    symptoms: [
+      'Subject motion freezes mid-action while clip continues rendering',
+      'Same 0.5-1.0 second motion clip loops 3+ times in the same shot',
+      'Walking or running motion stutters — foot positions snap rather than transition',
+      'Hand or face freezes while body continues moving (or vice versa)',
+      'Final 1-2 seconds of clip are visibly slower than first 1-2 seconds',
+    ],
+    examples: [
+      {
+        prompt: '"Ballet dancer performing a pirouette in a sunlit studio"',
+        failure: 'Dancer completes one rotation at 0:02, then freezes mid-rotation for remaining 3 seconds',
+        timestamp: '0:02 → 0:05',
+      },
+      {
+        prompt: '"Chef whisking eggs in a stainless steel bowl, kitchen scene"',
+        failure: 'Whisking motion loops the same 0.8 second pattern 4 times in 4 seconds',
+        timestamp: '0:00 → 0:04',
+      },
+    ],
+    refundStrength: 'HIGH — Motion quality is a marketed Veo capability. Refund tickets citing motion-prior degeneration on paid output are honoured with timestamp evidence.',
+    faq: [
+      {
+        q: 'Does Google refund Veo motion failures?',
+        a: 'Yes — Veo support recognises motion-prior degeneration on paid clips as a defect. Cite "Motion Prior Degeneration" with the generation ID and timestamps of the freeze or loop.',
+      },
+      {
+        q: 'Why does Veo motion freeze or loop?',
+        a: 'Veo\'s temporal coherence model uses a learned motion prior that degenerates on long-duration prompts. The model can fall into a low-entropy looping state rather than committing to progressive motion, especially when prompt motion vocabulary is ambiguous.',
+      },
+      {
+        q: 'How do I avoid Veo motion freezes?',
+        a: 'Keep motion-heavy clips under 4 seconds. Specify motion progression explicitly ("starts at X, ends at Y"). Avoid prompts with cyclic motion verbs (whisking, drumming, dancing) on long durations. AVA flags loop-risk prompts before generation.',
+      },
+    ],
+  },
+  {
+    slug: 'kling-lip-sync-failure',
+    title: 'Kling Lip Sync Failure — Refund Guide',
+    metaTitle: 'Kling Lip Sync Refund — Mouth Movement Misaligned with Audio',
+    metaDesc:
+      'Kling AI generated a clip where character mouth movement does not match the audio dialogue? This is Phoneme-Viseme Misalignment. Refund guide.',
+    technicalTerm: 'Phoneme-Viseme Misalignment',
+    risk: 'MAJOR',
+    shortDesc: 'Kling output contains a speaking character whose mouth shape does not match the spoken phoneme — wrong mouth openness, wrong lip shape for the consonant or vowel being voiced.',
+    longDesc:
+      'Phoneme-Viseme Misalignment on Kling occurs when the visual mouth shape (viseme) fails to match the audio phoneme being spoken. Kling supports lip-sync workflows where users provide an audio track or a dialogue prompt — but the model\'s viseme generation is statistical and frequently produces wrong mouth shapes, particularly on bilabials (p, b, m) and rounded vowels (o, u, w). The result is uncanny dubbing-style speech.',
+    symptoms: [
+      'Mouth open during silence (consonant b, p, m has lips closed)',
+      'Lips closed during open vowels (a, e, i)',
+      'Mouth shape too small for loud or shouted dialogue',
+      'Visible jaw motion with no audio to match',
+      'Sync drift accumulates over 3+ seconds of dialogue',
+    ],
+    examples: [
+      {
+        prompt: '"A teacher saying \'Please open your books to page five\' at a chalkboard"',
+        failure: 'Mouth open during "p" sounds and closed during "ee" — completely inverted',
+        timestamp: '0:00 → 0:04',
+      },
+      {
+        prompt: '"News anchor reading a headline about climate change"',
+        failure: 'Lip motion stops at 0:02 while audio continues for full 5 seconds',
+        timestamp: '0:02 → 0:05',
+      },
+    ],
+    refundStrength: 'HIGH — Lip-sync is a marketed Kling capability for video dubbing and avatar use cases. Refund tickets with paired audio + still frame evidence are honoured.',
+    faq: [
+      {
+        q: 'Does Kling refund credits for lip-sync failures?',
+        a: 'Yes — Kling support honours refunds when phoneme-viseme misalignment is shown via paired audio timestamp + still frame. Cite "Phoneme-Viseme Misalignment" in the ticket.',
+      },
+      {
+        q: 'Why does Kling mismatch mouth shapes to audio?',
+        a: 'Kling\'s lip-sync head learns viseme generation statistically from training video — without explicit phoneme-to-viseme rules. Bilabial closures and rounded vowels are undertrained, so the model produces visually plausible but linguistically wrong mouth shapes.',
+      },
+      {
+        q: 'How do I improve Kling lip-sync quality?',
+        a: 'Keep dialogue clips short (≤ 3 seconds). Avoid consonant-dense words. Use side-profile framing where mouth shape is partially obscured. AVA flags dialogue-heavy prompts as lip-sync risk before generation.',
+      },
+    ],
+  },
+  {
     slug: 'veo-camera-motion-ignored-failure',
     title: 'Google Veo Camera Motion Ignored — Refund Guide',
     metaTitle: 'Veo Camera Motion Refund — Dolly Pan Crane Instruction Discarded',
@@ -1799,12 +2029,14 @@ export const FAILURE_CLUSTERS: Record<string, string[]> = {
     'veo-text-rendering-failure',
     'kling-text-rendering-failure',
     'runway-hallucinated-text',
+    'sora-text-rendering-failure',
   ],
   anatomy: [
     'runway-limb-artifact',
     'veo-hand-artifact',
     'kling-anatomy-artifact',
     'hailuo-anatomy-artifact',
+    'sora-anatomy-artifact',
   ],
   promptAdherence: [
     'sora-prompt-adherence-failure',
@@ -1823,12 +2055,15 @@ export const FAILURE_CLUSTERS: Record<string, string[]> = {
     'seedance-motion-drift',
     'kling-motion-blur-overload',
     'runway-temporal-flicker',
+    'veo-motion-failure',
   ],
   audioLipSync: [
     'runway-audio-sync-drift',
     'veo-audio-generation-failure',
     'pika-lip-sync-failure',
     'luma-lip-sync-failure',
+    'sora-audio-sync-drift',
+    'kling-lip-sync-failure',
   ],
 };
 
