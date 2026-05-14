@@ -2975,6 +2975,236 @@ export const FAILURES: FailureData[] = [
       },
     ],
   },
+  {
+    slug: 'seedance-anatomy-artifact',
+    title: 'Seedance Anatomy Artifact — Get a Credit Refund',
+    metaTitle: 'Seedance Anatomy Artifact Refund — Extra Limbs, Finger Failures',
+    metaDesc:
+      'Seedance generated a video with extra fingers, fused limbs, or impossible joints? This is an Anatomical Topology Failure. Document it and reclaim your credits.',
+    technicalTerm: 'Anatomical Topology & Coherence Failure',
+    risk: 'CRITICAL',
+    shortDesc: 'Six-finger hands, elbows hinging backwards, fused limbs, interpenetrating joint geometry.',
+    longDesc:
+      'Seedance 1 Pro\'s diffusion denoiser produces non-manifold mesh geometry for human anatomy in close-up and motion-heavy shots. The failure is reliably reproducible in hand close-ups (extra or fused fingers, paddle-shaped palms), articulated joint motion (elbows or knees hinging backwards), and multi-character physical contact (limb-through-torso). Output is unusable for any human-subject commercial work.',
+    symptoms: [
+      'Six or seven fingers on a single hand',
+      'Elbow articulating backwards mid-motion',
+      'Arm phasing through torso during contact',
+      'Fingers fusing into a paddle shape',
+      'Joint disappearing during fast motion',
+    ],
+    examples: [
+      {
+        prompt: '"Close-up of a guitarist\'s hands on the fretboard"',
+        failure: 'Left hand grew a seventh finger at 0:02; thumb hinged backwards at 0:04',
+        timestamp: '0:02',
+      },
+      {
+        prompt: '"Two friends shaking hands in an office"',
+        failure: 'Hands merged into a single 9-finger mass during the shake at 1:02',
+        timestamp: '1:02',
+      },
+    ],
+    refundStrength: 'VERY HIGH — anatomy failures are a recognised critical mode; Seedance support refunds with the generation ID + timestamped artifact.',
+    faq: [
+      {
+        q: 'Does Seedance refund credits for anatomy artifacts?',
+        a: 'Yes. Submit the generation ID, the technical term "Anatomical Topology & Coherence Failure", and a timestamped failure point. The failure mode is recognised and routinely refunded.',
+      },
+      {
+        q: 'Why does Seedance generate extra fingers?',
+        a: 'Diffusion video models lack an explicit skeletal prior — finger count is statistical, not enforced. Close-up hand shots and articulated motion push the model into low-probability regions where topology fails.',
+      },
+      {
+        q: 'How can I avoid Seedance anatomy failures?',
+        a: 'Avoid close-up hand shots, finger-detail actions (typing, playing instruments), and multi-character physical contact. AVA flags high-risk anatomy prompts before submission.',
+      },
+    ],
+  },
+  {
+    slug: 'runway-style-preset-failure',
+    title: 'Runway ML Style Preset Failure — Get a Credit Refund',
+    metaTitle: 'Runway Style Preset Refund — Ignored Style Cues, Off-Brand Output',
+    metaDesc:
+      'Runway Gen-4 ignored your style preset — wrong aesthetic, missing visual treatment, generic output? This is a Style Conditioning Failure. Reclaim your credits.',
+    technicalTerm: 'Style Conditioning & Aesthetic Adherence Failure',
+    risk: 'MAJOR',
+    shortDesc: 'Style preset ignored, wrong aesthetic, missing visual treatment despite explicit cues.',
+    longDesc:
+      'Runway Gen-4 occasionally drops style conditioning signals when the prompt includes both compositional content and style modifiers. The text encoder weights subject-noun tokens above style-modifier tokens, so "1970s film grain, soft focus, sepia tone" can be silently ignored in favor of the literal subject. The output looks reasonable but doesn\'t match the requested aesthetic — making it unusable for branded or art-directed work.',
+    symptoms: [
+      'Requested film stock / grain pattern absent',
+      'Color treatment defaulted to clean digital instead of requested look',
+      'Lens characteristic (anamorphic, vintage glass) ignored',
+      'Era-specific styling (1970s, 1990s, 2010s) ignored',
+      'Style transferred to wrong elements (e.g. only background, not subject)',
+    ],
+    examples: [
+      {
+        prompt: '"Anamorphic vintage glass, 1970s Kodachrome, soft focus, woman walking through a park"',
+        failure: 'Subject correct but style cues entirely absent — output looked like clean modern digital footage',
+        timestamp: '0:00',
+      },
+      {
+        prompt: '"Super-8 grain, washed-out colors, kid riding bike down sidewalk"',
+        failure: 'Subject correct but grain + color treatment both ignored; output rendered as clean digital',
+        timestamp: '0:00',
+      },
+    ],
+    refundStrength: 'HIGH — Runway support refunds when style modifiers in the prompt are demonstrably absent in the output.',
+    faq: [
+      {
+        q: 'Does Runway refund credits for style preset failures?',
+        a: 'Yes — when the style modifiers in your prompt are explicit and demonstrably absent in the output. Submit the prompt text, generation ID, and a screenshot showing the missing style treatment.',
+      },
+      {
+        q: 'Why does Runway ignore my style cues?',
+        a: 'The text encoder weights subject-noun tokens above style-modifier tokens. When the prompt is dense with compositional content, style cues are pushed below the truncation threshold.',
+      },
+      {
+        q: 'How do I get style cues to land in Runway?',
+        a: 'Put style modifiers FIRST in the prompt before the subject. Use 1-2 style anchors, not 5. Avoid mixing era-style ("1970s") with technical-style ("anamorphic") in the same prompt — pick one. AVA pre-flights style adherence.',
+      },
+    ],
+  },
+  {
+    slug: 'pika-prompt-adherence-failure',
+    title: 'Pika Labs Prompt Adherence Failure — Get a Credit Refund',
+    metaTitle: 'Pika Prompt Adherence Refund — Dropped Subjects, Ignored Clauses',
+    metaDesc:
+      'Pika Labs ignored your prompt — wrong subject, dropped clauses, missing scene elements? This is a Compositional Prompt Adherence Failure. Reclaim your credits.',
+    technicalTerm: 'Compositional Prompt Adherence Failure',
+    risk: 'MAJOR',
+    shortDesc: 'Dropped clauses, wrong setting, missing named subjects, generic output ignoring specifics.',
+    longDesc:
+      'Pika 1.5\'s text encoder silently truncates compositionally complex prompts before generation. Distant or rare clauses are dropped from the latent — the output looks fine on inspection but ignores specific elements the user asked for. The failure is reproducible on prompts that exceed ~25 words or include 3+ distinct visual entities.',
+    symptoms: [
+      'Last clause of prompt has no visible effect',
+      'Named objects missing entirely',
+      'Setting reverted to a generic version of the request',
+      'Multi-subject prompts losing one or more subjects',
+      'Style modifiers ignored',
+    ],
+    examples: [
+      {
+        prompt: '"Snowy mountain village, candles in windows, smoke from chimneys, fox running across the road"',
+        failure: 'Village correct but candles missing, smoke absent, fox replaced with a deer',
+        timestamp: '0:00',
+      },
+      {
+        prompt: '"Vintage diner, jukebox playing, two customers at the counter, waitress refilling coffee"',
+        failure: 'Diner present but jukebox missing; only one customer rendered; waitress absent',
+        timestamp: '0:00',
+      },
+    ],
+    refundStrength: 'HIGH — Pika support refunds compositional drops when the missing element is explicit in the prompt.',
+    faq: [
+      {
+        q: 'Does Pika refund credits for prompt adherence failures?',
+        a: 'Yes — when the dropped element is explicit in the prompt and demonstrably absent in the output. Submit prompt text + generation ID + screenshot.',
+      },
+      {
+        q: 'Why does Pika drop clauses from my prompt?',
+        a: 'The text encoder compresses the prompt to a fixed latent dimension. Content beyond that capacity is silently truncated — typically the most-distant or rarest clause first.',
+      },
+      {
+        q: 'How do I improve Pika prompt adherence?',
+        a: 'Keep prompts under 25 words. Put the most important element first. Limit to 3 subjects per prompt. AVA pre-flights compositional risk.',
+      },
+    ],
+  },
+  {
+    slug: 'veo-color-drift',
+    title: 'Google Veo Color Drift Failure — Get a Credit Refund',
+    metaTitle: 'Veo Color Drift Refund — Hue Shifts, Inconsistent Color Mid-Clip',
+    metaDesc:
+      'Google Veo produced a video where colors shift, drift, or change between frames? This is a Temporal Color Coherence Failure. Reclaim your credits.',
+    technicalTerm: 'Temporal Color Coherence Failure',
+    risk: 'MAJOR',
+    shortDesc: 'Subject\'s shirt changes from red to orange mid-clip, sky hue shifts, skin tone inconsistency.',
+    longDesc:
+      'Veo 2 and Veo 3 occasionally fail to maintain temporal color coherence — the same surface or subject renders in subtly different hues across frames. Skin tone shifts between scenes, a subject\'s clothing changes color mid-clip, or the sky transitions from blue to teal without a stated reason. The failure is most visible on long clips (8s+) and prompts with consistent lighting.',
+    symptoms: [
+      'Subject\'s clothing color changes between frames',
+      'Skin tone shifting between scenes in the same clip',
+      'Sky hue drifting from blue to teal/green without prompt',
+      'Wood / metal surfaces shifting between warm and cool tones',
+      'Product packaging color inconsistency frame-to-frame',
+    ],
+    examples: [
+      {
+        prompt: '"Woman in a red dress walking through a park, consistent daylight"',
+        failure: 'Dress shifted from crimson at 0:00 to orange at 0:04 to coral at 0:07',
+        timestamp: '0:00',
+      },
+      {
+        prompt: '"Pan across a blue car parked in front of a brick building"',
+        failure: 'Car color drifted from cobalt to teal between 0:02 and 0:06',
+        timestamp: '0:02',
+      },
+    ],
+    refundStrength: 'HIGH — color drift is unambiguously documentable; Google support refunds with the generation ID and a screenshot pair showing the drift.',
+    faq: [
+      {
+        q: 'Does Google Veo refund credits for color drift?',
+        a: 'Yes. Submit the generation ID with a screenshot pair from the start vs end of the clip showing the same surface in two different hues. The failure mode is recognised through Google AI Studio billing support.',
+      },
+      {
+        q: 'Why does Veo produce color drift?',
+        a: 'Diffusion video models maintain color coherence statistically across frames. Under long clips or unusual lighting, the temporal consistency loss term in training fails to constrain frame-to-frame color, allowing slow hue drift.',
+      },
+      {
+        q: 'How can I avoid color drift in Veo?',
+        a: 'Keep clips short (≤5s). Use neutral lighting in prompts. Avoid color-critical subjects (products, branded packaging). For commercial work, color-grade in post via DaVinci Resolve. AVA flags long-clip color-drift risk.',
+      },
+    ],
+  },
+  {
+    slug: 'hailuo-lip-sync-failure',
+    title: 'Hailuo AI Lip Sync Failure — Get a Credit Refund',
+    metaTitle: 'Hailuo Lip Sync Refund — Mouth Misaligned with Speech',
+    metaDesc:
+      'Hailuo (MiniMax) generated a video where the subject\'s mouth movement doesn\'t match the audio? This is a Audio-Visual Lip Sync Failure. Get refunded.',
+    technicalTerm: 'Audio-Visual Lip Sync & Phoneme Alignment Failure',
+    risk: 'MAJOR',
+    shortDesc: 'Mouth movement out of sync with audio, phoneme shapes wrong, mouth open during silence.',
+    longDesc:
+      'Hailuo\'s talking-head and dialogue generations frequently produce mouth motion that is temporally misaligned with the audio track. Phoneme-to-viseme mapping is approximate rather than ground-truth — the audio says "hello" but the mouth shape is closer to "okay." On longer dialogue clips the drift compounds, and the mouth eventually opens during silent passages or closes during continued speech. Output is unusable for any dialogue-driven content.',
+    symptoms: [
+      'Mouth motion lagging audio by 100–500ms',
+      'Wrong viseme shape for the audible phoneme',
+      'Mouth open during silent passages',
+      'Mouth closed during continued speech',
+      'Lip sync degrading as the clip progresses',
+    ],
+    examples: [
+      {
+        prompt: '"Woman saying \'Welcome to the show\' direct to camera"',
+        failure: 'Mouth motion lagged audio by ~300ms throughout; viseme for \'show\' was wrong',
+        timestamp: '0:01',
+      },
+      {
+        prompt: '"Man delivering a 4-second monologue about coffee"',
+        failure: 'Sync drift accumulated — by 0:03 the mouth was a full word behind audio; mouth opened during silent gap',
+        timestamp: '0:03',
+      },
+    ],
+    refundStrength: 'HIGH — Hailuo support recognises lip-sync drift as a current model limitation; refunds granted on documented audio-visual mismatch.',
+    faq: [
+      {
+        q: 'Does Hailuo refund credits for lip sync failures?',
+        a: 'Yes. Submit the generation ID, the audio track, and a screen recording showing the mouth motion vs the audio waveform. Hailuo support refunds documented lip-sync drift.',
+      },
+      {
+        q: 'Why does Hailuo fail at lip sync?',
+        a: 'Hailuo\'s viseme model maps phonemes to mouth shapes statistically, not via ground-truth alignment. On longer clips the temporal alignment loss compounds, producing audible drift.',
+      },
+      {
+        q: 'How do I get usable lip sync from Hailuo?',
+        a: 'Keep dialogue clips ≤2 seconds. Re-time audio in post if the model output is close-but-not-tight. Avoid clips that require precise sync (commercials, narration). AVA flags lip-sync risk in dialogue prompts.',
+      },
+    ],
+  },
 ];
 
 export function getFailure(slug: string): FailureData | undefined {
