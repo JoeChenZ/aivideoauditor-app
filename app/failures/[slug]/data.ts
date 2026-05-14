@@ -1494,6 +1494,236 @@ export const FAILURES: FailureData[] = [
     ],
   },
   {
+    slug: 'sora-face-distortion',
+    title: 'OpenAI Sora Face Distortion — Refund Guide',
+    metaTitle: 'Sora Face Distortion Refund — Identity Drift, Feature Morphing',
+    metaDesc:
+      'OpenAI Sora generated a clip where the subject\'s face distorts, morphs, or loses identity coherence across frames? This is Facial Identity Drift. Refund guide.',
+    technicalTerm: 'Facial Identity Drift',
+    risk: 'CRITICAL',
+    shortDesc: 'Sora output shows face morphing, identity inconsistency, or feature distortion between frames within a single clip.',
+    longDesc:
+      'Facial Identity Drift on Sora occurs when the diffusion process fails to preserve the subject\'s facial geometry across the temporal axis. The model encodes identity through a low-dimensional latent that is supposed to remain stable across all frames of a single generation — but on close-up or rotating-head shots, this latent can drift, causing the subject to appear as multiple slightly-different people through the duration of the clip. Distinct from anatomy artifact: the face is anatomically valid in each frame, but the identity changes.',
+    symptoms: [
+      'Subject\'s eye color shifts mid-clip',
+      'Nose or jawline geometry morphs between frames',
+      'Subject appears to age or de-age within a single clip',
+      'Identity drifts into a different person on profile turns',
+      'Skin tone or facial proportions change without prompt direction',
+    ],
+    examples: [
+      {
+        prompt: '"Close-up of a woman smiling, slowly turning her head left to right, cinematic"',
+        failure: 'Identity drifts into a visibly different person at 0:03 during the head turn',
+        timestamp: '0:03',
+      },
+      {
+        prompt: '"Portrait of an elderly man speaking to camera, warm lighting"',
+        failure: 'Eye color shifts from brown to green at 0:02, jawline morphs at 0:04',
+        timestamp: '0:02 → 0:04',
+      },
+    ],
+    refundStrength: 'HIGH — Sora is marketed on character consistency. Identity drift on close-up paid output is a clear feature defect.',
+    faq: [
+      {
+        q: 'Does OpenAI refund Sora identity drift failures?',
+        a: 'Yes — submit the clip with timestamps where identity shifts. Cite "Facial Identity Drift" and reference the inconsistency between specific frames. Refunds for close-up character work on Sora are routinely approved.',
+      },
+      {
+        q: 'Why does Sora change a subject\'s face mid-clip?',
+        a: 'Sora\'s temporal attention has a finite receptive field; over long durations or fast head motion, the identity latent can drift outside its stable basin and resample to a nearby person in the model\'s training distribution. This is most likely on profile rotations and close-ups.',
+      },
+      {
+        q: 'How do I prevent Sora face drift?',
+        a: 'Keep clips under 4 seconds for close-up character work. Avoid fast head turns past 45°. Use reference-image grounding when available. AVA flags high-drift-risk prompt structures before generation.',
+      },
+    ],
+  },
+  {
+    slug: 'veo-physics-collapse',
+    title: 'Google Veo Physics Collapse — Refund Guide',
+    metaTitle: 'Veo Physics Collapse Refund — Fluid Gravity Newtonian Failure',
+    metaDesc:
+      'Google Veo generated output where water flows upward, objects float, or physics breaks Newtonian rules? This is Physics Simulation Constraint Violation. Refund guide.',
+    technicalTerm: 'Physics Simulation Constraint Violation',
+    risk: 'MAJOR',
+    shortDesc: 'Veo output violates fundamental physics — fluid inversion, floating objects, broken gravity, impossible collisions.',
+    longDesc:
+      'Physics Simulation Constraint Violation on Veo occurs when the diffusion model produces visually plausible motion that defies Newtonian mechanics. Veo markets itself on photorealism and physical realism — when paid output ships with water flowing upward, objects floating in air, or collisions producing no physical response, the failure is objectively verifiable and clearly model-attributable rather than user-prompt-attributable.',
+    symptoms: [
+      'Liquid flowing upward against gravity',
+      'Solid objects floating without buoyancy or support',
+      'Collisions producing no displacement or deformation',
+      'Falling objects following non-parabolic trajectories',
+      'Steam, smoke, or particles moving inconsistently with airflow',
+    ],
+    examples: [
+      {
+        prompt: '"Waterfall cascading down a granite cliff into a forest pool, photorealistic"',
+        failure: 'Water visibly flows upward at 0:02 in the central column of the falls',
+        timestamp: '0:02',
+      },
+      {
+        prompt: '"Coffee being poured from a French press into a glass mug, slow motion"',
+        failure: 'Stream stays in mid-air after the press is lifted; no continuous flow connection to mug',
+        timestamp: '0:04',
+      },
+    ],
+    refundStrength: 'HIGH — Physics violations are objectively verifiable and contradict Veo\'s marketed photorealism. Strong refund precedent.',
+    faq: [
+      {
+        q: 'Will Google refund Veo physics failures?',
+        a: 'Yes — physics violations are objectively verifiable and uniquely attributable to model failure. Submit with timestamp evidence and cite "Physics Simulation Constraint Violation". Veo support honours these tickets.',
+      },
+      {
+        q: 'Why does Veo violate physics in output?',
+        a: 'Like all video diffusion models, Veo has no explicit physics simulator — it learns motion statistically from training data. When prompts combine complex fluid dynamics with long duration (>4s) or specific viewing angles, the learned prior can collapse and produce physically impossible motion.',
+      },
+      {
+        q: 'How do I avoid Veo physics collapse?',
+        a: 'Keep fluid and collision-heavy clips short (≤4 seconds). Specify camera angle (top-down vs. side) explicitly. Avoid multi-body interactions in a single prompt. AVA pre-flights physics-risky prompts before you spend credits.',
+      },
+    ],
+  },
+  {
+    slug: 'kling-watermark-bleed',
+    title: 'Kling Watermark Bleed — Refund Guide',
+    metaTitle: 'Kling Watermark Refund — Logo Persists After Pro Upgrade',
+    metaDesc:
+      'Kling AI generated a paid-tier video that still has the Kling watermark visible or bleeding into the frame? This is Watermark Removal Pipeline Failure. Refund guide.',
+    technicalTerm: 'Watermark Removal Pipeline Failure',
+    risk: 'MAJOR',
+    shortDesc: 'Kling paid output retains the free-tier watermark, has watermark fragments bleeding into the frame, or shows the watermark intermittently.',
+    longDesc:
+      'Watermark Removal Pipeline Failure on Kling occurs when the post-processing step that strips the free-tier watermark from paid output silently fails or runs partially. Paid Kling subscribers should never see the Kling logo on their generated clips — when it appears, the customer paid for a clean output and received the free-tier product. This is a billing-grade defect with very strong refund precedent.',
+    symptoms: [
+      'Kling logo visible in the corner of paid output',
+      'Watermark fades in and out across the duration',
+      'Faint watermark ghost remains where it was stripped',
+      'Watermark shows on first or last 5 frames only',
+      'Logo bleeds into subject area mid-clip',
+    ],
+    examples: [
+      {
+        prompt: '"Cinematic drone shot over a mountain lake at sunrise" (Pro tier subscription)',
+        failure: 'Kling watermark visible bottom-right throughout entire clip despite Pro account',
+        timestamp: '0:00 → 0:05',
+      },
+      {
+        prompt: '"Cat chasing a laser pointer in a living room" (Pro tier subscription)',
+        failure: 'Watermark ghost visible at 0:01 and 0:04, fully cleaned in between',
+        timestamp: '0:01, 0:04',
+      },
+    ],
+    refundStrength: 'VERY HIGH — Watermark on paid output is a billing-grade defect. The customer paid the Pro/Premium price and received the free product.',
+    faq: [
+      {
+        q: 'Does Kling refund watermark bleed on paid output?',
+        a: 'Yes — submit the clip + Generation ID + confirmation of paid-tier subscription. Cite "Watermark Removal Pipeline Failure". Kling support classes this as a billing defect and refunds are routinely approved.',
+      },
+      {
+        q: 'Why does Kling sometimes leave a watermark on paid output?',
+        a: 'Kling renders watermarked output first and applies a separate stripping pass for paid users. Under load or on specific aspect ratios, the strip pass can fail silently or run partially, leaving the watermark fully or fragmentarily visible in the delivered file.',
+      },
+      {
+        q: 'Can I check for watermark bleed before submitting a refund?',
+        a: 'Yes — scrub through the clip frame by frame on the corners where the Kling watermark normally appears. AVA\'s post-generation scanner flags watermark presence in paid output automatically.',
+      },
+    ],
+  },
+  {
+    slug: 'luma-prompt-adherence-failure',
+    title: 'Luma Dream Machine Prompt Adherence Failure — Refund Guide',
+    metaTitle: 'Luma Prompt Ignored Refund — Subject Action Style Discarded',
+    metaDesc:
+      'Luma Dream Machine generated a clip that ignores the prompt — wrong subject, wrong action, wrong style? This is Text Conditioning Drift. Refund guide.',
+    technicalTerm: 'Text Conditioning Drift',
+    risk: 'CRITICAL',
+    shortDesc: 'Luma output partially or completely ignores the prompt — wrong subject, wrong action, wrong scene, or wrong style despite explicit specification.',
+    longDesc:
+      'Text Conditioning Drift on Luma Dream Machine occurs when the text-encoder conditioning fails to steer the diffusion process toward the prompt-specified subject, action, or scene. Unlike total collapse, Luma drift typically produces output that contains some prompt elements but discards others — a partial-attendance failure where the model commits to a different interpretation than the input requested. Most common on multi-element prompts with rare vocabulary or specific style descriptors.',
+    symptoms: [
+      'Wrong subject (cat instead of dog, etc.) despite explicit prompt',
+      'Action described in prompt is absent or replaced with generic motion',
+      'Scene environment is wrong (indoor instead of outdoor, etc.)',
+      'Style descriptors (anime, watercolor, etc.) are ignored',
+      'Multi-subject prompts collapse to single-subject output',
+    ],
+    examples: [
+      {
+        prompt: '"Watercolor-style golden retriever running on a beach at sunset"',
+        failure: 'Output is photorealistic, the dog is standing not running, scene is in a park not beach',
+        timestamp: 'full duration',
+      },
+      {
+        prompt: '"Two children flying a kite in an open meadow, hand-drawn animation style"',
+        failure: 'Output shows one child standing still in a forest, photorealistic',
+        timestamp: 'full duration',
+      },
+    ],
+    refundStrength: 'HIGH — Prompt-adherence failure on paid output is a clear feature defect. Luma support honours refund tickets that document specific divergence.',
+    faq: [
+      {
+        q: 'Does Luma refund prompt-adherence failures?',
+        a: 'Yes — submit the prompt and the output side-by-side, listing each prompt element the model discarded. Cite "Text Conditioning Drift". Luma support recognises this as a generation defect when documented specifically.',
+      },
+      {
+        q: 'Why does Luma ignore parts of my prompt?',
+        a: 'Luma\'s text encoder maps multi-clause prompts to a single conditioning vector. When clauses conflict in style (e.g. "watercolor + photorealistic"), describe rare subjects, or contain too many independent elements, the vector collapses toward the model\'s training prior — discarding the unusual elements.',
+      },
+      {
+        q: 'How do I structure Luma prompts to maximize adherence?',
+        a: 'Use single-clause prompts with subject + action + style in that order. Avoid contradictory descriptors. Test rare-vocabulary subjects with a reference image when possible. AVA pre-flights Luma prompts for drift risk before generation.',
+      },
+    ],
+  },
+  {
+    slug: 'pika-physics-collapse',
+    title: 'Pika Labs Physics Collapse — Refund Guide',
+    metaTitle: 'Pika Physics Collapse Refund — Fluid Gravity Motion Failure',
+    metaDesc:
+      'Pika Labs generated a clip where physics breaks — fluid flows wrong, objects float, gravity inverts? This is Physics Simulation Constraint Violation. Refund guide.',
+    technicalTerm: 'Physics Simulation Constraint Violation',
+    risk: 'MAJOR',
+    shortDesc: 'Pika output produces visually plausible motion that violates Newtonian mechanics — inverted fluid, floating objects, broken gravity, or massless collisions.',
+    longDesc:
+      'Physics Simulation Constraint Violation on Pika Labs occurs when the model produces output that ignores fundamental physics. Like other video diffusion models, Pika has no explicit physics engine — it learns motion statistically. On prompts involving fluid dynamics, gravity, or multi-body interactions, the learned prior can collapse and ship objectively impossible motion in paid output. Most common on Pika clips longer than 3 seconds with rapid scene motion.',
+    symptoms: [
+      'Water, rain, or snow flowing upward',
+      'Heavy objects floating without support',
+      'Collisions with no displacement, deformation, or sound implication',
+      'Falling objects on inverted parabolic paths',
+      'Cloth or hair physics moving in unnatural directions',
+    ],
+    examples: [
+      {
+        prompt: '"Glass of red wine being knocked over and spilling on a white tablecloth"',
+        failure: 'Wine flows upward off the table instead of down; glass remains upright',
+        timestamp: '0:02',
+      },
+      {
+        prompt: '"Snow falling on a mountain village at night, peaceful"',
+        failure: 'Snow falls upward toward the sky for the final 2 seconds',
+        timestamp: '0:03 → 0:05',
+      },
+    ],
+    refundStrength: 'HIGH — Physics failures on paid Pika output are objectively verifiable and clearly attributable to model error, not user input.',
+    faq: [
+      {
+        q: 'Does Pika refund credits for physics-violation output?',
+        a: 'Yes — Pika support honours refund tickets when physics violations are documented with timestamp evidence. Cite "Physics Simulation Constraint Violation" and include the Generation ID.',
+      },
+      {
+        q: 'Why does Pika produce physically impossible motion?',
+        a: 'Pika\'s motion prior is learned from training video. On prompts with rare physical setups (fluid + gravity + impact in <5 seconds), the model statistically interpolates rather than simulates — producing motion that looks plausible frame-by-frame but breaks Newtonian rules over time.',
+      },
+      {
+        q: 'How do I avoid Pika physics collapse?',
+        a: 'Keep fluid-heavy clips under 3 seconds. Specify camera position explicitly. Avoid multi-body physical interactions in a single prompt. AVA flags physics-risk prompts before generation.',
+      },
+    ],
+  },
+  {
     slug: 'veo-camera-motion-ignored-failure',
     title: 'Google Veo Camera Motion Ignored — Refund Guide',
     metaTitle: 'Veo Camera Motion Refund — Dolly Pan Crane Instruction Discarded',
@@ -1550,9 +1780,20 @@ export function getFailure(slug: string): FailureData | undefined {
 // internal PageRank between sibling pages (e.g. Sora watermark ←→ Runway
 // watermark) rather than dumping all 32 other slugs as a flat grid.
 export const FAILURE_CLUSTERS: Record<string, string[]> = {
-  watermark: ['runway-watermark-bleed', 'sora-watermark-bleed-failure'],
-  physics: ['runway-physics-collapse', 'luma-physics-collapse', 'sora-physics-collapse'],
-  face: ['runway-face-distortion', 'luma-face-distortion', 'seedance-face-distortion'],
+  watermark: ['runway-watermark-bleed', 'sora-watermark-bleed-failure', 'kling-watermark-bleed'],
+  physics: [
+    'runway-physics-collapse',
+    'luma-physics-collapse',
+    'sora-physics-collapse',
+    'veo-physics-collapse',
+    'pika-physics-collapse',
+  ],
+  face: [
+    'runway-face-distortion',
+    'luma-face-distortion',
+    'seedance-face-distortion',
+    'sora-face-distortion',
+  ],
   text: [
     'runway-text-rendering-failure',
     'veo-text-rendering-failure',
@@ -1569,6 +1810,7 @@ export const FAILURE_CLUSTERS: Record<string, string[]> = {
     'sora-prompt-adherence-failure',
     'runway-prompt-ignored-failure',
     'veo-camera-motion-ignored-failure',
+    'luma-prompt-adherence-failure',
   ],
   camera: [
     'runway-camera-jitter',
