@@ -1,0 +1,368 @@
+export type AlternativeOption = {
+  name: string;
+  shortPitch: string;
+  bestForUseCase: string;
+  whyClose: string;
+  whatDiffers: string;
+  compareHref?: string;
+};
+
+export type AlternativesPage = {
+  slug: string;
+  toolName: string;
+  toolFullName: string;
+  toolStatus: 'active' | 'deprecated' | 'dead';
+  metaTitle: string;
+  metaDesc: string;
+  toolSummary: string;
+  whyLookingForAlternatives: string;
+  options: AlternativeOption[];
+  finalAdvice: string;
+};
+
+export const ALTERNATIVES: AlternativesPage[] = [
+  {
+    slug: 'runway',
+    toolName: 'Runway',
+    toolFullName: 'Runway Gen-4',
+    toolStatus: 'active',
+    metaTitle: 'Runway Gen-4 Alternatives 2026 — Honest Comparison Guide',
+    metaDesc: 'Best alternatives to Runway Gen-4 for character work, motion, lighting, and audio. Picks ranked by shot type with failure-mode profiles.',
+    toolSummary: 'Runway Gen-4 is the strongest consumer-tier video generator for character consistency across cuts (via Scenes mode) and has the most mature refund flow (7 named failure categories). It\'s the right tool for character-led, multi-cut work. People look for alternatives when motion realism matters more than character coherence, when budget pressure favors cheaper providers, or when they need native audio.',
+    whyLookingForAlternatives: 'You\'re probably here because Runway is producing failures on shot types where it\'s not the strongest, or because $0.05/sec output is more than you want to pay per generation. The honest answer is that "Runway alternative" usually means "the right tool for the specific shot type Runway is failing on."',
+    options: [
+      {
+        name: 'Kling 1.6',
+        shortPitch: 'Strongest motion + physics priors in consumer tier.',
+        bestForUseCase: 'Action sequences, fluid simulation, physics-heavy shots',
+        whyClose: 'Hybrid diffusion + autoregressive architecture gives Kling the strongest fluid + collision priors of any consumer model. Beats Runway decisively on motion realism.',
+        whatDiffers: 'No equivalent of Runway\'s Scenes mode (weaker multi-cut character coherence). Face structure drifts faster past 4s on portraits.',
+        compareHref: '/compare/kling-vs-runway',
+      },
+      {
+        name: 'Luma Dream Machine Ray-2',
+        shortPitch: 'Industry-leading cinematic lighting at lower cost.',
+        bestForUseCase: 'Mood-driven shots, atmospheric work, stylized lighting',
+        whyClose: 'Ray-2\'s lighting realism is the strongest in the consumer tier (rim, key, fill, practical lighting). Cheaper per second ($0.04 vs $0.05) and faster generation.',
+        whatDiffers: 'No multi-cut character mode. Identity drifts faster on long portraits.',
+        compareHref: '/compare/runway-vs-luma',
+      },
+      {
+        name: 'Pika 2.0',
+        shortPitch: 'Best physics + closest stylized substitute for Sora aesthetic.',
+        bestForUseCase: 'Fluid simulation, stylized motion, post-Sora workflows',
+        whyClose: 'Strongest fluid + collision priors after Kling. Most stylization latitude.',
+        whatDiffers: 'No Scenes mode. Character drift past 4s.',
+        compareHref: '/compare/pika-vs-runway',
+      },
+      {
+        name: 'Veo 3 (Google)',
+        shortPitch: 'Only consumer model with usable native audio.',
+        bestForUseCase: 'Short dialogue clips, music-video segments, audio-driven shots',
+        whyClose: 'Native audio generation is something Runway can\'t do. Cheapest per-second cost in consumer tier.',
+        whatDiffers: 'Less stylization control. 8-second hard limit. No multi-cut mode.',
+        compareHref: '/compare/veo-vs-luma',
+      },
+    ],
+    finalAdvice: 'Don\'t replace Runway entirely unless your shot type genuinely fits another tool better. Most production workflows benefit from Runway + 1-2 specialists routed per prompt. AVA Pro automates the routing decision based on your historical hit-rate.',
+  },
+  {
+    slug: 'luma',
+    toolName: 'Luma',
+    toolFullName: 'Luma Dream Machine Ray-2',
+    toolStatus: 'active',
+    metaTitle: 'Luma Dream Machine Alternatives 2026 — Ray-2 vs Competitors',
+    metaDesc: 'Best alternatives to Luma Dream Machine Ray-2 for character work, motion, audio. Honest comparison by shot type with refund flow.',
+    toolSummary: 'Luma Dream Machine Ray-2 is the strongest consumer-tier model for cinematic lighting — rim, key, fill, practical light all handled with industry-leading photoreal output. Also cheap and fast. People look for alternatives when they need character consistency across cuts, native audio, or stronger motion priors.',
+    whyLookingForAlternatives: 'You\'re probably here because Luma is producing color drift on long clips, identity drift on portraits, or because the lighting realism that makes Ray-2 great is overkill for the shot you\'re actually shooting.',
+    options: [
+      {
+        name: 'Runway Gen-4',
+        shortPitch: 'Best character consistency via Scenes mode.',
+        bestForUseCase: 'Multi-cut character work, dialogue scenes, identity-critical shots',
+        whyClose: 'Scenes mode is purpose-built for multi-cut consistency. Runway holds identity for 6-8 cuts; Luma drifts after 3.',
+        whatDiffers: 'Weaker cinematic lighting. More expensive per second.',
+        compareHref: '/compare/runway-vs-luma',
+      },
+      {
+        name: 'Veo 3 (Google)',
+        shortPitch: 'Native audio + cheap short clips.',
+        bestForUseCase: 'Dialogue, audio-driven work, cost-sensitive short clips',
+        whyClose: 'Only consumer model with native audio. Cheapest per-second cost. Different color-coherence behavior (autoregressive architecture) — sometimes succeeds where Luma drifts.',
+        whatDiffers: 'Less cinematic lighting control. 8-second hard limit.',
+        compareHref: '/compare/veo-vs-luma',
+      },
+      {
+        name: 'Kling 1.6',
+        shortPitch: 'Strongest motion + physics in consumer tier.',
+        bestForUseCase: 'Action sequences, fluid, collision-heavy shots',
+        whyClose: 'Better motion priors than Luma. Hybrid architecture gives different failure profile.',
+        whatDiffers: 'Weaker lighting realism than Ray-2. Face coherence drops faster on portraits.',
+      },
+      {
+        name: 'Pika 2.0',
+        shortPitch: 'Stylization + fluid physics.',
+        bestForUseCase: 'Stylized motion, fluid simulation, post-Sora stylized work',
+        whyClose: 'Most stylization latitude of current consumer tools. Strong fluid priors.',
+        whatDiffers: 'Less photoreal output. Character drift past 4s.',
+      },
+    ],
+    finalAdvice: 'Luma is a specialist on cinematic lighting. The right "alternative" depends on what shot type Luma is failing on. For multi-cut character work → Runway. For native audio → Veo. For action / physics → Kling.',
+  },
+  {
+    slug: 'kling',
+    toolName: 'Kling',
+    toolFullName: 'Kling 1.6',
+    toolStatus: 'active',
+    metaTitle: 'Kling 1.6 Alternatives 2026 — Honest Comparison by Shot Type',
+    metaDesc: 'Best alternatives to Kling 1.6 for character work, lighting, audio. Honest comparison with failure-mode profiles and refund flows.',
+    toolSummary: 'Kling 1.6 has the strongest motion + physics priors of any consumer-tier model. The hybrid diffusion + autoregressive architecture gives it best-in-class fluid simulation and collision realism. People look for alternatives when character consistency matters more than motion, when audio is needed, or when refund flow recognition is critical.',
+    whyLookingForAlternatives: 'You\'re probably here because Kling is producing face drift on portraits or because your shot type doesn\'t need its motion strengths.',
+    options: [
+      {
+        name: 'Runway Gen-4',
+        shortPitch: 'Best character consistency via Scenes mode + strongest refund flow.',
+        bestForUseCase: 'Multi-cut character work, dialogue, identity-critical shots',
+        whyClose: 'Scenes mode handles multi-cut consistency that Kling has no equivalent of. 7 named refund categories vs Kling\'s 5-6.',
+        whatDiffers: 'Weaker physics + motion priors. More expensive.',
+        compareHref: '/compare/kling-vs-runway',
+      },
+      {
+        name: 'Veo 3 (Google)',
+        shortPitch: 'Native audio + 8 refund categories.',
+        bestForUseCase: 'Audio-driven content, cost-sensitive short clips',
+        whyClose: 'Only consumer model with native audio. Cheapest per second. Strongest refund flow recognition (8 categories).',
+        whatDiffers: 'Weaker motion + physics priors than Kling.',
+        compareHref: '/compare/kling-vs-veo',
+      },
+      {
+        name: 'Luma Dream Machine Ray-2',
+        shortPitch: 'Industry-leading cinematic lighting.',
+        bestForUseCase: 'Mood-driven shots, atmospheric work',
+        whyClose: 'Better lighting realism. Cheaper than Kling per second.',
+        whatDiffers: 'Weaker motion priors. No multi-cut mode.',
+      },
+      {
+        name: 'Pika 2.0',
+        shortPitch: 'Strongest stylized motion in consumer tier.',
+        bestForUseCase: 'Stylized animation, fluid simulation',
+        whyClose: 'Comparable physics priors. Better stylization latitude.',
+        whatDiffers: 'Slightly weaker overall motion realism. Faster generation though.',
+      },
+    ],
+    finalAdvice: 'Kling is the motion + physics specialist. The right alternative depends on whether you need character work (Runway), audio (Veo), lighting (Luma), or stylized motion (Pika).',
+  },
+  {
+    slug: 'veo',
+    toolName: 'Veo',
+    toolFullName: 'Google Veo 3',
+    toolStatus: 'active',
+    metaTitle: 'Google Veo 3 Alternatives 2026 — When to Switch + To What',
+    metaDesc: 'Best alternatives to Google Veo 3 for character work, motion, longer clips. Honest comparison by shot type with refund flows.',
+    toolSummary: 'Google Veo 3 is the only consumer model with usable native audio generation, has 8 named refund categories, and is the cheapest per-second option in the consumer tier. People look for alternatives when they need longer clips, stronger stylization, character consistency, or motion realism beyond Veo\'s scope.',
+    whyLookingForAlternatives: 'You\'re probably here because Veo\'s 8-second hard limit blocks your shot length, or because the autoregressive architecture produces a more photoreal aesthetic than your work requires.',
+    options: [
+      {
+        name: 'Runway Gen-4',
+        shortPitch: 'Best character consistency + longer coherent clips.',
+        bestForUseCase: 'Multi-cut character work, longer-form scenes',
+        whyClose: 'Scenes mode + Runway\'s diffusion architecture handles longer coherent clips than Veo\'s 8s hard limit.',
+        whatDiffers: 'No native audio. More expensive per second.',
+      },
+      {
+        name: 'Kling 1.6',
+        shortPitch: 'Strongest motion + physics priors.',
+        bestForUseCase: 'Action sequences, fluid simulation',
+        whyClose: 'Hybrid architecture gives better motion realism than Veo.',
+        whatDiffers: 'No native audio. Weaker refund flow (5-6 vs Veo\'s 8 categories).',
+        compareHref: '/compare/kling-vs-veo',
+      },
+      {
+        name: 'Luma Dream Machine Ray-2',
+        shortPitch: 'Industry-leading cinematic lighting.',
+        bestForUseCase: 'Mood-driven shots, stylized cinematography',
+        whyClose: 'Better lighting realism than Veo. Diffusion architecture allows more stylization latitude.',
+        whatDiffers: 'No native audio.',
+        compareHref: '/compare/veo-vs-luma',
+      },
+      {
+        name: 'Pika 2.0',
+        shortPitch: 'Stylized motion + best Sora-substitute.',
+        bestForUseCase: 'Stylized animation, post-Sora aesthetic work',
+        whyClose: 'Most stylization latitude among surviving consumer models.',
+        whatDiffers: 'No native audio. Weaker on photoreal work.',
+      },
+    ],
+    finalAdvice: 'Veo\'s native audio is unique and hard to replace. The right alternative depends on which Veo limitation you\'re hitting — length, stylization, character work, or motion. Most pros pair Veo with one specialist.',
+  },
+  {
+    slug: 'pika',
+    toolName: 'Pika',
+    toolFullName: 'Pika 2.0',
+    toolStatus: 'active',
+    metaTitle: 'Pika 2.0 Alternatives 2026 — When to Pick a Specialist Instead',
+    metaDesc: 'Best alternatives to Pika 2.0 for character work, lighting, audio. Honest comparison with failure-mode profiles.',
+    toolSummary: 'Pika 2.0 has the strongest stylization latitude among consumer-tier video generators and one of the best physics priors. It\'s the closest substitute for Sora 2\'s aesthetic post-shutdown. People look for alternatives when character consistency matters or when refund flow recognition is critical.',
+    whyLookingForAlternatives: 'You\'re probably here because Pika is producing identity drift on character work, or because you need cleaner photoreal output than Pika\'s stylization-leaning default.',
+    options: [
+      {
+        name: 'Runway Gen-4',
+        shortPitch: 'Best character consistency + 7 refund categories.',
+        bestForUseCase: 'Multi-cut character work, dialogue scenes',
+        whyClose: 'Scenes mode is purpose-built for multi-cut consistency. Strongest refund flow recognition.',
+        whatDiffers: 'Less stylization. Weaker physics than Pika.',
+        compareHref: '/compare/pika-vs-runway',
+      },
+      {
+        name: 'Kling 1.6',
+        shortPitch: 'Slightly stronger motion realism + cheaper.',
+        bestForUseCase: 'Action sequences, motion-led work',
+        whyClose: 'Comparable physics priors but slightly stronger motion realism.',
+        whatDiffers: 'Less stylization control. Weaker stylized aesthetics.',
+      },
+      {
+        name: 'Luma Dream Machine Ray-2',
+        shortPitch: 'Industry-leading lighting realism.',
+        bestForUseCase: 'Mood-driven cinematography, lighting-led work',
+        whyClose: 'Significantly better photoreal lighting.',
+        whatDiffers: 'Weaker physics priors. Less stylization.',
+      },
+      {
+        name: 'Veo 3 (Google)',
+        shortPitch: 'Native audio + cheapest short clips.',
+        bestForUseCase: 'Dialogue, audio-driven content, cost-sensitive work',
+        whyClose: 'Only consumer model with native audio.',
+        whatDiffers: 'No stylization latitude. 8-second hard limit.',
+      },
+    ],
+    finalAdvice: 'Pika is the stylization + physics specialist. The right alternative depends on whether you need character coherence (Runway), motion realism (Kling), lighting (Luma), or native audio (Veo).',
+  },
+  {
+    slug: 'sora',
+    toolName: 'Sora',
+    toolFullName: 'OpenAI Sora 2 (shutdown 2026-05)',
+    toolStatus: 'dead',
+    metaTitle: 'Sora 2 Alternatives 2026 — Migration Guide After Shutdown',
+    metaDesc: 'OpenAI killed Sora 2 in May 2026. Best alternatives ranked by shot type. Refund window closes 2026-05-23 — file now.',
+    toolSummary: 'OpenAI shut down Sora 2 on 2026-05-09 after the architecture (diffusion-only) failed to scale economically at consumer pricing. Active users have a refund window until 2026-05-23. No single alternative fully replaces Sora\'s stylized motion strength — the right migration depends on your specific shot type.',
+    whyLookingForAlternatives: 'You\'re probably here because Sora went down and your workflow depended on it. Important first step: file refund tickets via OpenAI billing support before 2026-05-23. See /graveyard/sora-2 for the complete refund flow.',
+    options: [
+      {
+        name: 'Pika 2.0',
+        shortPitch: 'Closest substitute for Sora\'s stylized motion aesthetic.',
+        bestForUseCase: 'Stylized animation, dreamlike sequences, post-Sora aesthetic work',
+        whyClose: 'Most stylization latitude of surviving consumer models. Closest to Sora\'s "creative" output character.',
+        whatDiffers: 'Different stylization tendencies. Won\'t reproduce Sora exactly.',
+      },
+      {
+        name: 'Veo 3 (Google)',
+        shortPitch: 'Best for short clips with native audio (Sora was video-only).',
+        bestForUseCase: 'Short clips with audio, dialogue, music-video segments',
+        whyClose: 'Cheapest per-second option. Strongest refund flow. Native audio is something Sora never had.',
+        whatDiffers: 'Less stylization. 8-second hard limit.',
+        compareHref: '/compare/sora-vs-veo',
+      },
+      {
+        name: 'Runway Gen-4',
+        shortPitch: 'Best for character consistency across cuts.',
+        bestForUseCase: 'Multi-cut character work, narrative scenes',
+        whyClose: 'Scenes mode handles multi-cut identity coherence that Sora couldn\'t do as cleanly.',
+        whatDiffers: 'No native audio. More expensive than Veo.',
+      },
+      {
+        name: 'Kling 1.6',
+        shortPitch: 'Strongest motion + physics priors of surviving models.',
+        bestForUseCase: 'Action sequences, fluid simulation, dynamic motion',
+        whyClose: 'Comparable motion realism to Sora at peak. Hybrid architecture scales better.',
+        whatDiffers: 'Less stylized output character. Weaker face coherence.',
+      },
+    ],
+    finalAdvice: 'No single model replaces Sora 2. Pick by shot type, plan for ~40% rejection rate during your first month migrating, budget refund credits in. Most stranded Sora users end up subscribing to 2-3 alternatives and routing per shot type.',
+  },
+  {
+    slug: 'hailuo',
+    toolName: 'Hailuo',
+    toolFullName: 'Hailuo AI (MiniMax)',
+    toolStatus: 'active',
+    metaTitle: 'Hailuo AI Alternatives 2026 — Best Substitutes by Shot Type',
+    metaDesc: 'Best alternatives to Hailuo AI for talking-head, motion, character. Honest comparison by shot type with refund flows.',
+    toolSummary: 'Hailuo (MiniMax) is a strong consumer-tier model that\'s particularly active on talking-head and dialogue prompts. It also produces some of the worst color drift and lip sync issues in the consumer tier. People look for alternatives when those failure modes block their work.',
+    whyLookingForAlternatives: 'You\'re probably here because Hailuo is producing skin-tone drift on long talking-head clips or lip sync issues on dialogue.',
+    options: [
+      {
+        name: 'Veo 3 (Google)',
+        shortPitch: 'Best native audio + lip sync in consumer tier.',
+        bestForUseCase: 'Dialogue, talking-head clips, audio-driven content',
+        whyClose: 'Veo\'s joint audio + video architecture handles lip sync better than Hailuo\'s. Strongest refund flow.',
+        whatDiffers: '8-second hard limit. Less stylization.',
+      },
+      {
+        name: 'Runway Gen-4',
+        shortPitch: 'Best multi-cut character consistency.',
+        bestForUseCase: 'Narrative scenes, multi-shot character work',
+        whyClose: 'Scenes mode handles identity coherence over multiple cuts.',
+        whatDiffers: 'No native audio. More expensive.',
+      },
+      {
+        name: 'Kling 1.6',
+        shortPitch: 'Strongest motion + physics.',
+        bestForUseCase: 'Action sequences, motion-led work',
+        whyClose: 'Significantly stronger motion priors than Hailuo.',
+        whatDiffers: 'Weaker on talking-head specifically.',
+      },
+      {
+        name: 'Luma Dream Machine Ray-2',
+        shortPitch: 'Industry-leading cinematic lighting.',
+        bestForUseCase: 'Mood-driven work, atmospheric cinematography',
+        whyClose: 'Better lighting realism than Hailuo.',
+        whatDiffers: 'No native audio. Different motion profile.',
+      },
+    ],
+    finalAdvice: 'Hailuo\'s talking-head niche is real but its failure modes (color drift, lip sync) are well-documented. For dialogue-heavy work, Veo 3 is usually the better choice. For everything else, pick by shot type.',
+  },
+  {
+    slug: 'seedance',
+    toolName: 'Seedance',
+    toolFullName: 'ByteDance Seedance',
+    toolStatus: 'active',
+    metaTitle: 'ByteDance Seedance Alternatives 2026 — Comparison Guide',
+    metaDesc: 'Best alternatives to ByteDance Seedance for various shot types. Honest comparison with failure-mode profiles and refund flows.',
+    toolSummary: 'ByteDance Seedance is one of the Chinese-trained consumer video models with strong motion realism but weaker text rendering (Latin alphabet under-represented in training) and weaker lip sync on English (different phoneme set than Mandarin). People look for alternatives when those failure modes dominate.',
+    whyLookingForAlternatives: 'You\'re probably here because Seedance is producing text-rendering failures on English text or lip-sync drift on English dialogue.',
+    options: [
+      {
+        name: 'Veo 3 (Google)',
+        shortPitch: 'Best English text rendering + native audio.',
+        bestForUseCase: 'English-language content, dialogue, audio-driven work',
+        whyClose: 'Better English text rendering than any Chinese-trained model. Native audio handles English dialogue well.',
+        whatDiffers: '8-second hard limit. More expensive than some Chinese alternatives.',
+      },
+      {
+        name: 'Runway Gen-4',
+        shortPitch: 'Best character consistency.',
+        bestForUseCase: 'Multi-cut character work, narrative scenes',
+        whyClose: 'Scenes mode handles multi-cut identity.',
+        whatDiffers: 'More expensive. No native audio.',
+      },
+      {
+        name: 'Luma Dream Machine Ray-2',
+        shortPitch: 'Best lighting realism + cheaper than Runway.',
+        bestForUseCase: 'Mood-driven cinematography',
+        whyClose: 'Industry-leading lighting handles photoreal English-language content well.',
+        whatDiffers: 'No native audio.',
+      },
+      {
+        name: 'Kling 1.6',
+        shortPitch: 'Similar Chinese-trained model with stronger motion priors.',
+        bestForUseCase: 'Action sequences, motion-heavy work',
+        whyClose: 'Same training-data demographics as Seedance but stronger motion realism.',
+        whatDiffers: 'Same English-language weaknesses (text + lip sync).',
+      },
+    ],
+    finalAdvice: 'Chinese-trained models have a meaningfully different failure profile from Western ones — strong motion + physics, weaker English text + lip sync. For English-heavy work, Veo or Runway usually beats Chinese models. For action/motion, Kling beats Seedance.',
+  },
+];
+
+export function getAlternativesPage(slug: string): AlternativesPage | undefined {
+  return ALTERNATIVES.find((a) => a.slug === slug);
+}
