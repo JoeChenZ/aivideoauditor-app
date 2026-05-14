@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from 'react';
 import Link from 'next/link';
+import LeadCaptureForm from '@/components/lead-capture-form';
 
 type Provider = 'runway' | 'luma' | 'kling' | 'veo' | 'pika' | 'hailuo' | 'seedance' | 'sora';
 type FailureMode =
@@ -264,6 +265,16 @@ Best regards,
             </button>
           </div>
           <pre className="bg-surface border border-border rounded-lg p-4 text-sm text-ink-secondary font-mono whitespace-pre-wrap leading-relaxed">{fullLetter}</pre>
+        </div>
+
+        {/* Lead capture */}
+        <div className="mb-10">
+          <LeadCaptureForm
+            source="refund-letter-generator"
+            metadata={{ provider, failureMode }}
+            heading="Get a launch-day discount + the auto-drafter when AVA Pro is live"
+            blurb="This generator is the manual version. AVA Pro drafts these for every failed generation automatically — Generation ID + technical name + timestamp + screenshot all pre-filled. Drop your email for a 30% lifetime discount on launch day."
+          />
         </div>
 
         {/* CTA */}

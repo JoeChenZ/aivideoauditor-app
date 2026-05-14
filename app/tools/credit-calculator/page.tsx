@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from 'react';
 import Link from 'next/link';
+import LeadCaptureForm from '@/components/lead-capture-form';
 
 type Provider = 'runway' | 'luma' | 'kling' | 'veo' | 'pika' | 'hailuo' | 'seedance' | 'multi';
 type PrimaryFailure = 'anatomy' | 'color' | 'identity' | 'lipsync' | 'camera' | 'physics' | 'text' | 'mixed';
@@ -258,6 +259,22 @@ export default function CreditCalculatorPage() {
               Free tier still drafts your refund emails automatically.
             </p>
           )}
+        </div>
+
+        {/* Lead capture */}
+        <div className="mb-10">
+          <LeadCaptureForm
+            source="credit-calculator"
+            metadata={{
+              monthlySpend,
+              provider,
+              primaryFailure,
+              estimatedMonthlyRecovery: calc.additionalRecovery,
+              estimatedAnnualised: calc.annualisedAdditional,
+            }}
+            heading={`Get notified when AVA Pro is live + grab the 30% discount${calc.additionalRecovery > 0 ? ` (save another $${Math.round(calc.additionalRecovery * 0.3)} on your first year)` : ''}`}
+            blurb="AVA Pro pays back the calculator estimate in week 1 for most users. Drop your email — one notification on launch day with a 30% lifetime discount code. No marketing list. No spam."
+          />
         </div>
 
         {/* CTA */}
