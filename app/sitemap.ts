@@ -50,6 +50,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/case-studies`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.91 },
     { url: `${BASE}/tools/credit-calculator`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.88 },
     { url: `${BASE}/tools/refund-letter-generator`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.88 },
+    { url: `${BASE}/tools/migration-planner`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.88 },
     { url: `${BASE}/alternatives`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.89 },
     { url: `${BASE}/compare`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.9 },
     { url: `${BASE}/graveyard`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.9 },

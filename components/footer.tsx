@@ -15,6 +15,7 @@ export default function Footer() {
             <li><Link href="/pricing" className="hover:text-ink-primary transition-colors">Pricing</Link></li>
             <li><Link href="/tools/credit-calculator" className="hover:text-ink-primary transition-colors">Credit Calculator</Link></li>
             <li><Link href="/tools/refund-letter-generator" className="hover:text-ink-primary transition-colors">Refund Letter Generator</Link></li>
+            <li><Link href="/tools/migration-planner" className="hover:text-ink-primary transition-colors">Migration Planner</Link></li>
           </ul>
         </div>
         <div>
