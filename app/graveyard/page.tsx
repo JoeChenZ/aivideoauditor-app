@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { SHUTDOWNS } from './[slug]/data';
+import LeadCaptureForm from '@/components/lead-capture-form';
 
 export const metadata: Metadata = {
   title: 'AI Tool Graveyard — Refund Deadlines & Migration Paths',
@@ -193,6 +194,16 @@ export default function GraveyardIndex() {
               </Link>
             </div>
           </section>
+
+          {/* Lead capture — converts shutdown-anxiety visitors */}
+          <div className="mt-12">
+            <LeadCaptureForm
+              source="graveyard-index"
+              heading="When the next AI tool dies, we'll let you know — before the refund window closes"
+              blurb={`The Sora 2 refund window closes 2026-05-23. The next tool will die too. AVA tracks refund deadlines + technical failure-mode names across every major provider. Drop your email — one notification per shutdown event, never marketing.`}
+              cta="Track refund deadlines for me →"
+            />
+          </div>
 
           {/* About */}
           <section className="mt-12 bg-elevated border border-border rounded-2xl p-8">

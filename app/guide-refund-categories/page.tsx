@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import LeadCaptureForm from '@/components/lead-capture-form';
 
 export const metadata: Metadata = {
   title: 'The 7 Refund Categories Every AI Video Provider Recognises (2026 Guide)',
@@ -343,6 +344,16 @@ export default function GuideRefundCategoriesPage() {
               {' '}— pre-fills this structure with your inputs. Single click to copy.
             </p>
           </section>
+
+          {/* Lead capture — converts long-form readers */}
+          <div className="mb-10">
+            <LeadCaptureForm
+              source="guide-refund-categories"
+              heading="Want the auto-drafter? Get a 30% launch-day discount on AVA Pro"
+              blurb={`This guide is the manual version of what AVA does for every generation. Drop your email — when AVA Pro goes LIVE Stripe (Joe's blocker today), you'll get a 30% lifetime discount and a heads-up the day before.`}
+              cta="Notify me on launch →"
+            />
+          </div>
 
           {/* CTA */}
           <div className="bg-surface border border-neon-green/20 rounded-2xl p-8 text-center mb-12">

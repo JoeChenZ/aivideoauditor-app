@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { CASE_STUDIES } from './[slug]/data';
+import LeadCaptureForm from '@/components/lead-capture-form';
 
 export const metadata: Metadata = {
   title: 'AVA Case Studies — Refund Recovery Stories',
@@ -98,6 +99,16 @@ export default function CaseStudiesIndex() {
             </Link>
           </div>
         </section>
+
+        {/* Lead capture — converts case-study readers */}
+        <div className="mt-12">
+          <LeadCaptureForm
+            source="case-studies-index"
+            heading={`Want results like these? Get 30% off AVA Pro on launch day`}
+            blurb={`These users recovered $84-612/mo because they used AVA Pro's auto-drafted refund tickets. AVA Pro isn't shipping LIVE Stripe yet — but you can pre-register for a 30% lifetime discount the day it does. No marketing list.`}
+            cta="Notify me on launch →"
+          />
+        </div>
 
         <section className="mt-12 bg-elevated border border-border rounded-2xl p-8">
           <h2 className="text-xl font-bold text-ink-primary mb-4">Why we publish case studies anonymously</h2>
