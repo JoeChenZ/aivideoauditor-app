@@ -26,6 +26,8 @@ export default function Footer() {
             <li><Link href="/case-studies" className="hover:text-ink-primary transition-colors">Case Studies</Link></li>
             <li><Link href="/graveyard" className="hover:text-ink-primary transition-colors">AI Tool Graveyard</Link></li>
             <li><Link href="/guide-refund-categories" className="hover:text-ink-primary transition-colors">Refund Categories Guide</Link></li>
+            <li><Link href="/sora-refund" className="hover:text-ink-primary transition-colors text-neon-red">Sora 2 Refund (closes May 23)</Link></li>
+            <li><Link href="/affiliate-program" className="hover:text-ink-primary transition-colors">Affiliate Program</Link></li>
           </ul>
         </div>
         <div>
