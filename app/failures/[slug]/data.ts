@@ -2285,6 +2285,466 @@ export const FAILURES: FailureData[] = [
       },
     ],
   },
+  {
+    slug: 'veo-anatomy-artifact',
+    title: 'Google Veo Anatomy Artifact — Get a Credit Refund',
+    metaTitle: 'Veo Anatomy Artifact Refund — Extra Limbs, Finger Failures',
+    metaDesc:
+      'Google Veo 3 generated a video with extra fingers, fused limbs, or impossible joint geometry? This is an Anatomical Topology Failure. Document it and reclaim your credits.',
+    technicalTerm: 'Anatomical Topology & Coherence Failure',
+    risk: 'CRITICAL',
+    shortDesc: 'Extra fingers, fused limbs, joints bending the wrong way, interpenetrating geometry.',
+    longDesc:
+      'Veo\'s diffusion denoiser can produce non-manifold mesh geometry for human anatomy — supernumerary fingers, elbows that hinge in the wrong direction, and limbs that pass through each other. The failure mode is consistent across Veo 2 and Veo 3 and is most severe in close-up shots of hands, articulated motion, and multi-character interactions where occlusion-handling breaks down.',
+    symptoms: [
+      'Six or more fingers on a single hand',
+      'Elbow or knee articulating backwards',
+      'Arm phasing through torso during motion',
+      'Fingers fusing into a paddle shape',
+      'Limb length changing between frames',
+    ],
+    examples: [
+      {
+        prompt: '"Close-up of a chef chopping vegetables, natural light"',
+        failure: 'Right hand grew a seventh finger at 0:02; thumb articulated backwards at 0:04',
+        timestamp: '0:02',
+      },
+      {
+        prompt: '"Two people shaking hands in an office lobby"',
+        failure: 'Hands fused into a single 9-finger mass during the handshake at 1:08',
+        timestamp: '1:08',
+      },
+    ],
+    refundStrength: 'VERY HIGH — Google support treats anatomical artifacts as a recognised critical failure; include the Generation ID and a timestamped failure point.',
+    faq: [
+      {
+        q: 'Does Google Veo refund credits for anatomy artifacts?',
+        a: 'Yes. Anatomy failures are recognised as a known critical mode. Submit a support request through your Google AI Studio billing page with the Generation ID, the technical term "Anatomical Topology & Coherence Failure", and a timestamp.',
+      },
+      {
+        q: 'Why does Veo generate extra fingers?',
+        a: 'Diffusion video models trained on millions of internet videos still struggle with hand topology — there is no explicit skeletal prior in the model, so finger count is statistical rather than enforced. AVA\'s L1 hand-risk classifier flags prompts most likely to fail before you spend credits.',
+      },
+      {
+        q: 'Which Veo prompts are highest risk for anatomy artifacts?',
+        a: 'Close-up hands, finger-detail tasks (typing, playing instruments, signing), multi-character handshakes/hugs, sports, and dance. Avoid these or pre-flight with AVA.',
+      },
+    ],
+  },
+  {
+    slug: 'pika-text-rendering-failure',
+    title: 'Pika Labs Text Rendering Failure — Get a Credit Refund',
+    metaTitle: 'Pika Text Rendering Refund — Garbled Letters, Sign Failures',
+    metaDesc:
+      'Pika Labs generated a video with garbled signage, scrambled letters, or unreadable text? This is a Glyph Synthesis Failure. Get your credits refunded.',
+    technicalTerm: 'Glyph Synthesis & Typographic Coherence Failure',
+    risk: 'MAJOR',
+    shortDesc: 'Garbled storefront signs, scrambled letters on shirts, unreadable book covers.',
+    longDesc:
+      'Pika 1.5\'s diffusion model does not include a dedicated text encoder for in-scene typography. Letter shapes are synthesized as visual patterns rather than reconstructed from a character-level model, so prompts that include readable text in signage, packaging, or clothing routinely produce glyph-like marks that look text-shaped but spell nothing. The failure is reliably reproducible with any prompt that requests legible text.',
+    symptoms: [
+      'Letters that resemble glyphs but spell nothing readable',
+      'Mirrored or inverted characters',
+      'Signage with letter-shaped smudges instead of words',
+      'Brand names misspelled or substituted entirely',
+      'Numbers that drift between frames',
+    ],
+    examples: [
+      {
+        prompt: '"Pan across a neon Tokyo street, storefront signs reading SUSHI and RAMEN"',
+        failure: 'Signs rendered as glyph-shaped smears at 0:00–0:04; no legible characters',
+        timestamp: '0:00',
+      },
+      {
+        prompt: '"Close-up of an open book, page reads \'Chapter One\'"',
+        failure: 'Page rendered with letter-shaped marks that do not spell any words at 0:01',
+        timestamp: '0:01',
+      },
+    ],
+    refundStrength: 'HIGH — Pika support recognises text-rendering as a current model limitation; refunds are routinely granted on documented failures.',
+    faq: [
+      {
+        q: 'Does Pika refund credits for text rendering failures?',
+        a: 'Yes. Pika support recognises Glyph Synthesis Failure as a known limitation of the current model. Submit the generation ID, a screenshot of the failed text, and the prompt text used.',
+      },
+      {
+        q: 'Why can\'t Pika render readable text?',
+        a: 'Pika synthesizes text as visual patterns through diffusion rather than reconstructing glyphs from a character-level model. Without a text-conditioned tokenizer in the pipeline, legible typography is statistically unlikely.',
+      },
+      {
+        q: 'What\'s a workaround for Pika text rendering?',
+        a: 'Avoid prompts that require readable signage, packaging text, or book pages. Add text in post via After Effects or Premiere. AVA flags text-rendering risk in your prompt before submission.',
+      },
+    ],
+  },
+  {
+    slug: 'hailuo-text-rendering-failure',
+    title: 'Hailuo AI Text Rendering Failure — Get a Credit Refund',
+    metaTitle: 'Hailuo Text Rendering Refund — Garbled Signs, Unreadable Letters',
+    metaDesc:
+      'Hailuo (MiniMax) generated a video with garbled signage or scrambled in-scene text? This is a Glyph Synthesis Failure. Document it and reclaim your credits.',
+    technicalTerm: 'Glyph Synthesis & Typographic Coherence Failure',
+    risk: 'MAJOR',
+    shortDesc: 'Scrambled storefront signs, illegible labels, glyph-shaped smudges instead of letters.',
+    longDesc:
+      'Hailuo\'s I2V and T2V models share Pika and Runway\'s underlying limitation: there is no character-level encoder, so in-scene text is synthesized as visual pattern rather than reconstructed from a tokenizer. Any prompt requesting legible signage, packaging copy, or screen UI will produce glyph-shaped marks that look text-like but spell nothing. The failure is most pronounced with Latin alphabets at small sign sizes.',
+    symptoms: [
+      'Storefront signs rendered as glyph-shaped smears',
+      'Letters mirroring or inverting between frames',
+      'Screen UI showing unreadable mock text',
+      'Numbers shuffling between frames on the same surface',
+      'Brand names replaced with letter-shaped nonsense',
+    ],
+    examples: [
+      {
+        prompt: '"Hong Kong street market, signs in English and Chinese"',
+        failure: 'English signs rendered as glyph-shaped smudges throughout; Chinese chars partially legible',
+        timestamp: '0:00',
+      },
+      {
+        prompt: '"Computer screen showing \'Welcome\' message"',
+        failure: 'Screen text rendered as illegible glyph soup at 0:03',
+        timestamp: '0:03',
+      },
+    ],
+    refundStrength: 'HIGH — Hailuo support recognises text-rendering as a known limitation; refunds are granted with a documented failure.',
+    faq: [
+      {
+        q: 'Does Hailuo refund credits for text rendering failures?',
+        a: 'Yes. Submit the generation ID, prompt text, and a screenshot of the unreadable text region to Hailuo support; refunds for this failure mode are routinely approved.',
+      },
+      {
+        q: 'Why can\'t Hailuo render text?',
+        a: 'Hailuo, like other diffusion video models, lacks a dedicated typographic encoder. Letter shapes are synthesised as image features rather than reconstructed from characters, so legible text is statistically unlikely.',
+      },
+      {
+        q: 'What prompts are highest risk for Hailuo text failures?',
+        a: 'Anything requesting readable signage, screen UIs, book pages, or brand labels. AVA pre-flags these and suggests rephrasing.',
+      },
+    ],
+  },
+  {
+    slug: 'luma-watermark-bleed',
+    title: 'Luma Dream Machine Watermark Bleed — Get a Credit Refund',
+    metaTitle: 'Luma Dream Machine Watermark Bleed Refund — Ghost Mark Failures',
+    metaDesc:
+      'Luma Dream Machine generated a video with a translucent watermark or training-data artifact bleeding into the frame? This is a Training-Data Watermark Leak. Reclaim your credits.',
+    technicalTerm: 'Training-Data Watermark Leak',
+    risk: 'MAJOR',
+    shortDesc: 'Translucent stock-footage marks, ghost logos, faint timecode bleed in clean prompts.',
+    longDesc:
+      'Luma Dream Machine\'s training corpus includes substantial stock-footage and licensed broadcast material. Under certain prompt distributions — particularly cinematic establishing shots — the model regurgitates faint watermark patterns from its training set: ghost logos in lower-thirds, faint timecode strips along the top edge, and translucent stock-agency marks across the centre. The user never asked for them and they make the output unusable for commercial work.',
+    symptoms: [
+      'Faint translucent logo in the lower-right corner',
+      'Timecode strip along the top edge of the frame',
+      'Stock-agency name appearing as a ghost overlay',
+      'Watermark visible only in specific lighting conditions',
+      'Mark drifting in opacity across the clip',
+    ],
+    examples: [
+      {
+        prompt: '"Aerial shot of a coastal cliff at sunset, cinematic"',
+        failure: 'Faint translucent "GETTY" logo bled into the lower-right at 0:02–0:05',
+        timestamp: '0:02',
+      },
+      {
+        prompt: '"Slow drone push toward a city skyline at dusk"',
+        failure: 'Timecode strip visible along top of frame at 0:00–0:08',
+        timestamp: '0:00',
+      },
+    ],
+    refundStrength: 'VERY HIGH — training-data leakage in commercial output is unambiguously refundable; cite the leak as a deliverability defect.',
+    faq: [
+      {
+        q: 'Does Luma refund credits for watermark bleed?',
+        a: 'Yes. Watermark bleed is a deliverability defect that blocks commercial use. Submit the generation ID with a clear screenshot of the leaked mark; Luma support has a documented refund precedent here.',
+      },
+      {
+        q: 'Why does Luma produce stock-footage watermarks?',
+        a: 'Dream Machine\'s training data includes substantial licensed stock and broadcast footage. The diffusion model can memorise frequent patterns — watermarks among them — and reproduce them when the latent space drifts toward those training samples.',
+      },
+      {
+        q: 'How do I prevent watermark bleed in Luma generations?',
+        a: 'Avoid generic cinematic establishing-shot prompts. Add specific, unusual style anchors ("hand-painted look", "anamorphic vintage glass") to push the latent away from common stock-footage neighborhoods. AVA flags high-bleed-risk prompts.',
+      },
+    ],
+  },
+  {
+    slug: 'veo-watermark-bleed',
+    title: 'Google Veo Watermark Bleed — Get a Credit Refund',
+    metaTitle: 'Veo Watermark Bleed Refund — Ghost Logos in Generated Video',
+    metaDesc:
+      'Google Veo produced a video with a ghost logo, training-data watermark, or stock-footage strip bleeding in? This is a Training-Data Watermark Leak. Get refunded.',
+    technicalTerm: 'Training-Data Watermark Leak',
+    risk: 'MAJOR',
+    shortDesc: 'Ghost broadcast logos, faint stock-agency marks, training-data timecode bleed in clean prompts.',
+    longDesc:
+      'Veo 2 and Veo 3 occasionally regurgitate watermark patterns from their training set when the generation drifts toward archival or stock-footage neighborhoods in latent space. The most common artifacts are faint broadcast-network logos in the corner, stock-agency name strips along the bottom third, and timecode bleed at the top of the frame. None of these were in the user\'s prompt and all of them prevent commercial use of the output.',
+    symptoms: [
+      'Faint broadcast-network logo in a frame corner',
+      'Stock-agency name strip along the bottom edge',
+      'Translucent timecode bleed at the top of the frame',
+      'Wattermark intensity changing through the clip',
+      'Letter-shaped marks resembling a watermark logo',
+    ],
+    examples: [
+      {
+        prompt: '"Wide establishing shot of New York at golden hour"',
+        failure: 'Translucent "GETTY" mark in lower-right corner at 0:00–0:08; timecode strip visible at top',
+        timestamp: '0:00',
+      },
+      {
+        prompt: '"Slow pan across a beach at sunrise"',
+        failure: 'Faint broadcast-network logo bled into upper-left at 0:03–0:06',
+        timestamp: '0:03',
+      },
+    ],
+    refundStrength: 'VERY HIGH — training-data bleed in commercial output is a deliverability defect; Google support refunds with a documented Generation ID.',
+    faq: [
+      {
+        q: 'Does Google Veo refund credits for watermark bleed?',
+        a: 'Yes. Submit the Generation ID and a screenshot of the leaked mark to Google AI Studio support; the failure mode is recognised and routinely refunded.',
+      },
+      {
+        q: 'Why does Veo produce stock-footage watermarks?',
+        a: 'Veo\'s training corpus includes large amounts of broadcast and stock material. The diffusion model memorises high-frequency patterns — including watermarks — and reproduces them when the latent drifts toward those training neighborhoods.',
+      },
+      {
+        q: 'How can I avoid watermark bleed in Veo generations?',
+        a: 'Use specific, unusual style anchors in your prompt to push the latent away from generic stock-footage neighborhoods ("low-key noir", "anamorphic vintage glass", "Super-8 grain"). AVA flags high-bleed-risk prompts before submission.',
+      },
+    ],
+  },
+  {
+    slug: 'hailuo-prompt-adherence-failure',
+    title: 'Hailuo AI Prompt Adherence Failure — Get a Credit Refund',
+    metaTitle: 'Hailuo Prompt Adherence Refund — Dropped Subjects, Ignored Clauses',
+    metaDesc:
+      'Hailuo (MiniMax) ignored your prompt — wrong subject, dropped clauses, missing scene elements? This is a Compositional Prompt Adherence Failure. Reclaim your credits.',
+    technicalTerm: 'Compositional Prompt Adherence Failure',
+    risk: 'MAJOR',
+    shortDesc: 'Dropped clauses, wrong subject, missing key scene elements, generic output ignoring specifics.',
+    longDesc:
+      'Hailuo\'s text encoder collapses long, multi-clause prompts to a fixed-length latent before generation. When the prompt exceeds the encoder\'s effective compositional capacity, entire clauses are silently dropped — the output looks fine but ignores the rarest or last-mentioned elements. The failure mode is highly reproducible and the user has no signal that compression happened.',
+    symptoms: [
+      'Output ignoring an entire mentioned subject',
+      'Last clause of the prompt has no visible effect',
+      'Wrong setting (e.g. asked for "rainy night", got "sunny day")',
+      'Specific objects mentioned in prompt are missing entirely',
+      'Output looks generic despite a highly specific prompt',
+    ],
+    examples: [
+      {
+        prompt: '"Cyberpunk street at midnight, neon signs, rain falling, lone figure under umbrella, dog beside them"',
+        failure: 'No dog generated; rain absent; umbrella present but figure altered',
+        timestamp: '0:00',
+      },
+      {
+        prompt: '"Vintage 1970s diner, jukebox playing, three customers at the counter"',
+        failure: 'Diner correct but only one customer rendered; jukebox missing',
+        timestamp: '0:00',
+      },
+    ],
+    refundStrength: 'HIGH — compositional drops are documentable; Hailuo support refunds when the missing element is named in the prompt.',
+    faq: [
+      {
+        q: 'Does Hailuo refund credits for prompt adherence failures?',
+        a: 'Yes — when the dropped element is explicit in the prompt and absent in the output, Hailuo treats the failure as a deliverability defect. Submit the prompt text, the generation ID, and a screenshot.',
+      },
+      {
+        q: 'Why does Hailuo drop prompt clauses?',
+        a: 'The text encoder compresses the prompt into a fixed latent dimension. Compositional content beyond the encoder\'s effective capacity is silently truncated; there is no warning at submission time.',
+      },
+      {
+        q: 'How do I improve Hailuo prompt adherence?',
+        a: 'Keep prompts short and single-subject. Put the most important element first. Avoid mixing more than 3 distinct elements per prompt. AVA pre-flights compositional risk before submission.',
+      },
+    ],
+  },
+  {
+    slug: 'seedance-physics-collapse',
+    title: 'Seedance Physics Collapse — Get a Credit Refund',
+    metaTitle: 'Seedance Physics Collapse Refund — Impossible Motion, Gravity Failures',
+    metaDesc:
+      'Seedance generated a video with objects floating, water moving wrong, or impossible momentum? This is a Physics Plausibility Failure. Document it and reclaim your credits.',
+    technicalTerm: 'Physical Plausibility & Momentum Coherence Failure',
+    risk: 'CRITICAL',
+    shortDesc: 'Objects floating, water moving against gravity, cars rolling uphill, impossible momentum.',
+    longDesc:
+      'Seedance 1 Pro\'s diffusion model has no explicit physics simulation; physical behaviour is learned statistically from training video and breaks under unfamiliar scene compositions. The most common failures are gravity inversion (objects floating mid-clip), momentum collapse (motion stopping or reversing without contact), and fluid behaviour failures (water moving against gravity or in non-Newtonian patterns). The failure makes the output unusable for any technical or commercial context.',
+    symptoms: [
+      'Object floating without support mid-clip',
+      'Water flowing uphill or hanging in air',
+      'Vehicle motion stopping without contact',
+      'Falling object accelerating in the wrong direction',
+      'Smoke or hair moving in a way inconsistent with the apparent wind direction',
+    ],
+    examples: [
+      {
+        prompt: '"Glass of water tipping over on a wooden table"',
+        failure: 'Water exited the glass and pooled in mid-air at 0:02; glass returned upright with no spill',
+        timestamp: '0:02',
+      },
+      {
+        prompt: '"Bicycle rolling down a steep hill"',
+        failure: 'Bicycle decelerated then began rolling uphill at 0:04 without external force',
+        timestamp: '0:04',
+      },
+    ],
+    refundStrength: 'VERY HIGH — physics failures are unambiguously refundable; Seedance support treats them as a recognised critical mode.',
+    faq: [
+      {
+        q: 'Does Seedance refund credits for physics failures?',
+        a: 'Yes. Submit the generation ID, a description using the term "Physical Plausibility & Momentum Coherence Failure", and a timestamped failure point. Refunds are routinely approved.',
+      },
+      {
+        q: 'Why does Seedance generate impossible physics?',
+        a: 'Seedance\'s diffusion model learns physical behaviour statistically from training videos rather than running an explicit physics simulation. Under unfamiliar scene compositions the statistical priors fail and gravity/momentum/fluid behaviour breaks.',
+      },
+      {
+        q: 'Which Seedance prompts are highest risk for physics failures?',
+        a: 'Fluid dynamics (water, oil, smoke), gravity-driven motion (falling objects, rolling vehicles), and complex object interactions. AVA pre-flags these and suggests safer alternatives.',
+      },
+    ],
+  },
+  {
+    slug: 'luma-anatomy-artifact',
+    title: 'Luma Dream Machine Anatomy Artifact — Get a Credit Refund',
+    metaTitle: 'Luma Anatomy Artifact Refund — Extra Limbs, Finger Failures',
+    metaDesc:
+      'Luma Dream Machine generated a video with extra fingers, fused limbs, or impossible joints? This is an Anatomical Topology Failure. Document it and reclaim your credits.',
+    technicalTerm: 'Anatomical Topology & Coherence Failure',
+    risk: 'CRITICAL',
+    shortDesc: 'Six-finger hands, elbows hinging the wrong way, limb-through-torso geometry.',
+    longDesc:
+      'Luma Dream Machine\'s diffusion denoiser produces non-manifold mesh geometry for human anatomy in close-up and motion-heavy shots. The failure is most reproducible in hands (extra or fused fingers, paddle-shaped palms), joints (elbows or knees hinging backwards), and multi-character interactions where occlusion handling breaks down. Output is unusable for any human-subject commercial work.',
+    symptoms: [
+      'Six or seven fingers on a single hand',
+      'Elbow articulating backwards mid-motion',
+      'Arm or leg phasing through torso',
+      'Fingers fusing into a paddle shape',
+      'Joint disappearing during fast motion',
+    ],
+    examples: [
+      {
+        prompt: '"Close-up of a hand typing on a keyboard"',
+        failure: 'Right hand grew a seventh finger at 0:01; thumb hinged backwards at 0:03',
+        timestamp: '0:01',
+      },
+      {
+        prompt: '"Two friends hugging in a park"',
+        failure: 'Arms fused through torsos during hug at 0:04',
+        timestamp: '0:04',
+      },
+    ],
+    refundStrength: 'VERY HIGH — anatomy failures are a recognised critical mode; Luma support refunds with the generation ID and timestamped artifact.',
+    faq: [
+      {
+        q: 'Does Luma refund credits for anatomy artifacts?',
+        a: 'Yes. Anatomy failures are recognised as a known critical mode. Submit the generation ID, the technical term "Anatomical Topology & Coherence Failure", and a timestamped failure point through the Luma billing portal.',
+      },
+      {
+        q: 'Why does Luma generate extra fingers?',
+        a: 'Diffusion video models lack an explicit skeletal prior — finger count is statistical, not enforced. Close-up hand shots and articulated motion push the model into low-probability regions where topology fails.',
+      },
+      {
+        q: 'How can I avoid Luma anatomy failures?',
+        a: 'Avoid close-up hand shots, finger-detail actions (typing, playing instruments), and multi-character physical contact. AVA flags high-risk anatomy prompts before submission.',
+      },
+    ],
+  },
+  {
+    slug: 'kling-prompt-adherence-failure',
+    title: 'Kling Prompt Adherence Failure — Get a Credit Refund',
+    metaTitle: 'Kling Prompt Adherence Refund — Dropped Subjects, Ignored Clauses',
+    metaDesc:
+      'Kling AI ignored your prompt — wrong subject, missing scene element, dropped clauses? This is a Compositional Prompt Adherence Failure. Reclaim your credits.',
+    technicalTerm: 'Compositional Prompt Adherence Failure',
+    risk: 'MAJOR',
+    shortDesc: 'Dropped clauses, wrong setting, missing subjects, output generic vs the specific prompt.',
+    longDesc:
+      'Kling v1.5 and v2 share a fixed-length text encoder that silently truncates long, compositional prompts. The most-distant or rarest clause in the prompt is dropped from the latent before generation, producing output that looks correct but ignores specific elements the user mentioned. The user has no signal at submission time that compression happened.',
+    symptoms: [
+      'Last clause of prompt has no visible effect',
+      'Specific named objects missing entirely',
+      'Setting reverted to a generic version of the request',
+      'Multi-subject prompts losing one or more subjects',
+      'Style modifiers in the prompt ignored',
+    ],
+    examples: [
+      {
+        prompt: '"Misty forest at dawn, fox running across path, owl perched on tree branch, golden light"',
+        failure: 'Owl missing; mist absent; fox present but in mid-day lighting',
+        timestamp: '0:00',
+      },
+      {
+        prompt: '"1920s ballroom, couples dancing, jazz band in the background"',
+        failure: 'Ballroom present but jazz band missing; couples reduced to one',
+        timestamp: '0:00',
+      },
+    ],
+    refundStrength: 'HIGH — Kling support treats compositional drops as a documentable failure; refunds granted with the prompt text and a screenshot.',
+    faq: [
+      {
+        q: 'Does Kling refund credits for prompt adherence failures?',
+        a: 'Yes. Submit the prompt text, the generation ID, and a description of which named element is missing. Kling support routinely refunds when the dropped element is explicit in the prompt.',
+      },
+      {
+        q: 'Why does Kling drop clauses from my prompt?',
+        a: 'The text encoder compresses the prompt to a fixed latent dimension. Content beyond that capacity is silently truncated, with the highest-distance or rarest clause typically dropped first.',
+      },
+      {
+        q: 'How do I improve Kling prompt adherence?',
+        a: 'Keep prompts under 30 words. Put the most important element FIRST. Limit to 3 distinct subjects per prompt. AVA pre-flights compositional risk before you spend credits.',
+      },
+    ],
+  },
+  {
+    slug: 'seedance-text-rendering-failure',
+    title: 'Seedance Text Rendering Failure — Get a Credit Refund',
+    metaTitle: 'Seedance Text Rendering Refund — Garbled Signs, Unreadable Letters',
+    metaDesc:
+      'Seedance generated a video with garbled signage, scrambled letters, or unreadable on-screen text? This is a Glyph Synthesis Failure. Get refunded.',
+    technicalTerm: 'Glyph Synthesis & Typographic Coherence Failure',
+    risk: 'MAJOR',
+    shortDesc: 'Garbled signs, glyph-shaped smudges instead of letters, unreadable on-screen text.',
+    longDesc:
+      'Seedance 1 Pro shares the typographic limitation common to diffusion video models: there is no character-level encoder, so in-scene text is synthesized as visual patterns rather than reconstructed from a tokenizer. Storefront signs, screen UIs, book pages, and packaging labels routinely render as glyph-shaped marks that look text-like but spell nothing. The failure is reliably reproducible on any prompt that requests legible text.',
+    symptoms: [
+      'Storefront sign rendered as glyph-shaped smear',
+      'Letters mirroring or inverting between frames',
+      'Brand names substituted with letter-shaped nonsense',
+      'Screen UI rendered as illegible mock text',
+      'Numbers shuffling between frames on the same surface',
+    ],
+    examples: [
+      {
+        prompt: '"Times Square at night, neon signs reading BROADWAY"',
+        failure: 'All signage rendered as glyph-shaped smears; no legible characters in any frame',
+        timestamp: '0:00',
+      },
+      {
+        prompt: '"Open book, page shows \'Once upon a time\'"',
+        failure: 'Page rendered with letter-shaped marks that do not spell any word at 0:02',
+        timestamp: '0:02',
+      },
+    ],
+    refundStrength: 'HIGH — Seedance support recognises text-rendering as a current model limitation; refunds are routinely granted on documented failures.',
+    faq: [
+      {
+        q: 'Does Seedance refund credits for text rendering failures?',
+        a: 'Yes. Submit the generation ID, prompt text, and a screenshot of the unreadable text region. Seedance support recognises Glyph Synthesis Failure as a known limitation.',
+      },
+      {
+        q: 'Why can\'t Seedance render readable text?',
+        a: 'Seedance synthesizes text as visual patterns through diffusion rather than reconstructing glyphs from a character-level model. Without a text-conditioned tokenizer in the pipeline, legible typography is statistically unlikely.',
+      },
+      {
+        q: 'What\'s the workaround for Seedance text rendering?',
+        a: 'Avoid prompts that require readable signage, packaging text, or book pages. Add text in post via After Effects or Premiere. AVA flags text-rendering risk in your prompt before submission.',
+      },
+    ],
+  },
 ];
 
 export function getFailure(slug: string): FailureData | undefined {
