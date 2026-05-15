@@ -196,35 +196,61 @@ export default function FailurePage({ params }: { params: { slug: string } }) {
             </div>
           </section>
 
-          {/* CTA */}
-          <div className="bg-surface border border-neon-green/20 rounded-2xl p-8 text-center">
-            <p className="text-xs font-mono font-bold tracking-widest text-neon-green uppercase mb-3">
-              Document It Automatically
-            </p>
-            <h2 className="text-2xl font-bold text-ink-primary mb-3">
-              AVA captures all the evidence for you
-            </h2>
-            <p className="text-ink-secondary text-sm mb-6 max-w-md mx-auto">
-              Install the free Chrome extension. It captures your Generation ID, lets you mark the exact broken frames
-              with timestamps, and generates a professional refund letter — or a PDF Technical Audit Report (Pro).
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <a
-                href="https://chromewebstore.google.com/detail/aivideoauditor/ecomchbdfkgakaoponipjgpnjfpimdef"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 bg-neon-green/20 hover:bg-neon-green/30 border border-neon-green/40 text-neon-green font-mono font-bold px-6 py-3 rounded-xl transition-all"
-              >
-                Install Free Extension →
-              </a>
-              <Link
-                href="/guide"
-                className="inline-flex items-center justify-center gap-2 bg-elevated hover:bg-elevated/80 border border-border text-ink-secondary font-mono font-semibold px-6 py-3 rounded-xl transition-all text-sm"
-              >
-                Read the Full Refund Guide
-              </Link>
-            </div>
-          </div>
+          {/* CTA — platform-aware: extension auto-detects on Luma + Runway, manual generator for everything else */}
+          {(() => {
+            const platform = f.slug.split('-')[0];
+            const autoDetected = platform === 'luma' || platform === 'runway';
+            return (
+              <div className="bg-surface border border-neon-green/20 rounded-2xl p-8 text-center">
+                <p className="text-xs font-mono font-bold tracking-widest text-neon-green uppercase mb-3">
+                  {autoDetected ? 'Document It Automatically' : 'Build Your Audit Report'}
+                </p>
+                <h2 className="text-2xl font-bold text-ink-primary mb-3">
+                  {autoDetected ? 'AVA captures all the evidence for you' : 'Generate a refund-ready letter in 2 minutes'}
+                </h2>
+                <p className="text-ink-secondary text-sm mb-6 max-w-md mx-auto">
+                  {autoDetected
+                    ? 'Install the free Chrome extension. It captures your Generation ID, lets you mark the exact broken frames with timestamps, and generates a professional refund letter — or a PDF Technical Audit Report (Pro).'
+                    : 'Paste your Generation ID, prompt, and the timestamp of the visible failure. AVA formats the technical audit letter using the correct named failure category — the language that maps to the support team’s internal workflow.'}
+                </p>
+                <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                  {autoDetected ? (
+                    <>
+                      <a
+                        href="https://chromewebstore.google.com/detail/aivideoauditor/ecomchbdfkgakaoponipjgpnjfpimdef"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center gap-2 bg-neon-green/20 hover:bg-neon-green/30 border border-neon-green/40 text-neon-green font-mono font-bold px-6 py-3 rounded-xl transition-all"
+                      >
+                        Install Free Extension →
+                      </a>
+                      <Link
+                        href="/tools/refund-letter-generator"
+                        className="inline-flex items-center justify-center gap-2 bg-elevated hover:bg-elevated/80 border border-border text-ink-secondary font-mono font-semibold px-6 py-3 rounded-xl transition-all text-sm"
+                      >
+                        Or Generate Manually →
+                      </Link>
+                    </>
+                  ) : (
+                    <>
+                      <Link
+                        href="/tools/refund-letter-generator"
+                        className="inline-flex items-center justify-center gap-2 bg-neon-green/20 hover:bg-neon-green/30 border border-neon-green/40 text-neon-green font-mono font-bold px-6 py-3 rounded-xl transition-all"
+                      >
+                        Generate Refund Letter →
+                      </Link>
+                      <Link
+                        href="/guide"
+                        className="inline-flex items-center justify-center gap-2 bg-elevated hover:bg-elevated/80 border border-border text-ink-secondary font-mono font-semibold px-6 py-3 rounded-xl transition-all text-sm"
+                      >
+                        Read the Full Refund Guide
+                      </Link>
+                    </>
+                  )}
+                </div>
+              </div>
+            );
+          })()}
 
           {/* Related failures (cross-model) */}
           <section className="mt-12">
