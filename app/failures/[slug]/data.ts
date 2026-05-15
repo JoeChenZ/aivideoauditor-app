@@ -4333,6 +4333,513 @@ export const FAILURES: FailureData[] = [
     ],
     relatedFailures: ['runway-hand-artifact', 'luma-hand-artifact', 'kling-hand-artifact', 'sora-hand-artifact', 'pika-hand-artifact'],
   },
+  {
+    slug: 'vidu-anatomy-artifact',
+    title: 'Vidu Anatomy Artifact — Get a Credit Refund',
+    metaTitle: 'Vidu Anatomy Artifact Refund — Extra Limbs, Skeletal Failures',
+    metaDesc:
+      'Vidu Q1/2.0 generated a video with extra limbs, fused joints, or impossible skeletal geometry? This is an Anatomical Topology Failure. Here\'s how to document it and reclaim credits.',
+    technicalTerm: 'Anatomical Topology & Coherence Failure',
+    risk: 'CRITICAL',
+    shortDesc: 'Extra limbs, fused joints, interpenetrating geometry, impossible articulation in Vidu output.',
+    longDesc:
+      'Anatomical Topology & Coherence Failure on Vidu (ShengShu) occurs when the diffusion-transformer model produces skeletal configurations with non-manifold topology. Vidu\'s Reference-to-Video pipeline is especially prone to this when the source reference contains partial occlusion of limbs — the model invents geometry that violates real-world articulation. This is most severe in dance, sports, and multi-character prompts at clips longer than 4 seconds.',
+    symptoms: [
+      'Extra arm or leg appearing mid-clip on Vidu',
+      'Elbow or knee bending backward against natural articulation',
+      'Limb passing through torso or another character',
+      'Joint geometry collapsing into a single mesh',
+      'Reference-to-Video output adds limbs that weren\'t in the reference image',
+    ],
+    examples: [
+      {
+        prompt: '"Three dancers in unison performing a contemporary piece, stage lighting"',
+        failure: 'Middle dancer grew a third arm at 2.4s, leg geometry collapsed at 5.1s',
+        timestamp: '2.4s',
+      },
+      {
+        prompt: '"Basketball player driving to the basket, slow motion"',
+        failure: 'Player\'s left arm bent backward at the elbow at 1.8s, finger count became 6',
+        timestamp: '1.8s',
+      },
+    ],
+    refundStrength: 'HIGH — Vidu support (ShengShu) approves credit refunds for limb artifacts when the Generation ID and timestamped failure are provided in the audit report.',
+    faq: [
+      {
+        q: 'Does Vidu refund credits for anatomy failures?',
+        a: 'Yes. Vidu\'s support team has been responsive to refund requests when the report includes a Generation ID, the correct technical term ("Anatomical Topology & Coherence Failure"), and a timestamp of the visible failure. AVA generates this report automatically.',
+      },
+      {
+        q: 'Which Vidu prompts are highest risk for anatomy failures?',
+        a: 'Multi-character scenes, sports, dance, and Reference-to-Video where the reference image has partial-limb occlusion. AVA\'s L1 scanner flags these before you spend credits.',
+      },
+      {
+        q: 'Is Vidu 2.0 better than Vidu 1.5 for anatomy?',
+        a: 'Marginally — Vidu 2.0 improved hand and finger fidelity, but limb-count hallucination on multi-character prompts is statistically similar. Treat both versions as anatomy-risky for human-figure prompts.',
+      },
+    ],
+    relatedFailures: ['runway-limb-artifact', 'kling-anatomy-artifact', 'hailuo-anatomy-artifact', 'sora-anatomy-artifact', 'seedance-anatomy-artifact'],
+  },
+  {
+    slug: 'vidu-face-distortion',
+    title: 'Vidu Face Distortion — Get a Credit Refund',
+    metaTitle: 'Vidu Face Distortion Refund — Identity Drift, Morphing Faces',
+    metaDesc:
+      'Vidu generated a video where the subject\'s face morphs, identity drifts mid-clip, or facial features collapse? That\'s a Facial Identity Coherence Failure. Document it and reclaim credits.',
+    technicalTerm: 'Facial Identity Coherence Failure',
+    risk: 'MAJOR',
+    shortDesc: 'Subject\'s face morphs between identities, features collapse, eyes/nose misalign across frames.',
+    longDesc:
+      'Facial Identity Coherence Failure on Vidu occurs when the model fails to maintain the same facial identity across the clip\'s temporal axis. The face slowly drifts toward a different person, features (eyes, nose, mouth) misalign frame-to-frame, or the entire face structure collapses during expression changes. Vidu\'s Reference-to-Video mode is meant to prevent this — but on prompts with multiple subjects or rapid head turns, the reference identity gets averaged with hallucinated alternatives.',
+    symptoms: [
+      'Subject\'s face becomes a different person by mid-clip',
+      'Eyes misaligned, nose shifts position frame-to-frame',
+      'Reference-to-Video identity drifts despite a clean reference image',
+      'Face structure collapses during smile or speech',
+      'Multiple subjects swap faces between cuts',
+    ],
+    examples: [
+      {
+        prompt: '"Portrait of a woman smiling, soft window light, cinematic"',
+        failure: 'Face structure changed at 2.7s — eye spacing widened, nose flattened, became a different person',
+        timestamp: '2.7s',
+      },
+      {
+        prompt: '"Two friends laughing at a coffee shop, handheld feel"',
+        failure: 'Face swap occurred between subjects at 3.4s, both identities lost reference fidelity',
+        timestamp: '3.4s',
+      },
+    ],
+    refundStrength: 'HIGH — Vidu support recognizes face-identity drift as a documented failure mode, especially for paid Reference-to-Video credits.',
+    faq: [
+      {
+        q: 'Why does Vidu\'s face drift even with a reference image?',
+        a: 'The Reference-to-Video pipeline conditions on the reference, but the temporal coherence module can drift when the subject turns >45° or speaks. The reference signal weakens as the clip progresses.',
+      },
+      {
+        q: 'Which Vidu prompts are highest risk for face distortion?',
+        a: 'Long clips (>5s) with talking-head shots, profile turns, multi-subject scenes, and rapid expression changes. AVA pre-flight flags these.',
+      },
+      {
+        q: 'Does Vidu refund face drift on Reference-to-Video?',
+        a: 'Yes — and Reference-to-Video has stronger refund precedent because the user is explicitly paying for identity preservation. Document with the Generation ID and reference-vs-output comparison.',
+      },
+    ],
+    relatedFailures: ['runway-face-distortion', 'luma-face-distortion', 'sora-face-distortion', 'veo-face-distortion', 'kling-face-distortion'],
+  },
+  {
+    slug: 'vidu-hand-artifact',
+    title: 'Vidu Hand Artifact — Get a Credit Refund',
+    metaTitle: 'Vidu Hand Artifact Refund — Six Fingers, Fused Knuckles',
+    metaDesc:
+      'Vidu produced a clip with six fingers, fused knuckles, or impossible hand geometry? That\'s a Manual Topology Failure. Document and refund.',
+    technicalTerm: 'Manual Topology & Articulation Failure',
+    risk: 'CRITICAL',
+    shortDesc: 'Six fingers, fused knuckles, fingers passing through objects, impossible grip configurations.',
+    longDesc:
+      'Manual Topology & Articulation Failure on Vidu occurs when the model produces hand geometry that violates the standard five-finger, three-joint articulation. Hand failures on Vidu are statistically the highest-incidence failure for any close-up frame. The Reference-to-Video pipeline does not stabilize hand topology — even with a clean reference hand, the diffusion sampler invents finger counts.',
+    symptoms: [
+      'Six fingers (or four) on a hand visible on Vidu output',
+      'Knuckles fused into a single bone-like mesh',
+      'Fingers passing through grasped objects (cup, phone, pencil)',
+      'Hand grip geometry inverts mid-clip',
+      'Reference hand in input had 5 fingers, output has 6',
+    ],
+    examples: [
+      {
+        prompt: '"Close-up of a barista pouring latte art, soft morning light"',
+        failure: '6 fingers on right hand at 0:02, cup geometry interpenetrated with thumb at 0:04',
+        timestamp: '0:02',
+      },
+      {
+        prompt: '"Surgeon\'s hands tying suture knots, ultra close-up"',
+        failure: 'Both hands developed extra finger at 1.1s, fingers passed through each other at 2.6s',
+        timestamp: '1.1s',
+      },
+    ],
+    refundStrength: 'VERY HIGH — Hand artifacts on Vidu are routinely refunded; ShengShu support classifies these as recognized failure modes.',
+    faq: [
+      {
+        q: 'Why does Vidu generate six fingers on hands?',
+        a: 'Video diffusion models, including Vidu\'s transformer-based architecture, learn finger counts statistically. Without an explicit anatomical constraint, the denoising process can produce variable counts — six is most common because training data oversamples five-finger references which the model overcorrects.',
+      },
+      {
+        q: 'Should I avoid hand close-ups on Vidu?',
+        a: 'For credit efficiency, yes. For paid generations, keep hands at distance, in motion, or out of focus. AVA L1 scanner gives a hand-risk score before you spend credits.',
+      },
+      {
+        q: 'How do I get the strongest refund decision on a hand artifact?',
+        a: 'Send: Generation ID, timestamp of first visible finger-count error, frame capture, and the term "Manual Topology & Articulation Failure". AVA generates the entire packet.',
+      },
+    ],
+    relatedFailures: ['runway-hand-artifact', 'luma-hand-artifact', 'kling-hand-artifact', 'sora-hand-artifact', 'pika-hand-artifact'],
+  },
+  {
+    slug: 'vidu-physics-collapse',
+    title: 'Vidu Physics Collapse — Get a Credit Refund',
+    metaTitle: 'Vidu Physics Collapse Refund — Gravity, Fluid, Collision Failures',
+    metaDesc:
+      'Vidu produced a video with water flowing upward, objects falling sideways, or no collision response? That\'s a Physics Simulation Constraint Violation. Document and refund.',
+    technicalTerm: 'Physics Simulation Constraint Violation',
+    risk: 'MAJOR',
+    shortDesc: 'Gravity violations, fluid inversion, missing collision response, objects falling in wrong direction.',
+    longDesc:
+      'Physics Simulation Constraint Violation on Vidu occurs when the model violates Newtonian mechanics. Vidu has no explicit physics simulator — it learns physical behavior statistically. On prompts with complex fluid dynamics, gravity interactions, or multi-body collisions, the output frequently produces physically impossible motion. Worst after the 5-second mark where temporal coherence degrades.',
+    symptoms: [
+      'Water, milk, or smoke flowing upward against gravity in Vidu output',
+      'Objects falling sideways or in the wrong direction',
+      'Collision between objects producing no physical response',
+      'Steam or vapor remaining static instead of dispersing',
+      'Cloth or hair moving against established wind direction',
+    ],
+    examples: [
+      {
+        prompt: '"Coffee pouring into a glass, slow motion, soft daylight"',
+        failure: 'Coffee stream curved upward at 1.4s, defied gravity for the remaining 3.6s',
+        timestamp: '1.4s',
+      },
+      {
+        prompt: '"Glass shattering on a kitchen floor, ultra slow motion"',
+        failure: 'Shards moved sideways with no downward gravity component at 0:02-0:05',
+        timestamp: '0:02',
+      },
+    ],
+    refundStrength: 'HIGH — Physics violations on paid Vidu generations are recognized as failure-mode credits.',
+    faq: [
+      {
+        q: 'Why does Vidu produce water flowing upward?',
+        a: 'The model has no explicit physics engine — it predicts pixel motion from statistical patterns in training data. When the prompt requires gravity behavior the training set is sparse on (extreme angles, slow-mo, partial occlusion), the predicted motion can violate gravity.',
+      },
+      {
+        q: 'Are physics failures worse on longer Vidu clips?',
+        a: 'Yes. Temporal coherence on physics simulation degrades significantly past 5 seconds. For physics-heavy prompts, keep clips ≤4s.',
+      },
+      {
+        q: 'Does Vidu refund physics-collapse credits?',
+        a: 'Yes when the report uses the technical term "Physics Simulation Constraint Violation" and includes a timestamp of the violation. AVA does this automatically.',
+      },
+    ],
+    relatedFailures: ['runway-physics-collapse', 'luma-physics-collapse', 'sora-physics-collapse', 'veo-physics-collapse', 'kling-physics-collapse'],
+  },
+  {
+    slug: 'vidu-lip-sync-failure',
+    title: 'Vidu Lip Sync Failure — Get a Credit Refund',
+    metaTitle: 'Vidu Lip Sync Failure Refund — Mouth Mismatched to Audio',
+    metaDesc:
+      'Vidu generated a talking-head clip where lip movement doesn\'t match the audio or expected phonemes? That\'s an Audio-Visual Synchronization Failure. Document and refund.',
+    technicalTerm: 'Audio-Visual Synchronization Failure',
+    risk: 'MAJOR',
+    shortDesc: 'Mouth movement doesn\'t match audio phonemes, lips out of sync, articulation collapses.',
+    longDesc:
+      'Audio-Visual Synchronization Failure on Vidu occurs when the model\'s lip articulation diverges from the expected phoneme alignment. Vidu does not generate audio natively (unlike Veo or Sora) — but talking-head prompts produce lip motion that should match a plausible speech pattern. When generated alongside externally-supplied audio (TTS, voice clone), the misalignment becomes severe.',
+    symptoms: [
+      'Mouth open during silent moments, closed during speech in Vidu output',
+      'Lip shapes don\'t match expected vowel/consonant phonemes',
+      'Articulation collapses to a generic open-close pattern',
+      'Multi-character scenes — wrong character\'s mouth is moving',
+      'Lip motion freezes for 1-2s mid-utterance',
+    ],
+    examples: [
+      {
+        prompt: '"News anchor delivering a one-minute weather forecast, professional set"',
+        failure: 'Lip sync drifted from word 12 onward, mouth froze at 0:14',
+        timestamp: '0:14',
+      },
+      {
+        prompt: '"Customer service rep on a call, headset, office background"',
+        failure: 'Mouth remained closed for entire utterance from 2.1s-4.4s',
+        timestamp: '2.1s',
+      },
+    ],
+    refundStrength: 'HIGH — Lip sync failures on Vidu are recognized refund cases when the audio track and timestamp are provided.',
+    faq: [
+      {
+        q: 'Does Vidu produce its own audio?',
+        a: 'No — Vidu generates silent video. Lip-sync failures occur when external audio is paired with Vidu output. The lip articulation should still match plausible speech; failure to do so is a refundable defect.',
+      },
+      {
+        q: 'How do I document a Vidu lip-sync failure?',
+        a: 'Provide the Generation ID, audio track (or TTS source), and timestamps where lips diverge from the audio. AVA generates the comparison automatically.',
+      },
+      {
+        q: 'Which Vidu prompts are highest risk for lip-sync failures?',
+        a: 'Long talking-head clips (>6s), multi-character dialogue, low-light scenes where mouth contours are ambiguous. AVA flags these.',
+      },
+    ],
+    relatedFailures: ['veo-lip-sync-failure', 'sora-lip-sync-failure', 'kling-lip-sync-failure', 'hailuo-lip-sync-failure', 'pika-lip-sync-failure'],
+  },
+  {
+    slug: 'vidu-text-rendering-failure',
+    title: 'Vidu Text Rendering Failure — Get a Credit Refund',
+    metaTitle: 'Vidu Text Rendering Refund — Gibberish, Hallucinated Words',
+    metaDesc:
+      'Vidu generated a clip with garbled, hallucinated, or unreadable text on signs, screens, or labels? That\'s a Symbolic Rendering Coherence Failure. Refund-ready.',
+    technicalTerm: 'Symbolic Rendering Coherence Failure',
+    risk: 'MAJOR',
+    shortDesc: 'Text on signs, screens, books, labels comes out as gibberish or hallucinated words.',
+    longDesc:
+      'Symbolic Rendering Coherence Failure on Vidu occurs when the model attempts to render legible text and produces non-language glyphs, hallucinated words, or character soup. This is consistent across all current video diffusion models — text is a known weakness — but Vidu has particularly high incidence on storefront signs, screen content, and book/poster text in the frame.',
+    symptoms: [
+      'Storefront sign reads as non-words in Vidu output',
+      'Screen content shows hallucinated language',
+      'Book/poster text becomes random glyphs',
+      'License plates show impossible character combinations',
+      'Logo text spells the brand wrong',
+    ],
+    examples: [
+      {
+        prompt: '"Streetview of a bakery storefront, \'Sweet Crumbs\' on the sign, golden hour"',
+        failure: 'Sign read "Sweeit Crmbz" with broken kerning across all frames',
+      },
+      {
+        prompt: '"Laptop on desk showing a code editor with Python script"',
+        failure: 'Screen content was uniform glyph soup, no recognizable Python syntax',
+      },
+    ],
+    refundStrength: 'HIGH — Text rendering failures on Vidu are recognized refund cases when the prompt specified the text and the output is illegible.',
+    faq: [
+      {
+        q: 'Why is text rendering broken on all Vidu models?',
+        a: 'Video diffusion models tokenize the image visually, not symbolically. Text is rendered as a pixel pattern that resembles letters but doesn\'t encode the underlying language. This is a known industry-wide limitation.',
+      },
+      {
+        q: 'Should I avoid text in Vidu prompts?',
+        a: 'For credit efficiency, frame text out of focus or out of frame. AVA L1 scanner flags text-heavy prompts before generation.',
+      },
+      {
+        q: 'Does specifying the exact text in the prompt help on Vidu?',
+        a: 'Marginally — current Vidu versions render specified text more legibly than open-ended signage, but failures remain common past 3-4 words.',
+      },
+    ],
+    relatedFailures: ['runway-text-rendering-failure', 'veo-text-rendering-failure', 'sora-text-rendering-failure', 'kling-text-rendering-failure', 'pika-text-rendering-failure'],
+  },
+  {
+    slug: 'vidu-color-drift',
+    title: 'Vidu Color Drift — Get a Credit Refund',
+    metaTitle: 'Vidu Color Drift Refund — Saturation Shift, White Balance Failure',
+    metaDesc:
+      'Vidu generated a clip where colors shift, white balance breaks, or saturation pulses mid-clip? That\'s a Chromatic Coherence Failure. Document and refund.',
+    technicalTerm: 'Chromatic Coherence Failure',
+    risk: 'MAJOR',
+    shortDesc: 'Colors shift mid-clip, white balance breaks, saturation pulses, hue rotation between frames.',
+    longDesc:
+      'Chromatic Coherence Failure on Vidu occurs when the model fails to maintain stable color and white balance across the clip\'s temporal axis. Saturation pulses, hue rotates between frames, or a scene that started warm becomes cool by the end. This is most severe on clips with high contrast, mixed lighting, or color-rich subjects (food, fabric, sunsets).',
+    symptoms: [
+      'Saturation pulses between high and low across frames in Vidu output',
+      'White balance shifts from warm to cool mid-clip',
+      'Hue rotation visible — colors drift toward orange or purple',
+      'Skin tone becomes unnaturally saturated or desaturated',
+      'Sky color shifts despite no scene change',
+    ],
+    examples: [
+      {
+        prompt: '"Bowl of pasta on a wooden table, golden hour, food photography"',
+        failure: 'Pasta saturation pulsed every 0.5s, table color shifted from warm walnut to cool grey',
+      },
+      {
+        prompt: '"Model walking in front of a sunset, slow motion"',
+        failure: 'Sky hue rotated from orange-pink to purple-blue across the 6s clip without scene change',
+      },
+    ],
+    refundStrength: 'HIGH — Color drift on professional / commercial use cases on Vidu is a recognized refund category.',
+    faq: [
+      {
+        q: 'Why does Vidu color drift mid-clip?',
+        a: 'Temporal coherence on chromatic channels is weaker than on luminance. The model maintains brightness consistency better than color consistency. Long clips (>5s) and high-contrast scenes amplify the effect.',
+      },
+      {
+        q: 'Does Vidu Reference-to-Video stabilize color?',
+        a: 'Partially. The reference biases initial color, but the diffusion sampler can still drift on long clips. Best practice: keep clips ≤4s for color-critical work.',
+      },
+      {
+        q: 'How do I document Vidu color drift?',
+        a: 'Compare first frame to last frame, capture color values, include in audit report with timestamps. AVA does this automatically with frame-by-frame chromatic analysis.',
+      },
+    ],
+    relatedFailures: ['luma-color-drift', 'sora-color-drift', 'veo-color-drift', 'kling-color-drift', 'pika-color-drift'],
+  },
+  {
+    slug: 'vidu-prompt-adherence-failure',
+    title: 'Vidu Prompt Adherence Failure — Get a Credit Refund',
+    metaTitle: 'Vidu Prompt Adherence Refund — Output Ignored Prompt Specifications',
+    metaDesc:
+      'Vidu generated a clip that ignored your prompt — wrong subject, wrong action, missing elements? That\'s a Prompt-to-Generation Adherence Failure. Refund-ready.',
+    technicalTerm: 'Prompt-to-Generation Adherence Failure',
+    risk: 'MAJOR',
+    shortDesc: 'Output ignores key prompt specs — wrong subject, missing actions, wrong setting.',
+    longDesc:
+      'Prompt-to-Generation Adherence Failure on Vidu occurs when the output substantially diverges from the prompt specification. The subject is wrong, the action described isn\'t performed, key elements are missing, or the setting is different. Vidu is generally strong on prompt adherence but failure rates climb on multi-clause prompts (>3 explicit specifications) and on prompts requiring counterintuitive scene composition.',
+    symptoms: [
+      'Vidu output uses a different subject than the prompt specified',
+      'Requested action not performed (e.g., "running" → subject is walking)',
+      'Specified elements missing from the scene (e.g., "with a red umbrella" — no umbrella appears)',
+      'Setting/location ignored — beach prompt produces indoor scene',
+      'Color, time-of-day, or weather specifications ignored',
+    ],
+    examples: [
+      {
+        prompt: '"A black labrador puppy chasing a yellow tennis ball on green grass, sunny day"',
+        failure: 'Output showed a golden retriever (not black lab) on snow (not grass), no ball visible',
+      },
+      {
+        prompt: '"Two people shaking hands at a business meeting, conference room, daylight"',
+        failure: 'Output showed a single person waving, no second character, outdoor setting',
+      },
+    ],
+    refundStrength: 'HIGH — Vidu support has approved refunds for prompts where the divergence is documented with side-by-side comparison.',
+    faq: [
+      {
+        q: 'How adherent is Vidu compared to other models?',
+        a: 'On simple 1-2 clause prompts, Vidu is competitive with Sora and Veo. On multi-clause prompts (4+ specifications), adherence drops significantly — comparable to early Runway Gen-3.',
+      },
+      {
+        q: 'How do I document prompt adherence failure?',
+        a: 'Send the exact prompt, the output, and a per-clause breakdown of what was honored vs ignored. AVA generates this checklist automatically.',
+      },
+      {
+        q: 'Are negative prompts honored on Vidu?',
+        a: 'Inconsistently. "Without text", "no people", "no animals" — these are followed maybe 60% of the time. Best practice: avoid relying on negative prompts for refund-critical generations.',
+      },
+    ],
+    relatedFailures: ['sora-prompt-adherence-failure', 'runway-prompt-ignored-failure', 'veo-camera-motion-ignored-failure', 'luma-prompt-adherence-failure', 'seedance-prompt-adherence-failure'],
+  },
+  {
+    slug: 'vidu-camera-jitter',
+    title: 'Vidu Camera Jitter — Get a Credit Refund',
+    metaTitle: 'Vidu Camera Jitter Refund — Path Drift, Unstable Camera Motion',
+    metaDesc:
+      'Vidu generated a clip with unstable camera path, jittery motion, or drift away from the requested move? That\'s a Camera Path Stability Failure. Document and refund.',
+    technicalTerm: 'Camera Path Stability Failure',
+    risk: 'MAJOR',
+    shortDesc: 'Camera path drifts off-axis, jitters frame-to-frame, or executes the wrong move type.',
+    longDesc:
+      'Camera Path Stability Failure on Vidu occurs when the requested camera move (dolly, pan, orbit, tracking shot) is unstable or replaced by a different move. The camera path may jitter frame-to-frame, drift off-axis, or execute a generic floaty drift instead of the specified motion. Most severe on prompts that explicitly call for cinematic camera language.',
+    symptoms: [
+      'Camera jitters frame-to-frame in Vidu output despite prompt specifying smooth motion',
+      'Requested dolly-in becomes a generic floaty drift',
+      'Orbit shot loses the subject (subject leaves frame mid-rotation)',
+      'Tracking shot loses sync with subject motion',
+      'Camera roll appears uninstructed',
+    ],
+    examples: [
+      {
+        prompt: '"Slow dolly-in on a chef\'s hands plating dessert, restaurant kitchen"',
+        failure: 'Camera executed an erratic orbital drift instead of dolly-in; lost subject framing at 3.1s',
+      },
+      {
+        prompt: '"Orbit shot around a vintage motorcycle, garage lighting"',
+        failure: 'Bike left frame at 2.4s; camera continued rotating with no subject for remaining 3.6s',
+      },
+    ],
+    refundStrength: 'HIGH — Camera-path failures on paid Vidu generations are routinely refunded with timestamp evidence.',
+    faq: [
+      {
+        q: 'Does Vidu honor cinematic camera language?',
+        a: 'Partially. Standard terms (dolly, pan, tilt, orbit) are recognized but execution quality varies. Complex moves (push-pull, vertigo effect, parallax sweeps) are inconsistent.',
+      },
+      {
+        q: 'How do I document a Vidu camera jitter failure?',
+        a: 'Provide the prompt with camera specification, the output, and timestamps where motion deviated from the requested path. AVA generates motion-vector analysis automatically.',
+      },
+      {
+        q: 'Which Vidu camera moves are most reliable?',
+        a: 'Static, slow pans, and slow dollies are most reliable. Orbits and rapid moves are most failure-prone.',
+      },
+    ],
+    relatedFailures: ['luma-camera-jitter', 'runway-camera-jitter', 'kling-camera-jitter', 'veo-camera-jitter', 'sora-camera-control-failure'],
+  },
+  {
+    slug: 'vidu-motion-failure',
+    title: 'Vidu Motion Failure — Get a Credit Refund',
+    metaTitle: 'Vidu Motion Failure Refund — Stalled Motion, Frame Repetition',
+    metaDesc:
+      'Vidu generated a clip where motion stalls, frames repeat, or subjects freeze mid-action? That\'s a Temporal Motion Coherence Failure. Document and refund.',
+    technicalTerm: 'Temporal Motion Coherence Failure',
+    risk: 'MAJOR',
+    shortDesc: 'Motion stalls, frames near-duplicate, subjects freeze mid-action despite continuous prompt.',
+    longDesc:
+      'Temporal Motion Coherence Failure on Vidu occurs when the model fails to produce continuous motion across the clip\'s timeline. Subjects freeze mid-action for 1-2 seconds, frames near-duplicate, or motion stutters in non-uniform timing. Most severe on long clips with sustained motion (running, dancing, vehicle motion).',
+    symptoms: [
+      'Subject freezes mid-stride for 1-2 seconds in Vidu output',
+      'Frame-to-frame duplication detectable on slow playback',
+      'Motion stutters in non-uniform timing',
+      'Vehicle/animal motion stops despite continuous-action prompt',
+      'Dance/sports motion loses fluidity at clip midpoint',
+    ],
+    examples: [
+      {
+        prompt: '"Runner sprinting through a park, slow motion, late afternoon light"',
+        failure: 'Runner froze mid-stride at 2.1s for 1.3s; motion resumed at 3.4s but with visible frame jump',
+        timestamp: '2.1s',
+      },
+      {
+        prompt: '"Sedan driving down an empty highway, side-tracking shot, sunset"',
+        failure: 'Sedan motion stalled at 3.8s; remained stationary for remainder of 6s clip while environment continued moving',
+        timestamp: '3.8s',
+      },
+    ],
+    refundStrength: 'HIGH — Vidu motion stalls are recognized refund cases with timestamp evidence.',
+    faq: [
+      {
+        q: 'Why does Vidu motion stall on long clips?',
+        a: 'Temporal attention degrades past the model\'s effective horizon (typically 4-5s). The diffusion sampler can produce near-duplicate frames when motion vector prediction collapses.',
+      },
+      {
+        q: 'How do I document a motion failure?',
+        a: 'Provide the Generation ID, timestamps of the stall, and a frame-by-frame breakdown. AVA generates this motion-vector analysis automatically.',
+      },
+      {
+        q: 'Should I use shorter clips on Vidu to avoid this?',
+        a: 'For motion-heavy prompts (sports, vehicles, dance), keep clips ≤4s. AVA L1 scanner flags long-clip motion risk before generation.',
+      },
+    ],
+    relatedFailures: ['pika-motion-failure', 'seedance-motion-drift', 'luma-motion-failure', 'veo-motion-failure', 'runway-temporal-flicker'],
+  },
+  {
+    slug: 'vidu-watermark-bleed',
+    title: 'Vidu Watermark Bleed — Get a Credit Refund',
+    metaTitle: 'Vidu Watermark Bleed Refund — Visible Watermark in Paid Output',
+    metaDesc:
+      'Vidu produced a video with visible watermark bleeding through despite paid-tier subscription? That\'s a Watermark Suppression Failure. Refund-ready.',
+    technicalTerm: 'Watermark Suppression Failure',
+    risk: 'MAJOR',
+    shortDesc: 'Watermark visibly bleeds through Vidu paid-tier output despite watermark-removal entitlement.',
+    longDesc:
+      'Watermark Suppression Failure on Vidu occurs when the model produces output with a visible Vidu/ShengShu watermark despite the user being on a paid tier that should remove it. This typically appears as a faint logo in the corner, a recurring text overlay, or a structural pattern in low-information regions of the frame. It\'s a clear product defect on paid output.',
+    symptoms: [
+      'Faint Vidu/ShengShu logo visible in corner of paid-tier output',
+      'Recurring text watermark across frames',
+      'Pattern visible in dark or uniform background regions',
+      'Watermark visible despite the user\'s Pro/Max subscription confirmation',
+      'Watermark differs across frames (artifact, not legitimate watermark)',
+    ],
+    examples: [
+      {
+        prompt: '"Aerial drone shot of a coastal cliff, blue ocean, sunny day"',
+        failure: 'Faint "Vidu" logo visible bottom-right across all frames despite Max-tier account',
+      },
+      {
+        prompt: '"Slow zoom on a luxury watch face, studio lighting"',
+        failure: 'Recurring text pattern visible in 4 corners of the frame, not present in non-watermark Vidu Max output',
+      },
+    ],
+    refundStrength: 'VERY HIGH — Watermark bleed on a paid Vidu tier is a clear product defect; refunds are routine.',
+    faq: [
+      {
+        q: 'Why does Vidu watermark show on paid-tier output?',
+        a: 'A bug in the post-processing pipeline can fail to apply the watermark-suppression layer on paid tier generations. ShengShu has acknowledged this in changelog notes.',
+      },
+      {
+        q: 'How do I prove watermark bleed?',
+        a: 'Capture frames at the corners, compare against your tier entitlement. Send Generation ID + account tier + frame evidence to support. AVA does this automatically.',
+      },
+      {
+        q: 'Does ShengShu refund all watermark-bleed cases?',
+        a: 'Yes when the user is verifiably on a paid tier. The refund decision is consistently in the user\'s favor.',
+      },
+    ],
+    relatedFailures: ['runway-watermark-bleed', 'sora-watermark-bleed-failure', 'kling-watermark-bleed', 'pika-watermark-bleed', 'seedance-watermark-bleed'],
+  },
 ];
 
 export function getFailure(slug: string): FailureData | undefined {
@@ -4350,6 +4857,7 @@ export const FAILURE_CLUSTERS: Record<string, string[]> = {
     'kling-watermark-bleed',
     'pika-watermark-bleed',
     'seedance-watermark-bleed',
+    'vidu-watermark-bleed',
   ],
   physics: [
     'runway-physics-collapse',
@@ -4359,6 +4867,7 @@ export const FAILURE_CLUSTERS: Record<string, string[]> = {
     'pika-physics-collapse',
     'kling-physics-collapse',
     'hailuo-physics-collapse',
+    'vidu-physics-collapse',
   ],
   face: [
     'runway-face-distortion',
@@ -4369,6 +4878,7 @@ export const FAILURE_CLUSTERS: Record<string, string[]> = {
     'kling-face-distortion',
     'pika-face-distortion',
     'hailuo-face-distortion',
+    'vidu-face-distortion',
   ],
   text: [
     'runway-text-rendering-failure',
@@ -4376,6 +4886,7 @@ export const FAILURE_CLUSTERS: Record<string, string[]> = {
     'kling-text-rendering-failure',
     'runway-hallucinated-text',
     'sora-text-rendering-failure',
+    'vidu-text-rendering-failure',
   ],
   anatomy: [
     'runway-limb-artifact',
@@ -4390,6 +4901,8 @@ export const FAILURE_CLUSTERS: Record<string, string[]> = {
     'pika-hand-artifact',
     'seedance-hand-artifact',
     'hailuo-hand-artifact',
+    'vidu-anatomy-artifact',
+    'vidu-hand-artifact',
   ],
   promptAdherence: [
     'sora-prompt-adherence-failure',
@@ -4397,6 +4910,7 @@ export const FAILURE_CLUSTERS: Record<string, string[]> = {
     'veo-camera-motion-ignored-failure',
     'luma-prompt-adherence-failure',
     'seedance-prompt-adherence-failure',
+    'vidu-prompt-adherence-failure',
   ],
   camera: [
     'runway-camera-jitter',
@@ -4409,6 +4923,7 @@ export const FAILURE_CLUSTERS: Record<string, string[]> = {
     'veo-camera-jitter',
     'pika-camera-jitter',
     'seedance-camera-jitter',
+    'vidu-camera-jitter',
   ],
   motion: [
     'pika-motion-failure',
@@ -4417,6 +4932,7 @@ export const FAILURE_CLUSTERS: Record<string, string[]> = {
     'runway-temporal-flicker',
     'veo-motion-failure',
     'luma-motion-failure',
+    'vidu-motion-failure',
   ],
   audioLipSync: [
     'runway-audio-sync-drift',
@@ -4429,6 +4945,7 @@ export const FAILURE_CLUSTERS: Record<string, string[]> = {
     'veo-lip-sync-failure',
     'sora-lip-sync-failure',
     'seedance-lip-sync-failure',
+    'vidu-lip-sync-failure',
   ],
   color: [
     'veo-color-drift',
@@ -4438,6 +4955,7 @@ export const FAILURE_CLUSTERS: Record<string, string[]> = {
     'pika-color-drift',
     'hailuo-color-drift',
     'seedance-color-drift',
+    'vidu-color-drift',
   ],
 };
 
