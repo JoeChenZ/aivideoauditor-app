@@ -108,17 +108,17 @@ export const COMPARISONS: Comparison[] = [
       honestNote: 'No current model fully replaces Sora 2 on stylized motion. The closest substitute depends on your specific shot type.',
     },
     comparisonTable: [
-      { dimension: 'Current availability', toolA: 'Dead (shutdown 2026-05-09)', toolB: 'Active', winner: 'B' },
+      { dimension: 'Current availability', toolA: 'Sunsetting (app shut 2026-04-26; API to Sept 2026)', toolB: 'Active', winner: 'B' },
       { dimension: 'Architecture', toolA: 'Diffusion-only (expensive at length)', toolB: 'Autoregressive on latent tokens (scales linearly)', winner: 'B' },
       { dimension: 'Stylized motion', toolA: 'Industry-leading (when active)', toolB: 'Adequate; less stylization latitude', winner: 'A' },
       { dimension: 'Native audio', toolA: 'No', toolB: 'Yes (joint generation)', winner: 'B' },
       { dimension: 'Max clip length (good coherence)', toolA: '~8-10s', toolB: '~4s before audio drift; 8s hard limit', winner: 'A' },
       { dimension: 'Text rendering in frame', toolA: 'Garbled past ~6 chars', toolB: 'Slightly better; still garbled past ~6 chars', winner: 'B' },
       { dimension: 'Per-clip cost (consumer)', toolA: 'N/A (shutdown)', toolB: 'Lower than Sora at peak', winner: 'B' },
-      { dimension: 'Refund window status', toolA: 'Closes 2026-05-23', toolB: 'Active per-generation refunds for documented failures', winner: 'NA' },
+      { dimension: 'Refund window status', toolA: 'Open until Sept 2026 API shutdown', toolB: 'Active per-generation refunds for documented failures', winner: 'NA' },
     ],
     whenToPickA: {
-      description: "Sora 2 was shut down on 2026-05-09. You can no longer pick it. If you had unspent credits, file refund tickets via OpenAI billing support before 2026-05-23 — use technical failure-mode names (Anatomical Topology Failure, Temporal Color Coherence Failure, etc.) for fastest processing. See the /graveyard/sora-2 record for the complete refund flow.",
+      description: "The Sora 2 app and platform shut down on April 26, 2026. API access continues until late 2026 (September shutdown announced via r/SoraAi). You can't pick Sora as a tool, but if you had unspent credits or failed generations, file refund tickets via OpenAI billing support before the API shutdown — use technical failure-mode names (Anatomical Topology Failure, Temporal Color Coherence Failure, etc.) for fastest processing. See the /graveyard/sora-2 record for the complete refund flow.",
       failureModes: [
         { name: 'Anatomical Topology Failure', href: '/failures/sora-anatomy-artifact' },
         { name: 'Hand-Anatomy Topology Failure', href: '/failures/sora-hand-artifact' },
@@ -151,7 +151,7 @@ export const COMPARISONS: Comparison[] = [
       { prompt: '"Brand-aligned product shot with on-screen text (logo)"', toolA: 'Text garbled past ~6 chars.', toolB: 'Text garbled past ~6 chars but slightly more legible.', verdict: 'Tie — composite text in post for either. Refund both as Text Rendering Failure.' },
       { prompt: '"8-second cinematic shot with continuous motion"', toolA: 'Best in class on coherence at length.', toolB: 'Coherence degrades meaningfully past 4-5s.', verdict: 'Sora was the right answer; no current consumer model fully replaces this at length.' },
     ],
-    refundFlowSummary: "For Sora 2 unspent credits, file refund tickets via OpenAI billing support before 2026-05-23 using technical failure-mode names. For Veo 3 documented failures, submit via Google AI Studio billing with Generation ID + technical category. Both providers honor documented failure-mode refunds at ~75-85% approval rates.",
+    refundFlowSummary: "For Sora 2 unspent credits, file refund tickets via OpenAI billing support before the September 2026 API shutdown using technical failure-mode names. For Veo 3 documented failures, submit via Google AI Studio billing with Generation ID + technical category. Both providers honor documented failure-mode refunds at ~75-85% approval rates.",
     finalVerdict: "Sora 2 is dead. If you were a Sora user, your migration depends on shot type: stylized motion → Pika 2.0 (closest substitute, never quite the same). Native audio + dialogue → Veo 3 (the only consumer model with usable joint audio+video). Character consistency → Runway Gen-4. Long-form coherence → no current consumer model. The lesson for AI workflow: depend on capability categories, not specific models. Build adapter abstractions so the next shutdown is a config change, not a rebuild.",
   },
   {

@@ -25,7 +25,7 @@ const PROVIDER_LABELS: Record<Provider, string> = {
   pika: 'Pika Labs',
   hailuo: 'Hailuo (MiniMax)',
   seedance: 'ByteDance Seedance',
-  sora: 'OpenAI Sora 2 (refund window closes 2026-05-23)',
+  sora: 'OpenAI Sora 2 (app shut down April 26, 2026; API winds down September 2026)',
 };
 
 const PROVIDER_SUPPORT_PATH: Record<Provider, string> = {
@@ -36,7 +36,7 @@ const PROVIDER_SUPPORT_PATH: Record<Provider, string> = {
   pika: 'Pika Labs support via pika.art/help',
   hailuo: 'MiniMax / Hailuo support at hailuoai.com/support',
   seedance: 'ByteDance Seedance support via the in-app help center',
-  sora: 'OpenAI billing support at https://help.openai.com — file before 2026-05-23',
+  sora: 'OpenAI billing support at https://help.openai.com — file before the September 2026 API shutdown',
 };
 
 const FAILURE_LABELS: Record<FailureMode, string> = {

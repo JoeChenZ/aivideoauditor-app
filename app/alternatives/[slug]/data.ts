@@ -243,9 +243,9 @@ export const ALTERNATIVES: AlternativesPage[] = [
     toolFullName: 'OpenAI Sora 2 (shutdown 2026-05)',
     toolStatus: 'dead',
     metaTitle: 'Sora 2 Alternatives 2026 — Migration Guide After Shutdown',
-    metaDesc: 'OpenAI killed Sora 2 in May 2026. Best alternatives ranked by shot type. Refund window closes 2026-05-23 — file now.',
-    toolSummary: 'OpenAI shut down Sora 2 on 2026-05-09 after the architecture (diffusion-only) failed to scale economically at consumer pricing. Active users have a refund window until 2026-05-23. No single alternative fully replaces Sora\'s stylized motion strength — the right migration depends on your specific shot type.',
-    whyLookingForAlternatives: 'You\'re probably here because Sora went down and your workflow depended on it. Important first step: file refund tickets via OpenAI billing support before 2026-05-23. See /graveyard/sora-2 for the complete refund flow.',
+    metaDesc: 'OpenAI discontinued the Sora 2 app on April 26, 2026. API winds down September 2026. Best alternatives ranked by shot type + refund flow before deadline.',
+    toolSummary: 'OpenAI shut down the Sora 2 app and platform on April 26, 2026 after the architecture (diffusion-only) failed to scale economically at consumer pricing. The API continues to accept calls until late 2026 (September shutdown announced via r/SoraAi). No single alternative fully replaces Sora\'s stylized motion strength — the right migration depends on your specific shot type.',
+    whyLookingForAlternatives: 'You\'re probably here because Sora went down and your workflow depended on it. Important first step: file refund tickets via OpenAI billing support before the September 2026 API shutdown. See /graveyard/sora-2 for the complete refund flow.',
     options: [
       {
         name: 'Pika 2.0',

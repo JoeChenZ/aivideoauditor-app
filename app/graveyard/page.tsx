@@ -200,7 +200,7 @@ export default function GraveyardIndex() {
             <LeadCaptureForm
               source="graveyard-index"
               heading="When the next AI tool dies, we'll let you know — before the refund window closes"
-              blurb={`The Sora 2 refund window closes 2026-05-23. The next tool will die too. AVA tracks refund deadlines + technical failure-mode names across every major provider. Drop your email — one notification per shutdown event, never marketing.`}
+              blurb={`Sora 2's API winds down September 2026 — file refunds before then. The next tool will die too. AVA tracks refund deadlines + technical failure-mode names across every major provider. Drop your email — one notification per shutdown event, never marketing.`}
               cta="Track refund deadlines for me →"
             />
           </div>

@@ -3,25 +3,26 @@ import Link from 'next/link';
 import LeadCaptureForm from '@/components/lead-capture-form';
 
 export const metadata: Metadata = {
-  title: 'Sora 2 Refund Window Closes 2026-05-23 — How to Recover Your Credits',
-  description: 'OpenAI killed Sora 2 in May 2026. The credit refund window closes 2026-05-23. Step-by-step refund flow, what to write, and how to get every dollar back before it expires.',
+  title: 'Sora 2 Refund Flow — Recover Your Credits Before the API Shutdown',
+  description: 'OpenAI discontinued Sora 2 on April 26, 2026. The API winds down September 2026 — file refund tickets for unused credits + failed generations before then. Step-by-step flow.',
   alternates: { canonical: 'https://www.aivideoauditor.com/sora-refund' },
   openGraph: {
-    title: 'Sora 2 Refund Window Closes May 23 — Recover Your Credits',
-    description: 'Step-by-step refund flow for stranded Sora 2 users. File before the window closes.',
+    title: 'Sora 2 Refund Flow — Recover Your Credits Before the API Shutdown',
+    description: 'Step-by-step refund flow for stranded Sora 2 users. API winds down September 2026.',
     type: 'article',
   },
   robots: { index: true, follow: true },
 };
 
-// Refund window deadline — used for countdown urgency framing.
-const REFUND_DEADLINE = '2026-05-23';
+// API shutdown — file refunds before this for cleanest processing.
+const API_SHUTDOWN = 'September 2026';
+const SHUTDOWN_DATE = 'April 26, 2026';
 
 export default function SoraRefundPage() {
   const articleSchema = {
     '@context': 'https://schema.org',
     '@type': 'NewsArticle',
-    headline: 'Sora 2 Refund Window Closes 2026-05-23',
+    headline: 'Sora 2 Refund Flow — File Before the September 2026 API Shutdown',
     description: 'How to recover unused Sora 2 credits before OpenAI closes the refund window.',
     datePublished: '2026-05-14',
     dateModified: '2026-05-14',
@@ -36,19 +37,19 @@ export default function SoraRefundPage() {
       <main className="min-h-screen py-12 px-6">
         <article className="max-w-3xl mx-auto">
 
-          {/* Urgency banner */}
-          <div className="mb-8 bg-neon-red/10 border border-neon-red/40 rounded-2xl p-5 flex flex-wrap items-center justify-between gap-3">
+          {/* Status banner */}
+          <div className="mb-8 bg-neon-amber/10 border border-neon-amber/40 rounded-2xl p-5 flex flex-wrap items-center justify-between gap-3">
             <div>
-              <p className="text-xs font-mono font-bold tracking-widest text-neon-red uppercase mb-1">
-                Refund window closes
+              <p className="text-xs font-mono font-bold tracking-widest text-neon-amber uppercase mb-1">
+                Sora 2 shutdown · App discontinued {SHUTDOWN_DATE} · API runs until {API_SHUTDOWN}
               </p>
-              <p className="text-ink-primary font-bold text-lg">{REFUND_DEADLINE} — file before this date</p>
+              <p className="text-ink-primary font-bold text-lg">File refunds for unused credits + failed gens before {API_SHUTDOWN}</p>
             </div>
             <a
               href="https://help.openai.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xs font-mono font-bold text-neon-red hover:text-neon-red/80 uppercase border border-neon-red/40 px-3 py-2 rounded-lg"
+              className="text-xs font-mono font-bold text-neon-amber hover:text-neon-amber/80 uppercase border border-neon-amber/40 px-3 py-2 rounded-lg"
             >
               File refund now →
             </a>
@@ -62,12 +63,13 @@ export default function SoraRefundPage() {
 
           <header className="mb-10">
             <h1 className="text-3xl md:text-5xl font-bold text-ink-primary mb-4 leading-tight">
-              Sora 2 is shut down. Your refund window closes May 23.
+              Sora 2 is shut down. Your credits are still recoverable.
             </h1>
             <p className="text-ink-secondary text-lg leading-relaxed mb-4">
-              OpenAI killed Sora 2 on 2026-05-09. If you had unspent credits or failed generations,
-              you have ~9 days from now to file refund tickets before the window closes. Most users won&apos;t
-              file because they don&apos;t know the process — and lose every dollar.
+              OpenAI discontinued the Sora 2 app and platform on {SHUTDOWN_DATE}. The API continues to
+              accept calls until {API_SHUTDOWN}, which means there&apos;s still a window to file refund
+              tickets for unused credits and failed generations. Most users won&apos;t file because they
+              don&apos;t know the process — and lose every dollar.
             </p>
             <p className="text-ink-muted text-sm">
               This page walks through the exact refund flow OpenAI is honoring during the wind-down. ~75-85%
@@ -99,8 +101,9 @@ export default function SoraRefundPage() {
                 get a template reply.
               </li>
               <li>
-                <strong className="text-ink-primary">5. Submit before {REFUND_DEADLINE}.</strong> OpenAI is processing
-                wind-down refunds in batches; expect 5-14 days for response.
+                <strong className="text-ink-primary">5. Submit before {API_SHUTDOWN}.</strong> OpenAI is processing
+                wind-down refunds in batches; expect 5-14 days for response. Earlier filings get cleaner processing
+                — the closer to the API shutdown date, the more backlog in billing queue.
               </li>
             </ol>
           </section>
@@ -113,9 +116,10 @@ export default function SoraRefundPage() {
               <p className="text-xs font-mono text-neon-purple uppercase tracking-wider mb-2">Type 1</p>
               <h3 className="font-bold text-ink-primary mb-2">Unused credit balance</h3>
               <p className="text-ink-secondary text-sm leading-relaxed mb-3">
-                If you pre-paid for Sora 2 credits and didn&apos;t spend them all before the May 9 shutdown,
-                that balance is refundable. OpenAI is honoring all unspent balances during the wind-down
-                window. Don&apos;t need a Generation ID — just your account email and the approximate amount.
+                If you pre-paid for Sora 2 credits and didn&apos;t spend them before the {SHUTDOWN_DATE} app
+                shutdown, that balance is refundable. OpenAI is honoring all unspent balances during the
+                wind-down window. Don&apos;t need a Generation ID — just your account email and the
+                approximate amount.
               </p>
               <p className="text-ink-muted text-xs">
                 <strong>Approval rate:</strong> ~95%. This is the cleanest refund category — no judgment call,
@@ -244,11 +248,12 @@ Best regards,
             <h2 className="text-2xl font-bold text-ink-primary mb-3">FAQ</h2>
             <div className="space-y-4">
               <div className="bg-elevated border border-border rounded-xl p-5">
-                <h3 className="text-ink-primary font-semibold text-sm mb-2">What happens if I file after May 23?</h3>
+                <h3 className="text-ink-primary font-semibold text-sm mb-2">What happens if I file after the API shutdown?</h3>
                 <p className="text-ink-secondary text-sm leading-relaxed">
-                  OpenAI has stated this is the end of the wind-down refund window. Late-filed tickets may
-                  still be reviewed at OpenAI&apos;s discretion but the standard approval rate drops sharply
-                  after the cutoff. File this week.
+                  Once the API formally shuts down in {API_SHUTDOWN}, the wind-down refund window
+                  effectively closes. Late-filed tickets may still be reviewed at OpenAI&apos;s discretion
+                  but the standard approval rate drops sharply. File well before then — earlier batches
+                  process faster.
                 </p>
               </div>
               <div className="bg-elevated border border-border rounded-xl p-5">
@@ -282,9 +287,9 @@ Best regards,
           </section>
 
           {/* Final CTA */}
-          <div className="bg-surface border border-neon-red/40 rounded-2xl p-8 text-center">
-            <p className="text-xs font-mono font-bold tracking-widest text-neon-red uppercase mb-3">
-              Don&apos;t let the window close on your credits
+          <div className="bg-surface border border-neon-amber/40 rounded-2xl p-8 text-center">
+            <p className="text-xs font-mono font-bold tracking-widest text-neon-amber uppercase mb-3">
+              File before the {API_SHUTDOWN} API shutdown
             </p>
             <h2 className="text-2xl font-bold text-ink-primary mb-3">
               File your refund today — takes 5 minutes
@@ -297,7 +302,7 @@ Best regards,
               href="https://help.openai.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 bg-neon-red/20 hover:bg-neon-red/30 border border-neon-red/40 text-neon-red font-mono font-bold px-6 py-3 rounded-xl transition-all"
+              className="inline-flex items-center justify-center gap-2 bg-neon-amber/20 hover:bg-neon-amber/30 border border-neon-amber/40 text-neon-amber font-mono font-bold px-6 py-3 rounded-xl transition-all"
             >
               Open OpenAI Billing Support →
             </a>

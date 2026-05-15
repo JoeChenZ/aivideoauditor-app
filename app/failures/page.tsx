@@ -273,7 +273,7 @@ export default function FailuresHubPage() {
                 </p>
                 <p className="text-ink-primary font-bold text-sm mb-1">Refund deadlines + migration paths</p>
                 <p className="text-ink-muted text-xs">
-                  Tracked record of every shut-down AI tool. Sora 2 refund window closes 2026-05-23.
+                  Tracked record of every shut-down AI tool. Sora 2 API winds down September 2026 — file refunds before then.
                 </p>
               </Link>
             </div>

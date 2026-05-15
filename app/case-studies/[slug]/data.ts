@@ -29,7 +29,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     customerType: 'Instagram brand account, social media manager + part-time editor',
     customerSize: 'Single operator, ~85K IG followers, posts 4-5 reels/week',
     monthlyAiVideoSpend: '$420-580/mo across Sora 2 + Veo 3 + Runway',
-    toolsUsed: ['Sora 2 (until 2026-05-09 shutdown)', 'Veo 3 (post-shutdown migration)', 'Runway Gen-4 (multi-cut sequences)'],
+    toolsUsed: ['Sora 2 (until April 26, 2026 app shutdown)', 'Veo 3 (post-shutdown migration)', 'Runway Gen-4 (multi-cut sequences)'],
     primaryFailureModes: ['Anatomical Topology Failure', 'Text Rendering Failure', 'Temporal Color Coherence Failure'],
     problemSummary: 'Instagram brand account using AI video heavily for product reels. Sora 2 was their stylized-motion workhorse — when OpenAI killed it in early May 2026, they had ~$387 in unused credits and a workflow built around Sora\'s specific aesthetic. The Veo 3 migration also surfaced new failure modes (text rendering on logo overlays) that were silently draining ongoing credits.',
     beforeAva: 'Manual refund tickets after particularly bad failures, ~2 per month. Estimated ~$40-60/mo recovered. The Sora 2 shutdown caught them with $387 in stranded credits; they were halfway through filing a generic ticket ("Sora is down, want my credits back") when they discovered AVA\'s technical-name approach.',
