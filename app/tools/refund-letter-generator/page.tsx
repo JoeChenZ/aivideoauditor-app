@@ -4,7 +4,7 @@ import { useState, useMemo } from 'react';
 import Link from 'next/link';
 import LeadCaptureForm from '@/components/lead-capture-form';
 
-type Provider = 'runway' | 'luma' | 'kling' | 'veo' | 'pika' | 'hailuo' | 'seedance' | 'sora';
+type Provider = 'runway' | 'luma' | 'kling' | 'veo' | 'pika' | 'hailuo' | 'seedance' | 'sora' | 'vidu';
 type FailureMode =
   | 'anatomy-hand'
   | 'anatomy-limb'
@@ -26,6 +26,7 @@ const PROVIDER_LABELS: Record<Provider, string> = {
   hailuo: 'Hailuo (MiniMax)',
   seedance: 'ByteDance Seedance',
   sora: 'OpenAI Sora 2 (app shut down April 26, 2026; API winds down September 2026)',
+  vidu: 'Vidu (ShengShu)',
 };
 
 const PROVIDER_SUPPORT_PATH: Record<Provider, string> = {
@@ -37,6 +38,7 @@ const PROVIDER_SUPPORT_PATH: Record<Provider, string> = {
   hailuo: 'MiniMax / Hailuo support at hailuoai.com/support',
   seedance: 'ByteDance Seedance support via the in-app help center',
   sora: 'OpenAI billing support at https://help.openai.com — file before the September 2026 API shutdown',
+  vidu: 'ShengShu / Vidu support via the in-app help widget at vidu.com or hello@vidu.com',
 };
 
 const FAILURE_LABELS: Record<FailureMode, string> = {
