@@ -443,6 +443,47 @@ export const ALTERNATIVES: AlternativesPage[] = [
     ],
     finalAdvice: 'Chinese-trained models have a meaningfully different failure profile from Western ones — strong motion + physics, weaker English text + lip sync. For English-heavy work, Veo or Runway usually beats Chinese models. For action/motion, Kling beats Seedance.',
   },
+  {
+    slug: 'vidu',
+    toolName: 'Vidu',
+    toolFullName: 'Vidu 2.0 (ShengShu)',
+    toolStatus: 'active',
+    metaTitle: 'Vidu 2.0 Alternatives 2026 — Reference-to-Video vs Other Approaches',
+    metaDesc: 'Best alternatives to Vidu 2.0 for character work, dialogue, multi-shot scenes, or cinematic camera. Honest comparison with failure-mode profiles and refund flows.',
+    toolSummary: 'Vidu 2.0 (ShengShu) is the only consumer model with a true Reference-to-Video pipeline — lock a still-image character into a short clip with stronger identity coherence than any text-only model. Weak on multi-shot continuity (no Scenes-equivalent), no native audio, and orbit/camera-path stability drifts past 4s. People look for alternatives when those failure modes dominate.',
+    whyLookingForAlternatives: 'You\'re probably here because Vidu drifts on long clips, you need a character across multiple shots (Vidu can\'t carry identity across cuts), or you need native audio (Vidu is silent-only).',
+    options: [
+      {
+        name: 'Runway Gen-4',
+        shortPitch: 'Best multi-shot character continuity (Scenes mode).',
+        bestForUseCase: 'Multi-cut narratives, character carried across scenes',
+        whyClose: 'Scenes mode is the only widely-deployed solution for character continuity across multiple shots — Vidu has no equivalent.',
+        whatDiffers: 'No reference-image locking — text-only conditioning means identity is hallucinated. More expensive per clip.',
+      },
+      {
+        name: 'Google Veo 3',
+        shortPitch: 'Best native audio + lip sync, cheapest per clip.',
+        bestForUseCase: 'Dialogue-heavy content, talking heads, English narration',
+        whyClose: 'Native audio + lip sync are best-in-class. Cheapest per-second cost in the consumer tier. 8 named refund categories.',
+        whatDiffers: '8-second hard cap on consumer tier. No reference-image locking. Camera moves more variable.',
+      },
+      {
+        name: 'Luma Dream Machine Ray-2',
+        shortPitch: 'Best cinematic camera + lighting realism.',
+        bestForUseCase: 'Stylized / cinematic / environment-driven shots',
+        whyClose: 'Camera path stability and lighting prior are best-in-class. Cheaper than Runway.',
+        whatDiffers: 'No reference-image locking — identity drifts on cuts. No native audio.',
+      },
+      {
+        name: 'Kling 2.0',
+        shortPitch: 'Strong motion realism + improved face geometry.',
+        bestForUseCase: 'Action / sports / motion-heavy content',
+        whyClose: 'Best-in-class motion realism. Improved face coherence in 2.0. Strong English support compared to other Chinese-trained models.',
+        whatDiffers: 'No reference-image locking. Identity drifts past 4s. Hand topology still weak.',
+      },
+    ],
+    finalAdvice: 'Vidu is the right pick when reference-locking matters more than anything else. The moment you need multi-shot continuity (→ Runway), native audio (→ Veo), or cinematic camera (→ Luma), the right answer is a different tool. Don\'t fight Vidu\'s shape — pick the model whose strength matches your shot.',
+  },
 ];
 
 export function getAlternativesPage(slug: string): AlternativesPage | undefined {
