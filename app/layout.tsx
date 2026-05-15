@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter, JetBrains_Mono } from 'next/font/google';
+import { Analytics } from '@vercel/analytics/next';
 import './globals.css';
 import Nav from '@/components/nav';
 import Footer from '@/components/footer';
@@ -97,6 +98,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Nav />
         <div className="pt-14">{children}</div>
         <Footer />
+        <Analytics />
       </body>
     </html>
   );

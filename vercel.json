@@ -4,10 +4,12 @@
   "installCommand": "npm install",
   "outputDirectory": ".next",
   "redirects": [
-    { "source": "/compare", "destination": "/comparisons/index.html", "permanent": false },
-    { "source": "/compare/", "destination": "/comparisons/index.html", "permanent": false },
-    { "source": "/methodology", "destination": "/calculator", "permanent": false },
-    { "source": "/methodology/", "destination": "/calculator", "permanent": false },
+    { "source": "/methodology", "destination": "/tools/credit-calculator", "permanent": false },
+    { "source": "/methodology/", "destination": "/tools/credit-calculator", "permanent": false },
+    { "source": "/calculator", "destination": "/tools/credit-calculator", "permanent": false },
+    { "source": "/calculator/", "destination": "/tools/credit-calculator", "permanent": false },
+    { "source": "/comparisons", "destination": "/compare", "permanent": true },
+    { "source": "/comparisons/", "destination": "/compare", "permanent": true },
     { "source": "/blog", "destination": "/", "permanent": false },
     { "source": "/blog/", "destination": "/", "permanent": false }
   ]
