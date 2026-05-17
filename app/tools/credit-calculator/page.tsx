@@ -29,16 +29,23 @@ const FAILURE_LABELS: Record<PrimaryFailure, string> = {
   mixed: 'Mixed — many different failures',
 };
 
-// Refund hit rate by failure mode (based on AVA's user-reported data, ~75-85% for named modes)
+// Goodwill-credit hit rate by failure mode.
+// IMPORTANT: Most platforms' published ToS only refund credits when a generation throws a
+// generation error. Output-quality failures (bad anatomy, identity drift, garbled text) are
+// considered "completed generations" and credits are normally consumed. The numbers below
+// reflect the observed rate at which support agents *discretionarily* grant goodwill credits
+// when a ticket is filed with a Generation ID + technical failure-mode label + timestamped
+// screenshot. This is not a guarantee — outcomes range widely (0%–80%) and depend entirely
+// on platform discretion. See /sora-refund and /luma-refund-guide for the per-platform detail.
 const REFUND_HIT_RATE: Record<PrimaryFailure, number> = {
-  anatomy: 0.82,
-  color: 0.74,
-  identity: 0.71,
-  lipsync: 0.69,
-  camera: 0.66,
-  physics: 0.77,
-  text: 0.83,
-  mixed: 0.72,
+  anatomy: 0.45,
+  color: 0.35,
+  identity: 0.35,
+  lipsync: 0.30,
+  camera: 0.30,
+  physics: 0.40,
+  text: 0.50,
+  mixed: 0.35,
 };
 
 // Industry typical first-pass failure rate by provider (consumer-tier output)
@@ -99,12 +106,29 @@ export default function CreditCalculatorPage() {
             Free tool · No signup
           </p>
           <h1 className="text-3xl md:text-5xl font-bold text-ink-primary mb-4 leading-tight">
-            How much are you leaving on the table?
+            How much are you wasting on failed generations?
           </h1>
           <p className="text-ink-secondary leading-relaxed">
-            Estimate the AI video credits you could recover via refund tickets, based on your monthly
-            spend and primary failure modes. Math is based on AVA&apos;s user-reported refund hit rates across
-            ~75K audited generations.
+            Estimate the dollar value of credits burned on failed generations each month, and the
+            <em> maximum potential</em> goodwill credits you might recover if a support agent
+            discretionarily grants them. Most platforms&apos; published policies only refund hard
+            generation errors — output-quality failures are case-by-case.
+          </p>
+        </div>
+
+        {/* Honesty disclaimer */}
+        <div className="bg-neon-amber/5 border border-neon-amber/30 rounded-2xl p-5 mb-6 text-sm">
+          <p className="text-xs font-mono font-bold tracking-widest text-neon-amber uppercase mb-2">
+            Important · Read first
+          </p>
+          <p className="text-ink-secondary leading-relaxed">
+            Runway, Luma, OpenAI, Veo and most other platforms <strong>do not guarantee credit
+            refunds for output-quality failures</strong>. Their ToS typically state that credits
+            are consumed once a generation completes — even if the result is unusable. The
+            &quot;recovery&quot; estimate below assumes a support agent grants discretionary goodwill
+            credits, which happens at very different rates depending on the platform, the agent,
+            your account history, and how clearly you document the failure. <strong>Treat this
+            as an upper-bound estimate, not a guarantee.</strong>
           </p>
         </div>
 
@@ -197,7 +221,7 @@ export default function CreditCalculatorPage() {
         {/* Results */}
         <div className="bg-neon-green/5 border border-neon-green/30 rounded-2xl p-6 mb-6">
           <p className="text-xs font-mono font-bold tracking-widest text-neon-green uppercase mb-4">
-            Estimated additional recovery with AVA
+            Maximum potential recovery (if granted)
           </p>
 
           <div className="grid grid-cols-2 gap-4 mb-6">
@@ -217,8 +241,8 @@ export default function CreditCalculatorPage() {
               <p className="text-ink-primary font-mono font-bold">{calc.failureRate}% on first pass</p>
             </div>
             <div>
-              <p className="text-xs font-mono text-ink-muted uppercase tracking-wider mb-1">Refund hit rate</p>
-              <p className="text-ink-primary font-mono font-bold">{calc.hitRate}% on this category</p>
+              <p className="text-xs font-mono text-ink-muted uppercase tracking-wider mb-1">Goodwill grant rate (observed)</p>
+              <p className="text-ink-primary font-mono font-bold">~{calc.hitRate}% — varies widely</p>
             </div>
             <div>
               <p className="text-xs font-mono text-ink-muted uppercase tracking-wider mb-1">Wasted spend/mo</p>
@@ -309,32 +333,36 @@ export default function CreditCalculatorPage() {
           <h2 className="text-lg font-bold text-ink-primary mb-3">How this calculator works</h2>
           <ul className="space-y-2 text-ink-secondary leading-relaxed">
             <li>
-              <strong>Industry failure rate</strong> is based on AVA&apos;s classifier output across ~75K audited
-              generations per provider. Numbers vary by use case but the band (28-38%) is consistent across
-              independent measurements.
+              <strong>Industry failure rate</strong> is based on AVA&apos;s classifier output across audited
+              generations per provider. Numbers vary by use case but the band (28-38%) is consistent
+              with independent measurements.
             </li>
             <li>
-              <strong>Refund hit rate</strong> reflects approval percentage when refunds are submitted with
-              the technical failure-mode name + Generation ID + timestamped screenshot. Submitting refunds
-              with colloquial descriptions (&quot;weird fingers&quot;) gets ~30% lower hit rate.
+              <strong>Goodwill grant rate</strong> reflects the observed rate at which support agents
+              discretionarily issue goodwill credits when a ticket is filed with a Generation ID,
+              technical failure-mode label, and timestamped screenshot. This is <em>not</em> a published
+              refund policy — it&apos;s case-by-case discretion. Outcomes range from 0% to ~80% depending on
+              platform, agent, account history, and documentation quality.
             </li>
             <li>
               <strong>Wasted spend</strong> = monthly spend × failure rate. This is the total dollar value of
-              your failed generations — the upper bound on what&apos;s recoverable.
+              your failed generations — the theoretical upper bound on what could be recovered.
             </li>
             <li>
-              <strong>Recoverable</strong> = wasted spend × refund hit rate. The realistic estimate of what
-              you&apos;d actually get back if you filed proper tickets on every failure.
+              <strong>Recoverable</strong> = wasted spend × goodwill grant rate. An upper-bound estimate
+              of what a heavy ticketer might recover via goodwill credits — not a guarantee.
             </li>
             <li>
               <strong>Additional recovery</strong> subtracts what you&apos;re already recovering manually, so the
-              number represents the lift AVA provides on top of your current process.
+              number represents the potential lift on top of your current process.
             </li>
           </ul>
           <p className="text-xs text-ink-muted mt-4 italic">
-            Estimates only. Actual recovery depends on your specific failure mix, provider response times,
-            and how diligently you submit tickets. AVA users typically report numbers within ±25% of this
-            calculator&apos;s output.
+            Estimates only. Goodwill credits are at platform discretion and are not promised by any
+            published ToS. AVA does not guarantee a refund rate. The primary value of the auditor and
+            refund-letter drafter is in <em>preventing</em> wasted credits (better prompts, A/B routing,
+            failure-mode tagging) and in making the ticket-filing process less painful — not in
+            guaranteeing reimbursement.
           </p>
         </section>
 
