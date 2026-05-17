@@ -50,8 +50,8 @@ export default function ProSuccessPage() {
             <li className="flex gap-3">
               <span className="text-neon-amber flex-shrink-0">▸</span>
               <div>
-                <strong className="text-ink-primary">Refund-success tracker.</strong>
-                {' '}Log every refund you submit and watch your approval rate climb as you internalise the failure taxonomy.
+                <strong className="text-ink-primary">Ticket-outcome log.</strong>
+                {' '}Log every goodwill-credit request you submit and track how outcomes shift as you internalise the failure taxonomy. (Approvals are at each platform&apos;s discretion — never guaranteed.)
               </div>
             </li>
           </ul>

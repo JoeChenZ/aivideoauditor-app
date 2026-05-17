@@ -111,7 +111,7 @@ export default function SoraRefundPage() {
 
           {/* Two refund categories */}
           <section className="mb-12">
-            <h2 className="text-2xl font-bold text-ink-primary mb-3">Two types of refunds OpenAI honors</h2>
+            <h2 className="text-2xl font-bold text-ink-primary mb-3">Two categories of credit OpenAI may consider</h2>
 
             <div className="mb-6 bg-elevated border border-border rounded-xl p-5">
               <p className="text-xs font-mono text-neon-purple uppercase tracking-wider mb-2">Type 1</p>

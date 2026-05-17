@@ -310,13 +310,13 @@ export default function GuideRefundCategoriesPage() {
               <li>
                 <strong className="text-ink-primary">Watermark Bleed Failure</strong> — Paid-tier output
                 contains visible watermarks or brand overlays. Treated as critical (legal exposure for the
-                user). Refund strength: VERY HIGH (~85%+).{' '}
+                user). Evidence strength: VERY HIGH — but approval is at the platform&apos;s discretion, not guaranteed.{' '}
                 <Link href="/failures/runway-watermark-bleed" className="text-neon-purple hover:underline">See Runway example</Link>.
               </li>
               <li>
                 <strong className="text-ink-primary">Temporal Flicker</strong> — Sub-pixel intensity flickering
-                on stable subjects. Denoising-schedule artifact. Refund strength: MEDIUM (~60-70%) — visually
-                subtle so harder to evidence.{' '}
+                on stable subjects. Denoising-schedule artifact. Evidence strength: MEDIUM — visually
+                subtle so harder to evidence; approval at platform discretion, not guaranteed.{' '}
                 <Link href="/failures/runway-temporal-flicker" className="text-neon-purple hover:underline">See Runway example</Link>.
               </li>
             </ul>

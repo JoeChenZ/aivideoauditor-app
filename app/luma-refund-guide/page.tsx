@@ -42,7 +42,7 @@ const STEPS = [
   {
     n: '05',
     title: 'Send your refund request',
-    body: 'Email support@lumalabs.ai (or use the in-app feedback widget). Include: your Luma account email, Asset ID, share link, technical failure category, timestamped description, the credit cost, and a clear request. Keep tone professional and factual — not emotional. Attach the PDF audit report if you have one — it noticeably increases approval rate.',
+    body: 'Email support@lumalabs.ai (or use the in-app feedback widget). Include: your Luma account email, Asset ID, share link, technical failure category, timestamped description, the credit cost, and a clear request. Keep tone professional and factual — not emotional. Attach the PDF audit report if you have one — it noticeably strengthens the ticket. Goodwill credits are at Luma\'s discretion and not guaranteed.',
     tip: null,
   },
   {

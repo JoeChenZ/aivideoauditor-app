@@ -326,7 +326,7 @@ Best regards,
 
         {/* Tips */}
         <section className="bg-elevated border border-border rounded-2xl p-8 text-sm">
-          <h2 className="text-lg font-bold text-ink-primary mb-3">Tips for higher approval rate</h2>
+          <h2 className="text-lg font-bold text-ink-primary mb-3">Tips for a stronger ticket</h2>
           <ul className="space-y-3 text-ink-secondary leading-relaxed">
             <li>
               <strong className="text-ink-primary">Use the technical name in the subject line.</strong>{' '}
