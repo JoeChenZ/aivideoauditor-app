@@ -81,10 +81,10 @@ export default function ProSuccessPage() {
 
         <div className="bg-surface border border-border rounded-2xl p-6 mb-10">
           <h2 className="text-lg font-bold text-ink-primary mb-3">
-            7-day money-back guarantee
+            Not what you expected? Reach out.
           </h2>
           <p className="text-sm text-ink-secondary leading-relaxed">
-            If AVA Pro doesn&apos;t help you recover at least the $19 subscription cost in approved refunds within your first 7 days, reply to your Stripe receipt or email <a href="mailto:hello@aivideoauditor.com" className="text-neon-purple underline">hello@aivideoauditor.com</a> and we&apos;ll refund the subscription. No questions asked.
+            If AVA Pro isn&apos;t a fit, email <a href="mailto:hello@aivideoauditor.com" className="text-neon-purple underline">hello@aivideoauditor.com</a> within your first 7 days and we&apos;ll refund the subscription. AVA helps you document AI video failures and present the strongest possible goodwill-credit request — refund outcomes from the underlying platforms (Runway, Luma, OpenAI, etc.) are always at their discretion, not ours.
           </p>
         </div>
 

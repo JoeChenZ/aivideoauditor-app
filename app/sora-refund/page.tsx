@@ -3,12 +3,12 @@ import Link from 'next/link';
 import LeadCaptureForm from '@/components/lead-capture-form';
 
 export const metadata: Metadata = {
-  title: 'Sora 2 Refund Flow — Recover Your Credits Before the API Shutdown',
-  description: 'OpenAI discontinued Sora 2 on April 26, 2026. The API winds down September 2026 — file refund tickets for unused credits + failed generations before then. Step-by-step flow.',
+  title: 'Sora 2 Wind-Down — How to Request Credit Reinstatement Before the API Shutdown',
+  description: 'OpenAI discontinued Sora 2 on April 26, 2026. The API winds down September 2026 — file goodwill-credit requests for unused credits + failed generations before then. Outcomes at OpenAI\'s discretion.',
   alternates: { canonical: 'https://www.aivideoauditor.com/sora-refund' },
   openGraph: {
-    title: 'Sora 2 Refund Flow — Recover Your Credits Before the API Shutdown',
-    description: 'Step-by-step refund flow for stranded Sora 2 users. API winds down September 2026.',
+    title: 'Sora 2 Wind-Down — Request Credit Reinstatement Before the API Shutdown',
+    description: 'Step-by-step flow for stranded Sora 2 users. API winds down September 2026.',
     type: 'article',
   },
   robots: { index: true, follow: true },
@@ -72,8 +72,9 @@ export default function SoraRefundPage() {
               don&apos;t know the process — and lose every dollar.
             </p>
             <p className="text-ink-muted text-sm">
-              This page walks through the exact refund flow OpenAI is honoring during the wind-down. ~75-85%
-              approval rate when you use the technical failure-mode names below.
+              This page walks through the refund flow available during the wind-down. Outcomes depend
+              on OpenAI&apos;s billing-team discretion — there is no published refund-grant rate. Well-documented
+              tickets using technical failure-mode names route to human review faster than vague complaints.
             </p>
           </header>
 
@@ -97,8 +98,8 @@ export default function SoraRefundPage() {
               </li>
               <li>
                 <strong className="text-ink-primary">4. Use the technical failure names</strong> below. Tickets
-                that name the category get approved at ~75-85%. Generic complaints (&ldquo;Sora is broken&rdquo;)
-                get a template reply.
+                that name the category route to human review; generic complaints (&ldquo;Sora is broken&rdquo;)
+                tend to get a template FAQ reply.
               </li>
               <li>
                 <strong className="text-ink-primary">5. Submit before {API_SHUTDOWN}.</strong> OpenAI is processing
@@ -117,13 +118,14 @@ export default function SoraRefundPage() {
               <h3 className="font-bold text-ink-primary mb-2">Unused credit balance</h3>
               <p className="text-ink-secondary text-sm leading-relaxed mb-3">
                 If you pre-paid for Sora 2 credits and didn&apos;t spend them before the {SHUTDOWN_DATE} app
-                shutdown, that balance is refundable. OpenAI is honoring all unspent balances during the
-                wind-down window. Don&apos;t need a Generation ID — just your account email and the
+                shutdown, that balance may be eligible for goodwill credit during the wind-down. Per OpenAI&apos;s
+                general policy, unspent prepaid balances are typically considered more clearly recoverable than
+                output-quality disputes. Don&apos;t need a Generation ID — just your account email and the
                 approximate amount.
               </p>
               <p className="text-ink-muted text-xs">
-                <strong>Approval rate:</strong> ~95%. This is the cleanest refund category — no judgment call,
-                no failure documentation needed.
+                <strong>Cleanest category</strong> — no judgment call on output quality, only your balance
+                history. Outcomes still depend on OpenAI&apos;s discretion.
               </p>
             </div>
 
@@ -131,14 +133,14 @@ export default function SoraRefundPage() {
               <p className="text-xs font-mono text-neon-purple uppercase tracking-wider mb-2">Type 2</p>
               <h3 className="font-bold text-ink-primary mb-2">Documented failed generations (during active model life)</h3>
               <p className="text-ink-secondary text-sm leading-relaxed mb-3">
-                If you generated Sora 2 clips that failed on documented failure modes (anatomy, physics,
-                text rendering, color drift, identity coherence, etc.) and never filed tickets, you can file
-                them <em>now</em> during the wind-down. OpenAI is processing these at the standard ~75-85%
-                approval rate.
+                If you generated Sora 2 clips that failed on common failure modes (anatomy, physics,
+                text rendering, color drift, identity coherence, etc.) and never filed tickets, you can still
+                file them <em>now</em> during the wind-down. Outcomes are at OpenAI&apos;s discretion — there
+                is no published refund-grant rate for these categories.
               </p>
               <p className="text-ink-muted text-xs">
-                <strong>Approval rate:</strong> ~75-85% when submitted with the technical failure name +
-                Generation ID + timestamped screenshot.
+                <strong>Best-case framing:</strong> submit with the technical failure name + Generation ID +
+                timestamped screenshot. Vague tickets typically receive a template FAQ reply.
               </p>
             </div>
           </section>
@@ -190,8 +192,8 @@ billing support system.
 
 I have attached a timestamped screenshot showing the failure point.
 
-Per OpenAI's published refund policy for documented failure modes during the
-Sora 2 wind-down, I am requesting credit reinstatement for this generation.
+During the Sora 2 wind-down window, I am requesting credit reinstatement for this
+generation as a goodwill measure given the documented technical failure.
 
 Thank you for your time.
 
@@ -252,7 +254,7 @@ Best regards,
                 <p className="text-ink-secondary text-sm leading-relaxed">
                   Once the API formally shuts down in {API_SHUTDOWN}, the wind-down refund window
                   effectively closes. Late-filed tickets may still be reviewed at OpenAI&apos;s discretion
-                  but the standard approval rate drops sharply. File well before then — earlier batches
+                  but outcomes become less likely. File well before then — earlier batches
                   process faster.
                 </p>
               </div>

@@ -4,11 +4,11 @@ import LeadCaptureForm from '@/components/lead-capture-form';
 
 export const metadata: Metadata = {
   title: 'The 7 Refund Categories Every AI Video Provider Recognises (2026 Guide)',
-  description: 'Long-form guide to the 7 named failure modes that get refunded across Runway, Luma, Veo, Kling, Pika, Sora, Hailuo, Seedance. Includes ticket templates and approval-rate data.',
+  description: 'Long-form guide to the 7 named failure modes recognised by AI video provider support teams across Runway, Luma, Veo, Kling, Pika, Sora, Hailuo, Seedance. Includes ticket templates. Refund outcomes are at each platform\'s discretion.',
   alternates: { canonical: 'https://www.aivideoauditor.com/guide-refund-categories' },
   openGraph: {
-    title: 'The 7 Refund Categories Every AI Video Provider Recognises',
-    description: 'The technical names that get credits back. Hit rate ~75-85% across all providers when used correctly.',
+    title: 'The 7 Failure Categories Every AI Video Provider Recognises',
+    description: 'The technical names that route your goodwill-credit request to human review instead of a template FAQ reply.',
     type: 'article',
   },
 };
@@ -46,9 +46,10 @@ export default function GuideRefundCategoriesPage() {
             </h1>
             <p className="text-ink-secondary text-lg leading-relaxed">
               Every major AI video generator (Runway, Luma, Veo, Kling, Pika, Hailuo, Seedance, and Sora before
-              its shutdown) honors refund requests on a specific set of named failure modes. Use the technical
-              name in your support ticket and approval rates run 75-85%. Use a colloquial description and you
-              get a generic FAQ link.
+              its shutdown) has internal support routing on a specific set of named failure modes. Using the
+              technical name in your support ticket routes the request to human review; a colloquial description
+              typically gets a template FAQ reply. Outcomes are still at each platform&apos;s discretion — there
+              is no guaranteed approval rate.
             </p>
             <p className="text-ink-muted text-sm mt-4">
               This guide names each category, explains the underlying technical failure, shows what evidence
@@ -69,8 +70,10 @@ export default function GuideRefundCategoriesPage() {
             </p>
             <p className="text-ink-secondary text-sm leading-relaxed">
               Submit a ticket with the technical name in the subject + Generation ID + timestamped screenshot
-              and your refund request gets routed to a human within hours instead of bouncing through templates.
-              Hit rate: ~75-85% on documented failures across providers.
+              and your request typically gets routed to a human within hours instead of bouncing through
+              templates. Outcomes are at the platform&apos;s discretion — well-documented requests have a
+              meaningfully higher chance of being granted goodwill credits, but no platform guarantees approval
+              for completed generations.
             </p>
           </div>
 

@@ -2,14 +2,14 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'How to Get a Runway ML Credit Refund — Step-by-Step Guide',
+  title: 'How to Request Runway ML Goodwill Credits — Step-by-Step Guide',
   description:
-    'Runway ML charged you credits for a failed generation. Here\'s exactly how to request a refund — with the right evidence, terminology, and a PDF audit report that gets results.',
+    'Runway\'s public policy says completed generations are non-refundable for output quality, but support has discretion to grant goodwill credits. Here\'s how to make the strongest possible case — Generation ID, technical failure terminology, and a PDF audit report.',
   alternates: { canonical: 'https://www.aivideoauditor.com/guide' },
   openGraph: {
-    title: 'How to Get a Runway ML Credit Refund',
+    title: 'How to Request Runway ML Goodwill Credits',
     description:
-      'Step-by-step guide to recovering credits from failed Runway ML generations. Includes refund email templates and a PDF audit report tool.',
+      'Step-by-step guide to documenting failures and requesting goodwill credits from Runway ML. Includes email templates and a PDF audit report tool.',
     type: 'article',
   },
 };
@@ -56,27 +56,27 @@ const STEPS = [
 const FAQ = [
   {
     q: 'Does Runway ML refund credits for failed generations?',
-    a: 'Yes — Runway\'s support team does issue credit refunds for generations that contain verifiable technical failures. The key is providing specific, documented evidence: a Generation ID, failure type, and timestamp. Vague requests are typically declined.',
+    a: 'Runway\'s public help center explicitly states that completed generations consume credits "even if the result doesn\'t match your prompt, doesn\'t preserve likeness, or is otherwise unsatisfactory." Automated refunds apply only to generation errors (crashes/timeouts). However, Runway support has discretion to grant goodwill credits for well-documented clear technical failures. Outcomes vary — there is no guaranteed result.',
   },
   {
-    q: 'What counts as a "verifiable technical failure" for Runway?',
-    a: 'Runway recognises several failure categories: anatomical/limb artifacts (extra limbs, interpenetrating geometry), physics simulation failures (fluid inversion, gravity violations), face distortion (landmark regression failures), text rendering failures, and significant prompt-output mismatches. Any failure that makes the output commercially unusable qualifies.',
+    q: 'What types of failures does Runway support tend to consider for goodwill credits?',
+    a: 'Anecdotally, support has been observed to grant goodwill credits for clearly anomalous output: anatomical/limb artifacts (extra limbs, interpenetrating geometry), physics simulation failures (fluid inversion, gravity violations), face distortion (landmark regression), text rendering failures, and significant prompt-output mismatches where the output is commercially unusable. Outcomes are at Runway\'s discretion.',
   },
   {
-    q: 'How long does a Runway credit refund take?',
-    a: 'Typically 1–5 business days once your request is accepted. Requests with strong evidence (Generation ID + technical description + timestamped failure) are processed faster than vague complaints.',
+    q: 'How long does a Runway goodwill-credit request take?',
+    a: 'Typically 1–5 business days once your ticket is accepted for human review. Requests with strong evidence (Generation ID + technical description + timestamped failure) tend to receive faster human review than vague complaints. There is no guaranteed turnaround.',
   },
   {
-    q: 'Does a PDF audit report help get refunds approved?',
-    a: 'Yes — a formatted Technical Diagnostic Report with your Generation ID, share link, annotated failure screenshots, and engineering-grade failure analysis signals that you understand what went wrong and are a serious creator. It also makes it harder for support to dismiss the request.',
+    q: 'Does a PDF audit report help?',
+    a: 'A formatted Technical Diagnostic Report with your Generation ID, share link, annotated failure screenshots, and engineering-grade failure analysis signals that you understand what went wrong and present the case professionally. It tends to make support less likely to dismiss the request as subjective, but does not guarantee approval.',
   },
   {
-    q: 'Can I get refunds for Luma AI credits too?',
-    a: 'Luma AI (Dream Machine) has a similar support process. AVA works on both platforms — it monitors your generations, captures your Generation ID and Asset ID, and builds refund documentation for both Runway and Luma.',
+    q: 'Can I make goodwill-credit requests for Luma AI too?',
+    a: 'Luma AI (Dream Machine) has a similar support process and similar discretionary approach to goodwill credits. AVA works on both platforms — it monitors your generations, captures your Generation ID and Asset ID, and builds the documentation for both Runway and Luma.',
   },
   {
-    q: 'What if Runway denies my refund?',
-    a: 'Reply with the PDF audit report and reference Runway\'s generation quality standards. A formal technical document significantly changes the tone of the conversation. If still declined, escalate with a follow-up referencing the specific failure type and citing that the output is commercially unusable.',
+    q: 'What if Runway denies my request?',
+    a: 'Reply with the PDF audit report attached and politely reference Runway\'s commitment to generation quality. A formal technical document changes the tone of the conversation. If still declined, you can escalate with a follow-up citing the specific failure type, but Runway is under no obligation to grant credits for completed generations.',
   },
 ];
 
@@ -123,7 +123,7 @@ const howToSchema = {
   '@context': 'https://schema.org',
   '@type': 'HowTo',
   name: 'How to Get a Runway ML Credit Refund',
-  description: 'Step-by-step guide to recovering credits from failed Runway ML AI video generations.',
+  description: 'Step-by-step guide to documenting failures and requesting goodwill credits from Runway ML.',
   totalTime: 'PT10M',
   estimatedCost: { '@type': 'MonetaryAmount', currency: 'USD', value: '0' },
   tool: [{ '@type': 'HowToTool', name: 'AIVideoAuditor Chrome Extension' }],

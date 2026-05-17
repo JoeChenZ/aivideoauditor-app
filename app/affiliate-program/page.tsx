@@ -4,7 +4,7 @@ import LeadCaptureForm from '@/components/lead-capture-form';
 
 export const metadata: Metadata = {
   title: 'AVA Affiliate Program — 30% Recurring Commission on AVA Pro Signups',
-  description: 'Join the AVA affiliate program. 30% recurring commission on AVA Pro ($19/mo) signups for 24 months. Designed for AI video creators, refund-recovery educators, and tooling reviewers.',
+  description: 'Join the AVA affiliate program. 30% recurring commission on AVA Pro ($19/mo) signups for 24 months. Designed for AI video creators, failure-documentation educators, and tooling reviewers.',
   alternates: { canonical: 'https://www.aivideoauditor.com/affiliate-program' },
   openGraph: {
     title: 'AVA Affiliate Program — 30% Recurring Commission',
@@ -165,7 +165,7 @@ export default function AffiliateProgramPage() {
           <ul className="space-y-2 text-sm text-ink-secondary ml-4">
             <li>• Spam-style mass posting to Reddit / X / Discord. Reddit + X bans hurt AVA&apos;s brand — refunds your account immediately.</li>
             <li>• Bidding on AVA-branded keywords (Google Ads). We bid on those ourselves; affiliate competition there is forbidden.</li>
-            <li>• Promising things AVA doesn&apos;t deliver (e.g., &ldquo;guaranteed refunds&rdquo; — we say ~75-85%).</li>
+            <li>• Promising things AVA doesn&apos;t deliver. AVA helps you document failures and present the strongest possible goodwill-credit request — refund outcomes are always at the platform&apos;s discretion. Affiliate copy that promises &ldquo;guaranteed refunds&rdquo; or specific approval rates is grounds for program removal.</li>
             <li>• Coupon-site syndication. Coupons distort our pricing experiments and we don&apos;t run them.</li>
             <li>• Self-referrals or sock-puppet accounts. Tracked and refunded.</li>
             <li>• Mass-emailing un-opted-in lists.</li>

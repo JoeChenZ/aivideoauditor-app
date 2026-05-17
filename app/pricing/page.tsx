@@ -48,9 +48,9 @@ const FREE_FEATURES = [
   '10 audits per month',
   'Frame-mark broken generations on Runway + Luma',
   'Generation ID + Asset ID auto-capture',
-  'Professional refund letter (copy & paste)',
+  'Failure-documentation letter (copy & paste)',
   'Pre-flight L1 prompt risk scanner',
-  'Refund outcome tracking',
+  'Failure outcome tracking',
 ];
 
 const PRO_FEATURES = [
@@ -59,24 +59,24 @@ const PRO_FEATURES = [
   'PDF Technical Audit Report',
   'Engineering-grade failure classification',
   'Annotated failure-frame screenshots',
-  'Credit refund calculation',
+  'Credit-waste calculation per failure',
   'Advanced L1 full-analysis mode',
-  'Refund-success rate tracker',
+  'Outcome tracker (granted / partial / denied)',
 ];
 
 const BUSINESS_FEATURES = [
   'Everything in Pro, plus:',
   'Fair-use unlimited audits',
   'Team seats (coming soon)',
-  'Priority refund-letter review',
+  'Priority failure-doc review',
   'Slack / email support SLA',
   'API access for high-volume teams',
 ];
 
 const FAQ = [
   {
-    q: 'How does the 7-day money-back guarantee work?',
-    a: 'Subscribe and use the PDF audit report on real failures. If you don\'t recover at least the subscription cost in approved refunds within 7 days, email hello@aivideoauditor.com — we refund the subscription, no questions asked.',
+    q: 'What does AVA Pro actually do for me?',
+    a: 'AVA documents AI video generation failures across 8 platforms — capturing Generation IDs, failure frames, and engineering-grade failure terminology. You get a PDF Technical Audit Report you can submit to platform support when requesting goodwill credits. Refund outcomes depend on each platform\'s discretion, not on AVA.',
   },
   {
     q: 'Can I cancel anytime?',
@@ -112,11 +112,12 @@ export default async function PricingPage() {
             Pricing
           </p>
           <h1 className="text-4xl font-bold text-ink-primary mb-3 leading-tight">
-            Recover more in credits than you spend on the subscription.
+            Stop burning credits on prompts that fail.
           </h1>
           <p className="text-ink-secondary text-lg max-w-2xl mx-auto">
-            Free gets you started. Pro is what professional creators use to claim refunds.
-            Business is fair-use unlimited for teams running high audit volume.
+            Free gets you started. Pro adds the Technical Audit PDF and engineering-grade
+            failure classification. Business is fair-use unlimited for teams running high
+            audit volume.
           </p>
         </div>
 
@@ -165,7 +166,7 @@ export default async function PricingPage() {
             </div>
             <CheckoutButton tier="pro" label="Upgrade to Pro" variant="amber" />
             <p className="text-xs text-ink-muted text-center mb-6">
-              7-day money-back guarantee · Cancel anytime
+              Cancel anytime
             </p>
             <ul className="space-y-2">
               {PRO_FEATURES.map((f, i) => (

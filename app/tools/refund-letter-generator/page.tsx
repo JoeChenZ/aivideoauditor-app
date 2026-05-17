@@ -152,9 +152,24 @@ Best regards,
             AI Video Refund Letter Generator
           </h1>
           <p className="text-ink-secondary leading-relaxed">
-            Generate a copy-paste-ready refund letter using the technical failure-mode names
-            provider support teams recognise. Hit rate is ~75-85% on these refunds when the technical
-            name is used — way higher than colloquial descriptions like &ldquo;weird fingers&rdquo;.
+            Generate a copy-paste-ready failure-documentation letter using the technical failure-mode names
+            provider support teams recognise. Using the technical name routes your ticket to human review
+            instead of a template FAQ reply — but outcomes are always at the platform&apos;s discretion.
+          </p>
+        </div>
+
+        {/* Honesty disclaimer */}
+        <div className="mb-8 bg-elevated border border-neon-amber/30 rounded-xl p-4">
+          <p className="text-xs font-mono font-bold tracking-widest text-neon-amber uppercase mb-2">
+            What this tool actually does
+          </p>
+          <p className="text-sm text-ink-secondary leading-relaxed">
+            This generator helps you <strong>present the strongest possible case</strong> when requesting
+            goodwill credits from a platform&apos;s support team. Most platforms&apos; published policies
+            do not guarantee refunds for output-quality failures — completed generations are typically
+            considered consumed. Support teams have discretion to grant goodwill credits, and a
+            well-documented, technically precise request meaningfully improves your odds. There is
+            <strong> no guaranteed result</strong>.
           </p>
         </div>
 

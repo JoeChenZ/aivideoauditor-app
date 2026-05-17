@@ -2,14 +2,14 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'How to Get a Luma AI / Dream Machine Credit Refund — Step-by-Step',
+  title: 'How to Request Luma AI / Dream Machine Goodwill Credits — Step-by-Step',
   description:
-    'Luma AI charged you credits for a broken Dream Machine generation. Here\'s exactly how to request a refund — Asset ID capture, failure terminology, support email template, and the audit report that gets results.',
+    'Luma\'s policy doesn\'t guarantee refunds for output-quality failures, but support has discretion to grant goodwill credits. Here\'s how to make the strongest possible case — Asset ID capture, technical failure terminology, and a PDF audit report.',
   alternates: { canonical: 'https://www.aivideoauditor.com/luma-refund-guide' },
   openGraph: {
-    title: 'How to Get a Luma AI Dream Machine Credit Refund',
+    title: 'How to Request Luma AI Dream Machine Goodwill Credits',
     description:
-      'Step-by-step guide to recovering credits from failed Luma AI Dream Machine generations.',
+      'Step-by-step guide to documenting failures and requesting goodwill credits from Luma AI Dream Machine.',
     type: 'article',
   },
 };
@@ -56,11 +56,11 @@ const STEPS = [
 const FAQ = [
   {
     q: 'Does Luma AI refund credits for failed Dream Machine generations?',
-    a: 'Yes — Luma support does issue credit refunds when generations contain verifiable technical failures. The make-or-break factor is evidence: Asset ID + share link + timestamped technical description. Refund requests without those rarely succeed.',
+    a: 'Luma\'s public policy doesn\'t guarantee refunds for output-quality failures — completed generations are typically considered consumed. However, support has discretion to grant goodwill credits for clear technical defects when the case is well-documented. Your odds depend on evidence quality: Asset ID + share link + timestamped technical description significantly improve outcomes. There is no guaranteed result.',
   },
   {
-    q: 'What failure types does Luma typically accept as refundable?',
-    a: 'Common accepted categories: anatomical/limb artifacts (extra limbs, fused fingers), physics simulation failures (impossible fluid dynamics, gravity violations), facial landmark regression (drifting facial geometry across frames), temporal flicker (high-frequency luminance discontinuity), and significant prompt-output mismatch where the result is commercially unusable.',
+    q: 'What failure types does Luma support tend to consider for goodwill credits?',
+    a: 'Anecdotally, well-documented anatomical/limb artifacts (extra limbs, fused fingers), physics simulation failures (impossible fluid dynamics, gravity violations), facial landmark regression (drifting facial geometry across frames), temporal flicker (high-frequency luminance discontinuity), and significant prompt-output mismatch where the output is commercially unusable have been granted goodwill credits in some cases. Outcomes are at Luma\'s discretion — there is no published refund policy for these categories.',
   },
   {
     q: 'Where is my Luma Asset ID?',
@@ -126,7 +126,7 @@ const howToSchema = {
   '@context': 'https://schema.org',
   '@type': 'HowTo',
   name: 'How to Get a Luma AI Dream Machine Credit Refund',
-  description: 'Step-by-step guide to recovering credits from failed Luma AI Dream Machine generations.',
+  description: 'Step-by-step guide to documenting failures and requesting goodwill credits from Luma AI Dream Machine.',
   totalTime: 'PT10M',
   estimatedCost: { '@type': 'MonetaryAmount', currency: 'USD', value: '0' },
   tool: [{ '@type': 'HowToTool', name: 'AIVideoAuditor Chrome Extension' }],

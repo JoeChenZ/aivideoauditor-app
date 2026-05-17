@@ -145,7 +145,7 @@ const softwareAppSchema = {
     { '@type': 'Offer', price: '0', priceCurrency: 'USD', name: 'Free' },
     { '@type': 'Offer', price: '9', priceCurrency: 'USD', priceSpecification: { '@type': 'UnitPriceSpecification', billingDuration: 'P1M' }, name: 'Pro' },
   ],
-  description: 'Free Chrome extension for AI video generation tools — Runway ML, Luma AI, Google Veo, Kling, Seedance, Vidu. Flags failure patterns, marks broken frames, and builds a Technical Audit PDF Report to maximize credit refund success.',
+  description: 'Free Chrome extension for AI video generation tools — Runway ML, Luma AI, Google Veo, Kling, Seedance, Vidu. Flags failure patterns, marks broken frames, and builds a Technical Audit PDF Report you can submit to platform support when requesting goodwill credits.',
   url: 'https://www.aivideoauditor.com',
   downloadUrl: 'https://chromewebstore.google.com/detail/aivideoauditor/ecomchbdfkgakaoponipjgpnjfpimdef',
   aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.8', ratingCount: '47' },
