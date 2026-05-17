@@ -41,7 +41,7 @@ export const SHUTDOWNS: ShutdownRecord[] = [
       'Open an OpenAI billing support ticket via help.openai.com titled "Sora 2 credit refund — unused balance" or "Sora 2 credit refund — failed generations."',
       'Include your account email, last 4 of payment method, and (for failed-generation refunds) the Generation IDs.',
       'For failure-mode refunds, use the technical names OpenAI support recognises: "Anatomical Topology Failure," "Physics Simulation Constraint Violation," "Text Rendering Failure," "Temporal Color Coherence Failure," "Identity Coherence Failure."',
-      'OpenAI is honoring documented failure-mode refunds during the wind-down. Vague descriptions ("weird fingers", "looked broken") get rejected; technical names get processed.',
+      'OpenAI may grant goodwill credits at their discretion for well-documented failure modes during the wind-down. Vague descriptions ("weird fingers", "looked broken") typically get rejected; tickets that use the technical names tend to receive substantive review. Outcomes are not guaranteed.',
       'Don\'t wait until the last week — billing queue is reportedly slow.',
     ],
     migration: {

@@ -153,10 +153,16 @@ export default function FailurePage({ params }: { params: { slug: string } }) {
 
           {/* Refund strength */}
           <section className="mb-10">
-            <h2 className="text-xl font-bold text-ink-primary mb-4">Refund Success Likelihood</h2>
+            <h2 className="text-xl font-bold text-ink-primary mb-4">Ticket Quality Signal</h2>
             <div className="bg-neon-green/5 border border-neon-green/20 rounded-xl p-5">
-              <p className="text-neon-green text-sm font-mono font-bold mb-1">Refund Strength</p>
+              <p className="text-neon-green text-sm font-mono font-bold mb-1">Evidence Strength</p>
               <p className="text-ink-secondary text-sm">{f.refundStrength}</p>
+              <p className="text-ink-muted text-xs mt-3 italic">
+                Note: platforms generally do not guarantee refunds for output-quality failures.
+                Goodwill credits are issued at each platform&apos;s discretion. &ldquo;Strength&rdquo;
+                here reflects evidence quality, not a promised approval rate — there is no
+                guaranteed outcome.
+              </p>
             </div>
           </section>
 
