@@ -1,0 +1,70 @@
+{
+  "runAt": "2026-05-17T06:13:40.803Z",
+  "threshold": 0.05,
+  "results": [
+    {
+      "slug": "runway",
+      "url": "https://runwayml.com/terms-of-use",
+      "status": "STABLE",
+      "ratio": 0,
+      "oldLen": 78704,
+      "newLen": 78704
+    },
+    {
+      "slug": "luma",
+      "url": "https://lumalabs.ai/legal/tos",
+      "status": "STABLE",
+      "ratio": 0,
+      "oldLen": 63747,
+      "newLen": 63747
+    },
+    {
+      "slug": "openai",
+      "url": "https://openai.com/policies/terms-of-use",
+      "status": "FETCH_FAILED",
+      "error": "HTTP 403",
+      "ratio": null
+    },
+    {
+      "slug": "google",
+      "url": "https://policies.google.com/terms",
+      "status": "STABLE",
+      "ratio": 0,
+      "oldLen": 28556,
+      "newLen": 28556
+    },
+    {
+      "slug": "kling",
+      "url": "https://klingai.com/terms-of-service",
+      "status": "STABLE",
+      "ratio": 0,
+      "oldLen": 8,
+      "newLen": 8
+    },
+    {
+      "slug": "vidu",
+      "url": "https://www.vidu.studio/terms",
+      "status": "STABLE",
+      "ratio": 0,
+      "oldLen": 320,
+      "newLen": 320
+    },
+    {
+      "slug": "pika",
+      "url": "https://pika.art/terms",
+      "status": "STABLE",
+      "ratio": 0,
+      "oldLen": 788,
+      "newLen": 788
+    },
+    {
+      "slug": "hailuo",
+      "url": "https://hailuoai.com/terms",
+      "status": "STABLE",
+      "ratio": 0,
+      "oldLen": 15,
+      "newLen": 15
+    }
+  ],
+  "alert": true
+}
