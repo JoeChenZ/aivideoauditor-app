@@ -90,7 +90,7 @@ export const COMPARISONS: Comparison[] = [
       { prompt: '"Atmospheric night-time street with neon signage and rain"', toolA: 'Acceptable. Lighting realistic but not exceptional.', toolB: 'Exceptional — neon reflection, rain interaction with surfaces, atmospheric depth all stronger.', verdict: 'Luma, for mood-led work.' },
       { prompt: '"Brand product shot on white background, 360 rotation"', toolA: 'Color drift visible across the rotation. Brand color shifts outside tolerance.', toolB: 'Temporal Color Coherence Failure also visible; faster generation makes it cheaper to reroll.', verdict: 'Tie — both fail. Refund and reshoot, or use a non-AI tool for product work.' },
     ],
-    refundFlowSummary: "The single highest-leverage habit for anyone paying for AI video work is filing refund tickets on the named failure modes. Both Runway and Luma honor refund requests when the failure is documented by category. Identify the failure category using the technical name (not a colloquial description), capture the Generation ID, take a timestamped screenshot, and submit through the platform's billing support flow with the technical category in the ticket subject. Hit rate on refunds submitted this way is ~75-85% on both tools.",
+    refundFlowSummary: "The single highest-leverage habit for anyone paying for AI video work is filing well-documented tickets on the named failure modes. Neither Runway nor Luma guarantees refunds for output-quality failures — completed generations are typically considered consumed under each platform's published policy. However, support has discretion to grant goodwill credits when the failure is documented by category. Identify the failure category using the technical name (not a colloquial description), capture the Generation ID, take a timestamped screenshot, and submit through the platform's billing support flow with the technical category in the ticket subject. Outcomes vary widely and depend on ticket quality and platform discretion — there is no guaranteed approval rate.",
     finalVerdict: "Don't subscribe to \"the better tool.\" Subscribe to the tool that fails least on your most common shot type. Character + multi-cut work → Runway Gen-4. Lighting + atmosphere + stylized → Luma Ray-2. Hand close-ups, brand products, long dialogue clips: neither will be reliable — plan for ~40% rejection rate and budget refunds in. Most production workflows benefit from having both subscriptions and routing each prompt to whichever tool fails least on that shot type.",
   },
   {
@@ -151,7 +151,7 @@ export const COMPARISONS: Comparison[] = [
       { prompt: '"Brand-aligned product shot with on-screen text (logo)"', toolA: 'Text garbled past ~6 chars.', toolB: 'Text garbled past ~6 chars but slightly more legible.', verdict: 'Tie — composite text in post for either. Refund both as Text Rendering Failure.' },
       { prompt: '"8-second cinematic shot with continuous motion"', toolA: 'Best in class on coherence at length.', toolB: 'Coherence degrades meaningfully past 4-5s.', verdict: 'Sora was the right answer; no current consumer model fully replaces this at length.' },
     ],
-    refundFlowSummary: "For Sora 2 unspent credits, file refund tickets via OpenAI billing support before the September 2026 API shutdown using technical failure-mode names. For Veo 3 documented failures, submit via Google AI Studio billing with Generation ID + technical category. Both providers honor documented failure-mode refunds at ~75-85% approval rates.",
+    refundFlowSummary: "For Sora 2 unspent credits, file goodwill-credit requests via OpenAI billing support before the September 2026 API shutdown using technical failure-mode names. For Veo 3 documented failures, submit via Google AI Studio billing with Generation ID + technical category. Neither provider guarantees refunds for output-quality failures — outcomes are at each platform's discretion and depend heavily on ticket quality.",
     finalVerdict: "Sora 2 is dead. If you were a Sora user, your migration depends on shot type: stylized motion → Pika 2.0 (closest substitute, never quite the same). Native audio + dialogue → Veo 3 (the only consumer model with usable joint audio+video). Character consistency → Runway Gen-4. Long-form coherence → no current consumer model. The lesson for AI workflow: depend on capability categories, not specific models. Build adapter abstractions so the next shutdown is a config change, not a rebuild.",
   },
   {
@@ -211,7 +211,7 @@ export const COMPARISONS: Comparison[] = [
       { prompt: '"Portrait close-up, 6 seconds, subject smiling at camera"', toolA: 'Face coherence degrades visibly past 4s.', toolB: 'Holds for ~5s before mild drift.', verdict: 'Runway, by a small margin. Refund-eligible on both if drift is visible.' },
       { prompt: '"Hands of a chef chopping vegetables, close-up"', toolA: 'Hand-anatomy fails ~60% (finger count drift).', toolB: 'Same failure mode, equivalent rate.', verdict: 'Equivalent failure. Refund and reroll on either. Consider framing hands further from camera.' },
     ],
-    refundFlowSummary: "Both Kling and Runway honor refund requests with technical failure-mode names + Generation ID + timestamped screenshot. Runway's refund flow recognises 7 named categories (Anatomy, Physics, Text, Coherence, Color, Camera, Style); Kling recognises 5-6. Approval rates are similar (~75-85%) when the technical name is used correctly.",
+    refundFlowSummary: "Both Kling and Runway accept goodwill-credit requests with technical failure-mode names + Generation ID + timestamped screenshot. Runway's flow recognises 7 named categories (Anatomy, Physics, Text, Coherence, Color, Camera, Style); Kling recognises 5-6. Neither platform guarantees approval — outcomes are at each support team's discretion and depend on ticket quality.",
     finalVerdict: "Don't pick one over the other — pick by shot type. Motion-heavy / action / physics-led → Kling 1.6. Character / multi-cut / dialogue → Runway Gen-4. Most production budgets cover both subscriptions, and AVA Pro automates routing per prompt based on historical hit-rate. The \"best tool\" mental model assumes interchangeability that doesn't exist in this category.",
   },
   {
@@ -271,7 +271,7 @@ export const COMPARISONS: Comparison[] = [
       { prompt: '"Stylized animation, dreamlike 4-second clip"', toolA: 'Strongest current substitute for the Sora aesthetic.', toolB: 'Outputs more photoreal even when prompted stylized.', verdict: 'Pika.' },
       { prompt: '"Hands assembling jewelry, close-up"', toolA: 'Hand-anatomy fails ~60% (finger count drift).', toolB: 'Same failure mode, equivalent rate.', verdict: 'Equivalent failure. Refund and reroll on either. Frame hands further from camera if possible.' },
     ],
-    refundFlowSummary: "Both Pika and Runway honor refund requests with technical failure-mode names + Generation ID + timestamped screenshot. Pika's flow recognises 6 named categories; Runway recognises 7. Approval rates are similar (~75-85%) when the technical name is used correctly.",
+    refundFlowSummary: "Both Pika and Runway accept goodwill-credit requests with technical failure-mode names + Generation ID + timestamped screenshot. Pika's flow recognises 6 named categories; Runway recognises 7. Neither platform guarantees approval — outcomes are at each support team's discretion and depend on ticket quality.",
     finalVerdict: "Pika for physics + stylized motion. Runway for character + multi-cut. Different specialists, both valuable. AVA Pro automates the routing decision based on your historical hit-rate on each tool.",
   },
   {
@@ -332,7 +332,7 @@ export const COMPARISONS: Comparison[] = [
       { prompt: '"4-second product reveal with brand jingle"', toolA: 'Native audio handles the jingle inline.', toolB: 'Visual lighting could be cinematic but audio is separate.', verdict: 'Veo wins on workflow simplicity for short branded content.' },
       { prompt: '"Branded mug close-up, color-critical, 4 seconds"', toolA: 'Color drift visible across rotation.', toolB: 'Temporal Color Coherence Failure also visible.', verdict: 'Tie — both fail on branded color work. Refund and reshoot or post-correct.' },
     ],
-    refundFlowSummary: "Both Veo and Luma honor refund requests with technical failure-mode names + Generation ID + timestamped screenshot. Veo's flow runs via Google AI Studio billing (8 named categories) and is generally faster than Luma's. Approval rates ~75-85% on both.",
+    refundFlowSummary: "Both Veo and Luma accept goodwill-credit requests with technical failure-mode names + Generation ID + timestamped screenshot. Veo's flow runs via Google AI Studio billing (8 named categories) and is generally faster than Luma's. Neither platform guarantees approval — outcomes are at each support team's discretion.",
     finalVerdict: "Veo for native audio + cheap short clips. Luma for cinematic lighting + stylized output. Most production budgets cover both subscriptions, and AVA Pro automates the routing decision per prompt.",
   },
   {
@@ -394,7 +394,7 @@ export const COMPARISONS: Comparison[] = [
       { prompt: '"Fluid simulation: water splashing on rocks, slow motion"', toolA: 'Industry-leading fluid prior.', toolB: 'Fluid inversion likely past 4s.', verdict: 'Kling, decisively.' },
       { prompt: '"4-second product reveal with brand jingle"', toolA: 'Visual strong but audio is separate.', toolB: 'Native audio handles jingle inline.', verdict: 'Veo wins on workflow simplicity.' },
     ],
-    refundFlowSummary: "Both Kling and Veo honor refund requests with technical failure-mode names + Generation ID + timestamped screenshot. Veo's flow runs via Google AI Studio billing and recognises 8 named categories; Kling's flow recognises 5-6. Approval rates ~75-85% on both.",
+    refundFlowSummary: "Both Kling and Veo accept goodwill-credit requests with technical failure-mode names + Generation ID + timestamped screenshot. Veo's flow runs via Google AI Studio billing and recognises 8 named categories; Kling's flow recognises 5-6. Neither platform guarantees approval — outcomes are at each support team's discretion.",
     finalVerdict: "Kling for motion + physics. Veo for native audio + cost-per-clip. Different specialists, both valuable. Most production workflows benefit from both subscriptions with AVA Pro routing per prompt.",
   },
   {
@@ -452,7 +452,7 @@ export const COMPARISONS: Comparison[] = [
       { prompt: '"Water splashing on rocks, slow motion"', toolA: 'Strongest fluid prior in consumer tier.', toolB: 'Adequate; fluid inversion possible past 4s.', verdict: 'Pika for fluid simulation work.' },
       { prompt: '"Portrait close-up, 5 seconds, dramatic side-lit"', toolA: 'Drifts past 4s.', toolB: 'Holds well; dramatic lighting is Ray-2 strength.', verdict: 'Luma, decisively, for lit portrait work.' },
     ],
-    refundFlowSummary: "Both Pika and Luma honor refund requests with technical failure-mode names + Generation ID + timestamped screenshot. Both recognise 6 named categories. Approval rates ~75-85% on both.",
+    refundFlowSummary: "Both Pika and Luma accept goodwill-credit requests with technical failure-mode names + Generation ID + timestamped screenshot. Both recognise 6 named categories. Neither platform guarantees approval — outcomes are at each support team's discretion.",
     finalVerdict: "Pika for stylized motion + physics. Luma for cinematic lighting + photoreal mood. Different specialists. Most production workflows benefit from both subscriptions with per-prompt routing.",
   },
   {
@@ -511,7 +511,7 @@ export const COMPARISONS: Comparison[] = [
       { prompt: '"Portrait, 5 seconds, slight head movement, soft daylight"', toolA: 'Face drifts past 4s on portraits.', toolB: 'Holds well; portrait + soft daylight is Ray-2 strength.', verdict: 'Luma, for portrait work.' },
       { prompt: '"Lava flowing down volcano, slow motion"', toolA: 'Best fluid prior in consumer tier.', toolB: 'Fluid prior weaker than Kling.', verdict: 'Kling, for fluid simulation.' },
     ],
-    refundFlowSummary: "Both Kling and Luma honor refund requests with technical failure-mode names + Generation ID + timestamped screenshot. Approval rates ~75-85% on both. Luma recognises slightly more refund categories (6 vs Kling's 5-6).",
+    refundFlowSummary: "Both Kling and Luma accept goodwill-credit requests with technical failure-mode names + Generation ID + timestamped screenshot. Neither platform guarantees approval — outcomes are at each support team's discretion. Luma recognises slightly more named categories (6 vs Kling's 5-6).",
     finalVerdict: "Kling for motion + physics. Luma for lighting + photoreal mood. Different specialists, both valuable. Most production workflows benefit from both subscriptions with AVA Pro routing per prompt.",
   },
   {
@@ -571,7 +571,7 @@ export const COMPARISONS: Comparison[] = [
       { prompt: '"Portrait close-up, 7 seconds, slight head movement"', toolA: 'Skin-tone drift visible past 5s.', toolB: 'Drift past 5s but better skin tones; 8s hard limit.', verdict: 'Veo wins on longer clips; both fail past 8s.' },
       { prompt: '"4-second product reveal with English voiceover"', toolA: 'Visual fine but voiceover needs separate audio + post-sync.', toolB: 'Native audio handles voiceover inline.', verdict: 'Veo, decisively, for English audio-driven content.' },
     ],
-    refundFlowSummary: "Both honor refund requests with technical failure-mode names + Generation ID + timestamped screenshot. Veo's flow runs via Google AI Studio (8 named categories, faster processing). Hailuo's flow runs via MiniMax billing (5-6 categories, slower).",
+    refundFlowSummary: "Both accept goodwill-credit requests with technical failure-mode names + Generation ID + timestamped screenshot. Veo's flow runs via Google AI Studio (8 named categories, faster processing). Hailuo's flow runs via MiniMax billing (5-6 categories, slower). Outcomes are at each support team's discretion — not guaranteed.",
     finalVerdict: "For English talking-head work, Veo 3 is the better choice on almost every dimension. Hailuo's value is the China-trained aesthetic and Mandarin support. Pick by language + aesthetic.",
   },
   {
@@ -634,7 +634,7 @@ export const COMPARISONS: Comparison[] = [
       { prompt: '"Two friends laughing at a coffee shop, handheld feel, 5 seconds"', toolA: 'Face swap risk past 3s on multi-subject.', toolB: 'Multi-subject coherence similar; lighting better.', verdict: 'Luma slightly, on lighting realism.' },
       { prompt: '"Bowl of pasta on a wooden table, food photography, 4 seconds"', toolA: 'Color pulse on pasta saturation.', toolB: 'Color stable on short clip; lighting better.', verdict: 'Luma, for food / product shots.' },
     ],
-    refundFlowSummary: "Both honor refund requests with technical failure-mode names + Generation ID + timestamped screenshot. Vidu's flow runs via ShengShu support (6-7 named categories). Luma's flow runs via Luma billing (6 categories). AVA generates the report packet for either platform.",
+    refundFlowSummary: "Both accept goodwill-credit requests with technical failure-mode names + Generation ID + timestamped screenshot. Vidu's flow runs via ShengShu support (6-7 named categories). Luma's flow runs via Luma billing (6 categories). AVA generates the report packet for either platform. Outcomes are at each support team's discretion — not guaranteed.",
     finalVerdict: "For reference-locked single-subject character work, Vidu 2.0 wins. For cinematic camera and lighting realism, Luma Ray-2 wins. Both fail on hands at equivalent rates — budget for retries on hand-visible close-ups regardless of which you pick.",
   },
   {
@@ -698,7 +698,7 @@ export const COMPARISONS: Comparison[] = [
       { prompt: '"Close-up of hands plating dessert in a restaurant kitchen, 4 seconds"', toolA: '6 fingers risk on close-up; cheaper to retry.', toolB: 'Same failure rate; more expensive per retry.', verdict: 'Vidu, on per-keeper cost economics.' },
       { prompt: '"Sign reads \'OPEN\' on a storefront, dusk lighting"', toolA: 'Text garbled past 4 chars.', toolB: 'Text garbled past 6 chars; \'OPEN\' more legible.', verdict: 'Runway, for short-text legibility.' },
     ],
-    refundFlowSummary: "Both honor refund requests with technical failure-mode names + Generation ID + timestamped screenshot. Vidu's flow runs via ShengShu support (6-7 named categories). Runway's flow runs via Runway billing (7 named categories — strong precedent for limb/face/audio sync). AVA generates the audit report for either.",
+    refundFlowSummary: "Both accept goodwill-credit requests with technical failure-mode names + Generation ID + timestamped screenshot. Vidu's flow runs via ShengShu support (6-7 named categories). Runway's flow runs via Runway billing (7 named categories — strong evidentiary precedent for limb/face/audio sync). AVA generates the audit report for either. Outcomes are at each support team's discretion — not guaranteed.",
     finalVerdict: "Pick by shot architecture. Single short clip with a reference image → Vidu wins on locking + cost. Multi-shot narrative with character continuity → Runway wins on Scenes. Both fail on hands; both refund equivalently.",
   },
   {
@@ -762,7 +762,7 @@ export const COMPARISONS: Comparison[] = [
       { prompt: '"News anchor delivering 30-second segment"', toolA: '8s ceiling per clip; multiple clips need stitching.', toolB: 'Same 8s ceiling; native audio simplifies stitching.', verdict: 'Veo, for stitched dialogue workflows.' },
       { prompt: '"Logo reveal with \'WELCOME\' text in frame, brand video"', toolA: 'Text \'WELCOME\' garbled past 4 chars.', toolB: 'Text \'WELCOME\' more legible; cheaper to retry.', verdict: 'Veo, for text-in-frame work.' },
     ],
-    refundFlowSummary: "Both honor refund requests with technical failure-mode names + Generation ID + timestamped screenshot. Vidu's flow runs via ShengShu support (6-7 named categories). Veo's flow runs via Google AI Studio (8 named categories — strongest precedent in the industry). AVA generates the audit report for either.",
+    refundFlowSummary: "Both accept goodwill-credit requests with technical failure-mode names + Generation ID + timestamped screenshot. Vidu's flow runs via ShengShu support (6-7 named categories). Veo's flow runs via Google AI Studio (8 named categories — strongest evidentiary precedent in the industry). AVA generates the audit report for either. Outcomes are at each support team's discretion — not guaranteed.",
     finalVerdict: "Pick by audio need. Dialogue / narration / English talking-head → Veo 3 wins on every dimension that matters. Silent or post-scored character work with a reference image → Vidu 2.0 wins on locking + camera language. Both fail on hands at equivalent rates.",
   },
 ];
