@@ -1,5 +1,5 @@
 {
-  "runAt": "2026-05-17T06:13:40.803Z",
+  "runAt": "2026-05-18T17:59:32.923Z",
   "threshold": 0.05,
   "results": [
     {
@@ -44,9 +44,9 @@
     {
       "slug": "vidu",
       "url": "https://www.vidu.studio/terms",
-      "status": "STABLE",
-      "ratio": 0,
-      "oldLen": 320,
+      "status": "CHANGED",
+      "ratio": 0.9891,
+      "oldLen": 1374,
       "newLen": 320
     },
     {
