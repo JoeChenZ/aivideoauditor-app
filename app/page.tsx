@@ -46,32 +46,32 @@ const SHAME_CARDS = [
 /* ── Feature highlights ───────────────────────────────────────────────── */
 const FEATURES = [
   {
-    icon: '🛡️',
-    title: 'Pre-Flight Risk Check',
-    body: 'Before you hit Generate, the L1 engine scans your prompt for known Runway failure patterns — fingers, text, physics, motion — instantly, zero API calls, as you type.',
+    icon: '🔍',
+    title: 'Vendor Reality Check',
+    body: 'Before you subscribe to Runway, Higgsfield, Krea, Pollo, or Pika: see real per-second cost (credits times failure rate), "unlimited" gating rules, refund policy traps, and pricing change history. Built from 99 1-star reviews and 8 months of fetch-intercept data.',
+    accent: 'border-neon-cyan/30 hover:border-neon-cyan/60',
+    label: 'text-neon-cyan',
+  },
+  {
+    icon: '🟢',
+    title: 'Prompt Indicator',
+    body: 'Once you do subscribe, a live red / yellow / green score on your prompt as you type. Trained on 105 failure modes across Runway, Luma, Sora, Pika, Kling, Veo, Hailuo, Vidu. Green light before you spend the credit.',
     accent: 'border-neon-purple/30 hover:border-neon-purple/60',
     label: 'text-neon-purple',
   },
   {
-    icon: '⚑',
-    title: 'Mark Failure Frames',
-    body: 'Hover the failed video and click ⚑ to tag the exact broken frames — limb artifact, physics collapse, face distortion, text failure. Screenshots are captured with zero CORS issues.',
-    accent: 'border-neon-red/30 hover:border-neon-red/60',
-    label: 'text-neon-red',
-  },
-  {
-    icon: '📋',
-    title: 'Professional Refund Letter',
-    body: 'Free tier auto-generates a professional refund letter with engineering-grade failure terminology — "Anatomical Topology Failure" lands better than "the arm looks weird". Ready to copy and paste.',
-    accent: 'border-neon-green/30 hover:border-neon-green/60',
-    label: 'text-neon-green',
-  },
-  {
-    icon: '📄',
-    title: 'PDF Audit Report (Pro)',
-    body: 'Pro tier generates a formal Technical Diagnostic Report PDF with your generation ID, share link, annotated failure frames, engineering diagnosis, and credit refund calculation — built to look like an official audit.',
+    icon: '✎',
+    title: 'Rewrite Suggestions',
+    body: 'When the score is red, AVA names the exact phrase pulling it down ("fingers in frame", "120fps slow-mo", "neon text") and offers a concrete rewrite. Edit until the light turns green.',
     accent: 'border-neon-amber/30 hover:border-neon-amber/60',
     label: 'text-neon-amber',
+  },
+  {
+    icon: '📊',
+    title: 'Personal Failure History',
+    body: 'AVA tracks every generation you run. "You\'ve hit hand-anatomy failure 7 times on Runway this month." Patterns specific to your prompt habits surface so you stop repeating them.',
+    accent: 'border-neon-red/30 hover:border-neon-red/60',
+    label: 'text-neon-red',
   },
 ];
 
@@ -108,30 +108,43 @@ const TIERS = [
     accent: 'border-border',
     badge: null,
     features: [
-      '✓ Generation ID & share link capture',
-      '✓ Pre-flight L1 prompt risk scanner',
-      '✓ Mark failure frames (all types)',
-      '✓ Professional refund letter (copy & paste)',
-      '✓ Refund outcome tracking',
-      '✓ Unlimited generations monitored',
+      '✓ Unlimited vendor reality checks',
+      '✓ 50 prompt scores / month',
+      '✓ Red / yellow / green failure-risk indicator',
+      '✓ Concrete rewrite suggestions',
+      '✓ Coverage across 8 video providers',
     ],
     cta: { label: 'Add to Chrome — Free', href: CHROME_EXT_URL, style: 'bg-elevated hover:bg-elevated/80 border border-border text-ink-primary' },
   },
   {
     name: 'Pro',
-    price: '$9',
+    price: '$19',
     period: 'per month',
     accent: 'border-neon-amber/50 shadow-neon-amber/10 shadow-lg',
-    badge: 'Most Effective',
+    badge: 'Most Popular',
     features: [
-      '✓ Everything in Free',
-      '✓ Red-box annotation tool on failure frames',
-      '✓ PDF Technical Audit Report download',
-      '✓ Annotated screenshots embedded in PDF',
-      '✓ Refund history cloud sync',
-      '✓ Advanced L1 full analysis mode',
+      '✓ Unlimited prompt scores',
+      '✓ Personal failure history dashboard',
+      '✓ Change alerts on platform pricing / "unlimited" gating',
+      '✓ Cross-model comparison (Seedance vs Gen-4 vs Veo on your prompt)',
+      '✓ Priority L2 deep-analysis on borderline scores',
     ],
     cta: { label: 'Upgrade to Pro →', href: '/pricing', style: 'bg-neon-amber/20 hover:bg-neon-amber/30 border border-neon-amber/40 text-neon-amber font-bold' },
+  },
+  {
+    name: 'Business',
+    price: '$79',
+    period: 'per month',
+    accent: 'border-neon-cyan/40',
+    badge: null,
+    features: [
+      '✓ Everything in Pro',
+      '✓ API access to failure-mode catalog',
+      '✓ Team dashboards (per-seat failure history)',
+      '✓ Cross-platform change-history feed',
+      '✓ Priority email support',
+    ],
+    cta: { label: 'Talk to sales →', href: '/pricing#business', style: 'bg-neon-cyan/15 hover:bg-neon-cyan/25 border border-neon-cyan/40 text-neon-cyan font-bold' },
   },
 ];
 
@@ -143,18 +156,20 @@ const softwareAppSchema = {
   operatingSystem: 'Chrome',
   offers: [
     { '@type': 'Offer', price: '0', priceCurrency: 'USD', name: 'Free' },
-    { '@type': 'Offer', price: '9', priceCurrency: 'USD', priceSpecification: { '@type': 'UnitPriceSpecification', billingDuration: 'P1M' }, name: 'Pro' },
+    { '@type': 'Offer', price: '19', priceCurrency: 'USD', priceSpecification: { '@type': 'UnitPriceSpecification', billingDuration: 'P1M' }, name: 'Pro' },
+    { '@type': 'Offer', price: '79', priceCurrency: 'USD', priceSpecification: { '@type': 'UnitPriceSpecification', billingDuration: 'P1M' }, name: 'Business' },
   ],
-  description: 'Free Chrome extension for AI video generation tools — Runway ML, Luma AI, Google Veo, Kling, Seedance, Vidu. Flags failure patterns, marks broken frames, and builds a Technical Audit PDF Report you can submit to platform support when requesting goodwill credits.',
+  description: 'AI video platform reality check + prompt failure scoring. Before you subscribe to Runway, Higgsfield, Krea, Pollo, Pika, Sora, Luma, or Vidu, see real per-second cost, unlimited gating rules, refund policy traps, and pricing change history. After you subscribe, get a live failure-risk score on every prompt and personal failure history. Free Chrome extension.',
   url: 'https://www.aivideoauditor.com',
   downloadUrl: 'https://chromewebstore.google.com/detail/aivideoauditor/ecomchbdfkgakaoponipjgpnjfpimdef',
   aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.8', ratingCount: '47' },
   featureList: [
-    'Generation ID & share link capture',
-    'Pre-flight prompt risk scanner',
-    'Mark failure frames with red-box annotation',
-    'Professional refund letter generator',
-    'PDF Technical Audit Report (Pro)',
+    'Pre-purchase vendor reality check across 11 AI video platforms',
+    'Refund policy and "unlimited" gating rules per platform',
+    'Live prompt failure-risk score (red / yellow / green)',
+    'Concrete rewrite suggestions on red scores',
+    'Personal failure history per model',
+    '105 failure modes across 8 video providers',
   ],
 };
 
@@ -204,19 +219,19 @@ export default function HomePage() {
         <div className="pointer-events-none absolute top-20 right-0 w-[300px] h-[300px] rounded-full bg-neon-red/5 blur-3xl" />
 
         <div className="relative z-10 max-w-5xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 bg-neon-green/10 border border-neon-green/30 text-neon-green text-xs font-mono font-bold px-4 py-1.5 rounded-full mb-8 tracking-widest uppercase">
-            <span className="w-1.5 h-1.5 rounded-full bg-neon-green animate-pulse" />
-            Runway · Luma · Veo · Kling · Seedance · Vidu — Free Chrome Extension
+          <div className="inline-flex items-center gap-2 bg-neon-cyan/10 border border-neon-cyan/30 text-neon-cyan text-xs font-mono font-bold px-4 py-1.5 rounded-full mb-8 tracking-widest uppercase">
+            <span className="w-1.5 h-1.5 rounded-full bg-neon-cyan animate-pulse" />
+            Vendor Reality Check + Prompt Scoring · Free Chrome Extension
           </div>
 
           <h1 className="font-mono text-5xl md:text-6xl font-bold text-ink-primary mb-6 leading-[1.05] tracking-tight">
-            Same prompt. <br/>
-            <span className="text-neon-amber">Four AI tools.</span>{' '}
-            <span className="text-neon-red">Four different failures.</span>
+            See what AI video platforms <span className="text-neon-cyan">actually deliver</span> <br/>
+            <span className="text-neon-amber">before</span>{' '}
+            <span className="text-neon-red">you subscribe.</span>
           </h1>
 
           <p className="text-ink-secondary text-lg leading-relaxed mb-8 max-w-2xl mx-auto">
-            Every AI video tool fails. They just fail <em className="text-ink-primary not-italic font-semibold">differently</em> — and they all charge you for the broken output. AVA spots the failure, classifies it with engineering-grade terminology, and builds the refund-ready audit report.
+            We read 99 1-star reviews across Higgsfield, Krea, Pollo, and Pika. 42 to 78% cite billing predation, not bad output. AVA shows you the real per-second cost, "unlimited" gating rules, and refund policy traps <em className="text-ink-primary not-italic font-semibold">before</em> you spend. After you subscribe, the same engine scores every prompt against 105 failure modes.
           </p>
 
           {/* ── Same-prompt-multi-platform comparison grid ────────────── */}
@@ -253,7 +268,7 @@ export default function HomePage() {
 
           <p className="text-ink-muted text-xs md:text-sm font-mono mb-8 max-w-3xl mx-auto leading-relaxed">
             Watch them play. Each tool failed in a different way on identical input — broken motion, garbled signs, melted hands, color drift.{' '}
-            <span className="text-ink-secondary">AVA tags each one with the technical taxonomy support teams escalate fast.</span>
+            <span className="text-ink-secondary">AVA learns the per-model failure patterns and warns you which provider will choke on which prompt.</span>
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
@@ -272,7 +287,7 @@ export default function HomePage() {
               href="/pricing"
               className="inline-flex items-center justify-center gap-2 bg-neon-amber/10 hover:bg-neon-amber/20 border border-neon-amber/30 text-neon-amber font-mono font-semibold px-8 py-3.5 rounded-xl transition-all text-sm"
             >
-              ✦ See Pro PDF Reports →
+              ✦ See Pro →
             </Link>
           </div>
 
@@ -282,22 +297,22 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── CREDIT LOSS BANNER ────────────────────────────────────────────── */}
-      <section className="bg-neon-red/5 border-y border-neon-red/20 py-8 px-6 overflow-x-hidden">
+      {/* ── PREVENTION BANNER ─────────────────────────────────────────────── */}
+      <section className="bg-neon-amber/5 border-y border-neon-amber/20 py-8 px-6 overflow-x-hidden">
         <div className="max-w-5xl mx-auto flex flex-wrap items-center justify-center gap-6 text-center sm:text-left">
           <div className="flex items-center gap-3">
-            <span className="text-3xl font-mono font-bold text-neon-red">$0.20–$5</span>
-            <span className="text-sm text-ink-muted font-mono">per failed<br/>Runway generation</span>
+            <span className="text-3xl font-mono font-bold text-neon-red">~33%</span>
+            <span className="text-sm text-ink-muted font-mono">of AI video<br/>generations fail</span>
           </div>
           <div className="w-px h-8 bg-border hidden sm:block" />
           <div className="flex items-center gap-3">
-            <span className="text-3xl font-mono font-bold text-neon-amber">3–8×</span>
-            <span className="text-sm text-ink-muted font-mono">avg retries<br/>before giving up</span>
+            <span className="text-3xl font-mono font-bold text-neon-amber">105</span>
+            <span className="text-sm text-ink-muted font-mono">known failure modes<br/>across 8 providers</span>
           </div>
           <div className="w-px h-8 bg-border hidden sm:block" />
           <div className="flex items-center gap-3">
             <span className="text-3xl font-mono font-bold text-neon-green">$0</span>
-            <span className="text-sm text-ink-muted font-mono">cost to install<br/>AVA and stop it</span>
+            <span className="text-sm text-ink-muted font-mono">to install AVA<br/>and start scoring</span>
           </div>
         </div>
       </section>
@@ -310,10 +325,10 @@ export default function HomePage() {
               What AVA Does
             </p>
             <h2 className="font-mono text-3xl md:text-4xl font-bold text-ink-primary mb-4">
-              Catch it. Diagnose it. Claim it back.
+              Check the vendor. Score the prompt. Keep the credit.
             </h2>
             <p className="text-ink-secondary max-w-xl mx-auto">
-              From risky prompt to PDF audit report — handled inside the extension while you&apos;re on Runway.
+              Four signals running inside the extension before you subscribe and while you draft your prompt, so the money you spend produces a clip you keep.
             </p>
           </div>
 
@@ -343,26 +358,26 @@ export default function HomePage() {
             {[
               {
                 n: '01',
-                title: 'Install & Open Runway',
-                body: 'Install the extension, open Runway, and the AVA panel activates automatically. The network interceptor silently captures your generation ID and share link in the background — no setup required.',
-                accent: 'text-neon-purple',
+                title: 'Check the Platform Before You Subscribe',
+                body: 'Install the extension and pick a platform you are considering. AVA shows real per-second cost, "unlimited" gating rules, refund policy traps, and pricing change history. Free on every tier.',
+                accent: 'text-neon-cyan',
               },
               {
                 n: '02',
-                title: 'L1 Pre-Flight Screen',
-                body: 'As you type your prompt, AVA scans for Runway\'s highest-cost failure modes: text in frame, complex physics, finger artifacts, slow-motion conflicts. Warnings appear instantly with no API calls — pure in-browser heuristics.',
+                title: 'Score Every Prompt You Write',
+                body: 'Once you subscribe, AVA runs your prompt through 105 known failure modes and shows a live red / yellow / green score on Runway, Luma, Sora, Pika, Kling, Veo, Hailuo, and Vidu. In-browser, zero API calls, updates with every keystroke.',
                 accent: 'text-neon-amber',
               },
               {
                 n: '03',
-                title: 'Mark the Broken Frames',
-                body: 'Hover the failed video and click ⚑ to tag the exact broken frames by failure type. A red-box annotation tool (Pro) lets you circle the exact defect area. Screenshots are captured CORS-safely via the extension.',
+                title: 'Rewrite Until Green',
+                body: 'When the score is red, AVA names the exact phrase pulling it down ("fingers in frame", "neon text", "120fps slow-mo") and offers a concrete rewrite. Edit, watch the score climb, generate when green.',
                 accent: 'text-neon-blue',
               },
               {
                 n: '04',
-                title: 'Build Your Audit Report',
-                body: 'Free: copy a professional refund letter with engineering-grade failure terminology. Pro: download a PDF Technical Diagnostic Report with annotated screenshots, technical IDs, failure analysis, and credit refund calculation — built to escalate support priority.',
+                title: 'Build Your Failure Pattern',
+                body: 'Every generation feeds your personal failure history. After a few weeks AVA knows which mistakes you repeat — and the aggregate forecast tells you which provider is most likely to succeed on this specific prompt today.',
                 accent: 'text-neon-green',
               },
             ].map((step, i, arr) => (
@@ -389,11 +404,10 @@ export default function HomePage() {
               Pricing
             </p>
             <h2 className="font-mono text-3xl md:text-4xl font-bold text-ink-primary mb-4">
-              Free gets you the letter.<br />Pro gets you the evidence.
+              Free checks the vendor.<br />Pro scores every prompt.
             </h2>
             <p className="text-ink-secondary max-w-xl mx-auto">
-              The PDF Audit Report is designed to look like an official diagnostic document.
-              Visual authority gets your ticket escalated faster.
+              Vendor reality checks are unlimited on every tier. Pro unlocks unlimited prompt scoring, personal failure history, and platform change alerts.
             </p>
           </div>
 
@@ -460,14 +474,13 @@ export default function HomePage() {
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
             <p className="text-xs font-mono font-bold tracking-widest text-neon-red uppercase mb-3">
-              Real Failures. Real Runway Credits Lost.
+              What Platforms Actually Deliver vs. What They Advertise
             </p>
             <h2 className="font-mono text-3xl md:text-4xl font-bold text-ink-primary mb-4">
               The Wall of Shame
             </h2>
             <p className="text-ink-secondary max-w-xl mx-auto">
-              Every one of these was preventable. The L1 engine would have flagged it
-              before the Generate button was pressed.
+              Every one of these was preventable. AVA flags the failure pattern before the Generate button is pressed.
             </p>
           </div>
 
@@ -550,16 +563,15 @@ export default function HomePage() {
       <section className="bg-surface border-t border-border py-24 px-6 text-center relative overflow-hidden">
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-neon-purple/3 to-transparent" />
         <div className="relative z-10 max-w-2xl mx-auto">
-          <p className="text-xs font-mono font-bold tracking-widest text-neon-red uppercase mb-4">
-            Already Burned Credits?
+          <p className="text-xs font-mono font-bold tracking-widest text-neon-cyan uppercase mb-4">
+            Already paying a vendor that doesn&apos;t deliver?
           </p>
           <h2 className="font-mono text-4xl md:text-5xl font-bold text-ink-primary mb-6 leading-tight">
-            Every generation without AVA<br />
-            is a gamble on Runway&apos;s dime.
+            Every subscription without AVA<br />
+            is a bet on what the marketing page said.
           </h2>
           <p className="text-ink-secondary mb-10 text-lg">
-            Install in 30 seconds. Sign in free. The L1 engine starts protecting
-            your credits on your very next Runway prompt — and the PDF report is ready when you need it.
+            Install in 30 seconds. Sign in free. AVA checks the vendor reality on Runway, Higgsfield, Krea, Pollo, Pika, Sora, Luma, and Vidu, and scores every prompt you write after.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <a
@@ -574,7 +586,7 @@ export default function HomePage() {
               href="#upgrade"
               className="inline-flex items-center justify-center gap-2 bg-neon-amber/10 hover:bg-neon-amber/20 border border-neon-amber/30 text-neon-amber font-mono font-semibold px-10 py-4 rounded-xl transition-all"
             >
-              ✦ See Pro PDF Reports →
+              ✦ See Pro →
             </a>
           </div>
           <p className="mt-5 text-ink-muted text-sm font-mono">
