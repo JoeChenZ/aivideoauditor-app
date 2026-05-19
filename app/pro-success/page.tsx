@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import ProSuccessTrack from './track';
 
 export const metadata: Metadata = {
   title: 'Welcome to AVA Pro',
@@ -11,6 +12,7 @@ export const metadata: Metadata = {
 export default function ProSuccessPage() {
   return (
     <main className="min-h-screen py-20 px-6">
+      <ProSuccessTrack />
       <div className="max-w-2xl mx-auto">
 
         <div className="text-center mb-10">
