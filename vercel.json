@@ -3,6 +3,9 @@
   "buildCommand": "npm run build",
   "installCommand": "npm install",
   "outputDirectory": ".next",
+  "crons": [
+    { "path": "/api/cron/vendor-watch", "schedule": "0 6 * * *" }
+  ],
   "redirects": [
     { "source": "/methodology", "destination": "/tools/credit-calculator", "permanent": false },
     { "source": "/methodology/", "destination": "/tools/credit-calculator", "permanent": false },
