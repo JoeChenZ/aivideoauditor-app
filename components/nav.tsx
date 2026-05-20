@@ -16,15 +16,15 @@ export default async function Nav() {
         </Link>
 
         <div className="flex items-center gap-5 text-sm text-ink-secondary">
-          <a href="#playground" className="hover:text-ink-primary transition-colors hidden sm:block font-mono text-xs">
-            Playground
-          </a>
-          <a href="#how-it-works" className="hover:text-ink-primary transition-colors hidden sm:block font-mono text-xs">
+          <Link href="/research/132-ai-video-vendor-reviews" className="hover:text-ink-primary transition-colors hidden sm:block font-mono text-xs">
+            Research
+          </Link>
+          <Link href="/vendor-changelog" className="hover:text-ink-primary transition-colors hidden md:block font-mono text-xs">
+            Changelog
+          </Link>
+          <a href="#how-it-works" className="hover:text-ink-primary transition-colors hidden lg:block font-mono text-xs">
             How It Works
           </a>
-          <Link href="/security" className="hover:text-ink-primary transition-colors hidden md:block font-mono text-xs">
-            Security
-          </Link>
           <Link href="/dashboard" className="hover:text-ink-primary transition-colors hidden md:block font-mono text-xs">
             Dashboard
           </Link>
