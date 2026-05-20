@@ -89,7 +89,7 @@ const FAQ = [
   },
   {
     q: 'Which platforms does it score against?',
-    a: 'Prompt scoring works for all 11 vendors in our catalogue: Runway, Luma, Sora, Veo, Kling, Pika, Hailuo, Vidu, Higgsfield, Krea, and Pollo. The 105 failure modes are tagged per vendor, so the score you get reflects the specific failure patterns of the platform you intend to generate on. Auto-detection runs in-page on Runway ML and Luma; for other platforms, paste your prompt + select the target vendor.',
+    a: 'Prompt scoring runs against 105 failure modes catalogued across 8 platforms: Runway, Luma, Sora, Veo, Kling, Pika, Hailuo, and Vidu. Vendor reality check (billing patterns, refund policy, "unlimited" gating rules, pricing-change history) covers 11 vendors — those 8 plus Higgsfield, Krea, and Pollo from the 132-review Trustpilot corpus. Auto-detection runs in-page on Runway ML and Luma; for other platforms, paste your prompt + select the target vendor.',
   },
   {
     q: 'Is my data shared with you?',

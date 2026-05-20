@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     template: '%s | AIVideoAuditor',
   },
   description:
-    'Free Chrome extension. Pre-flight prompt scoring + vendor reality check across 11 AI video platforms. 105 documented failure modes. Personal failure history + silent policy change alerts. Stop burning credits on prompts that fail.',
+    'Free Chrome extension. Pre-flight prompt scoring across 8 AI-video platforms (105 documented failure modes) + vendor reality check across 11 vendors (132-review Trustpilot corpus). Personal failure history + silent policy change alerts. Stop burning credits on prompts that fail.',
   keywords: [
     'ai video prompt scoring',
     'ai video failure prediction',
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'AIVideoAuditor — Score Your AI Video Prompt Before You Click Generate',
     description:
-      'Free Chrome extension. Pre-flight prompt scoring + vendor reality check across 11 AI video platforms. 105 documented failure modes. Catch failure-prone prompts before you commit credits.',
+      'Free Chrome extension. Pre-flight prompt scoring across 8 AI-video platforms (105 failure modes) + vendor reality check across 11 vendors. Catch failure-prone prompts before you commit credits.',
     url: BASE_URL,
     siteName: 'AIVideoAuditor',
     type: 'website',
