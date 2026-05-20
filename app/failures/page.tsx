@@ -3,14 +3,14 @@ import Link from 'next/link';
 import { FAILURES, FAILURE_CLUSTERS, getFailure } from './[slug]/data';
 
 export const metadata: Metadata = {
-  title: 'AI Video Failure Reference — Refund Guide for Every Model',
+  title: 'AI Video Failure Reference — 105 Failure Modes Across 11 Platforms',
   description:
-    'The complete catalogue of AI video generation failures across Runway, Sora, Veo, Luma, Kling, Pika, Hailuo and Seedance. Click any failure to see refund-strength evidence + the exact technical term to use with support.',
+    'The complete catalogue of AI video generation failure modes across Runway, Sora, Veo, Luma, Kling, Pika, Hailuo, Vidu, Higgsfield, Krea, and Pollo. Click any failure to see the exact prompt-shape risk + the technical term that signals the underlying model fault.',
   alternates: { canonical: 'https://www.aivideoauditor.com/failures' },
   openGraph: {
-    title: 'AI Video Failure Reference — Refund Guide for Every Model',
+    title: 'AI Video Failure Reference — 105 Failure Modes Across 11 Platforms',
     description:
-      'The complete catalogue of AI video generation failures across all major models. Every failure is documented with refund-strength evidence + the exact technical term to cite.',
+      'The complete catalogue of AI video generation failure modes across all major platforms. Each failure is documented with the prompt-shape risk + the technical term that identifies the underlying model fault.',
     type: 'article',
   },
 };
