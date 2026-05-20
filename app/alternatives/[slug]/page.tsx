@@ -150,8 +150,9 @@ export default function AlternativesPage({ params }: { params: { slug: string } 
               AVA Pro routes each prompt to whichever tool fails least on your shot type
             </h2>
             <p className="text-ink-secondary text-sm mb-6 max-w-md mx-auto">
-              Free tier audits every generation and drafts the refund email. Pro adds cross-model
-              routing based on your historical hit-rate. $19/mo, pays back in saved credits.
+              Free tier scores 50 prompts per month against the 105 failure-mode catalogue. Pro
+              adds unlimited scoring + personal failure history + cross-vendor stability alerts so
+              you switch off a tool before it silently changes the deal. $19/mo, pays back in saved credits.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Link
