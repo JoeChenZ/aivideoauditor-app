@@ -48,7 +48,7 @@ const FEATURES = [
   {
     icon: '🔍',
     title: 'Vendor Reality Check',
-    body: 'Before you subscribe to Runway, Higgsfield, Krea, Pollo, or Pika: see real per-second cost (credits times failure rate), "unlimited" gating rules, refund policy traps, and pricing change history. Built from 99 1-star reviews and 8 months of fetch-intercept data.',
+    body: 'Before you subscribe to Runway, Higgsfield, Krea, Pollo, or Pika: see real per-second cost (credits times failure rate), "unlimited" gating rules, refund policy traps, and pricing change history. Built from 132 Trustpilot 1-star reviews across 8 vendors and 8 months of fetch-intercept data.',
     accent: 'border-neon-cyan/30 hover:border-neon-cyan/60',
     label: 'text-neon-cyan',
   },
@@ -231,7 +231,7 @@ export default function HomePage() {
           </h1>
 
           <p className="text-ink-secondary text-lg leading-relaxed mb-8 max-w-2xl mx-auto">
-            We read 99 1-star reviews across Higgsfield, Krea, Pollo, and Pika. 42 to 78% cite billing predation, not bad output. AVA shows you the real per-second cost, "unlimited" gating rules, and refund policy traps <em className="text-ink-primary not-italic font-semibold">before</em> you spend. After you subscribe, the same engine scores every prompt against 105 failure modes.
+            We tagged 132 1-star reviews across Runway, Higgsfield, Krea, Pollo, Pika, Luma, Sora, and Vidu. 42 to 78% cite billing predation, not bad output. AVA shows you the real per-second cost, "unlimited" gating rules, and refund policy traps <em className="text-ink-primary not-italic font-semibold">before</em> you spend. After you subscribe, the same engine scores every prompt against 105 failure modes.
           </p>
 
           {/* ── Same-prompt-multi-platform comparison grid ────────────── */}
