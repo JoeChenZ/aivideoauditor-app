@@ -74,13 +74,18 @@ export async function POST(req: NextRequest) {
   if (error) {
     // Duplicate (email, source) is silently treated as success — better UX than surfacing the error.
     // Postgres unique-violation error code is 23505.
-    const errorCode = (error as { code?: string }).code;
-    if (errorCode === '23505') {
+    const err = error as { code?: string; message?: string; details?: string; hint?: string };
+    if (err.code === '23505') {
       return NextResponse.json({ ok: true, alreadyRegistered: true }, { headers: cors });
     }
     // Other errors (table missing, RLS denied) — log and return 500.
+    // In non-production, return error details to help diagnose. In prod, log only.
     console.error('[lead-capture] supabase error', error);
-    return NextResponse.json({ error: 'Could not save signup' }, { status: 500, headers: cors });
+    const debug =
+      process.env.LEAD_CAPTURE_DEBUG === 'true' || process.env.NODE_ENV !== 'production'
+        ? { code: err.code, message: err.message, details: err.details, hint: err.hint }
+        : undefined;
+    return NextResponse.json({ error: 'Could not save signup', ...(debug && { debug }) }, { status: 500, headers: cors });
   }
 
   // Fire welcome email. No-op if RESEND_API_KEY is not set — the lead row
