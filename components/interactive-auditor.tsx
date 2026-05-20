@@ -339,9 +339,9 @@ export default function InteractiveAuditor() {
                 {showUpsell && (
                   <div className="mt-auto bg-neon-purple/5 border border-neon-purple/30 rounded-xl p-4 animate-fade-in">
                     <p className="text-xs font-mono text-neon-purple font-bold mb-1 tracking-wider uppercase">L1 only shows heuristic risks</p>
-                    <p className="text-xs text-ink-secondary mb-3">Install the extension to unlock VLM visual diagnosis, real-time interception, and one-click refund letters.</p>
+                    <p className="text-xs text-ink-secondary mb-3">Install the extension to unlock VLM visual diagnosis, real-time prompt scoring, and silent vendor policy-change alerts.</p>
                     <a
-                      href="https://chromewebstore.google.com"
+                      href="https://chromewebstore.google.com/detail/aivideoauditor/ecomchbdfkgakaoponipjgpnjfpimdef"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 bg-neon-green/20 hover:bg-neon-green/30 border border-neon-green/40 text-neon-green text-xs font-mono font-bold px-4 py-2 rounded-lg transition-all"
