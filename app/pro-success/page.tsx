@@ -4,7 +4,7 @@ import ProSuccessTrack from './track';
 
 export const metadata: Metadata = {
   title: 'Welcome to AVA Pro',
-  description: 'Your AIVideoAuditor Pro subscription is active. PDF audit reports are unlocked.',
+  description: 'Your AIVideoAuditor Pro subscription is active. Vendor reality check, prompt scoring, and platform change alerts are unlocked.',
   alternates: { canonical: 'https://www.aivideoauditor.com/pro-success' },
   robots: { index: false, follow: false }, // post-payment page, don't index
 };
@@ -26,7 +26,7 @@ export default function ProSuccessPage() {
             Welcome to AVA Pro.
           </h1>
           <p className="text-ink-secondary text-lg">
-            Your subscription is active. Your next refund request is going to look very different.
+            Your subscription is active. You can now check any AI video platform&apos;s reality before you commit credits, and stay ahead of the ones you already use.
           </p>
         </div>
 
@@ -38,22 +38,22 @@ export default function ProSuccessPage() {
             <li className="flex gap-3">
               <span className="text-neon-amber flex-shrink-0">▸</span>
               <div>
-                <strong className="text-ink-primary">PDF Technical Audit Report.</strong>
-                {' '}Frame-marked screenshots, your Generation/Asset ID, engineering-grade failure classification, credit refund calculation. Drop into any Runway or Luma support ticket.
+                <strong className="text-ink-primary">Vendor reality check across 11 platforms.</strong>
+                {' '}Real per-second cost (credits divided by success rate), &quot;unlimited&quot; gating rules, refund-policy traps, pricing change history. The math vendors don&apos;t publish.
               </div>
             </li>
             <li className="flex gap-3">
               <span className="text-neon-amber flex-shrink-0">▸</span>
               <div>
-                <strong className="text-ink-primary">Advanced L1 full analysis.</strong>
-                {' '}Pre-flight prompt risk scan with deeper failure-mode prediction so you stop generating prompts that will fail.
+                <strong className="text-ink-primary">Pre-generation prompt scoring (L1 full analysis).</strong>
+                {' '}Red/yellow/green score on every prompt with deeper failure-mode prediction and rewrite suggestions, so you stop generating prompts that will fail.
               </div>
             </li>
             <li className="flex gap-3">
               <span className="text-neon-amber flex-shrink-0">▸</span>
               <div>
-                <strong className="text-ink-primary">Ticket-outcome log.</strong>
-                {' '}Log every goodwill-credit request you submit and track how outcomes shift as you internalise the failure taxonomy. (Approvals are at each platform&apos;s discretion — never guaranteed.)
+                <strong className="text-ink-primary">Personal failure history + platform change alerts.</strong>
+                {' '}Your per-platform success rate by prompt shape, plus alerts when a vendor changes pricing, &quot;unlimited&quot; routing, or NSFW policy mid-subscription.
               </div>
             </li>
           </ul>
@@ -86,13 +86,13 @@ export default function ProSuccessPage() {
             Not what you expected? Reach out.
           </h2>
           <p className="text-sm text-ink-secondary leading-relaxed">
-            If AVA Pro isn&apos;t a fit, email <a href="mailto:hello@aivideoauditor.com" className="text-neon-purple underline">hello@aivideoauditor.com</a> within your first 7 days and we&apos;ll refund the subscription. AVA helps you document AI video failures and present the strongest possible goodwill-credit request — refund outcomes from the underlying platforms (Runway, Luma, OpenAI, etc.) are always at their discretion, not ours.
+            If AVA Pro isn&apos;t a fit, email <a href="mailto:hello@aivideoauditor.com" className="text-neon-purple underline">hello@aivideoauditor.com</a> within your first 7 days and we&apos;ll refund the subscription, no questions asked. AVA surfaces what AI video platforms actually deliver vs. what they advertise. We don&apos;t handle the platforms&apos; refund decisions, and we don&apos;t claim to.
           </p>
         </div>
 
         <div className="text-center text-xs text-ink-muted">
           <p>
-            Receipt sent to your email · <Link href="/guide" className="text-neon-purple underline">Read the refund guide</Link> · <Link href="/" className="text-neon-purple underline">Back to home</Link>
+            Receipt sent to your email · <Link href="/" className="text-neon-purple underline">Back to home</Link>
           </p>
         </div>
 
