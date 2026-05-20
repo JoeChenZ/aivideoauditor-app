@@ -192,10 +192,10 @@ export default function BillingPatternWatchPage() {
         <section className="mb-12">
           <LeadCaptureForm
             source="billing-pattern-watch"
-            heading="Get the weekly vendor-change alert (free)"
-            blurb="Drop your email. We send one alert per week when a tracked vendor changes pricing, 'unlimited' routing rules, refund policy, or NSFW filter mid-subscription. Sourced from active Trustpilot + Reddit + public-creator monitoring. No marketing spam."
-            cta="Subscribe to weekly alerts →"
-            successMessage="In. The first weekly alert lands within 7 days. We only email when a tracked vendor materially changes a policy. Unsubscribe one-click."
+            heading="Get the vendor-change alert when it ships (free)"
+            blurb="Drop your email. We're building the weekly change-alert pipeline now (Trustpilot + Reddit + public-creator monitoring). When it ships, you're on the first send. We only email when a tracked vendor materially changes pricing, 'unlimited' routing, refund policy, or filter rules mid-subscription. No marketing spam."
+            cta="Add me to the alert list →"
+            successMessage="In. You'll hear from us when the alert system ships and the next time a tracked vendor materially changes a policy. Unsubscribe one-click."
           />
         </section>
 

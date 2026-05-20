@@ -227,10 +227,10 @@ export default function VendorRealityResearchPage() {
         <section className="mb-12" id="get-the-corpus">
           <LeadCaptureForm
             source="research-132-vendor-reviews"
-            heading="Get the full tagged corpus + weekly vendor change alerts"
-            blurb="Drop your email. You get (a) the 132-review tagged corpus (CSV with verbatim quotes + per-review category tags), (b) one alert per week when a vendor changes pricing, refund policy, or 'unlimited' routing rules silently, and (c) early access to AVA Pro when prompt scoring opens to the waitlist. No marketing spam."
-            cta="Get the corpus + alerts →"
-            successMessage="In. The tagged corpus CSV will land in your inbox within 24h. Weekly vendor-change alerts start the following Monday. Unsubscribe any time."
+            heading="Get the corpus + vendor-change alerts when they ship"
+            blurb="Drop your email. We're hand-tagging the next batch of vendor reviews and building the weekly change-alert pipeline now. When the tagged CSV and the alert system are ready, you're on the first send. Early Pro access included when prompt scoring opens to the waitlist. No marketing spam, no buyer-funnel drip."
+            cta="Add me to the list →"
+            successMessage="In. You'll hear from us when the tagged corpus and the alert system ship — no spam, no drip. Unsubscribe any time."
           />
         </section>
 
