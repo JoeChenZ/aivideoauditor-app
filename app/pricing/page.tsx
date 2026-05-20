@@ -88,8 +88,8 @@ const FAQ = [
     a: 'No. All AI analysis runs on our servers, gated by your subscription tier. There is nothing to configure — sign up, install the extension, run the audit.',
   },
   {
-    q: 'Will this work for [Sora / Hailuo / Kling / Pika]?',
-    a: 'Currently Runway ML and Luma AI Dream Machine. Additional platforms are queued — each needs a small adapter for ID capture and frame extraction. Vote on the next platform at github.com/JoeChenZ/aivideoauditor-extension.',
+    q: 'Which platforms does it score against?',
+    a: 'Prompt scoring works for all 11 vendors in our catalogue: Runway, Luma, Sora, Veo, Kling, Pika, Hailuo, Vidu, Higgsfield, Krea, and Pollo. The 105 failure modes are tagged per vendor, so the score you get reflects the specific failure patterns of the platform you intend to generate on. Auto-detection runs in-page on Runway ML and Luma; for other platforms, paste your prompt + select the target vendor.',
   },
   {
     q: 'Is my data shared with you?',
