@@ -1,0 +1,42 @@
+id,review_date,title,body_excerpt,tags
+1,2026-05-01,"First and last time as a customer","Your 'super computer' was absolutely terrible and wasted all of my tokens.",COST|QUALITY
+2,2026-05-18,"blasted away with options but none are worth it","refunded via my card cause support sucks. will not come back",SUPPORT|BILLING
+3,2026-05-18,"They took 1,500 off my pay","took 1,500 off my pay, didn't film my videos, and put me on furlough at work.",BILLING|COST
+4,2026-05-18,"I need for my text-to-talk generate","much more than 300 characters at a time.",ACCESS
+5,2026-05-18,"Let me use the platform","stop with the sales crap.",BILLING
+6,2026-05-17,"Don't be fooled. They highlight expired deals on their pricing page","They have the 7-day Unlimited deals highlighted clearly. I purchased the plan without knowing some deals had expired.",BILLING
+7,2026-05-01,"SCAM, Dishonest platform","won't help if you have a problem, won't help if their payment system isn't working, won't help if you lose credits due to a bug. But when it comes to stealing or taking back your unused credits — oh, they're very good at that.",SUPPORT|BILLING
+8,2026-04-12,"Annual subscriber","changed my subscription mid-way, removing features that were originally included (video generations in the first two months) with absolutely no compensation.",BILLING|SUPPORT
+9,2026-05-17,"Promising tech, but marketing tools nowhere near production-ready","the ads massively oversell the actual product.",BILLING|QUALITY
+10,2026-05-16,"Points are used up too quickly","video quality isn't good enough, free videos are slow to generate and suffer from clipping issues.",COST|QUALITY
+11,2026-05-09,"I spent a lot of credits and time (5hrs)","trying to get an elegant music video. Because the gown showed the female figure, was flagged inappropriate NSFW content.",BRAND|COST
+12,2026-05-11,"DO NOT TRUST HIGGSFIELD","Extremely Misleading pricing",BILLING
+13,2026-05-11,"Please don't buy it","spent $50, didn't make even one video, maybe just one photo, details are really bad",COST|QUALITY
+14,2026-05-11,"Restricts you","should attract customers by giving them some free credits. But they resist for pennies.",COST
+15,2026-05-10,"Read this before you Subscribe","subscription that has unlimited usage for the first seven days for certain models, and then when you try to generate with those models, you're told you're out of credits",BILLING
+16,2026-03-07,"I cancelled before renewal","still charged $150. Support keeps pointing to their refund policy instead of properly checking the cancellation issue.",BILLING
+17,2026-05-09,"Scam company","Took $61 from me even though I cancelled my subscription. I cancelled at 8am, 2 hours later they still charged my card.",BILLING
+18,2026-05-06,"Higgsfield is a scam","advertised Unlimited access to certain generators and it's a lie",BILLING
+19,2026-05-06,"If I could give negative stars","complete slop and useless AI video generation",QUALITY
+20,2026-05-01,"Promises are not kept — Systematic devaluation after $1,000","subscribed to the 'Creator Plan' in November for a staggering $1,000, key features such as 'Access to all models' and an 'Unlimited Video Model' were explicitly guaranteed",BILLING
+21,2026-05-04,"Couldn't even log in","didn't let me log in after giving them all my information",ACCESS
+22,2026-04-30,"Predatory refund policy","$49 Plus plan. NSFW filter blocked legitimate commercial prompts. VEO 3.1 audio not ad-ready quality. Cinema Studio Image 2.5 ignored reference images. Used minimal portion of credits, submitted refund request within 7-day window. Response: any credits used = no refund. That's a trap.",BILLING|BRAND|QUALITY
+23,2026-04-28,"Very bad","paid $15 for only able to generate 1 video, ugc render was bad",COST|QUALITY
+24,2026-03-22,"I was promised unlimited image and video generations","After using it for 2 weeks. The only unlimited video which was Minimax Hailuo. bait and switch. I signed up for the whole year.",BILLING
+25,2026-04-19,"My page is deactivated","",ACCESS
+26,2026-04-26,"where is my nano banana pro unlimited scammers","renew my old account and i don't have anymore, i specially renew it for that one",BILLING
+27,2026-04-26,"site is barely generating in 1 hour one photo","they change the subscriptions prices month by month because they are SUPER greedy! they limit the platform however they want, they removed the nano banana pro unlimited",BILLING|COST|QUALITY
+28,2026-04-26,"No refund if you test the platform and use credits","",BILLING
+29,2026-04-25,"Charged after confirmed cancelation!","asked to cancel and customer support approved my inquiry. But they have charged afterwards for another period!",BILLING
+30,2026-04-25,"Too expensive + inaccurate","credit cost jumped: generating a 4-second video costs around 48–90 credits, while before it was closer to 8 credits",COST|BILLING
+31,2026-04-26,"Predatory promos","Right after buying the plus plan they said that they'll give me the ultra plan at 60 USD. instead, they put that on top of the 50 USD i already paid and will not refund my 60 usd on top of the 50 even if i didn't use my credits.",BILLING
+32,2026-04-23,"They are stealing your money","removing usage credits from your account! They removed over 10000 credits from my account, before the credits expiry date, this happened 3 months in a row, and they are just keep sending AI bot messages pretending they do not understand",BILLING|SUPPORT
+33,2026-04-23,"your system is currently not letting me login","after I've been making content over the whole previous day, and I just increased my subscription",ACCESS
+34,2026-04-12,"We got presented with a monthly option","accepted the option for the enterprise plan. The moment we accept they say the only billing is 1 year upfront no monthly, no exceptions",BILLING
+35,2026-04-16,"Don't fall for the videos on youtube or instagram","they don't come out like what you see, the website doesn't work correctly, theres zero help support. The video editor does not use reference images at all",QUALITY|SUPPORT
+36,2026-04-17,"big time scammers","They don't even have an option to cancel the subscription",BILLING
+37,2026-04-16,"This is a scam company","It started taking money monthly from my bank account and i did not click automatic billing. I emailed to get a refund and a robot replied saying a human will contact me and they never did.",BILLING|SUPPORT
+38,2026-04-15,"Garbage","I spent 6000 credits to get 10 videos that are NOT BAD, not even good. AI email assistant you can't get to real human support.",QUALITY|COST
+39,2026-03-22,"hugely over priced","ridiculous moderation even failed to refund credits lost",COST|BILLING|BRAND
+40,2026-04-13,"Purchased a plan based on what was advertised","Parallel generations: up to 8 → Reality 2. 15-second video → Reality 8 seconds. 8 concurrent generations → not available. Unlimited Seedance 2.0 → restricted. Used 32 out of 9,000 credits ($2 of $50). Refund refused. Chargeback initiated via American Express + complaint to Verbraucherzentrale + reported to consumer protection authorities.",BILLING
+41,2026-04-13,"The worst AI platform","paid for a year and after 20 mins decided it wasn't for me. I asked for a refund and they denied it. $500 down the drain.",BILLING

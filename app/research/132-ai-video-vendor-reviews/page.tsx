@@ -218,19 +218,42 @@ export default function VendorRealityResearchPage() {
         </section>
 
         <section className="mb-12">
-          <h2 className="text-2xl font-bold text-ink-primary mb-4">Raw corpus</h2>
-          <p className="text-ink-secondary">
-            The 41-review Higgsfield corpus is fully tagged with verbatim quotes + tag rationale. Available on request for journalists, researchers, and paid Pro/Business users — DM @AIVideoAuditor on X or use the form below.
+          <h2 className="text-2xl font-bold text-ink-primary mb-4">Raw corpus — direct download</h2>
+          <p className="text-ink-secondary mb-4">
+            The Higgsfield 1-star slice (41 reviews) is fully tagged with verbatim quotes + per-review category tags. Cross-vendor complaint rates (8 vendors, 132 reviews aggregate) are in a second file. No signup needed.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-3">
+            <a
+              href="/corpus/higgsfield-1star-41-reviews-2026-05-19.csv"
+              download
+              className="flex-1 bg-elevated hover:bg-elevated/80 border border-neon-amber/30 rounded-xl p-5 transition-colors"
+            >
+              <p className="text-xs font-mono font-bold tracking-widest text-neon-amber uppercase mb-2">CSV · 41 rows</p>
+              <p className="text-ink-primary font-bold text-sm mb-1">Higgsfield 1-star — fully tagged</p>
+              <p className="text-ink-muted text-xs">id, date, title, body excerpt, tags. Pages 1-3 of Trustpilot, mid-March to mid-May 2026.</p>
+            </a>
+            <a
+              href="/corpus/vendor-complaint-rates-2026-05-19.csv"
+              download
+              className="flex-1 bg-elevated hover:bg-elevated/80 border border-neon-purple/30 rounded-xl p-5 transition-colors"
+            >
+              <p className="text-xs font-mono font-bold tracking-widest text-neon-purple uppercase mb-2">CSV · 8 vendors</p>
+              <p className="text-ink-primary font-bold text-sm mb-1">Cross-vendor complaint rates</p>
+              <p className="text-ink-muted text-xs">Per-vendor billing / cost / quality / support / brand-filter percentages. Aggregated across Higgsfield, Krea, Pollo, Pika, Runway, Luma, Sora, Kling.</p>
+            </a>
+          </div>
+          <p className="text-xs text-ink-muted mt-4 italic">
+            Source: Trustpilot 1-star pages, scraped 2026-05-13 to 2026-05-19. Tagging method documented above. Full per-row reading + per-vendor breakdown also lives on this page below — the CSV is for tooling / journalism / spreadsheet analysis.
           </p>
         </section>
 
         <section className="mb-12" id="get-the-corpus">
           <LeadCaptureForm
             source="research-132-vendor-reviews"
-            heading="Get the corpus + vendor-change alerts when they ship"
-            blurb="Drop your email. We're hand-tagging the next batch of vendor reviews and building the weekly change-alert pipeline now. When the tagged CSV and the alert system are ready, you're on the first send. Early Pro access included when prompt scoring opens to the waitlist. No marketing spam, no buyer-funnel drip."
-            cta="Add me to the list →"
-            successMessage="In. You'll hear from us when the tagged corpus and the alert system ship — no spam, no drip. Unsubscribe any time."
+            heading="Get weekly vendor-change alerts when the pipeline ships"
+            blurb="The CSV corpus is already downloadable above. This form is for the recurring side: when a tracked vendor materially changes pricing, 'unlimited' routing, refund policy, or filter rules mid-subscription, you get one short alert. The monitoring pipeline ships next; you'll be on the first send. Early Pro access included when prompt scoring opens. No drip, no marketing spam."
+            cta="Add me to the alert list →"
+            successMessage="In. The first alert lands as soon as the monitoring pipeline goes live, and only when a tracked vendor actually changes a policy. Unsubscribe one-click."
           />
         </section>
 
