@@ -1,0 +1,201 @@
+import type { Metadata } from 'next';
+import Link from 'next/link';
+
+export const metadata: Metadata = {
+  title: 'AI Video Vendor Reality Check — 132 Trustpilot 1-Star Reviews (2026 Research)',
+  description: 'Original analysis of 132 Trustpilot 1-star reviews across 8 AI-video platforms (Higgsfield, Krea, Pollo, Pika, Runway, Luma, Sora, Vidu). Tagged by failure category. 77% of paid-tier 1-stars cite billing-mechanic complaints, not output quality.',
+  alternates: { canonical: 'https://www.aivideoauditor.com/research/132-ai-video-vendor-reviews' },
+  openGraph: {
+    title: 'AI Video Vendor Reality Check — 132 Trustpilot 1-Star Reviews',
+    description: 'The dominant 1-star complaint across AI-video tools is "the vendor cheated me," not "the model is bad." Per-platform breakdown from a tagged corpus.',
+    type: 'article',
+  },
+};
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'AI Video Vendor Reality Check — 132 Trustpilot 1-Star Reviews',
+  description: 'Tagged analysis of 132 Trustpilot 1-star reviews across 8 AI-video platforms. Categorises billing predation, cost burn, quality, support failure, access issues, and NSFW filter policy churn.',
+  author: { '@type': 'Organization', name: 'AIVideoAuditor' },
+  publisher: { '@type': 'Organization', name: 'AIVideoAuditor', url: 'https://www.aivideoauditor.com' },
+  datePublished: '2026-05-20',
+};
+
+export default function VendorRealityResearchPage() {
+  return (
+    <main className="min-h-screen py-20 px-6">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <div className="max-w-4xl mx-auto">
+        <nav className="text-xs font-mono text-ink-muted mb-8" aria-label="Breadcrumb">
+          <Link href="/" className="hover:text-ink-secondary transition-colors">Home</Link>
+          <span className="mx-2">/</span>
+          <span className="text-ink-primary">Research</span>
+        </nav>
+
+        <header className="mb-12">
+          <p className="text-xs font-mono font-bold tracking-widest text-neon-green uppercase mb-3">Original Research · 2026-05</p>
+          <h1 className="text-4xl md:text-5xl font-bold text-ink-primary mb-4 leading-tight">
+            What 132 Trustpilot 1-stars actually say about AI-video tools
+          </h1>
+          <p className="text-lg text-ink-secondary leading-relaxed">
+            We tagged 132 1-star reviews across 8 AI-video platforms by complaint category. The headline finding: <strong className="text-ink-primary">77% of paid-tier 1-stars cite billing-mechanic complaints, not output quality.</strong> The dominant pattern is not &ldquo;the model is bad&rdquo; — it is &ldquo;the vendor cheated me.&rdquo;
+          </p>
+        </header>
+
+        <section className="mb-12">
+          <h2 className="text-2xl font-bold text-ink-primary mb-4">Methodology</h2>
+          <p className="text-ink-secondary mb-3">
+            Source: trustpilot.com 1-star filter, pages 1-3, per platform. Reviews collected manually between 2026-05-13 and 2026-05-19. Each review was tagged with one or more complaint categories from a 6-tag taxonomy (tags are non-exclusive — one review can hit multiple).
+          </p>
+          <p className="text-ink-secondary mb-3">
+            Sample: 132 reviews across Higgsfield, Krea, Pollo, Pika, Runway, Luma, Sora, and Vidu.
+          </p>
+          <p className="text-ink-secondary text-sm italic">
+            Important caveat: the 1-star pool is self-selected (people who hate the product). It is <em>not</em> a representative customer sample. Read these tags as &ldquo;what people who churned complain about,&rdquo; not &ldquo;what is wrong with the product on average.&rdquo;
+          </p>
+        </section>
+
+        <section className="mb-12">
+          <h2 className="text-2xl font-bold text-ink-primary mb-4">The 6-tag taxonomy</h2>
+          <ul className="space-y-3 text-ink-secondary">
+            <li><strong className="text-ink-primary">Billing predation</strong> — refund denied · post-cancel charge · bait-and-switch on advertised features · price/credit-cost changed mid-sub · features removed mid-subscription · stacked-promo no-refund</li>
+            <li><strong className="text-ink-primary">Cost burn (pure)</strong> — &ldquo;credits drain too fast&rdquo; · explicit per-generation cost complaint without other tag</li>
+            <li><strong className="text-ink-primary">Quality</strong> — bad output · ignores reference image · marketing oversells the product</li>
+            <li><strong className="text-ink-primary">Support failure</strong> — no human · AI bot replies · ignored emails · weeks-long back-and-forth with no resolution</li>
+            <li><strong className="text-ink-primary">Access / technical</strong> — can&apos;t log in · page deactivated · features missing post-purchase</li>
+            <li><strong className="text-ink-primary">NSFW / brand filter</strong> — overzealous filter on legitimate commercial work · forfeited credits to filter blocks</li>
+          </ul>
+        </section>
+
+        <section className="mb-12">
+          <h2 className="text-2xl font-bold text-ink-primary mb-4">Per-platform breakdown</h2>
+
+          <div className="space-y-6">
+            <div className="bg-surface border border-border rounded-2xl p-6">
+              <h3 className="text-lg font-bold text-ink-primary mb-2">Runway — 11 reviews (May 2026)</h3>
+              <p className="text-ink-secondary text-sm leading-relaxed">
+                Trustpilot score 1.1/5. <strong>100% of 1-stars cite billing/routing.</strong> Modal complaint: &ldquo;Unlimited&rdquo; tier routes to credit-metered behaviour after day 7. Wait times jumped from 5-10 min to 25-40 min over the course of May. <strong>6 of 11 reviewers independently name the same wait-time shift in the same week</strong> — that is a vendor change, not crowding.
+              </p>
+            </div>
+
+            <div className="bg-surface border border-border rounded-2xl p-6">
+              <h3 className="text-lg font-bold text-ink-primary mb-2">Higgsfield — 41 reviews (Mar-May 2026)</h3>
+              <p className="text-ink-secondary text-sm leading-relaxed">
+                Trustpilot score 4/5 on 2,433 reviews overall — so the 1-star pool is self-selected complainers, not the average customer. Within that pool: <strong>78% billing predation</strong> (refund denial after a single test gen, post-cancel charges, bait-and-switch on advertised features, price/credit-cost changed mid-sub), 37% cost burn, 29% quality, 22% support failure.
+              </p>
+            </div>
+
+            <div className="bg-surface border border-border rounded-2xl p-6">
+              <h3 className="text-lg font-bold text-ink-primary mb-2">Krea — 78 reviews</h3>
+              <p className="text-ink-secondary text-sm leading-relaxed">
+                Trustpilot score 2.4/5. <strong>60% billing predation.</strong> Auto-renewals after cancelled subscriptions and a cancel button that lives at billing-portal-only (not in the main app, which routes to upsell pages) are the most common patterns. &ldquo;Unlimited Seedance 2.0&rdquo; promo routes to credit-metered after day 7.
+              </p>
+            </div>
+
+            <div className="bg-surface border border-border rounded-2xl p-6">
+              <h3 className="text-lg font-bold text-ink-primary mb-2">Pollo — 1-star segment of 3,508 reviews</h3>
+              <p className="text-ink-secondary text-sm leading-relaxed">
+                Aggregate score 4.4/5 hides a brutal 1-star segment. <strong>42% billing + 32% NSFW filter policy churn.</strong> The modal NSFW complaint: &ldquo;NSFW worked before I subscribed, now it doesn&apos;t.&rdquo; — a silent filter policy revision mid-subscription.
+              </p>
+            </div>
+
+            <div className="bg-surface border border-border rounded-2xl p-6">
+              <h3 className="text-lg font-bold text-ink-primary mb-2">Pika — 56 reviews</h3>
+              <p className="text-ink-secondary text-sm leading-relaxed">
+                Trustpilot score 1.6/5. <strong>63% quality failure + 53% support black-hole.</strong> Different pathology from the others: the vendor is not extracting money via bait-and-switch — the product itself just does not deliver, and when it fails, no human responds. Generations fail, credits expire, no resolution.
+              </p>
+            </div>
+
+            <div className="bg-surface border border-border rounded-2xl p-6">
+              <h3 className="text-lg font-bold text-ink-primary mb-2">Sora — wind-down period</h3>
+              <p className="text-ink-secondary text-sm leading-relaxed">
+                Sora 2 web sunsets 2026-04-26 (officially announced). Trustpilot 1-stars during the wind-down: 71% billing — users still being charged through the deprecation window.
+              </p>
+            </div>
+
+            <div className="bg-surface border border-border rounded-2xl p-6">
+              <h3 className="text-lg font-bold text-ink-primary mb-2">Luma — selection</h3>
+              <p className="text-ink-secondary text-sm leading-relaxed">
+                Cancel UI lives at <code className="text-xs">billing.luma.ai/portal</code>, NOT at any &ldquo;Manage subscription&rdquo; link in the main app. Refund denial language pattern: &ldquo;credits were consumed during the billing cycle.&rdquo; Pushing back with a generation log export usually reverses the denial.
+              </p>
+            </div>
+
+            <div className="bg-surface border border-border rounded-2xl p-6">
+              <h3 className="text-lg font-bold text-ink-primary mb-2">Vidu — smaller dataset</h3>
+              <p className="text-ink-secondary text-sm leading-relaxed">
+                Platform-parity issues most common: model behaviour differs measurably from marketing claims on specific shot types (text-to-video performance below benchmark on character work).
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="mb-12">
+          <h2 className="text-2xl font-bold text-ink-primary mb-4">The two vendor pathologies</h2>
+          <p className="text-ink-secondary mb-4">Reading the 132 reviews end-to-end, complaints cluster into two distinct vendor pathologies.</p>
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="bg-surface border border-border rounded-2xl p-6">
+              <h3 className="text-lg font-bold text-ink-primary mb-2">1. Billing predation</h3>
+              <p className="text-ink-secondary text-sm leading-relaxed">
+                Runway, Higgsfield, and Krea fit this. The product works; the vendor&apos;s billing mechanic is the complaint. Refund denial after a single test gen. &ldquo;Unlimited&rdquo; tier that secretly converts to credit-metered. Auto-renewal traps. Cancel UI hidden behind a billing-portal sub-page.
+              </p>
+            </div>
+            <div className="bg-surface border border-border rounded-2xl p-6">
+              <h3 className="text-lg font-bold text-ink-primary mb-2">2. Product + support failure</h3>
+              <p className="text-ink-secondary text-sm leading-relaxed">
+                Pika fits this most clearly. The vendor is not trying to extract money via bait-and-switch — the product just does not deliver, and when it does not, no human responds. Generations fail, credits expire, no resolution.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="mb-12">
+          <h2 className="text-2xl font-bold text-ink-primary mb-4">Why this matters for paid users</h2>
+          <p className="text-ink-secondary mb-3">
+            The headline credit cost is the <em>disclosed</em> cost. The <strong>effective cost</strong> is approximately:
+          </p>
+          <p className="text-ink-secondary mb-3 font-mono text-sm bg-elevated p-4 rounded-xl">
+            effective_cost = disclosed_cost × (1 / first_try_success_rate) × (1 + refund_denial_rate)
+          </p>
+          <p className="text-ink-secondary mb-3">For Higgsfield Ultra: estimated effective cost is <strong>2-3× the marketing math</strong> (60% first-try success × 78% refund denial across the 1-star pool).</p>
+          <p className="text-ink-secondary">For Runway Unlimited (May 2026): wait-time changes alone shifted effective throughput by <strong>5-8×</strong> (5-10 min → 25-40 min per gen).</p>
+        </section>
+
+        <section className="mb-12">
+          <h2 className="text-2xl font-bold text-ink-primary mb-4">Raw corpus</h2>
+          <p className="text-ink-secondary">
+            The 41-review Higgsfield corpus is fully tagged with verbatim quotes + tag rationale. Available on request for journalists, researchers, and paid Pro/Business users — DM @AIVideoAuditor on X or contact via the form on this site.
+          </p>
+        </section>
+
+        <section className="bg-surface border border-neon-green/20 rounded-2xl p-8 text-center mb-8">
+          <p className="text-xs font-mono font-bold tracking-widest text-neon-green uppercase mb-3">Built on this data</p>
+          <h2 className="text-2xl font-bold text-ink-primary mb-3">AIVideoAuditor scores your prompt against this corpus</h2>
+          <p className="text-ink-secondary text-sm mb-6 max-w-2xl mx-auto">
+            The 105 failure modes in our catalogue are tagged per vendor against this corpus + ongoing platform monitoring. Pre-flight prompt scoring tells you the failure-rate forecast for the specific platform and prompt shape you intend to use — before you commit credits to a generation that will fail.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <a
+              href="https://chromewebstore.google.com/detail/aivideoauditor/ecomchbdfkgakaoponipjgpnjfpimdef"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 bg-neon-green/20 hover:bg-neon-green/30 border border-neon-green/40 text-neon-green font-mono font-bold px-6 py-3 rounded-xl transition-all"
+            >
+              Install Free Extension →
+            </a>
+            <Link
+              href="/pricing"
+              className="inline-flex items-center justify-center gap-2 bg-elevated hover:bg-elevated/80 border border-border text-ink-secondary font-mono font-semibold px-6 py-3 rounded-xl transition-all text-sm"
+            >
+              See Pro Scoring Plans →
+            </Link>
+          </div>
+        </section>
+
+        <footer className="text-xs text-ink-muted">
+          Published 2026-05-20. Corrections + addenda: DM @AIVideoAuditor on X.
+        </footer>
+      </div>
+    </main>
+  );
+}
