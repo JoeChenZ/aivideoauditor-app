@@ -3,12 +3,12 @@ import Link from 'next/link';
 import LeadCaptureForm from '@/components/lead-capture-form';
 
 export const metadata: Metadata = {
-  title: 'The 7 Refund Categories Every AI Video Provider Recognises (2026 Guide)',
-  description: 'Long-form guide to the 7 named failure modes recognised by AI video provider support teams across Runway, Luma, Veo, Kling, Pika, Sora, Hailuo, Seedance. Includes ticket templates. Refund outcomes are at each platform\'s discretion.',
+  title: 'The 7 Named Failure Categories Every AI Video Vendor Recognises (2026)',
+  description: 'Reference catalogue of the 7 named failure modes used across Runway, Luma, Veo, Kling, Pika, Sora, Hailuo, Seedance, Vidu. Use these technical terms to score your prompt risk before you generate — and to escalate when generations fail.',
   alternates: { canonical: 'https://www.aivideoauditor.com/guide-refund-categories' },
   openGraph: {
-    title: 'The 7 Failure Categories Every AI Video Provider Recognises',
-    description: 'The technical names that route your goodwill-credit request to human review instead of a template FAQ reply.',
+    title: 'The 7 Named Failure Categories Every AI Video Vendor Recognises',
+    description: 'Reference catalogue of the failure modes that map to AI-video vendor internal workflows. Score your prompt risk, document failures, escalate to human review.',
     type: 'article',
   },
 };
