@@ -45,38 +45,35 @@ function formatPrice(p: TierPrice): string {
 }
 
 const FREE_FEATURES = [
-  '10 audits per month',
-  'Frame-mark broken generations on Runway + Luma',
+  'Unlimited platform reality checks across 11 vendors',
+  '50 pre-flight prompt scores per month',
+  'L1 prompt risk scanner (red / yellow / green)',
   'Generation ID + Asset ID auto-capture',
-  'Failure-documentation letter (copy & paste)',
-  'Pre-flight L1 prompt risk scanner',
-  'Failure outcome tracking',
+  'Browse the public Wall of Shame (105 failure modes)',
 ];
 
 const PRO_FEATURES = [
   'Everything in Free, plus:',
-  '300 audits per month',
-  'PDF Technical Audit Report',
-  'Engineering-grade failure classification',
-  'Annotated failure-frame screenshots',
-  'Credit-waste calculation per failure',
-  'Advanced L1 full-analysis mode',
-  'Outcome tracker (granted / partial / denied)',
+  'Unlimited prompt scores',
+  'L1 full-analysis mode with rewrite suggestions',
+  'Personal failure history (per platform, per prompt shape)',
+  'Platform change alerts: pricing, "unlimited" routing, NSFW policy',
+  'Effective-cost calculator (list price / success rate)',
 ];
 
 const BUSINESS_FEATURES = [
   'Everything in Pro, plus:',
-  'Fair-use unlimited audits',
+  'Fair-use unlimited scoring',
   'Team seats (coming soon)',
-  'Priority failure-doc review',
-  'Slack / email support SLA',
   'API access for high-volume teams',
+  'Cross-platform change-history feed',
+  'Slack / email support SLA',
 ];
 
 const FAQ = [
   {
     q: 'What does AVA Pro actually do for me?',
-    a: 'AVA documents AI video generation failures across 8 platforms — capturing Generation IDs, failure frames, and engineering-grade failure terminology. You get a PDF Technical Audit Report you can submit to platform support when requesting goodwill credits. Refund outcomes depend on each platform\'s discretion, not on AVA.',
+    a: 'AVA scores your prompts before you click Generate, so you stop spending credits on prompts that will fail. Pro adds your personal failure history (per platform, per prompt shape) and alerts you when vendors change pricing, "unlimited" routing rules, or NSFW policies mid-subscription. The goal is to know what you\'re committing to before you subscribe, and stay ahead of the platforms you already use.',
   },
   {
     q: 'Can I cancel anytime?',
@@ -115,9 +112,9 @@ export default async function PricingPage() {
             Stop burning credits on prompts that fail.
           </h1>
           <p className="text-ink-secondary text-lg max-w-2xl mx-auto">
-            Free gets you started. Pro adds the Technical Audit PDF and engineering-grade
-            failure classification. Business is fair-use unlimited for teams running high
-            audit volume.
+            Free gives you unlimited platform reality checks across 11 vendors. Pro adds
+            unlimited prompt scoring, personal failure history, and change alerts when
+            vendors move the goalposts. Business adds team seats and API access.
           </p>
         </div>
 
@@ -206,23 +203,23 @@ export default async function PricingPage() {
         {/* Cost-justification */}
         <div className="bg-elevated border border-border rounded-2xl p-8 mb-16">
           <h2 className="text-xl font-bold text-ink-primary mb-4">
-            The math: Pro pays for itself in week 1
+            The math: $19 vs. the credits you re-run
           </h2>
           <div className="grid sm:grid-cols-3 gap-6">
             <div>
-              <p className="text-xs font-mono uppercase tracking-wider text-ink-muted mb-1">Average creator burn</p>
-              <p className="text-2xl font-bold text-ink-primary">$30–50</p>
-              <p className="text-xs text-ink-muted">in credits per week on Runway / Luma failures</p>
+              <p className="text-xs font-mono uppercase tracking-wider text-ink-muted mb-1">Effective cost</p>
+              <p className="text-2xl font-bold text-ink-primary">list / success rate</p>
+              <p className="text-xs text-ink-muted">List price stays the same, but every failed gen multiplies your real per-clip cost.</p>
             </div>
             <div>
-              <p className="text-xs font-mono uppercase tracking-wider text-ink-muted mb-1">With AVA Pro report</p>
-              <p className="text-2xl font-bold text-neon-green">~70% approved</p>
-              <p className="text-xs text-ink-muted">refund rate when documented with technical taxonomy</p>
+              <p className="text-xs font-mono uppercase tracking-wider text-ink-muted mb-1">Trustpilot signal</p>
+              <p className="text-2xl font-bold text-neon-green">77%</p>
+              <p className="text-xs text-ink-muted">of paid-tier 1-star reviews across 8 major vendors cite billing, not quality.</p>
             </div>
             <div>
-              <p className="text-xs font-mono uppercase tracking-wider text-ink-muted mb-1">Effective monthly recovery</p>
-              <p className="text-2xl font-bold text-neon-amber">$80–140</p>
-              <p className="text-xs text-ink-muted">in credits back. Subscription pays for itself in week 1.</p>
+              <p className="text-xs font-mono uppercase tracking-wider text-ink-muted mb-1">Pro budget</p>
+              <p className="text-2xl font-bold text-neon-amber">$19/mo</p>
+              <p className="text-xs text-ink-muted">Costs less than a single mid-tier credit pack. The prompt scoring pays itself off by avoiding failed gens.</p>
             </div>
           </div>
         </div>
@@ -247,8 +244,7 @@ export default async function PricingPage() {
 
         <div className="text-center">
           <p className="text-xs text-ink-muted">
-            Questions? <Link href="/guide" className="text-neon-purple underline">Read the refund guide</Link> ·{' '}
-            <a href="mailto:hello@aivideoauditor.com" className="text-neon-purple underline">Email support</a>
+            Questions? <a href="mailto:hello@aivideoauditor.com" className="text-neon-purple underline">Email support</a>
           </p>
         </div>
 
