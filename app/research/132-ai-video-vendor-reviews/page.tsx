@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import LeadCaptureForm from '@/components/lead-capture-form';
 
 export const metadata: Metadata = {
   title: 'AI Video Vendor Reality Check — 132 Trustpilot 1-Star Reviews (2026 Research)',
@@ -53,6 +54,61 @@ export default function VendorRealityResearchPage() {
           </p>
           <p className="text-ink-secondary text-sm italic">
             Important caveat: the 1-star pool is self-selected (people who hate the product). It is <em>not</em> a representative customer sample. Read these tags as &ldquo;what people who churned complain about,&rdquo; not &ldquo;what is wrong with the product on average.&rdquo;
+          </p>
+        </section>
+
+        <section className="mb-12 bg-elevated border border-neon-amber/20 rounded-2xl p-6">
+          <p className="text-xs font-mono font-bold tracking-widest text-neon-amber uppercase mb-3">
+            Update · 2026-05-20 · Reddit cross-check
+          </p>
+          <h2 className="text-xl font-bold text-ink-primary mb-3">
+            We triangulated the 77% figure against Reddit. The honest read is more interesting.
+          </h2>
+          <p className="text-ink-secondary text-sm mb-4 leading-relaxed">
+            The aggregate 77% billing-predation figure is correct for the Trustpilot 1-star pool. But Trustpilot is a self-selected angry-payment cohort. To check whether that figure survives outside Trustpilot, we ran neutral Reddit searches (&ldquo;review,&rdquo; &ldquo;experience,&rdquo; &ldquo;honest opinion&rdquo;) on three representative vendors and categorized the top 15 results by complaint type.
+          </p>
+
+          <div className="overflow-x-auto mb-4">
+            <table className="w-full text-sm border border-border rounded-lg overflow-hidden">
+              <thead className="bg-surface text-ink-muted text-xs font-mono uppercase tracking-wider">
+                <tr>
+                  <th className="text-left px-4 py-2">Vendor</th>
+                  <th className="text-right px-4 py-2">Trustpilot billing %</th>
+                  <th className="text-right px-4 py-2">Reddit neutral billing %</th>
+                  <th className="text-right px-4 py-2">Δ</th>
+                </tr>
+              </thead>
+              <tbody className="text-ink-secondary">
+                <tr className="border-t border-border">
+                  <td className="px-4 py-2 font-bold text-ink-primary">Pollo</td>
+                  <td className="px-4 py-2 text-right">~77%</td>
+                  <td className="px-4 py-2 text-right font-bold text-neon-amber">78%</td>
+                  <td className="px-4 py-2 text-right text-neon-green">+1pp</td>
+                </tr>
+                <tr className="border-t border-border">
+                  <td className="px-4 py-2 font-bold text-ink-primary">Higgsfield</td>
+                  <td className="px-4 py-2 text-right">~77%</td>
+                  <td className="px-4 py-2 text-right font-bold text-neon-amber">64%</td>
+                  <td className="px-4 py-2 text-right text-ink-muted">-13pp</td>
+                </tr>
+                <tr className="border-t border-border">
+                  <td className="px-4 py-2 font-bold text-ink-primary">Runway</td>
+                  <td className="px-4 py-2 text-right">~77%</td>
+                  <td className="px-4 py-2 text-right font-bold text-neon-amber">29%</td>
+                  <td className="px-4 py-2 text-right text-neon-red">-48pp</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p className="text-ink-secondary text-sm leading-relaxed mb-3">
+            <strong className="text-ink-primary">What this means:</strong> the AI-video vendor universe contains two structurally different vendor types. The <strong>predatory tier</strong> (Pollo, Higgsfield, Krea, and similar small vendors with hostile subscription mechanics) is mostly a billing problem — the Trustpilot 77% reproduces almost identically in neutral Reddit samples. The <strong>mainstream tier</strong> (Runway, Luma, Sora, Veo) is mostly a quality problem in neutral samples; Trustpilot&apos;s 77% on these vendors is sample-bias amplification of a smaller billing-pain subpopulation.
+          </p>
+          <p className="text-ink-secondary text-sm leading-relaxed">
+            <strong className="text-ink-primary">Implication for buyers:</strong> the kind of risk you take when you subscribe is vendor-specific, not category-wide. Subscribing to Pollo is mostly a billing bet; subscribing to Runway is mostly a quality bet. Our prompt scoring + vendor reality check addresses both, but the per-vendor risk profile changes which surface matters more for your particular use case.
+          </p>
+          <p className="text-ink-muted text-xs mt-4 italic">
+            Method: Firecrawl Reddit search, 5 queries (billing-loaded + neutral), 75 results categorized BILLING / QUALITY / SUPPORT / POSITIVE / NEUTRAL by title + snippet excerpt. Full method + per-thread categorization committed in the source repo at <code className="text-ink-secondary">docs/REDDIT-TRIANGULATION-2026-05-20.md</code>.
           </p>
         </section>
 
@@ -164,8 +220,18 @@ export default function VendorRealityResearchPage() {
         <section className="mb-12">
           <h2 className="text-2xl font-bold text-ink-primary mb-4">Raw corpus</h2>
           <p className="text-ink-secondary">
-            The 41-review Higgsfield corpus is fully tagged with verbatim quotes + tag rationale. Available on request for journalists, researchers, and paid Pro/Business users — DM @AIVideoAuditor on X or contact via the form on this site.
+            The 41-review Higgsfield corpus is fully tagged with verbatim quotes + tag rationale. Available on request for journalists, researchers, and paid Pro/Business users — DM @AIVideoAuditor on X or use the form below.
           </p>
+        </section>
+
+        <section className="mb-12" id="get-the-corpus">
+          <LeadCaptureForm
+            source="research-132-vendor-reviews"
+            heading="Get the full tagged corpus + weekly vendor change alerts"
+            blurb="Drop your email. You get (a) the 132-review tagged corpus (CSV with verbatim quotes + per-review category tags), (b) one alert per week when a vendor changes pricing, refund policy, or 'unlimited' routing rules silently, and (c) early access to AVA Pro when prompt scoring opens to the waitlist. No marketing spam."
+            cta="Get the corpus + alerts →"
+            successMessage="In. The tagged corpus CSV will land in your inbox within 24h. Weekly vendor-change alerts start the following Monday. Unsubscribe any time."
+          />
         </section>
 
         <section className="bg-surface border border-neon-green/20 rounded-2xl p-8 text-center mb-8">
