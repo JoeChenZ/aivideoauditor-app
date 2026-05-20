@@ -85,7 +85,12 @@ export default function LeadCaptureForm({
         </button>
       </div>
       {status === 'error' && (
-        <p className="text-xs text-neon-red mt-2 font-mono">{errorMsg}</p>
+        <div className="mt-2">
+          <p className="text-xs text-neon-red font-mono">{errorMsg}</p>
+          <p className="text-xs text-ink-muted mt-1">
+            If this keeps failing, email <a href={`mailto:hello@aivideoauditor.com?subject=${encodeURIComponent(`Lead-capture fallback (${source})`)}`} className="text-neon-purple underline">hello@aivideoauditor.com</a> with the words &ldquo;add me&rdquo; — we&apos;ll add you manually.
+          </p>
+        </div>
       )}
       <p className="text-xs text-ink-muted mt-3">
         One email when we launch + maybe one followup. No marketing spam, ever. Unsubscribe one-click.
