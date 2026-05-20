@@ -344,6 +344,65 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ── EFFECTIVE COST ────────────────────────────────────────────────── */}
+      <section id="effective-cost" className="bg-void py-20 px-6">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-10">
+            <p className="text-xs font-mono font-bold tracking-widest text-neon-amber uppercase mb-3">
+              The Math Vendors Don&apos;t Publish
+            </p>
+            <h2 className="font-mono text-3xl md:text-4xl font-bold text-ink-primary mb-4">
+              Your real cost per clip isn&apos;t the list price.
+            </h2>
+            <p className="text-ink-secondary max-w-2xl mx-auto">
+              It&apos;s the list price divided by how often a generation works on the first try, multiplied by how often a refund actually gets denied. AVA scores both sides of that equation before you click Generate.
+            </p>
+          </div>
+
+          <div className="bg-surface border border-border rounded-2xl p-6 sm:p-8 mb-8">
+            <p className="text-xs font-mono font-bold tracking-widest text-ink-muted uppercase mb-4 text-center">
+              Effective cost per usable clip
+            </p>
+            <div className="font-mono text-center text-base sm:text-lg text-ink-primary leading-relaxed">
+              <span className="text-neon-cyan">list_price</span>
+              <span className="text-ink-muted"> &times; </span>
+              <span className="text-neon-amber">(1 / first_try_success_rate)</span>
+              <span className="text-ink-muted"> &times; </span>
+              <span className="text-neon-purple">(1 + refund_denial_rate)</span>
+            </div>
+            <p className="text-xs text-ink-muted text-center mt-5 max-w-xl mx-auto leading-relaxed">
+              On the vendors we track, a 35% first-try success rate and a 60% refund denial rate turn a $0.50 disclosed cost into a $2.29 real cost. The disclosed price stays the same. The cost you actually pay does not.
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-3 gap-4">
+            <div className="bg-elevated border border-border rounded-xl p-5">
+              <p className="text-xs font-mono uppercase tracking-wider text-neon-cyan mb-2">list_price</p>
+              <p className="text-xs text-ink-secondary leading-relaxed">
+                What the vendor advertises. AVA reads the live page so you do not have to translate credits to dollars.
+              </p>
+            </div>
+            <div className="bg-elevated border border-border rounded-xl p-5">
+              <p className="text-xs font-mono uppercase tracking-wider text-neon-amber mb-2">first_try_success_rate</p>
+              <p className="text-xs text-ink-secondary leading-relaxed">
+                Estimated from 105 catalogued failure modes plus your personal history. Goes up when your prompt scores green.
+              </p>
+            </div>
+            <div className="bg-elevated border border-border rounded-xl p-5">
+              <p className="text-xs font-mono uppercase tracking-wider text-neon-purple mb-2">refund_denial_rate</p>
+              <p className="text-xs text-ink-secondary leading-relaxed">
+                Read off the 132-review Trustpilot corpus, per platform. Vendors with no refund pathway score 1.0.
+              </p>
+            </div>
+          </div>
+
+          <p className="text-center text-xs text-ink-muted mt-8">
+            Full per-platform breakdown in the{' '}
+            <a href="/research/132-ai-video-vendor-reviews" className="text-neon-purple underline">132-review research corpus</a>.
+          </p>
+        </div>
+      </section>
+
       {/* ── HOW IT WORKS ──────────────────────────────────────────────────── */}
       <section id="how-it-works" className="bg-void py-20 px-6">
         <div className="max-w-3xl mx-auto">
