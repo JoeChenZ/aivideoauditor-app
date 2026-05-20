@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { CheckoutButton } from './CheckoutButtons';
+import PricingTrack from './track';
 
 const EXTENSION_API = 'https://aivideoauditor-extension.vercel.app';
 
@@ -102,6 +103,7 @@ export default async function PricingPage() {
 
   return (
     <main className="min-h-screen py-20 px-6">
+      <PricingTrack />
       <div className="max-w-6xl mx-auto">
 
         <div className="text-center mb-12">

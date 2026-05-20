@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import { track } from '@vercel/analytics';
 import { createClient } from '@/lib/supabase/client';
 
 const EXTENSION_API = 'https://aivideoauditor-extension.vercel.app';
@@ -32,9 +33,11 @@ export function CheckoutButton({
   async function startCheckout() {
     setError(null);
     setBusy(true);
+    track('checkout_clicked', { tier });
     try {
       const { data: { session } } = await supabase.auth.getSession();
       if (!session) {
+        track('signin_redirect_from_pricing', { tier });
         router.push(`/login?redirectTo=/pricing&tier=${tier}`);
         return;
       }
