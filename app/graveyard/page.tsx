@@ -4,12 +4,12 @@ import { SHUTDOWNS } from './[slug]/data';
 import LeadCaptureForm from '@/components/lead-capture-form';
 
 export const metadata: Metadata = {
-  title: 'AI Tool Graveyard — Refund Deadlines & Migration Paths',
-  description: 'A tracked, sourced record of every shut-down or being-shut-down AI tool. Refund deadlines, migration paths, and what each tool meant. Sora 2, Yopisora, Inflection Pi, Adept AI, GPT-3 davinci, and more.',
+  title: 'AI Tool Graveyard — Vendor Stability Tracker & Migration Paths',
+  description: 'A tracked, sourced record of every shut-down or being-shut-down AI tool. Vendor stability signals, migration paths, and refund-window status when relevant. Sora 2, Yopisora, Inflection Pi, Adept AI, GPT-3 davinci, and more.',
   alternates: { canonical: 'https://www.aivideoauditor.com/graveyard' },
   openGraph: {
-    title: 'AI Tool Graveyard — Refund Deadlines & Migration Paths',
-    description: 'When an AI tool dies, where do you go? Tracked records of every shut-down AI tool, with refund deadlines and migration paths.',
+    title: 'AI Tool Graveyard — Vendor Stability Tracker & Migration Paths',
+    description: 'When an AI tool dies, where do you go? Tracked records of every shut-down AI tool with vendor stability signals + migration paths.',
     type: 'website',
   },
 };
