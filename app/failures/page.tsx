@@ -302,10 +302,10 @@ export default function FailuresHubPage() {
                 Install Free Extension →
               </a>
               <Link
-                href="/guide"
+                href="/research/132-ai-video-vendor-reviews"
                 className="inline-flex items-center justify-center gap-2 bg-elevated hover:bg-elevated/80 border border-border text-ink-secondary font-mono font-semibold px-6 py-3 rounded-xl transition-all text-sm"
               >
-                Read the Full Refund Guide
+                Read the Vendor Reality Report →
               </Link>
             </div>
           </div>

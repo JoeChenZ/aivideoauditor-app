@@ -340,11 +340,16 @@ export default function GuideRefundCategoriesPage() {
               </ol>
             </div>
             <p className="text-ink-secondary text-sm leading-relaxed">
-              Or use the{' '}
-              <Link href="/tools/refund-letter-generator" className="text-neon-purple hover:underline">
-                free Refund Letter Generator
-              </Link>
-              {' '}— pre-fills this structure with your inputs. Single click to copy.
+              Or skip the recovery flow entirely — install the free{' '}
+              <a
+                href="https://chromewebstore.google.com/detail/aivideoauditor/ecomchbdfkgakaoponipjgpnjfpimdef"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-neon-purple hover:underline"
+              >
+                AIVideoAuditor Chrome extension
+              </a>
+              {' '}and score your prompt against these 7 failure categories before you commit the credits.
             </p>
           </section>
 
