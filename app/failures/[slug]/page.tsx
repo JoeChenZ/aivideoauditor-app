@@ -96,7 +96,7 @@ export default function FailurePage({ params }: { params: { slug: string } }) {
           <nav className="text-xs font-mono text-ink-muted mb-8" aria-label="Breadcrumb">
             <Link href="/" className="hover:text-ink-secondary transition-colors">Home</Link>
             <span className="mx-2">/</span>
-            <Link href="/guide" className="hover:text-ink-secondary transition-colors">Refund Guide</Link>
+            <Link href="/failures" className="hover:text-ink-secondary transition-colors">Failure Modes</Link>
             <span className="mx-2">/</span>
             <span className="text-ink-primary">{f.technicalTerm}</span>
           </nav>
@@ -202,22 +202,22 @@ export default function FailurePage({ params }: { params: { slug: string } }) {
             </div>
           </section>
 
-          {/* CTA — platform-aware: extension auto-detects on Luma + Runway, manual generator for everything else */}
+          {/* CTA — platform-aware: extension auto-detects on Luma + Runway, manual scoring for everything else */}
           {(() => {
             const platform = f.slug.split('-')[0];
             const autoDetected = platform === 'luma' || platform === 'runway';
             return (
               <div className="bg-surface border border-neon-green/20 rounded-2xl p-8 text-center">
                 <p className="text-xs font-mono font-bold tracking-widest text-neon-green uppercase mb-3">
-                  {autoDetected ? 'Document It Automatically' : 'Build Your Audit Report'}
+                  {autoDetected ? 'Catch It Before You Generate' : 'Score Your Prompt'}
                 </p>
                 <h2 className="text-2xl font-bold text-ink-primary mb-3">
-                  {autoDetected ? 'AVA captures all the evidence for you' : 'Generate a refund-ready letter in 2 minutes'}
+                  {autoDetected ? 'AVA scores this failure mode against your prompt in real time' : 'Score your prompt against this failure mode in 30 seconds'}
                 </h2>
                 <p className="text-ink-secondary text-sm mb-6 max-w-md mx-auto">
                   {autoDetected
-                    ? 'Install the free Chrome extension. It captures your Generation ID, lets you mark the exact broken frames with timestamps, and generates a professional refund letter — or a PDF Technical Audit Report (Pro).'
-                    : 'Paste your Generation ID, prompt, and the timestamp of the visible failure. AVA formats the technical audit letter using the correct named failure category — the language that maps to the support team’s internal workflow.'}
+                    ? 'Install the free Chrome extension. It analyzes your prompt as you type, flags failure-prone patterns specific to this model, and tells you what to rewrite — before you commit credits to a generation that will fail.'
+                    : 'Paste your prompt and the platform you intend to use. AVA returns a red/yellow/green score against this specific failure mode + a concrete rewrite if the risk is high — so you avoid burning credits on prompts that statistically fail.'}
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3 justify-center">
                   {autoDetected ? (
@@ -231,25 +231,27 @@ export default function FailurePage({ params }: { params: { slug: string } }) {
                         Install Free Extension →
                       </a>
                       <Link
-                        href="/tools/refund-letter-generator"
+                        href="/pricing"
                         className="inline-flex items-center justify-center gap-2 bg-elevated hover:bg-elevated/80 border border-border text-ink-secondary font-mono font-semibold px-6 py-3 rounded-xl transition-all text-sm"
                       >
-                        Or Generate Manually →
+                        See Pro Scoring Plans →
                       </Link>
                     </>
                   ) : (
                     <>
-                      <Link
-                        href="/tools/refund-letter-generator"
+                      <a
+                        href="https://chromewebstore.google.com/detail/aivideoauditor/ecomchbdfkgakaoponipjgpnjfpimdef"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="inline-flex items-center justify-center gap-2 bg-neon-green/20 hover:bg-neon-green/30 border border-neon-green/40 text-neon-green font-mono font-bold px-6 py-3 rounded-xl transition-all"
                       >
-                        Generate Refund Letter →
-                      </Link>
+                        Install Free Extension →
+                      </a>
                       <Link
-                        href="/guide"
+                        href="/failures"
                         className="inline-flex items-center justify-center gap-2 bg-elevated hover:bg-elevated/80 border border-border text-ink-secondary font-mono font-semibold px-6 py-3 rounded-xl transition-all text-sm"
                       >
-                        Read the Full Refund Guide
+                        See All 105 Failure Modes
                       </Link>
                     </>
                   )}
