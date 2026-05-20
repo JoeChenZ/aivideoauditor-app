@@ -6,16 +6,15 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto px-6 py-12 grid grid-cols-2 md:grid-cols-4 gap-8 text-sm">
         <div>
           <p className="font-bold tracking-widest text-neon-purple uppercase text-xs mb-3">AI Video Auditor</p>
-          <p className="text-ink-muted leading-relaxed">Free Chrome extension. Mark broken AI video frames, generate a refund letter or PDF audit report.</p>
+          <p className="text-ink-muted leading-relaxed">Pre-purchase reality check, prompt scoring, and platform change alerts across 11 AI video vendors.</p>
         </div>
         <div>
           <p className="text-ink-secondary font-semibold mb-3">Product</p>
           <ul className="space-y-2 text-ink-muted">
             <li><a href="https://chromewebstore.google.com/detail/aivideoauditor/ecomchbdfkgakaoponipjgpnjfpimdef" target="_blank" rel="noopener noreferrer" className="hover:text-ink-primary transition-colors">Install Free</a></li>
             <li><Link href="/pricing" className="hover:text-ink-primary transition-colors">Pricing</Link></li>
-            <li><Link href="/tools/credit-calculator" className="hover:text-ink-primary transition-colors">Credit Calculator</Link></li>
-            <li><Link href="/tools/refund-letter-generator" className="hover:text-ink-primary transition-colors">Refund Letter Generator</Link></li>
-            <li><Link href="/tools/migration-planner" className="hover:text-ink-primary transition-colors">Migration Planner</Link></li>
+            <li><Link href="/tools/credit-calculator" className="hover:text-ink-primary transition-colors">Effective Cost Calculator</Link></li>
+            <li><Link href="/tools/migration-planner" className="hover:text-ink-primary transition-colors">Platform Migration Planner</Link></li>
           </ul>
         </div>
         <div>
@@ -26,15 +25,14 @@ export default function Footer() {
             <li><Link href="/alternatives" className="hover:text-ink-primary transition-colors">Alternatives Guides</Link></li>
             <li><Link href="/case-studies" className="hover:text-ink-primary transition-colors">Case Studies</Link></li>
             <li><Link href="/graveyard" className="hover:text-ink-primary transition-colors">AI Tool Graveyard</Link></li>
-            <li><Link href="/guide-refund-categories" className="hover:text-ink-primary transition-colors">Refund Categories Guide</Link></li>
-            <li><Link href="/sora-refund" className="hover:text-ink-primary transition-colors text-neon-amber">Sora 2 Refund Flow</Link></li>
+            <li><Link href="/guide-refund-categories" className="hover:text-ink-primary transition-colors">Platform Refund Policies</Link></li>
+            <li><Link href="/sora-refund" className="hover:text-ink-primary transition-colors text-neon-amber">Sora 2 Reality Check</Link></li>
             <li><Link href="/affiliate-program" className="hover:text-ink-primary transition-colors">Affiliate Program</Link></li>
           </ul>
         </div>
         <div>
           <p className="text-ink-secondary font-semibold mb-3">Trust</p>
           <ul className="space-y-2 text-ink-muted">
-            <li><Link href="/guide" className="hover:text-ink-primary transition-colors">Refund Guide</Link></li>
             <li><Link href="/security" className="hover:text-ink-primary transition-colors">Security</Link></li>
             <li><Link href="/privacy" className="hover:text-ink-primary transition-colors">Privacy Policy</Link></li>
           </ul>
