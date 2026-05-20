@@ -77,7 +77,7 @@ export default function CompareIndex() {
           <section className="mt-12" aria-label="Continue exploring">
             <h2 className="text-xl font-bold text-ink-primary mb-2">Continue exploring</h2>
             <p className="text-ink-muted text-sm mb-6">
-              More resources for picking the right tool and recovering credits when things go wrong.
+              More resources for picking the right tool before you commit credits.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <Link href="/alternatives" className="bg-elevated border border-border rounded-xl p-5 hover:border-neon-purple/30 transition-colors block">
@@ -85,20 +85,20 @@ export default function CompareIndex() {
                 <p className="text-ink-primary font-bold text-sm mb-1">Ranked substitutes for every major tool</p>
                 <p className="text-ink-muted text-xs">8 tools covered. Pick by shot type, not by leaderboard.</p>
               </Link>
-              <Link href="/case-studies" className="bg-elevated border border-border rounded-xl p-5 hover:border-neon-green/30 transition-colors block">
-                <p className="text-xs font-mono font-bold tracking-widest text-neon-green uppercase mb-2">Case studies</p>
-                <p className="text-ink-primary font-bold text-sm mb-1">$84-612/mo recovered by real users</p>
-                <p className="text-ink-muted text-xs">Anonymized refund-recovery stories — solo creator, agency, brand account.</p>
+              <Link href="/research/132-ai-video-vendor-reviews" className="bg-elevated border border-border rounded-xl p-5 hover:border-neon-green/30 transition-colors block">
+                <p className="text-xs font-mono font-bold tracking-widest text-neon-green uppercase mb-2">Research corpus</p>
+                <p className="text-ink-primary font-bold text-sm mb-1">132 reviews across 11 vendors</p>
+                <p className="text-ink-muted text-xs">Per-platform breakdown of billing patterns, &ldquo;unlimited&rdquo; gating rules, and refund-policy traps.</p>
               </Link>
               <Link href="/failures" className="bg-elevated border border-border rounded-xl p-5 hover:border-neon-red/30 transition-colors block">
                 <p className="text-xs font-mono font-bold tracking-widest text-neon-red uppercase mb-2">Failure reference</p>
-                <p className="text-ink-primary font-bold text-sm mb-1">94 documented failure modes</p>
-                <p className="text-ink-muted text-xs">The technical names support recognises in refund tickets.</p>
+                <p className="text-ink-primary font-bold text-sm mb-1">105 documented failure modes</p>
+                <p className="text-ink-muted text-xs">Catalogued across Runway, Luma, Sora, Pika, Kling, Veo, Hailuo, and Vidu.</p>
               </Link>
               <Link href="/tools/credit-calculator" className="bg-elevated border border-border rounded-xl p-5 hover:border-neon-green/30 transition-colors block">
-                <p className="text-xs font-mono font-bold tracking-widest text-neon-green uppercase mb-2">Free calculator</p>
-                <p className="text-ink-primary font-bold text-sm mb-1">How much are you leaving on the table?</p>
-                <p className="text-ink-muted text-xs">Estimate your refund recovery — no signup.</p>
+                <p className="text-xs font-mono font-bold tracking-widest text-neon-green uppercase mb-2">Effective cost calc</p>
+                <p className="text-ink-primary font-bold text-sm mb-1">What you really pay per usable clip</p>
+                <p className="text-ink-muted text-xs">List price &times; (1 / first-try success) &times; (1 + refund denial). No signup.</p>
               </Link>
             </div>
           </section>
@@ -122,8 +122,9 @@ export default function CompareIndex() {
             </p>
             <p className="text-ink-secondary text-sm leading-relaxed mb-3">
               These comparisons map the dimensions where each tool wins and loses, with explicit
-              links to the named refund categories so you know what's recoverable when things go wrong.
-              The goal is to help you pick by shot type, not by brand.
+              links to the failure modes each vendor produces most often. The goal is to help you
+              pick by shot type, not by brand — and to know which failure pattern to expect before
+              you commit credits.
             </p>
             <p className="text-ink-muted text-xs">
               Based on AVA's failure-mode classifier across ~12,000 audited generations per model.

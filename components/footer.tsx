@@ -20,11 +20,11 @@ export default function Footer() {
         <div>
           <p className="text-ink-secondary font-semibold mb-3">Content</p>
           <ul className="space-y-2 text-ink-muted">
+            <li><Link href="/research/132-ai-video-vendor-reviews" className="hover:text-ink-primary transition-colors text-neon-green">Vendor Research (132 reviews)</Link></li>
             <li><Link href="/failures" className="hover:text-ink-primary transition-colors">Failure Reference</Link></li>
             <li><Link href="/compare" className="hover:text-ink-primary transition-colors">Head-to-Head Compare</Link></li>
             <li><Link href="/alternatives" className="hover:text-ink-primary transition-colors">Alternatives Guides</Link></li>
-            <li><Link href="/case-studies" className="hover:text-ink-primary transition-colors">Case Studies</Link></li>
-            <li><Link href="/graveyard" className="hover:text-ink-primary transition-colors">AI Tool Graveyard</Link></li>
+            <li><Link href="/graveyard" className="hover:text-ink-primary transition-colors">Vendor Stability Tracker</Link></li>
             <li><Link href="/guide-refund-categories" className="hover:text-ink-primary transition-colors">Platform Refund Policies</Link></li>
             <li><Link href="/sora-refund" className="hover:text-ink-primary transition-colors text-neon-amber">Sora 2 Reality Check</Link></li>
             <li><Link href="/affiliate-program" className="hover:text-ink-primary transition-colors">Affiliate Program</Link></li>
