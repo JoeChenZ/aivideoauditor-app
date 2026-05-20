@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
+import { sendWelcomeEmail } from '@/lib/email/welcome';
 
 export const runtime = 'nodejs';
 
@@ -81,6 +82,14 @@ export async function POST(req: NextRequest) {
     console.error('[lead-capture] supabase error', error);
     return NextResponse.json({ error: 'Could not save signup' }, { status: 500, headers: cors });
   }
+
+  // Fire welcome email. No-op if RESEND_API_KEY is not set — the lead row
+  // is still saved either way. Failures here must not surface to the user.
+  sendWelcomeEmail({ email, source }).then((r) => {
+    if (!r.ok && !r.skipped) {
+      console.error('[lead-capture] welcome email failed', { source, error: r.error });
+    }
+  });
 
   return NextResponse.json({ ok: true }, { headers: cors });
 }
