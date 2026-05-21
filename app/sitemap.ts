@@ -60,6 +60,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/research/132-ai-video-vendor-reviews`, lastModified: new Date('2026-05-20'), changeFrequency: 'monthly', priority: 0.93 },
     { url: `${BASE}/billing-pattern-watch`, lastModified: new Date('2026-05-21'), changeFrequency: 'weekly', priority: 0.93 },
     { url: `${BASE}/chargeback-guide`, lastModified: new Date('2026-05-21'), changeFrequency: 'monthly', priority: 0.93 },
+    { url: `${BASE}/runway-unlimited-slowdown`, lastModified: new Date('2026-05-21'), changeFrequency: 'daily', priority: 0.95 },
     { url: `${BASE}/vendor-changelog`, lastModified: new Date('2026-05-20'), changeFrequency: 'weekly', priority: 0.92 },
     { url: `${BASE}/security`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.6 },
     { url: `${BASE}/privacy`, lastModified: new Date(), changeFrequency: 'yearly', priority: 0.4 },
