@@ -111,7 +111,7 @@ export default function FailurePage({ params }: { params: { slug: string } }) {
               }`}>{f.risk}</span>
               <span className="text-xs font-mono text-ink-muted uppercase tracking-widest">Failure Reference</span>
             </div>
-            <h1 className="text-3xl md:text-4xl font-bold text-ink-primary mb-4 leading-tight">
+            <h1 className="font-display text-3xl md:text-4xl font-semibold text-ink-primary mb-4 leading-tight tracking-tight">
               {f.title}
             </h1>
             <div className="bg-elevated border border-border rounded-xl p-4 mb-4">

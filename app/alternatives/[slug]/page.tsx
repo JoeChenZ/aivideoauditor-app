@@ -67,7 +67,7 @@ export default function AlternativesPage({ params }: { params: { slug: string } 
                 AI Video
               </span>
             </div>
-            <h1 className="text-3xl md:text-5xl font-bold text-ink-primary mb-3 leading-tight">
+            <h1 className="font-display text-4xl md:text-5xl font-semibold text-ink-primary mb-3 leading-tight tracking-tight">
               {a.toolFullName} alternatives
             </h1>
             <p className="text-ink-muted mb-6">{a.options.length} ranked alternatives, picked by shot type</p>

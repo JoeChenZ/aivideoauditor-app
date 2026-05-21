@@ -2,134 +2,105 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { CASE_STUDIES } from './[slug]/data';
 import LeadCaptureForm from '@/components/lead-capture-form';
+import { WidePageShell, Breadcrumb, ArticleHeader, SectionHead, Kicker, RuleDivider } from '@/components/editorial';
 
 export const metadata: Metadata = {
-  title: 'AVA Case Studies — Refund Recovery Stories',
-  description: 'Anonymous case studies of AVA users recovering AI video credits across providers. Solo creators, agencies, brand accounts — typical recovery $84-612/mo in week 1.',
+  title: 'AVA Case Studies — Real-World Failure-Mode Walk-Throughs',
+  description: 'Anonymous case studies of AVA users — solo creators, agencies, brand accounts. How pre-purchase prompt scoring + failure-mode catalogues changed their AI video workflows.',
   alternates: { canonical: 'https://www.aivideoauditor.com/case-studies' },
   openGraph: {
-    title: 'AVA Case Studies — Refund Recovery Stories',
-    description: 'How real AVA users recover AI video credits — solo creators, agencies, brand accounts.',
+    title: 'AVA Case Studies — Real-World Failure-Mode Walk-Throughs',
+    description: 'How real AVA users caught AI-video failures before they cost credits — solo creators, agencies, brand accounts.',
     type: 'website',
   },
 };
 
 export default function CaseStudiesIndex() {
-  const totalRecovered = CASE_STUDIES.reduce((sum, c) => sum + c.totalRefundedMonthly, 0);
-
   return (
-    <main className="min-h-screen py-20 px-6">
-      <div className="max-w-4xl mx-auto">
+    <WidePageShell>
+      <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Case Studies' }]} />
 
-        <nav className="text-xs font-mono text-ink-muted mb-8" aria-label="Breadcrumb">
-          <Link href="/" className="hover:text-ink-secondary transition-colors">Home</Link>
-          <span className="mx-2">/</span>
-          <span className="text-ink-primary">Case Studies</span>
-        </nav>
-
-        <div className="mb-12">
-          <p className="text-xs font-mono font-bold tracking-widest text-neon-green uppercase mb-3">
-            Case Studies · ${totalRecovered}/mo recovered across {CASE_STUDIES.length} users
-          </p>
-          <h1 className="text-3xl md:text-5xl font-bold text-ink-primary mb-4 leading-tight">
-            How AVA users recover AI video credits
-          </h1>
-          <p className="text-ink-secondary leading-relaxed max-w-2xl">
-            Anonymous case studies of real AVA users — solo creators, boutique agencies, brand accounts.
-            Each story is structured the same way: customer profile, problem, before AVA, with AVA,
-            month-one refund breakdown, workflow changes that stuck.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 gap-6">
-          {CASE_STUDIES.map((c) => (
-            <Link
-              key={c.slug}
-              href={`/case-studies/${c.slug}`}
-              className="bg-elevated border border-border rounded-2xl p-6 hover:border-neon-green/30 transition-colors block"
-            >
-              <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
-                <div className="flex-1">
-                  <p className="text-xs font-mono text-ink-muted uppercase tracking-wider mb-2">{c.customerType}</p>
-                  <h2 className="font-bold text-ink-primary text-lg leading-tight mb-2">{c.title}</h2>
-                </div>
-                <div className="text-right">
-                  <p className="text-2xl font-bold text-neon-green">${c.totalRefundedMonthly}</p>
-                  <p className="text-xs font-mono text-ink-muted uppercase tracking-wider">recovered/mo</p>
-                </div>
-              </div>
-              <p className="text-ink-secondary text-sm leading-relaxed mb-4">{c.problemSummary.substring(0, 220)}…</p>
-              <div className="flex flex-wrap gap-2">
-                {c.primaryFailureModes.slice(0, 3).map((fm, i) => (
-                  <span key={i} className="text-xs font-mono bg-surface border border-border px-2 py-1 rounded text-ink-muted">
-                    {fm}
-                  </span>
-                ))}
-              </div>
-            </Link>
-          ))}
-        </div>
-
-        {/* Continue exploring — cross-links */}
-        <section className="mt-12" aria-label="Continue exploring">
-          <h2 className="text-xl font-bold text-ink-primary mb-2">Continue exploring</h2>
-          <p className="text-ink-muted text-sm mb-6">
-            More resources for picking the right tool and recovering credits when things go wrong.
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <Link href="/tools/credit-calculator" className="bg-elevated border border-border rounded-xl p-5 hover:border-neon-green/30 transition-colors block">
-              <p className="text-xs font-mono font-bold tracking-widest text-neon-green uppercase mb-2">Free calculator</p>
-              <p className="text-ink-primary font-bold text-sm mb-1">Estimate your own recovery potential</p>
-              <p className="text-ink-muted text-xs">Inputs: monthly spend + primary failure mode. No signup.</p>
-            </Link>
-            <Link href="/alternatives" className="bg-elevated border border-border rounded-xl p-5 hover:border-neon-purple/30 transition-colors block">
-              <p className="text-xs font-mono font-bold tracking-widest text-neon-purple uppercase mb-2">Alternatives guides</p>
-              <p className="text-ink-primary font-bold text-sm mb-1">Ranked substitutes for every major tool</p>
-              <p className="text-ink-muted text-xs">8 tools covered. Pick by shot type, not by leaderboard.</p>
-            </Link>
-            <Link href="/compare" className="bg-elevated border border-border rounded-xl p-5 hover:border-neon-purple/30 transition-colors block">
-              <p className="text-xs font-mono font-bold tracking-widest text-neon-purple uppercase mb-2">Head-to-head comparisons</p>
-              <p className="text-ink-primary font-bold text-sm mb-1">Detailed pairwise comparisons</p>
-              <p className="text-ink-muted text-xs">Runway vs Luma, Sora vs Veo, Kling vs Runway, and more.</p>
-            </Link>
-            <Link href="/failures" className="bg-elevated border border-border rounded-xl p-5 hover:border-neon-red/30 transition-colors block">
-              <p className="text-xs font-mono font-bold tracking-widest text-neon-red uppercase mb-2">Failure reference</p>
-              <p className="text-ink-primary font-bold text-sm mb-1">94 documented failure modes</p>
-              <p className="text-ink-muted text-xs">Use these technical names in refund tickets.</p>
-            </Link>
-          </div>
-        </section>
-
-        {/* Lead capture — converts case-study readers */}
-        <div className="mt-12">
-          <LeadCaptureForm
-            source="case-studies-index"
-            heading={`Want results like these? Get 30% off AVA Pro on launch day`}
-            blurb={`These users recovered $84-612/mo because they used AVA Pro's auto-drafted refund tickets. AVA Pro isn't shipping LIVE Stripe yet — but you can pre-register for a 30% lifetime discount the day it does. No marketing list.`}
-            cta="Notify me on launch →"
-          />
-        </div>
-
-        <section className="mt-12 bg-elevated border border-border rounded-2xl p-8">
-          <h2 className="text-xl font-bold text-ink-primary mb-4">Why we publish case studies anonymously</h2>
-          <p className="text-ink-secondary text-sm leading-relaxed mb-3">
-            Most AI video customers don&apos;t want to publicly disclose their refund recovery — partly because
-            it advertises their failure rate, partly because they want to keep the refund flow as their competitive
-            advantage. We respect that.
-          </p>
-          <p className="text-ink-secondary text-sm leading-relaxed mb-3">
-            All case studies are based on real AVA users with their permission to publish anonymized. Customer
-            types, monthly spend ranges, and recovery numbers are accurate. Specific provider names, failure
-            categories, and workflow patterns are real — only the customer identity is obscured.
-          </p>
-          <p className="text-ink-muted text-xs">
-            If you&apos;re an AVA user willing to be named in a case study, email
-            {' '}<a href="mailto:joe@aivideoauditor.com" className="text-neon-purple hover:underline">joe@aivideoauditor.com</a>.
-            Named case studies typically include a 10-15 minute interview and your sign-off on the draft before publish.
-          </p>
-        </section>
-
+      <div className="max-w-reading">
+        <ArticleHeader
+          kicker={`Case studies · ${CASE_STUDIES.length} users`}
+          title={<>How AVA users <span className="italic">catch</span> AI video failures before they happen.</>}
+          lede="Anonymous case studies of real AVA users — solo creators, boutique agencies, brand accounts. Each story is structured the same way: customer profile, problem, before AVA, with AVA, workflow changes that stuck."
+        />
       </div>
-    </main>
+
+      <div className="grid grid-cols-1 gap-5 mb-20">
+        {CASE_STUDIES.map((c) => (
+          <Link
+            key={c.slug}
+            href={`/case-studies/${c.slug}`}
+            className="border border-rule hover:border-neon-amber/40 rounded-md p-6 bg-surface transition-colors block"
+          >
+            <div className="flex flex-wrap items-baseline gap-3 mb-3 font-mono text-[11px] text-ink-muted">
+              <span className="tracking-kicker uppercase">{c.customerType}</span>
+              {c.primaryFailureModes.slice(0, 3).map((fm) => (
+                <span key={fm} className="px-2 py-0.5 border border-rule rounded">
+                  {fm}
+                </span>
+              ))}
+            </div>
+            <h2 className="font-display text-xl md:text-2xl font-semibold text-ink-primary leading-tight tracking-tight mb-3">{c.title}</h2>
+            <p className="text-ink-secondary leading-relaxed text-sm max-w-prose">{c.problemSummary.substring(0, 240)}…</p>
+          </Link>
+        ))}
+      </div>
+
+      <RuleDivider label="Continue exploring" />
+
+      <section className="mb-16" aria-label="Continue exploring">
+        <p className="text-ink-muted text-sm mb-6 max-w-prose">
+          More resources for picking the right tool before you commit credits.
+        </p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <Link href="/tools/credit-calculator" className="border border-rule hover:border-ink-secondary rounded-md p-5 bg-surface transition-colors block">
+            <Kicker className="mb-2">Free calculator</Kicker>
+            <p className="font-display text-base font-semibold text-ink-primary mb-1.5">Your real cost per usable clip</p>
+            <p className="text-ink-muted text-xs">List × (1/first-try success) × (1+denial). No signup.</p>
+          </Link>
+          <Link href="/alternatives" className="border border-rule hover:border-ink-secondary rounded-md p-5 bg-surface transition-colors block">
+            <Kicker className="mb-2">Alternatives guides</Kicker>
+            <p className="font-display text-base font-semibold text-ink-primary mb-1.5">Ranked substitutes for every major tool</p>
+            <p className="text-ink-muted text-xs">8 tools covered. Pick by shot type.</p>
+          </Link>
+          <Link href="/compare" className="border border-rule hover:border-ink-secondary rounded-md p-5 bg-surface transition-colors block">
+            <Kicker className="mb-2">Head-to-head comparisons</Kicker>
+            <p className="font-display text-base font-semibold text-ink-primary mb-1.5">Detailed pairwise comparisons</p>
+            <p className="text-ink-muted text-xs">Runway vs Luma, Sora vs Veo, Kling vs Runway.</p>
+          </Link>
+          <Link href="/failures" className="border border-rule hover:border-ink-secondary rounded-md p-5 bg-surface transition-colors block">
+            <Kicker className="mb-2">Failure reference</Kicker>
+            <p className="font-display text-base font-semibold text-ink-primary mb-1.5">105 documented failure modes</p>
+            <p className="text-ink-muted text-xs">Across 8 providers, with technical names.</p>
+          </Link>
+        </div>
+      </section>
+
+      <section className="mb-16 max-w-prose">
+        <LeadCaptureForm
+          source="case-studies-index"
+          heading="Get 30% off AVA Pro on launch day"
+          blurb="These users changed their AI-video workflow using AVA's pre-purchase prompt scoring. Pre-register for a 30% lifetime discount the day Stripe LIVE flips on. No marketing list."
+          cta="Notify me on launch"
+        />
+      </section>
+
+      <section className="border-t border-rule/60 pt-10 max-w-reading">
+        <SectionHead kicker="Why anonymous" title="On the case-study format." />
+        <p className="text-ink-secondary leading-relaxed mb-3 max-w-prose">
+          Most AI video customers do not want to publicly disclose their workflow changes — partly because it advertises their failure rate, partly because they keep their workflow as competitive advantage. We respect that.
+        </p>
+        <p className="text-ink-secondary leading-relaxed mb-3 max-w-prose">
+          All case studies are based on real AVA users with permission to publish anonymized. Customer types, monthly spend ranges, and pattern data are accurate. Specific provider names, failure categories, and workflow patterns are real — only the customer identity is obscured.
+        </p>
+        <p className="font-mono text-[11px] text-ink-muted">
+          If you are an AVA user willing to be named in a case study, email{' '}
+          <a href="mailto:joe@aivideoauditor.com" className="text-ink-secondary hover:text-ink-primary transition-colors">joe@aivideoauditor.com</a>. Named case studies typically include a 10–15 minute interview and your sign-off on the draft before publish.
+        </p>
+      </section>
+    </WidePageShell>
   );
 }

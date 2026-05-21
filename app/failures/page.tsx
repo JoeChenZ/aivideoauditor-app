@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { FAILURES, FAILURE_CLUSTERS, getFailure } from './[slug]/data';
+import { WidePageShell, Breadcrumb, ArticleHeader, Kicker, RuleDivider } from '@/components/editorial';
 
 export const metadata: Metadata = {
   title: 'AI Video Failure Reference — 105 Failure Modes Across 11 Platforms',
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
 const CLUSTER_META: Record<string, { label: string; intent: string }> = {
   watermark: {
     label: 'Watermark Bleed',
-    intent: 'Model leaks the licensor watermark into clean output — strong refund grounds.',
+    intent: 'Model leaks the licensor watermark into clean output — major usability blocker.',
   },
   physics: {
     label: 'Physics Collapse',
@@ -99,29 +100,16 @@ export default function FailuresHubPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }}
       />
 
-      <main className="min-h-screen py-20 px-6">
-        <div className="max-w-5xl mx-auto">
-          {/* Breadcrumb */}
-          <nav className="text-xs font-mono text-ink-muted mb-8" aria-label="Breadcrumb">
-            <Link href="/" className="hover:text-ink-secondary transition-colors">Home</Link>
-            <span className="mx-2">/</span>
-            <span className="text-ink-primary">Failure Reference</span>
-          </nav>
+      <WidePageShell>
+          <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Failure Reference' }]} />
 
-          {/* Hero */}
-          <header className="mb-12">
-            <p className="text-xs font-mono uppercase tracking-widest text-neon-purple mb-3">
-              Failure Reference · {FAILURES.length} documented failures
-            </p>
-            <h1 className="text-3xl md:text-5xl font-bold text-ink-primary mb-4 leading-tight">
-              AI Video Failure Reference
-            </h1>
-            <p className="text-ink-secondary leading-relaxed max-w-2xl">
-              Every failure mode we&rsquo;ve catalogued across Runway, Sora, Veo, Luma, Kling, Pika,
-              Hailuo and Seedance — grouped by failure type, with the exact technical term to cite
-              with support and a refund-strength assessment for each one.
-            </p>
-          </header>
+          <div className="max-w-reading">
+            <ArticleHeader
+              kicker={`Failure reference · ${FAILURES.length} documented failures`}
+              title={<>The AI video <span className="italic">failure</span> reference.</>}
+              lede="Every failure mode catalogued across Runway, Sora, Veo, Luma, Kling, Pika, Hailuo, and Seedance — grouped by type, with the exact technical term to cite with support and a usability-impact assessment for each."
+            />
+          </div>
 
           {/* Clusters */}
           {CLUSTER_ORDER.map((cluster) => {
@@ -131,9 +119,10 @@ export default function FailuresHubPage() {
             if (failures.length === 0) return null;
 
             return (
-              <section key={cluster} className="mb-12">
-                <h2 className="text-2xl font-bold text-ink-primary mb-2">{meta.label}</h2>
-                <p className="text-ink-muted text-sm mb-5 max-w-2xl">{meta.intent}</p>
+              <section key={cluster} className="mb-16 border-t border-rule/60 pt-8">
+                <Kicker className="mb-2">Cluster · {cluster}</Kicker>
+                <h2 className="font-display text-2xl md:text-3xl font-semibold text-ink-primary mb-3 leading-tight tracking-tight">{meta.label}</h2>
+                <p className="text-ink-muted text-sm mb-6 max-w-prose leading-relaxed">{meta.intent}</p>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {failures.map((f) => {
@@ -144,26 +133,26 @@ export default function FailuresHubPage() {
                       <Link
                         key={f.slug}
                         href={`/failures/${f.slug}`}
-                        className="bg-elevated border border-border rounded-xl p-4 hover:border-neon-red/30 transition-colors block"
+                        className="border border-rule hover:border-neon-amber/40 rounded-md p-4 bg-surface transition-colors block"
                       >
-                        <div className="flex items-center justify-between mb-1">
+                        <div className="flex items-center justify-between mb-1.5">
                           <div className="flex items-center gap-2">
-                            <span className="text-xs font-mono text-neon-purple uppercase tracking-wider">
+                            <span className="font-mono text-[10px] tracking-kicker uppercase text-ink-muted">
                               {modelLabel}
                             </span>
-                            <p className="font-mono font-bold text-ink-primary text-sm">
+                            <p className="font-mono font-semibold text-ink-primary text-xs">
                               {f.technicalTerm.split(' ')[0]}
                             </p>
                           </div>
                           <span
-                            className={`text-xs font-mono font-bold ${
+                            className={`font-mono text-[10px] tracking-kicker uppercase ${
                               f.risk === 'CRITICAL' ? 'text-neon-red' : 'text-neon-amber'
                             }`}
                           >
                             {f.risk}
                           </span>
                         </div>
-                        <p className="text-ink-muted text-xs">
+                        <p className="text-ink-muted text-xs leading-relaxed">
                           {f.shortDesc.substring(0, 90)}
                           {f.shortDesc.length > 90 ? '…' : ''}
                         </p>
@@ -177,11 +166,11 @@ export default function FailuresHubPage() {
 
           {/* Uncategorized */}
           {uncategorized.length > 0 && (
-            <section className="mb-12">
-              <h2 className="text-2xl font-bold text-ink-primary mb-2">Other Failures</h2>
-              <p className="text-ink-muted text-sm mb-5 max-w-2xl">
-                Failure modes that don&rsquo;t fit cleanly into the clusters above — still
-                refund-worthy when documented correctly.
+            <section className="mb-16 border-t border-rule/60 pt-8">
+              <Kicker className="mb-2">Cluster · uncategorized</Kicker>
+              <h2 className="font-display text-2xl md:text-3xl font-semibold text-ink-primary mb-3 leading-tight tracking-tight">Other failures</h2>
+              <p className="text-ink-muted text-sm mb-6 max-w-prose leading-relaxed">
+                Failure modes that do not fit cleanly into the clusters above — still well-documented in the catalog.
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {uncategorized.map((f) => {
@@ -221,96 +210,62 @@ export default function FailuresHubPage() {
             </section>
           )}
 
-          {/* Continue exploring — cross-links to other AVA surfaces */}
-          <section className="mt-16" aria-label="Continue exploring">
-            <h2 className="text-xl font-bold text-ink-primary mb-2">Continue exploring</h2>
-            <p className="text-ink-muted text-sm mb-6">
+          <RuleDivider label="Continue exploring" />
+
+          <section className="mb-16" aria-label="Continue exploring">
+            <p className="text-ink-muted text-sm mb-6 max-w-prose">
               The failure reference is the deepest part of the site. These four surfaces help you act on it.
             </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <Link
-                href="/compare"
-                className="bg-elevated border border-border rounded-xl p-5 hover:border-neon-purple/30 transition-colors block"
-              >
-                <p className="text-xs font-mono font-bold tracking-widest text-neon-purple uppercase mb-2">
-                  Head-to-head comparisons
-                </p>
-                <p className="text-ink-primary font-bold text-sm mb-1">Pick the right tool per shot type</p>
-                <p className="text-ink-muted text-xs">
-                  Runway vs Luma. Sora vs Veo. Kling vs Runway. Compare by failure profile, not by leaderboard.
-                </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <Link href="/compare" className="border border-rule hover:border-ink-secondary rounded-md p-5 bg-surface transition-colors block">
+                <Kicker className="mb-2">Head-to-head comparisons</Kicker>
+                <p className="font-display text-base font-semibold text-ink-primary mb-1.5">Pick the right tool per shot type</p>
+                <p className="text-ink-muted text-xs">Runway vs Luma. Sora vs Veo. Kling vs Runway. Compare by failure profile.</p>
               </Link>
-              <Link
-                href="/case-studies"
-                className="bg-elevated border border-border rounded-xl p-5 hover:border-neon-green/30 transition-colors block"
-              >
-                <p className="text-xs font-mono font-bold tracking-widest text-neon-green uppercase mb-2">
-                  Case studies
-                </p>
-                <p className="text-ink-primary font-bold text-sm mb-1">$84-612/mo recovered by real users</p>
-                <p className="text-ink-muted text-xs">
-                  Anonymized stories — solo creator, agency, brand account. Refund breakdowns + workflow changes.
-                </p>
+              <Link href="/case-studies" className="border border-rule hover:border-ink-secondary rounded-md p-5 bg-surface transition-colors block">
+                <Kicker className="mb-2">Case studies</Kicker>
+                <p className="font-display text-base font-semibold text-ink-primary mb-1.5">Real-world failure-mode walk-throughs</p>
+                <p className="text-ink-muted text-xs">Anonymized stories — solo creator, agency, brand account.</p>
               </Link>
-              <Link
-                href="/tools/credit-calculator"
-                className="bg-elevated border border-border rounded-xl p-5 hover:border-neon-green/30 transition-colors block"
-              >
-                <p className="text-xs font-mono font-bold tracking-widest text-neon-green uppercase mb-2">
-                  Free calculator
-                </p>
-                <p className="text-ink-primary font-bold text-sm mb-1">How much are you leaving on the table?</p>
-                <p className="text-ink-muted text-xs">
-                  Estimate your monthly refund recovery based on spend and primary failure mode. No signup.
-                </p>
+              <Link href="/tools/credit-calculator" className="border border-rule hover:border-ink-secondary rounded-md p-5 bg-surface transition-colors block">
+                <Kicker className="mb-2">Free calculator</Kicker>
+                <p className="font-display text-base font-semibold text-ink-primary mb-1.5">Your real cost per usable clip</p>
+                <p className="text-ink-muted text-xs">Effective cost = list × (1/first-try success) × (1+denial). No signup.</p>
               </Link>
-              <Link
-                href="/graveyard"
-                className="bg-elevated border border-border rounded-xl p-5 hover:border-neon-red/30 transition-colors block"
-              >
-                <p className="text-xs font-mono font-bold tracking-widest text-neon-red uppercase mb-2">
-                  AI Tool Graveyard
-                </p>
-                <p className="text-ink-primary font-bold text-sm mb-1">Refund deadlines + migration paths</p>
-                <p className="text-ink-muted text-xs">
-                  Tracked record of every shut-down AI tool. Sora 2 API winds down September 2026 — file refunds before then.
-                </p>
+              <Link href="/graveyard" className="border border-rule hover:border-ink-secondary rounded-md p-5 bg-surface transition-colors block">
+                <Kicker className="mb-2">AI tool graveyard</Kicker>
+                <p className="font-display text-base font-semibold text-ink-primary mb-1.5">Stability tracker + migration paths</p>
+                <p className="text-ink-muted text-xs">Tracked record of every shut-down AI tool.</p>
               </Link>
             </div>
           </section>
 
-          {/* CTA */}
-          <div className="bg-surface border border-neon-green/20 rounded-2xl p-8 text-center mt-16">
-            <p className="text-xs font-mono font-bold tracking-widest text-neon-green uppercase mb-3">
-              Stop documenting these by hand
-            </p>
-            <h2 className="text-2xl font-bold text-ink-primary mb-3">
-              AVA captures the evidence in the same tab as your generation
+          <section className="border-t border-rule/60 pt-12 max-w-reading">
+            <Kicker className="mb-3">Stop documenting by hand</Kicker>
+            <h2 className="font-display text-2xl md:text-3xl font-semibold text-ink-primary mb-4 leading-tight tracking-tight">
+              AVA captures the evidence in the same tab as your generation.
             </h2>
-            <p className="text-ink-secondary text-sm mb-6 max-w-md mx-auto">
-              Install the free Chrome extension. It captures Generation IDs, lets you mark exact
-              broken frames with timestamps, and generates a refund letter — or a PDF Technical
-              Audit Report (Pro).
+            <p className="text-ink-secondary leading-relaxed mb-6 max-w-prose">
+              Install the free Chrome extension. It captures Generation IDs and lets you mark broken frames with timestamps for documentation, alongside the live prompt-failure score.
             </p>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <div className="flex flex-wrap gap-3">
               <a
                 href="https://chromewebstore.google.com/detail/aivideoauditor/ecomchbdfkgakaoponipjgpnjfpimdef"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 bg-neon-green/20 hover:bg-neon-green/30 border border-neon-green/40 text-neon-green font-mono font-bold px-6 py-3 rounded-xl transition-all"
+                className="inline-flex items-center gap-2 bg-neon-green/15 hover:bg-neon-green/25 border border-neon-green/40 text-neon-green font-mono font-semibold text-[11px] tracking-wide uppercase px-5 py-2.5 rounded-md transition-colors"
               >
-                Install Free Extension →
+                Install free
               </a>
               <Link
                 href="/research/132-ai-video-vendor-reviews"
-                className="inline-flex items-center justify-center gap-2 bg-elevated hover:bg-elevated/80 border border-border text-ink-secondary font-mono font-semibold px-6 py-3 rounded-xl transition-all text-sm"
+                className="inline-flex items-center gap-2 border border-rule hover:border-ink-secondary text-ink-secondary hover:text-ink-primary font-mono font-medium text-[11px] tracking-wide uppercase px-5 py-2.5 rounded-md transition-colors"
               >
-                Read the Vendor Reality Report →
+                Read the Vendor Reality Report
               </Link>
             </div>
-          </div>
-        </div>
-      </main>
+          </section>
+      </WidePageShell>
     </>
   );
 }

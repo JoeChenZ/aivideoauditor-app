@@ -57,7 +57,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                 Anonymized
               </span>
             </div>
-            <h1 className="text-3xl md:text-4xl font-bold text-ink-primary mb-6 leading-tight">
+            <h1 className="font-display text-3xl md:text-4xl font-semibold text-ink-primary mb-6 leading-tight tracking-tight">
               {c.title}
             </h1>
 

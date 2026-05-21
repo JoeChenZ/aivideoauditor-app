@@ -59,7 +59,7 @@ export default function ComparePage({ params }: { params: { slug: string } }) {
             <p className="text-xs font-mono font-bold tracking-widest text-neon-purple uppercase mb-3">
               Head-to-head
             </p>
-            <h1 className="text-3xl md:text-5xl font-bold text-ink-primary mb-4 leading-tight">
+            <h1 className="font-display text-4xl md:text-5xl font-semibold text-ink-primary mb-4 leading-tight tracking-tight">
               {c.toolALongName} <span className="text-ink-muted">vs</span> {c.toolBLongName}
             </h1>
             <p className="text-ink-secondary leading-relaxed">{c.intro}</p>

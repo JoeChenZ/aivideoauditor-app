@@ -88,7 +88,7 @@ export default function GraveyardPage({ params }: { params: { slug: string } }) 
                 </span>
               )}
             </div>
-            <h1 className="text-3xl md:text-4xl font-bold text-ink-primary mb-2 leading-tight">
+            <h1 className="font-display text-3xl md:text-4xl font-semibold text-ink-primary mb-2 leading-tight tracking-tight">
               {s.toolName}
             </h1>
             <p className="text-ink-muted text-sm mb-6">by {s.parentCompany}</p>
