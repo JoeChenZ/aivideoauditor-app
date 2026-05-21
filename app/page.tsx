@@ -294,6 +294,11 @@ export default function HomePage() {
           <p className="mt-5 text-ink-muted text-xs font-mono">
             No credit card for free tier · Works on Chrome · Brave · Edge · Arc
           </p>
+          <p className="mt-3 text-xs font-mono">
+            <Link href="/early-access" className="text-neon-purple hover:underline">
+              → Get founders&apos; pricing + launch updates
+            </Link>
+          </p>
         </div>
       </section>
 
