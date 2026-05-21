@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import LeadCaptureForm from '@/components/lead-capture-form';
+import { WidePageShell, Breadcrumb, ArticleHeader, SectionHead, Kicker } from '@/components/editorial';
 
 export const metadata: Metadata = {
   title: 'AI Video Vendor Changelog — Documented Mid-Subscription Policy Changes',
@@ -115,95 +116,89 @@ const CAT_COLOR: Record<Change['category'], string> = {
 
 export default function VendorChangelogPage() {
   return (
-    <main className="min-h-screen py-20 px-6">
+    <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
-      <div className="max-w-4xl mx-auto">
+      <WidePageShell>
+        <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Vendor Changelog' }]} />
 
-        <nav className="text-xs font-mono text-ink-muted mb-8" aria-label="Breadcrumb">
-          <Link href="/" className="hover:text-ink-secondary transition-colors">Home</Link>
-          <span className="mx-2">/</span>
-          <span className="text-ink-primary">Vendor Changelog</span>
-        </nav>
+        <div className="max-w-reading">
+          <ArticleHeader
+            kicker="Mid-subscription vendor changes · Updated 2026-05-20"
+            title={<>What changed on AI-video vendors <span className="italic">after</span> users subscribed.</>}
+            lede={
+              <>
+                Tracks AI-video vendor policy changes that occurred mid-subscription — pricing, &ldquo;unlimited&rdquo; routing, refund policy, NSFW filters, feature availability, cancel UX. Sourced from the{' '}
+                <Link href="/research/132-ai-video-vendor-reviews">132-review tagged Trustpilot corpus</Link>, cross-checked against{' '}
+                <Link href="/billing-pattern-watch">Reddit and public creator investigations</Link>.
+              </>
+            }
+            byline={<>AIVideoAuditor desk · Hand-curated · Each entry backed by ≥2 independent public sources</>}
+          />
+        </div>
 
-        <header className="mb-12">
-          <p className="text-xs font-mono font-bold tracking-widest text-neon-purple uppercase mb-3">
-            Mid-Subscription Vendor Changes · Updated 2026-05-20
-          </p>
-          <h1 className="text-4xl md:text-5xl font-bold text-ink-primary mb-4 leading-tight">
-            What changed on AI-video vendors AFTER users subscribed.
-          </h1>
-          <p className="text-lg text-ink-secondary leading-relaxed">
-            This page tracks AI-video vendor policy changes that occurred mid-subscription — pricing, &ldquo;unlimited&rdquo; routing rules, refund policy, NSFW filter rules, feature availability, cancel UX. Sourced from our{' '}
-            <Link href="/research/132-ai-video-vendor-reviews" className="text-neon-purple underline">132-review tagged Trustpilot corpus</Link>
-            , cross-checked against{' '}
-            <Link href="/billing-pattern-watch" className="text-neon-purple underline">Reddit and public creator investigations</Link>
-            .
-          </p>
-          <p className="text-sm text-ink-muted leading-relaxed mt-4">
-            Entries are hand-curated. Each one is backed by ≥2 independent public sources. If you can document a change we have not yet listed, the lead-capture form below routes that to the curation queue.
-          </p>
-        </header>
-
-        <div className="space-y-6 mb-12">
+        <div className="space-y-12 mb-20">
           {CHANGES.map((c, i) => (
-            <article key={i} className="bg-surface border border-border rounded-2xl p-6 sm:p-8">
-              <div className="flex flex-wrap items-center gap-3 mb-3">
-                <span className="text-xs font-mono font-bold tracking-widest text-ink-muted">{c.date}</span>
-                <span className="text-xs font-mono font-bold tracking-widest text-ink-primary">{c.vendor}</span>
-                <span className={`text-xs font-mono font-bold tracking-widest uppercase px-2 py-0.5 border rounded-full ${CAT_COLOR[c.category]}`}>
+            <article key={i} className="border-t-2 border-rule pt-8 max-w-reading">
+              <div className="flex flex-wrap items-baseline gap-4 mb-4 font-mono text-[11px] text-ink-muted">
+                <span className="tracking-wider">{c.date}</span>
+                <span className="text-rule">/</span>
+                <span className="text-ink-primary font-semibold">{c.vendor}</span>
+                <span className={`tracking-kicker uppercase px-2 py-0.5 border rounded ${CAT_COLOR[c.category]}`}>
                   {c.category}
                 </span>
               </div>
 
-              <h2 className="text-xl font-bold text-ink-primary mb-3 leading-snug">{c.headline}</h2>
-              <p className="text-ink-secondary text-sm leading-relaxed mb-4">{c.what}</p>
+              <h2 className="font-display text-2xl md:text-3xl font-semibold text-ink-primary mb-4 leading-tight tracking-tight">{c.headline}</h2>
+              <p className="text-ink-secondary leading-relaxed mb-6 max-w-prose">{c.what}</p>
 
-              <div className="mb-4">
-                <p className="text-xs font-mono font-bold tracking-widest text-ink-muted uppercase mb-2">Public evidence</p>
-                <ul className="space-y-1.5">
-                  {c.evidence.map((e, j) => (
-                    <li key={j} className="text-sm text-ink-secondary leading-relaxed flex gap-2">
-                      <span className="text-neon-purple shrink-0">▸</span>
-                      <span>{e}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="bg-elevated border border-neon-amber/20 rounded-xl p-4">
-                <p className="text-xs font-mono font-bold tracking-widest text-neon-amber uppercase mb-2">Effective impact</p>
-                <p className="text-sm text-ink-secondary leading-relaxed">{c.impact}</p>
+              <div className="grid md:grid-cols-2 gap-x-10 gap-y-6 mb-6">
+                <div>
+                  <Kicker className="mb-3">Public evidence</Kicker>
+                  <ul className="space-y-2">
+                    {c.evidence.map((e, j) => (
+                      <li key={j} className="text-sm text-ink-secondary leading-relaxed flex gap-2.5">
+                        <span className="text-neon-purple font-mono mt-1 shrink-0">▸</span>
+                        <span>{e}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
+                  <Kicker className="mb-3">Effective impact</Kicker>
+                  <p className="text-sm text-ink-secondary leading-relaxed border-l-2 border-neon-amber/50 pl-4">{c.impact}</p>
+                </div>
               </div>
             </article>
           ))}
         </div>
 
-        <section className="mb-12 bg-elevated border border-border rounded-2xl p-6">
-          <h2 className="text-xl font-bold text-ink-primary mb-3">Methodology + what counts as an entry</h2>
-          <ul className="space-y-2 text-sm text-ink-secondary leading-relaxed">
-            <li>▸ Entries require ≥2 independent public sources (Trustpilot, Reddit, YouTube, LinkedIn, news coverage). A single complaint is not enough.</li>
+        <section className="mb-16 max-w-prose">
+          <SectionHead kicker="Methodology" title="What counts as an entry." />
+          <ul className="space-y-3 text-sm text-ink-secondary leading-relaxed">
+            <li>▸ ≥2 independent public sources required (Trustpilot, Reddit, YouTube, LinkedIn, news coverage). A single complaint is not enough.</li>
             <li>▸ Changes must occur mid-subscription. Pre-purchase pricing changes are normal and not tracked here.</li>
             <li>▸ Vendor responses (where they exist) are noted in the impact section. We do not include or omit changes based on whether the vendor disputes the description.</li>
-            <li>▸ This is documented public behavior, not legal opinion. The page does not assert that any specific vendor practice violates law in any specific jurisdiction.</li>
-            <li>▸ Corrections, additions, vendor-side responses: DM @AIVideoAuditor on X or use the form below.</li>
+            <li>▸ Documented public behavior, not legal opinion. The page does not assert that any specific vendor practice violates law in any specific jurisdiction.</li>
+            <li>▸ Corrections, additions, vendor responses: DM @AIVideoAuditor on X.</li>
           </ul>
         </section>
 
-        <section className="mb-12">
+        <section className="mb-16 max-w-prose">
           <LeadCaptureForm
             source="vendor-changelog"
             heading="Get the next entry when it ships"
             blurb="The change-alert pipeline goes live next. When it does, you get one short email per week (only when a tracked vendor materially changes a policy). Submit a vendor change you've documented — it routes to the curation queue. No marketing spam."
-            cta="Track the changelog →"
+            cta="Track the changelog"
             successMessage="In. The first alert lands as soon as the pipeline goes live and only when a tracked vendor actually changes a policy. Unsubscribe one-click."
           />
         </section>
 
-        <footer className="text-xs text-ink-muted">
-          Last updated 2026-05-20. Source corpus: <Link href="/research/132-ai-video-vendor-reviews" className="text-neon-purple underline">132 Trustpilot 1-star reviews + Reddit triangulation</Link>. Vendor risk by tier: <Link href="/billing-pattern-watch" className="text-neon-purple underline">/billing-pattern-watch</Link>.
+        <footer className="border-t border-rule/40 pt-8 font-mono text-[11px] text-ink-muted max-w-reading">
+          Last updated 2026-05-20 · Source corpus:{' '}
+          <Link href="/research/132-ai-video-vendor-reviews" className="text-ink-secondary hover:text-ink-primary transition-colors">132 Trustpilot 1-star reviews + Reddit triangulation</Link>. Vendor risk by tier:{' '}
+          <Link href="/billing-pattern-watch" className="text-ink-secondary hover:text-ink-primary transition-colors">/billing-pattern-watch</Link>.
         </footer>
-
-      </div>
-    </main>
+      </WidePageShell>
+    </>
   );
 }

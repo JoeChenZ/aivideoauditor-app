@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import LeadCaptureForm from '@/components/lead-capture-form';
+import { WidePageShell, Breadcrumb, ArticleHeader, SectionHead, Kicker, RuleDivider } from '@/components/editorial';
 
 export const metadata: Metadata = {
   title: 'AI Video Vendor Reality Check — 132 Trustpilot 1-Star Reviews (2026 Research)',
@@ -25,27 +26,26 @@ const articleSchema = {
 
 export default function VendorRealityResearchPage() {
   return (
-    <main className="min-h-screen py-20 px-6">
+    <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
-      <div className="max-w-4xl mx-auto">
-        <nav className="text-xs font-mono text-ink-muted mb-8" aria-label="Breadcrumb">
-          <Link href="/" className="hover:text-ink-secondary transition-colors">Home</Link>
-          <span className="mx-2">/</span>
-          <span className="text-ink-primary">Research</span>
-        </nav>
+      <WidePageShell>
+        <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Research', href: '/research/132-ai-video-vendor-reviews' }, { label: '132-review corpus' }]} />
 
-        <header className="mb-12">
-          <p className="text-xs font-mono font-bold tracking-widest text-neon-green uppercase mb-3">Original Research · 2026-05</p>
-          <h1 className="text-4xl md:text-5xl font-bold text-ink-primary mb-4 leading-tight">
-            What 132 Trustpilot 1-stars actually say about AI-video tools
-          </h1>
-          <p className="text-lg text-ink-secondary leading-relaxed">
-            We tagged 132 1-star reviews across 8 AI-video platforms by complaint category. The headline finding: <strong className="text-ink-primary">77% of paid-tier 1-stars cite billing-mechanic complaints, not output quality.</strong> The dominant pattern is not &ldquo;the model is bad&rdquo; — it is &ldquo;the vendor cheated me.&rdquo;
-          </p>
-        </header>
+        <div className="max-w-reading">
+          <ArticleHeader
+            kicker="Original research · 2026-05"
+            title={<>What 132 Trustpilot 1-stars <span className="italic">actually</span> say about AI-video tools.</>}
+            lede={
+              <>
+                We tagged 132 1-star reviews across 8 AI-video platforms by complaint category. The headline finding: <strong>77% of paid-tier 1-stars cite billing-mechanic complaints, not output quality.</strong> The dominant pattern is not &ldquo;the model is bad&rdquo; — it is &ldquo;the vendor cheated me.&rdquo;
+              </>
+            }
+            byline={<>AIVideoAuditor desk · Collected 2026-05-13 to 2026-05-19 · Triangulated against neutral Reddit cross-check</>}
+          />
+        </div>
 
-        <section className="mb-12">
-          <h2 className="text-2xl font-bold text-ink-primary mb-4">Methodology</h2>
+        <section className="mb-16 max-w-reading">
+          <SectionHead kicker="Methodology" title="How the corpus was built." />
           <p className="text-ink-secondary mb-3">
             Source: trustpilot.com 1-star filter, pages 1-3, per platform. Reviews collected manually between 2026-05-13 and 2026-05-19. Each review was tagged with one or more complaint categories from a 6-tag taxonomy (tags are non-exclusive — one review can hit multiple).
           </p>
@@ -281,10 +281,10 @@ export default function VendorRealityResearchPage() {
           </div>
         </section>
 
-        <footer className="text-xs text-ink-muted">
-          Published 2026-05-20. Corrections + addenda: DM @AIVideoAuditor on X.
+        <footer className="border-t border-rule/40 pt-8 font-mono text-[11px] text-ink-muted">
+          Published 2026-05-20 · Corrections + addenda: DM @AIVideoAuditor on X.
         </footer>
-      </div>
-    </main>
+      </WidePageShell>
+    </>
   );
 }

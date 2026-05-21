@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import LeadCaptureForm from '@/components/lead-capture-form';
+import { PageShell, Breadcrumb, ArticleHeader, SectionHead, DataCallout, RuleDivider, Prose } from '@/components/editorial';
 
 export const metadata: Metadata = {
   title: 'Runway Unlimited Slowdown — May 2026 Data + What to Do',
@@ -25,122 +26,128 @@ const articleSchema = {
   datePublished: '2026-05-21',
 };
 
+const SOURCES = [
+  { label: 'Trustpilot', body: '6 of 11 1-star reviews dated 2026-05-01 to 2026-05-21 explicitly name wait-time as the primary complaint. Identical wording across reviewers: "way slower," "cut in half," "production efficiency."' },
+  { label: 'X / Twitter', body: 'Creator threads from @IntLab0000 (2.8K-view May 18 + 8.4K-view May 20 follow-up) and @phencasedguy (May 19, 1.3K views) describe the same slowdown affecting production output.' },
+  { label: 'Reddit', body: 'r/runwayML thread "How can I get unlimited plan?" (2026-05-19) — multiple commenters confirm the slowdown.' },
+  { label: 'Independence', body: 'Same vendor, same week, independent reporters who do not cite each other. Convergence on wording strongly suggests a backend change, not a perception cluster.' },
+];
+
+const VENDOR_STATEMENTS = [
+  {
+    label: 'No official statement',
+    body: 'As of 2026-05-21, no Runway communication attributes the slowdown to capacity, infrastructure, or model upgrades. Recent comms focus on the AI Festival (May 20), Seedance 2.0 rollout, and the Aleph push.',
+  },
+  {
+    label: 'Quota structure unchanged on paper',
+    body: 'Unlimited remains paid + uncapped per tier docs. Image and video are separate buckets. But throughput — how fast each generation completes — is not contractual.',
+  },
+  {
+    label: 'Pattern fits prior silent nerfs',
+    body: 'Second documented silent throughput change on Runway in 2026 (previous wave hit early Q1). Neither preceded by a tier-docs update or email notice.',
+  },
+];
+
+const OPTIONS = [
+  {
+    label: 'Monthly Unlimited',
+    body: 'Easiest path: cancel before next renewal. Monthly carries no annual lock-in; you bail at the next cycle without dispute. Runway support occasionally honors mid-month proration on escalation; most users ride out the current cycle.',
+  },
+  {
+    label: 'Annual Unlimited',
+    body: 'Annual commits are exactly the failure mode AVA exists to prevent — throughput claims at purchase are not contractually held. Watch the policy + tier-docs page for changes (we monitor weekly) and use the remaining months. Future subscriptions: pay monthly until the vendor has been validated for 2+ weeks personally.',
+  },
+  {
+    label: 'Need to keep producing',
+    body: (
+      <>
+        Compare to alternatives that have not experienced the same throughput change recently.{' '}
+        <Link href="/compare/kling-vs-runway">Kling vs Runway</Link>,{' '}
+        <Link href="/compare/runway-vs-luma">Runway vs Luma</Link>, and{' '}
+        <Link href="/compare/sora-vs-veo">Sora vs Veo</Link> all cover throughput plus per-second cost. Different tools, different failure modes — pick on prompt-risk profile.
+      </>
+    ),
+  },
+];
+
 export default function RunwayUnlimitedSlowdownPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
-      <main className="min-h-screen py-20 px-6">
-        <div className="max-w-3xl mx-auto">
-          <nav className="text-xs font-mono text-ink-muted mb-8" aria-label="Breadcrumb">
-            <Link href="/" className="hover:text-ink-secondary transition-colors">Home</Link>
-            <span className="mx-2">/</span>
-            <Link href="/billing-pattern-watch" className="hover:text-ink-secondary transition-colors">Billing Watch</Link>
-            <span className="mx-2">/</span>
-            <span className="text-ink-primary">Runway Unlimited Slowdown</span>
-          </nav>
+      <PageShell>
+        <Breadcrumb
+          items={[
+            { label: 'Home', href: '/' },
+            { label: 'Billing Watch', href: '/billing-pattern-watch' },
+            { label: 'Runway Unlimited slowdown' },
+          ]}
+        />
 
-          <div className="mb-10">
-            <p className="text-xs font-mono font-bold tracking-widest text-neon-amber uppercase mb-3">
-              Active issue · May 2026
-            </p>
-            <h1 className="text-3xl md:text-5xl font-bold text-ink-primary mb-4 leading-tight">
-              Runway Unlimited got <span className="text-neon-amber">~2× slower</span> in May 2026.
-            </h1>
-            <p className="text-ink-secondary leading-relaxed text-lg">
-              If your Runway generations went from <strong className="text-ink-primary">5–10 minutes</strong> to <strong className="text-neon-amber">25–40 minutes</strong> sometime around the second week of May, you&apos;re not imagining it. <strong>6 of 11 May Runway Trustpilot 1-stars</strong> cite the same shift unprompted, plus a wave of creator complaints on X and Reddit.
-            </p>
-          </div>
+        <ArticleHeader
+          kicker="Active issue · May 2026"
+          title={<>Runway Unlimited got <span className="italic text-neon-amber">~2× slower</span> in May 2026.</>}
+          lede={
+            <>If your Runway generations went from <strong>5–10 minutes</strong> to <strong>25–40 minutes</strong> around the second week of May, you are not imagining it. Six of eleven May Runway Trustpilot 1-stars cite the same shift unprompted, plus a wave of creator complaints on X and Reddit.</>
+          }
+          byline={<>AIVideoAuditor desk · Published 2026-05-21 · Monitored weekly</>}
+        />
 
-          {/* The data */}
-          <section className="mb-12 bg-elevated border border-border rounded-2xl p-6">
-            <h2 className="text-xl font-bold text-ink-primary mb-4">The data</h2>
-            <ul className="space-y-3 text-sm text-ink-secondary">
-              <li className="flex gap-3">
-                <span className="text-neon-amber font-mono shrink-0">▸</span>
-                <span><strong className="text-ink-primary">Trustpilot:</strong> 6 of 11 1-star reviews dated 2026-05-01 to 2026-05-21 explicitly name wait-time as the primary complaint. Identical wording across reviewers: &ldquo;way slower,&rdquo; &ldquo;cut in half,&rdquo; &ldquo;production efficiency.&rdquo;</span>
-              </li>
-              <li className="flex gap-3">
-                <span className="text-neon-amber font-mono shrink-0">▸</span>
-                <span><strong className="text-ink-primary">X / Twitter:</strong> Multiple creator threads — including @IntLab0000 (2.8K-view May 18 + 8.4K-view May 20 follow-up) and @phencasedguy (May 19, 1.3K views) — describe the same slowdown affecting production output.</span>
-              </li>
-              <li className="flex gap-3">
-                <span className="text-neon-amber font-mono shrink-0">▸</span>
-                <span><strong className="text-ink-primary">Reddit:</strong> r/runwayML thread &ldquo;How can I get unlimited plan?&rdquo; (2026-05-19) has commenters confirming the slowdown.</span>
-              </li>
-              <li className="flex gap-3">
-                <span className="text-neon-amber font-mono shrink-0">▸</span>
-                <span><strong className="text-ink-primary">Independence:</strong> Same vendor, same week, independent reporters who don&apos;t cite each other. Convergence on wording strongly suggests a real backend change rather than a perception cluster.</span>
-              </li>
-            </ul>
-          </section>
+        <section className="grid grid-cols-2 gap-x-8 gap-y-6 mb-16">
+          <DataCallout label="Before" value="5–10 min" delta="Relaxed mode · Q1 2026" />
+          <DataCallout label="After" value="25–40 min" delta="May 2026 sample" tone="warn" />
+          <DataCallout label="1-stars citing wait-time" value="6 / 11" delta="May 2026 Trustpilot" tone="bad" />
+          <DataCallout label="Vendor acknowledgement" value="None" delta="As of 2026-05-21" tone="warn" />
+        </section>
 
-          {/* What Runway has + hasn't said */}
-          <section className="mb-12">
-            <h2 className="text-2xl font-bold text-ink-primary mb-4">What Runway has and hasn&apos;t said</h2>
-            <div className="space-y-3 text-sm">
-              <div className="bg-surface border border-border rounded-xl p-4">
-                <p className="text-xs font-mono font-bold tracking-widest text-ink-muted uppercase mb-1">No official statement</p>
-                <p className="text-ink-secondary">As of 2026-05-21, no public Runway statement attributes the slowdown to capacity, infrastructure, or model upgrades. Recent comms focus on the AI Festival (May 20), Seedance 2.0 rollout, and the Aleph push.</p>
-              </div>
-              <div className="bg-surface border border-border rounded-xl p-4">
-                <p className="text-xs font-mono font-bold tracking-widest text-ink-muted uppercase mb-1">Quota structure unchanged on paper</p>
-                <p className="text-ink-secondary">Unlimited remains paid + uncapped per tier docs. Image and video are separate buckets; usage of one doesn&apos;t deduct from the other. But throughput &mdash; how fast each generation completes &mdash; is not contractual.</p>
-              </div>
-              <div className="bg-surface border border-border rounded-xl p-4">
-                <p className="text-xs font-mono font-bold tracking-widest text-ink-muted uppercase mb-1">Pattern fits prior silent nerfs</p>
-                <p className="text-ink-secondary">This is the second documented silent throughput change on Runway in 2026 (the previous wave hit early Q1). Neither was preceded by a tier-docs update or email notice.</p>
-              </div>
+        <SectionHead kicker="The evidence" title="What the public sources show." />
+        <ul className="space-y-4 mb-16">
+          {SOURCES.map((s) => (
+            <li key={s.label} className="grid grid-cols-[140px_1fr] gap-6 border-t border-rule/60 pt-4">
+              <span className="font-mono text-xs tracking-wide uppercase text-ink-muted">{s.label}</span>
+              <span className="text-ink-secondary leading-relaxed">{s.body}</span>
+            </li>
+          ))}
+        </ul>
+
+        <SectionHead kicker="The record" title="What Runway has — and has not — said." />
+        <div className="space-y-5 mb-16">
+          {VENDOR_STATEMENTS.map((v) => (
+            <div key={v.label} className="border border-rule rounded-md p-5 bg-surface">
+              <p className="font-mono text-[11px] tracking-kicker uppercase text-ink-muted mb-2">{v.label}</p>
+              <p className="text-ink-secondary leading-relaxed">{v.body}</p>
             </div>
-          </section>
-
-          {/* What to do */}
-          <section className="mb-12">
-            <h2 className="text-2xl font-bold text-ink-primary mb-4">Your options</h2>
-            <div className="space-y-4">
-              <div className="bg-elevated border border-neon-cyan/30 rounded-2xl p-5">
-                <h3 className="font-bold text-ink-primary mb-2">If you&apos;re on monthly Unlimited</h3>
-                <p className="text-sm text-ink-secondary">Easiest path: cancel before next renewal. Monthly carries no annual lock-in; you bail out at the next cycle without dispute. Runway support generally honors mid-month proration only if you escalate; most users just ride out the current cycle.</p>
-              </div>
-              <div className="bg-elevated border border-neon-amber/30 rounded-2xl p-5">
-                <h3 className="font-bold text-ink-primary mb-2">If you&apos;re on annual Unlimited</h3>
-                <p className="text-sm text-ink-secondary">Annual commits are exactly the failure mode AVA exists to prevent &mdash; throughput claims at purchase are not contractually held. If you have an annual sub now, watch the policy + tier-docs page for changes (we monitor weekly) and use the remaining months. Future subscriptions: pay monthly until the vendor has been validated 2+ weeks personally.</p>
-              </div>
-              <div className="bg-elevated border border-neon-green/30 rounded-2xl p-5">
-                <h3 className="font-bold text-ink-primary mb-2">If you need to keep producing now</h3>
-                <p className="text-sm text-ink-secondary">Compare to alternatives that haven&apos;t experienced the same throughput change recently. <Link href="/compare/kling-vs-runway" className="text-neon-purple underline">Kling vs Runway</Link>, <Link href="/compare/runway-vs-luma" className="text-neon-purple underline">Runway vs Luma</Link>, and <Link href="/compare/sora-vs-veo" className="text-neon-purple underline">Sora vs Veo</Link> all cover throughput + per-second cost. Different tools have different failure modes; pick based on your prompt risk profile.</p>
-              </div>
-            </div>
-          </section>
-
-          {/* Lead capture */}
-          <section className="mb-12 bg-elevated border border-border rounded-2xl p-6">
-            <h2 className="text-xl font-bold text-ink-primary mb-2">Get notified when Runway changes its policy</h2>
-            <p className="text-sm text-ink-secondary mb-4">
-              AVA monitors vendor tier docs + community sentiment weekly. If Runway either restores throughput OR formally announces a quota change, you&apos;ll know within 24-48 hours of the change. No marketing spam.
-            </p>
-            <LeadCaptureForm
-              source="runway-unlimited-slowdown"
-              heading=""
-              blurb=""
-              cta="Add me to the Runway watch list →"
-            />
-          </section>
-
-          {/* Related */}
-          <section className="text-center text-sm">
-            <p className="text-ink-muted mb-3">Related</p>
-            <div className="flex flex-wrap justify-center gap-x-4 gap-y-2 font-mono text-xs">
-              <Link href="/billing-pattern-watch" className="text-neon-purple hover:underline">Billing Pattern Watch (Runway entry)</Link>
-              <span className="text-ink-muted">·</span>
-              <Link href="/research/132-ai-video-vendor-reviews" className="text-neon-purple hover:underline">132-Review Corpus</Link>
-              <span className="text-ink-muted">·</span>
-              <Link href="/alternatives/runway" className="text-neon-purple hover:underline">Runway Alternatives</Link>
-              <span className="text-ink-muted">·</span>
-              <Link href="/" className="text-neon-purple hover:underline">Home</Link>
-            </div>
-          </section>
+          ))}
         </div>
-      </main>
+
+        <SectionHead kicker="Your options" title="Three paths, by subscription type." />
+        <div className="space-y-6 mb-16">
+          {OPTIONS.map((opt) => (
+            <article key={opt.label} className="border-t border-rule/60 pt-5">
+              <h3 className="font-display text-xl font-semibold text-ink-primary mb-2">{opt.label}</h3>
+              <Prose><p>{opt.body}</p></Prose>
+            </article>
+          ))}
+        </div>
+
+        <RuleDivider label="Stay current" />
+
+        <section className="border border-rule rounded-md p-8 bg-paper mb-16">
+          <h2 className="font-display text-2xl font-semibold text-ink-primary mb-3">Get the watch-list alert</h2>
+          <p className="text-ink-secondary leading-relaxed mb-6 max-w-prose">
+            AVA monitors vendor tier docs + community sentiment weekly. If Runway restores throughput OR formally announces a quota change, you will hear within 24–48 hours. No marketing spam.
+          </p>
+          <LeadCaptureForm source="runway-unlimited-slowdown" heading="" blurb="" cta="Add me to the Runway watch list" />
+        </section>
+
+        <nav className="font-mono text-xs text-ink-muted">
+          <span className="block tracking-kicker uppercase text-[10px] mb-3">Related</span>
+          <div className="flex flex-wrap gap-x-5 gap-y-2">
+            <Link href="/billing-pattern-watch" className="hover:text-ink-primary transition-colors">Billing Pattern Watch (Runway entry)</Link>
+            <Link href="/research/132-ai-video-vendor-reviews" className="hover:text-ink-primary transition-colors">132-Review Corpus</Link>
+            <Link href="/alternatives/runway" className="hover:text-ink-primary transition-colors">Runway Alternatives</Link>
+          </div>
+        </nav>
+      </PageShell>
     </>
   );
 }
