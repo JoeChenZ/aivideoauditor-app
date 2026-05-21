@@ -84,6 +84,30 @@ const VENDORS = [
       'Smaller community signal than the top two — this is yellow not red. Treat with caution, not blanket avoidance.',
     ],
   },
+  {
+    name: 'Runway',
+    trustpilotBilling: '~29%',
+    redditBilling: '~24%',
+    headline: 'Lowest billing-predation rate of the major paid AI-video vendors (29% Trustpilot, 24% Reddit), but the active risk pattern shifted in May 2026: "Unlimited" tier wait-times roughly doubled, with 6 of 11 May Runway 1-stars naming the same slowdown independently. Treat as YELLOW with a watch-the-Unlimited-tier asterisk.',
+    documented: [
+      'May 2026: 6 of 11 May Runway 1-stars on Trustpilot name the same wait-time shift ("Unlimited" tier 5–10 min → 25–40 min per generation). Independent reporters, same vendor, same week.',
+      'Queue quotas on Unlimited are documented as separate buckets (image vs video) — not a shared pool, per tier docs since Gen-4.',
+      'Annual subscriptions get pro-rated refunds within the 14-day refund window — wider than Higgsfield (7d) or Pollo (varies). Outside the window: vendor discretion.',
+      'Multi-platform creators report the slowdown affected production efficiency by ~50% in May.',
+    ],
+    publicEvidence: [
+      'May 18 + May 20 X threads from @IntLab0000 (2.8K-view + 8.4K-view follow-up creators) on Runway Unlimited slowdown.',
+      'May 19 X thread from @phencasedguy (1.3K views) describing same slowdown.',
+      'r/runwayML: "How can I get unlimited plan?" (2026-05-19) thread — multiple commenters confirm slowdown.',
+      'Trustpilot mid-May review surge cites identical wording: "way slower," "cut in half," "production efficiency hit."',
+    ],
+    beforeYouSubscribe: [
+      'Monthly is genuinely lower-risk than Higgsfield / Pollo annual — chargeback recovery is more likely if needed.',
+      'For Unlimited specifically: assume throughput claims are stale. Treat any "unlimited" language from before May 2026 as outdated.',
+      'Pay with a chargeback-friendly card (Amex Plat, Chase Sapphire). The vendor refund window is 14 days but agents can be slow — your issuer is the actual backstop.',
+      'Watch for further policy quietude — silent throughput nerfs have happened twice in 2026 without explicit announcement.',
+    ],
+  },
 ];
 
 const articleSchema = {
