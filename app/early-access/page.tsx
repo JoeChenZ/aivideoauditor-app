@@ -59,7 +59,7 @@ export default function EarlyAccessPage() {
             </li>
             <li className="flex gap-3">
               <span className="text-neon-green font-mono shrink-0">→</span>
-              <span><strong className="text-ink-primary">All current free-tier features.</strong> Auditor, refund-letter drafter (note: refund approval is at platform discretion), seed library.</span>
+              <span><strong className="text-ink-primary">All current free-tier features.</strong> Pre-purchase prompt scoring, vendor change alerts, seed library.</span>
             </li>
           </ul>
         </div>

@@ -38,7 +38,7 @@ const CHANGES: Change[] = [
       'Trustpilot 1-stars #18, #20, #22, #24: independent users reporting same pattern between Dec 2025 and May 2026.',
       'Documented case of 5× $39 invoices on one account in a single day during the December 2025 cluster.',
     ],
-    impact: 'Users who paid for "unlimited" found themselves credit-metered + paying additional fees. Refund window had already closed (7 days from purchase). Recourse path: card-issuer chargeback under "service not as described."',
+    impact: 'Users who paid for "unlimited" found themselves credit-metered + paying additional fees. Refund window had already closed (7 days from purchase). This is the failure mode AVA exists to flag at pre-purchase — once the window passes, recovery is no longer in the vendor surface.',
   },
   {
     date: '2026-04',
@@ -76,7 +76,7 @@ const CHANGES: Change[] = [
       'r/generativeAI 1sjcuth: "Pollo AI Suddenly Billed me 70K for a Yearly Pro Subscription" — OP reports refund offered minus service cut.',
       'r/FraudPrevention 1o220dl: "Warning: Pollo AI — Systematic Fraud, Unauthorized Charges" thread documents the same pattern across multiple users.',
     ],
-    impact: 'Standard refund mechanics in most retail/SaaS contexts are full-amount refunds. Pollo\'s "refund minus cut" structure means a user who recovers 50–70% of an unauthorized charge has still lost money on what should be a fully reversible transaction. This is a stronger case for card-issuer chargeback than for support-mediated refund.',
+    impact: 'Standard refund mechanics in most retail/SaaS contexts are full-amount refunds. Pollo\'s "refund minus cut" structure means a user who recovers 50–70% of an unauthorized charge has still lost money on what should be a fully reversible transaction. AVA\'s position: this vendor pattern is best avoided pre-purchase, since post-purchase recovery is structurally lossy by design.',
   },
   {
     date: '2026-04',

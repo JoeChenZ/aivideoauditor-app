@@ -5,12 +5,12 @@ import LeadCaptureForm from '@/components/lead-capture-form';
 export const metadata: Metadata = {
   title: 'Runway Unlimited Slowdown — May 2026 Data + What to Do',
   description:
-    'Documented wait-time shift on Runway Unlimited tier in May 2026 (generations 5-10 min → 25-40 min). 6 of 11 May Trustpilot 1-stars cite it independently. Plus options: chargeback, downgrade, switch.',
+    'Documented wait-time shift on Runway Unlimited tier in May 2026 (generations 5-10 min → 25-40 min). 6 of 11 May Trustpilot 1-stars cite it independently. Plus pre-purchase risk options.',
   alternates: { canonical: 'https://www.aivideoauditor.com/runway-unlimited-slowdown' },
   openGraph: {
     title: 'Runway Unlimited Slowdown — May 2026 Data + What to Do',
     description:
-      'Wait times roughly doubled on the Unlimited tier this month. 6 of 11 May Trustpilot 1-stars confirm independently. Here\'s the data + recovery paths.',
+      'Wait times roughly doubled on the Unlimited tier this month. 6 of 11 May Trustpilot 1-stars confirm independently. Here\'s the data + what it means for subscribers.',
     type: 'article',
   },
 };
@@ -103,31 +103,13 @@ export default function RunwayUnlimitedSlowdownPage() {
               </div>
               <div className="bg-elevated border border-neon-amber/30 rounded-2xl p-5">
                 <h3 className="font-bold text-ink-primary mb-2">If you&apos;re on annual Unlimited</h3>
-                <p className="text-sm text-ink-secondary">More tools available. Within the first 14 days: vendor&apos;s native refund window applies. After 14 days: card-issuer chargeback is the fastest recovery path for a marketing-vs-actual mismatch (&ldquo;Unlimited&rdquo; tier no longer delivering the unlimited throughput marketed at purchase). See <Link href="/chargeback-guide" className="text-neon-purple underline">the chargeback path</Link> for the 4-step process.</p>
+                <p className="text-sm text-ink-secondary">Annual commits are exactly the failure mode AVA exists to prevent &mdash; throughput claims at purchase are not contractually held. If you have an annual sub now, watch the policy + tier-docs page for changes (we monitor weekly) and use the remaining months. Future subscriptions: pay monthly until the vendor has been validated 2+ weeks personally.</p>
               </div>
               <div className="bg-elevated border border-neon-green/30 rounded-2xl p-5">
                 <h3 className="font-bold text-ink-primary mb-2">If you need to keep producing now</h3>
                 <p className="text-sm text-ink-secondary">Compare to alternatives that haven&apos;t experienced the same throughput change recently. <Link href="/compare/kling-vs-runway" className="text-neon-purple underline">Kling vs Runway</Link>, <Link href="/compare/runway-vs-luma" className="text-neon-purple underline">Runway vs Luma</Link>, and <Link href="/compare/sora-vs-veo" className="text-neon-purple underline">Sora vs Veo</Link> all cover throughput + per-second cost. Different tools have different failure modes; pick based on your prompt risk profile.</p>
               </div>
             </div>
-          </section>
-
-          {/* Chargeback specifics */}
-          <section className="mb-12 bg-neon-amber/5 border border-neon-amber/30 rounded-2xl p-6">
-            <h2 className="text-xl font-bold text-ink-primary mb-3">If you&apos;re going the chargeback route</h2>
-            <p className="text-sm text-ink-secondary mb-4">
-              The strongest dispute frame is &ldquo;Service not as described.&rdquo; Document evidence:
-            </p>
-            <ol className="space-y-2 text-sm text-ink-secondary list-decimal list-inside">
-              <li>Screenshot Runway&apos;s Unlimited tier marketing page from your <strong className="text-ink-primary">purchase date</strong> (use Wayback Machine if it&apos;s changed since).</li>
-              <li>Screenshot your most recent generation queue showing the 25-40 min wait times.</li>
-              <li>Screenshot a generation completed pre-May for comparison if you have one.</li>
-              <li>One polite email to Runway support describing the discrepancy. Save their reply (or 7-day silence).</li>
-              <li>File the dispute with your card issuer. Category: &ldquo;Service not as described.&rdquo; Attach all four screenshots + the email exchange.</li>
-            </ol>
-            <p className="text-xs font-mono text-ink-muted mt-4 italic">
-              We don&apos;t draft refund letters — but the <Link href="/chargeback-guide" className="text-neon-purple underline">full chargeback guide</Link> has card-issuer success-rate rankings (Amex highest, debit lowest).
-            </p>
           </section>
 
           {/* Lead capture */}
@@ -149,8 +131,6 @@ export default function RunwayUnlimitedSlowdownPage() {
             <p className="text-ink-muted mb-3">Related</p>
             <div className="flex flex-wrap justify-center gap-x-4 gap-y-2 font-mono text-xs">
               <Link href="/billing-pattern-watch" className="text-neon-purple hover:underline">Billing Pattern Watch (Runway entry)</Link>
-              <span className="text-ink-muted">·</span>
-              <Link href="/chargeback-guide" className="text-neon-purple hover:underline">Chargeback Guide</Link>
               <span className="text-ink-muted">·</span>
               <Link href="/research/132-ai-video-vendor-reviews" className="text-neon-purple hover:underline">132-Review Corpus</Link>
               <span className="text-ink-muted">·</span>

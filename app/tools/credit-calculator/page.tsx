@@ -29,14 +29,10 @@ const FAILURE_LABELS: Record<PrimaryFailure, string> = {
   mixed: 'Mixed — many different failures',
 };
 
-// Goodwill-credit hit rate by failure mode.
-// IMPORTANT: Most platforms' published ToS only refund credits when a generation throws a
-// generation error. Output-quality failures (bad anatomy, identity drift, garbled text) are
-// considered "completed generations" and credits are normally consumed. The numbers below
-// reflect the observed rate at which support agents *discretionarily* grant goodwill credits
-// when a ticket is filed with a Generation ID + technical failure-mode label + timestamped
-// screenshot. This is not a guarantee — outcomes range widely (0%–80%) and depend entirely
-// on platform discretion. See /sora-refund and /luma-refund-guide for the per-platform detail.
+// Goodwill-credit hit rate by failure mode (observed, not guaranteed).
+// Most platform ToS only refund credits when generation throws an error; output-quality
+// failures are normally "completed" and credits consumed. Numbers below are observed
+// discretionary rates — they are an input to the effective-cost calc, not a recovery path.
 const REFUND_HIT_RATE: Record<PrimaryFailure, number> = {
   anatomy: 0.45,
   color: 0.35,
@@ -358,11 +354,10 @@ export default function CreditCalculatorPage() {
             </li>
           </ul>
           <p className="text-xs text-ink-muted mt-4 italic">
-            Estimates only. Goodwill credits are at platform discretion and are not promised by any
-            published ToS. AVA does not guarantee a refund rate. The primary value of the auditor and
-            refund-letter drafter is in <em>preventing</em> wasted credits (better prompts, A/B routing,
-            failure-mode tagging) and in making the ticket-filing process less painful — not in
-            guaranteeing reimbursement.
+            Estimates only. The goodwill-credit column is an observed input to the effective-cost
+            calc — not a recovery promise. AVA&apos;s primary value is in <em>preventing</em> wasted
+            credits (better prompts, A/B routing, failure-mode tagging at pre-purchase) — not in
+            post-generation reimbursement.
           </p>
         </section>
 

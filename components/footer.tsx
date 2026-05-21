@@ -25,8 +25,8 @@ export default function Footer() {
             <li><Link href="/compare" className="hover:text-ink-primary transition-colors">Head-to-Head Compare</Link></li>
             <li><Link href="/alternatives" className="hover:text-ink-primary transition-colors">Alternatives Guides</Link></li>
             <li><Link href="/graveyard" className="hover:text-ink-primary transition-colors">Vendor Stability Tracker</Link></li>
-            <li><Link href="/guide-refund-categories" className="hover:text-ink-primary transition-colors">Platform Refund Policies</Link></li>
-            <li><Link href="/sora-refund" className="hover:text-ink-primary transition-colors text-neon-amber">Sora 2 Reality Check</Link></li>
+            <li><Link href="/billing-pattern-watch" className="hover:text-ink-primary transition-colors text-neon-amber">Billing Pattern Watch</Link></li>
+            <li><Link href="/vendor-changelog" className="hover:text-ink-primary transition-colors">Vendor Changelog</Link></li>
             <li><Link href="/affiliate-program" className="hover:text-ink-primary transition-colors">Affiliate Program</Link></li>
           </ul>
         </div>
