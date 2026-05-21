@@ -207,7 +207,7 @@ export default function BillingPatternWatchPage() {
           <h2 className="text-xl font-bold text-ink-primary mb-3">What this list does NOT do</h2>
           <ul className="space-y-2 text-sm text-ink-secondary leading-relaxed">
             <li>▸ It does not call any of these vendors a &ldquo;scam&rdquo; in a legal sense. It documents patterns that appear in public sources and lets you make a subscription decision with full information.</li>
-            <li>▸ It does not give legal advice. If you are considering a chargeback or formal dispute, talk to your card issuer or, for amounts over a few hundred dollars, a consumer-protection lawyer in your jurisdiction.</li>
+            <li>▸ It does not give legal advice. If you are considering a chargeback or formal dispute, talk to your card issuer or, for amounts over a few hundred dollars, a consumer-protection lawyer in your jurisdiction. We do, however, document <Link href="/chargeback-guide" className="text-neon-purple underline">the practical chargeback path</Link> — card-issuer ranking + 4-step process from our corpus.</li>
             <li>▸ It does not draft refund letters or chargeback evidence packets. Those carry liability we are not licensed to take. There are public templates available from consumer-protection organizations if you need that path.</li>
             <li>▸ It is not exhaustive. The AI-video vendor universe is larger than three platforms. We list the ones with the strongest documented public evidence as of 2026-05-20.</li>
           </ul>
