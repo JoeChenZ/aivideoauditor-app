@@ -31,7 +31,7 @@ export default function EarlyAccessPage() {
           <p className="text-xs font-mono font-bold tracking-widest text-neon-purple uppercase mb-3">
             Founders&apos; round · limited slots
           </p>
-          <h1 className="text-3xl md:text-5xl font-bold text-ink-primary mb-4 leading-tight">
+          <h1 className="font-display text-4xl md:text-5xl font-semibold text-ink-primary mb-4 leading-tight tracking-tight">
             Lock in AVA Pro at $50 for 6 months.
           </h1>
           <p className="text-ink-secondary leading-relaxed">
@@ -83,9 +83,9 @@ export default function EarlyAccessPage() {
               that, the 6 months are non-refundable but transferable.
             </li>
             <li>
-              <strong>Refund-letter drafter is a bonus, not the wedge.</strong> Platforms generally
-              do not refund credits for output-quality failures. Goodwill credits are at agent
-              discretion. AVA writes a better ticket; we cannot guarantee approval.
+              <strong>AVA is a prevention tool, not a recovery tool.</strong> The value is catching
+              prompt-failures before you commit credits. Goodwill credits from platforms are
+              discretionary and not something we promise.
             </li>
           </ul>
         </div>

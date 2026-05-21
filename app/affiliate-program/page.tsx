@@ -29,7 +29,7 @@ export default function AffiliateProgramPage() {
           <p className="text-xs font-mono font-bold tracking-widest text-neon-green uppercase mb-3">
             Affiliate Program · Pre-launch waitlist open
           </p>
-          <h1 className="text-3xl md:text-5xl font-bold text-ink-primary mb-4 leading-tight">
+          <h1 className="font-display text-4xl md:text-5xl font-semibold text-ink-primary mb-4 leading-tight tracking-tight">
             Earn 30% recurring on every AVA Pro signup you refer
           </h1>
           <p className="text-ink-secondary text-lg leading-relaxed mb-4">

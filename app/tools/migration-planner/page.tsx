@@ -150,7 +150,7 @@ export default function MigrationPlannerPage() {
           <p className="text-xs font-mono font-bold tracking-widest text-neon-green uppercase mb-3">
             Free tool · No signup · 90 seconds
           </p>
-          <h1 className="text-3xl md:text-5xl font-bold text-ink-primary mb-4 leading-tight">
+          <h1 className="font-display text-4xl md:text-5xl font-semibold text-ink-primary mb-4 leading-tight tracking-tight">
             Migration Planner — where should you move?
           </h1>
           <p className="text-ink-secondary leading-relaxed">

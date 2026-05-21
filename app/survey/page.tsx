@@ -164,7 +164,7 @@ export default function SurveyPage() {
           <p className="text-xs font-mono font-bold tracking-widest text-neon-green uppercase mb-3">
             4 minutes · First 50 to complete: 30% lifetime Pro discount
           </p>
-          <h1 className="text-3xl md:text-4xl font-bold text-ink-primary mb-4 leading-tight">
+          <h1 className="font-display text-3xl md:text-4xl font-semibold text-ink-primary mb-4 leading-tight tracking-tight">
             How does AI video credit waste affect you?
           </h1>
           <p className="text-ink-secondary text-sm leading-relaxed">
