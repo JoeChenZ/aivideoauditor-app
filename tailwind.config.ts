@@ -13,12 +13,14 @@ const config: Config = {
         surface:  '#0d0d12',
         elevated: '#141419',
         border:   '#1e1e28',
+        rule:     '#252533',
         neon: {
           purple: '#a78bfa',
           blue:   '#60a5fa',
           green:  '#34d399',
           amber:  '#fbbf24',
           red:    '#f87171',
+          cyan:   '#22d3ee',
         },
         ink: {
           primary:   '#f1f5f9',
@@ -27,8 +29,17 @@ const config: Config = {
         },
       },
       fontFamily: {
-        sans: ['var(--font-inter)', 'Inter', 'sans-serif'],
-        mono: ['var(--font-jetbrains)', 'JetBrains Mono', 'monospace'],
+        sans:    ['var(--font-inter)', 'Inter', 'sans-serif'],
+        mono:    ['var(--font-jetbrains)', 'JetBrains Mono', 'monospace'],
+        serif:   ['var(--font-fraunces)', 'Fraunces', 'Georgia', 'serif'],
+        display: ['var(--font-fraunces)', 'Fraunces', 'Georgia', 'serif'],
+      },
+      letterSpacing: {
+        kicker: '0.22em',
+      },
+      maxWidth: {
+        prose: '68ch',
+        reading: '72ch',
       },
       backgroundImage: {
         'grid-pattern': "linear-gradient(rgba(139,92,246,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(139,92,246,0.04) 1px,transparent 1px)",

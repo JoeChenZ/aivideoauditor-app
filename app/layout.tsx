@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter, JetBrains_Mono } from 'next/font/google';
+import { Inter, JetBrains_Mono, Fraunces } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
 import './globals.css';
 import Nav from '@/components/nav';
@@ -8,11 +8,20 @@ import Footer from '@/components/footer';
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
+  display: 'swap',
 });
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
   variable: '--font-jetbrains',
+  display: 'swap',
+});
+
+const fraunces = Fraunces({
+  subsets: ['latin'],
+  variable: '--font-fraunces',
+  display: 'swap',
+  axes: ['opsz', 'SOFT', 'WONK'],
 });
 
 const BASE_URL = 'https://www.aivideoauditor.com';
@@ -94,7 +103,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* Preconnect to Google Fonts already handled by next/font */}
         <link rel="canonical" href={BASE_URL} />
       </head>
-      <body className={`${inter.variable} ${jetbrainsMono.variable} bg-void text-ink-primary antialiased`}>
+      <body className={`${inter.variable} ${jetbrainsMono.variable} ${fraunces.variable} bg-void text-ink-primary antialiased`}>
         <Nav />
         <div className="pt-14">{children}</div>
         <Footer />
