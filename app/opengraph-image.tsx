@@ -6,15 +6,21 @@ export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
 export default async function OG() {
-  // Load Fraunces for the headline (editorial serif).
-  // Inter for the subhead.
-  const fraunces = await fetch(
-    'https://fonts.gstatic.com/s/fraunces/v32/6NUh8FyLNQOQZAnv9bYEvDiIdE9Ea92uemAk_WBq8U_9v0c2Wa0K7iN7hzFUPJH58nib1603gg7S2nfgRYIctxX64yZeMt0g0Q.woff'
-  ).then((r) => r.arrayBuffer());
+  // Load Fraunces (editorial serif) + Inter (sans body) from Google Fonts.
+  // The actual woff/ttf URLs are resolved from the CSS API at build/request time
+  // to avoid hardcoding URLs that get versioned.
+  async function fetchFont(family: string, weight = 400, italic = false): Promise<ArrayBuffer> {
+    const cssUrl = `https://fonts.googleapis.com/css2?family=${encodeURIComponent(family)}:${italic ? 'ital,' : ''}wght@${italic ? '1,' : ''}${weight}&display=swap`;
+    const css = await fetch(cssUrl, { headers: { 'User-Agent': 'Mozilla/5.0' } }).then((r) => r.text());
+    const urlMatch = css.match(/url\((https:[^)]+)\)/);
+    if (!urlMatch) throw new Error(`Font URL not found in CSS for ${family}`);
+    return fetch(urlMatch[1]).then((r) => r.arrayBuffer());
+  }
 
-  const inter = await fetch(
-    'https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfMZhrib2Bg-4.woff'
-  ).then((r) => r.arrayBuffer());
+  const [fraunces, inter] = await Promise.all([
+    fetchFont('Fraunces', 600).catch(() => null),
+    fetchFont('Inter', 400).catch(() => null),
+  ]);
 
   return new ImageResponse(
     (
@@ -134,8 +140,8 @@ export default async function OG() {
     {
       ...size,
       fonts: [
-        { name: 'Fraunces', data: fraunces, style: 'normal', weight: 600 },
-        { name: 'Inter', data: inter, style: 'normal', weight: 400 },
+        ...(fraunces ? [{ name: 'Fraunces', data: fraunces, style: 'normal' as const, weight: 600 as const }] : []),
+        ...(inter ? [{ name: 'Inter', data: inter, style: 'normal' as const, weight: 400 as const }] : []),
       ],
     },
   );
