@@ -49,6 +49,7 @@ const CHANGES: Change[] = [
     evidence: [
       'r/runwayml thread (2026-05-21): "Sudden Account Suspension - Didn\'t do anything other than creating videos." Runway-team-flaired comment: "we\'re investigating an issue that\'s causing an increase in suspensions" — link to Account-Suspensions-for-Usage-Violations help article.',
       'Trustpilot 1-stars from May 2026: 4 of 11 cite suspension or downgrade without prior notice.',
+      'Trustpilot 1-star (2026-05-22): "Don\'t fall for the unlimited plan. Mass account suspension. They first introduced the unlimited plan, and then restrictions started piling up one after another, without any warning. First, they removed the promised 1080p — fine. Then the queue time increased from 15 minutes to an hour…" — stacks suspension wave with the wait-time shift documented in the May 2026 Unlimited-routing entry below.',
       'Appeal-success pattern: resolution within 7-14 business days when filed with timestamps + use-case statement + billing receipt.',
     ],
     impact: 'A "billing pattern watch" surface should treat a sudden suspension as functionally equivalent to a refund-window-closing event — the user is unable to use the service they paid for, with no in-product recourse other than an external appeal. The vendor has acknowledged the suspension wave, which is itself a useful confirmation signal: AVA flags accounts on this vendor for elevated suspension risk in the May 2026 window.',
