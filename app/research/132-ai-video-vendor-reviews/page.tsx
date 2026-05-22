@@ -24,10 +24,21 @@ const articleSchema = {
   datePublished: '2026-05-20',
 };
 
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.aivideoauditor.com' },
+    { '@type': 'ListItem', position: 2, name: 'Research', item: 'https://www.aivideoauditor.com/research/132-ai-video-vendor-reviews' },
+    { '@type': 'ListItem', position: 3, name: '132-review corpus', item: 'https://www.aivideoauditor.com/research/132-ai-video-vendor-reviews' },
+  ],
+};
+
 export default function VendorRealityResearchPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <WidePageShell>
         <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Research', href: '/research/132-ai-video-vendor-reviews' }, { label: '132-review corpus' }]} />
 
