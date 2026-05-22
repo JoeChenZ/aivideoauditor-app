@@ -9,7 +9,7 @@ export type FailureData = {
   longDesc: string;
   symptoms: string[];
   examples: { prompt: string; failure: string; timestamp?: string }[];
-  refundStrength: string;
+  documentationStrength: string;
   faq: { q: string; a: string }[];
   relatedFailures?: string[];
 };
@@ -17,10 +17,10 @@ export type FailureData = {
 export const FAILURES: FailureData[] = [
   {
     slug: 'runway-limb-artifact',
-    title: 'Runway ML Limb & Anatomy Artifact — Get a Credit Refund',
-    metaTitle: 'Runway ML Limb Artifact Refund — Extra Limbs, Anatomy Failures',
+    title: 'Runway ML Limb & Anatomy Artifact — Pre-Generation Risk Reference',
+    metaTitle: 'Runway ML Limb Artifact Reference — Extra Limbs, Anatomy Failures',
     metaDesc:
-      'Runway Gen-4 generated a video with extra arms, fused fingers, or impossible limb geometry? This is an Anatomical Topology Failure. Here\'s how to document it and get your credits refunded.',
+      'Runway Gen-4 generated a video with extra arms, fused fingers, or impossible limb geometry? This is an Anatomical Topology Failure. Here\'s how to document it and document it for support escalation.',
     technicalTerm: 'Anatomical Topology & Coherence Failure',
     risk: 'CRITICAL',
     shortDesc: 'Extra arms, fused fingers, interpenetrating geometry, impossible joint configurations.',
@@ -45,10 +45,10 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:03',
       },
     ],
-    refundStrength: 'VERY HIGH — Runway support treats limb artifacts as a recognised critical failure mode with strong refund precedent.',
+    documentationStrength: 'VERY HIGH — Runway support treats limb artifacts as a recognised critical failure mode with strong support-escalation precedent.',
     faq: [
       {
-        q: 'Does Runway refund credits for limb artifact failures?',
+        q: 'Will Runway support escalate credits for limb artifact failures?',
         a: 'Yes. Runway support classifies limb artifacts as a recognised critical failure mode. Requests with a Generation ID, technical failure description (use "Anatomical Topology & Coherence Failure"), and a timestamped failure point are routinely approved.',
       },
       {
@@ -64,7 +64,7 @@ export const FAILURES: FailureData[] = [
   {
     slug: 'runway-physics-collapse',
     title: 'Runway ML Physics Collapse — Fluid, Gravity & Simulation Failures',
-    metaTitle: 'Runway ML Physics Collapse Refund — Fluid Inversion, Gravity Violations',
+    metaTitle: 'Runway ML Physics Collapse Reference — Fluid Inversion, Gravity Violations',
     metaDesc:
       'Runway generated water flowing upward, objects falling the wrong way, or steam not dispersing? That\'s a Physics Simulation Constraint Violation. Document it correctly and get your credits back.',
     technicalTerm: 'Physics Simulation Constraint Violation',
@@ -91,10 +91,10 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:04',
       },
     ],
-    refundStrength: 'HIGH — Physics violations are objectively verifiable and clearly attributable to model failure, not user error.',
+    documentationStrength: 'HIGH — Physics violations are objectively verifiable and clearly attributable to model failure, not user error.',
     faq: [
       {
-        q: 'Will Runway refund credits for physics simulation failures?',
+        q: 'How does Runway support handle credits for physics simulation failures?',
         a: 'Yes, particularly when the failure is objectively verifiable (e.g., fluid moving upward against gravity). Include your Generation ID, timestamp of the failure, and describe it as "Physics Simulation Constraint Violation" to trigger the correct support workflow.',
       },
       {
@@ -110,9 +110,9 @@ export const FAILURES: FailureData[] = [
   {
     slug: 'runway-face-distortion',
     title: 'Runway ML Face Distortion — Facial Landmark Regression Failures',
-    metaTitle: 'Runway ML Face Distortion Refund — Asymmetric Eyes, Facial Drift',
+    metaTitle: 'Runway ML Face Distortion Reference — Asymmetric Eyes, Facial Drift',
     metaDesc:
-      'Runway produced a video with distorted faces, asymmetric eyes, or facial morphing over time? That\'s a Facial Landmark Regression Failure. Use this guide to request your credit refund.',
+      'Runway produced a video with distorted faces, asymmetric eyes, or facial morphing over time? That\'s a Facial Landmark Regression Failure. Use this guide to flag it pre-generation and escalate to support if it happens anyway.',
     technicalTerm: 'Facial Landmark Regression Failure',
     risk: 'CRITICAL',
     shortDesc: 'Asymmetric eye placement, morphological drift across frames, non-Euclidean proportions.',
@@ -132,10 +132,10 @@ export const FAILURES: FailureData[] = [
         timestamp: '0.4s',
       },
     ],
-    refundStrength: 'VERY HIGH — Face distortion is visually unmistakable and clearly makes the output commercially unusable.',
+    documentationStrength: 'VERY HIGH — Face distortion is visually unmistakable and clearly makes the output commercially unusable.',
     faq: [
       {
-        q: 'Does Runway refund for face distortion?',
+        q: 'Will Runway support escalate for face distortion?',
         a: 'Yes. Face distortion is classified as a critical failure mode by Runway support. Reference "Facial Landmark Regression Failure" and include the timestamp where distortion first appears along with your Generation ID.',
       },
       {
@@ -151,7 +151,7 @@ export const FAILURES: FailureData[] = [
   {
     slug: 'runway-text-rendering-failure',
     title: 'Runway ML Text Rendering Failure — Unreadable Glyphs & Typography',
-    metaTitle: 'Runway ML Text Rendering Failure Refund — Unreadable Text, Glyph Artifacts',
+    metaTitle: 'Runway ML Text Rendering Failure Reference — Unreadable Text, Glyph Artifacts',
     metaDesc:
       'Runway generated a video where text is unreadable, letters are garbled, or glyphs are hallucinated? That\'s a Glyph Synthesis & Typography Coherence Failure. Here\'s how to get your credits back.',
     technicalTerm: 'Glyph Synthesis & Typography Coherence Failure',
@@ -178,11 +178,11 @@ export const FAILURES: FailureData[] = [
         timestamp: '0.5s',
       },
     ],
-    refundStrength: 'HIGH — Text rendering failures are objectively verifiable and Runway support acknowledges this as a known limitation.',
+    documentationStrength: 'HIGH — Text rendering failures are objectively verifiable and Runway support acknowledges this as a known limitation.',
     faq: [
       {
-        q: 'Can I get a Runway refund for text that came out garbled?',
-        a: 'Yes. Reference "Glyph Synthesis & Typography Coherence Failure" in your refund request. Runway\'s support team acknowledges text rendering as a known limitation of the video diffusion pipeline, which strengthens refund claims.',
+        q: 'How can I escalate to Runway support for text that came out garbled?',
+        a: 'Yes. Reference "Glyph Synthesis & Typography Coherence Failure" in your support ticket. Runway\'s support team acknowledges text rendering as a known limitation of the video diffusion pipeline, which strengthens support tickets.',
       },
       {
         q: 'Why can\'t Runway render text correctly?',
@@ -197,9 +197,9 @@ export const FAILURES: FailureData[] = [
   {
     slug: 'runway-temporal-flicker',
     title: 'Runway ML Temporal Flicker — Frame Discontinuity & Aliasing',
-    metaTitle: 'Runway ML Temporal Flicker Refund — Stroboscopic Flicker, Frame Artifacts',
+    metaTitle: 'Runway ML Temporal Flicker Reference — Stroboscopic Flicker, Frame Artifacts',
     metaDesc:
-      'Runway video has stroboscopic flickering, frame flashes, or inter-frame luminance discontinuities? That\'s High-Frequency Temporal Aliasing. Document and request your credit refund here.',
+      'Runway video has stroboscopic flickering, frame flashes, or inter-frame luminance discontinuities? That\'s High-Frequency Temporal Aliasing. Catch it before you generate, and document it for support if it happens.',
     technicalTerm: 'High-Frequency Temporal Aliasing & Frame Discontinuity',
     risk: 'MAJOR',
     shortDesc: 'Stroboscopic flickering, inter-frame luminance discontinuities, motion blur artifacts.',
@@ -219,10 +219,10 @@ export const FAILURES: FailureData[] = [
         timestamp: '2.8s',
       },
     ],
-    refundStrength: 'MEDIUM-HIGH — Temporal flicker is clearly perceptible and makes professional use impossible, but may require strong documentation.',
+    documentationStrength: 'MEDIUM-HIGH — Temporal flicker is clearly perceptible and makes professional use impossible, but may require strong documentation.',
     faq: [
       {
-        q: 'Will Runway refund for flickering or flashing video?',
+        q: 'How does Runway support handle for flickering or flashing video?',
         a: 'Yes, when the flicker is severe enough to make the video commercially unusable. Use the technical term "High-Frequency Temporal Aliasing & Frame Discontinuity" and specify the timestamps where flicker occurs and its subjective severity.',
       },
       {
@@ -237,10 +237,10 @@ export const FAILURES: FailureData[] = [
   },
   {
     slug: 'runway-hallucinated-text',
-    title: 'Runway ML Hallucinated Text — Get a Credit Refund',
-    metaTitle: 'Runway ML Garbled Text Refund — Sign / Label / Subtitle Failures',
+    title: 'Runway ML Hallucinated Text — Pre-Generation Risk Reference',
+    metaTitle: 'Runway ML Garbled Text Reference — Sign / Label / Subtitle Failures',
     metaDesc:
-      'Runway Gen-4 produced a video where the sign, label, or text reads as garbled non-letters? This is a Glyph Synthesis Failure. Here\'s how to document and get refunded.',
+      'Runway Gen-4 produced a video where the sign, label, or text reads as garbled non-letters? This is a Glyph Synthesis Failure. Here\'s how to document and get acknowledged.',
     technicalTerm: 'Glyph Synthesis & Semantic Adherence Failure',
     risk: 'MAJOR',
     shortDesc: 'Text in the prompt renders as non-letters, wrong characters, or unreadable glyph soup.',
@@ -265,10 +265,10 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:02',
       },
     ],
-    refundStrength: 'HIGH — Hallucinated text is an explicit prompt-adherence failure and is one of the easier categories to get refunded if the prompt specified the exact text.',
+    documentationStrength: 'HIGH — Hallucinated text is an explicit prompt-adherence failure and is one of the easier categories to get acknowledged if the prompt specified the exact text.',
     faq: [
       {
-        q: 'Will Runway refund for garbled text in a generation?',
+        q: 'How does Runway support handle for garbled text in a generation?',
         a: 'Yes, especially when your prompt specified the exact text that was supposed to render. Use the technical term "Glyph Synthesis & Semantic Adherence Failure" and quote both the prompt-specified text and what was actually rendered, with timestamps.',
       },
       {
@@ -283,8 +283,8 @@ export const FAILURES: FailureData[] = [
   },
   {
     slug: 'runway-camera-jitter',
-    title: 'Runway ML Camera Jitter & Stability Failure — Get a Credit Refund',
-    metaTitle: 'Runway ML Camera Jitter Refund — Unstable Camera, Shake, Pan Stutter',
+    title: 'Runway ML Camera Jitter & Stability Failure — Pre-Generation Risk Reference',
+    metaTitle: 'Runway ML Camera Jitter Reference — Unstable Camera, Shake, Pan Stutter',
     metaDesc:
       'Runway Gen-4 generated camera movement that contradicts your prompt — static prompt with shaky camera, smooth pan with stutter? This is a Camera Path Coherence Failure.',
     technicalTerm: 'Camera Path Coherence Failure',
@@ -311,10 +311,10 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:02',
       },
     ],
-    refundStrength: 'MEDIUM-HIGH — Camera failures are a clear prompt-adherence violation and are usually granted when documented with the shot-type prompt language quoted.',
+    documentationStrength: 'MEDIUM-HIGH — Camera failures are a clear prompt-adherence violation and are usually granted when documented with the shot-type prompt language quoted.',
     faq: [
       {
-        q: 'Will Runway refund for camera shake or stutter?',
+        q: 'How does Runway support handle for camera shake or stutter?',
         a: 'Yes, when the prompted shot description specified the camera behavior (e.g., "static", "smooth", "locked-off") and the generation contradicts it. Quote your camera-direction prompt language alongside the technical failure term "Camera Path Coherence Failure".',
       },
       {
@@ -329,8 +329,8 @@ export const FAILURES: FailureData[] = [
   },
   {
     slug: 'runway-color-drift',
-    title: 'Runway ML Color Drift & Grading Inconsistency — Get a Credit Refund',
-    metaTitle: 'Runway ML Color Drift Refund — Color Cast Shift, Grade Inconsistency',
+    title: 'Runway ML Color Drift & Grading Inconsistency — Pre-Generation Risk Reference',
+    metaTitle: 'Runway ML Color Drift Reference — Color Cast Shift, Grade Inconsistency',
     metaDesc:
       'Runway Gen-4 produced video where the color grade or temperature shifts mid-clip? This is a Tonal Coherence Failure. Here\'s how to document for refund.',
     technicalTerm: 'Tonal Coherence & Color Grading Failure',
@@ -357,11 +357,11 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:04',
       },
     ],
-    refundStrength: 'MEDIUM — Color drift is harder to argue than structural failures, but a refund is achievable when you cite specific timestamp deltas and reference the prompt\'s lighting/color language.',
+    documentationStrength: 'MEDIUM — Color drift is harder to argue than structural failures, but support escalation is achievable when you cite specific timestamp deltas and reference the prompt\'s lighting/color language.',
     faq: [
       {
-        q: 'Will Runway refund for color drift or grading inconsistency?',
-        a: 'Yes, when the drift makes the clip unusable in editorial context. Document the start-frame versus end-frame color difference (use specific terms like "warm-to-cool drift" or "white balance shift"), quote your prompt\'s color/lighting language, and request the refund under "Tonal Coherence Failure".',
+        q: 'How does Runway support handle for color drift or grading inconsistency?',
+        a: 'Yes, when the drift makes the clip unusable in editorial context. Document the start-frame versus end-frame color difference (use specific terms like "warm-to-cool drift" or "white balance shift"), quote your prompt\'s color/lighting language, and request the support escalation under "Tonal Coherence Failure".',
       },
       {
         q: 'Why does Runway color drift across a clip?',
@@ -377,15 +377,15 @@ export const FAILURES: FailureData[] = [
   // ── Luma Dream Machine ─────────────────────────────────────────────────
   {
     slug: 'luma-physics-collapse',
-    title: 'Luma Dream Machine Physics Collapse — Get a Credit Refund',
-    metaTitle: 'Luma AI Physics Refund — Fluid Inversion, Gravity Bug',
+    title: 'Luma Dream Machine Physics Collapse — Pre-Generation Risk Reference',
+    metaTitle: 'Luma AI Physics Reference — Fluid Inversion, Gravity Bug',
     metaDesc:
       'Luma Dream Machine generated water flowing upward, smoke imploding, or gravity violations? This is a Physics Simulation Constraint Violation — Luma\'s most common failure category.',
     technicalTerm: 'Physics Simulation Constraint Violation',
     risk: 'MAJOR',
     shortDesc: 'Particularly common on Luma: water flowing upward, smoke imploding, cloth interpenetration, particle drift.',
     longDesc:
-      'Luma\'s fluid and particle physics is its single most visible weakness. Generations that involve water, smoke, fog, dust, hair, or any soft-body simulation frequently produce non-physical behavior — fluid inversion, smoke moving against airflow, particles that interpenetrate solid surfaces. The model has clearly seen these phenomena in training but lacks a real physics constraint at inference time, so the output drifts toward "plausible-looking-pixels" rather than "physically-coherent-motion." For a refund request, this category has high precedent — Luma support recognises Physics Simulation Constraint Violation as a documented failure mode.',
+      'Luma\'s fluid and particle physics is its single most visible weakness. Generations that involve water, smoke, fog, dust, hair, or any soft-body simulation frequently produce non-physical behavior — fluid inversion, smoke moving against airflow, particles that interpenetrate solid surfaces. The model has clearly seen these phenomena in training but lacks a real physics constraint at inference time, so the output drifts toward "plausible-looking-pixels" rather than "physically-coherent-motion." For a support ticket, this category has high precedent — Luma support recognises Physics Simulation Constraint Violation as a documented failure mode.',
     symptoms: [
       'Water flowing upward or sideways without gravity cause',
       'Smoke or fog moving against indicated air direction',
@@ -405,11 +405,11 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:01 → 0:03',
       },
     ],
-    refundStrength: 'HIGH — Luma support recognises physics failures as a documented refund category; well-timestamped reports approve in 1-3 business days.',
+    documentationStrength: 'HIGH — Luma support recognises physics failures as a documented escalation category; well-timestamped reports approve in 1-3 business days.',
     faq: [
       {
-        q: 'Will Luma refund credits for physics failures?',
-        a: 'Yes. Cite "Physics Simulation Constraint Violation", include the Asset ID, attach a PDF audit report or video clip showing the timestamp where physics violates. Luma support has refund precedent for this category.',
+        q: 'Will Luma support response credits for physics failures?',
+        a: 'Yes. Cite "Physics Simulation Constraint Violation", include the Asset ID, attach a PDF audit report or video clip showing the timestamp where physics violates. Luma support has escalation precedent for this category.',
       },
       {
         q: 'Why does Luma struggle with physics?',
@@ -423,8 +423,8 @@ export const FAILURES: FailureData[] = [
   },
   {
     slug: 'luma-face-distortion',
-    title: 'Luma Dream Machine Face Distortion — Get a Credit Refund',
-    metaTitle: 'Luma AI Face Distortion Refund — Asymmetric Eyes, Drift',
+    title: 'Luma Dream Machine Face Distortion — Pre-Generation Risk Reference',
+    metaTitle: 'Luma AI Face Distortion Reference — Asymmetric Eyes, Drift',
     metaDesc:
       'Luma Dream Machine produced a video with morphing facial features, asymmetric eye placement, or jaw drift between frames? This is a Facial Landmark Regression Failure.',
     technicalTerm: 'Facial Landmark Regression Failure',
@@ -451,11 +451,11 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:01 - 0:03',
       },
     ],
-    refundStrength: 'VERY HIGH — Luma support treats face distortion as a critical-tier failure; documentation with timestamps approves quickly.',
+    documentationStrength: 'VERY HIGH — Luma support treats face distortion as a critical-tier failure; documentation with timestamps approves quickly.',
     faq: [
       {
-        q: 'Will Luma refund credits for face distortion?',
-        a: 'Yes. Use "Facial Landmark Regression Failure" terminology, cite the Asset ID, timestamp the worst drift moment, and attach the PDF audit report. This category has high precedent for refund approval.',
+        q: 'Will Luma support response credits for face distortion?',
+        a: 'Yes. Use "Facial Landmark Regression Failure" terminology, cite the Asset ID, timestamp the worst drift moment, and attach the PDF audit report. This category has high precedent for support acknowledgement.',
       },
       {
         q: 'Why does Luma distort faces?',
@@ -471,15 +471,15 @@ export const FAILURES: FailureData[] = [
   // ── Google Veo ─────────────────────────────────────────────────────────
   {
     slug: 'veo-text-rendering-failure',
-    title: 'Google Veo Hallucinated Text — Get a Credit Refund',
-    metaTitle: 'Google Veo Text Refund — Signs, Labels, Subtitles Garbled',
+    title: 'Google Veo Hallucinated Text — Pre-Generation Risk Reference',
+    metaTitle: 'Google Veo Text Reference — Signs, Labels, Subtitles Garbled',
     metaDesc:
-      'Google Veo 3 produced a video where the sign, label, or screen text renders as garbled non-letters? This is a Glyph Synthesis Failure. Document and request a refund.',
+      'Google Veo 3 produced a video where the sign, label, or screen text renders as garbled non-letters? This is a Glyph Synthesis Failure. Document and request a support response.',
     technicalTerm: 'Glyph Synthesis & Semantic Adherence Failure',
     risk: 'MAJOR',
     shortDesc: 'Text in the prompt renders as non-letters, mirrored glyphs, or unrelated characters in Veo generations.',
     longDesc:
-      'Like all video diffusion models, Google Veo struggles with in-scene text rendering. Signs, labels, screen UI, and t-shirt graphics frequently produce shapes that resemble letters but don\'t form readable words. Veo 3 marginally improved on Gen-3 here but still fails on text >5 characters and on cursive / stylised typography. This is a Glyph Synthesis Failure, and because Veo is a Google product with the most rigorous refund process of the major platforms, well-documented requests approve at a higher rate than competitors.',
+      'Like all video diffusion models, Google Veo struggles with in-scene text rendering. Signs, labels, screen UI, and t-shirt graphics frequently produce shapes that resemble letters but don\'t form readable words. Veo 3 marginally improved on Gen-3 here but still fails on text >5 characters and on cursive / stylised typography. This is a Glyph Synthesis Failure, and because Veo is a Google product with the most rigorous support process of the major platforms, well-documented requests approve at a higher rate than competitors.',
     symptoms: [
       'Storefront sign reads as garbled non-letters',
       'Same word changes characters frame-to-frame',
@@ -499,7 +499,7 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:02',
       },
     ],
-    refundStrength: 'HIGH — Google\'s refund process is the most structured of major AI video platforms; well-documented text-failure cases approve consistently.',
+    documentationStrength: 'HIGH — Google\'s support process is the most structured of major AI video platforms; well-documented text-failure cases approve consistently.',
     faq: [
       {
         q: 'Will Google Veo refund credits for garbled text?',
@@ -517,15 +517,15 @@ export const FAILURES: FailureData[] = [
   },
   {
     slug: 'veo-hand-artifact',
-    title: 'Google Veo Hand & Anatomy Artifact — Get a Credit Refund',
-    metaTitle: 'Google Veo Hand Refund — Six Fingers, Limb Distortion',
+    title: 'Google Veo Hand & Anatomy Artifact — Pre-Generation Risk Reference',
+    metaTitle: 'Google Veo Hand Reference — Six Fingers, Limb Distortion',
     metaDesc:
-      'Google Veo 3 generated a video with six fingers, fused digits, or impossible hand geometry? This is an Anatomical Topology Failure — refund precedent on the Google support side.',
+      'Google Veo 3 generated a video with six fingers, fused digits, or impossible hand geometry? This is an Anatomical Topology Failure — escalation precedent on the Google support side.',
     technicalTerm: 'Anatomical Topology & Coherence Failure',
     risk: 'CRITICAL',
     shortDesc: 'Extra fingers, fused digits, impossible hand geometry in Veo close-up shots.',
     longDesc:
-      'Google Veo represents a generational improvement on hand rendering vs. earlier models, but anatomical topology failures still occur on close-up shots and rapid hand motion. The failure manifests as: supernumerary fingers (6+), fingers fusing together, impossible knuckle articulation, or thumb-finger interpenetration. Veo\'s refund process is structured and well-documented; cases with frame-level evidence consistently approve.',
+      'Google Veo represents a generational improvement on hand rendering vs. earlier models, but anatomical topology failures still occur on close-up shots and rapid hand motion. The failure manifests as: supernumerary fingers (6+), fingers fusing together, impossible knuckle articulation, or thumb-finger interpenetration. Veo\'s support process is structured and well-documented; cases with frame-level evidence consistently approve.',
     symptoms: [
       '6+ fingers visible on a hand',
       'Fingers fused into a single mass',
@@ -545,11 +545,11 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:01',
       },
     ],
-    refundStrength: 'VERY HIGH — Google\'s refund process recognises anatomical topology failures as a critical-tier defect with strong refund precedent.',
+    documentationStrength: 'VERY HIGH — Google\'s support process recognises anatomical topology failures as a critical-tier defect with strong support-escalation precedent.',
     faq: [
       {
         q: 'Will Google Veo refund credits for hand artifacts?',
-        a: 'Yes. Cite "Anatomical Topology Failure", attach a PDF audit report with annotated frames, include the Generation ID. Google\'s structured refund process treats this as a critical-tier defect.',
+        a: 'Yes. Cite "Anatomical Topology Failure", attach a PDF audit report with annotated frames, include the Generation ID. Google\'s structured support process treats this as a critical-tier defect.',
       },
       {
         q: 'Why does Veo still produce hand artifacts?',
@@ -565,15 +565,15 @@ export const FAILURES: FailureData[] = [
   // ── Kling ──────────────────────────────────────────────────────────────
   {
     slug: 'kling-anatomy-artifact',
-    title: 'Kling AI Anatomy & Motion Artifact — Get a Credit Refund',
-    metaTitle: 'Kling AI Refund — Limb Distortion, Motion Failures',
+    title: 'Kling AI Anatomy & Motion Artifact — Pre-Generation Risk Reference',
+    metaTitle: 'Kling AI Reference — Limb Distortion, Motion Failures',
     metaDesc:
-      'Kling 1.6 or 2.0 produced limb morphing, extra joints, or motion that violates anatomical constraints? This is an Anatomical Topology Failure — request a refund.',
+      'Kling 1.6 or 2.0 produced limb morphing, extra joints, or motion that violates anatomical constraints? This is an Anatomical Topology Failure — request a support response.',
     technicalTerm: 'Anatomical Topology & Coherence Failure',
     risk: 'CRITICAL',
     shortDesc: 'Limbs morphing, extra joints, anatomy that violates constraints during Kling motion sequences.',
     longDesc:
-      'Kling produces strong static frames but anatomy degrades quickly under motion. Common failures: arms that bend in two directions, legs that detach and reattach mid-stride, fingers that count up or down across frames, torso geometry collapsing during rotation. Kling\'s refund process is less structured than Google\'s but the platform does honour technical-failure refunds when documented properly.',
+      'Kling produces strong static frames but anatomy degrades quickly under motion. Common failures: arms that bend in two directions, legs that detach and reattach mid-stride, fingers that count up or down across frames, torso geometry collapsing during rotation. Kling\'s support process is less structured than Google\'s but the platform does honour technical-failure refunds when documented properly.',
     symptoms: [
       'Limb count changes across frames',
       'Joint articulation reverses direction mid-motion',
@@ -593,7 +593,7 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:03',
       },
     ],
-    refundStrength: 'HIGH — Kling honours technical-failure refunds; well-documented requests with specific terminology approve within 2-5 business days.',
+    documentationStrength: 'HIGH — Kling honours technical-failure refunds; well-documented requests with specific terminology approve within 2-5 business days.',
     faq: [
       {
         q: 'Will Kling AI refund credits for anatomy failures?',
@@ -614,8 +614,8 @@ export const FAILURES: FailureData[] = [
   // ── OpenAI Sora ────────────────────────────────────────────────────────
   {
     slug: 'sora-physics-collapse',
-    title: 'OpenAI Sora Physics Collapse — Get a Credit Refund',
-    metaTitle: 'OpenAI Sora Physics Refund — Fluid, Gravity, Object Interaction Failures',
+    title: 'OpenAI Sora Physics Collapse — Pre-Generation Risk Reference',
+    metaTitle: 'OpenAI Sora Physics Reference — Fluid, Gravity, Object Interaction Failures',
     metaDesc:
       'OpenAI Sora 2 generated water flowing upward, objects passing through walls, or gravity violations? This is a Physics Simulation Constraint Violation. Document for a credit refund.',
     technicalTerm: 'Physics Simulation Constraint Violation',
@@ -642,10 +642,10 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:04',
       },
     ],
-    refundStrength: 'HIGH — OpenAI honours technical-failure refunds when documented with Generation ID, prompt, and frame-timestamped failure evidence. Physics violations are objectively verifiable.',
+    documentationStrength: 'HIGH — OpenAI honours technical-failure refunds when documented with Generation ID, prompt, and frame-timestamped failure evidence. Physics violations are objectively verifiable.',
     faq: [
       {
-        q: 'Will OpenAI Sora refund credits for physics failures?',
+        q: 'Will OpenAI Sora support response credits for physics failures?',
         a: 'Yes. Route the request through ChatGPT support, cite "Physics Simulation Constraint Violation", include the Generation ID, quote the prompt, and timestamp the moment physics breaks. Objectively-verifiable failures (e.g., fluid moving upward) approve fastest.',
       },
       {
@@ -660,15 +660,15 @@ export const FAILURES: FailureData[] = [
   },
   {
     slug: 'sora-prompt-adherence-failure',
-    title: 'OpenAI Sora Prompt Adherence Failure — Get a Credit Refund',
-    metaTitle: 'OpenAI Sora Prompt Adherence Refund — Output Ignores Prompt Instructions',
+    title: 'OpenAI Sora Prompt Adherence Failure — Pre-Generation Risk Reference',
+    metaTitle: 'OpenAI Sora Prompt Adherence Reference — Output Ignores Prompt Instructions',
     metaDesc:
       'OpenAI Sora 2 ignored your prompt — wrong subject, missing element, wrong setting, or wrong action? This is a Semantic Adherence Failure. Document for a credit refund.',
     technicalTerm: 'Semantic Adherence & Prompt Conditioning Failure',
     risk: 'MAJOR',
     shortDesc: 'Sora output ignores or contradicts explicit prompt instructions — wrong subject, missing key element, wrong setting, or wrong action.',
     longDesc:
-      'Semantic Adherence & Prompt Conditioning Failure occurs when Sora\'s output diverges materially from the prompt specification. Examples: a prompt for "a black cat on a red sofa" returns a tabby on a beige couch; "person waving" returns the person standing still; "rainy night street" returns a sunny afternoon scene. This failure is distinct from physics or anatomy errors — the output may look beautiful and physically coherent while bearing no resemblance to what was requested. The cause is conditioning collapse: the model\'s prompt-encoder loses signal to its visual prior on complex or compound prompts. Adherence failure is the highest-leverage refund category because it\'s objectively verifiable against the prompt text.',
+      'Semantic Adherence & Prompt Conditioning Failure occurs when Sora\'s output diverges materially from the prompt specification. Examples: a prompt for "a black cat on a red sofa" returns a tabby on a beige couch; "person waving" returns the person standing still; "rainy night street" returns a sunny afternoon scene. This failure is distinct from physics or anatomy errors — the output may look beautiful and physically coherent while bearing no resemblance to what was requested. The cause is conditioning collapse: the model\'s prompt-encoder loses signal to its visual prior on complex or compound prompts. Adherence failure is the highest-leverage escalation category because it\'s objectively verifiable against the prompt text.',
     symptoms: [
       'Subject in output differs from subject in prompt (different breed, color, age)',
       'Prompted action absent or replaced with a different action',
@@ -688,11 +688,11 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:00 - 0:10',
       },
     ],
-    refundStrength: 'VERY HIGH — Prompt adherence is the most objectively-verifiable refund category. The prompt is the contract; the output either matches it or it doesn\'t.',
+    documentationStrength: 'VERY HIGH — Prompt adherence is the most objectively-verifiable escalation category. The prompt is the contract; the output either matches it or it doesn\'t.',
     faq: [
       {
-        q: 'Will OpenAI Sora refund credits when the output ignored my prompt?',
-        a: 'Yes. This is the most clear-cut refund category. Quote your exact prompt and itemise which explicit specifications the output ignored. Cite "Semantic Adherence Failure" and include the Generation ID. Adherence failures approve at the highest rate of any category.',
+        q: 'Will OpenAI Sora support response credits when the output ignored my prompt?',
+        a: 'Yes. This is the most clear-cut escalation category. Quote your exact prompt and itemise which explicit specifications the output ignored. Cite "Semantic Adherence Failure" and include the Generation ID. Adherence failures approve at the highest rate of any category.',
       },
       {
         q: 'Why does Sora ignore explicit prompt instructions?',
@@ -708,8 +708,8 @@ export const FAILURES: FailureData[] = [
   // ── Pika Labs ──────────────────────────────────────────────────────────
   {
     slug: 'pika-motion-failure',
-    title: 'Pika Labs Motion Failure — Get a Credit Refund',
-    metaTitle: 'Pika Labs Motion Refund — Stalled Motion, Tempo Drift, Static Output',
+    title: 'Pika Labs Motion Failure — Pre-Generation Risk Reference',
+    metaTitle: 'Pika Labs Motion Reference — Stalled Motion, Tempo Drift, Static Output',
     metaDesc:
       'Pika 2.0 generated stalled motion, jittery movement, or output where the subject barely moves? This is a Motion Coherence Failure. Document for a credit refund.',
     technicalTerm: 'Motion Coherence & Temporal Allocation Failure',
@@ -736,7 +736,7 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:00 - 0:04',
       },
     ],
-    refundStrength: 'HIGH — Motion failures are objectively verifiable against the prompt language. Pika\'s support honours technical-failure refunds when the prompt-output mismatch is quoted explicitly.',
+    documentationStrength: 'HIGH — Motion failures are objectively verifiable against the prompt language. Pika\'s support honours technical-failure refunds when the prompt-output mismatch is quoted explicitly.',
     faq: [
       {
         q: 'Will Pika Labs refund credits for motion failures?',
@@ -756,15 +756,15 @@ export const FAILURES: FailureData[] = [
   // ── MiniMax Hailuo ─────────────────────────────────────────────────────
   {
     slug: 'hailuo-anatomy-artifact',
-    title: 'MiniMax Hailuo Anatomy Artifact — Get a Credit Refund',
-    metaTitle: 'MiniMax Hailuo Refund — Limb Distortion, Face Drift, Anatomy Failures',
+    title: 'MiniMax Hailuo Anatomy Artifact — Pre-Generation Risk Reference',
+    metaTitle: 'MiniMax Hailuo Reference — Limb Distortion, Face Drift, Anatomy Failures',
     metaDesc:
       'MiniMax Hailuo generated limb distortions, fused fingers, or facial drift across frames? This is an Anatomical Topology Failure. Document for a credit refund.',
     technicalTerm: 'Anatomical Topology & Coherence Failure',
     risk: 'CRITICAL',
     shortDesc: 'Limb distortion, fused fingers, supernumerary digits, or facial morphology drift in Hailuo generations.',
     longDesc:
-      'Anatomical Topology & Coherence Failure is Hailuo\'s most common critical-tier failure. The model produces high-quality static frames but anatomy degrades across motion: fingers fuse or multiply, limbs reshape, facial proportions drift between frames. Hailuo (MiniMax) refunds via their developer console support flow; the support team recognises anatomical topology failures as a documented refund category when accompanied by Generation ID, prompt text, and timestamped frame evidence.',
+      'Anatomical Topology & Coherence Failure is Hailuo\'s most common critical-tier failure. The model produces high-quality static frames but anatomy degrades across motion: fingers fuse or multiply, limbs reshape, facial proportions drift between frames. Hailuo (MiniMax) refunds via their developer console support flow; the support team recognises anatomical topology failures as a documented escalation category when accompanied by Generation ID, prompt text, and timestamped frame evidence.',
     symptoms: [
       '6+ fingers or fused digits visible on hand',
       'Limb count changes across the clip duration',
@@ -784,7 +784,7 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:03',
       },
     ],
-    refundStrength: 'VERY HIGH — Hailuo support classifies anatomical topology failures as a critical-tier refund category. Well-documented requests approve within 1-3 business days.',
+    documentationStrength: 'VERY HIGH — Hailuo support classifies anatomical topology failures as a critical-tier escalation category. Well-documented requests approve within 1-3 business days.',
     faq: [
       {
         q: 'Will MiniMax Hailuo refund credits for anatomy failures?',
@@ -804,8 +804,8 @@ export const FAILURES: FailureData[] = [
   // ── Kling text-specific gap-fill ───────────────────────────────────────
   {
     slug: 'kling-text-rendering-failure',
-    title: 'Kling AI Text Rendering Failure — Get a Credit Refund',
-    metaTitle: 'Kling AI Text Refund — Garbled Signs, Labels, Subtitles',
+    title: 'Kling AI Text Rendering Failure — Pre-Generation Risk Reference',
+    metaTitle: 'Kling AI Text Reference — Garbled Signs, Labels, Subtitles',
     metaDesc:
       'Kling 1.6 or 2.0 produced a video where the prompted text renders as garbled glyphs or wrong characters? This is a Glyph Synthesis Failure. Get refunded.',
     technicalTerm: 'Glyph Synthesis & Semantic Adherence Failure',
@@ -832,7 +832,7 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:02',
       },
     ],
-    refundStrength: 'HIGH — Text rendering failures are objectively verifiable against the prompt. Kling support honours these refunds when the prompt\'s exact text and the output\'s rendered text are both quoted.',
+    documentationStrength: 'HIGH — Text rendering failures are objectively verifiable against the prompt. Kling support honours these refunds when the prompt\'s exact text and the output\'s rendered text are both quoted.',
     faq: [
       {
         q: 'Will Kling refund credits for garbled text?',
@@ -852,15 +852,15 @@ export const FAILURES: FailureData[] = [
   // ── Seedance face gap-fill ─────────────────────────────────────────────
   {
     slug: 'seedance-face-distortion',
-    title: 'ByteDance Seedance Face Distortion — Get a Credit Refund',
-    metaTitle: 'Seedance Face Refund — Asymmetric Eyes, Facial Drift',
+    title: 'ByteDance Seedance Face Distortion — Pre-Generation Risk Reference',
+    metaTitle: 'Seedance Face Reference — Asymmetric Eyes, Facial Drift',
     metaDesc:
       'ByteDance Seedance 2.0 generated facial morphing, asymmetric eyes, or expression drift across frames? This is a Facial Landmark Regression Failure.',
     technicalTerm: 'Facial Landmark Regression Failure',
     risk: 'CRITICAL',
     shortDesc: 'Asymmetric eye placement, facial morphing across frames, expression drift in Seedance close-up generations.',
     longDesc:
-      'Seedance produces strong static facial renders but landmark stability degrades across the temporal axis. Eye spacing shifts, jaw geometry reshapes, ear position drifts, and skin texture pixelates inconsistently. The failure is most severe in close-up shots and during head motion or facial expression changes. Seedance\'s refund process is reachable through ByteDance\'s in-app support flow; technical-failure-coded requests with attached PDF audit reports route faster than generic complaints.',
+      'Seedance produces strong static facial renders but landmark stability degrades across the temporal axis. Eye spacing shifts, jaw geometry reshapes, ear position drifts, and skin texture pixelates inconsistently. The failure is most severe in close-up shots and during head motion or facial expression changes. Seedance\'s support process is reachable through ByteDance\'s in-app support flow; technical-failure-coded requests with attached PDF audit reports route faster than generic complaints.',
     symptoms: [
       'Eye spacing changes visibly across the clip',
       'Jawline reshapes during head motion',
@@ -880,11 +880,11 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:01',
       },
     ],
-    refundStrength: 'VERY HIGH — Seedance support classifies facial landmark regression as a critical-tier failure. Documented requests with frame-level evidence approve quickly.',
+    documentationStrength: 'VERY HIGH — Seedance support classifies facial landmark regression as a critical-tier failure. Documented requests with frame-level evidence approve quickly.',
     faq: [
       {
         q: 'Will Seedance refund credits for face distortion?',
-        a: 'Yes. Submit through ByteDance\'s in-app support flow. Use "Facial Landmark Regression Failure" terminology, cite the Generation ID, timestamp the worst-drift frame, and attach a PDF audit report. This is a high-precedent refund category.',
+        a: 'Yes. Submit through ByteDance\'s in-app support flow. Use "Facial Landmark Regression Failure" terminology, cite the Generation ID, timestamp the worst-drift frame, and attach a PDF audit report. This is a high-precedent escalation category.',
       },
       {
         q: 'Why does Seedance distort faces across frames?',
@@ -899,15 +899,15 @@ export const FAILURES: FailureData[] = [
 
   {
     slug: 'seedance-motion-drift',
-    title: 'ByteDance Seedance Motion Drift — Get a Credit Refund',
-    metaTitle: 'Seedance Refund — Motion Drift, Tempo Failure',
+    title: 'ByteDance Seedance Motion Drift — Pre-Generation Risk Reference',
+    metaTitle: 'Seedance Reference — Motion Drift, Tempo Failure',
     metaDesc:
       'ByteDance Seedance 2.0 generated motion that doesn\'t match the prompted action? This is a Motion Coherence Failure. Document the failure for a credit refund.',
     technicalTerm: 'Motion Coherence & Tempo Failure',
     risk: 'MAJOR',
     shortDesc: 'Motion direction or tempo doesn\'t match the prompt; speed shifts or motion stalls during Seedance generations.',
     longDesc:
-      'Seedance produces high visual fidelity but motion coherence is its weak point. Prompted "smooth dolly forward" generates a stutter; "slow pan" accelerates non-linearly; "walking" turns into a jerky shuffle. This is a Motion Coherence & Tempo Failure — the model interprets motion direction from prompt but allocates frame budget inconsistently across the temporal axis. Seedance\'s refund process is reachable through ByteDance\'s in-app support; technical documentation routes faster than complaint-style descriptions.',
+      'Seedance produces high visual fidelity but motion coherence is its weak point. Prompted "smooth dolly forward" generates a stutter; "slow pan" accelerates non-linearly; "walking" turns into a jerky shuffle. This is a Motion Coherence & Tempo Failure — the model interprets motion direction from prompt but allocates frame budget inconsistently across the temporal axis. Seedance\'s support process is reachable through ByteDance\'s in-app support; technical documentation routes faster than complaint-style descriptions.',
     symptoms: [
       'Smooth motion prompts produce stutter or pause',
       'Motion tempo changes within the clip',
@@ -927,7 +927,7 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:01 → 0:03',
       },
     ],
-    refundStrength: 'MEDIUM-HIGH — Seedance honours motion-failure refunds when the prompt explicitly specified motion behavior. Quote the prompt\'s motion language in your request.',
+    documentationStrength: 'MEDIUM-HIGH — Seedance honours motion-failure refunds when the prompt explicitly specified motion behavior. Quote the prompt\'s motion language in your request.',
     faq: [
       {
         q: 'Will Seedance refund credits for motion failures?',
@@ -946,9 +946,9 @@ export const FAILURES: FailureData[] = [
   {
     slug: 'runway-audio-sync-drift',
     title: 'Runway Gen-3 Audio-Video Sync Drift — Refund Guide',
-    metaTitle: 'Runway Audio Drift Refund — Lip Sync Failure, Audio Out of Sync',
+    metaTitle: 'Runway Audio Drift Reference — Lip Sync Failure, Audio Out of Sync',
     metaDesc:
-      'Runway Gen-3 generated a clip where audio drifts out of sync with mouth movement, action, or footstep timing? This is Audio-Visual Temporal Misalignment. Here\'s how to get refunded.',
+      'Runway Gen-3 generated a clip where audio drifts out of sync with mouth movement, action, or footstep timing? This is Audio-Visual Temporal Misalignment. Here\'s how to get acknowledged.',
     technicalTerm: 'Audio-Visual Temporal Misalignment',
     risk: 'CRITICAL',
     shortDesc: 'Audio drift relative to mouth movement, footsteps, or scene events; cumulative timing error across the clip.',
@@ -973,10 +973,10 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:02 → 0:06',
       },
     ],
-    refundStrength: 'HIGH — Runway support recognises audio drift as a generation-pipeline defect, especially when measurable in milliseconds. Always cite the drift magnitude and timestamp.',
+    documentationStrength: 'HIGH — Runway support recognises audio drift as a generation-pipeline defect, especially when measurable in milliseconds. Always cite the drift magnitude and timestamp.',
     faq: [
       {
-        q: 'Does Runway refund audio-sync failures?',
+        q: 'Will Runway support escalate audio-sync failures?',
         a: 'Yes. When you can quote the drift in milliseconds and timestamp the offset, Runway support routinely refunds. Use the term "Audio-Visual Temporal Misalignment" and attach the AVA audit report.',
       },
       {
@@ -992,7 +992,7 @@ export const FAILURES: FailureData[] = [
   {
     slug: 'luma-camera-path-drift',
     title: 'Luma Dream Machine Camera Path Drift — Refund Guide',
-    metaTitle: 'Luma Camera Drift Refund — Camera Trajectory Failure Dream Machine',
+    metaTitle: 'Luma Camera Drift Reference — Camera Trajectory Failure Dream Machine',
     metaDesc:
       'Luma Dream Machine ignored your camera direction (orbit, dolly, push-in) and drifted along a different path? This is Cinematographic Trajectory Failure. Refund guide here.',
     technicalTerm: 'Cinematographic Trajectory Failure',
@@ -1019,10 +1019,10 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:03',
       },
     ],
-    refundStrength: 'VERY HIGH — Luma\'s support staff treat camera-path failure as a recognised flagship-feature defect (camera control is a marketed differentiator).',
+    documentationStrength: 'VERY HIGH — Luma\'s support staff treat camera-path failure as a recognised flagship-feature defect (camera control is a marketed differentiator).',
     faq: [
       {
-        q: 'Does Luma refund credits for camera path failures?',
+        q: 'Does Luma support response credits for camera path failures?',
         a: 'Yes — camera control is a marketed Dream Machine feature, so support takes path-failure complaints seriously. Cite the prompt\'s camera language verbatim and timestamp the divergence.',
       },
       {
@@ -1038,7 +1038,7 @@ export const FAILURES: FailureData[] = [
   {
     slug: 'veo-audio-generation-failure',
     title: 'Google Veo 3 Audio Generation Failure — Refund Guide',
-    metaTitle: 'Veo 3 Audio Failure Refund — Silent, Mismatched, or Wrong Style Audio',
+    metaTitle: 'Veo 3 Audio Failure Reference — Silent, Mismatched, or Wrong Style Audio',
     metaDesc:
       'Veo 3 produced silent, mismatched, or stylistically wrong audio despite generating it natively? This is Multimodal Audio-Visual Conditioning Failure. Refund process here.',
     technicalTerm: 'Multimodal Audio-Visual Conditioning Failure',
@@ -1065,7 +1065,7 @@ export const FAILURES: FailureData[] = [
         timestamp: 'full duration',
       },
     ],
-    refundStrength: 'VERY HIGH — Native audio is Google\'s marketed differentiator for Veo 3. Failure is treatable as feature-defect, not creative-variance.',
+    documentationStrength: 'VERY HIGH — Native audio is Google\'s marketed differentiator for Veo 3. Failure is treatable as feature-defect, not creative-variance.',
     faq: [
       {
         q: 'Does Google refund Veo 3 audio failures?',
@@ -1084,7 +1084,7 @@ export const FAILURES: FailureData[] = [
   {
     slug: 'kling-motion-blur-overload',
     title: 'Kling Motion Blur Overload — Refund Guide',
-    metaTitle: 'Kling Motion Blur Refund — Excessive Blur in Static Scenes',
+    metaTitle: 'Kling Motion Blur Reference — Excessive Blur in Static Scenes',
     metaDesc:
       'Kling generated a clip with heavy motion blur applied to static or slow-moving elements? This is Inappropriate Motion-Vector Field Application. Refund guide.',
     technicalTerm: 'Inappropriate Motion-Vector Field Application',
@@ -1111,7 +1111,7 @@ export const FAILURES: FailureData[] = [
         timestamp: 'full duration',
       },
     ],
-    refundStrength: 'MEDIUM-HIGH — Kling support recognises motion-vector misapplication when you can demonstrate static prompt + blurred output side-by-side.',
+    documentationStrength: 'MEDIUM-HIGH — Kling support recognises motion-vector misapplication when you can demonstrate static prompt + blurred output side-by-side.',
     faq: [
       {
         q: 'Does Kling refund credits for motion-blur over-application?',
@@ -1130,7 +1130,7 @@ export const FAILURES: FailureData[] = [
   {
     slug: 'sora-multi-character-interaction',
     title: 'Sora 2 Multi-Character Interaction Failure — Refund Guide',
-    metaTitle: 'Sora 2 Multi-Character Refund — Body Merging, Identity Collapse',
+    metaTitle: 'Sora 2 Multi-Character Reference — Body Merging, Identity Collapse',
     metaDesc:
       'Sora 2 merged two characters\' bodies during interaction, or lost identity coherence across both subjects? This is Multi-Agent Topology Collapse. Refund guide.',
     technicalTerm: 'Multi-Agent Topology Collapse',
@@ -1157,7 +1157,7 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:01 → 0:04',
       },
     ],
-    refundStrength: 'VERY HIGH — Sora 2 markets identity preservation across subjects; multi-agent collapse is a recognised flagship-feature defect.',
+    documentationStrength: 'VERY HIGH — Sora 2 markets identity preservation across subjects; multi-agent collapse is a recognised flagship-feature defect.',
     faq: [
       {
         q: 'Does OpenAI refund Sora 2 multi-character failures?',
@@ -1176,7 +1176,7 @@ export const FAILURES: FailureData[] = [
   {
     slug: 'pika-lip-sync-failure',
     title: 'Pika Labs Lip Sync Failure — Refund Guide',
-    metaTitle: 'Pika Lip Sync Refund — Mouth Movement Mismatch with Audio',
+    metaTitle: 'Pika Lip Sync Reference — Mouth Movement Mismatch with Audio',
     metaDesc:
       'Pika Labs generated a talking-head clip where mouth shapes don\'t match the audio phonemes? This is Phoneme-Visem Mapping Failure. Refund guide.',
     technicalTerm: 'Phoneme-Viseme Mapping Failure',
@@ -1203,10 +1203,10 @@ export const FAILURES: FailureData[] = [
         timestamp: 'full duration',
       },
     ],
-    refundStrength: 'HIGH — Pika markets lip-sync as a paid-tier feature. Documented phoneme mismatch is grounds for refund.',
+    documentationStrength: 'HIGH — Pika markets lip-sync as a paid-tier feature. Documented phoneme mismatch is grounds for refund.',
     faq: [
       {
-        q: 'Does Pika refund lip-sync failures?',
+        q: 'Does Pika support response lip-sync failures?',
         a: 'Yes — lip-sync is a paid-tier marketed feature on Pika. Support refunds when the user can demonstrate audio-phoneme to visual-viseme mismatch. Reference "Phoneme-Viseme Mapping Failure" in the ticket.',
       },
       {
@@ -1222,7 +1222,7 @@ export const FAILURES: FailureData[] = [
   {
     slug: 'hailuo-camera-shake-artifact',
     title: 'MiniMax Hailuo Camera Shake Artifact — Refund Guide',
-    metaTitle: 'Hailuo Camera Shake Refund — Involuntary Jitter on Static Shots',
+    metaTitle: 'Hailuo Camera Shake Reference — Involuntary Jitter on Static Shots',
     metaDesc:
       'Hailuo generated a static or slow-moving clip with involuntary camera shake or jitter? This is Parasitic Camera-Pose Variance. Refund guide.',
     technicalTerm: 'Parasitic Camera-Pose Variance',
@@ -1249,7 +1249,7 @@ export const FAILURES: FailureData[] = [
         timestamp: 'full duration',
       },
     ],
-    refundStrength: 'MEDIUM-HIGH — Hailuo support honours camera-stability refunds when prompt explicitly specified static or smooth motion.',
+    documentationStrength: 'MEDIUM-HIGH — Hailuo support honours camera-stability refunds when prompt explicitly specified static or smooth motion.',
     faq: [
       {
         q: 'Does Hailuo refund camera-shake failures?',
@@ -1268,7 +1268,7 @@ export const FAILURES: FailureData[] = [
   {
     slug: 'seedance-style-preset-failure',
     title: 'ByteDance Seedance Style Preset Failure — Refund Guide',
-    metaTitle: 'Seedance Style Preset Refund — Style Ignored, Default Render',
+    metaTitle: 'Seedance Style Preset Reference — Style Ignored, Default Render',
     metaDesc:
       'Seedance ignored your chosen style preset (anime, photoreal, cinematic) and rendered in the default style? This is Style Conditioning Bypass. Refund guide.',
     technicalTerm: 'Style Conditioning Bypass',
@@ -1295,7 +1295,7 @@ export const FAILURES: FailureData[] = [
         timestamp: 'full duration',
       },
     ],
-    refundStrength: 'HIGH — Style presets are paid feature tiers. Bypass failures are treatable as feature-defect.',
+    documentationStrength: 'HIGH — Style presets are paid feature tiers. Bypass failures are treatable as feature-defect.',
     faq: [
       {
         q: 'Does Seedance refund style-preset failures?',
@@ -1314,7 +1314,7 @@ export const FAILURES: FailureData[] = [
   {
     slug: 'runway-watermark-bleed',
     title: 'Runway Watermark Bleed-Through — Refund Guide',
-    metaTitle: 'Runway Watermark Refund — Paid Tier Showing Free Watermark',
+    metaTitle: 'Runway Watermark Reference — Paid Tier Showing Free Watermark',
     metaDesc:
       'Runway Standard or Pro plan output showing the free-tier watermark? This is Watermark Pipeline Misrouting. Definitive refund grounds. Guide here.',
     technicalTerm: 'Watermark Pipeline Misrouting',
@@ -1339,10 +1339,10 @@ export const FAILURES: FailureData[] = [
         failure: 'Inconsistent watermarking within single session despite continuous paid status',
       },
     ],
-    refundStrength: 'VERY HIGH — strongest refund grounds in the Runway product. Billing-feature defect, no creative-variance defense available.',
+    documentationStrength: 'VERY HIGH — strongest refund grounds in the Runway product. Billing-feature defect, no creative-variance defense available.',
     faq: [
       {
-        q: 'Does Runway refund watermark-bleed failures?',
+        q: 'Will Runway support escalate watermark-bleed failures?',
         a: 'Yes — this is the strongest refund grounds in the product. Billing-feature defects are not subject to creative-variance defenses. Refunds are routinely instant.',
       },
       {
@@ -1358,7 +1358,7 @@ export const FAILURES: FailureData[] = [
   {
     slug: 'luma-lip-sync-failure',
     title: 'Luma Dream Machine Lip Sync Failure — Refund Guide',
-    metaTitle: 'Luma Lip Sync Refund — Mouth Movement Mismatched with Speech',
+    metaTitle: 'Luma Lip Sync Reference — Mouth Movement Mismatched with Speech',
     metaDesc:
       'Luma Dream Machine generated dialogue clips where lip movement does not match the spoken audio? This is Phoneme-Viseme Mapping Failure. Refund guide.',
     technicalTerm: 'Phoneme-Viseme Mapping Failure',
@@ -1385,10 +1385,10 @@ export const FAILURES: FailureData[] = [
         timestamp: 'full duration',
       },
     ],
-    refundStrength: 'HIGH — Luma Dream Machine markets dialogue capability; lip-sync failure on paid output is treatable as feature defect.',
+    documentationStrength: 'HIGH — Luma Dream Machine markets dialogue capability; lip-sync failure on paid output is treatable as feature defect.',
     faq: [
       {
-        q: 'Does Luma refund lip-sync failures?',
+        q: 'Does Luma support response lip-sync failures?',
         a: 'Yes — Luma support recognises lip-sync as a marketed Dream Machine capability. Cite "Phoneme-Viseme Mapping Failure", attach the audio + visual stills.',
       },
       {
@@ -1404,7 +1404,7 @@ export const FAILURES: FailureData[] = [
   {
     slug: 'sora-watermark-bleed-failure',
     title: 'OpenAI Sora Watermark Bleed — Refund Guide',
-    metaTitle: 'Sora Watermark Bleed Refund — Logo Persists in Paid Output',
+    metaTitle: 'Sora Watermark Bleed Reference — Logo Persists in Paid Output',
     metaDesc:
       'OpenAI Sora generated clips with the C2PA-style watermark or Sora logo bleeding into the visible frame on paid output? This is Provenance Tag Leakage Failure. Refund guide.',
     technicalTerm: 'Provenance Tag Leakage Failure',
@@ -1431,7 +1431,7 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:00 → 0:05',
       },
     ],
-    refundStrength: 'HIGH — Sora paid-tier marketing explicitly promises clean output. Watermark leakage on a paid generation is a clear product defect.',
+    documentationStrength: 'HIGH — Sora paid-tier marketing explicitly promises clean output. Watermark leakage on a paid generation is a clear product defect.',
     faq: [
       {
         q: 'Does OpenAI refund Sora watermark bleed?',
@@ -1442,7 +1442,7 @@ export const FAILURES: FailureData[] = [
         a: 'Sora applies a C2PA-style watermarking layer at render time. On paid-tier, a removal pass strips the visible component, but if the removal pass fails or partially applies, the watermark bleeds into the final encode.',
       },
       {
-        q: 'How do I prove Sora watermark bleed for a refund?',
+        q: 'How do I prove Sora watermark bleed for a support response?',
         a: 'Export a single frame at full resolution, zoom into the affected region, and attach to your refund ticket. AVA auto-detects watermark bleed and generates the still + region annotation.',
       },
     ],
@@ -1450,7 +1450,7 @@ export const FAILURES: FailureData[] = [
   {
     slug: 'runway-prompt-ignored-failure',
     title: 'Runway Prompt Ignored — Refund Guide',
-    metaTitle: 'Runway Prompt Ignored Refund — Text Conditioning Discarded',
+    metaTitle: 'Runway Prompt Ignored Reference — Text Conditioning Discarded',
     metaDesc:
       'Runway Gen-3 generated a clip that ignores the prompt entirely, producing generic output unrelated to the text input? This is Text Conditioning Collapse. Refund guide.',
     technicalTerm: 'Text Conditioning Collapse',
@@ -1477,10 +1477,10 @@ export const FAILURES: FailureData[] = [
         timestamp: 'full duration',
       },
     ],
-    refundStrength: 'HIGH — Total prompt-adherence collapse is the strongest refund case. Runway support cannot defend output that ignores the input entirely.',
+    documentationStrength: 'HIGH — Total prompt-adherence collapse is the strongest refund case. Runway support cannot defend output that ignores the input entirely.',
     faq: [
       {
-        q: 'Does Runway refund prompt-ignored generations?',
+        q: 'Will Runway support escalate prompt-ignored generations?',
         a: 'Yes — Runway support recognises total text-conditioning collapse as a defect. Submit the prompt + output side-by-side and cite "Text Conditioning Collapse".',
       },
       {
@@ -1496,7 +1496,7 @@ export const FAILURES: FailureData[] = [
   {
     slug: 'sora-face-distortion',
     title: 'OpenAI Sora Face Distortion — Refund Guide',
-    metaTitle: 'Sora Face Distortion Refund — Identity Drift, Feature Morphing',
+    metaTitle: 'Sora Face Distortion Reference — Identity Drift, Feature Morphing',
     metaDesc:
       'OpenAI Sora generated a clip where the subject\'s face distorts, morphs, or loses identity coherence across frames? This is Facial Identity Drift. Refund guide.',
     technicalTerm: 'Facial Identity Drift',
@@ -1523,7 +1523,7 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:02 → 0:04',
       },
     ],
-    refundStrength: 'HIGH — Sora is marketed on character consistency. Identity drift on close-up paid output is a clear feature defect.',
+    documentationStrength: 'HIGH — Sora is marketed on character consistency. Identity drift on close-up paid output is a clear feature defect.',
     faq: [
       {
         q: 'Does OpenAI refund Sora identity drift failures?',
@@ -1542,7 +1542,7 @@ export const FAILURES: FailureData[] = [
   {
     slug: 'veo-physics-collapse',
     title: 'Google Veo Physics Collapse — Refund Guide',
-    metaTitle: 'Veo Physics Collapse Refund — Fluid Gravity Newtonian Failure',
+    metaTitle: 'Veo Physics Collapse Reference — Fluid Gravity Newtonian Failure',
     metaDesc:
       'Google Veo generated output where water flows upward, objects float, or physics breaks Newtonian rules? This is Physics Simulation Constraint Violation. Refund guide.',
     technicalTerm: 'Physics Simulation Constraint Violation',
@@ -1569,7 +1569,7 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:04',
       },
     ],
-    refundStrength: 'HIGH — Physics violations are objectively verifiable and contradict Veo\'s marketed photorealism. Strong refund precedent.',
+    documentationStrength: 'HIGH — Physics violations are objectively verifiable and contradict Veo\'s marketed photorealism. Strong escalation precedent.',
     faq: [
       {
         q: 'Will Google refund Veo physics failures?',
@@ -1588,14 +1588,14 @@ export const FAILURES: FailureData[] = [
   {
     slug: 'kling-watermark-bleed',
     title: 'Kling Watermark Bleed — Refund Guide',
-    metaTitle: 'Kling Watermark Refund — Logo Persists After Pro Upgrade',
+    metaTitle: 'Kling Watermark Reference — Logo Persists After Pro Upgrade',
     metaDesc:
       'Kling AI generated a paid-tier video that still has the Kling watermark visible or bleeding into the frame? This is Watermark Removal Pipeline Failure. Refund guide.',
     technicalTerm: 'Watermark Removal Pipeline Failure',
     risk: 'MAJOR',
     shortDesc: 'Kling paid output retains the free-tier watermark, has watermark fragments bleeding into the frame, or shows the watermark intermittently.',
     longDesc:
-      'Watermark Removal Pipeline Failure on Kling occurs when the post-processing step that strips the free-tier watermark from paid output silently fails or runs partially. Paid Kling subscribers should never see the Kling logo on their generated clips — when it appears, the customer paid for a clean output and received the free-tier product. This is a billing-grade defect with very strong refund precedent.',
+      'Watermark Removal Pipeline Failure on Kling occurs when the post-processing step that strips the free-tier watermark from paid output silently fails or runs partially. Paid Kling subscribers should never see the Kling logo on their generated clips — when it appears, the customer paid for a clean output and received the free-tier product. This is a billing-grade defect with very strong escalation precedent.',
     symptoms: [
       'Kling logo visible in the corner of paid output',
       'Watermark fades in and out across the duration',
@@ -1615,7 +1615,7 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:01, 0:04',
       },
     ],
-    refundStrength: 'VERY HIGH — Watermark on paid output is a billing-grade defect. The customer paid the Pro/Premium price and received the free product.',
+    documentationStrength: 'VERY HIGH — Watermark on paid output is a billing-grade defect. The customer paid the Pro/Premium price and received the free product.',
     faq: [
       {
         q: 'Does Kling refund watermark bleed on paid output?',
@@ -1626,7 +1626,7 @@ export const FAILURES: FailureData[] = [
         a: 'Kling renders watermarked output first and applies a separate stripping pass for paid users. Under load or on specific aspect ratios, the strip pass can fail silently or run partially, leaving the watermark fully or fragmentarily visible in the delivered file.',
       },
       {
-        q: 'Can I check for watermark bleed before submitting a refund?',
+        q: 'Can I check for watermark bleed before submitting a support response?',
         a: 'Yes — scrub through the clip frame by frame on the corners where the Kling watermark normally appears. AVA\'s post-generation scanner flags watermark presence in paid output automatically.',
       },
     ],
@@ -1634,7 +1634,7 @@ export const FAILURES: FailureData[] = [
   {
     slug: 'luma-prompt-adherence-failure',
     title: 'Luma Dream Machine Prompt Adherence Failure — Refund Guide',
-    metaTitle: 'Luma Prompt Ignored Refund — Subject Action Style Discarded',
+    metaTitle: 'Luma Prompt Ignored Reference — Subject Action Style Discarded',
     metaDesc:
       'Luma Dream Machine generated a clip that ignores the prompt — wrong subject, wrong action, wrong style? This is Text Conditioning Drift. Refund guide.',
     technicalTerm: 'Text Conditioning Drift',
@@ -1661,10 +1661,10 @@ export const FAILURES: FailureData[] = [
         timestamp: 'full duration',
       },
     ],
-    refundStrength: 'HIGH — Prompt-adherence failure on paid output is a clear feature defect. Luma support honours refund tickets that document specific divergence.',
+    documentationStrength: 'HIGH — Prompt-adherence failure on paid output is a clear feature defect. Luma support honours refund tickets that document specific divergence.',
     faq: [
       {
-        q: 'Does Luma refund prompt-adherence failures?',
+        q: 'Does Luma support response prompt-adherence failures?',
         a: 'Yes — submit the prompt and the output side-by-side, listing each prompt element the model discarded. Cite "Text Conditioning Drift". Luma support recognises this as a generation defect when documented specifically.',
       },
       {
@@ -1680,7 +1680,7 @@ export const FAILURES: FailureData[] = [
   {
     slug: 'pika-physics-collapse',
     title: 'Pika Labs Physics Collapse — Refund Guide',
-    metaTitle: 'Pika Physics Collapse Refund — Fluid Gravity Motion Failure',
+    metaTitle: 'Pika Physics Collapse Reference — Fluid Gravity Motion Failure',
     metaDesc:
       'Pika Labs generated a clip where physics breaks — fluid flows wrong, objects float, gravity inverts? This is Physics Simulation Constraint Violation. Refund guide.',
     technicalTerm: 'Physics Simulation Constraint Violation',
@@ -1707,10 +1707,10 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:03 → 0:05',
       },
     ],
-    refundStrength: 'HIGH — Physics failures on paid Pika output are objectively verifiable and clearly attributable to model error, not user input.',
+    documentationStrength: 'HIGH — Physics failures on paid Pika output are objectively verifiable and clearly attributable to model error, not user input.',
     faq: [
       {
-        q: 'Does Pika refund credits for physics-violation output?',
+        q: 'Does Pika support response credits for physics-violation output?',
         a: 'Yes — Pika support honours refund tickets when physics violations are documented with timestamp evidence. Cite "Physics Simulation Constraint Violation" and include the Generation ID.',
       },
       {
@@ -1726,7 +1726,7 @@ export const FAILURES: FailureData[] = [
   {
     slug: 'sora-text-rendering-failure',
     title: 'OpenAI Sora Text Rendering Failure — Refund Guide',
-    metaTitle: 'Sora Text Rendering Refund — Garbled Letters & Wrong Words',
+    metaTitle: 'Sora Text Rendering Reference — Garbled Letters & Wrong Words',
     metaDesc:
       'OpenAI Sora rendered text as garbled glyphs, wrong words, or unreadable letters in your paid clip? This is OCR-Coupled Token Drift. Refund guide.',
     technicalTerm: 'OCR-Coupled Token Drift',
@@ -1753,11 +1753,11 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:00 → 0:04',
       },
     ],
-    refundStrength: 'HIGH — Text rendering is a documented Sora weakness and OpenAI honours refund tickets when failure is shown in a still frame.',
+    documentationStrength: 'HIGH — Text rendering is a documented Sora weakness and OpenAI honours refund tickets when failure is shown in a still frame.',
     faq: [
       {
         q: 'Does OpenAI refund Sora credits for unreadable text?',
-        a: 'Yes — submit a refund ticket citing "OCR-Coupled Token Drift" with the generation ID and a still frame. OpenAI support typically credits within 48 hours.',
+        a: 'Yes — submit a support response ticket citing "OCR-Coupled Token Drift" with the generation ID and a still frame. OpenAI support typically credits within 48 hours.',
       },
       {
         q: 'Why does Sora struggle to render readable text?',
@@ -1772,7 +1772,7 @@ export const FAILURES: FailureData[] = [
   {
     slug: 'sora-anatomy-artifact',
     title: 'OpenAI Sora Anatomy Artifact — Refund Guide',
-    metaTitle: 'Sora Anatomy Refund — Extra Fingers, Limbs & Body Distortion',
+    metaTitle: 'Sora Anatomy Reference — Extra Fingers, Limbs & Body Distortion',
     metaDesc:
       'OpenAI Sora generated a clip with extra fingers, doubled limbs, or impossible body geometry? This is Skeletal Prior Collapse. Refund guide with evidence template.',
     technicalTerm: 'Skeletal Prior Collapse',
@@ -1799,11 +1799,11 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:02',
       },
     ],
-    refundStrength: 'HIGH — Anatomy artifacts on paid Sora output are visually undeniable and refund tickets are honoured by OpenAI support when timestamp evidence is provided.',
+    documentationStrength: 'HIGH — Anatomy artifacts on paid Sora output are visually undeniable and refund tickets are honoured by OpenAI support when timestamp evidence is provided.',
     faq: [
       {
         q: 'Does OpenAI refund Sora credits for anatomy artifacts?',
-        a: 'Yes — submit a refund ticket citing "Skeletal Prior Collapse" with the generation ID and a still frame showing the artifact. Credit usually issues within 48 hours.',
+        a: 'Yes — submit a support response ticket citing "Skeletal Prior Collapse" with the generation ID and a still frame showing the artifact. Credit usually issues within 48 hours.',
       },
       {
         q: 'Why does Sora generate bodies with extra fingers or limbs?',
@@ -1818,7 +1818,7 @@ export const FAILURES: FailureData[] = [
   {
     slug: 'sora-audio-sync-drift',
     title: 'OpenAI Sora Audio Sync Drift — Refund Guide',
-    metaTitle: 'Sora Audio Sync Refund — Sound Lags or Leads Visual',
+    metaTitle: 'Sora Audio Sync Reference — Sound Lags or Leads Visual',
     metaDesc:
       'OpenAI Sora generated a clip where the audio drifts out of sync with the visual after a few seconds? This is Audio-Visual Temporal Misalignment. Refund guide.',
     technicalTerm: 'Audio-Visual Temporal Misalignment',
@@ -1845,7 +1845,7 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:02 → 0:04',
       },
     ],
-    refundStrength: 'HIGH — Audio sync is a marketed Sora 2 capability. Refund tickets citing temporal misalignment on paid clips are honoured with timestamp evidence.',
+    documentationStrength: 'HIGH — Audio sync is a marketed Sora 2 capability. Refund tickets citing temporal misalignment on paid clips are honoured with timestamp evidence.',
     faq: [
       {
         q: 'Does OpenAI refund Sora audio sync failures?',
@@ -1864,7 +1864,7 @@ export const FAILURES: FailureData[] = [
   {
     slug: 'veo-motion-failure',
     title: 'Google Veo Motion Failure — Refund Guide',
-    metaTitle: 'Veo Motion Failure Refund — Stilted, Frozen, or Repeating Motion',
+    metaTitle: 'Veo Motion Failure Reference — Stilted, Frozen, or Repeating Motion',
     metaDesc:
       'Google Veo generated a clip where motion stalls, repeats, or freezes mid-clip? This is Motion Prior Degeneration. Refund guide with evidence template.',
     technicalTerm: 'Motion Prior Degeneration',
@@ -1891,7 +1891,7 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:00 → 0:04',
       },
     ],
-    refundStrength: 'HIGH — Motion quality is a marketed Veo capability. Refund tickets citing motion-prior degeneration on paid output are honoured with timestamp evidence.',
+    documentationStrength: 'HIGH — Motion quality is a marketed Veo capability. Refund tickets citing motion-prior degeneration on paid output are honoured with timestamp evidence.',
     faq: [
       {
         q: 'Does Google refund Veo motion failures?',
@@ -1910,7 +1910,7 @@ export const FAILURES: FailureData[] = [
   {
     slug: 'kling-lip-sync-failure',
     title: 'Kling Lip Sync Failure — Refund Guide',
-    metaTitle: 'Kling Lip Sync Refund — Mouth Movement Misaligned with Audio',
+    metaTitle: 'Kling Lip Sync Reference — Mouth Movement Misaligned with Audio',
     metaDesc:
       'Kling AI generated a clip where character mouth movement does not match the audio dialogue? This is Phoneme-Viseme Misalignment. Refund guide.',
     technicalTerm: 'Phoneme-Viseme Misalignment',
@@ -1937,7 +1937,7 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:02 → 0:05',
       },
     ],
-    refundStrength: 'HIGH — Lip-sync is a marketed Kling capability for video dubbing and avatar use cases. Refund tickets with paired audio + still frame evidence are honoured.',
+    documentationStrength: 'HIGH — Lip-sync is a marketed Kling capability for video dubbing and avatar use cases. Refund tickets with paired audio + still frame evidence are honoured.',
     faq: [
       {
         q: 'Does Kling refund credits for lip-sync failures?',
@@ -1956,7 +1956,7 @@ export const FAILURES: FailureData[] = [
   {
     slug: 'veo-camera-motion-ignored-failure',
     title: 'Google Veo Camera Motion Ignored — Refund Guide',
-    metaTitle: 'Veo Camera Motion Refund — Dolly Pan Crane Instruction Discarded',
+    metaTitle: 'Veo Camera Motion Reference — Dolly Pan Crane Instruction Discarded',
     metaDesc:
       'Google Veo generated a clip where the requested camera motion (dolly, pan, crane, tracking shot) was ignored and the camera stayed static? This is Camera-Conditioning Failure. Refund guide.',
     technicalTerm: 'Camera-Conditioning Embedding Failure',
@@ -1983,7 +1983,7 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:00 → 0:03',
       },
     ],
-    refundStrength: 'HIGH — Camera control is a marketed Veo capability. Refund tickets citing camera-conditioning failure on a paid generation are honoured.',
+    documentationStrength: 'HIGH — Camera control is a marketed Veo capability. Refund tickets citing camera-conditioning failure on a paid generation are honoured.',
     faq: [
       {
         q: 'Does Google refund Veo camera motion failures?',
@@ -2002,7 +2002,7 @@ export const FAILURES: FailureData[] = [
   {
     slug: 'pika-watermark-bleed',
     title: 'Pika Watermark Bleed — Refund Guide',
-    metaTitle: 'Pika Watermark Refund — Free-Tier Watermark on Paid Output',
+    metaTitle: 'Pika Watermark Reference — Free-Tier Watermark on Paid Output',
     metaDesc:
       'Pika Labs generated a paid clip that still has a watermark? This is Tier-Conditional Watermark Routing failure. Refund guide with template.',
     technicalTerm: 'Tier-Conditional Watermark Routing',
@@ -2023,10 +2023,10 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:00 → 0:04',
       },
     ],
-    refundStrength: 'HIGH — Pika support refunds watermark-on-paid as a billing error within 24h with the generation ID.',
+    documentationStrength: 'HIGH — Pika support refunds watermark-on-paid as a billing error within 24h with the generation ID.',
     faq: [
       {
-        q: 'Will Pika refund credits for watermarked paid output?',
+        q: 'Will Pika support response credits for watermarked paid output?',
         a: 'Yes — open a ticket citing "watermark on paid tier output" with the generation ID. Pika treats this as a billing-system bug and refunds credits without question.',
       },
       {
@@ -2042,7 +2042,7 @@ export const FAILURES: FailureData[] = [
   {
     slug: 'kling-physics-collapse',
     title: 'Kling Physics Collapse — Refund Guide',
-    metaTitle: 'Kling Physics Refund — Gravity, Mass, Collision Failures',
+    metaTitle: 'Kling Physics Reference — Gravity, Mass, Collision Failures',
     metaDesc:
       'Kling generated a clip that violates basic physics — falling objects float, water doesn\'t splash, characters pass through walls? Refund guide with template.',
     technicalTerm: 'Physics Prior Degeneration',
@@ -2069,7 +2069,7 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:01',
       },
     ],
-    refundStrength: 'MODERATE — Kling refunds physics-violation tickets when the failure is unambiguous and timestamped. Ambiguous physics edge-cases get debate from support.',
+    documentationStrength: 'MODERATE — Kling refunds physics-violation tickets when the failure is unambiguous and timestamped. Ambiguous physics edge-cases get debate from support.',
     faq: [
       {
         q: 'Does Kling refund credits for physics failures?',
@@ -2088,14 +2088,14 @@ export const FAILURES: FailureData[] = [
   {
     slug: 'hailuo-physics-collapse',
     title: 'Hailuo (Minimax) Physics Collapse — Refund Guide',
-    metaTitle: 'Hailuo Physics Refund — Minimax Physics Failures',
+    metaTitle: 'Hailuo Physics Reference — Minimax Physics Failures',
     metaDesc:
       'Minimax Hailuo generated a clip with gravity inversion or mass-conservation failures? Refund guide for paid output.',
     technicalTerm: 'Statistical Physics Prior Failure',
     risk: 'MAJOR',
     shortDesc: 'Minimax Hailuo output produces motion that violates basic physics — objects float, mass changes, fluids defy gravity — on paid output.',
     longDesc:
-      'Statistical Physics Prior Failure on Hailuo is the same class of issue as Kling — Minimax\'s model has no physics simulation step. The model is particularly weak on multi-object scenes and fluid dynamics. Hailuo refund policy treats these as defects when timestamped and the prompt didn\'t explicitly request the impossible behaviour.',
+      'Statistical Physics Prior Failure on Hailuo is the same class of issue as Kling — Minimax\'s model has no physics simulation step. The model is particularly weak on multi-object scenes and fluid dynamics. Hailuo support policy treats these as defects when timestamped and the prompt didn\'t explicitly request the impossible behaviour.',
     symptoms: [
       'Object falls upward or stops mid-fall',
       'Liquid pour discontinues',
@@ -2109,7 +2109,7 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:00 → 0:03',
       },
     ],
-    refundStrength: 'MODERATE — Hailuo refunds clear physics violations on paid Pro tier output with timestamp evidence.',
+    documentationStrength: 'MODERATE — Hailuo refunds clear physics violations on paid Pro tier output with timestamp evidence.',
     faq: [
       {
         q: 'Does Minimax refund Hailuo credits for physics failures?',
@@ -2128,7 +2128,7 @@ export const FAILURES: FailureData[] = [
   {
     slug: 'veo-face-distortion',
     title: 'Veo Face Distortion — Refund Guide',
-    metaTitle: 'Google Veo Face Refund — Identity Drift & Feature Distortion',
+    metaTitle: 'Google Veo Face Reference — Identity Drift & Feature Distortion',
     metaDesc:
       'Google Veo generated a clip where the face distorts mid-scene or changes identity across cuts? Refund guide for paid Veo output.',
     technicalTerm: 'Identity Embedding Drift',
@@ -2149,7 +2149,7 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:02',
       },
     ],
-    refundStrength: 'HIGH — Google Veo support refunds face-drift tickets on paid output when timestamps are provided.',
+    documentationStrength: 'HIGH — Google Veo support refunds face-drift tickets on paid output when timestamps are provided.',
     faq: [
       {
         q: 'Does Google refund Veo credits for face distortion?',
@@ -2168,7 +2168,7 @@ export const FAILURES: FailureData[] = [
   {
     slug: 'sora-camera-control-failure',
     title: 'Sora Camera Control Failure — Refund Guide',
-    metaTitle: 'Sora Camera Refund — Camera Motion Ignored on Paid Output',
+    metaTitle: 'Sora Camera Reference — Camera Motion Ignored on Paid Output',
     metaDesc:
       'OpenAI Sora ignored your camera motion direction (dolly, pan, crane)? Refund guide for paid Sora camera-conditioning failures.',
     technicalTerm: 'Camera Conditioning Bypass',
@@ -2189,7 +2189,7 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:00 → 0:05',
       },
     ],
-    refundStrength: 'HIGH — OpenAI refunds Sora camera-conditioning failures on paid output with timestamp + prompt evidence.',
+    documentationStrength: 'HIGH — OpenAI refunds Sora camera-conditioning failures on paid output with timestamp + prompt evidence.',
     faq: [
       {
         q: 'Does OpenAI refund Sora credits for ignored camera motion?',
@@ -2208,7 +2208,7 @@ export const FAILURES: FailureData[] = [
   {
     slug: 'luma-motion-failure',
     title: 'Luma Dream Machine Motion Failure — Refund Guide',
-    metaTitle: 'Luma Motion Refund — Dream Machine Motion Drift & Stutter',
+    metaTitle: 'Luma Motion Reference — Dream Machine Motion Drift & Stutter',
     metaDesc:
       'Luma Dream Machine output has stuttering motion, frozen frames, or motion drift on paid generation? Refund guide.',
     technicalTerm: 'Temporal Coherence Degradation',
@@ -2229,10 +2229,10 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:03',
       },
     ],
-    refundStrength: 'HIGH — Luma refunds temporal-coherence failures on paid Dream Machine output with timestamps.',
+    documentationStrength: 'HIGH — Luma support responses temporal-coherence failures on paid Dream Machine output with timestamps.',
     faq: [
       {
-        q: 'Does Luma refund credits for motion stutter?',
+        q: 'Does Luma support response credits for motion stutter?',
         a: 'Yes — temporal coherence failures are refundable on paid output. Cite "Temporal Coherence Degradation" with the timestamp.',
       },
       {
@@ -2248,7 +2248,7 @@ export const FAILURES: FailureData[] = [
   {
     slug: 'seedance-prompt-adherence-failure',
     title: 'Seedance (ByteDance) Prompt Adherence Failure — Refund Guide',
-    metaTitle: 'Seedance Prompt Refund — ByteDance Prompt Ignored on Paid Output',
+    metaTitle: 'Seedance Prompt Reference — ByteDance Prompt Ignored on Paid Output',
     metaDesc:
       'ByteDance Seedance ignored major parts of your prompt on paid output? Refund guide for prompt-adherence failures.',
     technicalTerm: 'Cross-Attention Prompt Drop',
@@ -2269,7 +2269,7 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:00 → 0:05',
       },
     ],
-    refundStrength: 'HIGH — ByteDance Seedance support refunds prompt-adherence failures on paid output with the prompt and output evidence.',
+    documentationStrength: 'HIGH — ByteDance Seedance support refunds prompt-adherence failures on paid output with the prompt and output evidence.',
     faq: [
       {
         q: 'Does Seedance refund credits for ignored prompts?',
@@ -2287,8 +2287,8 @@ export const FAILURES: FailureData[] = [
   },
   {
     slug: 'veo-anatomy-artifact',
-    title: 'Google Veo Anatomy Artifact — Get a Credit Refund',
-    metaTitle: 'Veo Anatomy Artifact Refund — Extra Limbs, Finger Failures',
+    title: 'Google Veo Anatomy Artifact — Pre-Generation Risk Reference',
+    metaTitle: 'Veo Anatomy Artifact Reference — Extra Limbs, Finger Failures',
     metaDesc:
       'Google Veo 3 generated a video with extra fingers, fused limbs, or impossible joint geometry? This is an Anatomical Topology Failure. Document it and reclaim your credits.',
     technicalTerm: 'Anatomical Topology & Coherence Failure',
@@ -2315,7 +2315,7 @@ export const FAILURES: FailureData[] = [
         timestamp: '1:08',
       },
     ],
-    refundStrength: 'VERY HIGH — Google support treats anatomical artifacts as a recognised critical failure; include the Generation ID and a timestamped failure point.',
+    documentationStrength: 'VERY HIGH — Google support treats anatomical artifacts as a recognised critical failure; include the Generation ID and a timestamped failure point.',
     faq: [
       {
         q: 'Does Google Veo refund credits for anatomy artifacts?',
@@ -2333,8 +2333,8 @@ export const FAILURES: FailureData[] = [
   },
   {
     slug: 'pika-text-rendering-failure',
-    title: 'Pika Labs Text Rendering Failure — Get a Credit Refund',
-    metaTitle: 'Pika Text Rendering Refund — Garbled Letters, Sign Failures',
+    title: 'Pika Labs Text Rendering Failure — Pre-Generation Risk Reference',
+    metaTitle: 'Pika Text Rendering Reference — Garbled Letters, Sign Failures',
     metaDesc:
       'Pika Labs generated a video with garbled signage, scrambled letters, or unreadable text? This is a Glyph Synthesis Failure. Get your credits refunded.',
     technicalTerm: 'Glyph Synthesis & Typographic Coherence Failure',
@@ -2361,10 +2361,10 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:01',
       },
     ],
-    refundStrength: 'HIGH — Pika support recognises text-rendering as a current model limitation; refunds are routinely granted on documented failures.',
+    documentationStrength: 'HIGH — Pika support recognises text-rendering as a current model limitation; refunds are routinely granted on documented failures.',
     faq: [
       {
-        q: 'Does Pika refund credits for text rendering failures?',
+        q: 'Does Pika support response credits for text rendering failures?',
         a: 'Yes. Pika support recognises Glyph Synthesis Failure as a known limitation of the current model. Submit the generation ID, a screenshot of the failed text, and the prompt text used.',
       },
       {
@@ -2379,8 +2379,8 @@ export const FAILURES: FailureData[] = [
   },
   {
     slug: 'hailuo-text-rendering-failure',
-    title: 'Hailuo AI Text Rendering Failure — Get a Credit Refund',
-    metaTitle: 'Hailuo Text Rendering Refund — Garbled Signs, Unreadable Letters',
+    title: 'Hailuo AI Text Rendering Failure — Pre-Generation Risk Reference',
+    metaTitle: 'Hailuo Text Rendering Reference — Garbled Signs, Unreadable Letters',
     metaDesc:
       'Hailuo (MiniMax) generated a video with garbled signage or scrambled in-scene text? This is a Glyph Synthesis Failure. Document it and reclaim your credits.',
     technicalTerm: 'Glyph Synthesis & Typographic Coherence Failure',
@@ -2407,7 +2407,7 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:03',
       },
     ],
-    refundStrength: 'HIGH — Hailuo support recognises text-rendering as a known limitation; refunds are granted with a documented failure.',
+    documentationStrength: 'HIGH — Hailuo support recognises text-rendering as a known limitation; refunds are granted with a documented failure.',
     faq: [
       {
         q: 'Does Hailuo refund credits for text rendering failures?',
@@ -2425,8 +2425,8 @@ export const FAILURES: FailureData[] = [
   },
   {
     slug: 'luma-watermark-bleed',
-    title: 'Luma Dream Machine Watermark Bleed — Get a Credit Refund',
-    metaTitle: 'Luma Dream Machine Watermark Bleed Refund — Ghost Mark Failures',
+    title: 'Luma Dream Machine Watermark Bleed — Pre-Generation Risk Reference',
+    metaTitle: 'Luma Dream Machine Watermark Bleed Reference — Ghost Mark Failures',
     metaDesc:
       'Luma Dream Machine generated a video with a translucent watermark or training-data artifact bleeding into the frame? This is a Training-Data Watermark Leak. Reclaim your credits.',
     technicalTerm: 'Training-Data Watermark Leak',
@@ -2453,11 +2453,11 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:00',
       },
     ],
-    refundStrength: 'VERY HIGH — training-data leakage in commercial output is unambiguously refundable; cite the leak as a deliverability defect.',
+    documentationStrength: 'VERY HIGH — training-data leakage in commercial output is unambiguously refundable; cite the leak as a deliverability defect.',
     faq: [
       {
-        q: 'Does Luma refund credits for watermark bleed?',
-        a: 'Yes. Watermark bleed is a deliverability defect that blocks commercial use. Submit the generation ID with a clear screenshot of the leaked mark; Luma support has a documented refund precedent here.',
+        q: 'Does Luma support response credits for watermark bleed?',
+        a: 'Yes. Watermark bleed is a deliverability defect that blocks commercial use. Submit the generation ID with a clear screenshot of the leaked mark; Luma support has a documented escalation precedent here.',
       },
       {
         q: 'Why does Luma produce stock-footage watermarks?',
@@ -2471,8 +2471,8 @@ export const FAILURES: FailureData[] = [
   },
   {
     slug: 'veo-watermark-bleed',
-    title: 'Google Veo Watermark Bleed — Get a Credit Refund',
-    metaTitle: 'Veo Watermark Bleed Refund — Ghost Logos in Generated Video',
+    title: 'Google Veo Watermark Bleed — Pre-Generation Risk Reference',
+    metaTitle: 'Veo Watermark Bleed Reference — Ghost Logos in Generated Video',
     metaDesc:
       'Google Veo produced a video with a ghost logo, training-data watermark, or stock-footage strip bleeding in? This is a Training-Data Watermark Leak. Get refunded.',
     technicalTerm: 'Training-Data Watermark Leak',
@@ -2499,7 +2499,7 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:03',
       },
     ],
-    refundStrength: 'VERY HIGH — training-data bleed in commercial output is a deliverability defect; Google support refunds with a documented Generation ID.',
+    documentationStrength: 'VERY HIGH — training-data bleed in commercial output is a deliverability defect; Google support refunds with a documented Generation ID.',
     faq: [
       {
         q: 'Does Google Veo refund credits for watermark bleed?',
@@ -2517,8 +2517,8 @@ export const FAILURES: FailureData[] = [
   },
   {
     slug: 'hailuo-prompt-adherence-failure',
-    title: 'Hailuo AI Prompt Adherence Failure — Get a Credit Refund',
-    metaTitle: 'Hailuo Prompt Adherence Refund — Dropped Subjects, Ignored Clauses',
+    title: 'Hailuo AI Prompt Adherence Failure — Pre-Generation Risk Reference',
+    metaTitle: 'Hailuo Prompt Adherence Reference — Dropped Subjects, Ignored Clauses',
     metaDesc:
       'Hailuo (MiniMax) ignored your prompt — wrong subject, dropped clauses, missing scene elements? This is a Compositional Prompt Adherence Failure. Reclaim your credits.',
     technicalTerm: 'Compositional Prompt Adherence Failure',
@@ -2545,7 +2545,7 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:00',
       },
     ],
-    refundStrength: 'HIGH — compositional drops are documentable; Hailuo support refunds when the missing element is named in the prompt.',
+    documentationStrength: 'HIGH — compositional drops are documentable; Hailuo support refunds when the missing element is named in the prompt.',
     faq: [
       {
         q: 'Does Hailuo refund credits for prompt adherence failures?',
@@ -2563,8 +2563,8 @@ export const FAILURES: FailureData[] = [
   },
   {
     slug: 'seedance-physics-collapse',
-    title: 'Seedance Physics Collapse — Get a Credit Refund',
-    metaTitle: 'Seedance Physics Collapse Refund — Impossible Motion, Gravity Failures',
+    title: 'Seedance Physics Collapse — Pre-Generation Risk Reference',
+    metaTitle: 'Seedance Physics Collapse Reference — Impossible Motion, Gravity Failures',
     metaDesc:
       'Seedance generated a video with objects floating, water moving wrong, or impossible momentum? This is a Physics Plausibility Failure. Document it and reclaim your credits.',
     technicalTerm: 'Physical Plausibility & Momentum Coherence Failure',
@@ -2591,7 +2591,7 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:04',
       },
     ],
-    refundStrength: 'VERY HIGH — physics failures are unambiguously refundable; Seedance support treats them as a recognised critical mode.',
+    documentationStrength: 'VERY HIGH — physics failures are unambiguously refundable; Seedance support treats them as a recognised critical mode.',
     faq: [
       {
         q: 'Does Seedance refund credits for physics failures?',
@@ -2609,8 +2609,8 @@ export const FAILURES: FailureData[] = [
   },
   {
     slug: 'luma-anatomy-artifact',
-    title: 'Luma Dream Machine Anatomy Artifact — Get a Credit Refund',
-    metaTitle: 'Luma Anatomy Artifact Refund — Extra Limbs, Finger Failures',
+    title: 'Luma Dream Machine Anatomy Artifact — Pre-Generation Risk Reference',
+    metaTitle: 'Luma Anatomy Artifact Reference — Extra Limbs, Finger Failures',
     metaDesc:
       'Luma Dream Machine generated a video with extra fingers, fused limbs, or impossible joints? This is an Anatomical Topology Failure. Document it and reclaim your credits.',
     technicalTerm: 'Anatomical Topology & Coherence Failure',
@@ -2637,10 +2637,10 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:04',
       },
     ],
-    refundStrength: 'VERY HIGH — anatomy failures are a recognised critical mode; Luma support refunds with the generation ID and timestamped artifact.',
+    documentationStrength: 'VERY HIGH — anatomy failures are a recognised critical mode; Luma support refunds with the generation ID and timestamped artifact.',
     faq: [
       {
-        q: 'Does Luma refund credits for anatomy artifacts?',
+        q: 'Does Luma support response credits for anatomy artifacts?',
         a: 'Yes. Anatomy failures are recognised as a known critical mode. Submit the generation ID, the technical term "Anatomical Topology & Coherence Failure", and a timestamped failure point through the Luma billing portal.',
       },
       {
@@ -2655,8 +2655,8 @@ export const FAILURES: FailureData[] = [
   },
   {
     slug: 'kling-prompt-adherence-failure',
-    title: 'Kling Prompt Adherence Failure — Get a Credit Refund',
-    metaTitle: 'Kling Prompt Adherence Refund — Dropped Subjects, Ignored Clauses',
+    title: 'Kling Prompt Adherence Failure — Pre-Generation Risk Reference',
+    metaTitle: 'Kling Prompt Adherence Reference — Dropped Subjects, Ignored Clauses',
     metaDesc:
       'Kling AI ignored your prompt — wrong subject, missing scene element, dropped clauses? This is a Compositional Prompt Adherence Failure. Reclaim your credits.',
     technicalTerm: 'Compositional Prompt Adherence Failure',
@@ -2683,7 +2683,7 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:00',
       },
     ],
-    refundStrength: 'HIGH — Kling support treats compositional drops as a documentable failure; refunds granted with the prompt text and a screenshot.',
+    documentationStrength: 'HIGH — Kling support treats compositional drops as a documentable failure; refunds granted with the prompt text and a screenshot.',
     faq: [
       {
         q: 'Does Kling refund credits for prompt adherence failures?',
@@ -2701,8 +2701,8 @@ export const FAILURES: FailureData[] = [
   },
   {
     slug: 'seedance-text-rendering-failure',
-    title: 'Seedance Text Rendering Failure — Get a Credit Refund',
-    metaTitle: 'Seedance Text Rendering Refund — Garbled Signs, Unreadable Letters',
+    title: 'Seedance Text Rendering Failure — Pre-Generation Risk Reference',
+    metaTitle: 'Seedance Text Rendering Reference — Garbled Signs, Unreadable Letters',
     metaDesc:
       'Seedance generated a video with garbled signage, scrambled letters, or unreadable on-screen text? This is a Glyph Synthesis Failure. Get refunded.',
     technicalTerm: 'Glyph Synthesis & Typographic Coherence Failure',
@@ -2729,7 +2729,7 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:02',
       },
     ],
-    refundStrength: 'HIGH — Seedance support recognises text-rendering as a current model limitation; refunds are routinely granted on documented failures.',
+    documentationStrength: 'HIGH — Seedance support recognises text-rendering as a current model limitation; refunds are routinely granted on documented failures.',
     faq: [
       {
         q: 'Does Seedance refund credits for text rendering failures?',
@@ -2747,8 +2747,8 @@ export const FAILURES: FailureData[] = [
   },
   {
     slug: 'luma-text-rendering-failure',
-    title: 'Luma Dream Machine Text Rendering Failure — Get a Credit Refund',
-    metaTitle: 'Luma Text Rendering Refund — Garbled Signs, Unreadable Letters',
+    title: 'Luma Dream Machine Text Rendering Failure — Pre-Generation Risk Reference',
+    metaTitle: 'Luma Text Rendering Reference — Garbled Signs, Unreadable Letters',
     metaDesc:
       'Luma Dream Machine produced a video with garbled signage, scrambled letters, or unreadable on-screen text? This is a Glyph Synthesis Failure. Document it and reclaim your credits.',
     technicalTerm: 'Glyph Synthesis & Typographic Coherence Failure',
@@ -2775,10 +2775,10 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:02',
       },
     ],
-    refundStrength: 'HIGH — Luma support recognises text-rendering as a current model limitation; refunds are routinely granted with a documented Generation ID.',
+    documentationStrength: 'HIGH — Luma support recognises text-rendering as a current model limitation; refunds are routinely granted with a documented Generation ID.',
     faq: [
       {
-        q: 'Does Luma refund credits for text rendering failures?',
+        q: 'Does Luma support response credits for text rendering failures?',
         a: 'Yes. Submit the generation ID, prompt text, and a screenshot of the unreadable text region. Luma support recognises Glyph Synthesis Failure as a known mode.',
       },
       {
@@ -2793,8 +2793,8 @@ export const FAILURES: FailureData[] = [
   },
   {
     slug: 'veo-prompt-adherence-failure',
-    title: 'Google Veo Prompt Adherence Failure — Get a Credit Refund',
-    metaTitle: 'Veo Prompt Adherence Refund — Dropped Subjects, Ignored Clauses',
+    title: 'Google Veo Prompt Adherence Failure — Pre-Generation Risk Reference',
+    metaTitle: 'Veo Prompt Adherence Reference — Dropped Subjects, Ignored Clauses',
     metaDesc:
       'Google Veo ignored your prompt — wrong subject, dropped clauses, missing scene elements? This is a Compositional Prompt Adherence Failure. Reclaim your credits.',
     technicalTerm: 'Compositional Prompt Adherence Failure',
@@ -2821,7 +2821,7 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:00',
       },
     ],
-    refundStrength: 'HIGH — Google support refunds compositional drops when the missing element is explicit in the prompt; cite the prompt text and Generation ID.',
+    documentationStrength: 'HIGH — Google support refunds compositional drops when the missing element is explicit in the prompt; cite the prompt text and Generation ID.',
     faq: [
       {
         q: 'Does Google Veo refund credits for prompt adherence failures?',
@@ -2839,8 +2839,8 @@ export const FAILURES: FailureData[] = [
   },
   {
     slug: 'pika-anatomy-artifact',
-    title: 'Pika Labs Anatomy Artifact — Get a Credit Refund',
-    metaTitle: 'Pika Anatomy Artifact Refund — Extra Limbs, Finger Failures',
+    title: 'Pika Labs Anatomy Artifact — Pre-Generation Risk Reference',
+    metaTitle: 'Pika Anatomy Artifact Reference — Extra Limbs, Finger Failures',
     metaDesc:
       'Pika Labs generated a video with extra fingers, fused limbs, or impossible joint geometry? This is an Anatomical Topology Failure. Reclaim your credits.',
     technicalTerm: 'Anatomical Topology & Coherence Failure',
@@ -2867,10 +2867,10 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:04',
       },
     ],
-    refundStrength: 'VERY HIGH — anatomy failures are a recognised critical mode; Pika support refunds with the generation ID and timestamped artifact.',
+    documentationStrength: 'VERY HIGH — anatomy failures are a recognised critical mode; Pika support refunds with the generation ID and timestamped artifact.',
     faq: [
       {
-        q: 'Does Pika refund credits for anatomy artifacts?',
+        q: 'Does Pika support response credits for anatomy artifacts?',
         a: 'Yes. Submit the generation ID, the technical term "Anatomical Topology & Coherence Failure", and a timestamped failure point through Pika support. The failure mode is recognised and routinely refunded.',
       },
       {
@@ -2885,8 +2885,8 @@ export const FAILURES: FailureData[] = [
   },
   {
     slug: 'hailuo-watermark-bleed',
-    title: 'Hailuo AI Watermark Bleed — Get a Credit Refund',
-    metaTitle: 'Hailuo Watermark Bleed Refund — Ghost Logos, Training-Data Leaks',
+    title: 'Hailuo AI Watermark Bleed — Pre-Generation Risk Reference',
+    metaTitle: 'Hailuo Watermark Bleed Reference — Ghost Logos, Training-Data Leaks',
     metaDesc:
       'Hailuo (MiniMax) generated a video with a ghost logo, training-data watermark, or stock-footage bleed? This is a Training-Data Watermark Leak. Get refunded.',
     technicalTerm: 'Training-Data Watermark Leak',
@@ -2913,7 +2913,7 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:00',
       },
     ],
-    refundStrength: 'VERY HIGH — training-data bleed in commercial output is unambiguously refundable; submit the Generation ID with a screenshot.',
+    documentationStrength: 'VERY HIGH — training-data bleed in commercial output is unambiguously refundable; submit the Generation ID with a screenshot.',
     faq: [
       {
         q: 'Does Hailuo refund credits for watermark bleed?',
@@ -2931,8 +2931,8 @@ export const FAILURES: FailureData[] = [
   },
   {
     slug: 'kling-camera-jitter',
-    title: 'Kling Camera Jitter & Tremor Failure — Get a Credit Refund',
-    metaTitle: 'Kling Camera Jitter Refund — Shaky Footage, Unrequested Tremor',
+    title: 'Kling Camera Jitter & Tremor Failure — Pre-Generation Risk Reference',
+    metaTitle: 'Kling Camera Jitter Reference — Shaky Footage, Unrequested Tremor',
     metaDesc:
       'Kling generated a video with shaky, jittery, or unrequested handheld-tremor motion? This is a Camera Path Stability Failure. Reclaim your credits.',
     technicalTerm: 'Camera Path Stability Failure',
@@ -2959,7 +2959,7 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:02',
       },
     ],
-    refundStrength: 'HIGH — Kling support recognises camera-stability failures when the prompt explicitly specifies stable framing.',
+    documentationStrength: 'HIGH — Kling support recognises camera-stability failures when the prompt explicitly specifies stable framing.',
     faq: [
       {
         q: 'Does Kling refund credits for camera jitter?',
@@ -2977,8 +2977,8 @@ export const FAILURES: FailureData[] = [
   },
   {
     slug: 'seedance-anatomy-artifact',
-    title: 'Seedance Anatomy Artifact — Get a Credit Refund',
-    metaTitle: 'Seedance Anatomy Artifact Refund — Extra Limbs, Finger Failures',
+    title: 'Seedance Anatomy Artifact — Pre-Generation Risk Reference',
+    metaTitle: 'Seedance Anatomy Artifact Reference — Extra Limbs, Finger Failures',
     metaDesc:
       'Seedance generated a video with extra fingers, fused limbs, or impossible joints? This is an Anatomical Topology Failure. Document it and reclaim your credits.',
     technicalTerm: 'Anatomical Topology & Coherence Failure',
@@ -3005,7 +3005,7 @@ export const FAILURES: FailureData[] = [
         timestamp: '1:02',
       },
     ],
-    refundStrength: 'VERY HIGH — anatomy failures are a recognised critical mode; Seedance support refunds with the generation ID + timestamped artifact.',
+    documentationStrength: 'VERY HIGH — anatomy failures are a recognised critical mode; Seedance support refunds with the generation ID + timestamped artifact.',
     faq: [
       {
         q: 'Does Seedance refund credits for anatomy artifacts?',
@@ -3023,8 +3023,8 @@ export const FAILURES: FailureData[] = [
   },
   {
     slug: 'runway-style-preset-failure',
-    title: 'Runway ML Style Preset Failure — Get a Credit Refund',
-    metaTitle: 'Runway Style Preset Refund — Ignored Style Cues, Off-Brand Output',
+    title: 'Runway ML Style Preset Failure — Pre-Generation Risk Reference',
+    metaTitle: 'Runway Style Preset Reference — Ignored Style Cues, Off-Brand Output',
     metaDesc:
       'Runway Gen-4 ignored your style preset — wrong aesthetic, missing visual treatment, generic output? This is a Style Conditioning Failure. Reclaim your credits.',
     technicalTerm: 'Style Conditioning & Aesthetic Adherence Failure',
@@ -3051,10 +3051,10 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:00',
       },
     ],
-    refundStrength: 'HIGH — Runway support refunds when style modifiers in the prompt are demonstrably absent in the output.',
+    documentationStrength: 'HIGH — Runway support refunds when style modifiers in the prompt are demonstrably absent in the output.',
     faq: [
       {
-        q: 'Does Runway refund credits for style preset failures?',
+        q: 'Will Runway support escalate credits for style preset failures?',
         a: 'Yes — when the style modifiers in your prompt are explicit and demonstrably absent in the output. Submit the prompt text, generation ID, and a screenshot showing the missing style treatment.',
       },
       {
@@ -3069,8 +3069,8 @@ export const FAILURES: FailureData[] = [
   },
   {
     slug: 'pika-prompt-adherence-failure',
-    title: 'Pika Labs Prompt Adherence Failure — Get a Credit Refund',
-    metaTitle: 'Pika Prompt Adherence Refund — Dropped Subjects, Ignored Clauses',
+    title: 'Pika Labs Prompt Adherence Failure — Pre-Generation Risk Reference',
+    metaTitle: 'Pika Prompt Adherence Reference — Dropped Subjects, Ignored Clauses',
     metaDesc:
       'Pika Labs ignored your prompt — wrong subject, dropped clauses, missing scene elements? This is a Compositional Prompt Adherence Failure. Reclaim your credits.',
     technicalTerm: 'Compositional Prompt Adherence Failure',
@@ -3097,10 +3097,10 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:00',
       },
     ],
-    refundStrength: 'HIGH — Pika support refunds compositional drops when the missing element is explicit in the prompt.',
+    documentationStrength: 'HIGH — Pika support refunds compositional drops when the missing element is explicit in the prompt.',
     faq: [
       {
-        q: 'Does Pika refund credits for prompt adherence failures?',
+        q: 'Does Pika support response credits for prompt adherence failures?',
         a: 'Yes — when the dropped element is explicit in the prompt and demonstrably absent in the output. Submit prompt text + generation ID + screenshot.',
       },
       {
@@ -3115,8 +3115,8 @@ export const FAILURES: FailureData[] = [
   },
   {
     slug: 'veo-color-drift',
-    title: 'Google Veo Color Drift Failure — Get a Credit Refund',
-    metaTitle: 'Veo Color Drift Refund — Hue Shifts, Inconsistent Color Mid-Clip',
+    title: 'Google Veo Color Drift Failure — Pre-Generation Risk Reference',
+    metaTitle: 'Veo Color Drift Reference — Hue Shifts, Inconsistent Color Mid-Clip',
     metaDesc:
       'Google Veo produced a video where colors shift, drift, or change between frames? This is a Temporal Color Coherence Failure. Reclaim your credits.',
     technicalTerm: 'Temporal Color Coherence Failure',
@@ -3143,7 +3143,7 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:02',
       },
     ],
-    refundStrength: 'HIGH — color drift is unambiguously documentable; Google support refunds with the generation ID and a screenshot pair showing the drift.',
+    documentationStrength: 'HIGH — color drift is unambiguously documentable; Google support refunds with the generation ID and a screenshot pair showing the drift.',
     faq: [
       {
         q: 'Does Google Veo refund credits for color drift?',
@@ -3161,8 +3161,8 @@ export const FAILURES: FailureData[] = [
   },
   {
     slug: 'hailuo-lip-sync-failure',
-    title: 'Hailuo AI Lip Sync Failure — Get a Credit Refund',
-    metaTitle: 'Hailuo Lip Sync Refund — Mouth Misaligned with Speech',
+    title: 'Hailuo AI Lip Sync Failure — Pre-Generation Risk Reference',
+    metaTitle: 'Hailuo Lip Sync Reference — Mouth Misaligned with Speech',
     metaDesc:
       'Hailuo (MiniMax) generated a video where the subject\'s mouth movement doesn\'t match the audio? This is a Audio-Visual Lip Sync Failure. Get refunded.',
     technicalTerm: 'Audio-Visual Lip Sync & Phoneme Alignment Failure',
@@ -3189,7 +3189,7 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:03',
       },
     ],
-    refundStrength: 'HIGH — Hailuo support recognises lip-sync drift as a current model limitation; refunds granted on documented audio-visual mismatch.',
+    documentationStrength: 'HIGH — Hailuo support recognises lip-sync drift as a current model limitation; refunds granted on documented audio-visual mismatch.',
     faq: [
       {
         q: 'Does Hailuo refund credits for lip sync failures?',
@@ -3207,10 +3207,10 @@ export const FAILURES: FailureData[] = [
   },
   {
     slug: 'runway-hand-artifact',
-    title: 'Runway ML Hand & Finger Artifact — Get a Credit Refund',
-    metaTitle: 'Runway ML Hand Artifact Refund — Fused Fingers, Wrong Count',
+    title: 'Runway ML Hand & Finger Artifact — Pre-Generation Risk Reference',
+    metaTitle: 'Runway ML Hand Artifact Reference — Fused Fingers, Wrong Count',
     metaDesc:
-      'Runway Gen-4 generated hands with 6 fingers, fused knuckles, or impossible thumb geometry? This is a Hand-Anatomy Topology Failure. Document it correctly and get refunded.',
+      'Runway Gen-4 generated hands with 6 fingers, fused knuckles, or impossible thumb geometry? This is a Hand-Anatomy Topology Failure. Document it correctly and get acknowledged.',
     technicalTerm: 'Hand-Anatomy Topology Failure',
     risk: 'CRITICAL',
     shortDesc: 'Wrong finger count, fused knuckles, thumb pointing backward, palm/back inversion.',
@@ -3235,10 +3235,10 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:03',
       },
     ],
-    refundStrength: 'VERY HIGH — Runway support treats hand failures as a recognised critical mode under their Anatomical Topology category. Refunds routine with timestamped evidence.',
+    documentationStrength: 'VERY HIGH — Runway support treats hand failures as a recognised critical mode under their Anatomical Topology category. Refunds routine with timestamped evidence.',
     faq: [
       {
-        q: 'Does Runway refund credits for hand artifacts?',
+        q: 'Will Runway support escalate credits for hand artifacts?',
         a: 'Yes. Submit the Generation ID with the technical term "Hand-Anatomy Topology Failure" and a timestamp showing the impossible geometry. Runway support classifies this under the same precedent as limb-artifact refunds.',
       },
       {
@@ -3254,8 +3254,8 @@ export const FAILURES: FailureData[] = [
   },
   {
     slug: 'luma-hand-artifact',
-    title: 'Luma Dream Machine Hand Artifact — Get a Credit Refund',
-    metaTitle: 'Luma Dream Machine Hand Artifact Refund — Fused Fingers',
+    title: 'Luma Dream Machine Hand Artifact — Pre-Generation Risk Reference',
+    metaTitle: 'Luma Dream Machine Hand Artifact Reference — Fused Fingers',
     metaDesc:
       'Luma Dream Machine generated hands with wrong finger count, fused knuckles, or impossible thumb geometry? This is a Hand-Anatomy Topology Failure. Get refunded.',
     technicalTerm: 'Hand-Anatomy Topology Failure',
@@ -3282,10 +3282,10 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:03',
       },
     ],
-    refundStrength: 'HIGH — Luma support refunds documented hand-anatomy failures under their per-generation credit policy. Provide the Generation ID and a timestamped frame.',
+    documentationStrength: 'HIGH — Luma support refunds documented hand-anatomy failures under their per-generation credit policy. Provide the Generation ID and a timestamped frame.',
     faq: [
       {
-        q: 'Does Luma refund credits for hand artifacts?',
+        q: 'Does Luma support response credits for hand artifacts?',
         a: 'Yes. Submit the Generation ID, identify the failure as a "Hand-Anatomy Topology Failure," and provide a timestamp. Luma\'s billing support has refunded documented hand failures consistently since the Ray-2 release.',
       },
       {
@@ -3301,8 +3301,8 @@ export const FAILURES: FailureData[] = [
   },
   {
     slug: 'luma-color-drift',
-    title: 'Luma Dream Machine Color Drift — Get a Credit Refund',
-    metaTitle: 'Luma Color Drift Refund — Hue Shift Across Frames',
+    title: 'Luma Dream Machine Color Drift — Pre-Generation Risk Reference',
+    metaTitle: 'Luma Color Drift Reference — Hue Shift Across Frames',
     metaDesc:
       'Luma Dream Machine generated a clip where colors drift from frame to frame — red shifting to orange, blue shifting to teal? This is a Temporal Color Coherence Failure. Get refunded.',
     technicalTerm: 'Temporal Color Coherence Failure',
@@ -3329,10 +3329,10 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:02',
       },
     ],
-    refundStrength: 'HIGH — Luma support refunds color drift on documented commercial / product work. Submit the Generation ID with a paired screenshot at clip start and end.',
+    documentationStrength: 'HIGH — Luma support refunds color drift on documented commercial / product work. Submit the Generation ID with a paired screenshot at clip start and end.',
     faq: [
       {
-        q: 'Does Luma refund credits for color drift?',
+        q: 'Does Luma support response credits for color drift?',
         a: 'Yes. Submit the Generation ID with two screenshots from the start and end of the clip showing the same surface in two distinguishable hues. Luma support recognises color drift as a known failure mode.',
       },
       {
@@ -3348,8 +3348,8 @@ export const FAILURES: FailureData[] = [
   },
   {
     slug: 'luma-camera-jitter',
-    title: 'Luma Dream Machine Camera Jitter — Get a Credit Refund',
-    metaTitle: 'Luma Camera Jitter Refund — Unstable Handheld Artifact',
+    title: 'Luma Dream Machine Camera Jitter — Pre-Generation Risk Reference',
+    metaTitle: 'Luma Camera Jitter Reference — Unstable Handheld Artifact',
     metaDesc:
       'Luma Dream Machine generated a clip with uncommanded camera jitter or shake despite a static-camera prompt? This is a Camera Path Coherence Failure. Get refunded.',
     technicalTerm: 'Camera Path Coherence Failure',
@@ -3376,10 +3376,10 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:02',
       },
     ],
-    refundStrength: 'HIGH — Luma support refunds camera-jitter on documented commercial work. Submit the prompt, Generation ID, and a frame-by-frame screenshot showing the unintended motion.',
+    documentationStrength: 'HIGH — Luma support refunds camera-jitter on documented commercial work. Submit the prompt, Generation ID, and a frame-by-frame screenshot showing the unintended motion.',
     faq: [
       {
-        q: 'Does Luma refund credits for camera jitter?',
+        q: 'Does Luma support response credits for camera jitter?',
         a: 'Yes. Submit the prompt (which must specify static or smooth camera), the Generation ID, and a screen recording showing the unintended motion. Luma\'s billing team refunds documented prompt-camera mismatches.',
       },
       {
@@ -3395,10 +3395,10 @@ export const FAILURES: FailureData[] = [
   },
   {
     slug: 'veo-lip-sync-failure',
-    title: 'Google Veo Lip Sync Failure — Get a Credit Refund',
-    metaTitle: 'Google Veo Lip Sync Refund — Mouth Misaligned with Audio',
+    title: 'Google Veo Lip Sync Failure — Pre-Generation Risk Reference',
+    metaTitle: 'Google Veo Lip Sync Reference — Mouth Misaligned with Audio',
     metaDesc:
-      'Google Veo generated a clip where the subject\'s mouth movement doesn\'t match the audio? This is an Audio-Visual Lip Sync Failure. Document it correctly and get refunded.',
+      'Google Veo generated a clip where the subject\'s mouth movement doesn\'t match the audio? This is an Audio-Visual Lip Sync Failure. Document it correctly and get acknowledged.',
     technicalTerm: 'Audio-Visual Lip Sync & Phoneme Alignment Failure',
     risk: 'MAJOR',
     shortDesc: 'Mouth motion lagging or leading audio, wrong viseme shape, mouth open during silence.',
@@ -3423,7 +3423,7 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:04',
       },
     ],
-    refundStrength: 'HIGH — Google AI Studio billing support refunds documented lip-sync drift through the Veo support flow. Provide Generation ID, prompt, audio track, and a screen recording.',
+    documentationStrength: 'HIGH — Google AI Studio billing support refunds documented lip-sync drift through the Veo support flow. Provide Generation ID, prompt, audio track, and a screen recording.',
     faq: [
       {
         q: 'Does Veo refund credits for lip sync failures?',
@@ -3442,8 +3442,8 @@ export const FAILURES: FailureData[] = [
   },
   {
     slug: 'veo-camera-jitter',
-    title: 'Google Veo Camera Jitter — Get a Credit Refund',
-    metaTitle: 'Google Veo Camera Jitter Refund — Unwanted Handheld Shake',
+    title: 'Google Veo Camera Jitter — Pre-Generation Risk Reference',
+    metaTitle: 'Google Veo Camera Jitter Reference — Unwanted Handheld Shake',
     metaDesc:
       'Google Veo generated a clip with uncommanded camera jitter despite a static-camera prompt? This is a Camera Path Coherence Failure. Get refunded.',
     technicalTerm: 'Camera Path Coherence Failure',
@@ -3470,7 +3470,7 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:02',
       },
     ],
-    refundStrength: 'HIGH — Google AI Studio refunds prompt-camera mismatch on documented commercial work. Submit Generation ID with a frame-by-frame screenshot showing the unintended motion.',
+    documentationStrength: 'HIGH — Google AI Studio refunds prompt-camera mismatch on documented commercial work. Submit Generation ID with a frame-by-frame screenshot showing the unintended motion.',
     faq: [
       {
         q: 'Does Veo refund credits for unwanted camera jitter?',
@@ -3489,8 +3489,8 @@ export const FAILURES: FailureData[] = [
   },
   {
     slug: 'kling-face-distortion',
-    title: 'Kling AI Face Distortion — Get a Credit Refund',
-    metaTitle: 'Kling AI Face Distortion Refund — Identity Drift, Face Morphing',
+    title: 'Kling AI Face Distortion — Pre-Generation Risk Reference',
+    metaTitle: 'Kling AI Face Distortion Reference — Identity Drift, Face Morphing',
     metaDesc:
       'Kling AI generated a clip where a person\'s face morphs, distorts, or changes identity mid-clip? This is an Identity Coherence Failure. Get refunded.',
     technicalTerm: 'Identity Coherence Failure',
@@ -3517,7 +3517,7 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:03',
       },
     ],
-    refundStrength: 'HIGH — Kling support refunds identity coherence failures on documented portrait or commercial work. Submit Generation ID with paired screenshots at clip start and end.',
+    documentationStrength: 'HIGH — Kling support refunds identity coherence failures on documented portrait or commercial work. Submit Generation ID with paired screenshots at clip start and end.',
     faq: [
       {
         q: 'Does Kling refund credits for face distortion?',
@@ -3536,8 +3536,8 @@ export const FAILURES: FailureData[] = [
   },
   {
     slug: 'kling-hand-artifact',
-    title: 'Kling AI Hand & Finger Artifact — Get a Credit Refund',
-    metaTitle: 'Kling AI Hand Artifact Refund — Fused Fingers, Wrong Count',
+    title: 'Kling AI Hand & Finger Artifact — Pre-Generation Risk Reference',
+    metaTitle: 'Kling AI Hand Artifact Reference — Fused Fingers, Wrong Count',
     metaDesc:
       'Kling AI generated hands with 6 fingers, fused knuckles, or impossible thumb geometry? This is a Hand-Anatomy Topology Failure. Get refunded.',
     technicalTerm: 'Hand-Anatomy Topology Failure',
@@ -3564,7 +3564,7 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:02',
       },
     ],
-    refundStrength: 'VERY HIGH — Kling support treats hand failures as a recognised critical mode under their Anatomy refund category. Refunds routine with timestamped evidence.',
+    documentationStrength: 'VERY HIGH — Kling support treats hand failures as a recognised critical mode under their Anatomy escalation category. Refunds routine with timestamped evidence.',
     faq: [
       {
         q: 'Does Kling refund credits for hand artifacts?',
@@ -3583,10 +3583,10 @@ export const FAILURES: FailureData[] = [
   },
   {
     slug: 'sora-lip-sync-failure',
-    title: 'OpenAI Sora Lip Sync Failure — Get a Credit Refund',
-    metaTitle: 'OpenAI Sora Lip Sync Refund — Mouth Misaligned with Audio',
+    title: 'OpenAI Sora Lip Sync Failure — Pre-Generation Risk Reference',
+    metaTitle: 'OpenAI Sora Lip Sync Reference — Mouth Misaligned with Audio',
     metaDesc:
-      'OpenAI Sora 2 generated a clip where the subject\'s mouth motion doesn\'t match the audio? This is an Audio-Visual Lip Sync Failure. Document it correctly and get refunded.',
+      'OpenAI Sora 2 generated a clip where the subject\'s mouth motion doesn\'t match the audio? This is an Audio-Visual Lip Sync Failure. Document it correctly and get acknowledged.',
     technicalTerm: 'Audio-Visual Lip Sync & Phoneme Alignment Failure',
     risk: 'MAJOR',
     shortDesc: 'Mouth motion lagging or leading audio, wrong viseme shape, mouth open during silence.',
@@ -3611,7 +3611,7 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:04',
       },
     ],
-    refundStrength: 'HIGH — OpenAI support refunds documented lip-sync drift on Sora 2 through the standard credit-refund flow. Provide Generation ID, prompt, audio track, and screen recording.',
+    documentationStrength: 'HIGH — OpenAI support refunds documented lip-sync drift on Sora 2 through the standard credit-refund flow. Provide Generation ID, prompt, audio track, and screen recording.',
     faq: [
       {
         q: 'Does Sora 2 refund credits for lip sync failures?',
@@ -3630,8 +3630,8 @@ export const FAILURES: FailureData[] = [
   },
   {
     slug: 'sora-color-drift',
-    title: 'OpenAI Sora Color Drift — Get a Credit Refund',
-    metaTitle: 'OpenAI Sora Color Drift Refund — Hue Shift Across Frames',
+    title: 'OpenAI Sora Color Drift — Pre-Generation Risk Reference',
+    metaTitle: 'OpenAI Sora Color Drift Reference — Hue Shift Across Frames',
     metaDesc:
       'OpenAI Sora 2 generated a clip where colors drift from frame to frame — red shifting to orange, white balance wandering? This is a Temporal Color Coherence Failure. Get refunded.',
     technicalTerm: 'Temporal Color Coherence Failure',
@@ -3658,7 +3658,7 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:02',
       },
     ],
-    refundStrength: 'HIGH — OpenAI support refunds color drift on documented commercial work. Submit the Generation ID with paired screenshots showing the same surface in two distinguishable hues.',
+    documentationStrength: 'HIGH — OpenAI support refunds color drift on documented commercial work. Submit the Generation ID with paired screenshots showing the same surface in two distinguishable hues.',
     faq: [
       {
         q: 'Does Sora 2 refund credits for color drift?',
@@ -3677,8 +3677,8 @@ export const FAILURES: FailureData[] = [
   },
   {
     slug: 'sora-hand-artifact',
-    title: 'OpenAI Sora Hand & Finger Artifact — Get a Credit Refund',
-    metaTitle: 'OpenAI Sora Hand Artifact Refund — Wrong Finger Count',
+    title: 'OpenAI Sora Hand & Finger Artifact — Pre-Generation Risk Reference',
+    metaTitle: 'OpenAI Sora Hand Artifact Reference — Wrong Finger Count',
     metaDesc:
       'OpenAI Sora 2 generated hands with 6 fingers, fused knuckles, or impossible geometry? This is a Hand-Anatomy Topology Failure. Get refunded.',
     technicalTerm: 'Hand-Anatomy Topology Failure',
@@ -3705,7 +3705,7 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:03',
       },
     ],
-    refundStrength: 'VERY HIGH — OpenAI support treats hand failures as a recognised critical mode under their Anatomical Topology refund category. Refunds routine with timestamped evidence.',
+    documentationStrength: 'VERY HIGH — OpenAI support treats hand failures as a recognised critical mode under their Anatomical Topology escalation category. Refunds routine with timestamped evidence.',
     faq: [
       {
         q: 'Does Sora 2 refund credits for hand artifacts?',
@@ -3724,8 +3724,8 @@ export const FAILURES: FailureData[] = [
   },
   {
     slug: 'pika-face-distortion',
-    title: 'Pika Labs Face Distortion — Get a Credit Refund',
-    metaTitle: 'Pika Labs Face Distortion Refund — Identity Drift, Morphing',
+    title: 'Pika Labs Face Distortion — Pre-Generation Risk Reference',
+    metaTitle: 'Pika Labs Face Distortion Reference — Identity Drift, Morphing',
     metaDesc:
       'Pika Labs generated a clip where a person\'s face morphs, distorts, or changes identity mid-clip? This is an Identity Coherence Failure. Get refunded.',
     technicalTerm: 'Identity Coherence Failure',
@@ -3752,10 +3752,10 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:02',
       },
     ],
-    refundStrength: 'HIGH — Pika support refunds identity coherence failures on documented portrait or commercial work. Submit Generation ID with paired screenshots at clip start and end.',
+    documentationStrength: 'HIGH — Pika support refunds identity coherence failures on documented portrait or commercial work. Submit Generation ID with paired screenshots at clip start and end.',
     faq: [
       {
-        q: 'Does Pika refund credits for face distortion?',
+        q: 'Does Pika support response credits for face distortion?',
         a: 'Yes. Submit the Generation ID with two screenshots — clip start and end — showing the same subject with visibly different facial structure. Pika support refunds identity drift on documented commercial work.',
       },
       {
@@ -3771,8 +3771,8 @@ export const FAILURES: FailureData[] = [
   },
   {
     slug: 'pika-hand-artifact',
-    title: 'Pika Labs Hand & Finger Artifact — Get a Credit Refund',
-    metaTitle: 'Pika Labs Hand Artifact Refund — Fused Fingers, Wrong Count',
+    title: 'Pika Labs Hand & Finger Artifact — Pre-Generation Risk Reference',
+    metaTitle: 'Pika Labs Hand Artifact Reference — Fused Fingers, Wrong Count',
     metaDesc:
       'Pika Labs generated hands with 6 fingers, fused knuckles, or impossible thumb geometry? This is a Hand-Anatomy Topology Failure. Get refunded.',
     technicalTerm: 'Hand-Anatomy Topology Failure',
@@ -3799,10 +3799,10 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:01',
       },
     ],
-    refundStrength: 'VERY HIGH — Pika support treats hand failures as a recognised critical mode under their Anatomy refund category. Refunds routine with timestamped evidence.',
+    documentationStrength: 'VERY HIGH — Pika support treats hand failures as a recognised critical mode under their Anatomy escalation category. Refunds routine with timestamped evidence.',
     faq: [
       {
-        q: 'Does Pika refund credits for hand artifacts?',
+        q: 'Does Pika support response credits for hand artifacts?',
         a: 'Yes. Submit the Generation ID with the technical term "Hand-Anatomy Topology Failure" and a timestamped screenshot of the impossible geometry. Pika support refunds documented hand failures under their Anatomy category.',
       },
       {
@@ -3818,8 +3818,8 @@ export const FAILURES: FailureData[] = [
   },
   {
     slug: 'hailuo-face-distortion',
-    title: 'Hailuo AI Face Distortion — Get a Credit Refund',
-    metaTitle: 'Hailuo AI Face Distortion Refund — Identity Drift, Morphing',
+    title: 'Hailuo AI Face Distortion — Pre-Generation Risk Reference',
+    metaTitle: 'Hailuo AI Face Distortion Reference — Identity Drift, Morphing',
     metaDesc:
       'Hailuo (MiniMax) generated a clip where a person\'s face morphs, distorts, or changes identity mid-clip? This is an Identity Coherence Failure. Get refunded.',
     technicalTerm: 'Identity Coherence Failure',
@@ -3846,7 +3846,7 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:03',
       },
     ],
-    refundStrength: 'HIGH — Hailuo support refunds identity coherence failures on documented portrait or commercial work. Submit Generation ID with paired screenshots.',
+    documentationStrength: 'HIGH — Hailuo support refunds identity coherence failures on documented portrait or commercial work. Submit Generation ID with paired screenshots.',
     faq: [
       {
         q: 'Does Hailuo refund credits for face distortion?',
@@ -3865,8 +3865,8 @@ export const FAILURES: FailureData[] = [
   },
   {
     slug: 'seedance-lip-sync-failure',
-    title: 'ByteDance Seedance Lip Sync Failure — Get a Credit Refund',
-    metaTitle: 'Seedance Lip Sync Refund — Mouth Misaligned with Audio',
+    title: 'ByteDance Seedance Lip Sync Failure — Pre-Generation Risk Reference',
+    metaTitle: 'Seedance Lip Sync Reference — Mouth Misaligned with Audio',
     metaDesc:
       'ByteDance Seedance generated a clip where the subject\'s mouth motion doesn\'t match the audio? This is an Audio-Visual Lip Sync Failure. Get refunded.',
     technicalTerm: 'Audio-Visual Lip Sync & Phoneme Alignment Failure',
@@ -3893,7 +3893,7 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:04',
       },
     ],
-    refundStrength: 'HIGH — Seedance support refunds documented lip-sync drift on dialogue prompts. Provide Generation ID, prompt, audio track, and a screen recording showing the mismatch.',
+    documentationStrength: 'HIGH — Seedance support refunds documented lip-sync drift on dialogue prompts. Provide Generation ID, prompt, audio track, and a screen recording showing the mismatch.',
     faq: [
       {
         q: 'Does Seedance refund credits for lip sync failures?',
@@ -3912,8 +3912,8 @@ export const FAILURES: FailureData[] = [
   },
   {
     slug: 'kling-color-drift',
-    title: 'Kling AI Color Drift — Get a Credit Refund',
-    metaTitle: 'Kling AI Color Drift Refund — Hue Shift Across Frames',
+    title: 'Kling AI Color Drift — Pre-Generation Risk Reference',
+    metaTitle: 'Kling AI Color Drift Reference — Hue Shift Across Frames',
     metaDesc:
       'Kling 1.6 generated a clip where colors drift from frame to frame — red shifting to orange, white balance wandering? This is a Temporal Color Coherence Failure. Get refunded.',
     technicalTerm: 'Temporal Color Coherence Failure',
@@ -3940,7 +3940,7 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:02',
       },
     ],
-    refundStrength: 'HIGH — Kling support refunds color drift on documented commercial work. Submit Generation ID with paired screenshots from clip start and end.',
+    documentationStrength: 'HIGH — Kling support refunds color drift on documented commercial work. Submit Generation ID with paired screenshots from clip start and end.',
     faq: [
       {
         q: 'Does Kling refund credits for color drift?',
@@ -3959,8 +3959,8 @@ export const FAILURES: FailureData[] = [
   },
   {
     slug: 'pika-color-drift',
-    title: 'Pika Labs Color Drift — Get a Credit Refund',
-    metaTitle: 'Pika Labs Color Drift Refund — Hue Shift Across Frames',
+    title: 'Pika Labs Color Drift — Pre-Generation Risk Reference',
+    metaTitle: 'Pika Labs Color Drift Reference — Hue Shift Across Frames',
     metaDesc:
       'Pika Labs generated a clip where colors drift from frame to frame — red shifting to orange, white balance wandering? This is a Temporal Color Coherence Failure. Get refunded.',
     technicalTerm: 'Temporal Color Coherence Failure',
@@ -3987,10 +3987,10 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:02',
       },
     ],
-    refundStrength: 'HIGH — Pika support refunds color drift on documented commercial work. Submit Generation ID with paired screenshots showing the same surface in distinguishable hues.',
+    documentationStrength: 'HIGH — Pika support refunds color drift on documented commercial work. Submit Generation ID with paired screenshots showing the same surface in distinguishable hues.',
     faq: [
       {
-        q: 'Does Pika refund credits for color drift?',
+        q: 'Does Pika support response credits for color drift?',
         a: 'Yes. Submit the Generation ID with two screenshots from the start and end of the clip showing the same surface in visibly different hues. Pika support recognises color drift as a known temporal coherence issue.',
       },
       {
@@ -4006,8 +4006,8 @@ export const FAILURES: FailureData[] = [
   },
   {
     slug: 'hailuo-color-drift',
-    title: 'Hailuo AI Color Drift — Get a Credit Refund',
-    metaTitle: 'Hailuo Color Drift Refund — Hue Shift Across Frames',
+    title: 'Hailuo AI Color Drift — Pre-Generation Risk Reference',
+    metaTitle: 'Hailuo Color Drift Reference — Hue Shift Across Frames',
     metaDesc:
       'Hailuo (MiniMax) generated a clip where colors drift from frame to frame — red shifting to orange, white balance wandering? This is a Temporal Color Coherence Failure. Get refunded.',
     technicalTerm: 'Temporal Color Coherence Failure',
@@ -4034,7 +4034,7 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:02',
       },
     ],
-    refundStrength: 'HIGH — Hailuo support refunds color drift on documented commercial work. Skin-tone drift is treated as a recognised failure mode under their color-coherence refund policy.',
+    documentationStrength: 'HIGH — Hailuo support refunds color drift on documented commercial work. Skin-tone drift is treated as a recognised failure mode under their color-coherence support policy.',
     faq: [
       {
         q: 'Does Hailuo refund credits for color drift?',
@@ -4053,8 +4053,8 @@ export const FAILURES: FailureData[] = [
   },
   {
     slug: 'seedance-color-drift',
-    title: 'ByteDance Seedance Color Drift — Get a Credit Refund',
-    metaTitle: 'Seedance Color Drift Refund — Hue Shift Across Frames',
+    title: 'ByteDance Seedance Color Drift — Pre-Generation Risk Reference',
+    metaTitle: 'Seedance Color Drift Reference — Hue Shift Across Frames',
     metaDesc:
       'ByteDance Seedance generated a clip where colors drift from frame to frame? This is a Temporal Color Coherence Failure. Get refunded.',
     technicalTerm: 'Temporal Color Coherence Failure',
@@ -4081,7 +4081,7 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:02',
       },
     ],
-    refundStrength: 'HIGH — Seedance support refunds color drift on documented commercial work. Submit Generation ID with paired screenshots showing the same surface in distinguishable hues.',
+    documentationStrength: 'HIGH — Seedance support refunds color drift on documented commercial work. Submit Generation ID with paired screenshots showing the same surface in distinguishable hues.',
     faq: [
       {
         q: 'Does Seedance refund credits for color drift?',
@@ -4100,8 +4100,8 @@ export const FAILURES: FailureData[] = [
   },
   {
     slug: 'pika-camera-jitter',
-    title: 'Pika Labs Camera Jitter — Get a Credit Refund',
-    metaTitle: 'Pika Labs Camera Jitter Refund — Unwanted Handheld Shake',
+    title: 'Pika Labs Camera Jitter — Pre-Generation Risk Reference',
+    metaTitle: 'Pika Labs Camera Jitter Reference — Unwanted Handheld Shake',
     metaDesc:
       'Pika Labs generated a clip with uncommanded camera jitter despite a static-camera prompt? This is a Camera Path Coherence Failure. Get refunded.',
     technicalTerm: 'Camera Path Coherence Failure',
@@ -4128,10 +4128,10 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:02',
       },
     ],
-    refundStrength: 'HIGH — Pika support refunds camera-jitter on documented commercial work. Submit prompt + Generation ID + frame-by-frame screenshot showing unintended motion.',
+    documentationStrength: 'HIGH — Pika support refunds camera-jitter on documented commercial work. Submit prompt + Generation ID + frame-by-frame screenshot showing unintended motion.',
     faq: [
       {
-        q: 'Does Pika refund credits for camera jitter?',
+        q: 'Does Pika support response credits for camera jitter?',
         a: 'Yes. Submit the prompt (must specify static or smooth camera), Generation ID, and a screen recording showing the unintended motion. Pika support refunds documented prompt-camera mismatches.',
       },
       {
@@ -4147,8 +4147,8 @@ export const FAILURES: FailureData[] = [
   },
   {
     slug: 'seedance-camera-jitter',
-    title: 'ByteDance Seedance Camera Jitter — Get a Credit Refund',
-    metaTitle: 'Seedance Camera Jitter Refund — Unwanted Handheld Shake',
+    title: 'ByteDance Seedance Camera Jitter — Pre-Generation Risk Reference',
+    metaTitle: 'Seedance Camera Jitter Reference — Unwanted Handheld Shake',
     metaDesc:
       'ByteDance Seedance generated a clip with uncommanded camera jitter despite a static-camera prompt? This is a Camera Path Coherence Failure. Get refunded.',
     technicalTerm: 'Camera Path Coherence Failure',
@@ -4175,7 +4175,7 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:00',
       },
     ],
-    refundStrength: 'HIGH — Seedance support refunds prompt-camera mismatch on documented commercial work. Submit Generation ID with frame-by-frame screenshot showing unintended motion.',
+    documentationStrength: 'HIGH — Seedance support refunds prompt-camera mismatch on documented commercial work. Submit Generation ID with frame-by-frame screenshot showing unintended motion.',
     faq: [
       {
         q: 'Does Seedance refund credits for unwanted camera jitter?',
@@ -4194,8 +4194,8 @@ export const FAILURES: FailureData[] = [
   },
   {
     slug: 'seedance-watermark-bleed',
-    title: 'ByteDance Seedance Watermark Bleed — Get a Credit Refund',
-    metaTitle: 'Seedance Watermark Bleed Refund — Visible Brand Overlay',
+    title: 'ByteDance Seedance Watermark Bleed — Pre-Generation Risk Reference',
+    metaTitle: 'Seedance Watermark Bleed Reference — Visible Brand Overlay',
     metaDesc:
       'ByteDance Seedance output has a visible watermark, logo, or brand bleed despite paid-tier generation? This is a Watermark Bleed Failure. Get refunded.',
     technicalTerm: 'Watermark Bleed Failure',
@@ -4222,7 +4222,7 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:03',
       },
     ],
-    refundStrength: 'VERY HIGH — Seedance support treats watermark bleed as a recognised critical failure (legal exposure for the user). Refunds routine with Generation ID + screenshot.',
+    documentationStrength: 'VERY HIGH — Seedance support treats watermark bleed as a recognised critical failure (legal exposure for the user). Refunds routine with Generation ID + screenshot.',
     faq: [
       {
         q: 'Does Seedance refund credits for watermark bleed?',
@@ -4241,8 +4241,8 @@ export const FAILURES: FailureData[] = [
   },
   {
     slug: 'seedance-hand-artifact',
-    title: 'ByteDance Seedance Hand & Finger Artifact — Get a Credit Refund',
-    metaTitle: 'Seedance Hand Artifact Refund — Fused Fingers, Wrong Count',
+    title: 'ByteDance Seedance Hand & Finger Artifact — Pre-Generation Risk Reference',
+    metaTitle: 'Seedance Hand Artifact Reference — Fused Fingers, Wrong Count',
     metaDesc:
       'ByteDance Seedance generated hands with 6 fingers, fused knuckles, or impossible thumb geometry? This is a Hand-Anatomy Topology Failure. Get refunded.',
     technicalTerm: 'Hand-Anatomy Topology Failure',
@@ -4269,7 +4269,7 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:01',
       },
     ],
-    refundStrength: 'VERY HIGH — Seedance support treats hand failures as a recognised critical mode under their Anatomical Topology refund category. Refunds routine with timestamped evidence.',
+    documentationStrength: 'VERY HIGH — Seedance support treats hand failures as a recognised critical mode under their Anatomical Topology escalation category. Refunds routine with timestamped evidence.',
     faq: [
       {
         q: 'Does Seedance refund credits for hand artifacts?',
@@ -4288,8 +4288,8 @@ export const FAILURES: FailureData[] = [
   },
   {
     slug: 'hailuo-hand-artifact',
-    title: 'Hailuo AI Hand & Finger Artifact — Get a Credit Refund',
-    metaTitle: 'Hailuo AI Hand Artifact Refund — Fused Fingers, Wrong Count',
+    title: 'Hailuo AI Hand & Finger Artifact — Pre-Generation Risk Reference',
+    metaTitle: 'Hailuo AI Hand Artifact Reference — Fused Fingers, Wrong Count',
     metaDesc:
       'Hailuo (MiniMax) generated hands with 6 fingers, fused knuckles, or impossible thumb geometry? This is a Hand-Anatomy Topology Failure. Get refunded.',
     technicalTerm: 'Hand-Anatomy Topology Failure',
@@ -4316,7 +4316,7 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:01',
       },
     ],
-    refundStrength: 'VERY HIGH — Hailuo support treats hand failures as a recognised critical mode under their Anatomical Topology refund category. Refunds routine with timestamped evidence.',
+    documentationStrength: 'VERY HIGH — Hailuo support treats hand failures as a recognised critical mode under their Anatomical Topology escalation category. Refunds routine with timestamped evidence.',
     faq: [
       {
         q: 'Does Hailuo refund credits for hand artifacts?',
@@ -4335,8 +4335,8 @@ export const FAILURES: FailureData[] = [
   },
   {
     slug: 'vidu-anatomy-artifact',
-    title: 'Vidu Anatomy Artifact — Get a Credit Refund',
-    metaTitle: 'Vidu Anatomy Artifact Refund — Extra Limbs, Skeletal Failures',
+    title: 'Vidu Anatomy Artifact — Pre-Generation Risk Reference',
+    metaTitle: 'Vidu Anatomy Artifact Reference — Extra Limbs, Skeletal Failures',
     metaDesc:
       'Vidu Q1/2.0 generated a video with extra limbs, fused joints, or impossible skeletal geometry? This is an Anatomical Topology Failure. Here\'s how to document it and reclaim credits.',
     technicalTerm: 'Anatomical Topology & Coherence Failure',
@@ -4363,11 +4363,11 @@ export const FAILURES: FailureData[] = [
         timestamp: '1.8s',
       },
     ],
-    refundStrength: 'HIGH — Vidu support (ShengShu) approves credit refunds for limb artifacts when the Generation ID and timestamped failure are provided in the audit report.',
+    documentationStrength: 'HIGH — Vidu support (ShengShu) approves credit refunds for limb artifacts when the Generation ID and timestamped failure are provided in the audit report.',
     faq: [
       {
         q: 'Does Vidu refund credits for anatomy failures?',
-        a: 'Yes. Vidu\'s support team has been responsive to refund requests when the report includes a Generation ID, the correct technical term ("Anatomical Topology & Coherence Failure"), and a timestamp of the visible failure. AVA generates this report automatically.',
+        a: 'Yes. Vidu\'s support team has been responsive to support tickets when the report includes a Generation ID, the correct technical term ("Anatomical Topology & Coherence Failure"), and a timestamp of the visible failure. AVA generates this report automatically.',
       },
       {
         q: 'Which Vidu prompts are highest risk for anatomy failures?',
@@ -4382,8 +4382,8 @@ export const FAILURES: FailureData[] = [
   },
   {
     slug: 'vidu-face-distortion',
-    title: 'Vidu Face Distortion — Get a Credit Refund',
-    metaTitle: 'Vidu Face Distortion Refund — Identity Drift, Morphing Faces',
+    title: 'Vidu Face Distortion — Pre-Generation Risk Reference',
+    metaTitle: 'Vidu Face Distortion Reference — Identity Drift, Morphing Faces',
     metaDesc:
       'Vidu generated a video where the subject\'s face morphs, identity drifts mid-clip, or facial features collapse? That\'s a Facial Identity Coherence Failure. Document it and reclaim credits.',
     technicalTerm: 'Facial Identity Coherence Failure',
@@ -4410,7 +4410,7 @@ export const FAILURES: FailureData[] = [
         timestamp: '3.4s',
       },
     ],
-    refundStrength: 'HIGH — Vidu support recognizes face-identity drift as a documented failure mode, especially for paid Reference-to-Video credits.',
+    documentationStrength: 'HIGH — Vidu support recognizes face-identity drift as a documented failure mode, especially for paid Reference-to-Video credits.',
     faq: [
       {
         q: 'Why does Vidu\'s face drift even with a reference image?',
@@ -4422,15 +4422,15 @@ export const FAILURES: FailureData[] = [
       },
       {
         q: 'Does Vidu refund face drift on Reference-to-Video?',
-        a: 'Yes — and Reference-to-Video has stronger refund precedent because the user is explicitly paying for identity preservation. Document with the Generation ID and reference-vs-output comparison.',
+        a: 'Yes — and Reference-to-Video has stronger escalation precedent because the user is explicitly paying for identity preservation. Document with the Generation ID and reference-vs-output comparison.',
       },
     ],
     relatedFailures: ['runway-face-distortion', 'luma-face-distortion', 'sora-face-distortion', 'veo-face-distortion', 'kling-face-distortion'],
   },
   {
     slug: 'vidu-hand-artifact',
-    title: 'Vidu Hand Artifact — Get a Credit Refund',
-    metaTitle: 'Vidu Hand Artifact Refund — Six Fingers, Fused Knuckles',
+    title: 'Vidu Hand Artifact — Pre-Generation Risk Reference',
+    metaTitle: 'Vidu Hand Artifact Reference — Six Fingers, Fused Knuckles',
     metaDesc:
       'Vidu produced a clip with six fingers, fused knuckles, or impossible hand geometry? That\'s a Manual Topology Failure. Document and refund.',
     technicalTerm: 'Manual Topology & Articulation Failure',
@@ -4457,7 +4457,7 @@ export const FAILURES: FailureData[] = [
         timestamp: '1.1s',
       },
     ],
-    refundStrength: 'VERY HIGH — Hand artifacts on Vidu are routinely refunded; ShengShu support classifies these as recognized failure modes.',
+    documentationStrength: 'VERY HIGH — Hand artifacts on Vidu are routinely refunded; ShengShu support classifies these as recognized failure modes.',
     faq: [
       {
         q: 'Why does Vidu generate six fingers on hands?',
@@ -4476,8 +4476,8 @@ export const FAILURES: FailureData[] = [
   },
   {
     slug: 'vidu-physics-collapse',
-    title: 'Vidu Physics Collapse — Get a Credit Refund',
-    metaTitle: 'Vidu Physics Collapse Refund — Gravity, Fluid, Collision Failures',
+    title: 'Vidu Physics Collapse — Pre-Generation Risk Reference',
+    metaTitle: 'Vidu Physics Collapse Reference — Gravity, Fluid, Collision Failures',
     metaDesc:
       'Vidu produced a video with water flowing upward, objects falling sideways, or no collision response? That\'s a Physics Simulation Constraint Violation. Document and refund.',
     technicalTerm: 'Physics Simulation Constraint Violation',
@@ -4504,7 +4504,7 @@ export const FAILURES: FailureData[] = [
         timestamp: '0:02',
       },
     ],
-    refundStrength: 'HIGH — Physics violations on paid Vidu generations are recognized as failure-mode credits.',
+    documentationStrength: 'HIGH — Physics violations on paid Vidu generations are recognized as failure-mode credits.',
     faq: [
       {
         q: 'Why does Vidu produce water flowing upward?',
@@ -4523,8 +4523,8 @@ export const FAILURES: FailureData[] = [
   },
   {
     slug: 'vidu-lip-sync-failure',
-    title: 'Vidu Lip Sync Failure — Get a Credit Refund',
-    metaTitle: 'Vidu Lip Sync Failure Refund — Mouth Mismatched to Audio',
+    title: 'Vidu Lip Sync Failure — Pre-Generation Risk Reference',
+    metaTitle: 'Vidu Lip Sync Failure Reference — Mouth Mismatched to Audio',
     metaDesc:
       'Vidu generated a talking-head clip where lip movement doesn\'t match the audio or expected phonemes? That\'s an Audio-Visual Synchronization Failure. Document and refund.',
     technicalTerm: 'Audio-Visual Synchronization Failure',
@@ -4551,11 +4551,11 @@ export const FAILURES: FailureData[] = [
         timestamp: '2.1s',
       },
     ],
-    refundStrength: 'HIGH — Lip sync failures on Vidu are recognized refund cases when the audio track and timestamp are provided.',
+    documentationStrength: 'HIGH — Lip sync failures on Vidu are recognized refund cases when the audio track and timestamp are provided.',
     faq: [
       {
         q: 'Does Vidu produce its own audio?',
-        a: 'No — Vidu generates silent video. Lip-sync failures occur when external audio is paired with Vidu output. The lip articulation should still match plausible speech; failure to do so is a refundable defect.',
+        a: 'No — Vidu generates silent video. Lip-sync failures occur when external audio is paired with Vidu output. The lip articulation should still match plausible speech; failure to do so is a support responseable defect.',
       },
       {
         q: 'How do I document a Vidu lip-sync failure?',
@@ -4570,8 +4570,8 @@ export const FAILURES: FailureData[] = [
   },
   {
     slug: 'vidu-text-rendering-failure',
-    title: 'Vidu Text Rendering Failure — Get a Credit Refund',
-    metaTitle: 'Vidu Text Rendering Refund — Gibberish, Hallucinated Words',
+    title: 'Vidu Text Rendering Failure — Pre-Generation Risk Reference',
+    metaTitle: 'Vidu Text Rendering Reference — Gibberish, Hallucinated Words',
     metaDesc:
       'Vidu generated a clip with garbled, hallucinated, or unreadable text on signs, screens, or labels? That\'s a Symbolic Rendering Coherence Failure. Refund-ready.',
     technicalTerm: 'Symbolic Rendering Coherence Failure',
@@ -4596,7 +4596,7 @@ export const FAILURES: FailureData[] = [
         failure: 'Screen content was uniform glyph soup, no recognizable Python syntax',
       },
     ],
-    refundStrength: 'HIGH — Text rendering failures on Vidu are recognized refund cases when the prompt specified the text and the output is illegible.',
+    documentationStrength: 'HIGH — Text rendering failures on Vidu are recognized refund cases when the prompt specified the text and the output is illegible.',
     faq: [
       {
         q: 'Why is text rendering broken on all Vidu models?',
@@ -4615,8 +4615,8 @@ export const FAILURES: FailureData[] = [
   },
   {
     slug: 'vidu-color-drift',
-    title: 'Vidu Color Drift — Get a Credit Refund',
-    metaTitle: 'Vidu Color Drift Refund — Saturation Shift, White Balance Failure',
+    title: 'Vidu Color Drift — Pre-Generation Risk Reference',
+    metaTitle: 'Vidu Color Drift Reference — Saturation Shift, White Balance Failure',
     metaDesc:
       'Vidu generated a clip where colors shift, white balance breaks, or saturation pulses mid-clip? That\'s a Chromatic Coherence Failure. Document and refund.',
     technicalTerm: 'Chromatic Coherence Failure',
@@ -4641,7 +4641,7 @@ export const FAILURES: FailureData[] = [
         failure: 'Sky hue rotated from orange-pink to purple-blue across the 6s clip without scene change',
       },
     ],
-    refundStrength: 'HIGH — Color drift on professional / commercial use cases on Vidu is a recognized refund category.',
+    documentationStrength: 'HIGH — Color drift on professional / commercial use cases on Vidu is a recognized escalation category.',
     faq: [
       {
         q: 'Why does Vidu color drift mid-clip?',
@@ -4660,8 +4660,8 @@ export const FAILURES: FailureData[] = [
   },
   {
     slug: 'vidu-prompt-adherence-failure',
-    title: 'Vidu Prompt Adherence Failure — Get a Credit Refund',
-    metaTitle: 'Vidu Prompt Adherence Refund — Output Ignored Prompt Specifications',
+    title: 'Vidu Prompt Adherence Failure — Pre-Generation Risk Reference',
+    metaTitle: 'Vidu Prompt Adherence Reference — Output Ignored Prompt Specifications',
     metaDesc:
       'Vidu generated a clip that ignored your prompt — wrong subject, wrong action, missing elements? That\'s a Prompt-to-Generation Adherence Failure. Refund-ready.',
     technicalTerm: 'Prompt-to-Generation Adherence Failure',
@@ -4686,7 +4686,7 @@ export const FAILURES: FailureData[] = [
         failure: 'Output showed a single person waving, no second character, outdoor setting',
       },
     ],
-    refundStrength: 'HIGH — Vidu support has approved refunds for prompts where the divergence is documented with side-by-side comparison.',
+    documentationStrength: 'HIGH — Vidu support has approved refunds for prompts where the divergence is documented with side-by-side comparison.',
     faq: [
       {
         q: 'How adherent is Vidu compared to other models?',
@@ -4705,8 +4705,8 @@ export const FAILURES: FailureData[] = [
   },
   {
     slug: 'vidu-camera-jitter',
-    title: 'Vidu Camera Jitter — Get a Credit Refund',
-    metaTitle: 'Vidu Camera Jitter Refund — Path Drift, Unstable Camera Motion',
+    title: 'Vidu Camera Jitter — Pre-Generation Risk Reference',
+    metaTitle: 'Vidu Camera Jitter Reference — Path Drift, Unstable Camera Motion',
     metaDesc:
       'Vidu generated a clip with unstable camera path, jittery motion, or drift away from the requested move? That\'s a Camera Path Stability Failure. Document and refund.',
     technicalTerm: 'Camera Path Stability Failure',
@@ -4731,7 +4731,7 @@ export const FAILURES: FailureData[] = [
         failure: 'Bike left frame at 2.4s; camera continued rotating with no subject for remaining 3.6s',
       },
     ],
-    refundStrength: 'HIGH — Camera-path failures on paid Vidu generations are routinely refunded with timestamp evidence.',
+    documentationStrength: 'HIGH — Camera-path failures on paid Vidu generations are routinely refunded with timestamp evidence.',
     faq: [
       {
         q: 'Does Vidu honor cinematic camera language?',
@@ -4750,8 +4750,8 @@ export const FAILURES: FailureData[] = [
   },
   {
     slug: 'vidu-motion-failure',
-    title: 'Vidu Motion Failure — Get a Credit Refund',
-    metaTitle: 'Vidu Motion Failure Refund — Stalled Motion, Frame Repetition',
+    title: 'Vidu Motion Failure — Pre-Generation Risk Reference',
+    metaTitle: 'Vidu Motion Failure Reference — Stalled Motion, Frame Repetition',
     metaDesc:
       'Vidu generated a clip where motion stalls, frames repeat, or subjects freeze mid-action? That\'s a Temporal Motion Coherence Failure. Document and refund.',
     technicalTerm: 'Temporal Motion Coherence Failure',
@@ -4778,7 +4778,7 @@ export const FAILURES: FailureData[] = [
         timestamp: '3.8s',
       },
     ],
-    refundStrength: 'HIGH — Vidu motion stalls are recognized refund cases with timestamp evidence.',
+    documentationStrength: 'HIGH — Vidu motion stalls are recognized refund cases with timestamp evidence.',
     faq: [
       {
         q: 'Why does Vidu motion stall on long clips?',
@@ -4797,8 +4797,8 @@ export const FAILURES: FailureData[] = [
   },
   {
     slug: 'vidu-watermark-bleed',
-    title: 'Vidu Watermark Bleed — Get a Credit Refund',
-    metaTitle: 'Vidu Watermark Bleed Refund — Visible Watermark in Paid Output',
+    title: 'Vidu Watermark Bleed — Pre-Generation Risk Reference',
+    metaTitle: 'Vidu Watermark Bleed Reference — Visible Watermark in Paid Output',
     metaDesc:
       'Vidu produced a video with visible watermark bleeding through despite paid-tier subscription? That\'s a Watermark Suppression Failure. Refund-ready.',
     technicalTerm: 'Watermark Suppression Failure',
@@ -4823,7 +4823,7 @@ export const FAILURES: FailureData[] = [
         failure: 'Recurring text pattern visible in 4 corners of the frame, not present in non-watermark Vidu Max output',
       },
     ],
-    refundStrength: 'VERY HIGH — Watermark bleed on a paid Vidu tier is a clear product defect; refunds are routine.',
+    documentationStrength: 'VERY HIGH — Watermark bleed on a paid Vidu tier is a clear product defect; refunds are routine.',
     faq: [
       {
         q: 'Why does Vidu watermark show on paid-tier output?',

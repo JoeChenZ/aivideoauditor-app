@@ -156,7 +156,7 @@ export default function FailurePage({ params }: { params: { slug: string } }) {
             <h2 className="font-display text-2xl font-semibold text-ink-primary mb-4 leading-tight tracking-tight">Documentation strength</h2>
             <div className="border-l-2 border-neon-green/50 pl-5 py-1">
               <p className="font-mono text-[10px] tracking-kicker uppercase text-neon-green mb-2">If you need to escalate</p>
-              <p className="text-ink-secondary text-sm leading-relaxed">{f.refundStrength}</p>
+              <p className="text-ink-secondary text-sm leading-relaxed">{f.documentationStrength}</p>
               <p className="text-ink-muted text-xs mt-3 italic leading-relaxed">
                 AVA is a pre-purchase prevention tool, not a post-purchase recovery tool. Platforms generally do not guarantee credit refunds for output-quality failures; goodwill credits are at each platform&apos;s discretion. The strength rating reflects how well-formed your support ticket can be, not a promised outcome.
               </p>
