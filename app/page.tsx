@@ -212,7 +212,7 @@ export default function HomePage() {
 
             <div className="mt-12 max-w-xl">
               <p className="font-mono text-[10px] tracking-kicker uppercase text-ink-muted mb-3">
-                Not ready to install? Get the desk in your inbox.
+                Not ready to install? Get the digest in your inbox.
               </p>
               <LeadCaptureForm
                 source="home-hero"
