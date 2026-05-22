@@ -2,7 +2,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getFailure, FAILURES, getRelatedFailures } from './data';
-// FAILURES still referenced by generateStaticParams below.
+
+const FOUNDERS_URL = process.env.NEXT_PUBLIC_PREORDER_STRIPE_URL || '';
 
 export async function generateStaticParams() {
   return FAILURES.map((f) => ({ slug: f.slug }));
@@ -53,26 +54,26 @@ export default function FailurePage({ params }: { params: { slug: string } }) {
   const howToSchema = {
     '@context': 'https://schema.org',
     '@type': 'HowTo',
-    name: `How to Document ${f.technicalTerm} for a Refund`,
-    description: `Step-by-step process to document ${f.technicalTerm} and submit a refund-grade evidence package to support.`,
+    name: `How to Prevent ${f.technicalTerm} Before You Generate`,
+    description: `Step-by-step process to recognise ${f.technicalTerm} risk in your prompt before committing credits, and how to escalate to support if the failure happens anyway.`,
     step: [
       {
         '@type': 'HowToStep',
         position: 1,
-        name: 'Capture your Generation ID',
-        text: 'Find it in the URL or share link. Without this, support cannot verify the generation on their end.',
+        name: 'Score your prompt before you generate',
+        text: `Run your prompt through AVA's pre-flight scoring against the ${f.technicalTerm} pattern. If the indicator is yellow or red, rewrite using the suggested fix before you commit credits.`,
       },
       {
         '@type': 'HowToStep',
         position: 2,
-        name: 'Note the exact timestamp',
-        text: `Note the exact time when the ${f.technicalTerm} first appears (e.g., "failure first visible at 1.2s"). Timestamped evidence is significantly stronger than a general complaint.`,
+        name: 'Capture Generation ID + timestamp if it failed anyway',
+        text: 'If you generated and the failure occurred, capture the Generation ID from the URL or share link plus the exact timestamp the failure first appears.',
       },
       {
         '@type': 'HowToStep',
         position: 3,
-        name: 'Use the correct technical term',
-        text: `In your refund request, describe this failure as "${f.technicalTerm}". This term maps to a recognised internal workflow in the support system.`,
+        name: 'Use the correct technical term in your support ticket',
+        text: `Describe the failure to support as "${f.technicalTerm}". This term maps to a recognised internal workflow in support systems and routes the ticket to the right team faster.`,
       },
       {
         '@type': 'HowToStep',
@@ -92,38 +93,37 @@ export default function FailurePage({ params }: { params: { slug: string } }) {
       <main className="min-h-screen py-20 px-6">
         <div className="max-w-3xl mx-auto">
 
-          {/* Breadcrumb */}
           <nav className="text-xs font-mono text-ink-muted mb-8" aria-label="Breadcrumb">
             <Link href="/" className="hover:text-ink-secondary transition-colors">Home</Link>
-            <span className="mx-2">/</span>
+            <span className="mx-2 text-rule">/</span>
             <Link href="/failures" className="hover:text-ink-secondary transition-colors">Failure Modes</Link>
-            <span className="mx-2">/</span>
-            <span className="text-ink-primary">{f.technicalTerm}</span>
+            <span className="mx-2 text-rule">/</span>
+            <span className="text-ink-secondary">{f.technicalTerm}</span>
           </nav>
 
           {/* Hero */}
           <div className="mb-12">
             <div className="flex items-center gap-3 mb-4">
-              <span className={`text-xs font-mono font-bold px-2 py-1 rounded ${
+              <span className={`font-mono text-[10px] tracking-kicker uppercase px-2 py-0.5 rounded border ${
                 f.risk === 'CRITICAL'
-                  ? 'bg-neon-red/10 border border-neon-red/30 text-neon-red'
-                  : 'bg-neon-amber/10 border border-neon-amber/30 text-neon-amber'
+                  ? 'bg-neon-red/10 border-neon-red/30 text-neon-red'
+                  : 'bg-neon-amber/10 border-neon-amber/30 text-neon-amber'
               }`}>{f.risk}</span>
-              <span className="text-xs font-mono text-ink-muted uppercase tracking-widest">Failure Reference</span>
+              <span className="font-mono text-[10px] tracking-kicker uppercase text-ink-muted">Failure Reference</span>
             </div>
             <h1 className="font-display text-3xl md:text-4xl font-semibold text-ink-primary mb-4 leading-tight tracking-tight">
               {f.title}
             </h1>
-            <div className="bg-elevated border border-border rounded-xl p-4 mb-4">
-              <p className="text-xs font-mono text-neon-purple mb-1">Technical Classification</p>
-              <p className="font-mono font-bold text-ink-primary text-sm">{f.technicalTerm}</p>
+            <div className="border border-rule rounded-md p-4 mb-4 bg-surface">
+              <p className="font-mono text-[10px] tracking-kicker uppercase text-ink-muted mb-1">Technical Classification</p>
+              <p className="font-mono font-semibold text-ink-primary text-sm">{f.technicalTerm}</p>
             </div>
             <p className="text-ink-secondary leading-relaxed">{f.longDesc}</p>
           </div>
 
           {/* Symptoms */}
           <section className="mb-10" aria-label="Symptoms">
-            <h2 className="text-xl font-bold text-ink-primary mb-4">How to Identify This Failure</h2>
+            <h2 className="font-display text-2xl font-semibold text-ink-primary mb-4 leading-tight tracking-tight">How to identify this failure</h2>
             <ul className="space-y-2">
               {f.symptoms.map((s) => (
                 <li key={s} className="flex items-start gap-3 text-sm text-ink-secondary">
@@ -137,13 +137,13 @@ export default function FailurePage({ params }: { params: { slug: string } }) {
           {/* Real examples */}
           {f.examples.length > 0 && (
             <section className="mb-10" aria-label="Examples">
-              <h2 className="text-xl font-bold text-ink-primary mb-4">Real Generation Examples</h2>
+              <h2 className="font-display text-2xl font-semibold text-ink-primary mb-4 leading-tight tracking-tight">Real generation examples</h2>
               <div className="space-y-4">
                 {f.examples.map((ex, i) => (
-                  <div key={i} className="bg-elevated border border-border rounded-xl p-5">
-                    <p className="text-xs font-mono text-ink-muted mb-2">Prompt used:</p>
+                  <div key={i} className="border border-rule rounded-md p-5 bg-surface">
+                    <p className="font-mono text-[10px] tracking-kicker uppercase text-ink-muted mb-2">Prompt used</p>
                     <p className="font-mono text-sm text-ink-secondary italic mb-3">{ex.prompt}</p>
-                    <p className="text-xs font-mono text-ink-muted mb-1">Failure observed{ex.timestamp ? ` @ ${ex.timestamp}` : ''}:</p>
+                    <p className="font-mono text-[10px] tracking-kicker uppercase text-ink-muted mb-1">Failure observed{ex.timestamp ? ` @ ${ex.timestamp}` : ''}</p>
                     <p className="text-sm text-neon-red">{ex.failure}</p>
                   </div>
                 ))}
@@ -151,38 +151,51 @@ export default function FailurePage({ params }: { params: { slug: string } }) {
             </section>
           )}
 
-          {/* Refund strength */}
+          {/* Evidence quality signal (no refund framing) */}
           <section className="mb-10">
-            <h2 className="text-xl font-bold text-ink-primary mb-4">Ticket Quality Signal</h2>
-            <div className="bg-neon-green/5 border border-neon-green/20 rounded-xl p-5">
-              <p className="text-neon-green text-sm font-mono font-bold mb-1">Evidence Strength</p>
-              <p className="text-ink-secondary text-sm">{f.refundStrength}</p>
-              <p className="text-ink-muted text-xs mt-3 italic">
-                Note: platforms generally do not guarantee refunds for output-quality failures.
-                Goodwill credits are issued at each platform&apos;s discretion. &ldquo;Strength&rdquo;
-                here reflects evidence quality, not a promised approval rate — there is no
-                guaranteed outcome.
+            <h2 className="font-display text-2xl font-semibold text-ink-primary mb-4 leading-tight tracking-tight">Documentation strength</h2>
+            <div className="border-l-2 border-neon-green/50 pl-5 py-1">
+              <p className="font-mono text-[10px] tracking-kicker uppercase text-neon-green mb-2">If you need to escalate</p>
+              <p className="text-ink-secondary text-sm leading-relaxed">{f.refundStrength}</p>
+              <p className="text-ink-muted text-xs mt-3 italic leading-relaxed">
+                AVA is a pre-purchase prevention tool, not a post-purchase recovery tool. Platforms generally do not guarantee credit refunds for output-quality failures; goodwill credits are at each platform&apos;s discretion. The strength rating reflects how well-formed your support ticket can be, not a promised outcome.
               </p>
             </div>
           </section>
 
           {/* How to document */}
           <section className="mb-10">
-            <h2 className="text-xl font-bold text-ink-primary mb-4">How to Document This for a Refund</h2>
-            <ol className="space-y-4">
+            <h2 className="font-display text-2xl font-semibold text-ink-primary mb-4 leading-tight tracking-tight">Prevention + documentation steps</h2>
+            <ol className="space-y-5">
               {[
-                { n: '01', title: 'Capture your Generation ID', body: 'Find it in the URL or share link. Without this, Runway support cannot verify the generation on their end.' },
-                { n: '02', title: 'Note the exact timestamp', body: `Note the exact time when the ${f.technicalTerm} first appears (e.g., "failure first visible at 1.2s"). Timestamped evidence is significantly stronger than a general complaint.` },
-                { n: '03', title: 'Use the correct technical term', body: `In your refund request, describe this failure as "${f.technicalTerm}". This term maps to a recognised internal workflow in Runway's support system.` },
-                { n: '04', title: 'Submit via Runway AI Assistant (Pro+) or Discord #community-help (Free/Standard)', body: "Runway has no direct email intake. Pro+ plan: open the in-app AI Assistant (help widget bottom-right of app.runwayml.com), describe the failure, request a refund — the support team replies via email after the ticket opens. Free/Standard plan: human support isn't available, your channel is Discord #community-help with @On Call - Moderators. Paste your refund message either way and attach the PDF audit report." },
+                {
+                  n: '01',
+                  title: 'Score your prompt before you generate',
+                  body: `Run your prompt through AVA's pre-flight scoring against the ${f.technicalTerm} pattern. Green light = generate. Yellow/red = rewrite using the suggested fix before you commit credits.`,
+                },
+                {
+                  n: '02',
+                  title: 'Capture Generation ID + timestamp if it failed anyway',
+                  body: `Find the Generation ID in the URL or share link. Note the exact time when the ${f.technicalTerm} first appears (e.g. "failure first visible at 1.2s"). Timestamped evidence is significantly stronger than a general complaint.`,
+                },
+                {
+                  n: '03',
+                  title: 'Use the correct technical term in your support ticket',
+                  body: `Describe this failure as "${f.technicalTerm}". This term maps to a recognised internal workflow in the support system and routes the ticket to the right team.`,
+                },
+                {
+                  n: '04',
+                  title: 'Submit via the correct support channel',
+                  body: "Runway has no direct email intake. Pro+ plan: open the in-app AI Assistant (help widget bottom-right of app.runwayml.com), describe the failure with the technical term, attach evidence. Free/Standard plan: human support isn't available — your channel is Discord #community-help with @On Call - Moderators.",
+                },
               ].map((step) => (
                 <li key={step.n} className="flex gap-5">
-                  <div className="shrink-0 w-9 h-9 rounded-full bg-neon-red/10 border border-neon-red/30 flex items-center justify-center">
-                    <span className="text-neon-red font-mono font-bold text-xs">{step.n}</span>
+                  <div className="shrink-0 w-9 h-9 rounded border border-rule flex items-center justify-center bg-paper">
+                    <span className="text-neon-amber font-mono font-semibold text-xs">{step.n}</span>
                   </div>
                   <div>
                     <p className="font-semibold text-ink-primary text-sm mb-1">{step.title}</p>
-                    <p className="text-ink-secondary text-sm">{step.body}</p>
+                    <p className="text-ink-secondary text-sm leading-relaxed">{step.body}</p>
                   </div>
                 </li>
               ))}
@@ -191,10 +204,10 @@ export default function FailurePage({ params }: { params: { slug: string } }) {
 
           {/* FAQ */}
           <section className="mb-12" aria-label="FAQ">
-            <h2 className="text-xl font-bold text-ink-primary mb-6">Frequently Asked Questions</h2>
+            <h2 className="font-display text-2xl font-semibold text-ink-primary mb-6 leading-tight tracking-tight">Frequently asked questions</h2>
             <div className="space-y-4">
               {f.faq.map((item) => (
-                <div key={item.q} className="bg-surface border border-border rounded-xl p-5">
+                <div key={item.q} className="border border-rule rounded-md p-5 bg-surface">
                   <h3 className="text-ink-primary font-semibold mb-2 text-sm">{item.q}</h3>
                   <p className="text-ink-secondary text-sm leading-relaxed">{item.a}</p>
                 </div>
@@ -202,68 +215,73 @@ export default function FailurePage({ params }: { params: { slug: string } }) {
             </div>
           </section>
 
-          {/* CTA — platform-aware: extension auto-detects on Luma + Runway, manual scoring for everything else */}
+          {/* CTA — free extension first, founders' offer second */}
           {(() => {
             const platform = f.slug.split('-')[0];
             const autoDetected = platform === 'luma' || platform === 'runway';
             return (
-              <div className="bg-surface border border-neon-green/20 rounded-2xl p-8 text-center">
-                <p className="text-xs font-mono font-bold tracking-widest text-neon-green uppercase mb-3">
-                  {autoDetected ? 'Catch It Before You Generate' : 'Score Your Prompt'}
-                </p>
-                <h2 className="text-2xl font-bold text-ink-primary mb-3">
-                  {autoDetected ? 'AVA scores this failure mode against your prompt in real time' : 'Score your prompt against this failure mode in 30 seconds'}
-                </h2>
-                <p className="text-ink-secondary text-sm mb-6 max-w-md mx-auto">
-                  {autoDetected
-                    ? 'Install the free Chrome extension. It analyzes your prompt as you type, flags failure-prone patterns specific to this model, and tells you what to rewrite — before you commit credits to a generation that will fail.'
-                    : 'Paste your prompt and the platform you intend to use. AVA returns a red/yellow/green score against this specific failure mode + a concrete rewrite if the risk is high — so you avoid burning credits on prompts that statistically fail.'}
-                </p>
-                <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                  {autoDetected ? (
-                    <>
-                      <a
-                        href="https://chromewebstore.google.com/detail/aivideoauditor/ecomchbdfkgakaoponipjgpnjfpimdef"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center justify-center gap-2 bg-neon-green/20 hover:bg-neon-green/30 border border-neon-green/40 text-neon-green font-mono font-bold px-6 py-3 rounded-xl transition-all"
-                      >
-                        Install Free Extension →
-                      </a>
-                      <Link
-                        href="/pricing"
-                        className="inline-flex items-center justify-center gap-2 bg-elevated hover:bg-elevated/80 border border-border text-ink-secondary font-mono font-semibold px-6 py-3 rounded-xl transition-all text-sm"
-                      >
-                        See Pro Scoring Plans →
-                      </Link>
-                    </>
-                  ) : (
-                    <>
-                      <a
-                        href="https://chromewebstore.google.com/detail/aivideoauditor/ecomchbdfkgakaoponipjgpnjfpimdef"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center justify-center gap-2 bg-neon-green/20 hover:bg-neon-green/30 border border-neon-green/40 text-neon-green font-mono font-bold px-6 py-3 rounded-xl transition-all"
-                      >
-                        Install Free Extension →
-                      </a>
-                      <Link
-                        href="/failures"
-                        className="inline-flex items-center justify-center gap-2 bg-elevated hover:bg-elevated/80 border border-border text-ink-secondary font-mono font-semibold px-6 py-3 rounded-xl transition-all text-sm"
-                      >
-                        See All 105 Failure Modes
-                      </Link>
-                    </>
-                  )}
+              <>
+                <div className="border border-neon-green/30 rounded-md p-8 text-center bg-paper">
+                  <p className="font-mono text-[10px] tracking-kicker uppercase text-neon-green mb-3">
+                    {autoDetected ? 'Catch it before you generate' : 'Score your prompt'}
+                  </p>
+                  <h2 className="font-display text-2xl font-semibold text-ink-primary mb-3 leading-tight tracking-tight">
+                    {autoDetected ? 'AVA scores this failure mode against your prompt in real time' : 'Score your prompt against this failure mode in 30 seconds'}
+                  </h2>
+                  <p className="text-ink-secondary text-sm leading-relaxed mb-6 max-w-md mx-auto">
+                    {autoDetected
+                      ? 'Free Chrome extension. Analyzes your prompt as you type, flags failure-prone patterns specific to this model, and tells you what to rewrite — before you commit credits to a generation that will fail.'
+                      : 'Paste your prompt and the platform you intend to use. AVA returns a red/yellow/green score against this specific failure mode plus a concrete rewrite if the risk is high.'}
+                  </p>
+                  <div className="flex flex-wrap justify-center gap-3">
+                    <a
+                      href="https://chromewebstore.google.com/detail/aivideoauditor/ecomchbdfkgakaoponipjgpnjfpimdef"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 bg-neon-green/15 hover:bg-neon-green/25 border border-neon-green/40 text-neon-green font-mono font-semibold text-[11px] tracking-wide uppercase px-5 py-2.5 rounded-md transition-colors"
+                    >
+                      Install free
+                    </a>
+                    <Link
+                      href="/failures"
+                      className="inline-flex items-center gap-2 border border-rule hover:border-ink-secondary text-ink-secondary hover:text-ink-primary font-mono font-medium text-[11px] tracking-wide uppercase px-5 py-2.5 rounded-md transition-colors"
+                    >
+                      All 105 failure modes
+                    </Link>
+                  </div>
                 </div>
-              </div>
+
+                {/* Founders' offer — secondary nudge */}
+                {FOUNDERS_URL && (
+                  <div className="mt-6 border border-neon-amber/30 rounded-md p-5 bg-paper">
+                    <div className="flex flex-wrap items-baseline justify-between gap-3">
+                      <div>
+                        <p className="font-mono text-[10px] tracking-kicker uppercase text-neon-amber mb-1">
+                          AVA Pro · founders&apos; round
+                        </p>
+                        <p className="text-sm text-ink-secondary leading-relaxed">
+                          <strong className="text-ink-primary">$50 for 6 months</strong> of unlimited scoring across all failure modes + personal failure-history dashboard. Locks in $13/mo grandfathered after.
+                        </p>
+                      </div>
+                      <a
+                        href={FOUNDERS_URL}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 bg-neon-amber/15 hover:bg-neon-amber/25 border border-neon-amber/40 text-neon-amber font-mono font-semibold text-[11px] tracking-wide uppercase px-5 py-2.5 rounded-md transition-colors whitespace-nowrap"
+                      >
+                        Claim $50 founders
+                      </a>
+                    </div>
+                  </div>
+                )}
+              </>
             );
           })()}
 
           {/* Related failures (cross-model) */}
           <section className="mt-12">
-            <h2 className="text-lg font-bold text-ink-primary mb-2">Related Failures Across Models</h2>
-            <p className="text-ink-muted text-sm mb-4">
+            <h2 className="font-display text-xl font-semibold text-ink-primary mb-2 leading-tight tracking-tight">Related failures across models</h2>
+            <p className="text-ink-muted text-sm mb-4 max-w-prose">
               If you&rsquo;re seeing this failure, you may also encounter these on other models:
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -274,18 +292,18 @@ export default function FailurePage({ params }: { params: { slug: string } }) {
                   <Link
                     key={other.slug}
                     href={`/failures/${other.slug}`}
-                    className="bg-elevated border border-border rounded-xl p-4 hover:border-neon-red/30 transition-colors"
+                    className="border border-rule hover:border-neon-amber/40 rounded-md p-4 bg-surface transition-colors"
                   >
-                    <div className="flex items-center justify-between mb-1">
+                    <div className="flex items-center justify-between mb-1.5">
                       <div className="flex items-center gap-2">
-                        <span className="text-xs font-mono text-neon-purple uppercase tracking-wider">{modelLabel}</span>
-                        <p className="font-mono font-bold text-ink-primary text-sm">{other.technicalTerm.split(' ')[0]}</p>
+                        <span className="font-mono text-[10px] tracking-kicker uppercase text-ink-muted">{modelLabel}</span>
+                        <p className="font-mono font-semibold text-ink-primary text-xs">{other.technicalTerm.split(' ')[0]}</p>
                       </div>
-                      <span className={`text-xs font-mono font-bold ${other.risk === 'CRITICAL' ? 'text-neon-red' : 'text-neon-amber'}`}>
+                      <span className={`font-mono text-[10px] tracking-kicker uppercase ${other.risk === 'CRITICAL' ? 'text-neon-red' : 'text-neon-amber'}`}>
                         {other.risk}
                       </span>
                     </div>
-                    <p className="text-ink-muted text-xs">{other.shortDesc.substring(0, 70)}…</p>
+                    <p className="text-ink-muted text-xs leading-relaxed">{other.shortDesc.substring(0, 70)}…</p>
                   </Link>
                 );
               })}
