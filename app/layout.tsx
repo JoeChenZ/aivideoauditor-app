@@ -102,6 +102,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         {/* Preconnect to Google Fonts already handled by next/font */}
         <link rel="canonical" href={BASE_URL} />
+        <meta name="trustpilot-one-time-domain-verification-id" content="fade36b3-6bf0-4e2c-bebc-4045f8537e40" />
       </head>
       <body className={`${inter.variable} ${jetbrainsMono.variable} ${fraunces.variable} bg-void text-ink-primary antialiased`}>
         <Nav />
