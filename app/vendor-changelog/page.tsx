@@ -133,6 +133,16 @@ const articleSchema = {
   datePublished: '2026-05-20',
 };
 
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.aivideoauditor.com' },
+    { '@type': 'ListItem', position: 2, name: 'Research', item: 'https://www.aivideoauditor.com/research/132-ai-video-vendor-reviews' },
+    { '@type': 'ListItem', position: 3, name: 'Vendor changelog', item: 'https://www.aivideoauditor.com/vendor-changelog' },
+  ],
+};
+
 const CAT_COLOR: Record<Change['category'], string> = {
   'Pricing': 'text-neon-amber border-neon-amber/40',
   'Unlimited routing': 'text-neon-purple border-neon-purple/40',
@@ -146,6 +156,7 @@ export default function VendorChangelogPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <WidePageShell>
         <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Vendor Changelog' }]} />
 
