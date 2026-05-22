@@ -124,6 +124,15 @@ const articleSchema = {
   datePublished: '2026-05-20',
 };
 
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.aivideoauditor.com' },
+    { '@type': 'ListItem', position: 2, name: 'Billing Pattern Watch', item: 'https://www.aivideoauditor.com/billing-pattern-watch' },
+  ],
+};
+
 function SeverityTag({ severity }: { severity: string }) {
   const colorClass =
     severity === 'red' ? 'text-neon-red border-neon-red/40' :
@@ -140,6 +149,7 @@ export default function BillingPatternWatchPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <WidePageShell>
         <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Billing Pattern Watch' }]} />
 
