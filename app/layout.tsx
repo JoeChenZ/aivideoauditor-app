@@ -73,21 +73,13 @@ export const metadata: Metadata = {
     siteName: 'AIVideoAuditor',
     type: 'website',
     locale: 'en_US',
-    images: [
-      {
-        url: '/og-image.png',
-        width: 1200,
-        height: 630,
-        alt: 'AIVideoAuditor — Pre-flight prompt scoring across 11 AI video platforms',
-      },
-    ],
+    // OG image auto-generated via app/opengraph-image.tsx (Fraunces serif + dark void)
   },
   twitter: {
     card: 'summary_large_image',
     title: 'AIVideoAuditor — Score Your AI Video Prompt Before Generate',
     description:
       'Free Chrome extension. Pre-flight prompt scoring across 11 AI video platforms. 105 failure modes catalogued. Stop burning credits on prompts that fail.',
-    images: ['/og-image.png'],
     creator: '@aivideoauditor',
   },
   icons: {
