@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import InteractiveAuditor from '@/components/interactive-auditor';
+import LeadCaptureForm from '@/components/lead-capture-form';
 import { Kicker, SectionHead, RuleDivider, DataCallout } from '@/components/editorial';
 
 const CHROME_EXT_URL = 'https://chromewebstore.google.com/detail/aivideoauditor/ecomchbdfkgakaoponipjgpnjfpimdef';
@@ -208,6 +209,19 @@ export default function HomePage() {
             <p className="mt-5 font-mono text-[11px] text-ink-muted">
               No credit card on the free tier · Chrome · Brave · Edge · Arc
             </p>
+
+            <div className="mt-12 max-w-xl">
+              <p className="font-mono text-[10px] tracking-kicker uppercase text-ink-muted mb-3">
+                Not ready to install? Get the desk in your inbox.
+              </p>
+              <LeadCaptureForm
+                source="home-hero"
+                heading="One email when the vendor changelog flags something."
+                blurb="We watch silent pricing-page edits, 'unlimited' policy walks, and credit-burn rule shifts across 11 AI-video vendors. You get a note only when a change matters. Maybe twice a month, often less."
+                cta="Add me →"
+                successMessage="In. We'll only ping you when a vendor pulls something worth knowing about."
+              />
+            </div>
           </div>
         </section>
 
