@@ -29,6 +29,19 @@ type Change = {
 const CHANGES: Change[] = [
   {
     date: '2026-05',
+    vendor: 'Higgsfield',
+    category: 'Pricing',
+    headline: 'Trustpilot reviewers continue to report unauthorized charges off the credit card on file, with no in-product credit issued in return.',
+    what: 'On 2026-05-22 a Trustpilot reviewer reported: "You guys took a random $50 out of my account and didn\'t offer me any credit in return. It wasn\'t even the monthly payment of the month. It\'s weird how you guys took $50 and didn\'t give me anything type of credit to use." This is a different pattern from the Black Friday "Battery" lockout: the unauthorized charge here is mid-cycle, off-schedule from the documented billing period, and produces no credit balance the user can spend. Combined with the April 2026 entry below, it shows the post-purchase billing surface continues to be where the largest disputes originate.',
+    evidence: [
+      'Trustpilot 1-star (2026-05-22): "You guys took a random $50 out of my account and didn\'t offer me any credit in return... it wasn\'t even the monthly payment of the month."',
+      'Trustpilot 1-stars (2026-04): same pattern of off-cycle charges + no credit issued.',
+      'r/HiggsfieldAI ongoing threads document the same complaint across multiple users.',
+    ],
+    impact: 'Customers who keep a card on file with Higgsfield are exposed to off-schedule charges that do not produce a usable credit balance. Without external monitoring, a customer would only notice when reconciling a bank statement — by which point the refund window may have closed.',
+  },
+  {
+    date: '2026-05',
     vendor: 'Runway',
     category: 'Feature removal',
     headline: 'Runway mod team acknowledges a wave of "Account Suspensions for Usage Violations" affecting paying users who report no policy-violating activity.',
@@ -89,6 +102,7 @@ const CHANGES: Change[] = [
     evidence: [
       'r/generativeAI 1sjcuth: "Pollo AI Suddenly Billed me 70K for a Yearly Pro Subscription" — OP reports refund offered minus service cut.',
       'r/FraudPrevention 1o220dl: "Warning: Pollo AI — Systematic Fraud, Unauthorized Charges" thread documents the same pattern across multiple users.',
+      'Trustpilot 1-star (2026-05-22): "I upgraded to a monthly plan with them, and they charged me immediately £1,380. I did not ask for this as I was still evaluating the product." — fresh confirmation that the auto-upgrade pattern continues into May 2026, with the same large unauthorized charge structure as the December 2025 JPY case.',
     ],
     impact: 'Standard refund mechanics in most retail/SaaS contexts are full-amount refunds. Pollo\'s "refund minus cut" structure means a user who recovers 50–70% of an unauthorized charge has still lost money on what should be a fully reversible transaction. AVA\'s position: this vendor pattern is best avoided pre-purchase, since post-purchase recovery is structurally lossy by design.',
   },
