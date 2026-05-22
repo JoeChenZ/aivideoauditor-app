@@ -28,6 +28,19 @@ type Change = {
 
 const CHANGES: Change[] = [
   {
+    date: '2026-05',
+    vendor: 'Runway',
+    category: 'Feature removal',
+    headline: 'Runway mod team acknowledges a wave of "Account Suspensions for Usage Violations" affecting paying users who report no policy-violating activity.',
+    what: 'On 2026-05-21 a user posted "Sudden Account Suspension - Didn\'t do anything other than creating videos" in r/runwayml. The Runway mod reply on that thread confirms "we\'re investigating an issue that\'s causing an increase in suspensions" and links to the formal appeals process. The mod admission, combined with the May Trustpilot 1-stars citing the same pattern, indicates a server-side flag-and-suspend mechanism mis-targeting paying customers — not a per-account violation. Resolution requires a multi-day appeal with a Generation ID and use-case statement; without those receipts the appeal is harder.',
+    evidence: [
+      'r/runwayml thread (2026-05-21): "Sudden Account Suspension - Didn\'t do anything other than creating videos." Runway-team-flaired comment: "we\'re investigating an issue that\'s causing an increase in suspensions" — link to Account-Suspensions-for-Usage-Violations help article.',
+      'Trustpilot 1-stars from May 2026: 4 of 11 cite suspension or downgrade without prior notice.',
+      'Appeal-success pattern: resolution within 7-14 business days when filed with timestamps + use-case statement + billing receipt.',
+    ],
+    impact: 'A "billing pattern watch" surface should treat a sudden suspension as functionally equivalent to a refund-window-closing event — the user is unable to use the service they paid for, with no in-product recourse other than an external appeal. The vendor has acknowledged the suspension wave, which is itself a useful confirmation signal: AVA flags accounts on this vendor for elevated suspension risk in the May 2026 window.',
+  },
+  {
     date: '2025-12',
     vendor: 'Higgsfield',
     category: 'Unlimited routing',
