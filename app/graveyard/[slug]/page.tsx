@@ -57,9 +57,20 @@ export default function GraveyardPage({ params }: { params: { slug: string } }) 
     datePublished: s.shutdownAnnounced || undefined,
   };
 
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.aivideoauditor.com' },
+      { '@type': 'ListItem', position: 2, name: 'Graveyard', item: 'https://www.aivideoauditor.com/graveyard' },
+      { '@type': 'ListItem', position: 3, name: s.toolName, item: `https://www.aivideoauditor.com/graveyard/${s.slug}` },
+    ],
+  };
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
 
       <main className="min-h-screen py-20 px-6">
         <div className="max-w-3xl mx-auto">
