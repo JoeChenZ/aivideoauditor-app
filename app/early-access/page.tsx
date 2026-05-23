@@ -1,13 +1,15 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import LeadCaptureForm from '@/components/lead-capture-form';
+import StripeBuyButton from './stripe-buy-button';
 
 const LAUNCH_ETA = 'mid-July 2026';
 const PREORDER_URL = process.env.NEXT_PUBLIC_PREORDER_STRIPE_URL || '';
+const CHROME_EXT_URL = 'https://chromewebstore.google.com/detail/aivideoauditor/ecomchbdfkgakaoponipjgpnjfpimdef';
 
 export const metadata: Metadata = {
-  title: 'AVA Pro — Founders Round ($50 / 6 months)',
-  description: 'Founders round for AVA Pro at $50 for 6 months (vs $114 regular). Pay now with Stripe — instant 6-month access. Stripe webhook + auto-grant verified end-to-end.',
+  title: 'AIVideoAuditor — Free Chrome extension scores your prompt before you Generate',
+  description: 'Free Chrome extension that scores your AI-video prompt before you click Generate. Predicts the likely failure mode and a rewrite, so you don’t burn credits on a retry-bait result. Optional $50 founders upgrade.',
   alternates: { canonical: 'https://www.aivideoauditor.com/early-access' },
 };
 
@@ -22,19 +24,88 @@ export default function EarlyAccessPage() {
           <span className="text-ink-secondary">Early Access</span>
         </nav>
 
-        <div className="mb-10">
-          <p className="font-mono text-[11px] tracking-kicker uppercase text-neon-amber mb-3">
-            Founders&apos; round · waitlist open · payment opens soon
+        {/* HERO — free Chrome extension (matches Reddit ad promise) */}
+        <div className="mb-8">
+          <p className="font-mono text-[11px] tracking-kicker uppercase text-neon-green mb-3">
+            Free Chrome extension · live in the Chrome Web Store
           </p>
           <h1 className="font-display text-4xl md:text-5xl font-semibold text-ink-primary mb-4 leading-tight tracking-tight">
-            Lock in AVA Pro at $50 for 6 months.
+            Score your AI-video prompt before you click Generate.
           </h1>
           <p className="text-ink-secondary leading-relaxed">
-            AVA Pro launches around <strong>{LAUNCH_ETA}</strong> at $19/mo. Founders pay $50 flat for the first 6 months instead of $114 — a 56% founders&apos; discount, locked in even after public pricing changes.
+            Free Chrome extension. Reads the prompt on Runway / Luma / Higgsfield / Pika, predicts the
+            most-likely failure mode from a 105-mode catalogue, suggests a concrete rewrite. Stops you
+            burning credits on a prompt the model already mis-handled in our 132-review corpus.
           </p>
         </div>
 
-        {/* Founders' round status */}
+        {/* HERO CTAs — Chrome install (primary) + email capture (secondary) */}
+        <div className="border border-neon-green/40 rounded-md p-8 mb-6 bg-paper">
+          <p className="font-mono text-[10px] tracking-kicker uppercase text-ink-muted mb-3 text-center">
+            Free path · no card, no signup wall
+          </p>
+          <a
+            href={CHROME_EXT_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block w-full text-center bg-neon-green text-paper font-mono font-bold text-base px-6 py-4 rounded-md hover:bg-neon-green/90 transition-colors mb-4"
+            data-cta="early-access-chrome-install"
+          >
+            ADD TO CHROME — FREE →
+          </a>
+          <p className="text-center text-xs font-mono text-ink-muted mb-6">
+            Chrome Web Store · v1.1.0 · works on Runway, Luma, Higgsfield, Pika
+          </p>
+
+          <div className="border-t border-rule pt-5">
+            <p className="text-sm text-ink-secondary mb-3 text-center">
+              Not on Chrome? Drop your email — we&apos;ll ping you when the Firefox / Safari builds ship.
+            </p>
+            <LeadCaptureForm
+              source="early-access-hero"
+              heading=""
+              blurb=""
+              cta="Notify me when other browsers ship →"
+            />
+          </div>
+        </div>
+
+        {/* What the extension does (above-fold-ish, keeps user reading) */}
+        <div className="border border-rule rounded-md p-6 mb-10 bg-surface">
+          <h2 className="font-display text-lg font-semibold text-ink-primary mb-4">What the free extension does</h2>
+          <ul className="space-y-3 text-sm text-ink-secondary">
+            <li className="flex gap-3">
+              <span className="text-neon-green font-mono shrink-0">→</span>
+              <span><strong className="text-ink-primary">Pre-generation prompt scoring.</strong> 0-100 risk score with the named failure mode (e.g. &ldquo;Anatomical Topology — high risk on Runway Gen-3, fingers&rdquo;) before you spend a credit.</span>
+            </li>
+            <li className="flex gap-3">
+              <span className="text-neon-green font-mono shrink-0">→</span>
+              <span><strong className="text-ink-primary">Concrete rewrite.</strong> Suggests the specific edit that reduces the predicted failure — not vague &ldquo;be more specific&rdquo; advice.</span>
+            </li>
+            <li className="flex gap-3">
+              <span className="text-neon-green font-mono shrink-0">→</span>
+              <span><strong className="text-ink-primary">Cross-vendor stability alerts.</strong> Tells you when a tool you use silently changed its credit accounting or output policy (built on our 132-review corpus + ongoing scrape).</span>
+            </li>
+            <li className="flex gap-3">
+              <span className="text-neon-green font-mono shrink-0">→</span>
+              <span><strong className="text-ink-primary">Seed library.</strong> Lock-in seeds that survived a generation so you can re-roll variations without losing the part that worked.</span>
+            </li>
+          </ul>
+        </div>
+
+        {/* DEMOTED — $50 founders upgrade, below the fold */}
+        <div className="border-t-2 border-rule pt-10 mb-6">
+          <p className="font-mono text-[11px] tracking-kicker uppercase text-neon-amber mb-3">
+            Optional upgrade · founders&apos; round · skip if free extension is enough
+          </p>
+          <h2 className="font-display text-2xl md:text-3xl font-semibold text-ink-primary mb-4 leading-tight tracking-tight">
+            Want AVA Pro early? $50 for 6 months.
+          </h2>
+          <p className="text-ink-secondary leading-relaxed mb-6">
+            AVA Pro launches around <strong>{LAUNCH_ETA}</strong> at $19/mo. Founders pay $50 flat for the first 6 months instead of $114 — a 56% founders&apos; discount, locked in even after public pricing changes. Free extension stays free; Pro adds unlimited scoring, personal failure history, A/B model routing.
+          </p>
+        </div>
+
         <div className="bg-neon-green/5 border border-neon-green/30 rounded-md p-5 mb-6 text-sm">
           <p className="font-mono text-[11px] tracking-kicker uppercase text-neon-green mb-3">
             Founders&apos; round · OPEN · payment + auto-grant verified end-to-end
@@ -45,37 +116,30 @@ export default function EarlyAccessPage() {
         </div>
 
         <div className="border border-rule rounded-md p-6 mb-6 bg-surface">
-          <h2 className="font-display text-lg font-semibold text-ink-primary mb-4">What you&apos;re paying $50 for</h2>
+          <h3 className="font-display text-lg font-semibold text-ink-primary mb-4">What Pro adds on top of the free extension</h3>
           <ul className="space-y-3 text-sm text-ink-secondary">
             <li className="flex gap-3">
               <span className="text-neon-green font-mono shrink-0">→</span>
-              <span><strong className="text-ink-primary">Pre-generation prompt critique.</strong> Predicts likely failure modes <em>before</em> you spend credits, with a concrete rewrite suggestion.</span>
+              <span><strong className="text-ink-primary">Unlimited prompt scoring.</strong> Free tier is 50 scores/month. Pro is unlimited.</span>
+            </li>
+            <li className="flex gap-3">
+              <span className="text-neon-green font-mono shrink-0">→</span>
+              <span><strong className="text-ink-primary">Personal failure history.</strong> Tracks your historical credit waste by category and platform — find patterns, fix the root cause.</span>
             </li>
             <li className="flex gap-3">
               <span className="text-neon-green font-mono shrink-0">→</span>
               <span><strong className="text-ink-primary">Cross-model A/B routing.</strong> Sends the same prompt to 2-3 models, returns the best result. Stops you betting all credits on one platform.</span>
-            </li>
-            <li className="flex gap-3">
-              <span className="text-neon-green font-mono shrink-0">→</span>
-              <span><strong className="text-ink-primary">Failure-mode dashboard.</strong> Tracks your historical credit waste by category and platform — find patterns, fix the root cause.</span>
-            </li>
-            <li className="flex gap-3">
-              <span className="text-neon-green font-mono shrink-0">→</span>
-              <span><strong className="text-ink-primary">All current free-tier features.</strong> Pre-purchase prompt scoring, vendor change alerts, seed library.</span>
             </li>
           </ul>
         </div>
 
         <div className="bg-neon-amber/5 border border-neon-amber/30 rounded-md p-5 mb-6 text-sm">
           <p className="font-mono text-[11px] tracking-kicker uppercase text-neon-amber mb-2">
-            Honest disclosure
+            Honest disclosure (only matters if you upgrade)
           </p>
           <ul className="space-y-2 text-ink-secondary leading-relaxed">
             <li>
-              <strong className="text-ink-primary">Launch ETA is {LAUNCH_ETA}, not a guarantee.</strong> If Pro doesn&apos;t ship by August 31, 2026, you get a full refund plus a $20 apology credit. No questions.
-            </li>
-            <li>
-              <strong className="text-ink-primary">Feature set is being finalized.</strong> The three Pro features above are what we&apos;re committed to. Specific UI / model coverage may evolve.
+              <strong className="text-ink-primary">Launch ETA is {LAUNCH_ETA}, not a guarantee.</strong> If Pro doesn&apos;t ship by August 31, 2026, you get a full refund plus a $20 apology credit.
             </li>
             <li>
               <strong className="text-ink-primary">14-day refund window.</strong> Cancel in the first 14 days after Pro ships for a full refund. After that, the 6 months are non-refundable but transferable.
@@ -96,14 +160,7 @@ export default function EarlyAccessPage() {
           </p>
 
           {PREORDER_URL ? (
-            <a
-              href={PREORDER_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-neon-green/15 hover:bg-neon-green/25 border border-neon-green/40 text-neon-green font-mono font-semibold text-sm tracking-wide uppercase px-8 py-3.5 rounded-md transition-colors"
-            >
-              Pay $50 with Stripe →
-            </a>
+            <StripeBuyButton url={PREORDER_URL} />
           ) : (
             <p className="font-mono text-xs text-neon-amber">
               Pre-order link not configured yet.
@@ -111,20 +168,8 @@ export default function EarlyAccessPage() {
           )}
 
           <p className="mt-4 font-mono text-[10px] text-ink-muted">
-            Secured by Stripe · Email-based auto-grant · 14-day refund window
+            Secured by Stripe · Email-based auto-grant · <Link href="/refund-policy" className="underline hover:text-ink-secondary">30-day refund</Link>
           </p>
-        </div>
-
-        <div className="border border-rule rounded-md p-6 mb-6 bg-surface">
-          <p className="text-sm text-ink-secondary mb-4">
-            Not ready to pay yet? Drop your email and I&apos;ll notify you when Pro launches in {LAUNCH_ETA}.
-          </p>
-          <LeadCaptureForm
-            source="early-access-notify"
-            heading=""
-            blurb=""
-            cta="Notify me at launch"
-          />
         </div>
 
         <div className="text-center">
