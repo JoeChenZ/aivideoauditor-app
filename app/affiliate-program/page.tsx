@@ -13,9 +13,57 @@ export const metadata: Metadata = {
   },
 };
 
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'When does the program go live?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'The application opens immediately. Commission accrual starts the day AVA Pro Stripe-LIVE flips — expected within 7-14 days. Pre-launch applicants get their referral links pre-provisioned so you can start sharing content the moment we go live.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What about Business-tier signups ($79/mo)?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: "Same 30% rate. That's $23.70/month per active Business subscriber, $300+ median lifetime commission per Business signup. Agency-network affiliates typically do better on Business than Pro.",
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'When do I get paid?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Monthly. 30-day refund-clawback window (commissions pay out 30 days after the signup to cover trial cancellations). Stripe Connect handles US + international payouts. Net-30 standard.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Can I run paid traffic to AVA via my referral link?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes, except on AVA-branded keywords (which we reserve for our own ads). You can run paid social, YouTube pre-roll, sponsored newsletter slots, etc. The 30% commission has to cover your CAC — at a $100 median LTV, paid traffic works for affiliates running under $30 CPA campaigns.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: "What if I'm an agency with team members?",
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Separate program for resellers. Email joe@aivideoauditor.com — resellers get bulk pricing, team accounts, and higher commission tiers on Business-tier signups.',
+      },
+    },
+  ],
+};
+
 export default function AffiliateProgramPage() {
   return (
     <main className="min-h-screen py-20 px-6">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <div className="max-w-3xl mx-auto">
 
         <nav className="text-xs font-mono text-ink-muted mb-8" aria-label="Breadcrumb">
