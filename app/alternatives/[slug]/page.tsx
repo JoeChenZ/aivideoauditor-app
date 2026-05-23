@@ -43,9 +43,20 @@ export default function AlternativesPage({ params }: { params: { slug: string } 
     publisher: { '@type': 'Organization', name: 'AIVideoAuditor', url: 'https://www.aivideoauditor.com' },
   };
 
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.aivideoauditor.com' },
+      { '@type': 'ListItem', position: 2, name: 'Alternatives', item: 'https://www.aivideoauditor.com/alternatives' },
+      { '@type': 'ListItem', position: 3, name: a.toolName, item: `https://www.aivideoauditor.com/alternatives/${a.slug}` },
+    ],
+  };
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
 
       <main className="min-h-screen py-20 px-6">
         <div className="max-w-3xl mx-auto">
