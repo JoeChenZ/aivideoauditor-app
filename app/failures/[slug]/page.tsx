@@ -51,6 +51,16 @@ export default function FailurePage({ params }: { params: { slug: string } }) {
     },
   };
 
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.aivideoauditor.com' },
+      { '@type': 'ListItem', position: 2, name: 'Failure Reference', item: 'https://www.aivideoauditor.com/failures' },
+      { '@type': 'ListItem', position: 3, name: f.title, item: `https://www.aivideoauditor.com/failures/${f.slug}` },
+    ],
+  };
+
   const howToSchema = {
     '@context': 'https://schema.org',
     '@type': 'HowTo',
@@ -89,6 +99,7 @@ export default function FailurePage({ params }: { params: { slug: string } }) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
 
       <main className="min-h-screen py-20 px-6">
         <div className="max-w-3xl mx-auto">
