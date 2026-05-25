@@ -1,0 +1,23 @@
+import type { MetadataRoute } from 'next';
+
+export default function robots(): MetadataRoute.Robots {
+  return {
+    rules: [
+      {
+        userAgent: '*',
+        allow: '/',
+        disallow: [
+          '/dashboard',
+          '/login',
+          '/auth',
+          '/api',
+          '/pro-success',
+          '/survey',
+          '/vault',
+        ],
+      },
+    ],
+    sitemap: 'https://www.aivideoauditor.com/sitemap.xml',
+    host: 'https://www.aivideoauditor.com',
+  };
+}
