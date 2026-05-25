@@ -34,11 +34,59 @@ const breadcrumbSchema = {
   ],
 };
 
+// Dataset schema — gets the 132-review corpus indexed by Google Dataset Search,
+// a separate vertical that journalists and researchers query directly.
+// Schema.org/Dataset is the structured-data signal Google uses for datasetsearch.research.google.com.
+const datasetSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Dataset',
+  name: '132 Trustpilot 1-Star Reviews Across 8 AI Video Platforms (2026)',
+  description: 'Hand-tagged corpus of 132 1-star Trustpilot reviews collected across Higgsfield, Krea, Pollo, Pika, Runway, Luma, Sora, and Vidu between 2026-05-13 and 2026-05-19. Each review tagged against a 6-category complaint taxonomy: billing predation, cost burn, output quality, support failure, access issues, NSFW filter policy churn. Headline finding: 77% of paid-tier 1-stars cite billing-mechanic complaints, not output quality.',
+  url: 'https://www.aivideoauditor.com/research/132-ai-video-vendor-reviews',
+  identifier: 'ava-132-trustpilot-corpus-2026-05',
+  keywords: [
+    'AI video',
+    'Trustpilot reviews',
+    'vendor reliability',
+    'billing complaints',
+    'Runway',
+    'Luma',
+    'Sora',
+    'Higgsfield',
+    'Krea',
+    'Pollo',
+    'Pika',
+    'Vidu',
+  ],
+  creator: {
+    '@type': 'Organization',
+    name: 'AIVideoAuditor',
+    url: 'https://www.aivideoauditor.com',
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'AIVideoAuditor',
+    url: 'https://www.aivideoauditor.com',
+  },
+  datePublished: '2026-05-20',
+  temporalCoverage: '2026-05-13/2026-05-19',
+  variableMeasured: [
+    'Vendor platform',
+    'Complaint category (6-tag taxonomy)',
+    'Review date',
+    'Tier (free vs paid)',
+  ],
+  license: 'https://creativecommons.org/licenses/by/4.0/',
+  isAccessibleForFree: true,
+  inLanguage: 'en-US',
+};
+
 export default function VendorRealityResearchPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(datasetSchema) }} />
       <WidePageShell>
         <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Research', href: '/research/132-ai-video-vendor-reviews' }, { label: '132-review corpus' }]} />
 
