@@ -15,9 +15,80 @@ export const metadata: Metadata = {
   },
 };
 
+// Structured data — currently the page exposed zero schema. Adds ItemList for the
+// per-tool guides, BreadcrumbList for hierarchy, and FAQPage for SERP rich results.
+const itemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'AI Video Tool Alternatives Guides',
+  itemListElement: ALTERNATIVES.map((a, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    url: `https://www.aivideoauditor.com/alternatives/${a.slug}`,
+    name: `${a.toolFullName} — Alternatives`,
+  })),
+};
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.aivideoauditor.com' },
+    { '@type': 'ListItem', position: 2, name: 'Alternatives', item: 'https://www.aivideoauditor.com/alternatives' },
+  ],
+};
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'How do I pick the right alternative to my current AI video tool?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Pick by failure mode of your most common shot, not by leaderboard. Every AI video generator fails differently — Runway nails character consistency but loses on cinematic lighting; Luma is the inverse. Identify the failure type you keep hitting on your current tool, then pick the alternative that handles that shot type best.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Which AI video tool has shut down?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Sora\'s consumer app shut on 2026-04-26; API access remains until September 2026. The /graveyard page tracks the full deprecation timeline plus per-tool migration paths so you can find a replacement before the cut-off.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Is Runway better than Luma?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Neither is universally better. Runway Gen-4 wins on character consistency across cuts (Scenes mode) and named-failure-category coverage. Luma Ray-2 wins on lighting realism and per-clip cost. The /compare/runway-vs-luma page maps the dimensions and example prompts head-to-head.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What replaces Sora 2 now that it is sunsetting?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'For stylized motion (Sora\'s strength), Pika 2.0 is the closest substitute. For native audio, Veo. For production reliability and refund recognition, Runway Gen-4. The /alternatives/sora migration guide ranks the substitutes per shot type.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Are there free alternatives to paid AI video tools?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Most consumer-tier generators offer a free quota (5-10 clips/month) before paywalling. Quality on free tiers typically tracks the paid tier — what changes is volume, queue priority, and output resolution. Each alternatives guide flags which providers have meaningful free tiers and which gate everything behind paid plans.',
+      },
+    },
+  ],
+};
+
 export default function AlternativesIndex() {
   return (
     <WidePageShell>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Alternatives' }]} />
 
       <div className="max-w-reading">
