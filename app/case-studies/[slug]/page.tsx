@@ -2,6 +2,38 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { CASE_STUDIES, getCaseStudy } from './data';
+import { ALTERNATIVES } from '../../alternatives/[slug]/data';
+import { COMPARISONS } from '../../compare/[slug]/data';
+
+const ALT_BY_SLUG = new Map(ALTERNATIVES.map((a) => [a.slug, a]));
+
+// Pull recognisable vendor slugs out of the case-study's toolsUsed strings.
+// Each tool string is free-text ("Sora 2 (until April 26, 2026...)"), so we
+// look for known vendor tokens. Returns unique slugs in encounter order.
+function detectVendors(toolsUsed: string[]): string[] {
+  const tokens: Array<[RegExp, string]> = [
+    [/\brunway\b/i, 'runway'],
+    [/\bluma\b/i, 'luma'],
+    [/\bsora\b/i, 'sora'],
+    [/\bveo\b/i, 'veo'],
+    [/\bkling\b/i, 'kling'],
+    [/\bpika\b/i, 'pika'],
+    [/\bhailuo\b/i, 'hailuo'],
+    [/\bvidu\b/i, 'vidu'],
+    [/\bseedance\b/i, 'seedance'],
+  ];
+  const found = new Set<string>();
+  const ordered: string[] = [];
+  for (const t of toolsUsed) {
+    for (const [re, slug] of tokens) {
+      if (re.test(t) && !found.has(slug)) {
+        found.add(slug);
+        ordered.push(slug);
+      }
+    }
+  }
+  return ordered;
+}
 
 export async function generateStaticParams() {
   return CASE_STUDIES.map((c) => ({ slug: c.slug }));
@@ -223,6 +255,53 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
               </Link>
             </div>
           </div>
+
+          {/* Cross-link to /alternatives/[vendor] + /compare/[A-vs-B] for vendors mentioned
+              in this case study. Closes the link-graph triangle for case-studies as well —
+              PageRank flows from a high-engagement narrative page to the high-intent
+              alternatives + comparison ladder for the same vendors. */}
+          {(() => {
+            const vendors = detectVendors(c.toolsUsed);
+            const altLinks = vendors.filter((v) => ALT_BY_SLUG.has(v)).slice(0, 3);
+            const compareLinks = COMPARISONS.filter((cmp) => {
+              const [a, b] = cmp.slug.split('-vs-');
+              return vendors.includes(a) || vendors.includes(b);
+            }).slice(0, 3);
+            if (altLinks.length === 0 && compareLinks.length === 0) return null;
+            return (
+              <section className="mt-12">
+                <h2 className="text-lg font-bold text-ink-primary mb-4">Compare the tools in this case study</h2>
+                <p className="text-ink-muted text-sm mb-4 max-w-prose">
+                  The customer in this story used multiple providers. These guides rank substitutes by shot type and break each vendor down head-to-head.
+                </p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {altLinks.map((slug) => {
+                    const alt = ALT_BY_SLUG.get(slug)!;
+                    return (
+                      <Link
+                        key={`alt-${slug}`}
+                        href={`/alternatives/${slug}`}
+                        className="bg-elevated border border-border rounded-xl p-4 hover:border-neon-amber/30 transition-colors"
+                      >
+                        <p className="font-mono text-[10px] tracking-kicker uppercase text-ink-muted mb-1">Alternatives</p>
+                        <p className="font-mono font-bold text-ink-primary text-sm">{alt.toolName} alternatives</p>
+                      </Link>
+                    );
+                  })}
+                  {compareLinks.map((cmp) => (
+                    <Link
+                      key={`cmp-${cmp.slug}`}
+                      href={`/compare/${cmp.slug}`}
+                      className="bg-elevated border border-border rounded-xl p-4 hover:border-neon-purple/30 transition-colors"
+                    >
+                      <p className="font-mono text-[10px] tracking-kicker uppercase text-ink-muted mb-1">Head-to-head</p>
+                      <p className="font-mono font-bold text-ink-primary text-sm">{cmp.toolA} vs {cmp.toolB}</p>
+                    </Link>
+                  ))}
+                </div>
+              </section>
+            );
+          })()}
 
           {/* Other case studies */}
           <section className="mt-12">
