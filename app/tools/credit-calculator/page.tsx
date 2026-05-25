@@ -56,6 +56,57 @@ const FAILURE_RATE: Record<Provider, number> = {
   multi: 0.33,
 };
 
+// Structured data — client component, but JSON-LD renders on first paint
+// which Googlebot reads. WebApplication signals an interactive tool;
+// HowTo gives a SERP step carousel for "how to calculate AI video credit waste".
+const webAppSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'AI Video Credit Calculator',
+  applicationCategory: 'FinanceApplication',
+  operatingSystem: 'Any',
+  url: 'https://www.aivideoauditor.com/tools/credit-calculator',
+  description: 'Free calculator that estimates monthly credit waste, recoverable spend by failure mode, and AVA Pro payback period for AI video subscribers.',
+  isAccessibleForFree: true,
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+};
+const howToCalcSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: 'How to calculate your real cost per usable AI video clip',
+  description: 'The headline rate is not your real cost. Multiply by 1/first-try-success-rate to get the effective per-usable-clip cost.',
+  totalTime: 'PT1M',
+  step: [
+    {
+      '@type': 'HowToStep',
+      position: 1,
+      name: 'Enter your current monthly AI video spend',
+      text: 'Use the credits-purchased value from your latest invoice, in dollars. The calculator handles any provider — Runway, Luma, Sora, Veo, Kling, Pika, Hailuo, Vidu.',
+    },
+    {
+      '@type': 'HowToStep',
+      position: 2,
+      name: 'Select your primary provider and most-common failure mode',
+      text: 'Provider sets the base first-try success rate. Failure mode adjusts the recovery-rate-per-ticket estimate based on the technical category vendors document.',
+    },
+    {
+      '@type': 'HowToStep',
+      position: 3,
+      name: 'Read your effective cost per usable clip and AVA Pro payback period',
+      text: 'The calculator shows your monthly wasted spend, the share recoverable by filing well-documented tickets, and how many weeks AVA Pro pays for itself versus current ad-hoc behavior.',
+    },
+  ],
+};
+const breadcrumbCalcSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.aivideoauditor.com' },
+    { '@type': 'ListItem', position: 2, name: 'Tools', item: 'https://www.aivideoauditor.com/tools/credit-calculator' },
+    { '@type': 'ListItem', position: 3, name: 'Credit Calculator', item: 'https://www.aivideoauditor.com/tools/credit-calculator' },
+  ],
+};
+
 export default function CreditCalculatorPage() {
   const [monthlySpend, setMonthlySpend] = useState<number>(200);
   const [provider, setProvider] = useState<Provider>('multi');
@@ -87,6 +138,9 @@ export default function CreditCalculatorPage() {
 
   return (
     <main className="min-h-screen py-20 px-6">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToCalcSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbCalcSchema) }} />
       <div className="max-w-3xl mx-auto">
 
         <nav className="text-xs font-mono text-ink-muted mb-8" aria-label="Breadcrumb">

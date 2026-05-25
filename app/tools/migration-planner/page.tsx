@@ -118,6 +118,62 @@ const RECOMMENDATIONS: Record<ShotType, Recommendation> = {
   },
 };
 
+// Structured data — WebApplication + HowTo + BreadcrumbList. Targets queries
+// like "migrate from Sora to" / "alternative to Runway by shot type".
+const webAppSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'AI Video Migration Planner',
+  applicationCategory: 'BusinessApplication',
+  operatingSystem: 'Any',
+  url: 'https://www.aivideoauditor.com/tools/migration-planner',
+  description: 'Free interactive planner that ranks AI video substitutes by your specific shot type and estimates monthly savings from switching providers.',
+  isAccessibleForFree: true,
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+};
+const howToMigrateSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: 'How to pick a migration target from your current AI video tool',
+  description: 'The right substitute depends on which shot type you do most, not which model is "best." This planner ranks alternatives by shot-type compatibility and estimated monthly savings.',
+  totalTime: 'PT2M',
+  step: [
+    {
+      '@type': 'HowToStep',
+      position: 1,
+      name: 'Select your current AI video tool',
+      text: 'Pick from Runway, Luma, Sora, Veo, Kling, Pika, Hailuo, or Vidu. The planner uses your current tool to seed comparative defaults.',
+    },
+    {
+      '@type': 'HowToStep',
+      position: 2,
+      name: 'Choose your most-common shot type',
+      text: 'Character work, atmospheric lighting, action sequences, dialogue with audio, brand product, or stylized animation. Each shot type maps to different failure-mode hierarchies — the migration target depends on this choice more than on overall vendor rating.',
+    },
+    {
+      '@type': 'HowToStep',
+      position: 3,
+      name: 'Enter your current monthly spend',
+      text: 'The planner computes monthly and annualised savings from switching to the recommended substitute based on per-clip cost deltas plus the relative first-try success rate for your specific shot type.',
+    },
+    {
+      '@type': 'HowToStep',
+      position: 4,
+      name: 'Read the ranked recommendation and migration notes',
+      text: 'The planner returns a top substitute plus rationale, an alternate substitute as fallback, and migration notes covering prompt-syntax differences and feature-parity gaps.',
+    },
+  ],
+};
+const breadcrumbMigSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.aivideoauditor.com' },
+    { '@type': 'ListItem', position: 2, name: 'Tools', item: 'https://www.aivideoauditor.com/tools/credit-calculator' },
+    { '@type': 'ListItem', position: 3, name: 'Migration Planner', item: 'https://www.aivideoauditor.com/tools/migration-planner' },
+  ],
+};
+
 export default function MigrationPlannerPage() {
   const [step, setStep] = useState<1 | 2 | 3 | 4>(1);
   const [currentTool, setCurrentTool] = useState<CurrentTool | null>(null);
@@ -136,6 +192,9 @@ export default function MigrationPlannerPage() {
 
   return (
     <main className="min-h-screen py-20 px-6">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToMigrateSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbMigSchema) }} />
       <div className="max-w-2xl mx-auto">
 
         <nav className="text-xs font-mono text-ink-muted mb-8" aria-label="Breadcrumb">
