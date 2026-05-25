@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ALTERNATIVES, getAlternativesPage } from './data';
+import { FAILURES } from '../../failures/[slug]/data';
+import { COMPARISONS } from '../../compare/[slug]/data';
 
 export async function generateStaticParams() {
   return ALTERNATIVES.map((a) => ({ slug: a.slug }));
@@ -180,6 +182,48 @@ export default function AlternativesPage({ params }: { params: { slug: string } 
               </Link>
             </div>
           </div>
+
+          {/* Cross-link to /failures/[slug] for this vendor + /compare/[slug] head-to-heads.
+              Closes the link-graph triangle between alternatives, failures, and comparisons —
+              Google flows PageRank along contextual outbound links. */}
+          {(() => {
+            const vendorFailures = FAILURES.filter((f) => f.slug.startsWith(`${a.slug}-`)).slice(0, 4);
+            const vendorCompares = COMPARISONS.filter((c) => {
+              const parts = c.slug.split('-vs-');
+              return parts[0] === a.slug || parts[1] === a.slug;
+            }).slice(0, 3);
+            if (vendorFailures.length === 0 && vendorCompares.length === 0) return null;
+            return (
+              <section className="mt-12">
+                <h2 className="text-lg font-bold text-ink-primary mb-4">Why people search for {a.toolName} alternatives</h2>
+                <p className="text-ink-muted text-sm mb-4 max-w-prose">
+                  The specific {a.toolName} failure modes most users hit, plus head-to-head comparisons against the substitutes ranked above.
+                </p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {vendorFailures.map((f) => (
+                    <Link
+                      key={f.slug}
+                      href={`/failures/${f.slug}`}
+                      className="bg-elevated border border-border rounded-xl p-3 hover:border-neon-amber/30 transition-colors"
+                    >
+                      <p className="font-mono text-[10px] tracking-kicker uppercase text-ink-muted mb-1">{a.toolName} failure</p>
+                      <p className="font-mono font-semibold text-ink-primary text-sm">{f.title}</p>
+                    </Link>
+                  ))}
+                  {vendorCompares.map((c) => (
+                    <Link
+                      key={c.slug}
+                      href={`/compare/${c.slug}`}
+                      className="bg-elevated border border-border rounded-xl p-3 hover:border-neon-purple/30 transition-colors"
+                    >
+                      <p className="font-mono text-[10px] tracking-kicker uppercase text-ink-muted mb-1">Head-to-head</p>
+                      <p className="font-mono font-semibold text-ink-primary text-sm">{c.toolA} vs {c.toolB}</p>
+                    </Link>
+                  ))}
+                </div>
+              </section>
+            );
+          })()}
 
           <section className="mt-12">
             <h2 className="text-lg font-bold text-ink-primary mb-4">Other alternatives guides</h2>
