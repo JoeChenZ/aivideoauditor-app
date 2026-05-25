@@ -2,6 +2,20 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getFailure, FAILURES, getRelatedFailures } from './data';
+import { ALTERNATIVES } from '../../alternatives/[slug]/data';
+import { COMPARISONS } from '../../compare/[slug]/data';
+
+// Vendor slugs that have a dedicated /alternatives/[slug] page.
+const ALTERNATIVES_SLUGS = new Set(ALTERNATIVES.map((a) => a.slug));
+
+// Find /compare/[slug] pages where the given vendor is one of the two tools.
+// Slugs follow the `<a>-vs-<b>` convention from compare/[slug]/data.ts.
+function comparePagesForVendor(vendor: string) {
+  return COMPARISONS.filter((c) => {
+    const parts = c.slug.split('-vs-');
+    return parts[0] === vendor || parts[1] === vendor;
+  });
+}
 
 const FOUNDERS_URL = process.env.NEXT_PUBLIC_PREORDER_STRIPE_URL || '';
 
@@ -320,6 +334,50 @@ export default function FailurePage({ params }: { params: { slug: string } }) {
               })}
             </div>
           </section>
+
+          {/* Internal-linking density: cross-link to alternatives + head-to-head comparisons
+              for this failure's vendor. Boosts PageRank flow between the failure ledger,
+              the alternatives ladder, and the comparison matrix. */}
+          {(() => {
+            const vendor = f.slug.split('-')[0];
+            const vendorLabel = vendor.charAt(0).toUpperCase() + vendor.slice(1);
+            const hasAlt = ALTERNATIVES_SLUGS.has(vendor);
+            const comparePages = comparePagesForVendor(vendor).slice(0, 3);
+            if (!hasAlt && comparePages.length === 0) return null;
+            return (
+              <section className="mt-12">
+                <h2 className="font-display text-xl font-semibold text-ink-primary mb-2 leading-tight tracking-tight">
+                  Pick a different tool for {vendorLabel} failures
+                </h2>
+                <p className="text-ink-muted text-sm mb-4 max-w-prose">
+                  Some prompt shapes will keep failing on {vendorLabel}. Routing those shots to a different vendor is the cheapest fix.
+                </p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {hasAlt && (
+                    <Link
+                      href={`/alternatives/${vendor}`}
+                      className="border border-rule hover:border-neon-amber/40 rounded-md p-4 bg-surface transition-colors"
+                    >
+                      <p className="font-mono text-[10px] tracking-kicker uppercase text-ink-muted mb-1">Alternatives</p>
+                      <p className="font-mono font-semibold text-ink-primary text-xs mb-1">{vendorLabel} alternatives</p>
+                      <p className="text-ink-muted text-xs leading-relaxed">Ranked substitutes by shot type — character, motion, lighting, audio, brand product.</p>
+                    </Link>
+                  )}
+                  {comparePages.map((c) => (
+                    <Link
+                      key={c.slug}
+                      href={`/compare/${c.slug}`}
+                      className="border border-rule hover:border-neon-amber/40 rounded-md p-4 bg-surface transition-colors"
+                    >
+                      <p className="font-mono text-[10px] tracking-kicker uppercase text-ink-muted mb-1">Head-to-head</p>
+                      <p className="font-mono font-semibold text-ink-primary text-xs mb-1">{c.toolA} vs {c.toolB}</p>
+                      <p className="text-ink-muted text-xs leading-relaxed">{c.toolALongName} · {c.toolBLongName}</p>
+                    </Link>
+                  ))}
+                </div>
+              </section>
+            );
+          })()}
 
         </div>
       </main>
