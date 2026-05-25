@@ -37,10 +37,51 @@ export default function CompareIndex() {
     ],
   };
 
+  // FAQPage — high-intent head-to-head queries. Targets "X vs Y" searches.
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'How should I compare two AI video tools?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Compare by failure profile on your most-common shot type, not by overall "best" rating. Every generator has shot types where it wins and shot types where it fails — Runway is best for character work across cuts, Luma for lighting and atmosphere, Veo for native audio. Match the comparison to your prompt shape.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Which is better: Runway or Luma?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Runway Gen-4 wins on character consistency across cuts (Scenes mode) and named-failure-category coverage. Luma Ray-2 wins on lighting realism and per-clip cost. Generation speed is similar. Pick Runway for multi-shot story work, Luma for mood-led atmospheric pieces. The /compare/runway-vs-luma page has the dimension-by-dimension breakdown.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Sora vs Veo — which should I use?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Sora 2 is sunsetting (consumer app shut 2026-04-26, API to September 2026), so Veo is the practical pick. Veo also has native audio generation which Sora lacked. For stylized motion (Sora\'s strength), Pika 2.0 is the closest substitute. See /compare/sora-vs-veo.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Do these comparisons include cost?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Yes. Each comparison page includes per-clip cost (Pro tier), generation speed, and the effective cost per usable clip — the headline rate multiplied by 1/first-try-success-rate. A $0.05/sec rate with 40% first-try success is really $0.125/sec effective.',
+        },
+      },
+    ],
+  };
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
       <WidePageShell>
           <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Compare' }]} />
