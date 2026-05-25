@@ -131,6 +131,9 @@ const articleSchema = {
   author: { '@type': 'Organization', name: 'AIVideoAuditor' },
   publisher: { '@type': 'Organization', name: 'AIVideoAuditor', url: 'https://www.aivideoauditor.com' },
   datePublished: '2026-05-20',
+  dateModified: '2026-05-25',
+  image: 'https://www.aivideoauditor.com/opengraph-image',
+  articleSection: 'Vendor changelog',
 };
 
 const breadcrumbSchema = {
