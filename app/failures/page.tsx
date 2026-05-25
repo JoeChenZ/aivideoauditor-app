@@ -78,7 +78,7 @@ export default function FailuresHubPage() {
     '@type': 'CollectionPage',
     name: 'AI Video Failure Reference',
     description:
-      'Complete catalogue of AI video generation failures across all major models, each documented with refund-strength evidence and the exact technical term to cite with support.',
+      'Complete catalogue of AI video generation failures across all major models, each documented with reproducible triggers, the exact technical term, and prompt-rewrite patterns that avoid the failure.',
     url: 'https://www.aivideoauditor.com/failures',
     isPartOf: {
       '@type': 'WebSite',
@@ -102,6 +102,55 @@ export default function FailuresHubPage() {
     ],
   };
 
+  // FAQPage schema — high-intent Q&As for the failure-reference landing.
+  // Targets queries about specific failure modes, why they happen, how to avoid them.
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'What is an AI video failure mode?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'A failure mode is a reproducible defect that AI video models produce when prompts hit known weak spots — limb distortion, temporal flicker, physics collapse, face drift, text rendering, prompt mismatch. Each entry on this page names the failure with the technical term so it is identifiable in support tickets and replicable in research.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Why do AI video models still fail in 2026?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Current diffusion and latent-token video models share a common set of weak spots: extended physics (>5 seconds), hand and finger anatomy at close range, in-frame text past ~6 characters, fast motion at low FPS, and identity persistence across cuts. The architectures have improved but the underlying weak spots remain stable across vendors — which is why AVA can score prompts against a single rule catalog.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'How do I avoid each failure mode?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Each failure page contains: (a) the trigger pattern in plain English, (b) prompt-rewrite examples that bypass it, (c) a HowTo schema with the three concrete steps to identify and fix the failure on your own prompt. The Chrome extension applies these patterns automatically before you generate.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Are the failure rates documented?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Yes. Each failure mode includes the first-try success rate when triggered (the share of generations that produce usable output despite the trigger) and the per-vendor rate. Source data comes from our 132-review Trustpilot study plus rolling vendor-changelog tracking; methodology is on the /research page.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Which models have the highest failure rates?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Failure rate depends on prompt-shape, not vendor — a hand-close-up prompt fails on Runway, Luma, and Veo at similar rates. The /compare pages map which vendor wins on which shot type. The honest answer is: pick by failure profile of your most common shot, not by leaderboard.',
+        },
+      },
+    ],
+  };
+
   return (
     <>
       <script
@@ -111,6 +160,10 @@ export default function FailuresHubPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
       <WidePageShell>
