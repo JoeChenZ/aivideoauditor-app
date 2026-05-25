@@ -151,6 +151,44 @@ const softwareAppSchema = {
   ],
 };
 
+// HowTo schema — pulls the SERP step carousel for "how to use AIVideoAuditor".
+// Steps match the actual extension workflow so the rich result matches behavior.
+const howToSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: 'How to score an AI video prompt before clicking Generate',
+  description: 'Use AIVideoAuditor to catch prompts likely to waste credits across Runway, Luma, Sora 2, Veo, Kling, Pika, Hailuo, and Vidu — before you spend.',
+  totalTime: 'PT2M',
+  tool: [{ '@type': 'HowToTool', name: 'AIVideoAuditor Chrome extension' }],
+  step: [
+    {
+      '@type': 'HowToStep',
+      position: 1,
+      name: 'Install the free Chrome extension',
+      text: 'Add AIVideoAuditor from the Chrome Web Store. It pins to your toolbar and activates only on supported AI-video sites (Runway, Luma).',
+      url: 'https://www.aivideoauditor.com/#install',
+    },
+    {
+      '@type': 'HowToStep',
+      position: 2,
+      name: 'Open your AI video tool and start drafting a prompt',
+      text: 'Navigate to Runway or Luma and begin typing your prompt as you normally would. AVA reads the visible prompt field in real time and runs 105 documented failure patterns across the active vendor.',
+    },
+    {
+      '@type': 'HowToStep',
+      position: 3,
+      name: 'Read the live failure-risk score and rewrite if flagged',
+      text: 'AVA shows a colored indicator: green = no conflicts, amber = revise, red = high risk. Tap the indicator for the specific failure modes the prompt triggers — long prompt, complex physics over 5 seconds, text rendering, hand close-ups, crowd shots, fast motion at low FPS, and others. Rewrite the prompt to clear flagged patterns, then click Generate.',
+    },
+    {
+      '@type': 'HowToStep',
+      position: 4,
+      name: 'After generation, mark any failure to teach your personal score',
+      text: 'If the output failed in a documented way, click "Mark Failure" on the video and tag the category. Future prompts that match the same pattern will show an escalated score plus a "you have hit this Nx before" cue.',
+    },
+  ],
+};
+
 // FAQ schema — surfaces high-intent answers in Google SERP rich results.
 // Each question targets a real search query; answers stay specific and aligned with
 // the v3 prevention-not-refund positioning.
@@ -229,6 +267,7 @@ export default function HomePage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareAppSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script
         dangerouslySetInnerHTML={{
