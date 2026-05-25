@@ -133,6 +133,46 @@ const breadcrumbSchema = {
   ],
 };
 
+// FAQPage — billing-mechanic risk queries.
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'What is a billing pattern in AI video subscriptions?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'A documented mechanic that affects what users actually pay versus what the headline pricing implied — silent unlimited-tier throttles, dark-pattern cancel flows, trial-to-paid auto-conversion without notice, hidden per-feature surcharges, and pricing-tier consolidations that remove a previous plan mid-subscription.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Which vendors have the highest billing-mechanic risk right now?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'The severity table on this page ranks 8 platforms by documented billing complaints from the 132-review Trustpilot corpus plus Reddit cross-checks. Severity is colored: red (multiple independent reports + recent), yellow (one or two reports), grey (clean record at time of review). The data is updated weekly.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How is severity assigned?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Severity follows a 3-tier rubric: (red) three or more documented complaints from independent sources within 90 days OR a single pattern affecting cancel flow / refund policy / silent tier change; (yellow) one to two complaints OR a pattern affecting auto-renewal notification; (grey) no documented complaints in the current review window. Each tag links the underlying source records.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Is this advice or due-diligence reporting?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Due-diligence reporting. We document patterns; we do not tell you which vendor to buy from. The page is structured so a buyer can do their own risk weighting — compare the severity table against their own tolerance for billing surprises and decide accordingly.',
+      },
+    },
+  ],
+};
+
 function SeverityTag({ severity }: { severity: string }) {
   const colorClass =
     severity === 'red' ? 'text-neon-red border-neon-red/40' :
@@ -150,6 +190,7 @@ export default function BillingPatternWatchPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <WidePageShell>
         <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Billing Pattern Watch' }]} />
 

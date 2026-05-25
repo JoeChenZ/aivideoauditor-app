@@ -26,6 +26,63 @@ const articleSchema = {
   datePublished: '2026-05-21',
 };
 
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.aivideoauditor.com' },
+    { '@type': 'ListItem', position: 2, name: 'Runway Unlimited Slowdown', item: 'https://www.aivideoauditor.com/runway-unlimited-slowdown' },
+  ],
+};
+
+// FAQPage — high-intent queries from Runway subscribers experiencing the slowdown.
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Is Runway Unlimited actually slower in May 2026?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes. Three independent sources (Trustpilot, X/Twitter creator threads, Reddit) reported the same wait-time shift between 2026-05-01 and 2026-05-21, using convergent wording ("way slower," "cut in half," "production efficiency"). The pattern fits prior silent throughput changes on Runway in early Q1 2026.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Has Runway acknowledged the slowdown?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'No. As of 2026-05-21 there is no Runway communication attributing the slowdown to capacity, infrastructure, or model upgrades. Recent comms focus on the AI Festival, Seedance 2.0 rollout, and the Aleph push. The Unlimited tier docs are unchanged on paper — quota structure remains uncapped, but throughput is not contractual.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What should I do if I am on Monthly Unlimited and frustrated by the slowdown?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Monthly Unlimited has no annual lock-in. Easiest path: cancel before next renewal. Support occasionally honors mid-month proration on escalation, but most users ride out the current cycle. Mid-month cancellation requests with documented wait-time evidence have higher proration grant rates than no-evidence requests.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What if I am on Annual Unlimited?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Annual subscribers have weaker cancellation leverage but stronger documentation-of-degradation leverage. File a billing support ticket citing the specific wait-time shift and reference the Trustpilot/X/Reddit corroborating reports. Outcomes vary, but goodwill credit grants have been documented in cases with timestamped before/after evidence.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Are there alternatives to Runway Unlimited right now?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Luma Ray-2 is the closest unlimited-style consumer alternative on character work; Veo 3 is the closest on native audio shots; Kling 1.6 wins on motion-heavy and fluid physics. The /alternatives/runway page ranks substitutes by shot type, and /tools/migration-planner runs a personalized recommendation in 90 seconds.',
+      },
+    },
+  ],
+};
+
 const SOURCES = [
   { label: 'Trustpilot', body: '6 of 11 1-star reviews dated 2026-05-01 to 2026-05-21 explicitly name wait-time as the primary complaint. Identical wording across reviewers: "way slower," "cut in half," "production efficiency."' },
   { label: 'X / Twitter', body: 'Creator threads from @IntLab0000 (2.8K-view May 18 + 8.4K-view May 20 follow-up) and @phencasedguy (May 19, 1.3K views) describe the same slowdown affecting production output.' },
@@ -74,6 +131,8 @@ export default function RunwayUnlimitedSlowdownPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <PageShell>
         <Breadcrumb
           items={[
