@@ -141,6 +141,10 @@ const softwareAppSchema = {
   url: 'https://www.aivideoauditor.com',
   downloadUrl: CHROME_EXT_URL,
   aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.8', ratingCount: '47' },
+  // image + screenshot lift SoftwareApplication SERP card eligibility — Google needs at
+  // least one of these to render the visual "app card" variant. Dynamic OG covers screenshot.
+  image: 'https://www.aivideoauditor.com/icon-192.png',
+  screenshot: 'https://www.aivideoauditor.com/opengraph-image',
   featureList: [
     'Pre-purchase vendor reality check across 11 AI video platforms',
     'Pricing-change history and unlimited-tier gating per platform',
