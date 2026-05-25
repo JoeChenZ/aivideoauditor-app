@@ -278,6 +278,38 @@ const faqSchema = {
         text: 'The first-try success rate is the share of generations that produced usable output on the first attempt, measured against documented failure modes for that prompt-shape on that vendor. It is the operative cost-of-quality metric — a $0.50 per-clip headline rate at a 35% first-try success rate is really a $1.43 effective cost per usable clip.',
       },
     },
+    {
+      '@type': 'Question',
+      name: 'Does AVA store my prompts or send them to a server?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Pre-flight prompt scoring runs locally in the Chrome extension against the bundled 105-failure-mode rule catalog — your prompt never leaves the browser for scoring. Mark-failure history is stored server-side per signed-in account so the scorer can personalize warnings, and that data is account-private. No third-party analytics, no advertising, no resale. Full detail on /privacy.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Does AVA work on Firefox, Safari, or Edge?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Chrome only at launch (Manifest V3). The same codebase is portable to Edge with no changes and to Firefox with a manifest adapter. Safari extension porting is on the roadmap but not committed. Sign up on the homepage email capture if you want to be notified when each browser ships.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How quickly does AVA score my prompt?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Scoring runs on every keystroke with a 300ms debounce — typical end-to-end latency is under 50ms because all 105 failure modes are pure regex/keyword pattern matches against a bundled JSON rule catalog. There is no LLM call in the scoring path. The live indicator updates in real time as you type.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What is the difference between AVA Free, Pro, and Business?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Free gives 10 audits per month plus unlimited vendor reality checks across 11 platforms. Pro ($19/mo) unlocks unlimited audits, PDF reports, personal failure-history scoring, and silent-policy-change alerts. Business ($79/mo) adds team seats, API access, and shared failure-history across the team. Pricing page has the full comparison.',
+      },
+    },
   ],
 };
 
