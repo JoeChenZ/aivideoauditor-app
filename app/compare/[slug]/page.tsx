@@ -2,6 +2,10 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { COMPARISONS, getComparison } from './data';
+import { ALTERNATIVES } from '../../alternatives/[slug]/data';
+
+const ALT_SLUGS = new Set(ALTERNATIVES.map((a) => a.slug));
+const ALT_BY_SLUG = new Map(ALTERNATIVES.map((a) => [a.slug, a]));
 
 export async function generateStaticParams() {
   return COMPARISONS.map((c) => ({ slug: c.slug }));
@@ -131,7 +135,7 @@ export default function ComparePage({ params }: { params: { slug: string } }) {
             <h2 className="text-xl font-bold text-ink-primary mb-4">When to pick {c.toolB}</h2>
             <p className="text-ink-secondary leading-relaxed mb-5">{c.whenToPickB.description}</p>
             <p className="text-xs font-mono text-ink-muted uppercase tracking-wider mb-3">
-              Failure-mode profile ({c.whenToPickB.refundCategoriesCount} named refund categories)
+              Failure-mode profile ({c.whenToPickB.refundCategoriesCount} named failure categories)
             </p>
             <ul className="space-y-2">
               {c.whenToPickB.failureModes.map((fm, i) => (
@@ -212,6 +216,45 @@ export default function ComparePage({ params }: { params: { slug: string } }) {
               </Link>
             </div>
           </div>
+
+          {/* Cross-link to /alternatives/[A] and /alternatives/[B] — closes the link-graph
+              triangle so PageRank flows between comparisons and ranked substitutes. */}
+          {(() => {
+            const [aSlug, bSlug] = c.slug.split('-vs-');
+            const aAlt = ALT_BY_SLUG.get(aSlug);
+            const bAlt = ALT_BY_SLUG.get(bSlug);
+            if (!aAlt && !bAlt) return null;
+            return (
+              <section className="mt-12">
+                <h2 className="text-lg font-bold text-ink-primary mb-4">If neither wins your shot type</h2>
+                <p className="text-ink-muted text-sm mb-4 max-w-prose">
+                  When the head-to-head verdict is &ldquo;equivalent&rdquo; or both fail on your shape, route to a third tool. These guides rank substitutes by shot-type rather than overall rating.
+                </p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {aAlt && (
+                    <Link
+                      href={`/alternatives/${aSlug}`}
+                      className="bg-elevated border border-border rounded-xl p-4 hover:border-neon-amber/30 transition-colors"
+                    >
+                      <p className="font-mono text-[10px] tracking-kicker uppercase text-ink-muted mb-1">Alternatives</p>
+                      <p className="font-mono font-bold text-ink-primary text-sm mb-1">{aAlt.toolName} alternatives</p>
+                      <p className="text-xs text-ink-muted">Ranked substitutes by shot type.</p>
+                    </Link>
+                  )}
+                  {bAlt && (
+                    <Link
+                      href={`/alternatives/${bSlug}`}
+                      className="bg-elevated border border-border rounded-xl p-4 hover:border-neon-amber/30 transition-colors"
+                    >
+                      <p className="font-mono text-[10px] tracking-kicker uppercase text-ink-muted mb-1">Alternatives</p>
+                      <p className="font-mono font-bold text-ink-primary text-sm mb-1">{bAlt.toolName} alternatives</p>
+                      <p className="text-xs text-ink-muted">Ranked substitutes by shot type.</p>
+                    </Link>
+                  )}
+                </div>
+              </section>
+            );
+          })()}
 
           {/* Other comparisons */}
           <section className="mt-12">
