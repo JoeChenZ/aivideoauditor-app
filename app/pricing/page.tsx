@@ -94,11 +94,33 @@ const FAQ = [
   },
 ];
 
+// FAQPage + BreadcrumbList JSON-LD for SERP rich results.
+// FAQ entities reuse the visible Q&A above (single source of truth).
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: FAQ.map(({ q, a }) => ({
+    '@type': 'Question',
+    name: q,
+    acceptedAnswer: { '@type': 'Answer', text: a },
+  })),
+};
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.aivideoauditor.com' },
+    { '@type': 'ListItem', position: 2, name: 'Pricing', item: 'https://www.aivideoauditor.com/pricing' },
+  ],
+};
+
 export default async function PricingPage() {
   const { tiers } = await getPrices();
 
   return (
     <main className="min-h-screen py-20 px-6">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <PricingTrack />
       <div className="max-w-6xl mx-auto">
 
