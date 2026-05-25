@@ -113,7 +113,7 @@ export default function ComparePage({ params }: { params: { slug: string } }) {
             <h2 className="text-xl font-bold text-ink-primary mb-4">When to pick {c.toolA}</h2>
             <p className="text-ink-secondary leading-relaxed mb-5">{c.whenToPickA.description}</p>
             <p className="text-xs font-mono text-ink-muted uppercase tracking-wider mb-3">
-              Failure-mode profile ({c.whenToPickA.refundCategoriesCount} named refund categories)
+              Failure-mode profile ({c.whenToPickA.refundCategoriesCount} named failure categories)
             </p>
             <ul className="space-y-2">
               {c.whenToPickA.failureModes.map((fm, i) => (
@@ -171,9 +171,9 @@ export default function ComparePage({ params }: { params: { slug: string } }) {
             </div>
           </section>
 
-          {/* Refund flow summary */}
+          {/* Failure documentation flow */}
           <section className="mb-12">
-            <h2 className="text-xl font-bold text-ink-primary mb-4">Refund flow: how to get credits back on either tool</h2>
+            <h2 className="text-xl font-bold text-ink-primary mb-4">Failure documentation: filing tickets when output goes wrong</h2>
             <div className="bg-neon-green/5 border border-neon-green/20 rounded-xl p-5">
               <p className="text-ink-secondary text-sm leading-relaxed">{c.refundFlowSummary}</p>
             </div>
