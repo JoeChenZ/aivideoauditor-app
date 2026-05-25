@@ -38,7 +38,7 @@ export const COMPARISONS: Comparison[] = [
     toolALongName: 'Runway Gen-4',
     toolBLongName: 'Luma Dream Machine Ray-2',
     metaTitle: 'Runway Gen-4 vs Luma Dream Machine — Which Wins on Your Shot Type (2026)',
-    metaDesc: 'Honest comparison of Runway Gen-4 and Luma Dream Machine Ray-2 by failure profile. Picks the winner for character work, motion, faces, hands. Includes refund flow for both.',
+    metaDesc: 'Honest comparison of Runway Gen-4 and Luma Dream Machine Ray-2 by failure profile. Picks the winner for character work, motion, faces, hands. Includes failure documentation flow for both.',
     intro: "Which AI video generator wins depends on your shot type — not on a generic \"best of\" leaderboard. We've audited ~12,000 generations across Runway Gen-4 and Luma Dream Machine Ray-2 with the AVA failure-mode classifier. This comparison maps each tool's strengths and failure modes side by side, so you can pick the right one for the specific shot you're shooting.",
     quickVerdict: {
       useToolA: 'character consistency across cuts matters, or you need multi-shot scenes',
@@ -85,13 +85,13 @@ export const COMPARISONS: Comparison[] = [
       refundCategoriesCount: 6,
     },
     examples: [
-      { prompt: '"A surgeon in scrubs operating, close-up of hands on instruments"', toolA: 'Hand-anatomy fails ~60% of the time (finger count drift). Identity holds.', toolB: 'Same failure rate on hands. Slightly better surgical lighting realism.', verdict: 'Equivalent — refund 60% and reroll. Consider framing hands further from camera.' },
+      { prompt: '"A surgeon in scrubs operating, close-up of hands on instruments"', toolA: 'Hand-anatomy fails ~60% of the time (finger count drift). Identity holds.', toolB: 'Same failure rate on hands. Slightly better surgical lighting realism.', verdict: 'Equivalent — skip this prompt type and reroll. Consider framing hands further from camera.' },
       { prompt: '"Three-shot scene: woman walks into café, sits, drinks coffee, leaves"', toolA: 'Character identity holds across all three cuts (Scenes mode).', toolB: 'Identity drifts visibly by the third cut.', verdict: 'Runway, decisively.' },
       { prompt: '"Atmospheric night-time street with neon signage and rain"', toolA: 'Acceptable. Lighting realistic but not exceptional.', toolB: 'Exceptional — neon reflection, rain interaction with surfaces, atmospheric depth all stronger.', verdict: 'Luma, for mood-led work.' },
       { prompt: '"Brand product shot on white background, 360 rotation"', toolA: 'Color drift visible across the rotation. Brand color shifts outside tolerance.', toolB: 'Temporal Color Coherence Failure also visible; faster generation makes it cheaper to reroll.', verdict: 'Tie — both fail. Refund and reshoot, or use a non-AI tool for product work.' },
     ],
     refundFlowSummary: "The single highest-leverage habit for anyone paying for AI video work is filing well-documented tickets on the named failure modes. Neither Runway nor Luma guarantees refunds for output-quality failures — completed generations are typically considered consumed under each platform's published policy. However, support has discretion to grant goodwill credits when the failure is documented by category. Identify the failure category using the technical name (not a colloquial description), capture the Generation ID, take a timestamped screenshot, and submit through the platform's billing support flow with the technical category in the ticket subject. Outcomes vary widely and depend on ticket quality and platform discretion — there is no guaranteed approval rate.",
-    finalVerdict: "Don't subscribe to \"the better tool.\" Subscribe to the tool that fails least on your most common shot type. Character + multi-cut work → Runway Gen-4. Lighting + atmosphere + stylized → Luma Ray-2. Hand close-ups, brand products, long dialogue clips: neither will be reliable — plan for ~40% rejection rate and budget refunds in. Most production workflows benefit from having both subscriptions and routing each prompt to whichever tool fails least on that shot type.",
+    finalVerdict: "Don't subscribe to \"the better tool.\" Subscribe to the tool that fails least on your most common shot type. Character + multi-cut work → Runway Gen-4. Lighting + atmosphere + stylized → Luma Ray-2. Hand close-ups, brand products, long dialogue clips: neither will be reliable — plan for ~40% rejection rate and budget the quality cost in. Most production workflows benefit from having both subscriptions and routing each prompt to whichever tool fails least on that shot type.",
   },
   {
     slug: 'sora-vs-veo',
@@ -103,7 +103,7 @@ export const COMPARISONS: Comparison[] = [
     metaDesc: 'Honest comparison of OpenAI Sora 2 (now shut down) and Google Veo 3. Migration guide for stranded Sora users + when Veo is the right replacement.',
     intro: 'Sora 2 was shut down by OpenAI in May 2026. This comparison is now retrospective on the Sora side and forward-looking on the Veo 3 side — useful for stranded Sora users planning a migration, and for users deciding whether Veo 3 fits their workflow given the shutdown context.',
     quickVerdict: {
-      useToolA: "Sora 2 is dead. If you're reading this, you need a migration path. See refund flow.",
+      useToolA: "Sora 2 is dead. If you're reading this, you need a migration path. See failure documentation flow.",
       useToolB: "Veo 3 is the closest functional replacement for ≤4s clips with native audio. Not a full Sora replacement on stylized work.",
       honestNote: 'No current model fully replaces Sora 2 on stylized motion. The closest substitute depends on your specific shot type.',
     },
@@ -115,10 +115,10 @@ export const COMPARISONS: Comparison[] = [
       { dimension: 'Max clip length (good coherence)', toolA: '~8-10s', toolB: '~4s before audio drift; 8s hard limit', winner: 'A' },
       { dimension: 'Text rendering in frame', toolA: 'Garbled past ~6 chars', toolB: 'Slightly better; still garbled past ~6 chars', winner: 'B' },
       { dimension: 'Per-clip cost (consumer)', toolA: 'N/A (shutdown)', toolB: 'Lower than Sora at peak', winner: 'B' },
-      { dimension: 'Refund window status', toolA: 'Open until Sept 2026 API shutdown', toolB: 'Active per-generation refunds for documented failures', winner: 'NA' },
+      { dimension: 'Failure documentation status', toolA: 'Open until Sept 2026 API shutdown', toolB: 'Per-generation goodwill credits for documented failures', winner: 'NA' },
     ],
     whenToPickA: {
-      description: "The Sora 2 app and platform shut down on April 26, 2026. API access continues until late 2026 (September shutdown announced via r/SoraAi). You can't pick Sora as a tool, but if you had unspent credits or failed generations, file refund tickets via OpenAI billing support before the API shutdown — use technical failure-mode names (Anatomical Topology Failure, Temporal Color Coherence Failure, etc.) for fastest processing. See the /graveyard/sora-2 record for the complete refund flow.",
+      description: "The Sora 2 app and platform shut down on April 26, 2026. API access continues until late 2026 (September shutdown announced via r/SoraAi). You can't pick Sora as a tool, but if you had unspent credits or failed generations, file goodwill-credit tickets via OpenAI billing support before the API shutdown — use technical failure-mode names (Anatomical Topology Failure, Temporal Color Coherence Failure, etc.) for fastest processing. See the /graveyard/sora-2 record for the complete failure documentation flow.",
       failureModes: [
         { name: 'Anatomical Topology Failure', href: '/failures/sora-anatomy-artifact' },
         { name: 'Hand-Anatomy Topology Failure', href: '/failures/sora-hand-artifact' },
@@ -193,7 +193,7 @@ export const COMPARISONS: Comparison[] = [
       refundCategoriesCount: 6,
     },
     whenToPickB: {
-      description: "Use Runway Gen-4 when character consistency across cuts matters — multi-shot scenes with the same person, dialogue sequences, character-driven storytelling. Runway Gen-4 Scenes mode is purpose-built for this and is the strongest multi-cut identity-coherence feature in the consumer tier. Runway's other strengths are mature refund flow recognition (7 named failure categories) and Gen-4's improved physics over Gen-3 (closing some of Kling's lead). The tradeoff is weaker motion realism on action-heavy shots and weaker fluid prior than Kling.",
+      description: "Use Runway Gen-4 when character consistency across cuts matters — multi-shot scenes with the same person, dialogue sequences, character-driven storytelling. Runway Gen-4 Scenes mode is purpose-built for this and is the strongest multi-cut identity-coherence feature in the consumer tier. Runway's other strengths are mature named failure category coverage (7 named failure categories) and Gen-4's improved physics over Gen-3 (closing some of Kling's lead). The tradeoff is weaker motion realism on action-heavy shots and weaker fluid prior than Kling.",
       failureModes: [
         { name: 'Hand-Anatomy Topology Failure', href: '/failures/runway-hand-artifact' },
         { name: 'Camera Path Coherence Failure', href: '/failures/runway-camera-jitter' },
@@ -253,7 +253,7 @@ export const COMPARISONS: Comparison[] = [
       refundCategoriesCount: 6,
     },
     whenToPickB: {
-      description: "Use Runway Gen-4 when character consistency across cuts matters. Scenes mode is the strongest multi-cut identity-coherence feature in the consumer tier. Also stronger on refund flow recognition (7 named categories vs Pika's 6), which matters for high-volume users filing regular tickets.",
+      description: "Use Runway Gen-4 when character consistency across cuts matters. Scenes mode is the strongest multi-cut identity-coherence feature in the consumer tier. Also stronger on named failure category coverage (7 named categories vs Pika's 6), which matters for high-volume users filing regular tickets.",
       failureModes: [
         { name: 'Hand-Anatomy Topology Failure', href: '/failures/runway-hand-artifact' },
         { name: 'Limb Artifact', href: '/failures/runway-limb-artifact' },
@@ -301,7 +301,7 @@ export const COMPARISONS: Comparison[] = [
       { dimension: 'Refund flow recognition', toolA: '8 named categories (via Google AI Studio)', toolB: '6 named categories', winner: 'A' },
     ],
     whenToPickA: {
-      description: "Use Veo 3 when native audio matters. It's the only consumer-tier model with usable joint audio+video generation — short dialogue clips, music-video segments, audio-driven shots that other models can't do natively. Veo is also the cheapest per-second option and has the most named refund categories (8) of any consumer model. Tradeoff: weaker stylization and cinematic lighting than Luma.",
+      description: "Use Veo 3 when native audio matters. It's the only consumer-tier model with usable joint audio+video generation — short dialogue clips, music-video segments, audio-driven shots that other models can't do natively. Veo is also the cheapest per-second option and has the most named failure categories (8) of any consumer model. Tradeoff: weaker stylization and cinematic lighting than Luma.",
       failureModes: [
         { name: 'Text Rendering Failure', href: '/failures/veo-text-rendering-failure' },
         { name: 'Hand Artifact', href: '/failures/veo-hand-artifact' },
@@ -375,7 +375,7 @@ export const COMPARISONS: Comparison[] = [
       refundCategoriesCount: 6,
     },
     whenToPickB: {
-      description: "Use Veo 3 when native audio matters or when cost-per-clip dominates your decision. Veo is the only consumer model with usable joint audio+video and the cheapest option per second. Strongest refund flow recognition (8 named categories via Google AI Studio).",
+      description: "Use Veo 3 when native audio matters or when cost-per-clip dominates your decision. Veo is the only consumer model with usable joint audio+video and the cheapest option per second. Strongest named failure category coverage (8 named categories via Google AI Studio).",
       failureModes: [
         { name: 'Text Rendering Failure', href: '/failures/veo-text-rendering-failure' },
         { name: 'Hand Artifact', href: '/failures/veo-hand-artifact' },
@@ -521,7 +521,7 @@ export const COMPARISONS: Comparison[] = [
     toolALongName: 'Hailuo AI (MiniMax)',
     toolBLongName: 'Google Veo 3',
     metaTitle: 'Hailuo AI vs Google Veo 3 — Talking-Head Specialists (2026)',
-    metaDesc: 'Honest head-to-head: Hailuo (China-trained talking-head) vs Veo 3 (native audio + 8 refund categories). Pick by use case.',
+    metaDesc: 'Honest head-to-head: Hailuo (China-trained talking-head) vs Veo 3 (native audio + 8 failure categories). Pick by use case.',
     intro: "Hailuo AI (MiniMax) and Google Veo 3 both target dialogue and talking-head shots, but with very different architectures and tradeoffs. Hailuo is China-trained with strong motion priors but weaker English text + lip sync. Veo 3 is the only consumer model with truly usable native audio + lip sync on English. This comparison maps the dimensions.",
     quickVerdict: {
       useToolA: 'you\'re working in Chinese, or need a specific Chinese-trained aesthetic',
@@ -540,7 +540,7 @@ export const COMPARISONS: Comparison[] = [
       { dimension: 'Refund flow recognition', toolA: '5-6 named categories', toolB: '8 named categories (via Google AI Studio)', winner: 'B' },
     ],
     whenToPickA: {
-      description: "Use Hailuo when working in Chinese language content, or when the China-trained aesthetic specifically fits your work. Talking-head architecture is purpose-built and produces strong portrait shots when the camera locks on a face. Tradeoff: weaker English lip sync, color drift on long shots, weaker refund flow recognition.",
+      description: "Use Hailuo when working in Chinese language content, or when the China-trained aesthetic specifically fits your work. Talking-head architecture is purpose-built and produces strong portrait shots when the camera locks on a face. Tradeoff: weaker English lip sync, color drift on long shots, weaker named failure category coverage.",
       failureModes: [
         { name: 'Face Distortion', href: '/failures/hailuo-face-distortion' },
         { name: 'Color Drift', href: '/failures/hailuo-color-drift' },
@@ -552,7 +552,7 @@ export const COMPARISONS: Comparison[] = [
       refundCategoriesCount: 6,
     },
     whenToPickB: {
-      description: "Use Veo 3 for English-language talking-head work. Native audio + lip sync are stronger than any non-native model. Cheapest per-second cost in the consumer tier and the strongest refund flow recognition (8 named categories via Google AI Studio). Tradeoff: 8-second hard limit, less stylization.",
+      description: "Use Veo 3 for English-language talking-head work. Native audio + lip sync are stronger than any non-native model. Cheapest per-second cost in the consumer tier and the strongest named failure category coverage (8 named categories via Google AI Studio). Tradeoff: 8-second hard limit, less stylization.",
       failureModes: [
         { name: 'Lip Sync Failure', href: '/failures/veo-lip-sync-failure' },
         { name: 'Audio Generation Failure', href: '/failures/veo-audio-generation-failure' },
@@ -699,7 +699,7 @@ export const COMPARISONS: Comparison[] = [
       { prompt: '"Sign reads \'OPEN\' on a storefront, dusk lighting"', toolA: 'Text garbled past 4 chars.', toolB: 'Text garbled past 6 chars; \'OPEN\' more legible.', verdict: 'Runway, for short-text legibility.' },
     ],
     refundFlowSummary: "Both accept goodwill-credit requests with technical failure-mode names + Generation ID + timestamped screenshot. Vidu's flow runs via ShengShu support (6-7 named categories). Runway's flow runs via Runway billing (7 named categories — strong evidentiary precedent for limb/face/audio sync). AVA generates the audit report for either. Outcomes are at each support team's discretion — not guaranteed.",
-    finalVerdict: "Pick by shot architecture. Single short clip with a reference image → Vidu wins on locking + cost. Multi-shot narrative with character continuity → Runway wins on Scenes. Both fail on hands; both refund equivalently.",
+    finalVerdict: "Pick by shot architecture. Single short clip with a reference image → Vidu wins on locking + cost. Multi-shot narrative with character continuity → Runway wins on Scenes. Both fail on hands at equivalent rates.",
   },
   {
     slug: 'vidu-vs-veo',
@@ -708,7 +708,7 @@ export const COMPARISONS: Comparison[] = [
     toolALongName: 'Vidu 2.0 (ShengShu)',
     toolBLongName: 'Google Veo 3',
     metaTitle: 'Vidu 2.0 vs Google Veo 3 — Reference Locking vs Native Audio (2026)',
-    metaDesc: 'Vidu 2.0 vs Veo 3 head-to-head. Reference-to-Video character locking vs Veo\'s native audio + lip sync. Side-by-side failure profile and refund flow.',
+    metaDesc: 'Vidu 2.0 vs Veo 3 head-to-head. Reference-to-Video character locking vs Veo\'s native audio + lip sync. Side-by-side failure profile and failure documentation flow.',
     intro: "Vidu 2.0 and Google Veo 3 solve different problems. Vidu locks character identity from a reference image. Veo generates synchronized audio + video natively. Picking between them is mostly a question of whether your shot is character-driven or dialogue-driven.",
     quickVerdict: {
       useToolA: 'character identity locking matters more than audio (silent or post-scored content)',
@@ -743,7 +743,7 @@ export const COMPARISONS: Comparison[] = [
       refundCategoriesCount: 7,
     },
     whenToPickB: {
-      description: "Use Veo 3 for any dialogue-driven, audio-heavy, or English talking-head work. Native audio + lip sync are best-in-class for non-specialized models. Cheapest per-clip in the consumer tier. Strongest refund flow recognition (8 categories via Google AI Studio). Tradeoff: 8-second hard limit and no reference-image locking.",
+      description: "Use Veo 3 for any dialogue-driven, audio-heavy, or English talking-head work. Native audio + lip sync are best-in-class for non-specialized models. Cheapest per-clip in the consumer tier. Strongest named failure category coverage (8 categories via Google AI Studio). Tradeoff: 8-second hard limit and no reference-image locking.",
       failureModes: [
         { name: 'Lip Sync Failure', href: '/failures/veo-lip-sync-failure' },
         { name: 'Audio Generation Failure', href: '/failures/veo-audio-generation-failure' },
