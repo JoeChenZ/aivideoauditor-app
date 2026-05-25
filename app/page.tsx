@@ -143,7 +143,7 @@ const softwareAppSchema = {
   aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.8', ratingCount: '47' },
   featureList: [
     'Pre-purchase vendor reality check across 11 AI video platforms',
-    'Refund mechanics and unlimited-tier gating per platform',
+    'Pricing-change history and unlimited-tier gating per platform',
     'Live prompt failure-risk score',
     'Concrete rewrite suggestions',
     'Personal failure history per model',
@@ -151,10 +151,85 @@ const softwareAppSchema = {
   ],
 };
 
+// FAQ schema — surfaces high-intent answers in Google SERP rich results.
+// Each question targets a real search query; answers stay specific and aligned with
+// the v3 prevention-not-refund positioning.
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'What does AIVideoAuditor do?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'AIVideoAuditor is a free Chrome extension that scores your AI video prompt before you click Generate. It runs 105 documented failure patterns across 8 providers (Runway, Luma, Sora 2, Veo, Kling, Pika, Hailuo, Vidu) and warns you when your prompt is likely to waste credits — so you fix it before you spend, not after.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How does AVA score an AI video prompt?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'AVA pattern-matches your prompt against a catalog of per-vendor failure modes — long prompts, high motion at low FPS, complex physics over 5 seconds, text rendering, hand close-ups, crowd shots, and others. Each rule is tagged with a documented failure category and risk level, and the score escalates further when your personal mark-failure history shows you have hit that category before on the same platform.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Which AI video platforms does AVA support?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Pre-flight scoring runs on Runway and Luma in-browser. Vendor reality data — pricing, first-try success rates, unlimited-tier gating, silent policy changes — covers 11 platforms: Runway, Luma, Sora 2, Veo, Kling, Pika, Hailuo, Vidu, Higgsfield, Krea, and Pollo.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Is AIVideoAuditor free?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes. The Chrome extension is free with 10 audits per month. Pro ($19/mo) unlocks unlimited audits, PDF reports, and the live failure indicator. Business ($79/mo) adds team seats. Pricing is on the /pricing page.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Do I need my own AI API key to use AVA?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'No. AVA does not call vendor APIs on your behalf. The scoring runs locally in the Chrome extension against the bundled rule catalog, and per-vendor reality data is served from our research corpus. You only need a paid AVA subscription if you want unlimited audits or the live failure indicator.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How is AVA different from a refund recovery tool?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'AVA prevents the failure before you spend credits — it does not chase refunds after. Most AI video platforms classify completed generations as consumed under their published policy, and refund discretion is unreliable. AVA targets the only point where the user has leverage: the prompt, before Generate.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Where does the vendor reality data come from?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'The corpus combines a 132-review Trustpilot study (1-star reviews filtered across the 11 platforms, tagged with a 6-category complaint taxonomy) with vendor-policy and pricing-change tracking captured between 2026-05-13 and 2026-05-19, with rolling updates. Source links are cited inline on every research page.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What is a "first-try success rate"?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'The first-try success rate is the share of generations that produced usable output on the first attempt, measured against documented failure modes for that prompt-shape on that vendor. It is the operative cost-of-quality metric — a $0.50 per-clip headline rate at a 35% first-try success rate is really a $1.43 effective cost per usable clip.',
+      },
+    },
+  ],
+};
+
 export default function HomePage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareAppSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script
         dangerouslySetInnerHTML={{
           __html: `(function(){
