@@ -90,10 +90,10 @@ export async function POST(req: NextRequest) {
   const vendor = (body.vendor || '').toLowerCase().trim();
   const category = (body.category || '').toLowerCase().trim();
   if (!VALID_VENDORS.has(vendor)) {
-    return NextResponse.json({ error: 'Invalid vendor', allowed: [...VALID_VENDORS] }, { status: 400, headers: cors });
+    return NextResponse.json({ error: 'Invalid vendor', allowed: Array.from(VALID_VENDORS) }, { status: 400, headers: cors });
   }
   if (!VALID_CATEGORIES.has(category)) {
-    return NextResponse.json({ error: 'Invalid category', allowed: [...VALID_CATEGORIES] }, { status: 400, headers: cors });
+    return NextResponse.json({ error: 'Invalid category', allowed: Array.from(VALID_CATEGORIES) }, { status: 400, headers: cors });
   }
 
   // Use service role for the insert because the extension's Bearer JWT may not
