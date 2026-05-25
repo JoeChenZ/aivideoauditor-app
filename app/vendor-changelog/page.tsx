@@ -143,6 +143,46 @@ const breadcrumbSchema = {
   ],
 };
 
+// FAQPage — high-intent queries about mid-subscription policy changes.
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'What is a mid-subscription policy change?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'A documented change a vendor makes AFTER users subscribed — pricing-tier raises, unlimited-tier routing throttles, refund-policy narrowing, NSFW-filter tightening, feature removal, or cancel-flow friction. The changelog tags each entry by category and links the original public source (vendor blog, Reddit thread, Trustpilot review pattern).',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How are the entries sourced?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Three independent sources triangulated: the 132-review Trustpilot 1-star corpus, Reddit/community discussion threads, and the vendor\'s own public posts (changelog, blog, support docs). Each entry needs at least two sources to be added, and the change date is the earliest documented appearance — not the user-report date.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Why does this matter before I subscribe?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Pricing-tier and feature changes are the dominant cause of paid-tier 1-star reviews (77% of paid-tier 1-stars cite billing or routing change, not output quality). Reading the changelog before subscribing surfaces the vendors with the highest historical rate of mid-subscription rule changes — useful as a stability signal.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How often is the changelog updated?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Daily for active vendors. New entries land within 48 hours of triangulation across all three sources. The sitemap reflects last-modified dates and Googlebot is notified via standard sitemap.xml lastmod fields.',
+      },
+    },
+  ],
+};
+
 const CAT_COLOR: Record<Change['category'], string> = {
   'Pricing': 'text-neon-amber border-neon-amber/40',
   'Unlimited routing': 'text-neon-purple border-neon-purple/40',
@@ -157,6 +197,7 @@ export default function VendorChangelogPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <WidePageShell>
         <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Vendor Changelog' }]} />
 
