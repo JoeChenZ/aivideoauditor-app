@@ -193,6 +193,20 @@ const howToSchema = {
   ],
 };
 
+// VideoObject schemas — make the 4-vendor failure demos eligible for Google Video Search.
+// Each demo runs the SAME prompt through a different platform and surfaces the failure pattern.
+const videoSchemas = COMPARE_VIDEOS.map((v) => ({
+  '@context': 'https://schema.org',
+  '@type': 'VideoObject',
+  name: `${v.platform} — same prompt, same failure pattern`,
+  description: `${v.platform} generation of the standardized failure-mode comparison prompt. Same input across all 4 vendors so the per-model failure profile is visible side-by-side. AVA learns these patterns and warns users which platform will choke on which prompt.`,
+  thumbnailUrl: `https://www.aivideoauditor.com/demo-videos/${v.name}.jpg`,
+  contentUrl: `https://www.aivideoauditor.com/demo-videos/${v.name}.mp4`,
+  uploadDate: '2026-05-20',
+  duration: 'PT5S',
+  publisher: { '@type': 'Organization', name: 'AIVideoAuditor', url: 'https://www.aivideoauditor.com' },
+}));
+
 // FAQ schema — surfaces high-intent answers in Google SERP rich results.
 // Each question targets a real search query; answers stay specific and aligned with
 // the v3 prevention-not-refund positioning.
@@ -273,6 +287,9 @@ export default function HomePage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareAppSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      {videoSchemas.map((vs, i) => (
+        <script key={`vid-${i}`} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(vs) }} />
+      ))}
       <script
         dangerouslySetInnerHTML={{
           __html: `(function(){
