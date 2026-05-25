@@ -62,10 +62,51 @@ export default function GraveyardIndex() {
     ],
   };
 
+  // FAQPage — high-intent shutdown/migration queries.
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'Which AI video tools have shut down?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: `${SHUTDOWNS.length} AI tools are currently tracked in the graveyard, including the most-searched: Sora\'s consumer app (shut 2026-04-26, API to September 2026), plus several smaller image/video generators. Each entry has the exact shutdown date, parent-company status at time of close, and a ranked migration path to active substitutes.`,
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'How do I know if my AI tool is at risk of shutdown?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Watch for these signals: parent-company layoffs in the AI division, dropped enterprise sales push, silent removal of the public roadmap, slowed shipping cadence on the official changelog, and pricing-tier consolidation. The graveyard records what each signal looked like in retrospect for tools that have already shut down.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'What happens to unspent credits when a tool shuts down?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Vendor policy varies. Most platforms offer goodwill credit reversal during a wind-down window — for Sora, the OpenAI billing flow accepted credit-reversal requests until late 2026. Each graveyard entry lists the documented credit-reversal flow at the time of shutdown plus the cutoff date.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'How do migration paths work?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Each graveyard entry ranks 3-5 active substitutes by shot type, not by overall "best." If you were using the shut-down tool for character work, the substitute order differs from a user who was using it for atmospheric lighting. The /alternatives page has the same shot-type-ranked logic for active tools.',
+        },
+      },
+    ],
+  };
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <WidePageShell>
         <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Graveyard' }]} />
 

@@ -15,9 +15,71 @@ export const metadata: Metadata = {
   },
 };
 
+// Structured data — previously absent on /case-studies.
+const itemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'AVA Case Studies',
+  itemListElement: CASE_STUDIES.map((c, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    url: `https://www.aivideoauditor.com/case-studies/${c.slug}`,
+    name: c.title,
+  })),
+};
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.aivideoauditor.com' },
+    { '@type': 'ListItem', position: 2, name: 'Case Studies', item: 'https://www.aivideoauditor.com/case-studies' },
+  ],
+};
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Why are all case studies anonymous?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Most AI video customers do not want to publicly disclose their workflow changes — it advertises their failure rate and exposes competitive advantage. Customer types, monthly spend ranges, provider names, and pattern data are all accurate; only the customer identity is obscured. Named case studies are available on request with a sign-off review.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What types of customers are profiled?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Solo creators (monthly spend $50-200), boutique agencies (monthly spend $500-3,000), and brand accounts (monthly spend $5,000+). Each case study includes customer type, problem, workflow before AVA, workflow with AVA, and the changes that stuck. Industries covered: e-commerce, education, lifestyle content, advertising, music videos.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How does AVA change an AI video workflow in practice?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'The common pattern: pre-flight prompt scoring catches the 30-40% of prompts that would have failed before they are generated, and personal failure history shifts subjective trial-and-error into a feedback loop. Users typically cut their monthly credit burn by 40-60% within the first 30 days without changing their output volume.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Can I be featured in a case study?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes. Email joe@aivideoauditor.com. Named case studies typically include a 10-15 minute interview and your sign-off on the draft before publish. Anonymous case studies need only a permission email and the relevant workflow data.',
+      },
+    },
+  ],
+};
+
 export default function CaseStudiesIndex() {
   return (
     <WidePageShell>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Case Studies' }]} />
 
       <div className="max-w-reading">
