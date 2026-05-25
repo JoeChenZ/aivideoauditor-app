@@ -85,16 +85,12 @@ const FAQ = [
     a: 'No hard cap on audits. We monitor for automated abuse (scripted spam against the same generation IDs); legitimate human-driven volume is fine even if you run hundreds of audits a month.',
   },
   {
-    q: 'Do I need my own AI API key?',
-    a: 'No. All AI analysis runs on our servers, gated by your subscription tier. There is nothing to configure — sign up, install the extension, run the audit.',
-  },
-  {
     q: 'Which platforms does it score against?',
-    a: 'Prompt scoring runs against 105 failure modes catalogued across 8 platforms: Runway, Luma, Sora, Veo, Kling, Pika, Hailuo, and Vidu. Vendor reality check (billing patterns, refund policy, "unlimited" gating rules, pricing-change history) covers 11 vendors — those 8 plus Higgsfield, Krea, and Pollo from the 132-review Trustpilot corpus. Auto-detection runs in-page on Runway ML and Luma; for other platforms, paste your prompt + select the target vendor.',
+    a: 'Prompt scoring runs against 105 failure modes catalogued across 8 platforms: Runway, Luma, Sora, Veo, Kling, Pika, Hailuo, and Vidu. Vendor reality check (billing patterns, first-try success rates, "unlimited" gating rules, pricing-change history) covers 11 vendors — those 8 plus Higgsfield, Krea, and Pollo from the 132-review Trustpilot corpus. Auto-detection runs in-page on Runway ML and Luma; for other platforms, paste your prompt + select the target vendor.',
   },
   {
     q: 'Is my data shared with you?',
-    a: 'Audit frames are sent to our server only for the duration of the AI analysis call (multimodal Gemini) and are not stored. Generation IDs and refund outcomes are stored against your account so the dashboard works. No third-party analytics, no advertising, no resale. See /privacy.',
+    a: 'Audit frames are sent to our server only for the duration of the AI analysis call (multimodal Gemini) and are not stored. Generation IDs and audit outcomes are stored against your account so the dashboard works. No third-party analytics, no advertising, no resale. See /privacy.',
   },
 ];
 

@@ -16,7 +16,7 @@ const FEATURES = [
   {
     label: '01 · Vendor reality check',
     title: 'See what subscription actually buys.',
-    body: 'Per-second cost (credits × failure rate), unlimited-tier gating rules, refund-window traps, and pricing-change history. Built from 132 tagged Trustpilot 1-stars across 8 vendors plus 8 months of fetch-intercept data.',
+    body: 'Per-second cost (credits × failure rate), unlimited-tier gating rules, first-try success rates, and pricing-change history. Built from 132 tagged Trustpilot 1-stars across 8 vendors plus 8 months of fetch-intercept data.',
   },
   {
     label: '02 · Prompt indicator',
@@ -39,7 +39,7 @@ const HOW_STEPS = [
   {
     n: '01',
     title: 'Check the platform before you subscribe.',
-    body: 'Install the extension and pick a vendor you are considering. AVA surfaces per-second cost, unlimited-tier gating, refund mechanics, and the public change history. Free on every tier.',
+    body: 'Install the extension and pick a vendor you are considering. AVA surfaces per-second cost, unlimited-tier gating, first-try success rates, and the public change history. Free on every tier.',
   },
   {
     n: '02',
@@ -137,7 +137,7 @@ const softwareAppSchema = {
     { '@type': 'Offer', price: '79', priceCurrency: 'USD', priceSpecification: { '@type': 'UnitPriceSpecification', billingDuration: 'P1M' }, name: 'Business' },
   ],
   description:
-    'Pre-purchase research desk + prompt failure scoring for AI video. Before subscribing to Runway, Higgsfield, Krea, Pollo, Pika, Sora, Luma, or Vidu, see real per-second cost, unlimited-tier gating, refund mechanics, and pricing-change history. After subscribing, a live failure-risk score on every prompt plus personal failure history.',
+    'Pre-purchase research desk + prompt failure scoring for AI video. Before subscribing to Runway, Higgsfield, Krea, Pollo, Pika, Sora, Luma, or Vidu, see real per-second cost, unlimited-tier gating, first-try success rates, and pricing-change history. After subscribing, a live failure-risk score on every prompt plus personal failure history.',
   url: 'https://www.aivideoauditor.com',
   downloadUrl: CHROME_EXT_URL,
   aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.8', ratingCount: '47' },
@@ -185,7 +185,7 @@ export default function HomePage() {
             </h1>
 
             <p className="mt-8 max-w-prose text-lg leading-relaxed text-ink-secondary">
-              We tagged 132 1-star reviews across Runway, Higgsfield, Krea, Pollo, Pika, Luma, Sora, and Vidu. Between <strong className="text-ink-primary font-semibold">42% and 78%</strong> cite billing predation, not bad output. AVA surfaces the real per-second cost, unlimited-tier gating, and refund mechanics <em className="text-ink-primary not-italic font-semibold">before</em> you commit. After you subscribe, the same engine scores every prompt against 105 failure modes.
+              We tagged 132 1-star reviews across Runway, Higgsfield, Krea, Pollo, Pika, Luma, Sora, and Vidu. Between <strong className="text-ink-primary font-semibold">42% and 78%</strong> cite billing predation, not bad output. AVA surfaces the real per-second cost, unlimited-tier gating, and first-try success rates <em className="text-ink-primary not-italic font-semibold">before</em> you commit. After you subscribe, the same engine scores every prompt against 105 failure modes.
             </p>
 
             <div className="mt-10 flex flex-wrap gap-3">
@@ -301,7 +301,7 @@ export default function HomePage() {
               Your real cost per clip isn&apos;t the list price.
             </h2>
             <p className="text-ink-secondary leading-relaxed mb-10 max-w-prose">
-              It is the list price divided by how often a generation works on the first try, multiplied by how often a refund is denied. AVA estimates both sides of that equation before you click Generate.
+              It is the list price divided by how often a generation works on the first try. AVA estimates that ratio before you click Generate so you can pick the vendor — and the prompt — that actually clears.
             </p>
 
             <div className="border border-rule rounded-md p-8 bg-surface mb-8">
@@ -312,19 +312,16 @@ export default function HomePage() {
                 <span className="text-neon-cyan">list_price</span>
                 <span className="text-ink-muted"> × </span>
                 <span className="text-neon-amber">(1 / first_try_success_rate)</span>
-                <span className="text-ink-muted"> × </span>
-                <span className="text-neon-purple">(1 + refund_denial_rate)</span>
               </div>
               <p className="text-xs text-ink-muted text-center mt-6 max-w-xl mx-auto leading-relaxed">
-                On the vendors we track, a 35% first-try success rate and a 60% refund denial rate turn a $0.50 disclosed cost into a $2.29 real cost. The disclosed price stays the same. The cost you actually pay does not.
+                On the vendors we track, a 35% first-try success rate turns a $0.50 disclosed cost into a $1.43 real cost. The disclosed price stays the same. Every red prompt you scrub before you click Generate moves you back toward $0.50.
               </p>
             </div>
 
-            <div className="grid sm:grid-cols-3 gap-5 mb-8">
+            <div className="grid sm:grid-cols-2 gap-5 mb-8 max-w-2xl mx-auto">
               {[
                 { tag: 'list_price', tone: 'text-neon-cyan', body: 'What the vendor advertises. AVA reads the live page so you do not have to translate credits to dollars.' },
-                { tag: 'first_try_success_rate', tone: 'text-neon-amber', body: 'Estimated from 105 catalogued failure modes plus your personal history. Climbs when your prompt scores green.' },
-                { tag: 'refund_denial_rate', tone: 'text-neon-purple', body: 'Read off the 132-review Trustpilot corpus, per platform. Vendors with no refund path score 1.0.' },
+                { tag: 'first_try_success_rate', tone: 'text-neon-amber', body: 'Estimated from 105 catalogued failure modes plus your personal history. Climbs when your prompt scores green; the indicator names which phrase is dragging it down.' },
               ].map((row) => (
                 <div key={row.tag} className="border-l-2 border-rule pl-4">
                   <p className={`font-mono text-[11px] tracking-kicker uppercase mb-2 ${row.tone}`}>{row.tag}</p>
@@ -467,10 +464,16 @@ export default function HomePage() {
                 Install free
               </a>
               <Link
-                href="#upgrade"
+                href="/pricing"
                 className="inline-flex items-center gap-2 border border-rule hover:border-ink-secondary text-ink-secondary hover:text-ink-primary font-mono font-medium text-sm tracking-wide uppercase px-8 py-3.5 rounded-md transition-colors"
               >
                 See Pro
+              </Link>
+              <Link
+                href="/early-access"
+                className="inline-flex items-center gap-2 border border-rule hover:border-ink-secondary text-ink-secondary hover:text-ink-primary font-mono font-medium text-sm tracking-wide uppercase px-8 py-3.5 rounded-md transition-colors"
+              >
+                Early Access
               </Link>
             </div>
             <p className="mt-6 font-mono text-[11px] text-ink-muted">
