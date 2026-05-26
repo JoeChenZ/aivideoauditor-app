@@ -9,9 +9,19 @@ export const metadata: Metadata = {
 
 const LAST_UPDATED = 'May 9, 2026';
 
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.aivideoauditor.com' },
+    { '@type': 'ListItem', position: 2, name: 'Privacy Policy', item: 'https://www.aivideoauditor.com/privacy' },
+  ],
+};
+
 export default function PrivacyPage() {
   return (
     <main className="min-h-screen py-20 px-6">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <div className="max-w-3xl mx-auto">
 
         {/* Header */}

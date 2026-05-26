@@ -2,8 +2,19 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Security — AI Video Auditor',
-  description: 'Your API keys never leave your browser. AES-256-GCM encryption, zero server storage.',
+  title: 'Security — AIVideoAuditor',
+  description: 'How AIVideoAuditor handles your data — AES-256-GCM encryption, browser-local API key storage, zero server-side credential storage.',
+  alternates: { canonical: 'https://www.aivideoauditor.com/security' },
+  robots: { index: true, follow: true },
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.aivideoauditor.com' },
+    { '@type': 'ListItem', position: 2, name: 'Security', item: 'https://www.aivideoauditor.com/security' },
+  ],
 };
 
 const PRINCIPLES = [
@@ -32,6 +43,7 @@ const PRINCIPLES = [
 export default function SecurityPage() {
   return (
     <main className="min-h-screen py-20 px-6">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <div className="max-w-3xl mx-auto">
         <p className="text-xs font-bold tracking-widest text-neon-purple uppercase mb-4">Trust Model</p>
         <h1 className="text-4xl font-bold text-ink-primary mb-6">
