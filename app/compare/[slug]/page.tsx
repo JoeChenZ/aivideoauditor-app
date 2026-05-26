@@ -42,9 +42,52 @@ export default function ComparePage({ params }: { params: { slug: string } }) {
     publisher: { '@type': 'Organization', name: 'AIVideoAuditor', url: 'https://www.aivideoauditor.com' },
   };
 
+  // Per-comparison FAQPage — templated questions with tool-specific answers
+  // pulled from the comparison content. Adds rich-result eligibility to each of
+  // the 12 /compare/<A-vs-B> pages.
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: `What is the difference between ${c.toolALongName} and ${c.toolBLongName}?`,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: c.intro,
+        },
+      },
+      {
+        '@type': 'Question',
+        name: `When should I pick ${c.toolA} over ${c.toolB}?`,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: c.whenToPickA.description,
+        },
+      },
+      {
+        '@type': 'Question',
+        name: `When should I pick ${c.toolB} over ${c.toolA}?`,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: c.whenToPickB.description,
+        },
+      },
+      {
+        '@type': 'Question',
+        name: `What is the final verdict between ${c.toolA} and ${c.toolB}?`,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: c.finalVerdict,
+        },
+      },
+    ],
+  };
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
       <main className="min-h-screen py-20 px-6">
         <div className="max-w-4xl mx-auto">
