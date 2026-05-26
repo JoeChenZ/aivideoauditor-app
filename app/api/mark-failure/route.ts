@@ -27,11 +27,21 @@ const ALLOWED_WEB_ORIGINS = new Set([
   'https://www.aivideoauditor.com',
 ]);
 
+// Content-scripts call this endpoint from inside vendor pages.
+// The origin Chrome attaches to the preflight is the host page, not the
+// extension, so the vendor origins must be allowlisted explicitly.
+const ALLOWED_VENDOR_ORIGINS = new Set([
+  'https://lumalabs.ai',
+  'https://app.lumalabs.ai',
+  'https://dream-machine.lumalabs.ai',
+  'https://app.runwayml.com',
+]);
+
 function corsHeaders(origin: string | null): Record<string, string> {
-  // Chrome-extension origins are wildcard-allowed (we only honor authed requests anyway)
   const isExtension = !!origin && origin.startsWith('chrome-extension://');
   const isWeb = !!origin && ALLOWED_WEB_ORIGINS.has(origin);
-  const allowed = isExtension || isWeb ? origin! : 'https://www.aivideoauditor.com';
+  const isVendor = !!origin && ALLOWED_VENDOR_ORIGINS.has(origin);
+  const allowed = isExtension || isWeb || isVendor ? origin! : 'https://www.aivideoauditor.com';
   return {
     'Access-Control-Allow-Origin': allowed,
     'Access-Control-Allow-Methods': 'POST, GET, OPTIONS',
