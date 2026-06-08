@@ -67,9 +67,19 @@ async function fetchOne(p) {
   const ctrl = new AbortController();
   const timeout = setTimeout(() => ctrl.abort(), 30_000);
   try {
+    // Browser-like headers — a bare bot UA gets 403'd by Cloudflare/WAF on
+    // several vendor sites (OpenAI 403'd, and kling/hailuo returned near-empty
+    // shells). A realistic UA + Accept headers gets the real ToS HTML.
     const res = await fetch(p.url, {
       signal: ctrl.signal,
-      headers: { 'User-Agent': 'ava-tos-audit/1.0 (+https://aivideoauditor.com)' },
+      redirect: 'follow',
+      headers: {
+        'User-Agent':
+          'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124 Safari/537.36',
+        Accept:
+          'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+        'Accept-Language': 'en-US,en;q=0.9',
+      },
     });
     if (!res.ok) {
       return { ok: false, status: res.status, error: `HTTP ${res.status}` };
@@ -136,12 +146,23 @@ async function main() {
     await saveCache(p.slug, current.text);
   }
 
+  // A genuine ToS CHANGE and a FETCH_FAILED are different severities:
+  //   - changed: a vendor's terms materially moved → red alert, inspect now.
+  //   - fetchFailed: we couldn't read the page (e.g. Cloudflare 403) → the
+  //     monitor is blind, but the terms did NOT necessarily change. Surfacing
+  //     this as the same red "material change" alert spammed false failures.
+  const changed = results.filter((r) => r.status === 'CHANGED');
+  const fetchFailed = results.filter((r) => r.status === 'FETCH_FAILED');
+
   // Emit summary JSON for the GitHub Action to consume.
   const summary = {
     runAt: new Date().toISOString(),
     threshold: CHANGE_THRESHOLD,
     results,
-    alert: results.some((r) => r.status === 'CHANGED' || r.status === 'FETCH_FAILED'),
+    changed: changed.map((r) => r.slug),
+    fetchFailed: fetchFailed.map((r) => r.slug),
+    // `alert` (red CI + email) is reserved for a REAL material change.
+    alert: changed.length > 0,
   };
   const summaryPath = resolve(CACHE_DIR, 'changes.json');
   await writeFile(summaryPath, JSON.stringify(summary, null, 2));
@@ -162,9 +183,16 @@ async function main() {
   console.log('');
   console.log('Summary written:', summaryPath);
 
+  if (fetchFailed.length) {
+    // Warning only — does NOT fail the run. GitHub surfaces ::warning:: without
+    // the red failure email; the artifact records which monitors were blind.
+    console.log(`\n::warning::ToS audit could not fetch: ${summary.fetchFailed.join(', ')} (monitor blind, not a change).`);
+  }
   if (summary.alert) {
-    console.log('\nALERT: at least one ToS changed materially or failed to fetch.');
+    console.log(`\nALERT: ToS changed materially: ${summary.changed.join(', ')}. Inspect now.`);
     process.exitCode = 1;
+  } else {
+    console.log('\nNo material ToS changes.');
   }
 }
 

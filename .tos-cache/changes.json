@@ -1,5 +1,5 @@
 {
-  "runAt": "2026-06-08T18:24:19.707Z",
+  "runAt": "2026-06-08T21:48:05.694Z",
   "threshold": 0.05,
   "results": [
     {
@@ -66,5 +66,9 @@
       "newLen": 15
     }
   ],
-  "alert": true
+  "changed": [],
+  "fetchFailed": [
+    "openai"
+  ],
+  "alert": false
 }
