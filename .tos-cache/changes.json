@@ -1,5 +1,5 @@
 {
-  "runAt": "2026-06-08T21:48:05.694Z",
+  "runAt": "2026-06-15T19:45:56.143Z",
   "threshold": 0.05,
   "results": [
     {
@@ -14,9 +14,9 @@
       "slug": "luma",
       "url": "https://lumalabs.ai/legal/tos",
       "status": "STABLE",
-      "ratio": 0,
+      "ratio": 0.003,
       "oldLen": 63747,
-      "newLen": 63747
+      "newLen": 63779
     },
     {
       "slug": "openai",
@@ -29,7 +29,7 @@
       "slug": "google",
       "url": "https://policies.google.com/terms",
       "status": "STABLE",
-      "ratio": 0,
+      "ratio": 0.0016,
       "oldLen": 28556,
       "newLen": 28556
     },
