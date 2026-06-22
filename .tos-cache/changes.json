@@ -1,5 +1,5 @@
 {
-  "runAt": "2026-06-15T19:45:56.143Z",
+  "runAt": "2026-06-22T19:23:39.016Z",
   "threshold": 0.05,
   "results": [
     {
@@ -14,8 +14,8 @@
       "slug": "luma",
       "url": "https://lumalabs.ai/legal/tos",
       "status": "STABLE",
-      "ratio": 0.003,
-      "oldLen": 63747,
+      "ratio": 0,
+      "oldLen": 63779,
       "newLen": 63779
     },
     {
@@ -28,10 +28,10 @@
     {
       "slug": "google",
       "url": "https://policies.google.com/terms",
-      "status": "STABLE",
-      "ratio": 0.0016,
+      "status": "CHANGED",
+      "ratio": 0.9035,
       "oldLen": 28556,
-      "newLen": 28556
+      "newLen": 28811
     },
     {
       "slug": "kling",
@@ -66,9 +66,11 @@
       "newLen": 15
     }
   ],
-  "changed": [],
+  "changed": [
+    "google"
+  ],
   "fetchFailed": [
     "openai"
   ],
-  "alert": false
+  "alert": true
 }
