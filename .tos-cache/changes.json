@@ -1,5 +1,5 @@
 {
-  "runAt": "2026-06-29T18:07:14.479Z",
+  "runAt": "2026-07-06T18:09:27.668Z",
   "threshold": 0.05,
   "results": [
     {
@@ -7,8 +7,8 @@
       "url": "https://runwayml.com/terms-of-use",
       "status": "CHANGED",
       "ratio": 0.931,
-      "oldLen": 78587,
-      "newLen": 78664
+      "oldLen": 78664,
+      "newLen": 78596
     },
     {
       "slug": "luma",
@@ -29,8 +29,8 @@
       "slug": "google",
       "url": "https://policies.google.com/terms",
       "status": "STABLE",
-      "ratio": 0.0238,
-      "oldLen": 28811,
+      "ratio": 0,
+      "oldLen": 28817,
       "newLen": 28817
     },
     {
@@ -44,10 +44,10 @@
     {
       "slug": "vidu",
       "url": "https://www.vidu.studio/terms",
-      "status": "STABLE",
-      "ratio": 0,
+      "status": "CHANGED",
+      "ratio": 0.7368,
       "oldLen": 821,
-      "newLen": 821
+      "newLen": 836
     },
     {
       "slug": "pika",
@@ -67,7 +67,8 @@
     }
   ],
   "changed": [
-    "runway"
+    "runway",
+    "vidu"
   ],
   "fetchFailed": [
     "openai"
