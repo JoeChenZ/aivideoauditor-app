@@ -1,13 +1,13 @@
 {
-  "runAt": "2026-07-06T18:09:27.668Z",
+  "runAt": "2026-07-13T17:52:31.928Z",
   "threshold": 0.05,
   "results": [
     {
       "slug": "runway",
       "url": "https://runwayml.com/terms-of-use",
-      "status": "CHANGED",
-      "ratio": 0.931,
-      "oldLen": 78664,
+      "status": "STABLE",
+      "ratio": 0,
+      "oldLen": 78596,
       "newLen": 78596
     },
     {
@@ -45,9 +45,9 @@
       "slug": "vidu",
       "url": "https://www.vidu.studio/terms",
       "status": "CHANGED",
-      "ratio": 0.7368,
-      "oldLen": 821,
-      "newLen": 836
+      "ratio": 0.8333,
+      "oldLen": 836,
+      "newLen": 840
     },
     {
       "slug": "pika",
@@ -67,7 +67,6 @@
     }
   ],
   "changed": [
-    "runway",
     "vidu"
   ],
   "fetchFailed": [
