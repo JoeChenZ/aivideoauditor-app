@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Weekly ToS auto-audit — Phase 0.4b.
+ * Weekly ToS auto-audit — Phase 0.4c.
  *
  * Fetches the canonical Terms-of-Use page for each AI-video platform AVA supports,
  * diffs against the last cached version stored in `.tos-cache/<slug>.txt`,
@@ -8,6 +8,18 @@
  *
  * GitHub Action consumes the non-zero exit + uploads `.tos-cache/changes.json`
  * as a workflow artifact, then posts to the alert channel.
+ *
+ * Page statuses:
+ *   STABLE      — fetched OK, change ratio ≤ threshold
+ *   CHANGED     — fetched OK, change ratio > threshold → red CI + alert email
+ *   BASELINE    — first ever fetch, no prior cache to compare against
+ *   FETCH_FAILED — HTTP error / network failure → warning only, not a red alert
+ *   UNRELIABLE  — fetch succeeded but page is a JS-stub shell (<MIN_RELIABLE_LENGTH
+ *                 chars). kling, hailuo, pika, and vidu return tiny stub pages via
+ *                 plain HTTP fetch; vidu's stub contains dynamic tokens that churn
+ *                 83%+ each run → false CHANGED alerts. Excluded from diffing.
+ *                 Monitored passively: if a stub page ever grows past the floor,
+ *                 real diffing resumes automatically on the next run.
  *
  * Local dev:
  *   node scripts/tos-audit.mjs            # uses real network
@@ -37,6 +49,14 @@ const PLATFORMS = [
 ];
 
 const CHANGE_THRESHOLD = 0.05; // 5% character-level diff triggers alert
+
+// Pages shorter than this after normalization are JS-stub shells, not real ToS
+// documents. kling (8), hailuo (15), pika (394), and vidu (~836–840) all fall
+// below this floor when fetched from CI's IP. vidu's stub contains dynamic
+// tokens that produce 83%+ char diffs between runs → weekly false red alerts.
+// Real ToS pages (runway ~78K, luma ~64K, google ~29K) are well above this.
+// If a stub page ever returns real content (>= floor), diffing resumes automatically.
+const MIN_RELIABLE_LENGTH = 2000;
 
 // Strip cheap noise: scripts, style, whitespace runs, html tags.
 function normalize(html) {
@@ -129,6 +149,25 @@ async function main() {
       continue;
     }
 
+    // Stub/JS-shell guard: some vendors (kling, hailuo, pika, vidu) return a
+    // tiny JS-shell page instead of real ToS HTML when fetched from CI IPs.
+    // These stubs can contain dynamic tokens that churn each run, producing
+    // false CHANGED alerts. We classify them UNRELIABLE and skip diffing.
+    // Cache is NOT updated so that if the page later returns real content the
+    // first real diff compares against the last known real baseline (or triggers
+    // a BASELINE first-fetch if no real cache exists).
+    if (current.text.length < MIN_RELIABLE_LENGTH) {
+      results.push({
+        slug: p.slug,
+        url: p.url,
+        status: 'UNRELIABLE',
+        ratio: null,
+        oldLen: previous?.length ?? null,
+        newLen: current.text.length,
+      });
+      continue;
+    }
+
     const ratio = changeRatio(previous, current.text);
     const isFirstFetch = previous === null;
     const changed = ratio > CHANGE_THRESHOLD;
@@ -146,13 +185,16 @@ async function main() {
     await saveCache(p.slug, current.text);
   }
 
-  // A genuine ToS CHANGE and a FETCH_FAILED are different severities:
-  //   - changed: a vendor's terms materially moved → red alert, inspect now.
-  //   - fetchFailed: we couldn't read the page (e.g. Cloudflare 403) → the
-  //     monitor is blind, but the terms did NOT necessarily change. Surfacing
-  //     this as the same red "material change" alert spammed false failures.
+  // Three non-alerting outcomes vs. one alerting outcome:
+  //   - STABLE / BASELINE: no action needed.
+  //   - FETCH_FAILED: monitor blind (Cloudflare 403, etc.) but terms did NOT
+  //     necessarily change. Warning only — does NOT fail the run.
+  //   - UNRELIABLE: page returned a stub shell too small to diff reliably.
+  //     Warning only — does NOT fail the run.
+  //   - CHANGED: vendor terms materially moved → red alert + exit 1.
   const changed = results.filter((r) => r.status === 'CHANGED');
   const fetchFailed = results.filter((r) => r.status === 'FETCH_FAILED');
+  const unreliable = results.filter((r) => r.status === 'UNRELIABLE');
 
   // Emit summary JSON for the GitHub Action to consume.
   const summary = {
@@ -161,7 +203,9 @@ async function main() {
     results,
     changed: changed.map((r) => r.slug),
     fetchFailed: fetchFailed.map((r) => r.slug),
+    unreliable: unreliable.map((r) => r.slug),
     // `alert` (red CI + email) is reserved for a REAL material change.
+    // FETCH_FAILED and UNRELIABLE never set alert=true.
     alert: changed.length > 0,
   };
   const summaryPath = resolve(CACHE_DIR, 'changes.json');
@@ -173,9 +217,10 @@ async function main() {
   console.log('');
   for (const r of results) {
     const tag =
-      r.status === 'STABLE' ? '✓' :
-      r.status === 'CHANGED' ? '⚠' :
-      r.status === 'BASELINE' ? '◯' : '✗';
+      r.status === 'STABLE'      ? '✓' :
+      r.status === 'CHANGED'     ? '⚠' :
+      r.status === 'BASELINE'    ? '◯' :
+      r.status === 'UNRELIABLE'  ? '?' : '✗';
     const ratio = r.ratio !== null ? `${(r.ratio * 100).toFixed(2)}%` : '—';
     console.log(`${tag} ${r.slug.padEnd(8)} ${r.status.padEnd(13)} ${ratio.padStart(7)}  ${r.url}`);
     if (r.error) console.log(`  ↳ ${r.error}`);
@@ -187,6 +232,11 @@ async function main() {
     // Warning only — does NOT fail the run. GitHub surfaces ::warning:: without
     // the red failure email; the artifact records which monitors were blind.
     console.log(`\n::warning::ToS audit could not fetch: ${summary.fetchFailed.join(', ')} (monitor blind, not a change).`);
+  }
+  if (unreliable.length) {
+    // Warning only — does NOT fail the run. These platforms return JS-stub
+    // shells too small to diff reliably; their content is excluded from alerting.
+    console.log(`\n::warning::ToS audit: ${summary.unreliable.join(', ')} returned stub pages (<${MIN_RELIABLE_LENGTH} chars) — classified UNRELIABLE, excluded from diff.`);
   }
   if (summary.alert) {
     console.log(`\nALERT: ToS changed materially: ${summary.changed.join(', ')}. Inspect now.`);
