@@ -1,5 +1,5 @@
 {
-  "runAt": "2026-07-13T17:52:31.928Z",
+  "runAt": "2026-07-13T18:06:34.736Z",
   "threshold": 0.05,
   "results": [
     {
@@ -36,41 +36,45 @@
     {
       "slug": "kling",
       "url": "https://klingai.com/terms-of-service",
-      "status": "STABLE",
-      "ratio": 0,
+      "status": "UNRELIABLE",
+      "ratio": null,
       "oldLen": 8,
       "newLen": 8
     },
     {
       "slug": "vidu",
       "url": "https://www.vidu.studio/terms",
-      "status": "CHANGED",
-      "ratio": 0.8333,
-      "oldLen": 836,
+      "status": "UNRELIABLE",
+      "ratio": null,
+      "oldLen": 840,
       "newLen": 840
     },
     {
       "slug": "pika",
       "url": "https://pika.art/terms",
-      "status": "STABLE",
-      "ratio": 0,
+      "status": "UNRELIABLE",
+      "ratio": null,
       "oldLen": 394,
       "newLen": 394
     },
     {
       "slug": "hailuo",
       "url": "https://hailuoai.com/terms",
-      "status": "STABLE",
-      "ratio": 0,
+      "status": "UNRELIABLE",
+      "ratio": null,
       "oldLen": 15,
       "newLen": 15
     }
   ],
-  "changed": [
-    "vidu"
-  ],
+  "changed": [],
   "fetchFailed": [
     "openai"
   ],
-  "alert": true
+  "unreliable": [
+    "kling",
+    "vidu",
+    "pika",
+    "hailuo"
+  ],
+  "alert": false
 }
