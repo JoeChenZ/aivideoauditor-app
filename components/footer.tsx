@@ -15,6 +15,7 @@ const SECTIONS = [
     items: [
       { href: '/research/132-ai-video-vendor-reviews', label: '132-review corpus' },
       { href: '/billing-pattern-watch', label: 'Billing pattern watch' },
+      { href: '/billing-pattern-watch/heygen', label: 'HeyGen billing watch' },
       { href: '/vendor-changelog', label: 'Vendor changelog' },
       { href: '/runway-unlimited-slowdown', label: 'Runway slowdown' },
     ],
@@ -25,6 +26,10 @@ const SECTIONS = [
       { href: '/failures', label: 'Failure catalogue' },
       { href: '/compare', label: 'Head-to-head' },
       { href: '/alternatives', label: 'Alternatives' },
+      { href: '/sora-alternatives', label: 'Sora alternatives' },
+      { href: '/invideo-alternatives', label: 'InVideo alternatives' },
+      { href: '/cheapest-ai-video-generator', label: 'Cheapest AI video' },
+      { href: '/best/ai-video-for-real-estate', label: 'AI video for real estate' },
       { href: '/graveyard', label: 'Stability tracker' },
     ],
   },
