@@ -4,12 +4,12 @@ import { motion } from 'motion/react';
 import Link from 'next/link';
 
 const samples = [
-  { before: '/showcase/pairA-before.jpg', after: '/showcase/pairA-after.jpg', video: '/showcase/sample-earrings-worn.mp4', label: 'Pearl drop earrings' },
-  { before: '/showcase/pairB-before.jpg', after: '/showcase/pairB-after.jpg', video: '/showcase/sample-shot-01.mp4', label: 'Peach pearl set' },
-  { before: '/showcase/pairC-before.jpg', after: null, video: '/showcase/sample-story.mp4', label: 'Grey pearl studs' },
-  { before: '/showcase/pairD-before.jpg', after: null, video: null, label: 'Earring collection' },
-  { before: '/showcase/sample-earrings-flatlay.jpg', after: null, video: '/showcase/sample-earrings-hold.mp4', label: 'Flatlay to motion' },
-  { before: '/showcase/sample-pendant-worn.jpg', after: '/showcase/sample-onmodel.jpg', video: null, label: 'Pendant - on model' },
+  { before: '/showcase/pairA-before.jpg', after: '/showcase/pairA-after.jpg', video: '/showcase/sample-earrings-worn.mp4', poster: '/showcase/sample-earrings-worn-poster.jpg', label: 'Pearl drop earrings' },
+  { before: '/showcase/pairB-before.jpg', after: '/showcase/pairB-after.jpg', video: '/showcase/sample-shot-01.mp4', poster: '/showcase/sample-shot-01-poster.jpg', label: 'Peach pearl set' },
+  { before: '/showcase/pairC-before.jpg', after: null, video: '/showcase/sample-story.mp4', poster: '/showcase/sample-story-poster.jpg', label: 'Grey pearl studs' },
+  { before: '/showcase/pairD-before.jpg', after: null, video: null, poster: null, label: 'Earring collection' },
+  { before: '/showcase/sample-earrings-flatlay.jpg', after: null, video: '/showcase/sample-earrings-hold.mp4', poster: '/showcase/sample-earrings-hold-poster.jpg', label: 'Flatlay to motion' },
+  { before: '/showcase/sample-pendant-worn.jpg', after: '/showcase/sample-onmodel.jpg', video: null, poster: null, label: 'Pendant - on model' },
 ];
 
 export default function Samples() {
@@ -47,6 +47,8 @@ export default function Samples() {
                       muted
                       loop
                       playsInline
+                      preload="metadata"
+                      poster={sample.poster ?? undefined}
                       className="w-full h-full object-cover"
                     >
                       <source src={sample.video} type="video/mp4" />

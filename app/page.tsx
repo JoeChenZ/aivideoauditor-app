@@ -14,6 +14,7 @@ export default function Home() {
           muted
           loop
           playsInline
+          preload="metadata"
           className="absolute inset-0 w-full h-full object-cover"
           poster="/showcase/hero-poster.jpg"
         >
@@ -79,9 +80,9 @@ export default function Home() {
 
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             {[
-              { before: '/showcase/pairA-before.jpg', video: '/showcase/sample-earrings-worn.mp4' },
-              { before: '/showcase/pairB-before.jpg', video: '/showcase/sample-shot-01.mp4' },
-              { before: '/showcase/sample-earrings-flatlay.jpg', video: '/showcase/sample-earrings-hold.mp4' },
+              { before: '/showcase/pairA-before.jpg', video: '/showcase/sample-earrings-worn.mp4', poster: '/showcase/sample-earrings-worn-poster.jpg' },
+              { before: '/showcase/pairB-before.jpg', video: '/showcase/sample-shot-01.mp4', poster: '/showcase/sample-shot-01-poster.jpg' },
+              { before: '/showcase/sample-earrings-flatlay.jpg', video: '/showcase/sample-earrings-hold.mp4', poster: '/showcase/sample-earrings-hold-poster.jpg' },
             ].map((pair, i) => (
               <motion.div
                 key={i}
@@ -105,6 +106,8 @@ export default function Home() {
                     muted
                     loop
                     playsInline
+                    preload="metadata"
+                    poster={pair.poster}
                     className="w-full h-full object-cover"
                   >
                     <source src={pair.video} type="video/mp4" />
@@ -254,9 +257,16 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="border-t border-zinc-800 pt-6">
+          <div className="border-t border-zinc-800 pt-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
             <p className="text-zinc-600 text-xs">
               2026 AI Video Auditor. All generated videos are AI-assisted and QC reviewed before delivery.
+            </p>
+            <p className="text-zinc-500 text-xs flex gap-4 flex-wrap">
+              <span>You own your videos</span>
+              <span>·</span>
+              <span>2–3 day turnaround</span>
+              <span>·</span>
+              <span>1 free revision</span>
             </p>
           </div>
         </div>
