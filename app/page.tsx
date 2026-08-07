@@ -15,7 +15,7 @@ export default function Home() {
           loop
           playsInline
           className="absolute inset-0 w-full h-full object-cover"
-          poster="/showcase/pairA-before.jpg"
+          poster="/showcase/hero-poster.jpg"
         >
           <source src="/showcase/hero-loop.mp4" type="video/mp4" />
         </video>
