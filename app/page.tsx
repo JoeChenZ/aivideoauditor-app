@@ -72,6 +72,65 @@ export default function Home() {
         </div>
       </section>
 
+      {/* CREATORS WALL TEASER */}
+      <section className="py-24">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex items-end justify-between mb-3">
+            <h2 className="text-3xl lg:text-4xl font-bold text-white">Creators Wall</h2>
+            <Link href="/wall" className="text-blue-400 hover:text-blue-300 text-sm font-medium transition-colors hidden sm:flex items-center gap-1">
+              See all 60
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </Link>
+          </div>
+          <p className="text-zinc-400 mb-10">The best AI videos on the internet — and the exact prompts behind them.</p>
+
+          {/* Horizontal scroll preview of 12 items */}
+          <div className="flex gap-3 overflow-x-auto pb-4 -mx-6 px-6 snap-x snap-mandatory scrollbar-hide">
+            {[
+              { id: 'sora-tokyo-walk', title: 'Tokyo Walk', model: 'OpenAI Sora', videoUrl: 'https://cdn.openai.com/sora/videos/tokyo-walk.mp4', thumbnailUrl: null, prompt: 'A stylish woman walks down a Tokyo street filled with warm glowing neon...' },
+              { id: 'sora-wooly-mammoth', title: 'Wooly Mammoth', model: 'OpenAI Sora', videoUrl: 'https://cdn.openai.com/sora/videos/wooly-mammoth.mp4', thumbnailUrl: null, prompt: 'Several giant wooly mammoths approach treading through a snowy meadow...' },
+              { id: 'sora-big-sur', title: 'Big Sur', model: 'OpenAI Sora', videoUrl: 'https://cdn.openai.com/sora/videos/big-sur.mp4', thumbnailUrl: null, prompt: 'Drone view of waves crashing against the rugged cliffs along Big Sur...' },
+              { id: 'sora-ships-in-coffee', title: 'Ships In Coffee', model: 'OpenAI Sora', videoUrl: 'https://cdn.openai.com/sora/videos/ships-in-coffee.mp4', thumbnailUrl: null, prompt: 'Photorealistic closeup video of two pirate ships battling each other as they sail inside a cup of coffee.' },
+              { id: 'sora-origami-undersea', title: 'Origami Undersea', model: 'OpenAI Sora', videoUrl: 'https://cdn.openai.com/sora/videos/origami-undersea.mp4', thumbnailUrl: null, prompt: 'A gorgeously rendered papercraft world of a coral reef...' },
+              { id: 'sora-victoria-crowned-pigeon', title: 'Victoria Pigeon', model: 'OpenAI Sora', videoUrl: 'https://cdn.openai.com/sora/videos/victoria-crowned-pigeon.mp4', thumbnailUrl: null, prompt: 'This close-up shot of a Victoria crowned pigeon showcases its striking blue plumage...' },
+            ].map((item, i) => (
+              <motion.div
+                key={item.id}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.06 }}
+                className="relative flex-shrink-0 w-48 md:w-56 aspect-video bg-zinc-900 rounded-lg overflow-hidden snap-start group cursor-pointer"
+                onClick={() => {}}
+              >
+                <div className="absolute inset-0 flex flex-col items-center justify-center p-3 bg-gradient-to-b from-zinc-800 to-zinc-900">
+                  <span className="text-zinc-400 text-xs text-center font-medium">{item.title}</span>
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+                <div className="absolute bottom-0 left-0 right-0 p-2 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-200">
+                  <p className="text-white text-[10px] font-mono leading-snug line-clamp-3">{item.prompt}</p>
+                </div>
+                <span className={`absolute top-2 left-2 text-[9px] font-semibold uppercase tracking-wider px-1.5 py-0.5 rounded-full ${item.model === 'Runway Gen-3 Alpha' ? 'bg-blue-600/80 text-blue-200' : 'bg-zinc-700/80 text-zinc-300'}`}>
+                  {item.model === 'Runway Gen-3 Alpha' ? 'Runway' : 'Sora'}
+                </span>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+            <Link
+              href="/wall"
+              className="inline-flex items-center gap-2 border border-zinc-700 hover:border-zinc-500 text-zinc-300 hover:text-white font-medium px-6 py-3 rounded-full transition-colors"
+            >
+              See all 60 prompts →
+            </Link>
+            <p className="text-zinc-600 text-sm">Curated from OpenAI Sora + Runway Gen-3. Hover any tile to see the prompt.</p>
+          </div>
+        </div>
+      </section>
+
       {/* SAMPLE WALL */}
       <section className="py-24 bg-zinc-900/50">
         <div className="max-w-7xl mx-auto px-6">

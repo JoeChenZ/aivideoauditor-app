@@ -1,0 +1,1038 @@
+[
+  {
+    "id": "sora-tokyo-walk",
+    "title": "Tokyo Walk",
+    "model": "OpenAI Sora",
+    "prompt": "A stylish woman walks down a Tokyo street filled with warm glowing neon and animated city signage. She wears a black leather jacket, a long red dress, and black boots, and carries a black purse. She wears sunglasses and red lipstick. She walks confidently and casually. The street is damp and reflective, creating a mirror effect of the colorful lights. Many pedestrians walk about.",
+    "videoUrl": "https://cdn.openai.com/sora/videos/tokyo-walk.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": null,
+    "creator": "OpenAI",
+    "sourceUrl": "https://openai.com/index/sora/",
+    "tags": [
+      "people",
+      "urban",
+      "cinematic"
+    ],
+    "embeddable": true,
+    "embedMethod": "official-mp4"
+  },
+  {
+    "id": "sora-wooly-mammoth",
+    "title": "Wooly Mammoth",
+    "model": "OpenAI Sora",
+    "prompt": "Several giant wooly mammoths approach treading through a snowy meadow, their long wooly fur lightly blows in the wind as they walk, snow covered trees and dramatic snow capped mountains in the distance, mid afternoon light with wispy clouds and a sun high in the distance creates a warm glow, the low camera view is stunning capturing the large furry mammal with beautiful photography, depth of field.",
+    "videoUrl": "https://cdn.openai.com/sora/videos/wooly-mammoth.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": null,
+    "creator": "OpenAI",
+    "sourceUrl": "https://openai.com/index/sora/",
+    "tags": [
+      "cinematic"
+    ],
+    "embeddable": true,
+    "embedMethod": "official-mp4"
+  },
+  {
+    "id": "sora-mitten-astronaut",
+    "title": "Mitten Astronaut",
+    "model": "OpenAI Sora",
+    "prompt": "A movie trailer featuring the adventures of the 30 year old space man wearing a red wool knitted motorcycle helmet, blue sky, salt desert, cinematic style, shot on 35mm film, vivid colors.",
+    "videoUrl": "https://cdn.openai.com/sora/videos/mitten-astronaut.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": null,
+    "creator": "OpenAI",
+    "sourceUrl": "https://openai.com/index/sora/",
+    "tags": [
+      "people",
+      "cinematic"
+    ],
+    "embeddable": true,
+    "embedMethod": "official-mp4"
+  },
+  {
+    "id": "sora-big-sur",
+    "title": "Big Sur",
+    "model": "OpenAI Sora",
+    "prompt": "Drone view of waves crashing against the rugged cliffs along Big Sur’s garay point beach. The crashing blue waters create white-tipped waves, while the golden light of the setting sun illuminates the rocky shore. A small island with a lighthouse sits in the distance, and green shrubbery covers the cliff’s edge. The steep drop from the road down to the beach is a dramatic feat, with the cliff’s edges jutting out over the sea. This is a view that captures the raw beauty of the coast and the rugged landscape of the Pacific Coast Highway.",
+    "videoUrl": "https://cdn.openai.com/sora/videos/big-sur.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": null,
+    "creator": "OpenAI",
+    "sourceUrl": "https://openai.com/index/sora/",
+    "tags": [
+      "aerial",
+      "cinematic"
+    ],
+    "embeddable": true,
+    "embedMethod": "official-mp4"
+  },
+  {
+    "id": "sora-monster-with-melting-candle",
+    "title": "Monster With Melting Candle",
+    "model": "OpenAI Sora",
+    "prompt": "Animated scene features a close-up of a short fluffy monster kneeling beside a melting red candle. The art style is 3D and realistic, with a focus on lighting and texture. The mood of the painting is one of wonder and curiosity, as the monster gazes at the flame with wide eyes and open mouth. Its pose and expression convey a sense of innocence and playfulness, as if it is exploring the world around it for the first time. The use of warm colors and dramatic lighting further enhances the cozy atmosphere of the image.",
+    "videoUrl": "https://cdn.openai.com/sora/videos/monster-with-melting-candle.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": null,
+    "creator": "OpenAI",
+    "sourceUrl": "https://openai.com/index/sora/",
+    "tags": [
+      "macro",
+      "food",
+      "cinematic"
+    ],
+    "embeddable": true,
+    "embedMethod": "official-mp4"
+  },
+  {
+    "id": "sora-origami-undersea",
+    "title": "Origami Undersea",
+    "model": "OpenAI Sora",
+    "prompt": "A gorgeously rendered papercraft world of a coral reef, rife with colorful fish and sea creatures.",
+    "videoUrl": "https://cdn.openai.com/sora/videos/origami-undersea.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": null,
+    "creator": "OpenAI",
+    "sourceUrl": "https://openai.com/index/sora/",
+    "tags": [
+      "cinematic"
+    ],
+    "embeddable": true,
+    "embedMethod": "official-mp4"
+  },
+  {
+    "id": "sora-victoria-crowned-pigeon",
+    "title": "Victoria Crowned Pigeon",
+    "model": "OpenAI Sora",
+    "prompt": "This close-up shot of a Victoria crowned pigeon showcases its striking blue plumage and red chest. Its crest is made of delicate, lacy feathers, while its eye is a striking red color. The bird’s head is tilted slightly to the side, giving the impression of it looking regal and majestic. The background is blurred, drawing attention to the bird’s striking appearance.",
+    "videoUrl": "https://cdn.openai.com/sora/videos/victoria-crowned-pigeon.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": null,
+    "creator": "OpenAI",
+    "sourceUrl": "https://openai.com/index/sora/",
+    "tags": [
+      "macro",
+      "cinematic"
+    ],
+    "embeddable": true,
+    "embedMethod": "official-mp4"
+  },
+  {
+    "id": "sora-ships-in-coffee",
+    "title": "Ships In Coffee",
+    "model": "OpenAI Sora",
+    "prompt": "Photorealistic closeup video of two pirate ships battling each other as they sail inside a cup of coffee.",
+    "videoUrl": "https://cdn.openai.com/sora/videos/ships-in-coffee.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": null,
+    "creator": "OpenAI",
+    "sourceUrl": "https://openai.com/index/sora/",
+    "tags": [
+      "macro",
+      "food",
+      "cinematic"
+    ],
+    "embeddable": true,
+    "embedMethod": "official-mp4"
+  },
+  {
+    "id": "sora-man-on-the-cloud",
+    "title": "Man On The Cloud",
+    "model": "OpenAI Sora",
+    "prompt": "A young man at his 20s is sitting on a piece of cloud in the sky, reading a book.",
+    "videoUrl": "https://cdn.openai.com/sora/videos/man-on-the-cloud.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": null,
+    "creator": "OpenAI",
+    "sourceUrl": "https://openai.com/index/sora/",
+    "tags": [
+      "people",
+      "cinematic"
+    ],
+    "embeddable": true,
+    "embedMethod": "official-mp4"
+  },
+  {
+    "id": "sora-gold-rush",
+    "title": "Gold Rush",
+    "model": "OpenAI Sora",
+    "prompt": "Historical footage of California during the gold rush.",
+    "videoUrl": "https://cdn.openai.com/sora/videos/gold-rush.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": null,
+    "creator": "OpenAI",
+    "sourceUrl": "https://openai.com/index/sora/",
+    "tags": [
+      "cinematic"
+    ],
+    "embeddable": true,
+    "embedMethod": "official-mp4"
+  },
+  {
+    "id": "sora-closeup-of-womans-eye",
+    "title": "Closeup Of Womans Eye",
+    "model": "OpenAI Sora",
+    "prompt": "Extreme close up of a 24 year old woman’s eye blinking, standing in Marrakech during magic hour, cinematic film shot in 70mm, depth of field, vivid colors, cinematic",
+    "videoUrl": "https://cdn.openai.com/sora/videos/closeup-of-womans-eye.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": null,
+    "creator": "OpenAI",
+    "sourceUrl": "https://openai.com/index/sora/",
+    "tags": [
+      "macro",
+      "people",
+      "cinematic"
+    ],
+    "embeddable": true,
+    "embedMethod": "official-mp4"
+  },
+  {
+    "id": "sora-dancing-kangaroo",
+    "title": "Dancing Kangaroo",
+    "model": "OpenAI Sora",
+    "prompt": "A cartoon kangaroo disco dances.",
+    "videoUrl": "https://cdn.openai.com/sora/videos/dancing-kangaroo.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": null,
+    "creator": "OpenAI",
+    "sourceUrl": "https://openai.com/index/sora/",
+    "tags": [
+      "cinematic"
+    ],
+    "embeddable": true,
+    "embedMethod": "official-mp4"
+  },
+  {
+    "id": "sora-lagos",
+    "title": "Lagos",
+    "model": "OpenAI Sora",
+    "prompt": "A beautiful homemade video showing the people of Lagos, Nigeria in the year 2056. Shot with a mobile phone camera.",
+    "videoUrl": "https://cdn.openai.com/sora/videos/lagos.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": null,
+    "creator": "OpenAI",
+    "sourceUrl": "https://openai.com/index/sora/",
+    "tags": [
+      "people",
+      "urban",
+      "cinematic"
+    ],
+    "embeddable": true,
+    "embedMethod": "official-mp4"
+  },
+  {
+    "id": "sora-petri-dish-pandas",
+    "title": "Petri Dish Pandas",
+    "model": "OpenAI Sora",
+    "prompt": "A petri dish with a bamboo forest growing within it that has tiny red pandas running around.",
+    "videoUrl": "https://cdn.openai.com/sora/videos/petri-dish-pandas.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": null,
+    "creator": "OpenAI",
+    "sourceUrl": "https://openai.com/index/sora/",
+    "tags": [
+      "cinematic"
+    ],
+    "embeddable": true,
+    "embedMethod": "official-mp4"
+  },
+  {
+    "id": "sora-stack-of-tvs",
+    "title": "Stack Of Tvs",
+    "model": "OpenAI Sora",
+    "prompt": "The camera rotates around a large stack of vintage televisions all showing different programs — 1950s sci-fi movies, horror movies, news, static, a 1970s sitcom, etc, set inside a large New York museum gallery.",
+    "videoUrl": "https://cdn.openai.com/sora/videos/stack-of-tvs.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": null,
+    "creator": "OpenAI",
+    "sourceUrl": "https://openai.com/index/sora/",
+    "tags": [
+      "cinematic"
+    ],
+    "embeddable": true,
+    "embedMethod": "official-mp4"
+  },
+  {
+    "id": "sora-train-window",
+    "title": "Train Window",
+    "model": "OpenAI Sora",
+    "prompt": "Reflections in the window of a train traveling through the Tokyo suburbs.",
+    "videoUrl": "https://cdn.openai.com/sora/videos/train-window.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": null,
+    "creator": "OpenAI",
+    "sourceUrl": "https://openai.com/index/sora/",
+    "tags": [
+      "urban",
+      "cinematic"
+    ],
+    "embeddable": true,
+    "embedMethod": "official-mp4"
+  },
+  {
+    "id": "runway-subtle-reflections-of-a-woman-on-the-window-o",
+    "title": "Subtle reflections of a woman on the window of a train movin",
+    "model": "Runway Gen-3 Alpha",
+    "prompt": "Subtle reflections of a woman on the window of a train moving at hyper-speed in a Japanese city.",
+    "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/carousel-01/gen-3-alpha-output-001.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/carousel-01/gen-3-alpha-output-001.jpg",
+    "creator": "Runway",
+    "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
+    "tags": [
+      "people",
+      "urban",
+      "cinematic"
+    ],
+    "embeddable": true,
+    "embedMethod": "official-mp4"
+  },
+  {
+    "id": "runway-an-astronaut-running-through-an-alley-in-rio-",
+    "title": "An astronaut running through an alley in Rio de Janeiro",
+    "model": "Runway Gen-3 Alpha",
+    "prompt": "An astronaut running through an alley in Rio de Janeiro.",
+    "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/carousel-01/gen-3-alpha-output-002.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/carousel-01/gen-3-alpha-output-002.jpg",
+    "creator": "Runway",
+    "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
+    "tags": [
+      "people",
+      "urban",
+      "cinematic"
+    ],
+    "embeddable": true,
+    "embedMethod": "official-mp4"
+  },
+  {
+    "id": "runway-fpv-flying-through-a-colorful-coral-lined-str",
+    "title": "FPV flying through a colorful coral lined streets of an unde",
+    "model": "Runway Gen-3 Alpha",
+    "prompt": "FPV flying through a colorful coral lined streets of an underwater suburban neighborhood.",
+    "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/carousel-01/gen-3-alpha-output-003.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/carousel-01/gen-3-alpha-output-003.jpg",
+    "creator": "Runway",
+    "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
+    "tags": [
+      "urban",
+      "aerial",
+      "cinematic"
+    ],
+    "embeddable": true,
+    "embedMethod": "official-mp4"
+  },
+  {
+    "id": "runway-handheld-tracking-shot-at-night-following-a-d",
+    "title": "Handheld tracking shot at night",
+    "model": "Runway Gen-3 Alpha",
+    "prompt": "Handheld tracking shot at night, following a dirty blue ballon floating above the ground in abandon old European street.",
+    "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/carousel-01/gen-3-alpha-output-004.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/carousel-01/gen-3-alpha-output-004.jpg",
+    "creator": "Runway",
+    "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
+    "tags": [
+      "urban",
+      "cinematic"
+    ],
+    "embeddable": true,
+    "embedMethod": "official-mp4"
+  },
+  {
+    "id": "runway-an-extreme-close-up-shot-of-an-ant-emerging-f",
+    "title": "An extreme close-up shot of an ant emerging from its nest. T",
+    "model": "Runway Gen-3 Alpha",
+    "prompt": "An extreme close-up shot of an ant emerging from its nest. The camera pulls back revealing a neighborhood beyond the hill.",
+    "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/temporal-control/gen-3-alpha-output-001.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/temporal-control/gen-3-alpha-output-001.jpg",
+    "creator": "Runway",
+    "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
+    "tags": [
+      "macro",
+      "cinematic"
+    ],
+    "embeddable": true,
+    "embedMethod": "official-mp4"
+  },
+  {
+    "id": "runway-a-tsunami-coming-through-an-alley-in-bulgaria",
+    "title": "A tsunami coming through an alley in Bulgaria",
+    "model": "Runway Gen-3 Alpha",
+    "prompt": "A tsunami coming through an alley in Bulgaria, dynamic movement.",
+    "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/temporal-control/gen-3-alpha-output-002.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/temporal-control/gen-3-alpha-output-002.jpg",
+    "creator": "Runway",
+    "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
+    "tags": [
+      "urban",
+      "cinematic"
+    ],
+    "embeddable": true,
+    "embedMethod": "official-mp4"
+  },
+  {
+    "id": "runway-a-fpv-drone-shot-through-a-castle-on-a-cliff",
+    "title": "A FPV drone shot through a castle on a cliff",
+    "model": "Runway Gen-3 Alpha",
+    "prompt": "A FPV drone shot through a castle on a cliff.",
+    "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/temporal-control/gen-3-alpha-output-003.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/temporal-control/gen-3-alpha-output-003.jpg",
+    "creator": "Runway",
+    "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
+    "tags": [
+      "aerial",
+      "cinematic"
+    ],
+    "embeddable": true,
+    "embedMethod": "official-mp4"
+  },
+  {
+    "id": "runway-internal-window-of-a-train-moving-at-hyper-sp",
+    "title": "Internal window of a train moving at hyper-speed in an old E",
+    "model": "Runway Gen-3 Alpha",
+    "prompt": "Internal window of a train moving at hyper-speed in an old European city.",
+    "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/temporal-control/gen-3-alpha-output-004.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/temporal-control/gen-3-alpha-output-004.jpg",
+    "creator": "Runway",
+    "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
+    "tags": [
+      "urban",
+      "cinematic"
+    ],
+    "embeddable": true,
+    "embedMethod": "official-mp4"
+  },
+  {
+    "id": "runway-handheld-camera-moving-fast-flashlight-light-",
+    "title": "Handheld camera moving fast",
+    "model": "Runway Gen-3 Alpha",
+    "prompt": "Handheld camera moving fast, flashlight light, in a white old wall in a old alley at night a black graffiti that spells 'Runway'.",
+    "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/temporal-control/gen-3-alpha-output-006.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/temporal-control/gen-3-alpha-output-006.jpg",
+    "creator": "Runway",
+    "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
+    "tags": [
+      "urban",
+      "cinematic"
+    ],
+    "embeddable": true,
+    "embedMethod": "official-mp4"
+  },
+  {
+    "id": "runway-super-fast-zoom-out-from-the-peak-of-a-frozen",
+    "title": "Super fast zoom out from the peak of a frozen mountain where",
+    "model": "Runway Gen-3 Alpha",
+    "prompt": "Super fast zoom out from the peak of a frozen mountain where a lonely hiker is arriving to the submit.",
+    "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/temporal-control/gen-3-alpha-output-007.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/temporal-control/gen-3-alpha-output-007.jpg",
+    "creator": "Runway",
+    "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
+    "tags": [
+      "people",
+      "aerial",
+      "nature",
+      "cinematic"
+    ],
+    "embeddable": true,
+    "embedMethod": "official-mp4"
+  },
+  {
+    "id": "runway-a-first-person-pov-shot-rapidly-flies-through",
+    "title": "A first-person POV shot rapidly flies through open doors to ",
+    "model": "Runway Gen-3 Alpha",
+    "prompt": "A first-person POV shot rapidly flies through open doors to reveal a surreal waterfall cascading in the middle of the living room.",
+    "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/temporal-control/gen-3-alpha-output-008.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/temporal-control/gen-3-alpha-output-008.jpg",
+    "creator": "Runway",
+    "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
+    "tags": [
+      "people",
+      "aerial",
+      "cinematic"
+    ],
+    "embeddable": true,
+    "embedMethod": "official-mp4"
+  },
+  {
+    "id": "runway-a-first-person-pov-shot-rapidly-flies-towards",
+    "title": "A first-person POV shot rapidly flies towards a house's fron",
+    "model": "Runway Gen-3 Alpha",
+    "prompt": "A first-person POV shot rapidly flies towards a house's front door at 10x speed.",
+    "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/temporal-control/gen-3-alpha-output-009.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/temporal-control/gen-3-alpha-output-009.jpg",
+    "creator": "Runway",
+    "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
+    "tags": [
+      "people",
+      "aerial",
+      "cinematic"
+    ],
+    "embeddable": true,
+    "embedMethod": "official-mp4"
+  },
+  {
+    "id": "runway-a-pencil-drawing-an-architectural-plan",
+    "title": "A pencil drawing an architectural plan",
+    "model": "Runway Gen-3 Alpha",
+    "prompt": "A pencil drawing an architectural plan.",
+    "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/temporal-control/gen-3-alpha-output-010.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/temporal-control/gen-3-alpha-output-010.jpg",
+    "creator": "Runway",
+    "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
+    "tags": [
+      "cinematic"
+    ],
+    "embeddable": true,
+    "embedMethod": "official-mp4"
+  },
+  {
+    "id": "runway-a-cinematic-wide-portrait-of-a-man-with-his-f",
+    "title": "A cinematic wide portrait of a man with his face lit by the ",
+    "model": "Runway Gen-3 Alpha",
+    "prompt": "A cinematic wide portrait of a man with his face lit by the glow of a TV.",
+    "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/humans/gen-3-alpha-output-001.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/humans/gen-3-alpha-output-001.jpg",
+    "creator": "Runway",
+    "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
+    "tags": [
+      "people",
+      "cinematic"
+    ],
+    "embeddable": true,
+    "embedMethod": "official-mp4"
+  },
+  {
+    "id": "runway-a-close-up-portrait-of-a-woman-lit-by-the-sid",
+    "title": "A close up portrait of a woman lit by the side",
+    "model": "Runway Gen-3 Alpha",
+    "prompt": "A close up portrait of a woman lit by the side, the camera pulls back.",
+    "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/humans/gen-3-alpha-output-002.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/humans/gen-3-alpha-output-002.jpg",
+    "creator": "Runway",
+    "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
+    "tags": [
+      "people",
+      "cinematic"
+    ],
+    "embeddable": true,
+    "embedMethod": "official-mp4"
+  },
+  {
+    "id": "runway-zoom-in-shot-to-the-face-of-a-young-woman-sit",
+    "title": "Zoom in shot to the face of a young woman sitting on a bench",
+    "model": "Runway Gen-3 Alpha",
+    "prompt": "Zoom in shot to the face of a young woman sitting on a bench in the middle of an empty school gym.",
+    "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/humans/gen-3-alpha-output-003.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/humans/gen-3-alpha-output-003.jpg",
+    "creator": "Runway",
+    "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
+    "tags": [
+      "people",
+      "aerial",
+      "cinematic"
+    ],
+    "embeddable": true,
+    "embedMethod": "official-mp4"
+  },
+  {
+    "id": "runway-a-close-up-of-an-older-man-in-a-warehouse-cam",
+    "title": "A close up of an older man in a warehouse",
+    "model": "Runway Gen-3 Alpha",
+    "prompt": "A close up of an older man in a warehouse, camera zoom out.",
+    "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/humans/gen-3-alpha-output-004.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/humans/gen-3-alpha-output-004.jpg",
+    "creator": "Runway",
+    "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
+    "tags": [
+      "people",
+      "urban",
+      "aerial",
+      "cinematic"
+    ],
+    "embeddable": true,
+    "embedMethod": "official-mp4"
+  },
+  {
+    "id": "runway-an-older-man-playing-piano-lit-from-the-side",
+    "title": "An older man playing piano",
+    "model": "Runway Gen-3 Alpha",
+    "prompt": "An older man playing piano, lit from the side.",
+    "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/humans/gen-3-alpha-output-006.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/humans/gen-3-alpha-output-006.jpg",
+    "creator": "Runway",
+    "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
+    "tags": [
+      "people",
+      "cinematic"
+    ],
+    "embeddable": true,
+    "embedMethod": "official-mp4"
+  },
+  {
+    "id": "runway-macro-shot-to-the-face-freckles-of-a-young-wo",
+    "title": "Macro shot to the face freckles of a young woman trying to l",
+    "model": "Runway Gen-3 Alpha",
+    "prompt": "Macro shot to the face freckles of a young woman trying to look for something.",
+    "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/humans/gen-3-alpha-output-007.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/humans/gen-3-alpha-output-007.jpg",
+    "creator": "Runway",
+    "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
+    "tags": [
+      "macro",
+      "people",
+      "cinematic"
+    ],
+    "embeddable": true,
+    "embedMethod": "official-mp4"
+  },
+  {
+    "id": "runway-an-astronaut-walking-between-stone-buildings",
+    "title": "An astronaut walking between stone buildings",
+    "model": "Runway Gen-3 Alpha",
+    "prompt": "An astronaut walking between stone buildings.",
+    "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/humans/gen-3-alpha-output-008.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/humans/gen-3-alpha-output-008.jpg",
+    "creator": "Runway",
+    "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
+    "tags": [
+      "people",
+      "urban",
+      "cinematic"
+    ],
+    "embeddable": true,
+    "embedMethod": "official-mp4"
+  },
+  {
+    "id": "runway-a-middle-aged-sad-bald-man-becomes-happy-as-a",
+    "title": "A middle-aged sad bald man becomes happy as a wig of curly h",
+    "model": "Runway Gen-3 Alpha",
+    "prompt": "A middle-aged sad bald man becomes happy as a wig of curly hair and sunglasses fall suddenly on his head.",
+    "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/humans/gen-3-alpha-output-009.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/humans/gen-3-alpha-output-009.jpg",
+    "creator": "Runway",
+    "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
+    "tags": [
+      "people",
+      "cinematic"
+    ],
+    "embeddable": true,
+    "embedMethod": "official-mp4"
+  },
+  {
+    "id": "runway-view-out-a-window-of-a-giant-strange-creature",
+    "title": "View out a window of a giant strange creature walking in run",
+    "model": "Runway Gen-3 Alpha",
+    "prompt": "View out a window of a giant strange creature walking in rundown city at night, one single street lamp dimly lighting the area.",
+    "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/artists/gen-3-alpha-output-001-v1.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/artists/gen-3-alpha-output-001-v1.jpg",
+    "creator": "Runway",
+    "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
+    "tags": [
+      "urban",
+      "cinematic"
+    ],
+    "embeddable": true,
+    "embedMethod": "official-mp4"
+  },
+  {
+    "id": "runway-a-man-made-of-rocks-walking-in-the-forest-ful",
+    "title": "A man made of rocks walking in the forest",
+    "model": "Runway Gen-3 Alpha",
+    "prompt": "A man made of rocks walking in the forest, full-body shot.",
+    "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/artists/gen-3-alpha-output-002.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/artists/gen-3-alpha-output-002.jpg",
+    "creator": "Runway",
+    "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
+    "tags": [
+      "people",
+      "nature",
+      "cinematic"
+    ],
+    "embeddable": true,
+    "embedMethod": "official-mp4"
+  },
+  {
+    "id": "runway-a-slow-cinematic-push-in-on-an-ostrich-standi",
+    "title": "A slow cinematic push in on an ostrich standing in a 1980s k",
+    "model": "Runway Gen-3 Alpha",
+    "prompt": "A slow cinematic push in on an ostrich standing in a 1980s kitchen.",
+    "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/artists/gen-3-alpha-output-003.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/artists/gen-3-alpha-output-003.jpg",
+    "creator": "Runway",
+    "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
+    "tags": [
+      "cinematic"
+    ],
+    "embeddable": true,
+    "embedMethod": "official-mp4"
+  },
+  {
+    "id": "runway-a-giant-humanoid-made-of-fluffy-blue-cotton-c",
+    "title": "A giant humanoid",
+    "model": "Runway Gen-3 Alpha",
+    "prompt": "A giant humanoid, made of fluffy blue cotton candy, stomping on the ground, and roaring to the sky, clear blue sky behind them.",
+    "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/artists/gen-3-alpha-output-004.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/artists/gen-3-alpha-output-004.jpg",
+    "creator": "Runway",
+    "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
+    "tags": [
+      "people",
+      "cinematic"
+    ],
+    "embeddable": true,
+    "embedMethod": "official-mp4"
+  },
+  {
+    "id": "runway-zooming-through-a-dark-forest-with-neon-light",
+    "title": "Zooming through a dark forest with neon light flora lighting",
+    "model": "Runway Gen-3 Alpha",
+    "prompt": "Zooming through a dark forest with neon light flora lighting up.",
+    "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/artists/gen-3-alpha-output-005.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/artists/gen-3-alpha-output-005.jpg",
+    "creator": "Runway",
+    "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
+    "tags": [
+      "aerial",
+      "nature",
+      "cinematic"
+    ],
+    "embeddable": true,
+    "embedMethod": "official-mp4"
+  },
+  {
+    "id": "runway-a-cyclone-of-broken-glass-in-an-urban-alleywa",
+    "title": "A cyclone of broken glass in an urban alleyway. dynamic move",
+    "model": "Runway Gen-3 Alpha",
+    "prompt": "A cyclone of broken glass in an urban alleyway. dynamic movement.",
+    "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/artists/gen-3-alpha-output-006.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/artists/gen-3-alpha-output-006.jpg",
+    "creator": "Runway",
+    "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
+    "tags": [
+      "urban",
+      "cinematic"
+    ],
+    "embeddable": true,
+    "embedMethod": "official-mp4"
+  },
+  {
+    "id": "runway-a-man-standing-in-front-of-a-burning-building",
+    "title": "A man standing in front of a burning building giving the 'th",
+    "model": "Runway Gen-3 Alpha",
+    "prompt": "A man standing in front of a burning building giving the 'thumbs up' sign.",
+    "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/artists/gen-3-alpha-output-007.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/artists/gen-3-alpha-output-007.jpg",
+    "creator": "Runway",
+    "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
+    "tags": [
+      "people",
+      "urban",
+      "cinematic"
+    ],
+    "embeddable": true,
+    "embedMethod": "official-mp4"
+  },
+  {
+    "id": "runway-highly-detailed-close-up-of-a-bacteria",
+    "title": "Highly detailed close up of a bacteria",
+    "model": "Runway Gen-3 Alpha",
+    "prompt": "Highly detailed close up of a bacteria.",
+    "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/artists/gen-3-alpha-output-008.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/artists/gen-3-alpha-output-008.jpg",
+    "creator": "Runway",
+    "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
+    "tags": [
+      "cinematic"
+    ],
+    "embeddable": true,
+    "embedMethod": "official-mp4"
+  },
+  {
+    "id": "runway-an-ultra-wide-shot-of-a-giant-stone-hand-reac",
+    "title": "An ultra-wide shot of a giant stone hand reaching out of a p",
+    "model": "Runway Gen-3 Alpha",
+    "prompt": "An ultra-wide shot of a giant stone hand reaching out of a pile of rocks at the base of a mountain.",
+    "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/artists/gen-3-alpha-output-009.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/artists/gen-3-alpha-output-009.jpg",
+    "creator": "Runway",
+    "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
+    "tags": [
+      "nature",
+      "cinematic"
+    ],
+    "embeddable": true,
+    "embedMethod": "official-mp4"
+  },
+  {
+    "id": "runway-aerial-view-shot-of-a-cloaked-figure-elevatin",
+    "title": "Aerial view shot of a cloaked figure elevating in the sky be",
+    "model": "Runway Gen-3 Alpha",
+    "prompt": "Aerial view shot of a cloaked figure elevating in the sky betweem slyscrapers.",
+    "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/artists/gen-3-alpha-output-010-v1.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/artists/gen-3-alpha-output-010-v1.jpg",
+    "creator": "Runway",
+    "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
+    "tags": [
+      "people",
+      "aerial",
+      "cinematic"
+    ],
+    "embeddable": true,
+    "embedMethod": "official-mp4"
+  },
+  {
+    "id": "runway-an-oil-painting-of-a-natural-forest-environme",
+    "title": "An oil painting of a natural forest environment with colorfu",
+    "model": "Runway Gen-3 Alpha",
+    "prompt": "An oil painting of a natural forest environment with colorful maple trees and cinematic parallax animation.",
+    "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/artists/gen-3-alpha-output-011.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/artists/gen-3-alpha-output-011.jpg",
+    "creator": "Runway",
+    "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
+    "tags": [
+      "nature",
+      "cinematic"
+    ],
+    "embeddable": true,
+    "embedMethod": "official-mp4"
+  },
+  {
+    "id": "runway-a-japanese-animated-film-of-a-young-woman-sta",
+    "title": "A Japanese animated film of a young woman standing on a ship",
+    "model": "Runway Gen-3 Alpha",
+    "prompt": "A Japanese animated film of a young woman standing on a ship and looking back at camera.",
+    "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/marquee-02/gen-3-alpha-output-001.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/marquee-02/gen-3-alpha-output-001.jpg",
+    "creator": "Runway",
+    "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
+    "tags": [
+      "people",
+      "cinematic"
+    ],
+    "embeddable": true,
+    "embedMethod": "official-mp4"
+  },
+  {
+    "id": "runway-a-close-up-shot-of-a-young-woman-driving-a-ca",
+    "title": "A close-up shot of a young woman driving a car",
+    "model": "Runway Gen-3 Alpha",
+    "prompt": "A close-up shot of a young woman driving a car, looking thoughtful, blurred green forest visible through the rainy car window.",
+    "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/marquee-02/gen-3-alpha-output-002.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/marquee-02/gen-3-alpha-output-002.jpg",
+    "creator": "Runway",
+    "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
+    "tags": [
+      "macro",
+      "people",
+      "nature",
+      "cinematic"
+    ],
+    "embeddable": true,
+    "embedMethod": "official-mp4"
+  },
+  {
+    "id": "runway-aerial-shot-of-a-drone-moving-fast-in-a-dense",
+    "title": "Aerial shot of a drone moving fast in a dense green jungle",
+    "model": "Runway Gen-3 Alpha",
+    "prompt": "Aerial shot of a drone moving fast in a dense green jungle.",
+    "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/marquee-02/gen-3-alpha-output-003-v1.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/marquee-02/gen-3-alpha-output-003-v1.jpg",
+    "creator": "Runway",
+    "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
+    "tags": [
+      "aerial",
+      "nature",
+      "cinematic"
+    ],
+    "embeddable": true,
+    "embedMethod": "official-mp4"
+  },
+  {
+    "id": "runway-hyperlapse-shot-through-a-corridor-with-flash",
+    "title": "Hyperlapse shot through a corridor with flashing lights. A s",
+    "model": "Runway Gen-3 Alpha",
+    "prompt": "Hyperlapse shot through a corridor with flashing lights. A silver fabric flies through the entire corridor.",
+    "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/marquee-02/gen-3-alpha-output-004.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/marquee-02/gen-3-alpha-output-004.jpg",
+    "creator": "Runway",
+    "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
+    "tags": [
+      "aerial",
+      "cinematic"
+    ],
+    "embeddable": true,
+    "embedMethod": "official-mp4"
+  },
+  {
+    "id": "runway-aerial-shot-of-the-ocean-a-maelstrom-forms-in",
+    "title": "Aerial shot of the ocean. a maelstrom forms in the water swi",
+    "model": "Runway Gen-3 Alpha",
+    "prompt": "Aerial shot of the ocean. a maelstrom forms in the water swirling around until it reveals the fiery depths below.",
+    "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/marquee-02/gen-3-alpha-output-005.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/marquee-02/gen-3-alpha-output-005.jpg",
+    "creator": "Runway",
+    "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
+    "tags": [
+      "aerial",
+      "nature",
+      "cinematic"
+    ],
+    "embeddable": true,
+    "embedMethod": "official-mp4"
+  },
+  {
+    "id": "runway-a-push-through-an-ocean-research-outpost",
+    "title": "A push through an ocean research outpost",
+    "model": "Runway Gen-3 Alpha",
+    "prompt": "A push through an ocean research outpost.",
+    "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/marquee-02/gen-3-alpha-output-006.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/marquee-02/gen-3-alpha-output-006.jpg",
+    "creator": "Runway",
+    "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
+    "tags": [
+      "nature",
+      "cinematic"
+    ],
+    "embeddable": true,
+    "embedMethod": "official-mp4"
+  },
+  {
+    "id": "runway-a-woman-singing-and-standing-in-a-concert-sta",
+    "title": "A woman singing and standing in a concert stage with a brigh",
+    "model": "Runway Gen-3 Alpha",
+    "prompt": "A woman singing and standing in a concert stage with a bright light in the background.",
+    "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/marquee-02/gen-3-alpha-output-007.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/marquee-02/gen-3-alpha-output-007.jpg",
+    "creator": "Runway",
+    "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
+    "tags": [
+      "people",
+      "cinematic"
+    ],
+    "embeddable": true,
+    "embedMethod": "official-mp4"
+  },
+  {
+    "id": "runway-over-the-shoulder-shot-of-a-woman-running-and",
+    "title": "Over the shoulder shot of a woman running and watching a roc",
+    "model": "Runway Gen-3 Alpha",
+    "prompt": "Over the shoulder shot of a woman running and watching a rocket in the distance.",
+    "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/customization/gen-3-alpha-output-003.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/customization/gen-3-alpha-output-003.jpg",
+    "creator": "Runway",
+    "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
+    "tags": [
+      "people",
+      "cinematic"
+    ],
+    "embeddable": true,
+    "embedMethod": "official-mp4"
+  },
+  {
+    "id": "runway-dragon-toucan-walking-through-the-serengeti",
+    "title": "Dragon-toucan walking through the Serengeti",
+    "model": "Runway Gen-3 Alpha",
+    "prompt": "Dragon-toucan walking through the Serengeti.",
+    "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/customization/gen-3-alpha-output-002.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/customization/gen-3-alpha-output-002.jpg",
+    "creator": "Runway",
+    "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
+    "tags": [
+      "nature",
+      "cinematic"
+    ],
+    "embeddable": true,
+    "embedMethod": "official-mp4"
+  },
+  {
+    "id": "runway-an-empty-warehouse-where-flowers-start-bloomi",
+    "title": "An empty warehouse where flowers start blooming from the con",
+    "model": "Runway Gen-3 Alpha",
+    "prompt": "An empty warehouse where flowers start blooming from the concrete.",
+    "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/carousel-03/gen-3-alpha-output-006.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/carousel-03/gen-3-alpha-output-006.jpg",
+    "creator": "Runway",
+    "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
+    "tags": [
+      "urban",
+      "cinematic"
+    ],
+    "embeddable": true,
+    "embedMethod": "official-mp4"
+  },
+  {
+    "id": "runway-a-side-profile-shot-of-a-woman-with-fireworks",
+    "title": "A side profile shot of a woman with fireworks exploding in t",
+    "model": "Runway Gen-3 Alpha",
+    "prompt": "A side profile shot of a woman with fireworks exploding in the distance beyond her.",
+    "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/carousel-03/gen-3-alpha-output-003.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/carousel-03/gen-3-alpha-output-003.jpg",
+    "creator": "Runway",
+    "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
+    "tags": [
+      "people",
+      "cinematic"
+    ],
+    "embeddable": true,
+    "embedMethod": "official-mp4"
+  },
+  {
+    "id": "runway-a-pink-pig-running-fast-toward-the-camera-in-",
+    "title": "A pink pig running fast toward the camera in an alley in Tok",
+    "model": "Runway Gen-3 Alpha",
+    "prompt": "A pink pig running fast toward the camera in an alley in Tokyo.",
+    "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/carousel-03/gen-3-alpha-output-002.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/carousel-03/gen-3-alpha-output-002.jpg",
+    "creator": "Runway",
+    "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
+    "tags": [
+      "urban",
+      "cinematic"
+    ],
+    "embeddable": true,
+    "embedMethod": "official-mp4"
+  }
+]
