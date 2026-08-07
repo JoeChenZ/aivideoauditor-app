@@ -1,7 +1,7 @@
 'use client';
 
-// Videos are hotlinked from official OpenAI/Runway CDN.
-// Could be proxied/cached via a serverless function for reliability.
+// Posters are self-hosted at /wall/<id>.jpg (public/wall/).
+// Videos are proxied via /api/wall/[id] to bypass CDN hotlink blocking.
 
 import { useState, useRef, useEffect, useCallback } from 'react';
 import Link from 'next/link';
@@ -109,23 +109,19 @@ function VideoTile({
           : 'hover:ring-1 hover:ring-zinc-500 hover:ring-offset-1 hover:ring-offset-zinc-950'
       }`}
     >
-      {item.thumbnailUrl ? (
-        <img
-          src={item.thumbnailUrl}
-          alt={item.title}
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${
-            isSelected ? 'opacity-0' : 'opacity-100 group-hover:opacity-0'
-          }`}
-          loading="lazy"
-        />
-      ) : (
-        <PlaceholderTile title={item.title} />
-      )}
+      <img
+        src={`/wall/${item.id}.jpg`}
+        alt={item.title}
+        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${
+          isSelected ? 'opacity-0' : 'opacity-100 group-hover:opacity-0'
+        }`}
+        loading="lazy"
+      />
 
       <video
         ref={videoRef}
-        src={item.videoUrl}
-        poster={item.thumbnailUrl ?? undefined}
+        src={`/api/wall/${item.id}`}
+        poster={`/wall/${item.id}.jpg`}
         muted
         loop
         playsInline
@@ -195,19 +191,15 @@ function PromptPanel({
 
       {/* Video preview */}
       <div className="relative aspect-video bg-zinc-900 rounded-lg overflow-hidden mb-5 flex-shrink-0">
-        {item.thumbnailUrl ? (
-          <img
-            src={item.thumbnailUrl}
-            alt={item.title}
-            className="absolute inset-0 w-full h-full object-cover"
-          />
-        ) : (
-          <PlaceholderTile title={item.title} />
-        )}
+        <img
+          src={`/wall/${item.id}.jpg`}
+          alt={item.title}
+          className="absolute inset-0 w-full h-full object-cover"
+        />
         <video
           key={item.id}
-          src={item.videoUrl}
-          poster={item.thumbnailUrl ?? undefined}
+          src={`/api/wall/${item.id}`}
+          poster={`/wall/${item.id}.jpg`}
           muted
           loop
           playsInline

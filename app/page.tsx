@@ -105,9 +105,12 @@ export default function Home() {
                 className="relative flex-shrink-0 w-48 md:w-56 aspect-video bg-zinc-900 rounded-lg overflow-hidden snap-start group cursor-pointer"
                 onClick={() => {}}
               >
-                <div className="absolute inset-0 flex flex-col items-center justify-center p-3 bg-gradient-to-b from-zinc-800 to-zinc-900">
-                  <span className="text-zinc-400 text-xs text-center font-medium">{item.title}</span>
-                </div>
+                <img
+                  src={`/wall/${item.id}.jpg`}
+                  alt={item.title}
+                  className="absolute inset-0 w-full h-full object-cover"
+                  loading="lazy"
+                />
                 <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
                 <div className="absolute bottom-0 left-0 right-0 p-2 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-200">
                   <p className="text-white text-[10px] font-mono leading-snug line-clamp-3">{item.prompt}</p>
