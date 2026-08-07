@@ -27,7 +27,7 @@ const FALLBACK_PRICES: PricesResponse = {
   fallback: true,
 };
 
-export const revalidate = 3600;
+export const dynamic = 'force-dynamic';
 
 async function getPrices(): Promise<PricesResponse> {
   try {

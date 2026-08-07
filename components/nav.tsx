@@ -1,48 +1,51 @@
+'use client';
 import Link from 'next/link';
-import Image from 'next/image';
-import { createClient } from '@/lib/supabase/server';
-import AuthButton from './auth-button';
+import { useState } from 'react';
 
-export default async function Nav() {
-  const supabase = createClient();
-  const { data: { user } } = await supabase.auth.getUser();
+export default function Nav() {
+  const [open, setOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 inset-x-0 z-50 border-b border-rule/60 bg-void/85 backdrop-blur-md">
-      <div className="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-3 group">
-          <Image src="/icon.png" alt="AIVideoAuditor" width={28} height={28} className="rounded-md" />
-          <span className="flex items-baseline gap-2">
-            <span className="font-display text-lg font-semibold tracking-tight text-ink-primary">AIVideoAuditor</span>
-            <span className="hidden sm:inline font-mono text-[10px] tracking-kicker uppercase text-ink-muted group-hover:text-neon-amber transition-colors">vendor desk</span>
-          </span>
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-zinc-950/80 backdrop-blur-md border-b border-zinc-800 h-16 flex items-center">
+      <div className="max-w-7xl mx-auto px-6 w-full flex items-center justify-between">
+        <Link href="/" className="text-white font-semibold text-lg tracking-tight">
+          AI Video Auditor
         </Link>
 
-        <div className="flex items-center gap-6 text-sm text-ink-secondary">
-          <Link href="/research/132-ai-video-vendor-reviews" className="hover:text-ink-primary transition-colors hidden sm:block font-mono text-[11px] tracking-wide uppercase">
-            Research
+        {/* Desktop nav */}
+        <div className="hidden md:flex items-center gap-6">
+          <Link href="/samples" className="text-zinc-400 hover:text-white text-sm transition-colors">Samples</Link>
+          <Link href="/#how-it-works" className="text-zinc-400 hover:text-white text-sm transition-colors">How It Works</Link>
+          <Link href="/faq" className="text-zinc-400 hover:text-white text-sm transition-colors">FAQ</Link>
+          <Link href="/order" className="bg-blue-600 hover:bg-blue-500 text-white px-4 py-1.5 rounded-full text-sm font-medium transition-colors">
+            Order a Video
           </Link>
-          <Link href="/vendor-changelog" className="hover:text-ink-primary transition-colors hidden md:block font-mono text-[11px] tracking-wide uppercase">
-            Changelog
-          </Link>
-          <Link href="/billing-pattern-watch" className="hover:text-ink-primary transition-colors hidden lg:block font-mono text-[11px] tracking-wide uppercase">
-            Watch
-          </Link>
-          <Link href="/dashboard" className="hover:text-ink-primary transition-colors hidden md:block font-mono text-[11px] tracking-wide uppercase">
-            Dashboard
-          </Link>
-
-          <a
-            href="https://chromewebstore.google.com/detail/aivideoauditor/ecomchbdfkgakaoponipjgpnjfpimdef"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="ml-1 px-3.5 py-1.5 bg-neon-green/15 hover:bg-neon-green/25 border border-neon-green/40 text-neon-green font-mono font-semibold text-[11px] tracking-wide uppercase rounded-md transition-all whitespace-nowrap"
-          >
-            Install
-          </a>
-          <AuthButton user={user} />
         </div>
+
+        {/* Mobile hamburger */}
+        <button
+          onClick={() => setOpen(!open)}
+          className="md:hidden text-zinc-400 hover:text-white"
+          aria-label="Toggle menu"
+        >
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            {open
+              ? <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              : <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            }
+          </svg>
+        </button>
       </div>
+
+      {/* Mobile menu */}
+      {open && (
+        <div className="md:hidden absolute top-16 left-0 right-0 bg-zinc-950 border-b border-zinc-800 px-6 py-4 flex flex-col gap-4">
+          <Link href="/samples" className="text-zinc-300 hover:text-white text-sm" onClick={() => setOpen(false)}>Samples</Link>
+          <Link href="/#how-it-works" className="text-zinc-300 hover:text-white text-sm" onClick={() => setOpen(false)}>How It Works</Link>
+          <Link href="/faq" className="text-zinc-300 hover:text-white text-sm" onClick={() => setOpen(false)}>FAQ</Link>
+          <Link href="/order" className="bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-medium text-center" onClick={() => setOpen(false)}>Order a Video</Link>
+        </div>
+      )}
     </nav>
   );
 }

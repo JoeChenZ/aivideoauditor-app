@@ -14,6 +14,8 @@ const config: Config = {
         elevated: '#141419',
         border:   '#1e1e28',
         rule:     '#252533',
+        accent:   '#3b82f6',
+        'accent-glow': 'rgba(59,130,246,0.15)',
         neon: {
           purple: '#a78bfa',
           blue:   '#60a5fa',
@@ -29,10 +31,8 @@ const config: Config = {
         },
       },
       fontFamily: {
-        sans:    ['var(--font-inter)', 'Inter', 'sans-serif'],
-        mono:    ['var(--font-jetbrains)', 'JetBrains Mono', 'monospace'],
-        serif:   ['var(--font-fraunces)', 'Fraunces', 'Georgia', 'serif'],
-        display: ['var(--font-fraunces)', 'Fraunces', 'Georgia', 'serif'],
+        sans:    ['var(--font-geist)', 'Geist', 'sans-serif'],
+        mono:    ['var(--font-geist-mono)', 'Geist Mono', 'monospace'],
       },
       letterSpacing: {
         kicker: '0.22em',
@@ -40,12 +40,6 @@ const config: Config = {
       maxWidth: {
         prose: '68ch',
         reading: '72ch',
-      },
-      backgroundImage: {
-        'grid-pattern': "linear-gradient(rgba(139,92,246,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(139,92,246,0.04) 1px,transparent 1px)",
-      },
-      backgroundSize: {
-        grid: '48px 48px',
       },
       keyframes: {
         'fade-in': {
