@@ -375,7 +375,7 @@ export default function WallPage() {
                   <VideoTile
                     key={item.id}
                     item={item}
-                    isSelected={activeItem.id === item.id}
+                    isSelected={selectedItem.id === item.id}
                     onSelect={handleSelect}
                     onHover={handleHover}
                   />
