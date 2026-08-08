@@ -39,6 +39,7 @@ const SECTIONS = [
       { href: '/security', label: 'Security' },
       { href: '/privacy', label: 'Privacy' },
       { href: '/affiliate-program', label: 'Affiliate program' },
+      { href: 'mailto:contact@aivideoauditor.com', label: 'contact@aivideoauditor.com', external: true },
     ],
   },
 ];
@@ -94,6 +95,7 @@ export default function Footer() {
 
         <div className="mt-16 pt-8 border-t border-rule/40 flex flex-col sm:flex-row justify-between gap-3 font-mono text-[11px] text-ink-muted">
           <span>© {new Date().getFullYear()} AIVideoAuditor · Independent vendor research</span>
+          <a href="mailto:contact@aivideoauditor.com" className="hover:text-ink-primary transition-colors">contact@aivideoauditor.com</a>
           <span className="tracking-wide">v0.2 · Editorial release · {new Date().toISOString().slice(0, 10)}</span>
         </div>
       </div>

@@ -53,8 +53,19 @@ export default function Order() {
       });
       if (!res.ok) throw new Error('Failed to submit');
       setSubmitted(true);
+      // Redirect to Stripe payment link if configured
+      const stripeLinks: Record<string, string | undefined> = {
+        '1': process.env.NEXT_PUBLIC_STRIPE_LINK_1VIDEO,
+        '3': process.env.NEXT_PUBLIC_STRIPE_LINK_3PACK,
+        '5': process.env.NEXT_PUBLIC_STRIPE_LINK_5PACK,
+      };
+      const stripeLink = stripeLinks[form.quantity];
+      if (stripeLink) {
+        window.location.href = stripeLink;
+        return;
+      }
     } catch {
-      setError('Something went wrong. Please try again or email us directly.');
+      setError('Something went wrong. Please try again or email contact@aivideoauditor.com.');
     } finally {
       setSubmitting(false);
     }
@@ -67,7 +78,13 @@ export default function Order() {
           <div className="text-5xl mb-6">+</div>
           <h1 className="text-3xl font-bold text-white mb-4">Order received.</h1>
           <p className="text-zinc-300 leading-relaxed">
-            We will reach out to {form.email} within 24 hours with your secure payment link and next steps.
+            We received your order. Check {form.email} — you&apos;ll get a payment link and next steps within 24 hours.
+          </p>
+          <p className="text-zinc-400 text-sm mt-4">
+            Questions? Email{' '}
+            <a href="mailto:contact@aivideoauditor.com" className="text-blue-400 hover:text-blue-300 underline">
+              contact@aivideoauditor.com
+            </a>
           </p>
         </div>
       </main>

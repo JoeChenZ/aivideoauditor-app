@@ -40,6 +40,10 @@ export default function FAQ() {
       q: 'What payment methods do you accept?',
       a: 'We send a secure Stripe link after reviewing your order. You pay once we confirm the order details. All major cards accepted.',
     },
+    {
+      q: 'How do I contact you or ask a question?',
+      a: 'Email us at contact@aivideoauditor.com — we reply within one business day.',
+    },
   ];
 
   return (
