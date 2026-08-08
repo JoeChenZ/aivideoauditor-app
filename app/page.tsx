@@ -78,7 +78,7 @@ export default function Home() {
           <div className="flex items-end justify-between mb-3">
             <h2 className="text-3xl lg:text-4xl font-bold text-white">Creators Wall</h2>
             <Link href="/wall" className="text-blue-400 hover:text-blue-300 text-sm font-medium transition-colors hidden sm:flex items-center gap-1">
-              See all 89
+              See all 64
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
@@ -129,7 +129,7 @@ export default function Home() {
               href="/wall"
               className="inline-flex items-center gap-2 border border-zinc-700 hover:border-zinc-500 text-zinc-300 hover:text-white font-medium px-6 py-3 rounded-full transition-colors"
             >
-              See all 89 prompts
+              See all 64 prompts
             </Link>
             <p className="text-zinc-600 text-sm">Curated from Sora, Runway, Veo, Kling, Luma, Seedance and more. Hover any tile to see the prompt.</p>
           </div>

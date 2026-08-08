@@ -337,7 +337,7 @@ export default function WallPage() {
         </h1>
         <p className="text-zinc-400 text-lg max-w-2xl">
           The best AI videos on the internet — plus our own studio work — and the prompts behind them.
-          Curated from Runway, Sora, Veo, Kling, Seedance, Luma, Pika, Higgsfield, Hailuo, and AVA Studio.
+          Curated from OpenAI Sora, Runway Gen-3, and AVA Studio.
         </p>
       </div>
 
