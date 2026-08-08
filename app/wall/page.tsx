@@ -1,7 +1,8 @@
 'use client';
 
 // Posters are self-hosted at /wall/<id>.jpg (public/wall/).
-// Videos are proxied via /api/wall/[id] to bypass CDN hotlink blocking.
+// Videos are proxied via /api/wall/[id] to bypass CDN hotlink blocking,
+// EXCEPT when videoUrl starts with '/' (local static files — served directly).
 
 import { useState, useRef, useEffect, useCallback } from 'react';
 import Link from 'next/link';
@@ -12,7 +13,7 @@ type GalleryItem = {
   title: string;
   model: string;
   prompt: string;
-  videoUrl: string;
+  videoUrl: string | null;
   thumbnailUrl: string | null;
   creator: string;
   sourceUrl: string;
@@ -23,34 +24,48 @@ type GalleryItem = {
 
 const items = galleryData as GalleryItem[];
 
+// Derive model filter list from data — "All" first, then sorted unique models
+const ALL_MODELS: string[] = Array.from(new Set(items.map((i) => i.model))).sort();
 const ALL_TAGS = Array.from(new Set(items.flatMap((i) => i.tags))).sort();
 
+// Model badge colors — keyed by model name; unknown models get a default style
+const MODEL_BADGE_STYLES: Record<string, { bg: string; text: string; label: string }> = {
+  'Runway Gen-3 Alpha': { bg: 'bg-blue-600/20 border border-blue-500/40', text: 'text-blue-300', label: 'Runway' },
+  'OpenAI Sora':        { bg: 'bg-purple-600/20 border border-purple-500/40', text: 'text-purple-300', label: 'Sora' },
+  'Google Veo 2':       { bg: 'bg-green-700/20 border border-green-600/40', text: 'text-green-300', label: 'Veo 2' },
+  'Google Veo 3':       { bg: 'bg-green-600/20 border border-green-500/40', text: 'text-green-200', label: 'Veo 3' },
+  'ByteDance Seedance': { bg: 'bg-orange-700/20 border border-orange-600/40', text: 'text-orange-300', label: 'Seedance' },
+  'Kling AI':           { bg: 'bg-yellow-700/20 border border-yellow-600/40', text: 'text-yellow-300', label: 'Kling' },
+  'Luma Dream Machine': { bg: 'bg-pink-700/20 border border-pink-600/40', text: 'text-pink-300', label: 'Luma' },
+  'Pika':               { bg: 'bg-violet-700/20 border border-violet-600/40', text: 'text-violet-300', label: 'Pika' },
+  'Higgsfield AI':      { bg: 'bg-cyan-700/20 border border-cyan-600/40', text: 'text-cyan-300', label: 'Higgsfield' },
+  'MiniMax Hailuo':     { bg: 'bg-red-700/20 border border-red-600/40', text: 'text-red-300', label: 'Hailuo' },
+  'AVA Studio':         { bg: 'bg-zinc-600/40 border border-zinc-500/60', text: 'text-zinc-200', label: 'AVA Studio' },
+};
+
 function modelBadge(model: string) {
-  if (model === 'Runway Gen-3 Alpha') {
-    return (
-      <span className="inline-flex items-center gap-1 bg-blue-600/20 border border-blue-500/40 text-blue-300 text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full">
-        Runway
-      </span>
-    );
-  }
+  const style = MODEL_BADGE_STYLES[model] ?? {
+    bg: 'bg-zinc-700/60 border border-zinc-600/40',
+    text: 'text-zinc-300',
+    label: model,
+  };
   return (
-    <span className="inline-flex items-center gap-1 bg-zinc-700/60 border border-zinc-600/40 text-zinc-300 text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full">
-      Sora
+    <span className={`inline-flex items-center gap-1 ${style.bg} ${style.text} text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full`}>
+      {style.label}
     </span>
   );
 }
 
-function PlaceholderTile({ title }: { title: string }) {
-  return (
-    <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-b from-zinc-800 to-zinc-900 p-4">
-      <div className="w-8 h-8 mb-3 rounded-full bg-zinc-700 flex items-center justify-center">
-        <svg className="w-4 h-4 text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 10l4.553-2.277A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M3 8a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z" />
-        </svg>
-      </div>
-      <span className="text-zinc-400 text-xs text-center font-medium leading-snug">{title}</span>
-    </div>
-  );
+// Short human-readable label for model filter tab
+function modelTabLabel(model: string): string {
+  return MODEL_BADGE_STYLES[model]?.label ?? model;
+}
+
+// Video src: local files served directly; remote files go through the proxy
+function videoSrc(item: GalleryItem): string | null {
+  if (!item.videoUrl) return null;
+  if (item.videoUrl.startsWith('/')) return item.videoUrl;
+  return `/api/wall/${item.id}`;
 }
 
 function VideoTile({
@@ -66,8 +81,9 @@ function VideoTile({
 }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const tileRef = useRef<HTMLDivElement>(null);
+  const src = videoSrc(item);
 
-  // IntersectionObserver: only initialize when tile enters viewport
+  // IntersectionObserver: pause video when off-screen
   useEffect(() => {
     const el = tileRef.current;
     if (!el) return;
@@ -118,16 +134,18 @@ function VideoTile({
         loading="lazy"
       />
 
-      <video
-        ref={videoRef}
-        src={`/api/wall/${item.id}`}
-        poster={`/wall/${item.id}.jpg`}
-        muted
-        loop
-        playsInline
-        preload="none"
-        className="absolute inset-0 w-full h-full object-cover"
-      />
+      {src && (
+        <video
+          ref={videoRef}
+          src={src}
+          poster={`/wall/${item.id}.jpg`}
+          muted
+          loop
+          playsInline
+          preload="none"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+      )}
 
       {/* Overlay on hover/selection */}
       <div
@@ -164,6 +182,7 @@ function PromptPanel({
   onClose?: () => void;
 }) {
   const [copied, setCopied] = useState(false);
+  const src = videoSrc(item);
 
   const copyPrompt = async () => {
     try {
@@ -196,17 +215,19 @@ function PromptPanel({
           alt={item.title}
           className="absolute inset-0 w-full h-full object-cover"
         />
-        <video
-          key={item.id}
-          src={`/api/wall/${item.id}`}
-          poster={`/wall/${item.id}.jpg`}
-          muted
-          loop
-          playsInline
-          autoPlay
-          preload="auto"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
+        {src && (
+          <video
+            key={item.id}
+            src={src}
+            poster={`/wall/${item.id}.jpg`}
+            muted
+            loop
+            playsInline
+            autoPlay
+            preload="auto"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+        )}
       </div>
 
       {/* Title + badges */}
@@ -278,17 +299,15 @@ function PromptPanel({
 export default function WallPage() {
   const [selectedItem, setSelectedItem] = useState<GalleryItem>(items[0]);
   const [hoveredItem, setHoveredItem] = useState<GalleryItem | null>(null);
-  const [modelFilter, setModelFilter] = useState<'all' | 'runway' | 'sora'>('all');
+  // 'all' or an exact model string from ALL_MODELS
+  const [modelFilter, setModelFilter] = useState<string>('all');
   const [activeTag, setActiveTag] = useState<string | null>(null);
   const [sheetOpen, setSheetOpen] = useState(false);
 
   const activeItem = hoveredItem ?? selectedItem;
 
   const filtered = items.filter((item) => {
-    const modelMatch =
-      modelFilter === 'all' ||
-      (modelFilter === 'runway' && item.model === 'Runway Gen-3 Alpha') ||
-      (modelFilter === 'sora' && item.model === 'OpenAI Sora');
+    const modelMatch = modelFilter === 'all' || item.model === modelFilter;
     const tagMatch = activeTag === null || item.tags.includes(activeTag);
     return modelMatch && tagMatch;
   });
@@ -310,34 +329,36 @@ export default function WallPage() {
           Creators Wall
         </h1>
         <p className="text-zinc-400 text-lg max-w-2xl">
-          The best AI videos on the internet — and the exact prompts behind them.
-          Curated from{' '}
-          <a href="https://openai.com/index/sora/" target="_blank" rel="noopener noreferrer" className="text-zinc-300 hover:text-white underline underline-offset-2">
-            OpenAI Sora
-          </a>{' '}
-          and{' '}
-          <a href="https://runwayml.com" target="_blank" rel="noopener noreferrer" className="text-zinc-300 hover:text-white underline underline-offset-2">
-            Runway Gen-3
-          </a>
-          .
+          The best AI videos on the internet — plus our own studio work — and the exact prompts behind them.
+          Curated from Sora, Runway, Veo, Kling, Luma, Seedance and more.
         </p>
       </div>
 
       {/* Filters */}
       <div className="max-w-7xl mx-auto px-6 pb-6 flex flex-wrap gap-3">
-        {/* Model tabs */}
-        <div className="flex bg-zinc-900 rounded-full p-1 gap-0.5">
-          {(['all', 'runway', 'sora'] as const).map((f) => (
+        {/* Model tabs — data-driven from ALL_MODELS */}
+        <div className="flex flex-wrap bg-zinc-900 rounded-full p-1 gap-0.5">
+          <button
+            onClick={() => setModelFilter('all')}
+            className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${
+              modelFilter === 'all'
+                ? 'bg-zinc-700 text-white'
+                : 'text-zinc-400 hover:text-white'
+            }`}
+          >
+            All
+          </button>
+          {ALL_MODELS.map((model) => (
             <button
-              key={f}
-              onClick={() => setModelFilter(f)}
-              className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors capitalize ${
-                modelFilter === f
+              key={model}
+              onClick={() => setModelFilter(model)}
+              className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${
+                modelFilter === model
                   ? 'bg-zinc-700 text-white'
                   : 'text-zinc-400 hover:text-white'
               }`}
             >
-              {f === 'all' ? 'All' : f === 'runway' ? 'Runway' : 'Sora'}
+              {modelTabLabel(model)}
             </button>
           ))}
         </div>
@@ -388,7 +409,7 @@ export default function WallPage() {
           <div className="hidden lg:block flex-1 sticky top-20 max-h-[calc(100vh-6rem)] overflow-hidden">
             <div className="bg-zinc-900/60 border border-zinc-800 rounded-2xl p-6 h-full flex flex-col" style={{ maxHeight: 'calc(100vh - 6rem)' }}>
               <div className="text-zinc-500 text-[10px] uppercase tracking-widest font-semibold mb-5 hidden lg:block">
-                Director's Notes
+                Director&apos;s Notes
               </div>
               <PromptPanel item={activeItem} />
             </div>

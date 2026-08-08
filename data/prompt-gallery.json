@@ -1034,5 +1034,73 @@
     ],
     "embeddable": true,
     "embedMethod": "official-mp4"
+  },
+  {
+    "id": "ava-earrings-worn",
+    "title": "Earrings — Worn Look",
+    "model": "AVA Studio",
+    "prompt": "Made by AVA — product photo → video. A DTC jewelry brand product photo of earrings being worn, animated to show movement and light-catch on the metal.",
+    "videoUrl": "/showcase/sample-earrings-worn.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": "/wall/ava-earrings-worn.jpg",
+    "creator": "AI Video Auditor",
+    "sourceUrl": "https://aivideoauditor.com/samples",
+    "tags": [
+      "product",
+      "cinematic"
+    ],
+    "embeddable": true,
+    "embedMethod": "local-mp4"
+  },
+  {
+    "id": "ava-earrings-hold",
+    "title": "Earrings — Hand Hold",
+    "model": "AVA Studio",
+    "prompt": "Made by AVA — product photo → video. A flatlay earrings product photo transformed into a video showing the pieces held up, with natural light and subtle motion.",
+    "videoUrl": "/showcase/sample-earrings-hold.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": "/wall/ava-earrings-hold.jpg",
+    "creator": "AI Video Auditor",
+    "sourceUrl": "https://aivideoauditor.com/samples",
+    "tags": [
+      "product",
+      "cinematic"
+    ],
+    "embeddable": true,
+    "embedMethod": "local-mp4"
+  },
+  {
+    "id": "ava-shot-01",
+    "title": "Product Hero Shot",
+    "model": "AVA Studio",
+    "prompt": "Made by AVA — product photo → video. A jewelry product hero shot animated with a slow camera push and sparkle highlights.",
+    "videoUrl": "/showcase/sample-shot-01.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": "/wall/ava-shot-01.jpg",
+    "creator": "AI Video Auditor",
+    "sourceUrl": "https://aivideoauditor.com/samples",
+    "tags": [
+      "product",
+      "cinematic"
+    ],
+    "embeddable": true,
+    "embedMethod": "local-mp4"
+  },
+  {
+    "id": "ava-story",
+    "title": "Story Format Clip",
+    "model": "AVA Studio",
+    "prompt": "Made by AVA — product photo → video. A vertical story-format product video for Instagram Reels and TikTok, animated from a still product photo.",
+    "videoUrl": "/showcase/sample-story.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": "/wall/ava-story.jpg",
+    "creator": "AI Video Auditor",
+    "sourceUrl": "https://aivideoauditor.com/samples",
+    "tags": [
+      "product",
+      "cinematic"
+    ],
+    "embeddable": true,
+    "embedMethod": "local-mp4"
   }
 ]
