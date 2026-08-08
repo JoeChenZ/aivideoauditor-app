@@ -54,7 +54,7 @@
     "id": "sora-big-sur",
     "title": "Big Sur",
     "model": "OpenAI Sora",
-    "prompt": "Drone view of waves crashing against the rugged cliffs along Big Sur\u2019s garay point beach. The crashing blue waters create white-tipped waves, while the golden light of the setting sun illuminates the rocky shore. A small island with a lighthouse sits in the distance, and green shrubbery covers the cliff\u2019s edge. The steep drop from the road down to the beach is a dramatic feat, with the cliff\u2019s edges jutting out over the sea. This is a view that captures the raw beauty of the coast and the rugged landscape of the Pacific Coast Highway.",
+    "prompt": "Drone view of waves crashing against the rugged cliffs along Big Sur’s garay point beach. The crashing blue waters create white-tipped waves, while the golden light of the setting sun illuminates the rocky shore. A small island with a lighthouse sits in the distance, and green shrubbery covers the cliff’s edge. The steep drop from the road down to the beach is a dramatic feat, with the cliff’s edges jutting out over the sea. This is a view that captures the raw beauty of the coast and the rugged landscape of the Pacific Coast Highway.",
     "videoUrl": "https://cdn.openai.com/sora/videos/big-sur.mp4",
     "embedUrl": null,
     "thumbnailUrl": null,
@@ -105,7 +105,7 @@
     "id": "sora-victoria-crowned-pigeon",
     "title": "Victoria Crowned Pigeon",
     "model": "OpenAI Sora",
-    "prompt": "This close-up shot of a Victoria crowned pigeon showcases its striking blue plumage and red chest. Its crest is made of delicate, lacy feathers, while its eye is a striking red color. The bird\u2019s head is tilted slightly to the side, giving the impression of it looking regal and majestic. The background is blurred, drawing attention to the bird\u2019s striking appearance.",
+    "prompt": "This close-up shot of a Victoria crowned pigeon showcases its striking blue plumage and red chest. Its crest is made of delicate, lacy feathers, while its eye is a striking red color. The bird’s head is tilted slightly to the side, giving the impression of it looking regal and majestic. The background is blurred, drawing attention to the bird’s striking appearance.",
     "videoUrl": "https://cdn.openai.com/sora/videos/victoria-crowned-pigeon.mp4",
     "embedUrl": null,
     "thumbnailUrl": null,
@@ -173,7 +173,7 @@
     "id": "sora-closeup-of-womans-eye",
     "title": "Closeup Of Womans Eye",
     "model": "OpenAI Sora",
-    "prompt": "Extreme close up of a 24 year old woman\u2019s eye blinking, standing in Marrakech during magic hour, cinematic film shot in 70mm, depth of field, vivid colors, cinematic",
+    "prompt": "Extreme close up of a 24 year old woman’s eye blinking, standing in Marrakech during magic hour, cinematic film shot in 70mm, depth of field, vivid colors, cinematic",
     "videoUrl": "https://cdn.openai.com/sora/videos/closeup-of-womans-eye.mp4",
     "embedUrl": null,
     "thumbnailUrl": null,
@@ -241,7 +241,7 @@
     "id": "sora-stack-of-tvs",
     "title": "Stack Of Tvs",
     "model": "OpenAI Sora",
-    "prompt": "The camera rotates around a large stack of vintage televisions all showing different programs \u2014 1950s sci-fi movies, horror movies, news, static, a 1970s sitcom, etc, set inside a large New York museum gallery.",
+    "prompt": "The camera rotates around a large stack of vintage televisions all showing different programs — 1950s sci-fi movies, horror movies, news, static, a 1970s sitcom, etc, set inside a large New York museum gallery.",
     "videoUrl": "https://cdn.openai.com/sora/videos/stack-of-tvs.mp4",
     "embedUrl": null,
     "thumbnailUrl": null,
@@ -277,7 +277,7 @@
     "prompt": "Subtle reflections of a woman on the window of a train moving at hyper-speed in a Japanese city.",
     "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/carousel-01/gen-3-alpha-output-001.mp4",
     "embedUrl": null,
-    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/carousel-01/gen-3-alpha-output-001.jpg",
+    "thumbnailUrl": null,
     "creator": "Runway",
     "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
     "tags": [
@@ -295,7 +295,7 @@
     "prompt": "An astronaut running through an alley in Rio de Janeiro.",
     "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/carousel-01/gen-3-alpha-output-002.mp4",
     "embedUrl": null,
-    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/carousel-01/gen-3-alpha-output-002.jpg",
+    "thumbnailUrl": null,
     "creator": "Runway",
     "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
     "tags": [
@@ -313,7 +313,7 @@
     "prompt": "FPV flying through a colorful coral lined streets of an underwater suburban neighborhood.",
     "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/carousel-01/gen-3-alpha-output-003.mp4",
     "embedUrl": null,
-    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/carousel-01/gen-3-alpha-output-003.jpg",
+    "thumbnailUrl": null,
     "creator": "Runway",
     "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
     "tags": [
@@ -331,7 +331,7 @@
     "prompt": "Handheld tracking shot at night, following a dirty blue ballon floating above the ground in abandon old European street.",
     "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/carousel-01/gen-3-alpha-output-004.mp4",
     "embedUrl": null,
-    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/carousel-01/gen-3-alpha-output-004.jpg",
+    "thumbnailUrl": null,
     "creator": "Runway",
     "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
     "tags": [
@@ -348,7 +348,7 @@
     "prompt": "An extreme close-up shot of an ant emerging from its nest. The camera pulls back revealing a neighborhood beyond the hill.",
     "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/temporal-control/gen-3-alpha-output-001.mp4",
     "embedUrl": null,
-    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/temporal-control/gen-3-alpha-output-001.jpg",
+    "thumbnailUrl": null,
     "creator": "Runway",
     "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
     "tags": [
@@ -365,7 +365,7 @@
     "prompt": "A tsunami coming through an alley in Bulgaria, dynamic movement.",
     "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/temporal-control/gen-3-alpha-output-002.mp4",
     "embedUrl": null,
-    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/temporal-control/gen-3-alpha-output-002.jpg",
+    "thumbnailUrl": null,
     "creator": "Runway",
     "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
     "tags": [
@@ -382,7 +382,7 @@
     "prompt": "A FPV drone shot through a castle on a cliff.",
     "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/temporal-control/gen-3-alpha-output-003.mp4",
     "embedUrl": null,
-    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/temporal-control/gen-3-alpha-output-003.jpg",
+    "thumbnailUrl": null,
     "creator": "Runway",
     "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
     "tags": [
@@ -399,7 +399,7 @@
     "prompt": "Internal window of a train moving at hyper-speed in an old European city.",
     "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/temporal-control/gen-3-alpha-output-004.mp4",
     "embedUrl": null,
-    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/temporal-control/gen-3-alpha-output-004.jpg",
+    "thumbnailUrl": null,
     "creator": "Runway",
     "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
     "tags": [
@@ -416,7 +416,7 @@
     "prompt": "Handheld camera moving fast, flashlight light, in a white old wall in a old alley at night a black graffiti that spells 'Runway'.",
     "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/temporal-control/gen-3-alpha-output-006.mp4",
     "embedUrl": null,
-    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/temporal-control/gen-3-alpha-output-006.jpg",
+    "thumbnailUrl": null,
     "creator": "Runway",
     "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
     "tags": [
@@ -433,7 +433,7 @@
     "prompt": "Super fast zoom out from the peak of a frozen mountain where a lonely hiker is arriving to the submit.",
     "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/temporal-control/gen-3-alpha-output-007.mp4",
     "embedUrl": null,
-    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/temporal-control/gen-3-alpha-output-007.jpg",
+    "thumbnailUrl": null,
     "creator": "Runway",
     "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
     "tags": [
@@ -452,7 +452,7 @@
     "prompt": "A first-person POV shot rapidly flies through open doors to reveal a surreal waterfall cascading in the middle of the living room.",
     "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/temporal-control/gen-3-alpha-output-008.mp4",
     "embedUrl": null,
-    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/temporal-control/gen-3-alpha-output-008.jpg",
+    "thumbnailUrl": null,
     "creator": "Runway",
     "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
     "tags": [
@@ -470,7 +470,7 @@
     "prompt": "A first-person POV shot rapidly flies towards a house's front door at 10x speed.",
     "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/temporal-control/gen-3-alpha-output-009.mp4",
     "embedUrl": null,
-    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/temporal-control/gen-3-alpha-output-009.jpg",
+    "thumbnailUrl": null,
     "creator": "Runway",
     "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
     "tags": [
@@ -488,7 +488,7 @@
     "prompt": "A pencil drawing an architectural plan.",
     "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/temporal-control/gen-3-alpha-output-010.mp4",
     "embedUrl": null,
-    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/temporal-control/gen-3-alpha-output-010.jpg",
+    "thumbnailUrl": null,
     "creator": "Runway",
     "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
     "tags": [
@@ -504,7 +504,7 @@
     "prompt": "A cinematic wide portrait of a man with his face lit by the glow of a TV.",
     "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/humans/gen-3-alpha-output-001.mp4",
     "embedUrl": null,
-    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/humans/gen-3-alpha-output-001.jpg",
+    "thumbnailUrl": null,
     "creator": "Runway",
     "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
     "tags": [
@@ -521,7 +521,7 @@
     "prompt": "A close up portrait of a woman lit by the side, the camera pulls back.",
     "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/humans/gen-3-alpha-output-002.mp4",
     "embedUrl": null,
-    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/humans/gen-3-alpha-output-002.jpg",
+    "thumbnailUrl": null,
     "creator": "Runway",
     "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
     "tags": [
@@ -538,7 +538,7 @@
     "prompt": "Zoom in shot to the face of a young woman sitting on a bench in the middle of an empty school gym.",
     "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/humans/gen-3-alpha-output-003.mp4",
     "embedUrl": null,
-    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/humans/gen-3-alpha-output-003.jpg",
+    "thumbnailUrl": null,
     "creator": "Runway",
     "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
     "tags": [
@@ -556,7 +556,7 @@
     "prompt": "A close up of an older man in a warehouse, camera zoom out.",
     "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/humans/gen-3-alpha-output-004.mp4",
     "embedUrl": null,
-    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/humans/gen-3-alpha-output-004.jpg",
+    "thumbnailUrl": null,
     "creator": "Runway",
     "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
     "tags": [
@@ -575,7 +575,7 @@
     "prompt": "An older man playing piano, lit from the side.",
     "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/humans/gen-3-alpha-output-006.mp4",
     "embedUrl": null,
-    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/humans/gen-3-alpha-output-006.jpg",
+    "thumbnailUrl": null,
     "creator": "Runway",
     "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
     "tags": [
@@ -592,7 +592,7 @@
     "prompt": "Macro shot to the face freckles of a young woman trying to look for something.",
     "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/humans/gen-3-alpha-output-007.mp4",
     "embedUrl": null,
-    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/humans/gen-3-alpha-output-007.jpg",
+    "thumbnailUrl": null,
     "creator": "Runway",
     "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
     "tags": [
@@ -610,7 +610,7 @@
     "prompt": "An astronaut walking between stone buildings.",
     "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/humans/gen-3-alpha-output-008.mp4",
     "embedUrl": null,
-    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/humans/gen-3-alpha-output-008.jpg",
+    "thumbnailUrl": null,
     "creator": "Runway",
     "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
     "tags": [
@@ -628,7 +628,7 @@
     "prompt": "A middle-aged sad bald man becomes happy as a wig of curly hair and sunglasses fall suddenly on his head.",
     "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/humans/gen-3-alpha-output-009.mp4",
     "embedUrl": null,
-    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/humans/gen-3-alpha-output-009.jpg",
+    "thumbnailUrl": null,
     "creator": "Runway",
     "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
     "tags": [
@@ -645,7 +645,7 @@
     "prompt": "View out a window of a giant strange creature walking in rundown city at night, one single street lamp dimly lighting the area.",
     "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/artists/gen-3-alpha-output-001-v1.mp4",
     "embedUrl": null,
-    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/artists/gen-3-alpha-output-001-v1.jpg",
+    "thumbnailUrl": null,
     "creator": "Runway",
     "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
     "tags": [
@@ -662,7 +662,7 @@
     "prompt": "A man made of rocks walking in the forest, full-body shot.",
     "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/artists/gen-3-alpha-output-002.mp4",
     "embedUrl": null,
-    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/artists/gen-3-alpha-output-002.jpg",
+    "thumbnailUrl": null,
     "creator": "Runway",
     "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
     "tags": [
@@ -680,7 +680,7 @@
     "prompt": "A slow cinematic push in on an ostrich standing in a 1980s kitchen.",
     "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/artists/gen-3-alpha-output-003.mp4",
     "embedUrl": null,
-    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/artists/gen-3-alpha-output-003.jpg",
+    "thumbnailUrl": null,
     "creator": "Runway",
     "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
     "tags": [
@@ -696,7 +696,7 @@
     "prompt": "A giant humanoid, made of fluffy blue cotton candy, stomping on the ground, and roaring to the sky, clear blue sky behind them.",
     "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/artists/gen-3-alpha-output-004.mp4",
     "embedUrl": null,
-    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/artists/gen-3-alpha-output-004.jpg",
+    "thumbnailUrl": null,
     "creator": "Runway",
     "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
     "tags": [
@@ -713,7 +713,7 @@
     "prompt": "Zooming through a dark forest with neon light flora lighting up.",
     "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/artists/gen-3-alpha-output-005.mp4",
     "embedUrl": null,
-    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/artists/gen-3-alpha-output-005.jpg",
+    "thumbnailUrl": null,
     "creator": "Runway",
     "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
     "tags": [
@@ -731,7 +731,7 @@
     "prompt": "A cyclone of broken glass in an urban alleyway. dynamic movement.",
     "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/artists/gen-3-alpha-output-006.mp4",
     "embedUrl": null,
-    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/artists/gen-3-alpha-output-006.jpg",
+    "thumbnailUrl": null,
     "creator": "Runway",
     "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
     "tags": [
@@ -748,7 +748,7 @@
     "prompt": "A man standing in front of a burning building giving the 'thumbs up' sign.",
     "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/artists/gen-3-alpha-output-007.mp4",
     "embedUrl": null,
-    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/artists/gen-3-alpha-output-007.jpg",
+    "thumbnailUrl": null,
     "creator": "Runway",
     "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
     "tags": [
@@ -766,7 +766,7 @@
     "prompt": "Highly detailed close up of a bacteria.",
     "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/artists/gen-3-alpha-output-008.mp4",
     "embedUrl": null,
-    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/artists/gen-3-alpha-output-008.jpg",
+    "thumbnailUrl": null,
     "creator": "Runway",
     "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
     "tags": [
@@ -782,7 +782,7 @@
     "prompt": "An ultra-wide shot of a giant stone hand reaching out of a pile of rocks at the base of a mountain.",
     "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/artists/gen-3-alpha-output-009.mp4",
     "embedUrl": null,
-    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/artists/gen-3-alpha-output-009.jpg",
+    "thumbnailUrl": null,
     "creator": "Runway",
     "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
     "tags": [
@@ -799,7 +799,7 @@
     "prompt": "Aerial view shot of a cloaked figure elevating in the sky betweem slyscrapers.",
     "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/artists/gen-3-alpha-output-010-v1.mp4",
     "embedUrl": null,
-    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/artists/gen-3-alpha-output-010-v1.jpg",
+    "thumbnailUrl": null,
     "creator": "Runway",
     "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
     "tags": [
@@ -817,7 +817,7 @@
     "prompt": "An oil painting of a natural forest environment with colorful maple trees and cinematic parallax animation.",
     "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/artists/gen-3-alpha-output-011.mp4",
     "embedUrl": null,
-    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/artists/gen-3-alpha-output-011.jpg",
+    "thumbnailUrl": null,
     "creator": "Runway",
     "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
     "tags": [
@@ -834,7 +834,7 @@
     "prompt": "A Japanese animated film of a young woman standing on a ship and looking back at camera.",
     "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/marquee-02/gen-3-alpha-output-001.mp4",
     "embedUrl": null,
-    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/marquee-02/gen-3-alpha-output-001.jpg",
+    "thumbnailUrl": null,
     "creator": "Runway",
     "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
     "tags": [
@@ -851,7 +851,7 @@
     "prompt": "A close-up shot of a young woman driving a car, looking thoughtful, blurred green forest visible through the rainy car window.",
     "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/marquee-02/gen-3-alpha-output-002.mp4",
     "embedUrl": null,
-    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/marquee-02/gen-3-alpha-output-002.jpg",
+    "thumbnailUrl": null,
     "creator": "Runway",
     "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
     "tags": [
@@ -870,7 +870,7 @@
     "prompt": "Aerial shot of a drone moving fast in a dense green jungle.",
     "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/marquee-02/gen-3-alpha-output-003-v1.mp4",
     "embedUrl": null,
-    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/marquee-02/gen-3-alpha-output-003-v1.jpg",
+    "thumbnailUrl": null,
     "creator": "Runway",
     "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
     "tags": [
@@ -888,7 +888,7 @@
     "prompt": "Hyperlapse shot through a corridor with flashing lights. A silver fabric flies through the entire corridor.",
     "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/marquee-02/gen-3-alpha-output-004.mp4",
     "embedUrl": null,
-    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/marquee-02/gen-3-alpha-output-004.jpg",
+    "thumbnailUrl": null,
     "creator": "Runway",
     "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
     "tags": [
@@ -905,7 +905,7 @@
     "prompt": "Aerial shot of the ocean. a maelstrom forms in the water swirling around until it reveals the fiery depths below.",
     "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/marquee-02/gen-3-alpha-output-005.mp4",
     "embedUrl": null,
-    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/marquee-02/gen-3-alpha-output-005.jpg",
+    "thumbnailUrl": null,
     "creator": "Runway",
     "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
     "tags": [
@@ -923,7 +923,7 @@
     "prompt": "A push through an ocean research outpost.",
     "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/marquee-02/gen-3-alpha-output-006.mp4",
     "embedUrl": null,
-    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/marquee-02/gen-3-alpha-output-006.jpg",
+    "thumbnailUrl": null,
     "creator": "Runway",
     "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
     "tags": [
@@ -940,7 +940,7 @@
     "prompt": "A woman singing and standing in a concert stage with a bright light in the background.",
     "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/marquee-02/gen-3-alpha-output-007.mp4",
     "embedUrl": null,
-    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/marquee-02/gen-3-alpha-output-007.jpg",
+    "thumbnailUrl": null,
     "creator": "Runway",
     "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
     "tags": [
@@ -957,7 +957,7 @@
     "prompt": "Over the shoulder shot of a woman running and watching a rocket in the distance.",
     "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/customization/gen-3-alpha-output-003.mp4",
     "embedUrl": null,
-    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/customization/gen-3-alpha-output-003.jpg",
+    "thumbnailUrl": null,
     "creator": "Runway",
     "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
     "tags": [
@@ -974,7 +974,7 @@
     "prompt": "Dragon-toucan walking through the Serengeti.",
     "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/customization/gen-3-alpha-output-002.mp4",
     "embedUrl": null,
-    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/customization/gen-3-alpha-output-002.jpg",
+    "thumbnailUrl": null,
     "creator": "Runway",
     "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
     "tags": [
@@ -991,7 +991,7 @@
     "prompt": "An empty warehouse where flowers start blooming from the concrete.",
     "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/carousel-03/gen-3-alpha-output-006.mp4",
     "embedUrl": null,
-    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/carousel-03/gen-3-alpha-output-006.jpg",
+    "thumbnailUrl": null,
     "creator": "Runway",
     "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
     "tags": [
@@ -1008,7 +1008,7 @@
     "prompt": "A side profile shot of a woman with fireworks exploding in the distance beyond her.",
     "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/carousel-03/gen-3-alpha-output-003.mp4",
     "embedUrl": null,
-    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/carousel-03/gen-3-alpha-output-003.jpg",
+    "thumbnailUrl": null,
     "creator": "Runway",
     "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
     "tags": [
@@ -1025,7 +1025,7 @@
     "prompt": "A pink pig running fast toward the camera in an alley in Tokyo.",
     "videoUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/carousel-03/gen-3-alpha-output-002.mp4",
     "embedUrl": null,
-    "thumbnailUrl": "https://d3phaj0sisr2ct.cloudfront.net/site/videos/gen-3-alpha/carousel-03/gen-3-alpha-output-002.jpg",
+    "thumbnailUrl": null,
     "creator": "Runway",
     "sourceUrl": "https://runway.com/research/introducing-gen-3-alpha",
     "tags": [
@@ -1037,9 +1037,9 @@
   },
   {
     "id": "ava-earrings-worn",
-    "title": "Earrings \u2014 Worn Look",
+    "title": "Earrings — Worn Look",
     "model": "AVA Studio",
-    "prompt": "Made by AVA \u2014 product photo \u2192 video. A DTC jewelry brand product photo of earrings being worn, animated to show movement and light-catch on the metal.",
+    "prompt": "Made by AVA — product photo → video. A DTC jewelry brand product photo of earrings being worn, animated to show movement and light-catch on the metal.",
     "videoUrl": "/showcase/sample-earrings-worn.mp4",
     "embedUrl": null,
     "thumbnailUrl": "/wall/ava-earrings-worn.jpg",
@@ -1054,9 +1054,9 @@
   },
   {
     "id": "ava-earrings-hold",
-    "title": "Earrings \u2014 Hand Hold",
+    "title": "Earrings — Hand Hold",
     "model": "AVA Studio",
-    "prompt": "Made by AVA \u2014 product photo \u2192 video. A flatlay earrings product photo transformed into a video showing the pieces held up, with natural light and subtle motion.",
+    "prompt": "Made by AVA — product photo → video. A flatlay earrings product photo transformed into a video showing the pieces held up, with natural light and subtle motion.",
     "videoUrl": "/showcase/sample-earrings-hold.mp4",
     "embedUrl": null,
     "thumbnailUrl": "/wall/ava-earrings-hold.jpg",
@@ -1073,7 +1073,7 @@
     "id": "ava-shot-01",
     "title": "Product Hero Shot",
     "model": "AVA Studio",
-    "prompt": "Made by AVA \u2014 product photo \u2192 video. A jewelry product hero shot animated with a slow camera push and sparkle highlights.",
+    "prompt": "Made by AVA — product photo → video. A jewelry product hero shot animated with a slow camera push and sparkle highlights.",
     "videoUrl": "/showcase/sample-shot-01.mp4",
     "embedUrl": null,
     "thumbnailUrl": "/wall/ava-shot-01.jpg",
@@ -1090,7 +1090,7 @@
     "id": "ava-story",
     "title": "Story Format Clip",
     "model": "AVA Studio",
-    "prompt": "Made by AVA \u2014 product photo \u2192 video. A vertical story-format product video for Instagram Reels and TikTok, animated from a still product photo.",
+    "prompt": "Made by AVA — product photo → video. A vertical story-format product video for Instagram Reels and TikTok, animated from a still product photo.",
     "videoUrl": "/showcase/sample-story.mp4",
     "embedUrl": null,
     "thumbnailUrl": "/wall/ava-story.jpg",
