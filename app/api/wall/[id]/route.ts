@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import galleryData from '@/data/prompt-gallery.json';
 
-type GalleryItem = { id: string; videoUrl: string };
+type GalleryItem = { id: string; videoUrl: string | null };
 const items = galleryData as GalleryItem[];
-const videoMap: Record<string, string> = Object.fromEntries(
+const videoMap: Record<string, string | null> = Object.fromEntries(
   items.map((x) => [x.id, x.videoUrl])
 );
 

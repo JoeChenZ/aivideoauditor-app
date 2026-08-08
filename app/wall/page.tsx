@@ -25,17 +25,29 @@ const items = galleryData as GalleryItem[];
 
 const ALL_TAGS = Array.from(new Set(items.flatMap((i) => i.tags))).sort();
 
+// Derive distinct model names sorted alphabetically
+const ALL_MODELS = Array.from(new Set(items.map((i) => i.model))).sort();
+
+const MODEL_BADGE_STYLES: Record<string, string> = {
+  'Runway Gen-3 Alpha': 'bg-blue-600/20 border-blue-500/40 text-blue-300',
+  'OpenAI Sora': 'bg-zinc-700/60 border-zinc-600/40 text-zinc-300',
+  'Luma Dream Machine': 'bg-purple-600/20 border-purple-500/40 text-purple-300',
+  'Kling AI': 'bg-orange-600/20 border-orange-500/40 text-orange-300',
+  'Pika': 'bg-pink-600/20 border-pink-500/40 text-pink-300',
+  'Google Veo 2': 'bg-green-600/20 border-green-500/40 text-green-300',
+  'Google Veo 3': 'bg-teal-600/20 border-teal-500/40 text-teal-300',
+  'Higgsfield AI': 'bg-yellow-600/20 border-yellow-500/40 text-yellow-300',
+  'MiniMax Hailuo': 'bg-cyan-600/20 border-cyan-500/40 text-cyan-300',
+  'ByteDance Seedance': 'bg-red-600/20 border-red-500/40 text-red-300',
+};
+
 function modelBadge(model: string) {
-  if (model === 'Runway Gen-3 Alpha') {
-    return (
-      <span className="inline-flex items-center gap-1 bg-blue-600/20 border border-blue-500/40 text-blue-300 text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full">
-        Runway
-      </span>
-    );
-  }
+  const style = MODEL_BADGE_STYLES[model] ?? 'bg-zinc-700/60 border-zinc-600/40 text-zinc-300';
+  // Use a shortened label for display
+  const label = model.replace('Gen-3 Alpha', '').replace('Dream Machine', '').replace(' AI', '').trim();
   return (
-    <span className="inline-flex items-center gap-1 bg-zinc-700/60 border border-zinc-600/40 text-zinc-300 text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full">
-      Sora
+    <span className={`inline-flex items-center gap-1 border text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full ${style}`}>
+      {label}
     </span>
   );
 }
@@ -278,17 +290,14 @@ function PromptPanel({
 export default function WallPage() {
   const [selectedItem, setSelectedItem] = useState<GalleryItem>(items[0]);
   const [hoveredItem, setHoveredItem] = useState<GalleryItem | null>(null);
-  const [modelFilter, setModelFilter] = useState<'all' | 'runway' | 'sora'>('all');
+  const [modelFilter, setModelFilter] = useState<string>('all');
   const [activeTag, setActiveTag] = useState<string | null>(null);
   const [sheetOpen, setSheetOpen] = useState(false);
 
   const activeItem = hoveredItem ?? selectedItem;
 
   const filtered = items.filter((item) => {
-    const modelMatch =
-      modelFilter === 'all' ||
-      (modelFilter === 'runway' && item.model === 'Runway Gen-3 Alpha') ||
-      (modelFilter === 'sora' && item.model === 'OpenAI Sora');
+    const modelMatch = modelFilter === 'all' || item.model === modelFilter;
     const tagMatch = activeTag === null || item.tags.includes(activeTag);
     return modelMatch && tagMatch;
   });
@@ -311,33 +320,25 @@ export default function WallPage() {
         </h1>
         <p className="text-zinc-400 text-lg max-w-2xl">
           The best AI videos on the internet — and the exact prompts behind them.
-          Curated from{' '}
-          <a href="https://openai.com/index/sora/" target="_blank" rel="noopener noreferrer" className="text-zinc-300 hover:text-white underline underline-offset-2">
-            OpenAI Sora
-          </a>{' '}
-          and{' '}
-          <a href="https://runwayml.com" target="_blank" rel="noopener noreferrer" className="text-zinc-300 hover:text-white underline underline-offset-2">
-            Runway Gen-3
-          </a>
-          .
+          Curated from Sora, Runway, Luma, Kling, Pika, Veo 2&amp;3, Higgsfield, Hailuo, Seedance, and more.
         </p>
       </div>
 
       {/* Filters */}
       <div className="max-w-7xl mx-auto px-6 pb-6 flex flex-wrap gap-3">
-        {/* Model tabs */}
-        <div className="flex bg-zinc-900 rounded-full p-1 gap-0.5">
-          {(['all', 'runway', 'sora'] as const).map((f) => (
+        {/* Model tabs — data-driven from gallery JSON */}
+        <div className="flex flex-wrap bg-zinc-900 rounded-full p-1 gap-0.5">
+          {(['all', ...ALL_MODELS]).map((f) => (
             <button
               key={f}
               onClick={() => setModelFilter(f)}
-              className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors capitalize ${
+              className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${
                 modelFilter === f
                   ? 'bg-zinc-700 text-white'
                   : 'text-zinc-400 hover:text-white'
               }`}
             >
-              {f === 'all' ? 'All' : f === 'runway' ? 'Runway' : 'Sora'}
+              {f === 'all' ? 'All' : f}
             </button>
           ))}
         </div>
