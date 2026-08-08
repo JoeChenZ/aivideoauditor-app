@@ -94,8 +94,8 @@ export default function Home() {
               { id: 'sora-tokyo-walk', model: 'Sora', prompt: 'A stylish woman walks down a Tokyo street filled with warm glowing neon...' },
               { id: 'sora-wooly-mammoth', model: 'Sora', prompt: 'Several giant wooly mammoths approach treading through a snowy meadow...' },
               { id: 'runway-subtle-reflections-of-a-woman-on-the-window-o', model: 'Runway', prompt: 'Subtle reflections of a woman on the window of a train moving at hyper-speed in a Japanese city.' },
-              { id: 'kling-cherry-blossoms', model: 'Kling', prompt: 'Cherry blossoms falling in slow motion, traditional Japanese garden, golden hour.' },
-              { id: 'veo3-jazz-trumpet', model: 'Veo 3', prompt: 'A jazz musician plays trumpet on a rain-soaked New Orleans street at night, neon reflections, cinematic.' },
+              { id: 'runway-a-japanese-animated-film-of-a-young-woman-sta', model: 'Runway', prompt: 'A Japanese animated film of a young woman standing on a ship and looking back at camera.' },
+              { id: 'sora-big-sur', model: 'Sora', prompt: 'Drone view of waves crashing against the rugged cliffs along Big Sur. The crashing blue waters create white-tipped waves.' },
               { id: 'ava-earrings-worn', model: 'AVA Studio', prompt: 'Made by AVA — product photo to video. Earrings animated to show movement and light-catch on the metal.' },
             ].map((item, i) => (
               <motion.div
