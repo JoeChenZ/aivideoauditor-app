@@ -54,7 +54,7 @@
     "id": "sora-big-sur",
     "title": "Big Sur",
     "model": "OpenAI Sora",
-    "prompt": "Drone view of waves crashing against the rugged cliffs along Big Sur’s garay point beach. The crashing blue waters create white-tipped waves, while the golden light of the setting sun illuminates the rocky shore. A small island with a lighthouse sits in the distance, and green shrubbery covers the cliff’s edge. The steep drop from the road down to the beach is a dramatic feat, with the cliff’s edges jutting out over the sea. This is a view that captures the raw beauty of the coast and the rugged landscape of the Pacific Coast Highway.",
+    "prompt": "Drone view of waves crashing against the rugged cliffs along Big Sur\u2019s garay point beach. The crashing blue waters create white-tipped waves, while the golden light of the setting sun illuminates the rocky shore. A small island with a lighthouse sits in the distance, and green shrubbery covers the cliff\u2019s edge. The steep drop from the road down to the beach is a dramatic feat, with the cliff\u2019s edges jutting out over the sea. This is a view that captures the raw beauty of the coast and the rugged landscape of the Pacific Coast Highway.",
     "videoUrl": "https://cdn.openai.com/sora/videos/big-sur.mp4",
     "embedUrl": null,
     "thumbnailUrl": null,
@@ -105,7 +105,7 @@
     "id": "sora-victoria-crowned-pigeon",
     "title": "Victoria Crowned Pigeon",
     "model": "OpenAI Sora",
-    "prompt": "This close-up shot of a Victoria crowned pigeon showcases its striking blue plumage and red chest. Its crest is made of delicate, lacy feathers, while its eye is a striking red color. The bird’s head is tilted slightly to the side, giving the impression of it looking regal and majestic. The background is blurred, drawing attention to the bird’s striking appearance.",
+    "prompt": "This close-up shot of a Victoria crowned pigeon showcases its striking blue plumage and red chest. Its crest is made of delicate, lacy feathers, while its eye is a striking red color. The bird\u2019s head is tilted slightly to the side, giving the impression of it looking regal and majestic. The background is blurred, drawing attention to the bird\u2019s striking appearance.",
     "videoUrl": "https://cdn.openai.com/sora/videos/victoria-crowned-pigeon.mp4",
     "embedUrl": null,
     "thumbnailUrl": null,
@@ -173,7 +173,7 @@
     "id": "sora-closeup-of-womans-eye",
     "title": "Closeup Of Womans Eye",
     "model": "OpenAI Sora",
-    "prompt": "Extreme close up of a 24 year old woman’s eye blinking, standing in Marrakech during magic hour, cinematic film shot in 70mm, depth of field, vivid colors, cinematic",
+    "prompt": "Extreme close up of a 24 year old woman\u2019s eye blinking, standing in Marrakech during magic hour, cinematic film shot in 70mm, depth of field, vivid colors, cinematic",
     "videoUrl": "https://cdn.openai.com/sora/videos/closeup-of-womans-eye.mp4",
     "embedUrl": null,
     "thumbnailUrl": null,
@@ -241,7 +241,7 @@
     "id": "sora-stack-of-tvs",
     "title": "Stack Of Tvs",
     "model": "OpenAI Sora",
-    "prompt": "The camera rotates around a large stack of vintage televisions all showing different programs — 1950s sci-fi movies, horror movies, news, static, a 1970s sitcom, etc, set inside a large New York museum gallery.",
+    "prompt": "The camera rotates around a large stack of vintage televisions all showing different programs \u2014 1950s sci-fi movies, horror movies, news, static, a 1970s sitcom, etc, set inside a large New York museum gallery.",
     "videoUrl": "https://cdn.openai.com/sora/videos/stack-of-tvs.mp4",
     "embedUrl": null,
     "thumbnailUrl": null,
@@ -1037,9 +1037,9 @@
   },
   {
     "id": "ava-earrings-worn",
-    "title": "Earrings — Worn Look",
+    "title": "Earrings \u2014 Worn Look",
     "model": "AVA Studio",
-    "prompt": "Made by AVA — product photo → video. A DTC jewelry brand product photo of earrings being worn, animated to show movement and light-catch on the metal.",
+    "prompt": "Made by AVA \u2014 product photo \u2192 video. A DTC jewelry brand product photo of earrings being worn, animated to show movement and light-catch on the metal.",
     "videoUrl": "/showcase/sample-earrings-worn.mp4",
     "embedUrl": null,
     "thumbnailUrl": "/wall/ava-earrings-worn.jpg",
@@ -1054,9 +1054,9 @@
   },
   {
     "id": "ava-earrings-hold",
-    "title": "Earrings — Hand Hold",
+    "title": "Earrings \u2014 Hand Hold",
     "model": "AVA Studio",
-    "prompt": "Made by AVA — product photo → video. A flatlay earrings product photo transformed into a video showing the pieces held up, with natural light and subtle motion.",
+    "prompt": "Made by AVA \u2014 product photo \u2192 video. A flatlay earrings product photo transformed into a video showing the pieces held up, with natural light and subtle motion.",
     "videoUrl": "/showcase/sample-earrings-hold.mp4",
     "embedUrl": null,
     "thumbnailUrl": "/wall/ava-earrings-hold.jpg",
@@ -1073,7 +1073,7 @@
     "id": "ava-shot-01",
     "title": "Product Hero Shot",
     "model": "AVA Studio",
-    "prompt": "Made by AVA — product photo → video. A jewelry product hero shot animated with a slow camera push and sparkle highlights.",
+    "prompt": "Made by AVA \u2014 product photo \u2192 video. A jewelry product hero shot animated with a slow camera push and sparkle highlights.",
     "videoUrl": "/showcase/sample-shot-01.mp4",
     "embedUrl": null,
     "thumbnailUrl": "/wall/ava-shot-01.jpg",
@@ -1090,7 +1090,7 @@
     "id": "ava-story",
     "title": "Story Format Clip",
     "model": "AVA Studio",
-    "prompt": "Made by AVA — product photo → video. A vertical story-format product video for Instagram Reels and TikTok, animated from a still product photo.",
+    "prompt": "Made by AVA \u2014 product photo \u2192 video. A vertical story-format product video for Instagram Reels and TikTok, animated from a still product photo.",
     "videoUrl": "/showcase/sample-story.mp4",
     "embedUrl": null,
     "thumbnailUrl": "/wall/ava-story.jpg",
@@ -1102,5 +1102,430 @@
     ],
     "embeddable": true,
     "embedMethod": "local-mp4"
+  },
+  {
+    "id": "kling-aerial-river-autumn",
+    "title": "Aerial River in Autumn",
+    "model": "Kling AI",
+    "prompt": "[Prompt not published \u2014 Kling AI official demo]",
+    "videoUrl": "",
+    "thumbnailUrl": "/wall/kling-aerial-river-autumn.jpg",
+    "creator": "Kling AI",
+    "sourceUrl": "https://kling.kuaishou.com",
+    "tags": [
+      "aerial",
+      "nature",
+      "autumn"
+    ],
+    "embeddable": false,
+    "embedMethod": "poster-only"
+  },
+  {
+    "id": "kling-cat-tokyo-rooftop",
+    "title": "Cat on Tokyo Rooftop",
+    "model": "Kling AI",
+    "prompt": "[Prompt not published \u2014 Kling AI official demo]",
+    "videoUrl": "",
+    "thumbnailUrl": "/wall/kling-cat-tokyo-rooftop.jpg",
+    "creator": "Kling AI",
+    "sourceUrl": "https://kling.kuaishou.com",
+    "tags": [
+      "cat",
+      "urban",
+      "tokyo"
+    ],
+    "embeddable": false,
+    "embedMethod": "poster-only"
+  },
+  {
+    "id": "kling-cherry-blossoms",
+    "title": "Cherry Blossoms",
+    "model": "Kling AI",
+    "prompt": "[Prompt not published \u2014 Kling AI official demo]",
+    "videoUrl": "",
+    "thumbnailUrl": "/wall/kling-cherry-blossoms.jpg",
+    "creator": "Kling AI",
+    "sourceUrl": "https://kling.kuaishou.com",
+    "tags": [
+      "nature",
+      "cherry blossoms",
+      "spring"
+    ],
+    "embeddable": false,
+    "embedMethod": "poster-only"
+  },
+  {
+    "id": "kling-paper-boat-rain",
+    "title": "Paper Boat in Rain",
+    "model": "Kling AI",
+    "prompt": "[Prompt not published \u2014 Kling AI official demo]",
+    "videoUrl": "",
+    "thumbnailUrl": "/wall/kling-paper-boat-rain.jpg",
+    "creator": "Kling AI",
+    "sourceUrl": "https://kling.kuaishou.com",
+    "tags": [
+      "rain",
+      "origami",
+      "water"
+    ],
+    "embeddable": false,
+    "embedMethod": "poster-only"
+  },
+  {
+    "id": "kling-robot-chef",
+    "title": "Robot Chef",
+    "model": "Kling AI",
+    "prompt": "[Prompt not published \u2014 Kling AI official demo]",
+    "videoUrl": "",
+    "thumbnailUrl": "/wall/kling-robot-chef.jpg",
+    "creator": "Kling AI",
+    "sourceUrl": "https://kling.kuaishou.com",
+    "tags": [
+      "robot",
+      "cooking",
+      "futuristic"
+    ],
+    "embeddable": false,
+    "embedMethod": "poster-only"
+  },
+  {
+    "id": "luma-cat-astronaut",
+    "title": "Cat Astronaut",
+    "model": "Luma Dream Machine",
+    "prompt": "[Prompt not published \u2014 Luma Dream Machine official demo]",
+    "videoUrl": "",
+    "thumbnailUrl": "/wall/luma-cat-astronaut.jpg",
+    "creator": "Luma Labs",
+    "sourceUrl": "https://lumalabs.ai",
+    "tags": [
+      "cat",
+      "space",
+      "astronaut"
+    ],
+    "embeddable": false,
+    "embedMethod": "poster-only"
+  },
+  {
+    "id": "luma-flower-blooming",
+    "title": "Flower Blooming",
+    "model": "Luma Dream Machine",
+    "prompt": "[Prompt not published \u2014 Luma Dream Machine official demo]",
+    "videoUrl": "",
+    "thumbnailUrl": "/wall/luma-flower-blooming.jpg",
+    "creator": "Luma Labs",
+    "sourceUrl": "https://lumalabs.ai",
+    "tags": [
+      "nature",
+      "flowers",
+      "timelapse"
+    ],
+    "embeddable": false,
+    "embedMethod": "poster-only"
+  },
+  {
+    "id": "luma-glass-sphere-ocean",
+    "title": "Glass Sphere over Ocean",
+    "model": "Luma Dream Machine",
+    "prompt": "[Prompt not published \u2014 Luma Dream Machine official demo]",
+    "videoUrl": "",
+    "thumbnailUrl": "/wall/luma-glass-sphere-ocean.jpg",
+    "creator": "Luma Labs",
+    "sourceUrl": "https://lumalabs.ai",
+    "tags": [
+      "ocean",
+      "reflection",
+      "abstract"
+    ],
+    "embeddable": false,
+    "embedMethod": "poster-only"
+  },
+  {
+    "id": "luma-teddy-guitar",
+    "title": "Teddy Bear Playing Guitar",
+    "model": "Luma Dream Machine",
+    "prompt": "[Prompt not published \u2014 Luma Dream Machine official demo]",
+    "videoUrl": "",
+    "thumbnailUrl": "/wall/luma-teddy-guitar.jpg",
+    "creator": "Luma Labs",
+    "sourceUrl": "https://lumalabs.ai",
+    "tags": [
+      "teddy bear",
+      "music",
+      "playful"
+    ],
+    "embeddable": false,
+    "embedMethod": "poster-only"
+  },
+  {
+    "id": "luma-woman-beach-sunset",
+    "title": "Woman at Beach Sunset",
+    "model": "Luma Dream Machine",
+    "prompt": "[Prompt not published \u2014 Luma Dream Machine official demo]",
+    "videoUrl": "",
+    "thumbnailUrl": "/wall/luma-woman-beach-sunset.jpg",
+    "creator": "Luma Labs",
+    "sourceUrl": "https://lumalabs.ai",
+    "tags": [
+      "beach",
+      "sunset",
+      "lifestyle"
+    ],
+    "embeddable": false,
+    "embedMethod": "poster-only"
+  },
+  {
+    "id": "pika-baby-dragon-egg",
+    "title": "Baby Dragon Hatching from Egg",
+    "model": "Pika",
+    "prompt": "[Prompt not published \u2014 Pika official demo]",
+    "videoUrl": "",
+    "thumbnailUrl": "/wall/pika-baby-dragon-egg.jpg",
+    "creator": "Pika Labs",
+    "sourceUrl": "https://pika.art",
+    "tags": [
+      "dragon",
+      "fantasy",
+      "magical"
+    ],
+    "embeddable": false,
+    "embedMethod": "poster-only"
+  },
+  {
+    "id": "pika-frog-raindrop",
+    "title": "Frog on Raindrop",
+    "model": "Pika",
+    "prompt": "[Prompt not published \u2014 Pika official demo]",
+    "videoUrl": "",
+    "thumbnailUrl": "/wall/pika-frog-raindrop.jpg",
+    "creator": "Pika Labs",
+    "sourceUrl": "https://pika.art",
+    "tags": [
+      "frog",
+      "nature",
+      "macro"
+    ],
+    "embeddable": false,
+    "embedMethod": "poster-only"
+  },
+  {
+    "id": "pika-underwater-ballet",
+    "title": "Underwater Ballet",
+    "model": "Pika",
+    "prompt": "[Prompt not published \u2014 Pika official demo]",
+    "videoUrl": "",
+    "thumbnailUrl": "/wall/pika-underwater-ballet.jpg",
+    "creator": "Pika Labs",
+    "sourceUrl": "https://pika.art",
+    "tags": [
+      "underwater",
+      "dance",
+      "surreal"
+    ],
+    "embeddable": false,
+    "embedMethod": "poster-only"
+  },
+  {
+    "id": "pika-watercolor-flowers",
+    "title": "Watercolor Flowers",
+    "model": "Pika",
+    "prompt": "[Prompt not published \u2014 Pika official demo]",
+    "videoUrl": "",
+    "thumbnailUrl": "/wall/pika-watercolor-flowers.jpg",
+    "creator": "Pika Labs",
+    "sourceUrl": "https://pika.art",
+    "tags": [
+      "watercolor",
+      "flowers",
+      "artistic"
+    ],
+    "embeddable": false,
+    "embedMethod": "poster-only"
+  },
+  {
+    "id": "hailuo-lion-savanna",
+    "title": "Lion on Savanna",
+    "model": "MiniMax Hailuo",
+    "prompt": "[Prompt not published \u2014 MiniMax Hailuo official demo]",
+    "videoUrl": "",
+    "thumbnailUrl": "/wall/hailuo-lion-savanna.jpg",
+    "creator": "MiniMax",
+    "sourceUrl": "https://hailuoai.com",
+    "tags": [
+      "lion",
+      "wildlife",
+      "savanna"
+    ],
+    "embeddable": false,
+    "embedMethod": "poster-only"
+  },
+  {
+    "id": "hailuo-northern-lights",
+    "title": "Northern Lights",
+    "model": "MiniMax Hailuo",
+    "prompt": "[Prompt not published \u2014 MiniMax Hailuo official demo]",
+    "videoUrl": "",
+    "thumbnailUrl": "/wall/hailuo-northern-lights.jpg",
+    "creator": "MiniMax",
+    "sourceUrl": "https://hailuoai.com",
+    "tags": [
+      "aurora",
+      "nature",
+      "night sky"
+    ],
+    "embeddable": false,
+    "embedMethod": "poster-only"
+  },
+  {
+    "id": "higgsfield-coffee-pour",
+    "title": "Coffee Pour",
+    "model": "Higgsfield AI",
+    "prompt": "[Prompt not published \u2014 Higgsfield AI official demo]",
+    "videoUrl": "",
+    "thumbnailUrl": "/wall/higgsfield-coffee-pour.jpg",
+    "creator": "Higgsfield AI",
+    "sourceUrl": "https://higgsfield.ai",
+    "tags": [
+      "coffee",
+      "food",
+      "cinematic"
+    ],
+    "embeddable": false,
+    "embedMethod": "poster-only"
+  },
+  {
+    "id": "higgsfield-foggy-forest",
+    "title": "Foggy Forest",
+    "model": "Higgsfield AI",
+    "prompt": "[Prompt not published \u2014 Higgsfield AI official demo]",
+    "videoUrl": "",
+    "thumbnailUrl": "/wall/higgsfield-foggy-forest.jpg",
+    "creator": "Higgsfield AI",
+    "sourceUrl": "https://higgsfield.ai",
+    "tags": [
+      "forest",
+      "fog",
+      "atmospheric"
+    ],
+    "embeddable": false,
+    "embedMethod": "poster-only"
+  },
+  {
+    "id": "seedance-golden-retriever",
+    "title": "Golden Retriever",
+    "model": "Seedance (ByteDance)",
+    "prompt": "[Prompt not published \u2014 Seedance official demo]",
+    "videoUrl": "",
+    "thumbnailUrl": "/wall/seedance-golden-retriever.jpg",
+    "creator": "ByteDance",
+    "sourceUrl": "https://dreamina.capcut.com",
+    "tags": [
+      "dog",
+      "golden retriever",
+      "pet"
+    ],
+    "embeddable": false,
+    "embedMethod": "poster-only"
+  },
+  {
+    "id": "seedance-liquid-metal-butterfly",
+    "title": "Liquid Metal Butterfly",
+    "model": "Seedance (ByteDance)",
+    "prompt": "[Prompt not published \u2014 Seedance official demo]",
+    "videoUrl": "",
+    "thumbnailUrl": "/wall/seedance-liquid-metal-butterfly.jpg",
+    "creator": "ByteDance",
+    "sourceUrl": "https://dreamina.capcut.com",
+    "tags": [
+      "abstract",
+      "metal",
+      "butterfly"
+    ],
+    "embeddable": false,
+    "embedMethod": "poster-only"
+  },
+  {
+    "id": "veo2-samurai-bamboo",
+    "title": "Samurai in Bamboo Forest",
+    "model": "Google Veo 2",
+    "prompt": "[Prompt not published \u2014 Google Veo 2 official demo]",
+    "videoUrl": "",
+    "thumbnailUrl": "/wall/veo2-samurai-bamboo.jpg",
+    "creator": "Google DeepMind",
+    "sourceUrl": "https://deepmind.google/technologies/veo",
+    "tags": [
+      "samurai",
+      "bamboo",
+      "cinematic"
+    ],
+    "embeddable": false,
+    "embedMethod": "poster-only"
+  },
+  {
+    "id": "veo2-sunflower-timelapse",
+    "title": "Sunflower Timelapse",
+    "model": "Google Veo 2",
+    "prompt": "[Prompt not published \u2014 Google Veo 2 official demo]",
+    "videoUrl": "",
+    "thumbnailUrl": "/wall/veo2-sunflower-timelapse.jpg",
+    "creator": "Google DeepMind",
+    "sourceUrl": "https://deepmind.google/technologies/veo",
+    "tags": [
+      "sunflower",
+      "timelapse",
+      "nature"
+    ],
+    "embeddable": false,
+    "embedMethod": "poster-only"
+  },
+  {
+    "id": "veo2-typewriter",
+    "title": "Vintage Typewriter",
+    "model": "Google Veo 2",
+    "prompt": "[Prompt not published \u2014 Google Veo 2 official demo]",
+    "videoUrl": "",
+    "thumbnailUrl": "/wall/veo2-typewriter.jpg",
+    "creator": "Google DeepMind",
+    "sourceUrl": "https://deepmind.google/technologies/veo",
+    "tags": [
+      "typewriter",
+      "vintage",
+      "nostalgic"
+    ],
+    "embeddable": false,
+    "embedMethod": "poster-only"
+  },
+  {
+    "id": "veo3-jazz-trumpet",
+    "title": "Jazz Trumpet Player",
+    "model": "Google Veo 3",
+    "prompt": "[Prompt not published \u2014 Google Veo 3 official demo]",
+    "videoUrl": "",
+    "thumbnailUrl": "/wall/veo3-jazz-trumpet.jpg",
+    "creator": "Google DeepMind",
+    "sourceUrl": "https://deepmind.google/technologies/veo",
+    "tags": [
+      "jazz",
+      "music",
+      "cinematic"
+    ],
+    "embeddable": false,
+    "embedMethod": "poster-only"
+  },
+  {
+    "id": "veo3-volcanic-eruption",
+    "title": "Volcanic Eruption",
+    "model": "Google Veo 3",
+    "prompt": "[Prompt not published \u2014 Google Veo 3 official demo]",
+    "videoUrl": "",
+    "thumbnailUrl": "/wall/veo3-volcanic-eruption.jpg",
+    "creator": "Google DeepMind",
+    "sourceUrl": "https://deepmind.google/technologies/veo",
+    "tags": [
+      "volcano",
+      "nature",
+      "dramatic"
+    ],
+    "embeddable": false,
+    "embedMethod": "poster-only"
   }
 ]

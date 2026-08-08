@@ -24,23 +24,23 @@ type GalleryItem = {
 
 const items = galleryData as GalleryItem[];
 
-// Derive model filter list from data — "All" first, then sorted unique models
+// Derive model filter list from data — sorted unique models
 const ALL_MODELS: string[] = Array.from(new Set(items.map((i) => i.model))).sort();
 const ALL_TAGS = Array.from(new Set(items.flatMap((i) => i.tags))).sort();
 
 // Model badge colors — keyed by model name; unknown models get a default style
 const MODEL_BADGE_STYLES: Record<string, { bg: string; text: string; label: string }> = {
-  'Runway Gen-3 Alpha': { bg: 'bg-blue-600/20 border border-blue-500/40', text: 'text-blue-300', label: 'Runway' },
-  'OpenAI Sora':        { bg: 'bg-purple-600/20 border border-purple-500/40', text: 'text-purple-300', label: 'Sora' },
-  'Google Veo 2':       { bg: 'bg-green-700/20 border border-green-600/40', text: 'text-green-300', label: 'Veo 2' },
-  'Google Veo 3':       { bg: 'bg-green-600/20 border border-green-500/40', text: 'text-green-200', label: 'Veo 3' },
-  'ByteDance Seedance': { bg: 'bg-orange-700/20 border border-orange-600/40', text: 'text-orange-300', label: 'Seedance' },
-  'Kling AI':           { bg: 'bg-yellow-700/20 border border-yellow-600/40', text: 'text-yellow-300', label: 'Kling' },
-  'Luma Dream Machine': { bg: 'bg-pink-700/20 border border-pink-600/40', text: 'text-pink-300', label: 'Luma' },
-  'Pika':               { bg: 'bg-violet-700/20 border border-violet-600/40', text: 'text-violet-300', label: 'Pika' },
-  'Higgsfield AI':      { bg: 'bg-cyan-700/20 border border-cyan-600/40', text: 'text-cyan-300', label: 'Higgsfield' },
-  'MiniMax Hailuo':     { bg: 'bg-red-700/20 border border-red-600/40', text: 'text-red-300', label: 'Hailuo' },
-  'AVA Studio':         { bg: 'bg-zinc-600/40 border border-zinc-500/60', text: 'text-zinc-200', label: 'AVA Studio' },
+  'Runway Gen-3 Alpha':   { bg: 'bg-blue-600/20 border border-blue-500/40',    text: 'text-blue-300',   label: 'Runway' },
+  'OpenAI Sora':          { bg: 'bg-purple-600/20 border border-purple-500/40', text: 'text-purple-300', label: 'Sora' },
+  'Google Veo 2':         { bg: 'bg-green-700/20 border border-green-600/40',   text: 'text-green-300',  label: 'Veo 2' },
+  'Google Veo 3':         { bg: 'bg-green-600/20 border border-green-500/40',   text: 'text-green-200',  label: 'Veo 3' },
+  'Seedance (ByteDance)': { bg: 'bg-orange-700/20 border border-orange-600/40', text: 'text-orange-300', label: 'Seedance' },
+  'Kling AI':             { bg: 'bg-yellow-700/20 border border-yellow-600/40', text: 'text-yellow-300', label: 'Kling' },
+  'Luma Dream Machine':   { bg: 'bg-pink-700/20 border border-pink-600/40',     text: 'text-pink-300',   label: 'Luma' },
+  'Pika':                 { bg: 'bg-violet-700/20 border border-violet-600/40', text: 'text-violet-300', label: 'Pika' },
+  'Higgsfield AI':        { bg: 'bg-cyan-700/20 border border-cyan-600/40',     text: 'text-cyan-300',   label: 'Higgsfield' },
+  'MiniMax Hailuo':       { bg: 'bg-red-700/20 border border-red-600/40',       text: 'text-red-300',    label: 'Hailuo' },
+  'AVA Studio':           { bg: 'bg-zinc-600/40 border border-zinc-500/60',     text: 'text-zinc-200',   label: 'AVA Studio' },
 };
 
 function modelBadge(model: string) {
@@ -68,6 +68,11 @@ function videoSrc(item: GalleryItem): string | null {
   return `/api/wall/${item.id}`;
 }
 
+// Thumbnail src: use explicit thumbnailUrl if set, else fall back to /wall/<id>.jpg
+function thumbSrc(item: GalleryItem): string {
+  return item.thumbnailUrl ?? `/wall/${item.id}.jpg`;
+}
+
 function VideoTile({
   item,
   isSelected,
@@ -82,6 +87,7 @@ function VideoTile({
   const videoRef = useRef<HTMLVideoElement>(null);
   const tileRef = useRef<HTMLDivElement>(null);
   const src = videoSrc(item);
+  const thumb = thumbSrc(item);
 
   // IntersectionObserver: pause video when off-screen
   useEffect(() => {
@@ -126,7 +132,7 @@ function VideoTile({
       }`}
     >
       <img
-        src={`/wall/${item.id}.jpg`}
+        src={thumb}
         alt={item.title}
         className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${
           isSelected ? 'opacity-0' : 'opacity-100 group-hover:opacity-0'
@@ -138,7 +144,7 @@ function VideoTile({
         <video
           ref={videoRef}
           src={src}
-          poster={`/wall/${item.id}.jpg`}
+          poster={thumb}
           muted
           loop
           playsInline
@@ -183,6 +189,7 @@ function PromptPanel({
 }) {
   const [copied, setCopied] = useState(false);
   const src = videoSrc(item);
+  const thumb = thumbSrc(item);
 
   const copyPrompt = async () => {
     try {
@@ -211,7 +218,7 @@ function PromptPanel({
       {/* Video preview */}
       <div className="relative aspect-video bg-zinc-900 rounded-lg overflow-hidden mb-5 flex-shrink-0">
         <img
-          src={`/wall/${item.id}.jpg`}
+          src={thumb}
           alt={item.title}
           className="absolute inset-0 w-full h-full object-cover"
         />
@@ -219,7 +226,7 @@ function PromptPanel({
           <video
             key={item.id}
             src={src}
-            poster={`/wall/${item.id}.jpg`}
+            poster={thumb}
             muted
             loop
             playsInline
@@ -329,8 +336,8 @@ export default function WallPage() {
           Creators Wall
         </h1>
         <p className="text-zinc-400 text-lg max-w-2xl">
-          The best AI videos on the internet — plus our own studio work — and the exact prompts behind them.
-          Curated from Sora, Runway, Veo, Kling, Luma, Seedance and more.
+          The best AI videos on the internet — plus our own studio work — and the prompts behind them.
+          Curated from Runway, Sora, Veo, Kling, Seedance, Luma, Pika, Higgsfield, Hailuo, and AVA Studio.
         </p>
       </div>
 
