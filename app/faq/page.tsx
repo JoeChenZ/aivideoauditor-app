@@ -1,3 +1,11 @@
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'FAQ — AI Product Video Studio',
+  description: 'Answers to common questions about our done-for-you AI product video service: turnaround, revisions, formats, pricing, and how the QC gate works.',
+  alternates: { canonical: 'https://www.aivideoauditor.com/faq' },
+};
+
 export default function FAQ() {
   const faqs = [
     {
@@ -48,6 +56,18 @@ export default function FAQ() {
 
   return (
     <main className="bg-zinc-950 text-white min-h-screen pt-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: faqs.map(({ q, a }) => ({
+            '@type': 'Question',
+            name: q,
+            acceptedAnswer: { '@type': 'Answer', text: a },
+          })),
+        }) }}
+      />
       <div className="max-w-3xl mx-auto px-6 py-20">
         <h1 className="text-5xl font-bold text-white mb-16">Questions, answered.</h1>
 

@@ -57,6 +57,7 @@ export const metadata: Metadata = {
     siteName: 'AI Video Auditor',
     type: 'website',
     locale: 'en_US',
+    images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'AI Video Auditor — Done-For-You AI Product Videos' }],
   },
   twitter: {
     card: 'summary_large_image',
@@ -64,6 +65,7 @@ export const metadata: Metadata = {
     description:
       'We audited 105 ways AI video fails. Product videos for DTC brands from $59.',
     creator: '@AIVideoAuditor',
+    images: ['/og-image.jpg'],
   },
   icons: {
     icon: '/favicon-32.png',
@@ -77,6 +79,31 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <link rel="canonical" href={BASE_URL} />
         <meta name="trustpilot-one-time-domain-verification-id" content="fade36b3-6bf0-4e2c-bebc-4045f8537e40" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Organization',
+            name: 'AI Video Auditor',
+            url: 'https://www.aivideoauditor.com',
+            logo: 'https://www.aivideoauditor.com/icon-192.png',
+            sameAs: ['https://x.com/AIVideoAuditor'],
+          }) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'WebSite',
+            name: 'AI Video Auditor',
+            url: 'https://www.aivideoauditor.com',
+            potentialAction: {
+              '@type': 'SearchAction',
+              target: { '@type': 'EntryPoint', urlTemplate: 'https://www.aivideoauditor.com/wall?q={search_term_string}' },
+              'query-input': 'required name=search_term_string',
+            },
+          }) }}
+        />
       </head>
       <body
         className={`${geist.variable} ${geistMono.variable} font-[family-name:var(--font-geist)] bg-zinc-950 text-white antialiased`}

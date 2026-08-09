@@ -6,6 +6,23 @@ import Link from 'next/link';
 export default function Home() {
   return (
     <main className="bg-zinc-950 text-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'Service',
+          name: 'Done-For-You AI Product Video Studio',
+          description: 'We turn your product photos into scroll-stopping 9:16 reels for TikTok, Instagram, and 小紅書. AI-generated, QC-reviewed, delivered in 2-3 days.',
+          provider: { '@type': 'Organization', name: 'AI Video Auditor', url: 'https://www.aivideoauditor.com' },
+          offers: [
+            { '@type': 'Offer', name: '1 Product Video', price: '59', priceCurrency: 'USD' },
+            { '@type': 'Offer', name: '3-Video Project', price: '149', priceCurrency: 'USD' },
+            { '@type': 'Offer', name: '5-Video Project', price: '229', priceCurrency: 'USD' },
+          ],
+          areaServed: 'Worldwide',
+          serviceType: 'AI Product Video Production',
+        }) }}
+      />
 
       {/* HERO */}
       <section className="relative min-h-[100dvh] overflow-hidden bg-zinc-950 flex items-end">
