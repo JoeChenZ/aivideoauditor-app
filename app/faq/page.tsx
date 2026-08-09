@@ -34,7 +34,7 @@ export default function FAQ() {
     },
     {
       q: 'Can I see examples before ordering?',
-      a: 'Yes. Visit the Samples page to see before-and-after pairs from real client work.',
+      a: 'Yes. Visit the Creators Wall to see our product-video work alongside the best AI videos on the internet — with the prompts behind them.',
     },
     {
       q: 'What payment methods do you accept?',
@@ -68,10 +68,10 @@ export default function FAQ() {
 
         <div className="mt-16 flex gap-4">
           <a
-            href="/samples"
+            href="/wall"
             className="inline-flex items-center justify-center border border-zinc-700 hover:border-zinc-500 text-zinc-300 hover:text-white font-medium px-6 py-3 rounded-full transition-colors"
           >
-            View Samples
+            View Creators Wall
           </a>
           <a
             href="/order"

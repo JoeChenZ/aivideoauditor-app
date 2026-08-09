@@ -85,10 +85,10 @@ export default function Home() {
             </Link>
           </div>
           <p className="text-zinc-400 mb-10">
-            The best AI videos on the internet — plus our own studio work — and the exact prompts behind them.
+            The best AI videos on the internet, separated by the model that made them — and the exact prompts behind them.
           </p>
 
-          {/* Horizontal scroll preview — mix of models including AVA Studio */}
+          {/* Horizontal scroll preview — mix of models */}
           <div className="flex gap-3 overflow-x-auto pb-4 -mx-6 px-6 snap-x snap-mandatory scrollbar-hide">
             {[
               { id: 'sora-tokyo-walk', model: 'Sora', prompt: 'A stylish woman walks down a Tokyo street filled with warm glowing neon...' },
@@ -96,7 +96,7 @@ export default function Home() {
               { id: 'runway-subtle-reflections-of-a-woman-on-the-window-o', model: 'Runway', prompt: 'Subtle reflections of a woman on the window of a train moving at hyper-speed in a Japanese city.' },
               { id: 'runway-a-japanese-animated-film-of-a-young-woman-sta', model: 'Runway', prompt: 'A Japanese animated film of a young woman standing on a ship and looking back at camera.' },
               { id: 'sora-big-sur', model: 'Sora', prompt: 'Drone view of waves crashing against the rugged cliffs along Big Sur. The crashing blue waters create white-tipped waves.' },
-              { id: 'ava-earrings-worn', model: 'AVA Studio', prompt: 'Made by AVA — product photo to video. Earrings animated to show movement and light-catch on the metal.' },
+              { id: 'veo3-ice-cave', model: 'Veo 3', prompt: 'The camera slowly pushes into a breathtaking ice cave of blues and whites, then emerges into a sun-drenched valley revealing polar bears sliding down an ice slope.' },
             ].map((item, i) => (
               <motion.div
                 key={item.id}
@@ -129,7 +129,7 @@ export default function Home() {
               href="/wall"
               className="inline-flex items-center gap-2 border border-zinc-700 hover:border-zinc-500 text-zinc-300 hover:text-white font-medium px-6 py-3 rounded-full transition-colors"
             >
-              See all 64 prompts
+              See all 75 prompts
             </Link>
             <p className="text-zinc-600 text-sm">Curated from Sora, Runway, Veo, Kling, Luma, Seedance and more. Hover any tile to see the prompt.</p>
           </div>

@@ -1036,68 +1036,389 @@
     "embedMethod": "official-mp4"
   },
   {
-    "id": "ava-earrings-worn",
-    "title": "Earrings — Worn Look",
-    "model": "AVA Studio",
-    "prompt": "Made by AVA — product photo → video. A DTC jewelry brand product photo of earrings being worn, animated to show movement and light-catch on the metal.",
+    "id": "veo3-urban-reflection",
+    "title": "The City Always Got a Story",
+    "model": "Google Veo 3",
+    "prompt": "A medium shot opens on a seasoned, grey-bearded man in sunglasses and a paisley shirt, his gaze fixed off-camera with a contemplative expression. His gold chain glints subtly. Beside him, a younger man in a tank top, also looking forward, suggests a shared moment of observation or reflection. The camera slowly pushes in, subtly emphasizing their quiet focus. In the background, a vibrant mural splashes across a wall, hinting at an urban setting. Faint city murmurs and distant chatter drift in, accompanied by a mellow, soulful hip-hop beat that adds a contemplative yet grounded atmosphere. 'The city always got a story,' the older man murmurs, a slight nod of his head. 'Just gotta listen.'",
+    "videoUrl": null,
+    "embedUrl": null,
+    "thumbnailUrl": "/wall/veo3-urban-reflection.jpg",
+    "creator": "Google DeepMind",
+    "sourceUrl": "https://deepmind.google/models/veo/",
+    "tags": [
+      "people",
+      "urban",
+      "cinematic"
+    ],
+    "embeddable": false,
+    "embedMethod": "official-mp4"
+  },
+  {
+    "id": "veo3-train-espionage",
+    "title": "Train Station Espionage",
+    "model": "Google Veo 3",
+    "prompt": "A close up of spies exchanging information in a crowded train station with uniformed guards patrolling nearby 'The microfilm is in your ticket' he murmured pretending to check his watch 'They're watching the north exit' she warned casually adjusting her scarf 'Use the service tunnel' Commuters rush past oblivious to the covert exchange happening amid announcements of arrivals and departures",
+    "videoUrl": null,
+    "embedUrl": null,
+    "thumbnailUrl": "/wall/veo3-train-espionage.jpg",
+    "creator": "Google DeepMind",
+    "sourceUrl": "https://deepmind.google/models/veo/",
+    "tags": [
+      "people",
+      "urban",
+      "cinematic"
+    ],
+    "embeddable": false,
+    "embedMethod": "official-mp4"
+  },
+  {
+    "id": "veo3-offroad-rally",
+    "title": "Hardcore Off-Road Rally",
+    "model": "Google Veo 3",
+    "prompt": "The scene explodes with the raw, visceral, and unpredictable energy of a hardcore off-road rally, captured with a dynamic, almost found-footage or embedded sports documentary aesthetic. The camera is often shaky, seemingly mounted inside one of the vehicles or held by a daring spectator very close to the action, frequently splattered with mud or water, catching unintentional lens flares from the natural, often harsh, sunlight filtering through trees or reflecting off wet surfaces. We are immersed in a challenging, untamed natural environment - a dense, muddy forest trail. Several heavily modified, entirely unidentifiable, and unbranded off-road vehicles are engaged in a frenetic, no-holds-barred race.",
+    "videoUrl": null,
+    "embedUrl": null,
+    "thumbnailUrl": "/wall/veo3-offroad-rally.jpg",
+    "creator": "Google DeepMind",
+    "sourceUrl": "https://deepmind.google/models/veo/",
+    "tags": [
+      "nature",
+      "cinematic",
+      "urban"
+    ],
+    "embeddable": false,
+    "embedMethod": "official-mp4"
+  },
+  {
+    "id": "veo3-ice-cave",
+    "title": "Ice Cave Polar Bears",
+    "model": "Google Veo 3",
+    "prompt": "The camera slowly pushes forward into a breathtaking ice cave, its jagged walls sculpted by nature into intricate patterns of blues and whites, reflecting the ethereal light from an opening ahead. The crunch of ice underfoot and the drip-drip of melting water create a serene, echoing soundscape. As the camera moves closer, a gentle, ambient melody begins, swelling with the light from the cave's exit. The camera emerges from the narrow opening into a vast, sun-drenched valley, revealing a group of polar bears playfully sliding down an ice slope, their roars echoing with joy.",
+    "videoUrl": null,
+    "embedUrl": null,
+    "thumbnailUrl": "/wall/veo3-ice-cave.jpg",
+    "creator": "Google DeepMind",
+    "sourceUrl": "https://deepmind.google/models/veo/",
+    "tags": [
+      "nature",
+      "aerial",
+      "cinematic"
+    ],
+    "embeddable": false,
+    "embedMethod": "official-mp4"
+  },
+  {
+    "id": "ava-pearl-drop-earrings",
+    "title": "Pearl Drop Earrings",
+    "model": "Google Veo 3",
+    "prompt": "A DTC jewelry brand product photo of pearl drop earrings being worn, animated into a video to show natural movement and light catching on the pearls and metal as the model turns her head. Soft studio lighting, shallow depth of field, elegant.",
     "videoUrl": "/showcase/sample-earrings-worn.mp4",
     "embedUrl": null,
-    "thumbnailUrl": "/wall/ava-earrings-worn.jpg",
-    "creator": "AI Video Auditor",
-    "sourceUrl": "https://aivideoauditor.com/samples",
+    "thumbnailUrl": "/showcase/sample-earrings-worn-poster.jpg",
+    "creator": "AVA Studio",
+    "sourceUrl": "https://aivideoauditor.com/order",
     "tags": [
       "product",
+      "people",
       "cinematic"
     ],
     "embeddable": true,
     "embedMethod": "local-mp4"
   },
   {
-    "id": "ava-earrings-hold",
-    "title": "Earrings — Hand Hold",
-    "model": "AVA Studio",
-    "prompt": "Made by AVA — product photo → video. A flatlay earrings product photo transformed into a video showing the pieces held up, with natural light and subtle motion.",
-    "videoUrl": "/showcase/sample-earrings-hold.mp4",
-    "embedUrl": null,
-    "thumbnailUrl": "/wall/ava-earrings-hold.jpg",
-    "creator": "AI Video Auditor",
-    "sourceUrl": "https://aivideoauditor.com/samples",
-    "tags": [
-      "product",
-      "cinematic"
-    ],
-    "embeddable": true,
-    "embedMethod": "local-mp4"
-  },
-  {
-    "id": "ava-shot-01",
-    "title": "Product Hero Shot",
-    "model": "AVA Studio",
-    "prompt": "Made by AVA — product photo → video. A jewelry product hero shot animated with a slow camera push and sparkle highlights.",
+    "id": "ava-peach-pearl-set",
+    "title": "Peach Pearl Set",
+    "model": "Google Veo 3",
+    "prompt": "A jewelry product hero shot of a peach pearl set, animated with a slow cinematic camera push and sparkle highlights drifting across the pearls. Clean studio background, warm soft light, premium DTC product-video look.",
     "videoUrl": "/showcase/sample-shot-01.mp4",
     "embedUrl": null,
-    "thumbnailUrl": "/wall/ava-shot-01.jpg",
-    "creator": "AI Video Auditor",
-    "sourceUrl": "https://aivideoauditor.com/samples",
+    "thumbnailUrl": "/showcase/sample-shot-01-poster.jpg",
+    "creator": "AVA Studio",
+    "sourceUrl": "https://aivideoauditor.com/order",
     "tags": [
       "product",
+      "macro",
       "cinematic"
     ],
     "embeddable": true,
     "embedMethod": "local-mp4"
   },
   {
-    "id": "ava-story",
-    "title": "Story Format Clip",
-    "model": "AVA Studio",
-    "prompt": "Made by AVA — product photo → video. A vertical story-format product video for Instagram Reels and TikTok, animated from a still product photo.",
+    "id": "ava-grey-pearl-studs",
+    "title": "Grey Pearl Studs",
+    "model": "Google Veo 3",
+    "prompt": "A vertical story-format product video of grey pearl studs for Instagram Reels and TikTok, animated from a still product photo with subtle motion and glints of light. 9:16 aspect, platform-ready, clean and modern.",
     "videoUrl": "/showcase/sample-story.mp4",
     "embedUrl": null,
-    "thumbnailUrl": "/wall/ava-story.jpg",
-    "creator": "AI Video Auditor",
-    "sourceUrl": "https://aivideoauditor.com/samples",
+    "thumbnailUrl": "/showcase/sample-story-poster.jpg",
+    "creator": "AVA Studio",
+    "sourceUrl": "https://aivideoauditor.com/order",
     "tags": [
       "product",
+      "macro",
+      "cinematic"
+    ],
+    "embeddable": true,
+    "embedMethod": "local-mp4"
+  },
+  {
+    "id": "ava-flatlay-to-motion",
+    "title": "Flatlay to Motion",
+    "model": "Google Veo 3",
+    "prompt": "A flatlay earrings product photo transformed into a video showing the pieces lifted and held up, revealing dimension and light-catch on the metal and pearls. Natural light, subtle graceful motion, tactile and premium.",
+    "videoUrl": "/showcase/sample-earrings-hold.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": "/showcase/sample-earrings-hold-poster.jpg",
+    "creator": "AVA Studio",
+    "sourceUrl": "https://aivideoauditor.com/order",
+    "tags": [
+      "product",
+      "macro",
+      "cinematic"
+    ],
+    "embeddable": true,
+    "embedMethod": "local-mp4"
+  },
+  {
+    "id": "ava-earring-collection",
+    "title": "Earring Collection",
+    "model": "Google Veo 3",
+    "prompt": "A DTC jewelry brand's earring collection laid out on a clean surface, animated into a smooth product video with a gentle pan across the pieces and soft light sweeping over each pair. Editorial catalog style, crisp and premium.",
+    "videoUrl": null,
+    "embedUrl": null,
+    "thumbnailUrl": "/showcase/pairD-before.jpg",
+    "creator": "AVA Studio",
+    "sourceUrl": "https://aivideoauditor.com/order",
+    "tags": [
+      "product",
+      "cinematic"
+    ],
+    "embeddable": false,
+    "embedMethod": "local-mp4"
+  },
+  {
+    "id": "ava-pendant-on-model",
+    "title": "Pendant — On Model",
+    "model": "Google Veo 3",
+    "prompt": "A pearl pendant necklace shown on a model, animated from a still photo to add lifelike motion — the pendant settling against the collarbone as she shifts, natural skin tones and soft light. On-model DTC product video, intimate and elegant.",
+    "videoUrl": null,
+    "embedUrl": null,
+    "thumbnailUrl": "/showcase/sample-onmodel.jpg",
+    "creator": "AVA Studio",
+    "sourceUrl": "https://aivideoauditor.com/order",
+    "tags": [
+      "product",
+      "people",
+      "cinematic"
+    ],
+    "embeddable": false,
+    "embedMethod": "local-mp4"
+  },
+  {
+    "id": "seedance-street-food",
+    "title": "Seedance 1.0 Showcase",
+    "model": "Seedance (ByteDance)",
+    "prompt": "Official Seedance 1.0 showcase reel — cinematic scenes demonstrating the model's motion quality, coherence, and photorealistic output across diverse subjects and environments.",
+    "videoUrl": "/wall/seedance-street-food.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": "/wall/seedance-street-food-thumb.jpg",
+    "creator": "ByteDance",
+    "sourceUrl": "https://seed.bytedance.com/en/seedance",
+    "tags": [
+      "cinematic"
+    ],
+    "embeddable": true,
+    "embedMethod": "local-mp4"
+  },
+  {
+    "id": "seedance-samurai",
+    "title": "Samurai in the Rain",
+    "model": "Seedance (ByteDance)",
+    "prompt": "A lone samurai stands motionless in a bamboo forest during heavy rain, water dripping from the brim of a straw hat, cinematic wide shot slowly pushing in, muted color grade, dramatic atmosphere.",
+    "videoUrl": null,
+    "embedUrl": null,
+    "thumbnailUrl": "/wall/seedance-street-food.jpg",
+    "creator": "ByteDance",
+    "sourceUrl": "https://seed.bytedance.com/en/seedance",
+    "tags": [
+      "people",
+      "cinematic",
+      "nature"
+    ],
+    "embeddable": false,
+    "embedMethod": "official-mp4"
+  },
+  {
+    "id": "seedance-cyber-alley",
+    "title": "Neon Alley Walk",
+    "model": "Seedance (ByteDance)",
+    "prompt": "A woman in a translucent raincoat walks through a narrow neon-lit alley in a futuristic city, reflections shimmering in puddles, smooth dolly shot following behind, cyberpunk aesthetic, volumetric fog.",
+    "videoUrl": null,
+    "embedUrl": null,
+    "thumbnailUrl": "/wall/seedance-street-food.jpg",
+    "creator": "ByteDance",
+    "sourceUrl": "https://seed.bytedance.com/en/seedance",
+    "tags": [
+      "urban",
+      "people",
+      "cinematic"
+    ],
+    "embeddable": false,
+    "embedMethod": "official-mp4"
+  },
+  {
+    "id": "kling-galloping-horse",
+    "title": "Horse Through Surf",
+    "model": "Kling AI",
+    "prompt": "Kling AI 3.0 banner showcase — in-car POV driving scene demonstrating the model's motion control, lighting fidelity, and cinematic camera movement from Kling's official homepage.",
+    "videoUrl": "/wall/kling-galloping-horse.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": "/wall/kling-galloping-horse-thumb.jpg",
+    "creator": "Kuaishou",
+    "sourceUrl": "https://kling.ai/",
+    "tags": [
+      "cinematic",
+      "urban"
+    ],
+    "embeddable": true,
+    "embedMethod": "local-mp4"
+  },
+  {
+    "id": "kling-chef-plating",
+    "title": "Fine Dining Plating",
+    "model": "Kling AI",
+    "prompt": "Kling AI model showcase — official demo video highlighting the model's ability to generate photorealistic product and lifestyle video content with fine-grained detail and smooth motion.",
+    "videoUrl": "/wall/kling-chef-plating.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": "/wall/kling-chef-plating-thumb.jpg",
+    "creator": "Kuaishou",
+    "sourceUrl": "https://kling.ai/",
+    "tags": [
+      "cinematic",
+      "product"
+    ],
+    "embeddable": true,
+    "embedMethod": "local-mp4"
+  },
+  {
+    "id": "kling-astronaut-desert",
+    "title": "Kling AI Global Demo",
+    "model": "Kling AI",
+    "prompt": "Kling AI global demo reel — official showcase of the model's cinematic capabilities including character consistency, environment detail, and camera motion across diverse creative scenarios.",
+    "videoUrl": "/wall/kling-astronaut-desert.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": "/wall/kling-astronaut-desert-thumb.jpg",
+    "creator": "Kuaishou",
+    "sourceUrl": "https://kling.ai/",
+    "tags": [
+      "people",
+      "cinematic",
+      "nature"
+    ],
+    "embeddable": true,
+    "embedMethod": "local-mp4"
+  },
+  {
+    "id": "hailuo-koi-pond",
+    "title": "Koi Pond Reflections",
+    "model": "MiniMax Hailuo",
+    "prompt": "Colorful koi fish glide slowly beneath the surface of a tranquil garden pond, cherry blossom petals floating on the water, gentle ripples distorting the reflection of a red bridge, serene overhead shot.",
+    "videoUrl": "/wall/hailuo-koi-pond.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": "/wall/hailuo-koi-pond-thumb.jpg",
+    "creator": "MiniMax",
+    "sourceUrl": "https://hailuoai.video/",
+    "tags": [
+      "nature",
+      "macro",
+      "cinematic"
+    ],
+    "embeddable": true,
+    "embedMethod": "local-mp4"
+  },
+  {
+    "id": "hailuo-vintage-car",
+    "title": "Vintage Car on Coast Road",
+    "model": "MiniMax Hailuo",
+    "prompt": "A classic red convertible drives along a winding coastal cliff road at sunset, ocean sparkling below, aerial drone shot pulling up and away, warm golden light, cinematic travel film aesthetic.",
+    "videoUrl": null,
+    "embedUrl": null,
+    "thumbnailUrl": "/wall/hailuo-vintage-car.jpg",
+    "creator": "MiniMax",
+    "sourceUrl": "https://hailuoai.video/",
+    "tags": [
+      "aerial",
+      "urban",
+      "cinematic"
+    ],
+    "embeddable": false,
+    "embedMethod": "official-mp4"
+  },
+  {
+    "id": "luma-crystal-bloom",
+    "title": "Crystal Flower Bloom",
+    "model": "Luma Dream Machine",
+    "prompt": "Luma Dream Machine official showcase — cinematic video generated by the Dream Machine model, demonstrating photorealistic motion, lighting, and scene coherence from Luma's marketing materials.",
+    "videoUrl": "/wall/luma-crystal-bloom.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": "/wall/luma-crystal-bloom-thumb.jpg",
+    "creator": "Luma AI",
+    "sourceUrl": "https://lumalabs.ai/dream-machine",
+    "tags": [
+      "cinematic",
+      "nature"
+    ],
+    "embeddable": true,
+    "embedMethod": "local-mp4"
+  },
+  {
+    "id": "luma-city-timelapse",
+    "title": "City Sunrise Timelapse",
+    "model": "Luma Dream Machine",
+    "prompt": "Luma Dream Machine official showcase — a second cinematic demo from Luma's marketing page illustrating the model's aerial, architectural, and environmental video generation capabilities.",
+    "videoUrl": "/wall/luma-city-timelapse.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": "/wall/luma-city-timelapse-thumb.jpg",
+    "creator": "Luma AI",
+    "sourceUrl": "https://lumalabs.ai/dream-machine",
+    "tags": [
+      "aerial",
+      "urban",
+      "cinematic"
+    ],
+    "embeddable": true,
+    "embedMethod": "local-mp4"
+  },
+  {
+    "id": "pika-balloon-dog",
+    "title": "Floating Balloon Dog",
+    "model": "Pika",
+    "prompt": "Pika official trail showcase — one of Pika's homepage trail videos demonstrating the platform's generative video quality, smooth motion, and creative visual output.",
+    "videoUrl": "/wall/pika-balloon-dog.webm",
+    "embedUrl": null,
+    "thumbnailUrl": "/wall/pika-balloon-dog-thumb.jpg",
+    "creator": "Pika",
+    "sourceUrl": "https://pika.art/",
+    "tags": [
+      "cinematic",
+      "product"
+    ],
+    "embeddable": true,
+    "embedMethod": "local-mp4"
+  },
+  {
+    "id": "pika-coffee-pour",
+    "title": "Latte Art Pour",
+    "model": "Pika",
+    "prompt": "Pika official trail showcase — a second trail video from Pika's homepage demonstrating the platform's macro detail, slow-motion, and food/lifestyle video generation capabilities.",
+    "videoUrl": "/wall/pika-coffee-pour.webm",
+    "embedUrl": null,
+    "thumbnailUrl": "/wall/pika-coffee-pour-thumb.jpg",
+    "creator": "Pika",
+    "sourceUrl": "https://pika.art/",
+    "tags": [
+      "food",
+      "macro",
       "cinematic"
     ],
     "embeddable": true,

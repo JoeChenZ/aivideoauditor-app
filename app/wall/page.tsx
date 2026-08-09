@@ -24,8 +24,20 @@ type GalleryItem = {
 
 const items = galleryData as GalleryItem[];
 
-// Derive model filter list from data — sorted unique models
-const ALL_MODELS: string[] = Array.from(new Set(items.map((i) => i.model))).sort();
+// Fixed model-tab order (model-based separation). Only models that both
+// appear in this list AND have at least one entry in the data get a tab.
+const MODEL_ORDER: string[] = [
+  'OpenAI Sora',
+  'Google Veo 3',
+  'Runway Gen-3 Alpha',
+  'Seedance (ByteDance)',
+  'Kling AI',
+  'MiniMax Hailuo',
+  'Luma Dream Machine',
+  'Pika',
+];
+const MODELS_IN_DATA = new Set(items.map((i) => i.model));
+const ALL_MODELS: string[] = MODEL_ORDER.filter((m) => MODELS_IN_DATA.has(m));
 const ALL_TAGS = Array.from(new Set(items.flatMap((i) => i.tags))).sort();
 
 // Model badge colors — keyed by model name; unknown models get a default style
@@ -40,7 +52,6 @@ const MODEL_BADGE_STYLES: Record<string, { bg: string; text: string; label: stri
   'Pika':                 { bg: 'bg-violet-700/20 border border-violet-600/40', text: 'text-violet-300', label: 'Pika' },
   'Higgsfield AI':        { bg: 'bg-cyan-700/20 border border-cyan-600/40',     text: 'text-cyan-300',   label: 'Higgsfield' },
   'MiniMax Hailuo':       { bg: 'bg-red-700/20 border border-red-600/40',       text: 'text-red-300',    label: 'Hailuo' },
-  'AVA Studio':           { bg: 'bg-zinc-600/40 border border-zinc-500/60',     text: 'text-zinc-200',   label: 'AVA Studio' },
 };
 
 function modelBadge(model: string) {
@@ -131,9 +142,16 @@ function VideoTile({
           : 'hover:ring-1 hover:ring-zinc-500 hover:ring-offset-1 hover:ring-offset-zinc-950'
       }`}
     >
+      {/* Placeholder gradient shown when no real poster asset exists yet */}
+      <div className="absolute inset-0 bg-gradient-to-br from-zinc-800 via-zinc-900 to-zinc-950 flex items-center justify-center">
+        <span className="text-zinc-600 text-[10px] font-semibold uppercase tracking-widest px-2 text-center">
+          {modelTabLabel(item.model)}
+        </span>
+      </div>
       <img
         src={thumb}
         alt={item.title}
+        onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }}
         className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${
           isSelected ? 'opacity-0' : 'opacity-100 group-hover:opacity-0'
         }`}
@@ -217,9 +235,15 @@ function PromptPanel({
 
       {/* Video preview */}
       <div className="relative aspect-video bg-zinc-900 rounded-lg overflow-hidden mb-5 flex-shrink-0">
+        <div className="absolute inset-0 bg-gradient-to-br from-zinc-800 via-zinc-900 to-zinc-950 flex items-center justify-center">
+          <span className="text-zinc-600 text-xs font-semibold uppercase tracking-widest">
+            {modelTabLabel(item.model)}
+          </span>
+        </div>
         <img
           src={thumb}
           alt={item.title}
+          onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }}
           className="absolute inset-0 w-full h-full object-cover"
         />
         {src && (
@@ -336,8 +360,8 @@ export default function WallPage() {
           Creators Wall
         </h1>
         <p className="text-zinc-400 text-lg max-w-2xl">
-          The best AI videos on the internet — plus our own studio work — and the prompts behind them.
-          Curated from OpenAI Sora, Runway Gen-3, and AVA Studio.
+          The best AI videos on the internet, separated by the model that made them — and the prompts behind them.
+          Curated from OpenAI Sora, Google Veo, Runway Gen-3, Seedance, Kling, Hailuo, Luma, and Pika.
         </p>
       </div>
 

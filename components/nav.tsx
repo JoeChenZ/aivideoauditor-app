@@ -14,7 +14,6 @@ export default function Nav() {
 
         {/* Desktop nav */}
         <div className="hidden md:flex items-center gap-6">
-          <Link href="/samples" className="text-zinc-400 hover:text-white text-sm transition-colors">Samples</Link>
           <Link href="/wall" className="text-zinc-400 hover:text-white text-sm transition-colors">Creators Wall</Link>
           <Link href="/#how-it-works" className="text-zinc-400 hover:text-white text-sm transition-colors">How It Works</Link>
           <Link href="/faq" className="text-zinc-400 hover:text-white text-sm transition-colors">FAQ</Link>
@@ -41,7 +40,6 @@ export default function Nav() {
       {/* Mobile menu */}
       {open && (
         <div className="md:hidden absolute top-16 left-0 right-0 bg-zinc-950 border-b border-zinc-800 px-6 py-4 flex flex-col gap-4">
-          <Link href="/samples" className="text-zinc-300 hover:text-white text-sm" onClick={() => setOpen(false)}>Samples</Link>
           <Link href="/wall" className="text-zinc-300 hover:text-white text-sm" onClick={() => setOpen(false)}>Creators Wall</Link>
           <Link href="/#how-it-works" className="text-zinc-300 hover:text-white text-sm" onClick={() => setOpen(false)}>How It Works</Link>
           <Link href="/faq" className="text-zinc-300 hover:text-white text-sm" onClick={() => setOpen(false)}>FAQ</Link>
