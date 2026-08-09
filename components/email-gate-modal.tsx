@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 
 const FREE_COPIES_KEY = 'ava_wall_copies';
 const UNLOCKED_KEY = 'ava_wall_unlocked';
@@ -181,6 +182,18 @@ export default function EmailGateModal({ pendingPrompt, onClose, onUnlocked }: P
         <p className="text-zinc-600 text-xs text-center -mt-2">
           No marketing spam. Unsubscribe any time.
         </p>
+        {/* Sign-in alternative */}
+        <div className="flex items-center gap-3 -mt-2">
+          <div className="flex-1 h-px bg-zinc-800" />
+          <span className="text-zinc-600 text-xs">or</span>
+          <div className="flex-1 h-px bg-zinc-800" />
+        </div>
+        <Link
+          href="/login"
+          className="block w-full text-center text-zinc-400 hover:text-white text-xs underline underline-offset-2 transition-colors"
+        >
+          Sign in for unlimited access
+        </Link>
       </div>
 
       <style jsx>{`

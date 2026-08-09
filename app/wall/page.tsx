@@ -12,6 +12,7 @@ import EmailGateModal, {
   getFreeCount,
   incrementFreeCount,
 } from '@/components/email-gate-modal';
+import { createClient } from '@/lib/supabase/client';
 
 type GalleryItem = {
   id: string;
@@ -364,10 +365,19 @@ export default function WallPage() {
   const [gateOpen, setGateOpen] = useState(false);
   const [pendingPrompt, setPendingPrompt] = useState('');
   const [unlocked, setUnlocked] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   // Read unlock state from localStorage on mount (client-only)
   useEffect(() => {
     setUnlocked(isUnlocked());
+    const supabase = createClient();
+    supabase.auth.getUser().then(({ data }) => {
+      if (data?.user) setIsLoggedIn(true);
+    });
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setIsLoggedIn(!!session?.user);
+    });
+    return () => subscription.unsubscribe();
   }, []);
 
   /**
@@ -386,7 +396,7 @@ export default function WallPage() {
       }
     };
 
-    if (unlocked || isUnlocked()) {
+    if (isLoggedIn || unlocked || isUnlocked()) {
       await doCopy();
       return;
     }
