@@ -410,7 +410,7 @@ export default function WallPage() {
       setPendingPrompt(prompt);
       setGateOpen(true);
     }
-  }, [unlocked]);
+  }, [unlocked, isLoggedIn]);
 
   /** Called by the modal after a successful email submit. */
   const handleUnlocked = useCallback(async () => {
