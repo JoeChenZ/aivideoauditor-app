@@ -16,6 +16,7 @@ function LoginForm() {
   const [isSignUp, setIsSignUp] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const [checkEmail, setCheckEmail] = useState(false);
 
   async function handleGoogle() {
     await supabase.auth.signInWithOAuth({
@@ -43,10 +44,30 @@ function LoginForm() {
     setLoading(true);
     setError(null);
 
-    const { error } = isSignUp
-      ? await supabase.auth.signUp({ email, password })
-      : await supabase.auth.signInWithPassword({ email, password });
+    if (isSignUp) {
+      const { data, error } = await supabase.auth.signUp({
+        email,
+        password,
+        options: { emailRedirectTo: window.location.origin + '/auth/callback?next=' + encodeURIComponent(redirectTo) },
+      });
+      if (error) {
+        setError(error.message);
+        setLoading(false);
+        return;
+      }
+      // If email confirmation is required, no session is returned — tell the
+      // user to check their inbox instead of silently sending them nowhere.
+      if (!data.session) {
+        setCheckEmail(true);
+        setLoading(false);
+        return;
+      }
+      router.push(redirectTo);
+      router.refresh();
+      return;
+    }
 
+    const { error } = await supabase.auth.signInWithPassword({ email, password });
     if (error) {
       setError(error.message);
       setLoading(false);
@@ -54,6 +75,31 @@ function LoginForm() {
       router.push(redirectTo);
       router.refresh();
     }
+  }
+
+  if (checkEmail) {
+    return (
+      <div className="w-full max-w-sm">
+        <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-8 text-center">
+          <div className="w-12 h-12 rounded-full bg-blue-600/20 border border-blue-500/30 flex items-center justify-center mx-auto mb-5">
+            <svg className="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <h1 className="text-xl font-bold text-white mb-2">Check your email</h1>
+          <p className="text-zinc-400 text-sm leading-relaxed mb-6">
+            We sent a confirmation link to <span className="text-zinc-200">{email}</span>.
+            Click it to activate your account, then sign in.
+          </p>
+          <button
+            onClick={() => { setCheckEmail(false); setIsSignUp(false); }}
+            className="text-blue-400 hover:underline text-sm"
+          >
+            Back to sign in
+          </button>
+        </div>
+      </div>
+    );
   }
 
   return (
