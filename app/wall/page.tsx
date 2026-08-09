@@ -7,6 +7,11 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import galleryData from '@/data/prompt-gallery.json';
+import EmailGateModal, {
+  isUnlocked,
+  getFreeCount,
+  incrementFreeCount,
+} from '@/components/email-gate-modal';
 
 type GalleryItem = {
   id: string;
@@ -201,15 +206,22 @@ function VideoTile({
 function PromptPanel({
   item,
   onClose,
+  onGatedCopy,
 }: {
   item: GalleryItem;
   onClose?: () => void;
+  onGatedCopy?: (prompt: string) => void;
 }) {
   const [copied, setCopied] = useState(false);
   const src = videoSrc(item);
   const thumb = thumbSrc(item);
 
   const copyPrompt = async () => {
+    // If gated copy handler is provided, delegate to it (handles free-limit logic)
+    if (onGatedCopy) {
+      onGatedCopy(item.prompt);
+      return;
+    }
     try {
       await navigator.clipboard.writeText(item.prompt);
       setCopied(true);
@@ -218,6 +230,19 @@ function PromptPanel({
       // fallback: select text
     }
   };
+
+  // Listen for the "prompt copied" event so we can show the ✓ flash
+  useEffect(() => {
+    const handler = (e: Event) => {
+      const detail = (e as CustomEvent<{ prompt: string }>).detail;
+      if (detail?.prompt === item.prompt) {
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+      }
+    };
+    window.addEventListener('ava:prompt-copied', handler);
+    return () => window.removeEventListener('ava:prompt-copied', handler);
+  }, [item.prompt]);
 
   return (
     <div className="flex flex-col h-full">
@@ -335,6 +360,62 @@ export default function WallPage() {
   const [activeTag, setActiveTag] = useState<string | null>(null);
   const [sheetOpen, setSheetOpen] = useState(false);
 
+  // Email gate state
+  const [gateOpen, setGateOpen] = useState(false);
+  const [pendingPrompt, setPendingPrompt] = useState('');
+  const [unlocked, setUnlocked] = useState(false);
+
+  // Read unlock state from localStorage on mount (client-only)
+  useEffect(() => {
+    setUnlocked(isUnlocked());
+  }, []);
+
+  /**
+   * Called by PromptPanel when user clicks "Copy Prompt".
+   * - If already unlocked → copy immediately.
+   * - If within free limit → copy + increment.
+   * - Otherwise → open email gate modal.
+   */
+  const handleGatedCopy = useCallback(async (prompt: string) => {
+    const doCopy = async () => {
+      try {
+        await navigator.clipboard.writeText(prompt);
+        window.dispatchEvent(new CustomEvent('ava:prompt-copied', { detail: { prompt } }));
+      } catch {
+        // clipboard access failed silently
+      }
+    };
+
+    if (unlocked || isUnlocked()) {
+      await doCopy();
+      return;
+    }
+
+    const newCount = incrementFreeCount();
+    if (newCount <= 2) {
+      // Still within free allowance
+      await doCopy();
+    } else {
+      // Hit the gate — store which prompt they wanted and open modal
+      setPendingPrompt(prompt);
+      setGateOpen(true);
+    }
+  }, [unlocked]);
+
+  /** Called by the modal after a successful email submit. */
+  const handleUnlocked = useCallback(async () => {
+    setUnlocked(true);
+    // Copy the prompt they originally wanted
+    if (pendingPrompt) {
+      try {
+        await navigator.clipboard.writeText(pendingPrompt);
+        window.dispatchEvent(new CustomEvent('ava:prompt-copied', { detail: { prompt: pendingPrompt } }));
+      } catch {
+        // ignore
+      }
+    }
+  }, [pendingPrompt]);
+
   const activeItem = hoveredItem ?? selectedItem;
 
   const filtered = items.filter((item) => {
@@ -354,6 +435,14 @@ export default function WallPage() {
 
   return (
     <main className="bg-zinc-950 text-white min-h-screen">
+      {/* Email gate modal */}
+      {gateOpen && (
+        <EmailGateModal
+          pendingPrompt={pendingPrompt}
+          onClose={() => setGateOpen(false)}
+          onUnlocked={handleUnlocked}
+        />
+      )}
       {/* Header */}
       <div className="max-w-7xl mx-auto px-6 pt-12 pb-6">
         <h1 className="text-4xl lg:text-5xl font-bold tracking-tight text-white mb-3">
@@ -442,7 +531,7 @@ export default function WallPage() {
               <div className="text-zinc-500 text-[10px] uppercase tracking-widest font-semibold mb-5 hidden lg:block">
                 Director&apos;s Notes
               </div>
-              <PromptPanel item={activeItem} />
+              <PromptPanel item={activeItem} onGatedCopy={handleGatedCopy} />
             </div>
           </div>
         </div>
@@ -462,7 +551,7 @@ export default function WallPage() {
           {/* Sheet */}
           <div className="absolute bottom-0 left-0 right-0 bg-zinc-900 border-t border-zinc-700 rounded-t-2xl p-6 max-h-[85dvh] overflow-y-auto animate-[slideUp_0.25s_ease-out]">
             <div className="w-12 h-1 bg-zinc-700 rounded-full mx-auto mb-5" />
-            <PromptPanel item={selectedItem} onClose={() => setSheetOpen(false)} />
+            <PromptPanel item={selectedItem} onClose={() => setSheetOpen(false)} onGatedCopy={handleGatedCopy} />
           </div>
         </div>
       )}
