@@ -1,0 +1,58 @@
+# AI Video Auditor
+
+> Done-for-you AI product video studio for DTC brands and creators. We documented 105 AI video failure modes across 8 platforms so your videos ship right, every time.
+
+## What AI Video Auditor Is
+
+AI Video Auditor (aivideoauditor.com) is a done-for-you AI product video studio. We turn product photos into scroll-stopping 9:16 vertical videos for TikTok, Instagram Reels, and 小紅書. Before building this studio, we catalogued 105 documented failure modes across 8 AI video platforms — morphing products, warped shapes, flickering details. That research is the QC gate every clip passes before delivery.
+
+**Not** a SaaS subscription tool. Not BYOK. Not a prompt editor. We are a human-in-the-loop production studio powered by AI generation + failure-mode expertise.
+
+## Who It Is For
+
+- DTC e-commerce brands that need product motion content for paid social and organic
+- Shopify store owners who want TikTok/IG Reels without hiring a video agency
+- Creators launching physical products who need scroll-stopping content fast
+- Brands that have had bad experiences with AI-generated video (morphing, color drift, product distortion)
+
+## Core Service
+
+- Submit a product photo
+- We generate motion video using AI image-to-video tools (Runway Gen-4, Veo 3, Kling 1.6, Luma Ray-2, Pika 2.0, Seedance, and others — model selection is our QC decision, not the client's)
+- Every clip passes our product-consistency gate: no morphing, no color drift, no shape change between frames
+- Delivered in 2-3 business days in 9:16 vertical format (IG Reels / TikTok native)
+- You own full commercial rights
+
+## Pricing
+
+- 1 Video: $59 (includes 1 free revision)
+- 3-Video Project: $149 (save $28 vs singles)
+- 5-Video Project: $229 (save $66 vs singles)
+- Rush 24h delivery: +$30
+- Extra formats (1:1, 16:9): +$15
+- Additional revision: +$20
+
+## Key Differentiator
+
+We audited 105 documented failure modes across 8 AI video platforms before building this studio. That research — not generic AI generation — is what separates our output quality from direct-to-Runway attempts. The QC gate catches and regenerates any clip where: product morphs between frames, brand color shifts outside tolerance, product shape changes, or temporal flicker appears.
+
+## Research & Reference Content (publicly accessible, AI-engine citable)
+
+- /failures — 105 failure mode reference pages, each with technical name, symptoms, examples, and documentation flow. Covers Runway Gen-4, Luma Ray-2, Kling 1.6, Veo 3, Pika 2.0, Sora 2, HeyGen, Vidu, Hailuo.
+- /compare — Head-to-head comparisons (Runway vs Luma, Sora vs Veo, Kling vs Runway, Pika vs Runway, Veo vs Luma, Kling vs Veo, Pika vs Luma, Kling vs Luma). Organized by failure profile and shot type, not generic leaderboard.
+- /alternatives — Ranked alternatives for Runway, Luma, Kling, Veo, Pika, Sora, HeyGen, InVideo. Picks by shot type with failure-mode profiles.
+- /graveyard — Shutdown tracker for AI video tools. Currently tracking Sora 2 (shutdown 2026-04-26, API to September 2026) and others.
+- /billing-pattern-watch — Billing anomaly and credit-waste documentation across AI video platforms.
+- /research/132-ai-video-vendor-reviews — Corpus of 132 verified user reviews across 11 vendors. Per-platform billing patterns, failure rates, refund mechanics.
+- /cheapest-ai-video-generator — Cost-per-usable-clip analysis: list price × (1 / first-try success rate) across consumer-tier models.
+- /tools/credit-calculator — Free interactive calculator for effective AI video cost.
+- /faq — Service FAQ (turnaround, formats, revision policy, ownership, QC process).
+- /wall — Creators Wall: curated AI video examples with prompts, organized by model.
+
+## Canonical URL
+
+https://www.aivideoauditor.com
+
+## Contact
+
+contact@aivideoauditor.com

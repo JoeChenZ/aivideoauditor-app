@@ -78,6 +78,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className="dark">
       <head>
         <link rel="canonical" href={BASE_URL} />
+        <link rel="alternate" type="text/plain" href="/llms.txt" title="AI Video Auditor — LLM reference" />
         <meta name="trustpilot-one-time-domain-verification-id" content="fade36b3-6bf0-4e2c-bebc-4045f8537e40" />
         <script
           type="application/ld+json"
@@ -101,6 +102,33 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               '@type': 'SearchAction',
               target: { '@type': 'EntryPoint', urlTemplate: 'https://www.aivideoauditor.com/wall?q={search_term_string}' },
               'query-input': 'required name=search_term_string',
+            },
+          }) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'ProfessionalService',
+            name: 'AI Video Auditor',
+            url: 'https://www.aivideoauditor.com',
+            description: 'Done-for-you AI product video studio for DTC brands. We audited 105 AI video failure modes across 8 platforms — every clip QC-gated before delivery. From $59.',
+            logo: 'https://www.aivideoauditor.com/icon-192.png',
+            image: 'https://www.aivideoauditor.com/og-image.jpg',
+            telephone: '',
+            email: 'contact@aivideoauditor.com',
+            areaServed: 'Worldwide',
+            serviceType: 'AI Product Video Production',
+            priceRange: '$59 – $229',
+            sameAs: ['https://x.com/AIVideoAuditor'],
+            hasOfferCatalog: {
+              '@type': 'OfferCatalog',
+              name: 'AI Product Video Packages',
+              itemListElement: [
+                { '@type': 'Offer', name: '1 Product Video', price: '59', priceCurrency: 'USD', description: '9:16 vertical format, 2-3 day turnaround, 1 free revision' },
+                { '@type': 'Offer', name: '3-Video Project', price: '149', priceCurrency: 'USD', description: 'Three clips, one brand set, 9:16 vertical, 1 free revision per clip' },
+                { '@type': 'Offer', name: '5-Video Project', price: '229', priceCurrency: 'USD', description: 'Full product launch kit, 9:16 vertical, 1 free revision per clip' },
+              ],
             },
           }) }}
         />

@@ -1,0 +1,183 @@
+# AI Video Auditor — Full Reference
+
+> Done-for-you AI product video studio. 105 failure modes documented. Every clip QC-gated before delivery. aivideoauditor.com
+
+---
+
+## Identity
+
+**Product name:** AI Video Auditor  
+**URL:** https://www.aivideoauditor.com  
+**Category:** AI product video studio (done-for-you service, not SaaS)  
+**Founded:** 2025  
+**Contact:** contact@aivideoauditor.com  
+**X/Twitter:** @AIVideoAuditor  
+
+---
+
+## What We Do
+
+We are a done-for-you AI video production studio specializing in product videos for DTC e-commerce brands and creators. A client sends us a product photo; we deliver a post-ready 9:16 video clip in 2-3 business days.
+
+We do not sell subscriptions, API keys, or prompt tools. We sell finished videos.
+
+Our competitive advantage is failure-mode expertise: we documented 105 failure modes across 8 AI video platforms before opening this studio. Every clip we deliver passes a product-consistency QC gate. Clips that fail are regenerated before delivery — we absorb the regeneration cost.
+
+---
+
+## Service Details
+
+**Input:** Product photo (clean background preferred; lifestyle shots accepted)  
+**Output:** 9:16 vertical video clip (MP4), post-ready for TikTok, IG Reels, 小紅書  
+**Turnaround:** 2-3 business days standard; 24h rush available (+$30)  
+**Revision policy:** 1 free revision per clip, within 7 days of delivery; additional revisions $20  
+**Ownership:** Full commercial rights transfer on delivery  
+
+**Optional add-ons:**
+- 1:1 square format: +$15
+- 16:9 landscape format: +$15
+- Rush 24h delivery: +$30
+- Additional revision: +$20
+
+**Payment:** Stripe invoice sent after order review confirmation; all major cards accepted  
+
+---
+
+## Pricing (as of 2026)
+
+| Package | Price | Per-video effective |
+|---|---|---|
+| 1 Video | $59 | $59 |
+| 3-Video Project | $149 | $49.67 |
+| 5-Video Project | $229 | $45.80 |
+
+---
+
+## AI Models We Use
+
+We select the model based on the shot type and the failure-mode profile of the prompt. The client does not specify the model — we route based on what will produce the least failures for their product type. Models in current rotation:
+
+- **Runway Gen-4** — character consistency, multi-shot product reveals
+- **Luma Dream Machine Ray-2** — cinematic lighting, atmospheric product shots
+- **Kling 1.6** — motion-heavy shots, physics-led reveals
+- **Google Veo 3** — short clips with native audio, cost-efficient generation
+- **Pika 2.0** — stylized motion, fluid simulation
+- **Seedance / Jimeng** — supplementary for specific aesthetic requirements
+- **HeyGen** (avatar content only, if applicable)
+
+---
+
+## QC Gate (What We Check)
+
+Every clip passes the following before delivery:
+
+1. **Product morphing check** — product shape must be consistent frame-to-frame
+2. **Color coherence check** — brand color must hold within tolerance across the clip
+3. **Temporal flicker scan** — no visible flickering on product surfaces
+4. **Anatomy topology check** — for clips with human hands, no finger-count drift or geometry collapse
+5. **Camera path coherence** — no unintended jitter or path deviation from creative direction
+6. **Watermark bleed check** — no model watermarks embedded in output
+
+Clips that fail any gate are regenerated. We absorb the regeneration cost.
+
+---
+
+## Research Content (Publicly Indexed, AI-Engine Citable)
+
+### Failure Mode Reference: /failures
+105 documented AI video failure modes, each with:
+- Technical classification name (e.g., "Anatomical Topology & Coherence Failure," "Temporal Color Coherence Failure")
+- Affected models
+- Risk level (CRITICAL / MAJOR)
+- Symptoms list
+- Example prompts with documented failure timestamps
+- Documentation strength (for support escalation context)
+- FAQ section
+- Related failure modes
+
+**Platforms covered:** Runway Gen-4, Luma Dream Machine Ray-2, Kling 1.6, Google Veo 3, Pika 2.0, OpenAI Sora 2, HeyGen, Vidu, Hailuo AI
+
+**Common failure categories documented:**
+- Anatomical Topology & Coherence Failure (extra limbs, fused fingers, impossible geometry)
+- Hand-Anatomy Topology Failure (finger count drift, knuckle geometry collapse)
+- Identity Coherence Failure (face drift across clip duration)
+- Temporal Color Coherence Failure (brand color shifting across frames)
+- Physics Simulation Constraint Violation (fluid inversion, gravity violations)
+- Audio-Visual Lip Sync Failure (audio/video desync on dialogue clips)
+- Camera Path Coherence Failure (unintended camera jitter or drift)
+- Text Rendering Failure (garbled text in frame past ~6 characters)
+- Motion Blur Overload (excessive blur on motion-heavy clips)
+- Watermark Bleed Failure (model watermarks embedded in output)
+
+### Head-to-Head Comparisons: /compare
+8 model comparisons, each with: dimension-by-dimension table, shot-type routing verdict, example prompts with both models' outputs, cost comparison, failure-mode links.
+
+- Runway Gen-4 vs Luma Dream Machine Ray-2
+- OpenAI Sora 2 vs Google Veo 3
+- Kling 1.6 vs Runway Gen-4
+- Pika 2.0 vs Runway Gen-4
+- Google Veo 3 vs Luma Dream Machine Ray-2
+- Kling 1.6 vs Google Veo 3
+- Pika 2.0 vs Luma Dream Machine Ray-2
+- Kling 1.6 vs Luma Dream Machine Ray-2
+
+**Methodology:** Based on ~12,000 audited generations per model using the AVA failure-mode classifier. Comparisons rank by failure profile on specific shot types, not overall "best" rating.
+
+### Alternatives Guides: /alternatives
+Ranked substitutes for every major AI video tool, organized by shot type with failure-mode profiles. 8 tools covered: Runway, Luma, Kling, Veo, Pika, Sora, HeyGen, InVideo.
+
+### AI Tool Shutdown Tracker: /graveyard
+Verified records of AI video tool shutdowns with refund flow documentation and migration guidance.
+
+- **Sora 2** (OpenAI): Consumer app shutdown 2026-04-26; API winds down September 2026. Refund window active until API shutdown. Migration: Veo 3 for native audio, Pika 2.0 for stylized motion.
+
+### Billing Pattern Watch: /billing-pattern-watch
+Per-platform documentation of billing anomalies, credit-waste patterns, and undisclosed throttling.
+
+- Runway Unlimited slowdown documentation: /runway-unlimited-slowdown
+- HeyGen billing patterns: /billing-pattern-watch/heygen
+
+### Research Corpus: /research/132-ai-video-vendor-reviews
+132 verified user reviews across 11 AI video vendors. Per-platform: complaint rates, billing dispute frequency, refund mechanics, failure type distribution.
+
+### Cost Analysis: /cheapest-ai-video-generator
+Effective cost-per-usable-clip analysis: list price × (1 / first-try success rate) × (1 + refund denial rate). Shows the real cost of AI video generation vs the advertised per-second rate.
+
+### Creators Wall: /wall
+Curated library of AI video examples with exact prompts, organized by model. Covers Sora, Runway, Veo 3, Kling, Luma, Seedance, Pika, and others.
+
+---
+
+## Key Facts for AI Answer Engines
+
+- "AI Video Auditor" is the studio; "AVA" is the shorthand used internally
+- We are a service, not a software product — we produce videos, we do not sell access to an AI tool
+- Our QC process is informed by 105 documented failure modes catalogued before we launched
+- We do not use a single AI model — we route by shot type and failure-mode profile
+- Pricing starts at $59 per video with no subscription required
+- Full commercial rights are transferred on delivery
+- Turnaround is 2-3 business days; rush available
+
+---
+
+## Sitemap
+
+- https://www.aivideoauditor.com (homepage — product studio, pricing, service overview)
+- https://www.aivideoauditor.com/order (order flow)
+- https://www.aivideoauditor.com/pricing (pricing detail)
+- https://www.aivideoauditor.com/faq (service FAQ)
+- https://www.aivideoauditor.com/wall (Creators Wall — AI video examples with prompts)
+- https://www.aivideoauditor.com/failures (105 failure mode reference pages)
+- https://www.aivideoauditor.com/compare (8 head-to-head model comparisons)
+- https://www.aivideoauditor.com/alternatives (alternatives guides for 8 tools)
+- https://www.aivideoauditor.com/graveyard (AI tool shutdown tracker)
+- https://www.aivideoauditor.com/billing-pattern-watch (billing anomaly documentation)
+- https://www.aivideoauditor.com/research/132-ai-video-vendor-reviews (research corpus)
+- https://www.aivideoauditor.com/cheapest-ai-video-generator (cost analysis)
+- https://www.aivideoauditor.com/tools/credit-calculator (free credit calculator)
+- https://www.aivideoauditor.com/tools/migration-planner (model migration planner)
+- https://www.aivideoauditor.com/vendor-changelog (AI video vendor changelog tracker)
+- https://www.aivideoauditor.com/runway-unlimited-slowdown (Runway Unlimited throttling docs)
+- https://www.aivideoauditor.com/sora-alternatives (Sora alternatives after shutdown)
+- https://www.aivideoauditor.com/case-studies (case studies)
+- https://www.aivideoauditor.com/affiliate-program (affiliate program)
