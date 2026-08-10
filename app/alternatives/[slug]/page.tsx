@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ALTERNATIVES, getAlternativesPage } from './data';
+import StudioCtaBanner from '@/components/studio-cta-banner';
 import { FAILURES } from '../../failures/[slug]/data';
 import { COMPARISONS } from '../../compare/[slug]/data';
 
@@ -241,6 +242,7 @@ export default function AlternativesPage({ params }: { params: { slug: string } 
             </div>
           </section>
 
+          <StudioCtaBanner />
         </div>
       </main>
     </>

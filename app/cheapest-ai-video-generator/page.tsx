@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import LeadCaptureForm from '@/components/lead-capture-form';
 import { WidePageShell, Breadcrumb, ArticleHeader, RuleDivider, Kicker } from '@/components/editorial';
+import StudioCtaBanner from '@/components/studio-cta-banner';
 import { AffiliateLink, AffiliateDisclosure } from '@/components/affiliate-link';
 
 const URL = 'https://www.aivideoauditor.com/cheapest-ai-video-generator';
@@ -267,6 +268,7 @@ export default function CheapestAIVideoPage() {
             </Link>
           </div>
         </section>
+        <StudioCtaBanner />
       </WidePageShell>
     </>
   );

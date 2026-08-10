@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { COMPARISONS, getComparison } from './data';
+import StudioCtaBanner from '@/components/studio-cta-banner';
 import { ALTERNATIVES } from '../../alternatives/[slug]/data';
 
 const ALT_SLUGS = new Set(ALTERNATIVES.map((a) => a.slug));
@@ -318,6 +319,7 @@ export default function ComparePage({ params }: { params: { slug: string } }) {
             </div>
           </section>
 
+          <StudioCtaBanner />
         </div>
       </main>
     </>

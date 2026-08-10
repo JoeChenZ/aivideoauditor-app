@@ -68,6 +68,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/vendor-changelog`, lastModified: new Date('2026-05-20'), changeFrequency: 'weekly', priority: 0.92 },
     { url: `${BASE}/security`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.6 },
     { url: `${BASE}/privacy`, lastModified: new Date(), changeFrequency: 'yearly', priority: 0.4 },
+    { url: `${BASE}/studio`, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 0.95 },
+    { url: `${BASE}/best-ai-model-for-product-videos`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.88 },
     ...failurePages,
     ...graveyardPages,
     ...comparePages,

@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getFailure, FAILURES, getRelatedFailures } from './data';
+import StudioCtaBanner from '@/components/studio-cta-banner';
 import { ALTERNATIVES } from '../../alternatives/[slug]/data';
 import { COMPARISONS } from '../../compare/[slug]/data';
 
@@ -379,6 +380,7 @@ export default function FailurePage({ params }: { params: { slug: string } }) {
             );
           })()}
 
+          <StudioCtaBanner />
         </div>
       </main>
     </>
