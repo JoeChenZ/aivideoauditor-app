@@ -1,8 +1,10 @@
 'use client';
 
 // Posters are self-hosted at /wall/<id>.jpg (public/wall/).
-// Videos are proxied via /api/wall/[id] to bypass CDN hotlink blocking,
-// EXCEPT when videoUrl starts with '/' (local static files — served directly).
+// Videos: external CDN URLs (cdn.openai.com, d3phaj0sisr2ct.cloudfront.net) are served
+// directly — both return 200 without Referer restrictions (confirmed 2026-08-09).
+// Local static files (videoUrl starting with '/') are also served directly.
+// The /api/wall/[id] proxy is no longer used for wall videos.
 
 import { useState, useRef, useEffect, useCallback } from 'react';
 import Link from 'next/link';
