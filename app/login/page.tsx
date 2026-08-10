@@ -62,8 +62,10 @@ function LoginForm() {
         setLoading(false);
         return;
       }
-      router.push(redirectTo);
+      // Session returned immediately (email confirmation OFF) — refresh server
+      // components first so the auth cookie is recognised, then navigate.
       router.refresh();
+      router.push(redirectTo);
       return;
     }
 
