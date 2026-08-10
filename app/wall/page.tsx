@@ -78,11 +78,14 @@ function modelTabLabel(model: string): string {
   return MODEL_BADGE_STYLES[model]?.label ?? model;
 }
 
-// Video src: local files served directly; remote files go through the proxy
+// Video src: local files and external CDN URLs served directly (no proxy needed).
+// Both cdn.openai.com and d3phaj0sisr2ct.cloudfront.net return 200 without
+// Referer restrictions — confirmed 2026-08-09 via curl. Proxy is bypassed to
+// avoid routing video bytes through Vercel and exhausting fastOriginTransfer.
 function videoSrc(item: GalleryItem): string | null {
   if (!item.videoUrl) return null;
-  if (item.videoUrl.startsWith('/')) return item.videoUrl;
-  return `/api/wall/${item.id}`;
+  // Local static files and external CDN URLs both served directly
+  return item.videoUrl;
 }
 
 // Thumbnail src: use explicit thumbnailUrl if set, else fall back to /wall/<id>.jpg
@@ -280,8 +283,8 @@ function PromptPanel({
             muted
             loop
             playsInline
-            autoPlay
-            preload="auto"
+            controls
+            preload="none"
             className="absolute inset-0 w-full h-full object-cover"
           />
         )}
