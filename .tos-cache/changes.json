@@ -1,14 +1,14 @@
 {
-  "runAt": "2026-08-03T17:48:23.844Z",
+  "runAt": "2026-08-10T16:51:06.838Z",
   "threshold": 0.05,
   "results": [
     {
       "slug": "runway",
       "url": "https://runwayml.com/terms-of-use",
       "status": "CHANGED",
-      "ratio": 0.9338,
-      "oldLen": 78812,
-      "newLen": 78821
+      "ratio": 0.9328,
+      "oldLen": 78821,
+      "newLen": 78902
     },
     {
       "slug": "luma",
@@ -28,9 +28,9 @@
     {
       "slug": "google",
       "url": "https://policies.google.com/terms",
-      "status": "CHANGED",
-      "ratio": 0.9072,
-      "oldLen": 28817,
+      "status": "STABLE",
+      "ratio": 0,
+      "oldLen": 29476,
       "newLen": 29476
     },
     {
@@ -67,8 +67,7 @@
     }
   ],
   "changed": [
-    "runway",
-    "google"
+    "runway"
   ],
   "fetchFailed": [
     "openai"
