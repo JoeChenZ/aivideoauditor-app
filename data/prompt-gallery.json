@@ -1423,5 +1423,62 @@
     ],
     "embeddable": true,
     "embedMethod": "local-mp4"
+  },
+  {
+    "id": "veo3-wild-pearl-reveal",
+    "title": "Wild Pearl, Blush Pink",
+    "model": "Google Veo 3",
+    "prompt": "Close-up by the sea: two hands hold a wild oyster and slide a thin knife into the shell's hinge seam, easing it open to reveal glossy pale flesh with no pearl visible yet. Fingers press along the flesh from the outer edge inward and slowly squeeze a single small blush-pink baroque pearl out to the surface, lifting it between fingertips. Natural daylight, shallow depth of field, wet shells and a calm shoreline behind. Photoreal, tactile, ASMR.",
+    "videoUrl": "/wall/veo3-wild-pearl-reveal.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": "/wall/veo3-wild-pearl-reveal-poster.jpg",
+    "creator": "TSUYU",
+    "sourceUrl": "https://aivideoauditor.com/order",
+    "tags": [
+      "product",
+      "asmr",
+      "jewelry",
+      "ocean"
+    ],
+    "embeddable": true,
+    "embedMethod": "local-mp4"
+  },
+  {
+    "id": "veo3-pearl-squeeze-asmr",
+    "title": "Squeezing a Pearl from a Wild Oyster",
+    "model": "Google Veo 3",
+    "prompt": "Macro ASMR shot of an opened wild oyster held in one hand at the beach. Fingers gently press the soft flesh and a single real blush baroque pearl emerges from the edge and rolls into view, glistening with moisture. Soft natural light, water and sand behind, extreme close-up, oddly satisfying, photoreal.",
+    "videoUrl": "/wall/veo3-pearl-squeeze-asmr.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": "/wall/veo3-pearl-squeeze-asmr-poster.jpg",
+    "creator": "TSUYU",
+    "sourceUrl": "https://aivideoauditor.com/order",
+    "tags": [
+      "asmr",
+      "oddlysatisfying",
+      "product",
+      "ocean"
+    ],
+    "embeddable": true,
+    "embedMethod": "local-mp4"
+  },
+  {
+    "id": "veo3-found-not-made",
+    "title": "Found, Not Made",
+    "model": "Google Veo 3",
+    "prompt": "A cinematic 30-second sequence on an Ise-Shima shoreline telling the story of a wild pearl: hands opening rugged oysters, sunlight on moving water, then a single blush baroque pearl revealed and admired between fingertips. Warm natural color grade, calm ocean ambience, editorial jewelry-brand storytelling, photoreal — the idea that every natural pearl is found, not made.",
+    "videoUrl": "/wall/veo3-found-not-made.mp4",
+    "embedUrl": null,
+    "thumbnailUrl": "/wall/veo3-found-not-made-poster.jpg",
+    "creator": "TSUYU",
+    "sourceUrl": "https://aivideoauditor.com/order",
+    "tags": [
+      "story",
+      "jewelry",
+      "ocean",
+      "cinematic"
+    ],
+    "embeddable": true,
+    "embedMethod": "local-mp4"
   }
 ]
