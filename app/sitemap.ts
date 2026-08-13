@@ -5,6 +5,7 @@ import { COMPARISONS } from './compare/[slug]/data';
 import { CASE_STUDIES } from './case-studies/[slug]/data';
 import { ALTERNATIVES } from './alternatives/[slug]/data';
 import { PROMPTS, MODELS, slugifyModel } from './prompts/data';
+import { VERTICALS } from './product-videos/data';
 
 const BASE = 'https://www.aivideoauditor.com';
 
@@ -58,6 +59,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.85,
   }));
 
+  const productVideoPages: MetadataRoute.Sitemap = VERTICALS.map((v) => ({
+    url: `${BASE}/product-videos/${v.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly',
+    priority: 0.88,
+  }));
+
   return [
     { url: BASE, lastModified: new Date(), changeFrequency: 'weekly', priority: 1.0 },
     { url: `${BASE}/prompts`, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 0.9 },
@@ -86,6 +94,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/privacy`, lastModified: new Date(), changeFrequency: 'yearly', priority: 0.4 },
     { url: `${BASE}/studio`, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 0.95 },
     { url: `${BASE}/best-ai-model-for-product-videos`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.88 },
+    { url: `${BASE}/product-videos`, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 0.92 },
     ...failurePages,
     ...graveyardPages,
     ...comparePages,
@@ -93,5 +102,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...alternativesPages,
     ...promptPages,
     ...promptModelPages,
+    ...productVideoPages,
   ];
 }

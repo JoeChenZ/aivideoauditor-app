@@ -38,6 +38,7 @@ export default function Nav() {
         <div className="hidden md:flex items-center gap-6">
           <Link href="/wall" className="text-zinc-400 hover:text-white text-sm transition-colors">Creators Wall</Link>
           <Link href="/prompts" className="text-zinc-400 hover:text-white text-sm transition-colors">Prompts</Link>
+          <Link href="/product-videos" className="text-zinc-400 hover:text-white text-sm transition-colors">Product Videos</Link>
           <Link href="/#how-it-works" className="text-zinc-400 hover:text-white text-sm transition-colors">How It Works</Link>
           <Link href="/faq" className="text-zinc-400 hover:text-white text-sm transition-colors">FAQ</Link>
           <Link href="/order" className="bg-blue-600 hover:bg-blue-500 text-white px-4 py-1.5 rounded-full text-sm font-medium transition-colors">
@@ -80,6 +81,7 @@ export default function Nav() {
         <div className="md:hidden absolute top-16 left-0 right-0 bg-zinc-950 border-b border-zinc-800 px-6 py-4 flex flex-col gap-4">
           <Link href="/wall" className="text-zinc-300 hover:text-white text-sm" onClick={() => setOpen(false)}>Creators Wall</Link>
           <Link href="/prompts" className="text-zinc-300 hover:text-white text-sm" onClick={() => setOpen(false)}>Prompts</Link>
+          <Link href="/product-videos" className="text-zinc-300 hover:text-white text-sm" onClick={() => setOpen(false)}>Product Videos</Link>
           <Link href="/#how-it-works" className="text-zinc-300 hover:text-white text-sm" onClick={() => setOpen(false)}>How It Works</Link>
           <Link href="/faq" className="text-zinc-300 hover:text-white text-sm" onClick={() => setOpen(false)}>FAQ</Link>
           <Link href="/order" className="bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-medium text-center" onClick={() => setOpen(false)}>Order a Video</Link>
