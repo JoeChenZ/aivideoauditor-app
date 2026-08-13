@@ -4,6 +4,7 @@ import { SHUTDOWNS } from './graveyard/[slug]/data';
 import { COMPARISONS } from './compare/[slug]/data';
 import { CASE_STUDIES } from './case-studies/[slug]/data';
 import { ALTERNATIVES } from './alternatives/[slug]/data';
+import { PROMPTS, MODELS, slugifyModel } from './prompts/data';
 
 const BASE = 'https://www.aivideoauditor.com';
 
@@ -43,8 +44,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.86,
   }));
 
+  const promptPages: MetadataRoute.Sitemap = PROMPTS.map((p) => ({
+    url: `${BASE}/prompts/${p.id}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly',
+    priority: 0.8,
+  }));
+
+  const promptModelPages: MetadataRoute.Sitemap = MODELS.map((m) => ({
+    url: `${BASE}/prompts/model/${slugifyModel(m)}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly',
+    priority: 0.85,
+  }));
+
   return [
     { url: BASE, lastModified: new Date(), changeFrequency: 'weekly', priority: 1.0 },
+    { url: `${BASE}/prompts`, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 0.9 },
     { url: `${BASE}/wall`, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 0.95 },
     { url: `${BASE}/order`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.9 },
     { url: `${BASE}/faq`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.85 },
@@ -75,5 +91,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...comparePages,
     ...caseStudyPages,
     ...alternativesPages,
+    ...promptPages,
+    ...promptModelPages,
   ];
 }

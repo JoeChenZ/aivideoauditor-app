@@ -196,7 +196,16 @@ function VideoTile({
         }`}
       >
         <p className="text-white text-xs font-medium truncate mb-1">{item.title}</p>
-        {modelBadge(item.model)}
+        <div className="flex items-center justify-between gap-2">
+          {modelBadge(item.model)}
+          <Link
+            href={`/prompts/${item.id}`}
+            onClick={(e) => e.stopPropagation()}
+            className="text-[10px] font-semibold text-blue-300 hover:text-blue-200 transition-colors whitespace-nowrap"
+          >
+            View prompt →
+          </Link>
+        </div>
       </div>
 
       {/* Selected indicator */}
