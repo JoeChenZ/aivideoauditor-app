@@ -94,6 +94,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/privacy`, lastModified: new Date(), changeFrequency: 'yearly', priority: 0.4 },
     { url: `${BASE}/studio`, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 0.95 },
     { url: `${BASE}/best-ai-model-for-product-videos`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.88 },
+    { url: `${BASE}/veo-vs-runway-vs-kling-for-product-videos`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.88 },
     { url: `${BASE}/product-videos`, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 0.92 },
     ...failurePages,
     ...graveyardPages,
