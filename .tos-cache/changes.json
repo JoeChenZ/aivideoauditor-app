@@ -1,5 +1,5 @@
 {
-  "runAt": "2026-08-10T16:51:06.838Z",
+  "runAt": "2026-08-17T16:23:21.747Z",
   "threshold": 0.05,
   "results": [
     {
@@ -7,8 +7,8 @@
       "url": "https://runwayml.com/terms-of-use",
       "status": "CHANGED",
       "ratio": 0.9328,
-      "oldLen": 78821,
-      "newLen": 78902
+      "oldLen": 78902,
+      "newLen": 78821
     },
     {
       "slug": "luma",
