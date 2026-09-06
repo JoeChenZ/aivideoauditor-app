@@ -34,6 +34,15 @@ const nextConfig = {
           { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
         ],
       },
+      {
+        // public/wall + public/showcase mp4s (~59MB, 20 files) were serving with
+        // max-age=0 must-revalidate — the largest uncached-transfer surface on the
+        // site, found while investigating fastOriginTransfer usage.
+        source: '/(wall|showcase)/:path*\\.(mp4|webm|mov|jpg|jpeg|png|webp|gif)',
+        headers: [
+          { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
+        ],
+      },
     ];
   },
 };
