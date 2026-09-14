@@ -78,7 +78,7 @@ export default function Order() {
           <div className="text-5xl mb-6">+</div>
           <h1 className="text-3xl font-bold text-white mb-4">Order received.</h1>
           <p className="text-zinc-300 leading-relaxed">
-            We received your order. Check {form.email} — you&apos;ll get a payment link and next steps within 24 hours.
+            We received your order. Check {form.email} for your confirmation and next steps.
           </p>
           <p className="text-zinc-400 text-sm mt-4">
             Questions? Email{' '}
@@ -116,7 +116,7 @@ export default function Order() {
             <div className="mt-12 bg-zinc-900 rounded-xl p-6">
               <div className="text-zinc-400 text-sm mb-1">Estimated total</div>
               <div className="text-4xl font-bold text-white">${total}</div>
-              <div className="text-zinc-500 text-xs mt-2">You will not be charged yet. We send a secure payment link after reviewing your order.</div>
+              <div className="text-zinc-500 text-xs mt-2">Next step is secure checkout via Stripe. Not a fit for your product? We refund in full.</div>
             </div>
           </div>
 
@@ -251,7 +251,7 @@ export default function Order() {
             </button>
 
             <p className="text-zinc-500 text-xs text-center">
-              You will not be charged yet. After we review your order, we will send a secure payment link via email.
+              Submitting takes you to secure Stripe checkout. If we cannot make a great video from your photo, we refund in full.
             </p>
           </form>
         </div>

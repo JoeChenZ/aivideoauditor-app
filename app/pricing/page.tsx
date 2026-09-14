@@ -1,101 +1,87 @@
 import Link from 'next/link';
-import { CheckoutButton } from './CheckoutButtons';
-import PricingTrack from './track';
 
-const EXTENSION_API = 'https://aivideoauditor-extension.vercel.app';
-
-type TierPrice = {
-  tier: string;
-  priceId: string | null;
-  amountCents: number;
-  currency: string;
-  interval: string;
-  fallback?: boolean;
-};
-
-type PricesResponse = {
-  tiers: { free: TierPrice; pro: TierPrice; business: TierPrice };
-  fallback: boolean;
-};
-
-const FALLBACK_PRICES: PricesResponse = {
-  tiers: {
-    free:     { tier: 'free',     priceId: null, amountCents: 0,    currency: 'usd', interval: 'month' },
-    pro:      { tier: 'pro',      priceId: null, amountCents: 1900, currency: 'usd', interval: 'month' },
-    business: { tier: 'business', priceId: null, amountCents: 7900, currency: 'usd', interval: 'month' },
+// Keep in sync with the order form's source of truth: app/order/page.tsx PRICES.
+const PACKAGES = [
+  {
+    key: '1',
+    name: '1 Product Video',
+    price: 59,
+    tagline: 'Test one hook, no commitment',
+    features: [
+      '9:16 vertical, ready for Reels/TikTok/小紅書',
+      '2–3 day turnaround (24h rush +$30)',
+      'Full commercial rights + 1 free revision',
+    ],
+    footnote: 'Want more cuts from the same product photos? See the projects below.',
   },
-  fallback: true,
-};
-
-export const dynamic = 'force-dynamic';
-
-async function getPrices(): Promise<PricesResponse> {
-  try {
-    const res = await fetch(`${EXTENSION_API}/api/prices`, { next: { revalidate: 3600 } });
-    if (!res.ok) return FALLBACK_PRICES;
-    return await res.json();
-  } catch {
-    return FALLBACK_PRICES;
-  }
-}
-
-function formatPrice(p: TierPrice): string {
-  if (p.amountCents === 0) return '$0';
-  const dollars = p.amountCents / 100;
-  return `$${dollars % 1 === 0 ? dollars.toFixed(0) : dollars.toFixed(2)}`;
-}
-
-const FREE_FEATURES = [
-  'Unlimited platform reality checks across 11 vendors',
-  '50 pre-flight prompt scores per month',
-  'L1 prompt risk scanner (red / yellow / green)',
-  'Generation ID + Asset ID auto-capture',
-  'Browse the public Wall of Shame (105 failure modes)',
+  {
+    key: '3',
+    name: '3-Video Project',
+    price: 149,
+    tagline: 'One shoot, three cuts — most popular',
+    highlight: true,
+    features: [
+      'Same product photos, ×3 different clips',
+      'One consistent brand look across all three',
+      'Full commercial rights + 1 free revision per clip',
+    ],
+  },
+  {
+    key: '5',
+    name: '5-Video Project',
+    price: 229,
+    tagline: 'One shoot, five cuts — full launch kit',
+    features: [
+      'Same product photos, ×5 different clips',
+      'Best per-video price of the three',
+      'Full commercial rights + 1 free revision per clip',
+    ],
+  },
 ];
 
-const PRO_FEATURES = [
-  'Everything in Free, plus:',
-  'Unlimited prompt scores',
-  'L1 full-analysis mode with rewrite suggestions',
-  'Personal failure history (per platform, per prompt shape)',
-  'Platform change alerts: pricing, "unlimited" routing, NSFW policy',
-  'Effective-cost calculator (list price / success rate)',
+const ADD_ONS = [
+  { name: 'Rush delivery (24h)', price: '+$30' },
+  { name: 'Extra export formats (1:1, 16:9)', price: '+$15' },
 ];
 
-const BUSINESS_FEATURES = [
-  'Everything in Pro, plus:',
-  'Fair-use unlimited scoring',
-  'Team seats (coming soon)',
-  'API access for high-volume teams',
-  'Cross-platform change-history feed',
-  'Slack / email support SLA',
+const WHAT_YOU_GET = [
+  {
+    label: 'Turnaround',
+    detail: '2–3 business days from photo submission to delivery. Need it faster? Rush delivery lands in 24 hours for +$30.',
+  },
+  {
+    label: 'Usage rights',
+    detail: 'Once delivered and paid, the video is yours — full commercial rights, no royalties, no re-licensing fee. Post it on IG, TikTok, your site, or paid ads.',
+  },
+  {
+    label: 'Formats',
+    detail: 'Every order includes 9:16 vertical (Reels/TikTok/小紅書native). 1:1 square and 16:9 landscape are available as add-ons for +$15.',
+  },
+  {
+    label: 'Revisions',
+    detail: '1 free revision per video, included in every package. Request it within 7 days of delivery.',
+  },
 ];
 
 const FAQ = [
   {
-    q: 'What does AVA Pro actually do for me?',
-    a: 'AVA scores your prompts before you click Generate, so you stop spending credits on prompts that will fail. Pro adds your personal failure history (per platform, per prompt shape) and alerts you when vendors change pricing, "unlimited" routing rules, or NSFW policies mid-subscription. The goal is to know what you\'re committing to before you subscribe, and stay ahead of the platforms you already use.',
+    q: 'Are these videos AI-generated?',
+    a: 'Yes — every clip starts as an AI-generated animation from your product photo, not a camera shoot. We say this upfront because it is also the advantage: no shoot to schedule, no photographer\'s day rate, no editor\'s vacation to work around mid-launch. Every clip still goes through a manual QC pass that checks for product drift, color shift, or shape changes before it ships. We recommend disclosing "AI-assisted" in your caption; most platforms currently allow AI-generated video in organic posts.',
   },
   {
-    q: 'Can I cancel anytime?',
-    a: 'Yes. Cancel in one click from your dashboard or via the Stripe-managed billing portal. You keep Pro / Business access until the end of the current billing period.',
+    q: 'What do I send you?',
+    a: 'One or more product photos and a short description of what you sell. No filming, no editing software, no AI prompting on your end.',
   },
   {
-    q: 'What does "fair-use unlimited" mean on Business?',
-    a: 'No hard cap on audits. We monitor for automated abuse (scripted spam against the same generation IDs); legitimate human-driven volume is fine even if you run hundreds of audits a month.',
+    q: 'When do I get charged?',
+    a: 'You fill in the order form with your product photo and brief, then go straight to secure Stripe checkout. If your photo will not produce a video we are happy to ship, we tell you and refund in full before any work starts.',
   },
   {
-    q: 'Which platforms does it score against?',
-    a: 'Prompt scoring runs against 105 failure modes catalogued across 8 platforms: Runway, Luma, Sora, Veo, Kling, Pika, Hailuo, and Vidu. Vendor reality check (billing patterns, first-try success rates, "unlimited" gating rules, pricing-change history) covers 11 vendors — those 8 plus Higgsfield, Krea, and Pollo from the 132-review Trustpilot corpus. Auto-detection runs in-page on Runway ML and Luma; for other platforms, paste your prompt + select the target vendor.',
-  },
-  {
-    q: 'Is my data shared with you?',
-    a: 'Audit frames are sent to our server only for the duration of the AI analysis call (multimodal Gemini) and are not stored. Generation IDs and audit outcomes are stored against your account so the dashboard works. No third-party analytics, no advertising, no resale. See /privacy.',
+    q: 'What if I don’t like the result?',
+    a: 'Every package includes 1 free revision per video. See the full policy on the FAQ page.',
   },
 ];
 
-// FAQPage + BreadcrumbList JSON-LD for SERP rich results.
-// FAQ entities reuse the visible Q&A above (single source of truth).
 const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
@@ -105,6 +91,7 @@ const faqSchema = {
     acceptedAnswer: { '@type': 'Answer', text: a },
   })),
 };
+
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
@@ -114,14 +101,17 @@ const breadcrumbSchema = {
   ],
 };
 
-export default async function PricingPage() {
-  const { tiers } = await getPrices();
+export const metadata = {
+  title: 'Pricing — AI Product Video Packages',
+  description: 'AI product videos delivered in 2–3 days, not the usual week-long freelancer back-and-forth. $59–$229 per package, full commercial rights, real 9:16 video files.',
+  alternates: { canonical: 'https://www.aivideoauditor.com/pricing' },
+};
 
+export default function PricingPage() {
   return (
     <main className="min-h-screen py-20 px-6">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
-      <PricingTrack />
       <div className="max-w-6xl mx-auto">
 
         <div className="text-center mb-12">
@@ -129,126 +119,92 @@ export default async function PricingPage() {
             Pricing
           </p>
           <h1 className="text-4xl font-bold text-ink-primary mb-3 leading-tight">
-            Stop burning credits on prompts that fail.
+            Your product video back in 2–3 days — not the usual week of back-and-forth.
           </h1>
           <p className="text-ink-secondary text-lg max-w-2xl mx-auto">
-            Free gives you unlimited platform reality checks across 11 vendors. Pro adds
-            unlimited prompt scoring, personal failure history, and change alerts when
-            vendors move the goalposts. Business adds team seats and API access.
+            No photographer to reschedule, no editor&apos;s vacation to plan around, no rate hike
+            halfway through the project. Send a product photo, pick a package, get a QC-checked
+            video back — flat price, no subscription.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6 mb-16">
-
-          {/* FREE */}
-          <div className="bg-surface border border-border rounded-2xl p-8">
-            <p className="text-xs font-mono font-bold tracking-widest text-ink-muted uppercase mb-2">
-              Free
-            </p>
-            <div className="mb-6">
-              <span className="text-4xl font-bold text-ink-primary">{formatPrice(tiers.free)}</span>
-              <span className="text-ink-muted ml-2">forever</span>
+        {/* What you actually get — plain terms, no ambiguity */}
+        <div className="grid sm:grid-cols-2 gap-6 mb-16">
+          {WHAT_YOU_GET.map((item) => (
+            <div key={item.label} className="bg-elevated border border-border rounded-2xl p-6">
+              <p className="text-xs font-mono font-bold tracking-widest text-neon-green uppercase mb-2">
+                {item.label}
+              </p>
+              <p className="text-ink-secondary text-sm leading-relaxed">{item.detail}</p>
             </div>
-            <a
-              href="https://chromewebstore.google.com/detail/aivideoauditor/ecomchbdfkgakaoponipjgpnjfpimdef"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block w-full text-center bg-elevated hover:bg-elevated/80 border border-border text-ink-primary font-mono font-semibold px-6 py-3 rounded-xl transition-all mb-6"
-            >
-              Add to Chrome — Free
-            </a>
-            <ul className="space-y-2">
-              {FREE_FEATURES.map((f) => (
-                <li key={f} className="flex gap-2 text-sm text-ink-secondary">
-                  <span className="text-neon-green flex-shrink-0">✓</span>
-                  <span>{f}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* PRO */}
-          <div className="bg-surface border border-neon-amber/40 shadow-lg shadow-neon-amber/10 rounded-2xl p-8 relative">
-            <div className="absolute -top-3 left-8 bg-neon-amber/20 border border-neon-amber/40 px-3 py-1 rounded-full">
-              <span className="text-xs font-mono font-bold tracking-widest text-neon-amber uppercase">
-                Most Popular
-              </span>
-            </div>
-            <p className="text-xs font-mono font-bold tracking-widest text-neon-amber uppercase mb-2">
-              Pro
-            </p>
-            <div className="mb-6">
-              <span className="text-4xl font-bold text-ink-primary">{formatPrice(tiers.pro)}</span>
-              <span className="text-ink-muted ml-2">per {tiers.pro.interval}</span>
-            </div>
-            <CheckoutButton tier="pro" label="Upgrade to Pro" variant="amber" />
-            <p className="text-xs text-ink-muted text-center mb-6">
-              Cancel anytime
-            </p>
-            <ul className="space-y-2">
-              {PRO_FEATURES.map((f, i) => (
-                <li key={f} className={`flex gap-2 text-sm ${i === 0 ? 'text-ink-muted italic' : 'text-ink-secondary'}`}>
-                  {i > 0 && <span className="text-neon-amber flex-shrink-0">✓</span>}
-                  <span>{f}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* BUSINESS */}
-          <div className="bg-surface border border-neon-purple/40 rounded-2xl p-8">
-            <p className="text-xs font-mono font-bold tracking-widest text-neon-purple uppercase mb-2">
-              Business
-            </p>
-            <div className="mb-6">
-              <span className="text-4xl font-bold text-ink-primary">{formatPrice(tiers.business)}</span>
-              <span className="text-ink-muted ml-2">per {tiers.business.interval}</span>
-            </div>
-            <CheckoutButton tier="business" label="Upgrade to Business" variant="primary" />
-            <p className="text-xs text-ink-muted text-center mb-6">
-              Fair-use unlimited · Cancel anytime
-            </p>
-            <ul className="space-y-2">
-              {BUSINESS_FEATURES.map((f, i) => (
-                <li key={f} className={`flex gap-2 text-sm ${i === 0 ? 'text-ink-muted italic' : 'text-ink-secondary'}`}>
-                  {i > 0 && <span className="text-neon-purple flex-shrink-0">✓</span>}
-                  <span>{f}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
+          ))}
         </div>
 
-        {/* Cost-justification */}
+        <div className="grid md:grid-cols-3 gap-6 mb-16">
+          {PACKAGES.map((pkg) => (
+            <div
+              key={pkg.key}
+              className={`bg-surface border rounded-2xl p-8 relative flex flex-col ${
+                pkg.highlight ? 'border-neon-amber/40 shadow-lg shadow-neon-amber/10' : 'border-border'
+              }`}
+            >
+              {pkg.highlight && (
+                <div className="absolute -top-3 left-8 bg-neon-amber/20 border border-neon-amber/40 px-3 py-1 rounded-full">
+                  <span className="text-xs font-mono font-bold tracking-widest text-neon-amber uppercase">
+                    Most Popular
+                  </span>
+                </div>
+              )}
+              <p className="text-xs font-mono font-bold tracking-widest text-ink-muted uppercase mb-2">
+                {pkg.tagline}
+              </p>
+              <h2 className="text-lg font-semibold text-ink-primary mb-2">{pkg.name}</h2>
+              <div className="mb-6">
+                <span className="text-4xl font-bold text-ink-primary">${pkg.price}</span>
+                <span className="text-ink-muted ml-2">one-time</span>
+              </div>
+              <Link
+                href="/order"
+                className={`block w-full text-center font-mono font-semibold px-6 py-3 rounded-xl transition-all mb-6 ${
+                  pkg.highlight
+                    ? 'bg-neon-amber/20 hover:bg-neon-amber/30 border border-neon-amber/40 text-neon-amber'
+                    : 'bg-elevated hover:bg-elevated/80 border border-border text-ink-primary'
+                }`}
+              >
+                Order this package →
+              </Link>
+              <ul className="space-y-2 mb-4">
+                {pkg.features.map((f) => (
+                  <li key={f} className="flex gap-2 text-sm text-ink-secondary">
+                    <span className="text-neon-green flex-shrink-0">✓</span>
+                    <span>{f}</span>
+                  </li>
+                ))}
+              </ul>
+              {pkg.footnote && (
+                <p className="text-xs text-ink-muted mt-auto pt-2 border-t border-border">{pkg.footnote}</p>
+              )}
+            </div>
+          ))}
+        </div>
+
+        {/* Add-ons */}
         <div className="bg-elevated border border-border rounded-2xl p-8 mb-16">
-          <h2 className="text-xl font-bold text-ink-primary mb-4">
-            The math: $19 vs. the credits you re-run
-          </h2>
-          <div className="grid sm:grid-cols-3 gap-6">
-            <div>
-              <p className="text-xs font-mono uppercase tracking-wider text-ink-muted mb-1">Effective cost</p>
-              <p className="text-2xl font-bold text-ink-primary">list / success rate</p>
-              <p className="text-xs text-ink-muted">List price stays the same, but every failed gen multiplies your real per-clip cost.</p>
-            </div>
-            <div>
-              <p className="text-xs font-mono uppercase tracking-wider text-ink-muted mb-1">Trustpilot signal</p>
-              <p className="text-2xl font-bold text-neon-green">77%</p>
-              <p className="text-xs text-ink-muted">of paid-tier 1-star reviews across 8 major vendors cite billing, not quality.</p>
-            </div>
-            <div>
-              <p className="text-xs font-mono uppercase tracking-wider text-ink-muted mb-1">Pro budget</p>
-              <p className="text-2xl font-bold text-neon-amber">$19/mo</p>
-              <p className="text-xs text-ink-muted">Costs less than a single mid-tier credit pack. The prompt scoring pays itself off by avoiding failed gens.</p>
-            </div>
+          <h2 className="text-xl font-bold text-ink-primary mb-4">Add-ons</h2>
+          <div className="grid sm:grid-cols-2 gap-6">
+            {ADD_ONS.map((a) => (
+              <div key={a.name} className="flex justify-between border-b border-border pb-3">
+                <span className="text-ink-secondary text-sm">{a.name}</span>
+                <span className="text-ink-primary font-mono font-semibold">{a.price}</span>
+              </div>
+            ))}
           </div>
+          <p className="text-xs text-ink-muted mt-4">Available at checkout on the order form.</p>
         </div>
 
         {/* FAQ */}
         <section aria-label="FAQ" className="mb-16">
-          <h2 className="text-2xl font-bold text-ink-primary mb-6">
-            Pricing FAQ
-          </h2>
+          <h2 className="text-2xl font-bold text-ink-primary mb-6">Pricing FAQ</h2>
           <div className="space-y-3">
             {FAQ.map((item) => (
               <details key={item.q} className="bg-surface border border-border rounded-xl group">
@@ -260,6 +216,9 @@ export default async function PricingPage() {
               </details>
             ))}
           </div>
+          <p className="text-sm text-ink-muted mt-4">
+            More questions? See the full <Link href="/faq" className="text-neon-purple underline">FAQ</Link>.
+          </p>
         </section>
 
         <div className="text-center">
