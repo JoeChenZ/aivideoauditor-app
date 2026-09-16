@@ -2,7 +2,6 @@ import { MetadataRoute } from 'next';
 import { FAILURES } from './failures/[slug]/data';
 import { SHUTDOWNS } from './graveyard/[slug]/data';
 import { COMPARISONS } from './compare/[slug]/data';
-import { CASE_STUDIES } from './case-studies/[slug]/data';
 import { ALTERNATIVES } from './alternatives/[slug]/data';
 import { PROMPTS, MODELS, slugifyModel } from './prompts/data';
 import { VERTICALS } from './product-videos/data';
@@ -26,13 +25,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const comparePages: MetadataRoute.Sitemap = COMPARISONS.map((c) => ({
     url: `${BASE}/compare/${c.slug}`,
-    lastModified: new Date(),
-    changeFrequency: 'monthly',
-    priority: 0.85,
-  }));
-
-  const caseStudyPages: MetadataRoute.Sitemap = CASE_STUDIES.map((c) => ({
-    url: `${BASE}/case-studies/${c.slug}`,
     lastModified: new Date(),
     changeFrequency: 'monthly',
     priority: 0.85,
@@ -74,7 +66,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/faq`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.85 },
     { url: `${BASE}/pricing`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.95 },
     { url: `${BASE}/failures`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.92 },
-    { url: `${BASE}/case-studies`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.91 },
     { url: `${BASE}/tools/credit-calculator`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.88 },
     { url: `${BASE}/tools/migration-planner`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.88 },
     { url: `${BASE}/alternatives`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.89 },
@@ -99,7 +90,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...failurePages,
     ...graveyardPages,
     ...comparePages,
-    ...caseStudyPages,
     ...alternativesPages,
     ...promptPages,
     ...promptModelPages,
