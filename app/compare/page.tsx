@@ -145,9 +145,9 @@ export default function CompareIndex() {
           <div className="mb-16 max-w-reading">
             <LeadCaptureForm
               source="compare-index"
-              heading="Want to skip the pairwise comparison? AVA Pro routes for you."
-              blurb="These pairwise comparisons help you pick one tool. AVA Pro picks the right tool per prompt — based on your historical hit-rate. Pre-register for a 30% lifetime discount on launch day."
-              cta="Notify me on launch"
+              heading="Don't want to pick a tool at all? We'll just make the video."
+              blurb="These pairwise comparisons help you pick one tool and do it yourself. Send us your product photos instead and we'll produce a free sample AI video — no commitment. See the quality before you pay."
+              cta="Request free sample →"
             />
           </div>
 

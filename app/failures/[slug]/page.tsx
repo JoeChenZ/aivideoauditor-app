@@ -18,8 +18,6 @@ function comparePagesForVendor(vendor: string) {
   });
 }
 
-const FOUNDERS_URL = process.env.NEXT_PUBLIC_PREORDER_STRIPE_URL || '';
-
 export async function generateStaticParams() {
   return FAILURES.map((f) => ({ slug: f.slug }));
 }
@@ -276,30 +274,6 @@ export default function FailurePage({ params }: { params: { slug: string } }) {
                     </Link>
                   </div>
                 </div>
-
-                {/* Founders' offer — secondary nudge */}
-                {FOUNDERS_URL && (
-                  <div className="mt-6 border border-neon-amber/30 rounded-md p-5 bg-paper">
-                    <div className="flex flex-wrap items-baseline justify-between gap-3">
-                      <div>
-                        <p className="font-mono text-[10px] tracking-kicker uppercase text-neon-amber mb-1">
-                          AVA Pro · founders&apos; round
-                        </p>
-                        <p className="text-sm text-ink-secondary leading-relaxed">
-                          <strong className="text-ink-primary">$50 for 6 months</strong> of unlimited scoring across all failure modes + personal failure-history dashboard. Locks in $13/mo grandfathered after.
-                        </p>
-                      </div>
-                      <a
-                        href={FOUNDERS_URL}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 bg-neon-amber/15 hover:bg-neon-amber/25 border border-neon-amber/40 text-neon-amber font-mono font-semibold text-[11px] tracking-wide uppercase px-5 py-2.5 rounded-md transition-colors whitespace-nowrap"
-                      >
-                        Claim $50 founders
-                      </a>
-                    </div>
-                  </div>
-                )}
               </>
             );
           })()}

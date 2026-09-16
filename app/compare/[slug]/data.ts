@@ -212,7 +212,7 @@ export const COMPARISONS: Comparison[] = [
       { prompt: '"Hands of a chef chopping vegetables, close-up"', toolA: 'Hand-anatomy fails ~60% (finger count drift).', toolB: 'Same failure mode, equivalent rate.', verdict: 'Equivalent failure. Refund and reroll on either. Consider framing hands further from camera.' },
     ],
     refundFlowSummary: "Both Kling and Runway accept goodwill-credit requests with technical failure-mode names + Generation ID + timestamped screenshot. Runway's flow recognises 7 named categories (Anatomy, Physics, Text, Coherence, Color, Camera, Style); Kling recognises 5-6. Neither platform guarantees approval — outcomes are at each support team's discretion and depend on ticket quality.",
-    finalVerdict: "Don't pick one over the other — pick by shot type. Motion-heavy / action / physics-led → Kling 1.6. Character / multi-cut / dialogue → Runway Gen-4. Most production budgets cover both subscriptions, and AVA Pro automates routing per prompt based on historical hit-rate. The \"best tool\" mental model assumes interchangeability that doesn't exist in this category.",
+    finalVerdict: "Don't pick one over the other — pick by shot type. Motion-heavy / action / physics-led → Kling 1.6. Character / multi-cut / dialogue → Runway Gen-4. Most production budgets cover both subscriptions and route manually per shot. The \"best tool\" mental model assumes interchangeability that doesn't exist in this category.",
   },
   {
     slug: 'pika-vs-runway',
@@ -272,7 +272,7 @@ export const COMPARISONS: Comparison[] = [
       { prompt: '"Hands assembling jewelry, close-up"', toolA: 'Hand-anatomy fails ~60% (finger count drift).', toolB: 'Same failure mode, equivalent rate.', verdict: 'Equivalent failure. Refund and reroll on either. Frame hands further from camera if possible.' },
     ],
     refundFlowSummary: "Both Pika and Runway accept goodwill-credit requests with technical failure-mode names + Generation ID + timestamped screenshot. Pika's flow recognises 6 named categories; Runway recognises 7. Neither platform guarantees approval — outcomes are at each support team's discretion and depend on ticket quality.",
-    finalVerdict: "Pika for physics + stylized motion. Runway for character + multi-cut. Different specialists, both valuable. AVA Pro automates the routing decision based on your historical hit-rate on each tool.",
+    finalVerdict: "Pika for physics + stylized motion. Runway for character + multi-cut. Different specialists, both valuable — route per shot rather than picking one for everything.",
   },
   {
     slug: 'veo-vs-luma',
@@ -333,7 +333,7 @@ export const COMPARISONS: Comparison[] = [
       { prompt: '"Branded mug close-up, color-critical, 4 seconds"', toolA: 'Color drift visible across rotation.', toolB: 'Temporal Color Coherence Failure also visible.', verdict: 'Tie — both fail on branded color work. Refund and reshoot or post-correct.' },
     ],
     refundFlowSummary: "Both Veo and Luma accept goodwill-credit requests with technical failure-mode names + Generation ID + timestamped screenshot. Veo's flow runs via Google AI Studio billing (8 named categories) and is generally faster than Luma's. Neither platform guarantees approval — outcomes are at each support team's discretion.",
-    finalVerdict: "Veo for native audio + cheap short clips. Luma for cinematic lighting + stylized output. Most production budgets cover both subscriptions, and AVA Pro automates the routing decision per prompt.",
+    finalVerdict: "Veo for native audio + cheap short clips. Luma for cinematic lighting + stylized output. Most production budgets cover both subscriptions and route per prompt by need.",
   },
   {
     slug: 'kling-vs-veo',
@@ -395,7 +395,7 @@ export const COMPARISONS: Comparison[] = [
       { prompt: '"4-second product reveal with brand jingle"', toolA: 'Visual strong but audio is separate.', toolB: 'Native audio handles jingle inline.', verdict: 'Veo wins on workflow simplicity.' },
     ],
     refundFlowSummary: "Both Kling and Veo accept goodwill-credit requests with technical failure-mode names + Generation ID + timestamped screenshot. Veo's flow runs via Google AI Studio billing and recognises 8 named categories; Kling's flow recognises 5-6. Neither platform guarantees approval — outcomes are at each support team's discretion.",
-    finalVerdict: "Kling for motion + physics. Veo for native audio + cost-per-clip. Different specialists, both valuable. Most production workflows benefit from both subscriptions with AVA Pro routing per prompt.",
+    finalVerdict: "Kling for motion + physics. Veo for native audio + cost-per-clip. Different specialists, both valuable — most production workflows benefit from both subscriptions, routed per prompt.",
   },
   {
     slug: 'pika-vs-luma',
@@ -512,7 +512,7 @@ export const COMPARISONS: Comparison[] = [
       { prompt: '"Lava flowing down volcano, slow motion"', toolA: 'Best fluid prior in consumer tier.', toolB: 'Fluid prior weaker than Kling.', verdict: 'Kling, for fluid simulation.' },
     ],
     refundFlowSummary: "Both Kling and Luma accept goodwill-credit requests with technical failure-mode names + Generation ID + timestamped screenshot. Neither platform guarantees approval — outcomes are at each support team's discretion. Luma recognises slightly more named categories (6 vs Kling's 5-6).",
-    finalVerdict: "Kling for motion + physics. Luma for lighting + photoreal mood. Different specialists, both valuable. Most production workflows benefit from both subscriptions with AVA Pro routing per prompt.",
+    finalVerdict: "Kling for motion + physics. Luma for lighting + photoreal mood. Different specialists, both valuable — most production workflows benefit from both subscriptions, routed per prompt.",
   },
   {
     slug: 'hailuo-vs-veo',

@@ -64,7 +64,7 @@ export const ALTERNATIVES: AlternativesPage[] = [
         compareHref: '/compare/veo-vs-luma',
       },
     ],
-    finalAdvice: 'Don\'t replace Runway entirely unless your shot type genuinely fits another tool better. Most production workflows benefit from Runway + 1-2 specialists routed per prompt. AVA Pro automates the routing decision based on your historical hit-rate.',
+    finalAdvice: 'Don\'t replace Runway entirely unless your shot type genuinely fits another tool better. Most production workflows benefit from Runway + 1-2 specialists routed per prompt by hand.',
   },
   {
     slug: 'luma',

@@ -1,10 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import LeadCaptureForm from '@/components/lead-capture-form';
-import StripeBuyButton from './stripe-buy-button';
 
-const LAUNCH_ETA = 'mid-July 2026';
-const PREORDER_URL = process.env.NEXT_PUBLIC_PREORDER_STRIPE_URL || '';
 const CHROME_EXT_URL = 'https://chromewebstore.google.com/detail/aivideoauditor/ecomchbdfkgakaoponipjgpnjfpimdef';
 
 export const metadata: Metadata = {
@@ -93,83 +90,27 @@ export default function EarlyAccessPage() {
           </ul>
         </div>
 
-        {/* DEMOTED — $50 founders upgrade, below the fold */}
-        <div className="border-t-2 border-rule pt-10 mb-6">
-          <p className="font-mono text-[11px] tracking-kicker uppercase text-neon-amber mb-3">
-            Optional upgrade · founders&apos; round · skip if free extension is enough
+        {/* 2026-09-16: the "$50 founders round" AVA Pro subscription upgrade
+            previously advertised below the fold has been removed — AVA Pro
+            never shipped by its own stated ETA/deadline and the product is
+            now a done-for-you per-video studio instead. See drive-board/ava.md. */}
+        <div className="border-t-2 border-rule pt-10 mb-6 text-center">
+          <p className="font-mono text-[11px] tracking-kicker uppercase text-neon-green mb-3">
+            Want more than the free extension?
           </p>
           <h2 className="font-display text-2xl md:text-3xl font-semibold text-ink-primary mb-4 leading-tight tracking-tight">
-            Want AVA Pro early? $50 for 6 months.
+            Skip the prompting — we&apos;ll make the video for you.
           </h2>
-          <p className="text-ink-secondary leading-relaxed mb-6">
-            AVA Pro launches around <strong>{LAUNCH_ETA}</strong> at $19/mo. Founders pay $50 flat for the first 6 months instead of $114 — a 56% founders&apos; discount, locked in even after public pricing changes. Free extension stays free; Pro adds unlimited scoring, personal failure history, A/B model routing.
+          <p className="text-ink-secondary leading-relaxed mb-6 max-w-md mx-auto">
+            Send us your product photos and get a finished, platform-ready video back. From $59,
+            no subscription.
           </p>
-        </div>
-
-        <div className="bg-neon-green/5 border border-neon-green/30 rounded-md p-5 mb-6 text-sm">
-          <p className="font-mono text-[11px] tracking-kicker uppercase text-neon-green mb-3">
-            Founders&apos; round · OPEN · payment + auto-grant verified end-to-end
-          </p>
-          <p className="text-ink-secondary leading-relaxed">
-            $50 charge via Stripe. Webhook auto-grants 6 months of Pro to the email on the receipt (you&apos;ll get a magic-link to log in). Limited slots — when Pro ships in {LAUNCH_ETA} the price reverts to $19/mo.
-          </p>
-        </div>
-
-        <div className="border border-rule rounded-md p-6 mb-6 bg-surface">
-          <h3 className="font-display text-lg font-semibold text-ink-primary mb-4">What Pro adds on top of the free extension</h3>
-          <ul className="space-y-3 text-sm text-ink-secondary">
-            <li className="flex gap-3">
-              <span className="text-neon-green font-mono shrink-0">→</span>
-              <span><strong className="text-ink-primary">Unlimited prompt scoring.</strong> Free tier is 50 scores/month. Pro is unlimited.</span>
-            </li>
-            <li className="flex gap-3">
-              <span className="text-neon-green font-mono shrink-0">→</span>
-              <span><strong className="text-ink-primary">Personal failure history.</strong> Tracks your historical credit waste by category and platform — find patterns, fix the root cause.</span>
-            </li>
-            <li className="flex gap-3">
-              <span className="text-neon-green font-mono shrink-0">→</span>
-              <span><strong className="text-ink-primary">Cross-model A/B routing.</strong> Sends the same prompt to 2-3 models, returns the best result. Stops you betting all credits on one platform.</span>
-            </li>
-          </ul>
-        </div>
-
-        <div className="bg-neon-amber/5 border border-neon-amber/30 rounded-md p-5 mb-6 text-sm">
-          <p className="font-mono text-[11px] tracking-kicker uppercase text-neon-amber mb-2">
-            Honest disclosure (only matters if you upgrade)
-          </p>
-          <ul className="space-y-2 text-ink-secondary leading-relaxed">
-            <li>
-              <strong className="text-ink-primary">Launch ETA is {LAUNCH_ETA}, not a guarantee.</strong> If Pro doesn&apos;t ship by August 31, 2026, you get a full refund plus a $20 apology credit.
-            </li>
-            <li>
-              <strong className="text-ink-primary">14-day refund window.</strong> Cancel in the first 14 days after Pro ships for a full refund. After that, the 6 months are non-refundable but transferable.
-            </li>
-            <li>
-              <strong className="text-ink-primary">AVA is a prevention tool, not a recovery tool.</strong> The value is catching prompt-failures before you commit credits. Goodwill credits from platforms are discretionary and not something we promise.
-            </li>
-          </ul>
-        </div>
-
-        <div className="border border-neon-green/40 rounded-md p-8 mb-6 bg-paper text-center">
-          <p className="font-mono text-[10px] tracking-kicker uppercase text-ink-muted mb-2">
-            Founders&apos; price
-          </p>
-          <p className="font-display text-5xl font-semibold text-neon-green mb-1">$50</p>
-          <p className="text-sm text-ink-secondary mb-6">
-            for 6 months · then $19/mo (cancel anytime) · locked at $13/mo for life
-          </p>
-
-          {PREORDER_URL ? (
-            <StripeBuyButton url={PREORDER_URL} />
-          ) : (
-            <p className="font-mono text-xs text-neon-amber">
-              Pre-order link not configured yet.
-            </p>
-          )}
-
-          <p className="mt-4 font-mono text-[10px] text-ink-muted">
-            Secured by Stripe · Email-based auto-grant · <Link href="/refund-policy" className="underline hover:text-ink-secondary">30-day refund</Link>
-          </p>
+          <Link
+            href="/studio"
+            className="inline-flex items-center justify-center gap-2 bg-neon-green/20 hover:bg-neon-green/30 border border-neon-green/40 text-neon-green font-mono font-bold px-6 py-3 rounded-xl transition-all"
+          >
+            See the studio →
+          </Link>
         </div>
 
         <div className="text-center">

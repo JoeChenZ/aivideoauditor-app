@@ -2,7 +2,6 @@
 
 import { useState, useMemo } from 'react';
 import Link from 'next/link';
-import LeadCaptureForm from '@/components/lead-capture-form';
 
 type CurrentTool = 'sora' | 'runway' | 'luma' | 'kling' | 'veo' | 'pika' | 'hailuo' | 'seedance' | 'wan' | 'firefly';
 type ShotType = 'character-multicut' | 'motion-physics' | 'cinematic-lighting' | 'audio-dialogue' | 'stylized' | 'text-in-frame' | 'long-form' | 'mixed';
@@ -108,12 +107,12 @@ const RECOMMENDATIONS: Record<ShotType, Recommendation> = {
     ],
   },
   'mixed': {
-    tool: 'Multi-tool routing via AVA Pro',
+    tool: 'Route manually by shot type',
     toolSlug: 'runway',
-    reason: "When your shot mix is broad, no single tool wins. AVA Pro routes each prompt to whichever provider fails least on that specific shot type based on your historical hit-rate.",
+    reason: "When your shot mix is broad, no single tool wins. Pick per-clip using the shot-type table above — Kling for motion/physics, Runway for character/multi-cut, Veo for audio, Luma for lighting — rather than picking one subscription for everything.",
     estimatedMonthlySavings: (s) => Math.round(s * 0.20),
     alternatives: [
-      { tool: 'Runway + Veo + Kling subscriptions', toolSlug: 'runway', pitch: 'The "subscribe to 3, route manually" approach. AVA Pro automates the routing decision.' },
+      { tool: 'Runway + Veo + Kling subscriptions', toolSlug: 'runway', pitch: 'The "subscribe to 3, route manually per shot" approach — no tool wins every category.' },
     ],
   },
 };
@@ -377,20 +376,21 @@ export default function MigrationPlannerPage() {
               </div>
             )}
 
-            <div className="mb-6">
-              <LeadCaptureForm
-                source="migration-planner"
-                metadata={{
-                  currentTool,
-                  shotType,
-                  monthlySpend,
-                  recommendedTool: recommendation.toolSlug,
-                  estimatedSavings: recommendation.estimatedSavings,
-                }}
-                heading={`Want AVA Pro to handle routing automatically? Get a 30% launch-day discount (saves ~$${Math.round(recommendation.estimatedSavings * 0.3)})`}
-                blurb="The recommendation above is one tool. Most production workflows benefit from 2-3 tools routed per shot type. AVA Pro automates that decision based on your historical hit-rate. Drop your email — one notification on launch day with the discount code."
-                cta="Notify me on launch →"
-              />
+            <div className="bg-surface border border-neon-green/20 rounded-2xl p-8 text-center mb-6">
+              <h2 className="text-xl font-bold text-ink-primary mb-3">
+                Don&apos;t want to DIY the migration?
+              </h2>
+              <p className="text-ink-secondary text-sm mb-6 max-w-md mx-auto">
+                The recommendation above is a tool to switch to and prompt yourself. If you&apos;d rather
+                skip the prompt-engineering entirely, send us your product photos and we deliver the
+                finished video — from $59, no subscription.
+              </p>
+              <Link
+                href="/studio"
+                className="inline-flex items-center justify-center gap-2 bg-neon-green/20 hover:bg-neon-green/30 border border-neon-green/40 text-neon-green font-mono font-bold px-6 py-3 rounded-xl transition-all"
+              >
+                See the studio →
+              </Link>
             </div>
 
             <div className="text-center">

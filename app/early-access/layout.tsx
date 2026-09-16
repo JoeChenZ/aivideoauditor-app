@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'AVA Pro Early Access — Founders\' Pricing',
-  description: 'Lock in 6 months of AVA Pro at $50. Founders\' round, limited slots.',
+  title: 'AIVideoAuditor — Free Chrome Extension',
+  description: 'Free Chrome extension that scores your AI-video prompt before you click Generate.',
   robots: { index: false, follow: false },
 };
 

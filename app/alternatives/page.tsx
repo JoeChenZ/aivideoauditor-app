@@ -148,9 +148,9 @@ export default function AlternativesIndex() {
       <section className="mb-16 max-w-prose">
         <LeadCaptureForm
           source="alternatives-index"
-          heading="Want AVA Pro to pick the right tool for you, automatically?"
-          blurb="AVA Pro routes each prompt to whichever provider fails least on that shot type based on your historical hit-rate. Pre-register for a 30% lifetime discount on launch day."
-          cta="Notify me on launch"
+          heading="Don't want to pick a tool at all? We'll just make the video."
+          blurb="These guides help you pick a substitute and do it yourself. Send us your product photos instead and we'll produce a free sample AI video — no commitment. See the quality before you pay."
+          cta="Request free sample →"
         />
       </section>
 

@@ -42,7 +42,6 @@ What you'll get, in order:
      "unlimited" routing rules, refund policy, or filter rules
      mid-subscription, you get a short alert. No more than one per
      week.
-  3. When AVA Pro opens to the waitlist, you get early access.
 
 What you will NOT get:
   - Drip sequences
@@ -91,9 +90,9 @@ https://www.aivideoauditor.com/billing-pattern-watch`,
     body:
 `Hi — confirming you're on the AIVideoAuditor list.
 
-When we have something worth sending (early Pro access, the tagged
-vendor corpus, or a material vendor policy change), you'll get a
-short email. No drip, no marketing spam.
+When we have something worth sending (the tagged vendor corpus, or
+a material vendor policy change), you'll get a short email. No
+drip, no marketing spam.
 
 Unsubscribe one-click from any email.
 

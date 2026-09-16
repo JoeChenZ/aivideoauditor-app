@@ -313,7 +313,7 @@ export default function VendorRealityResearchPage() {
           <LeadCaptureForm
             source="research-132-vendor-reviews"
             heading="Get weekly vendor-change alerts when the pipeline ships"
-            blurb="The CSV corpus is already downloadable above. This form is for the recurring side: when a tracked vendor materially changes pricing, 'unlimited' routing, refund policy, or filter rules mid-subscription, you get one short alert. The monitoring pipeline ships next; you'll be on the first send. Early Pro access included when prompt scoring opens. No drip, no marketing spam."
+            blurb="The CSV corpus is already downloadable above. This form is for the recurring side: when a tracked vendor materially changes pricing, 'unlimited' routing, refund policy, or filter rules mid-subscription, you get one short alert. The monitoring pipeline ships next; you'll be on the first send. No drip, no marketing spam."
             cta="Add me to the alert list →"
             successMessage="In. The first alert lands as soon as the monitoring pipeline goes live, and only when a tracked vendor actually changes a policy. Unsubscribe one-click."
           />

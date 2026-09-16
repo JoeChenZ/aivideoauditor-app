@@ -158,22 +158,22 @@ export default function AlternativesPage({ params }: { params: { slug: string } 
 
           <div className="bg-surface border border-neon-green/20 rounded-2xl p-8 text-center">
             <p className="text-xs font-mono font-bold tracking-widest text-neon-green uppercase mb-3">
-              Automate the routing decision
+              Skip picking a tool
             </p>
             <h2 className="text-2xl font-bold text-ink-primary mb-3">
-              AVA Pro routes each prompt to whichever tool fails least on your shot type
+              Don&apos;t want to run any of these yourself?
             </h2>
             <p className="text-ink-secondary text-sm mb-6 max-w-md mx-auto">
-              Free tier scores 50 prompts per month against the 105 failure-mode catalogue. Pro
-              adds unlimited scoring + personal failure history + cross-vendor stability alerts so
-              you switch off a tool before it silently changes the deal. $19/mo, pays back in saved credits.
+              Free extension scores 50 prompts per month against the 105 failure-mode catalogue if
+              you&apos;re prompting it yourself. Or send us your product photos and we deliver the
+              finished video — from $59, no subscription.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Link
-                href="/tools/credit-calculator"
+                href="/studio"
                 className="inline-flex items-center justify-center gap-2 bg-neon-green/20 hover:bg-neon-green/30 border border-neon-green/40 text-neon-green font-mono font-bold px-6 py-3 rounded-xl transition-all"
               >
-                See your potential savings →
+                See the studio →
               </Link>
               <Link
                 href="/pricing"

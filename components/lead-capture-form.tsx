@@ -14,10 +14,10 @@ type LeadCaptureFormProps = {
 export default function LeadCaptureForm({
   source,
   metadata,
-  heading = 'Get notified when AVA Pro goes live',
-  blurb = 'Drop your email. When AVA Pro launches, you get a one-time 30% lifetime discount + a heads-up the day before, so you can grab credits the moment the LIVE switch flips.',
-  cta = 'Notify me on launch →',
-  successMessage = "You're in. We'll only email when there's news worth opening — launch day + maybe one followup. No marketing spam.",
+  heading = 'Get a free sample video for your product',
+  blurb = "Send us your product photos and we'll produce a free sample AI video — no commitment. See the quality before you pay.",
+  cta = 'Request free sample →',
+  successMessage = "Request received! We'll be in touch within 1 business day.",
 }: LeadCaptureFormProps) {
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
