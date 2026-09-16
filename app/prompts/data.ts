@@ -82,7 +82,7 @@ export function thumbSrc(item: GalleryItem): string {
 // A ~150-char, honest description derived from the prompt for meta tags.
 export function metaDescFromPrompt(item: GalleryItem): string {
   const label = modelShortLabel(item.model);
-  const base = `The exact ${label} prompt behind "${item.title}". `;
+  const base = `Copy the exact ${label} prompt that made "${item.title}". `;
   const room = 155 - base.length;
   let tail = item.prompt.replace(/\s+/g, ' ').trim();
   if (tail.length > room) tail = tail.slice(0, Math.max(0, room - 1)).trimEnd() + '…';

@@ -25,7 +25,7 @@ export const VERTICALS: Vertical[] = [
     subhead:
       'Turn a single studio photo of a ring, pearl, or pendant into a shimmering 9:16 clip for Reels and TikTok — without a lightbox, a macro rig, or a videographer.',
     metaDescription:
-      'Done-for-you AI product videos for jewelry brands. Send one photo of your ring or pearl set — get a QC-checked 9:16 Reel in 2–3 days. From $59.',
+      'AI product videos for jewelry brands: rings, pearls, pendants. Send one photo → shimmering, QC-checked 9:16 Reel in 2–3 days. No reshoot. From $59.',
     painPoints: [
       {
         title: 'Metal and gemstones are brutal to film',

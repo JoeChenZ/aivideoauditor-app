@@ -21,8 +21,8 @@ export function generateMetadata({ params }: { params: { model: string } }): Met
   if (!model) return {};
   const label = modelShortLabel(model);
   const count = promptsForModel(model).length;
-  const title = `Best ${label} Video Prompts & Examples (${count})`;
-  const description = `${count} real ${label} prompts with the videos they produced. Copy the exact prompt, see why it works, or have us make a ${label}-style product video for you.`;
+  const title = `${count} ${label} Prompts + Videos — Copy & Use (2026)`;
+  const description = `${count} real ${label} prompts, each paired with the video it produced. Copy the exact prompt, study why it works, or order a done-for-you product video from $59.`;
   return {
     title,
     description,

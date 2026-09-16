@@ -13,20 +13,20 @@ export function generateStaticParams() {
 export function generateMetadata({ params }: { params: { industry: string } }): Metadata {
   const v = getVertical(params.industry);
   if (!v) return {};
-  const title = `AI Product Videos for ${v.industry} Brands | AI Video Auditor`;
+  const title = `AI Product Videos for ${v.industry} — 9:16 Reels, 2–3 Days`;
   return {
     title,
     description: v.metaDescription,
     alternates: { canonical: `${BASE}/product-videos/${v.slug}` },
     openGraph: {
-      title,
+      title: `${title} | AI Video Auditor`,
       description: v.metaDescription,
       type: 'website',
       url: `${BASE}/product-videos/${v.slug}`,
     },
     twitter: {
       card: 'summary_large_image',
-      title,
+      title: `${title} | AI Video Auditor`,
       description: v.metaDescription,
     },
   };

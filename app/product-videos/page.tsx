@@ -5,14 +5,14 @@ import { VERTICALS } from './data';
 const BASE = 'https://www.aivideoauditor.com';
 
 export const metadata: Metadata = {
-  title: 'AI Product Videos for Your Industry | AI Video Auditor',
+  title: 'Done-For-You AI Product Videos — From $59',
   description:
-    'Done-for-you AI product videos by industry. Send one product photo, get a QC-checked 9:16 Reel for IG, TikTok & 小紅書 in 2–3 days. From $59.',
+    'Send one product photo → get a QC-checked 9:16 clip for IG Reels, TikTok & 小紅書 in 2–3 days. We handle generation, QC & revisions. From $59.',
   alternates: { canonical: `${BASE}/product-videos` },
   openGraph: {
-    title: 'AI Product Videos for Your Industry | AI Video Auditor',
+    title: 'Done-For-You AI Product Videos — From $59 | AI Video Auditor',
     description:
-      'Done-for-you AI product videos by industry. One photo → a QC-checked 9:16 Reel in 2–3 days. From $59.',
+      'One product photo → QC-checked 9:16 Reel in 2–3 days, from $59. Browse by industry.',
     type: 'website',
     url: `${BASE}/product-videos`,
   },

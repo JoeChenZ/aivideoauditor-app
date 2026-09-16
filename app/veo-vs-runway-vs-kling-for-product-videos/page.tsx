@@ -5,9 +5,9 @@ import StudioCtaBanner from '@/components/studio-cta-banner';
 const PAGE_URL = 'https://www.aivideoauditor.com/veo-vs-runway-vs-kling-for-product-videos';
 
 export const metadata: Metadata = {
-  title: 'Veo 3 vs Runway vs Kling for Product Videos (2026)',
+  title: 'Veo 3 vs Runway vs Kling for Product Videos — DTC Verdict (2026)',
   description:
-    'Head-to-head for DTC brands: Veo 3 vs Runway Gen-4 vs Kling for product video. Which keeps your product, label, and brand color consistent across frames? Honest, shot-type-first comparison.',
+    'Which AI model keeps your product label, color & shape consistent? DTC-buyer head-to-head: Veo 3 vs Runway Gen-4 vs Kling. Or skip the model fight — we do it for you from $59.',
   alternates: { canonical: PAGE_URL },
   openGraph: {
     title: 'Veo 3 vs Runway vs Kling for Product Videos (2026)',

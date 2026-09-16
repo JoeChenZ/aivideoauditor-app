@@ -21,11 +21,11 @@ const BASE_URL = 'https://www.aivideoauditor.com';
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: 'AI Video Auditor - Done-For-You AI Product Videos',
+    default: 'AI Video Auditor — Product Videos From $59',
     template: '%s | AI Video Auditor',
   },
   description:
-    'We audited 105 ways AI video fails. Now we make product videos for DTC brands that ship right, every time. From $59.',
+    'Send one product photo. Get a QC-checked 9:16 Reel for IG, TikTok & 小紅書 in 2–3 days, from $59. We audited 105 AI failure modes so yours ships right.',
   keywords: [
     'ai product video',
     'done for you ai video',
@@ -50,9 +50,9 @@ export const metadata: Metadata = {
     canonical: BASE_URL,
   },
   openGraph: {
-    title: 'AI Video Auditor - Done-For-You AI Product Videos',
+    title: 'AI Video Auditor — Product Videos From $59',
     description:
-      'We audited 105 ways AI video fails. Now we make product videos for DTC brands that ship right, every time. From $59.',
+      'Send one product photo. Get a QC-checked 9:16 Reel for IG, TikTok & 小紅書 in 2–3 days, from $59. We audited 105 AI failure modes so yours ships right.',
     url: BASE_URL,
     siteName: 'AI Video Auditor',
     type: 'website',
@@ -61,9 +61,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'AI Video Auditor - Done-For-You AI Product Videos',
+    title: 'AI Video Auditor — Product Videos From $59',
     description:
-      'We audited 105 ways AI video fails. Product videos for DTC brands from $59.',
+      'Send one product photo. Get a QC-checked 9:16 Reel for IG, TikTok & 小紅書 in 2–3 days, from $59. We audited 105 AI failure modes so yours ships right.',
     creator: '@AIVideoAuditor',
     images: ['/og-image.jpg'],
   },
@@ -77,7 +77,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className="dark">
       <head>
-        <link rel="canonical" href={BASE_URL} />
         <link rel="alternate" type="text/plain" href="/llms.txt" title="AI Video Auditor — LLM reference" />
         <meta name="trustpilot-one-time-domain-verification-id" content="fade36b3-6bf0-4e2c-bebc-4045f8537e40" />
         <script

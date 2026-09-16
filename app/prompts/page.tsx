@@ -11,14 +11,14 @@ import {
 const BASE = 'https://www.aivideoauditor.com';
 
 export const metadata: Metadata = {
-  title: 'AI Video Prompts, by Model — Copy the Exact Prompts',
+  title: `AI Video Prompts by Model — Copy & Use (2026)`,
   description:
-    `The exact prompts behind ${PROMPTS.length} of the best AI videos on the internet, grouped by model — Sora, Veo 3, Runway, Kling, Seedance, Hailuo, Luma, Pika. Copy them or have us make one for your product.`,
+    `Copy the exact prompts behind ${PROMPTS.length} top AI videos — grouped by Sora, Veo 3, Runway, Kling, Seedance, Hailuo, Luma & Pika. Study why each works, or order a done-for-you product video from $59.`,
   alternates: { canonical: `${BASE}/prompts` },
   openGraph: {
-    title: 'AI Video Prompts, by Model — Copy the Exact Prompts | AI Video Auditor',
+    title: `AI Video Prompts by Model — Copy & Use (2026) | AI Video Auditor`,
     description:
-      'The exact prompts behind the best AI videos, grouped by the model that made them. Sora, Veo 3, Runway, Kling, Seedance, Hailuo, Luma, Pika.',
+      `${PROMPTS.length} real AI video prompts grouped by model — Sora, Veo 3, Runway, Kling & more. Copy the exact prompt, see why it works.`,
     type: 'website',
   },
 };

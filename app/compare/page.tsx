@@ -5,12 +5,12 @@ import LeadCaptureForm from '@/components/lead-capture-form';
 import { WidePageShell, Breadcrumb, ArticleHeader, SectionHead, Kicker, RuleDivider } from '@/components/editorial';
 
 export const metadata: Metadata = {
-  title: 'AI Video Model Comparisons — Head-to-Head by Failure Profile',
-  description: 'Honest head-to-head comparisons of the major AI video generators. Runway vs Luma, Sora vs Veo, Kling vs Runway. Pick by shot type, not by leaderboard.',
+  title: 'AI Video Model Comparisons: Runway vs Luma, Kling vs Veo & More (2026)',
+  description: '12 honest head-to-heads of the major AI video generators — Runway, Luma, Kling, Veo 3, Pika, Vidu, Hailuo. Pick by shot type and failure profile, not by brand hype.',
   alternates: { canonical: 'https://www.aivideoauditor.com/compare' },
   openGraph: {
-    title: 'AI Video Model Comparisons — Head-to-Head by Failure Profile',
-    description: 'Pick by failure mode, not by brand. Side-by-side comparisons of Runway, Luma, Kling, Veo, Sora.',
+    title: 'AI Video Model Comparisons: Runway vs Luma, Kling vs Veo & More (2026) | AVA',
+    description: '12 honest head-to-heads: Runway, Luma, Kling, Veo 3, Pika, Vidu, Hailuo. Pick by shot type + failure profile, not by leaderboard.',
     type: 'website',
   },
 };
