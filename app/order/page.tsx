@@ -117,6 +117,7 @@ export default function Order() {
               <div className="text-zinc-400 text-sm mb-1">Estimated total</div>
               <div className="text-4xl font-bold text-white">${total}</div>
               <div className="text-zinc-500 text-xs mt-2">Next step is secure checkout via Stripe. Not a fit for your product? We refund in full.</div>
+              <div className="text-zinc-500 text-xs mt-2">Your card statement will show the charge as &quot;FRESHVERDICT&quot; — that&apos;s our billing entity.</div>
             </div>
           </div>
 

@@ -125,6 +125,7 @@ export async function POST(req: NextRequest) {
         Hi there,<br/><br/>
         We received your order for <strong>${quantity} video(s)</strong> for <strong>${brandName}</strong>.
         We&apos;ll be in touch with next steps. If we cannot produce a video we are happy to ship from your photo, we will tell you and refund you in full.<br/><br/>
+        Heads up: your card statement will show the charge as <strong>FRESHVERDICT</strong> — that&apos;s our billing entity, so don&apos;t worry if the name looks different from AIVideoAuditor.<br/><br/>
         Questions? Reply to this email or reach us at
         <a href="mailto:contact@aivideoauditor.com">contact@aivideoauditor.com</a>.<br/><br/>
         — The AIVideoAuditor team
