@@ -179,5 +179,4 @@ Curated library of AI video examples with exact prompts, organized by model. Cov
 - https://www.aivideoauditor.com/vendor-changelog (AI video vendor changelog tracker)
 - https://www.aivideoauditor.com/runway-unlimited-slowdown (Runway Unlimited throttling docs)
 - https://www.aivideoauditor.com/sora-alternatives (Sora alternatives after shutdown)
-- https://www.aivideoauditor.com/case-studies (case studies)
 - https://www.aivideoauditor.com/affiliate-program (affiliate program)

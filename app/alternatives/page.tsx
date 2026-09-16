@@ -132,10 +132,10 @@ export default function AlternativesIndex() {
             <p className="font-display text-base font-semibold text-ink-primary mb-1.5">105 documented failure modes</p>
             <p className="text-ink-muted text-xs">Across 8 providers, with the technical names support recognises.</p>
           </Link>
-          <Link href="/case-studies" className="border border-rule hover:border-ink-secondary rounded-md p-5 bg-surface transition-colors block">
-            <Kicker className="mb-2">Case studies</Kicker>
-            <p className="font-display text-base font-semibold text-ink-primary mb-1.5">Real-world failure-mode walk-throughs</p>
-            <p className="text-ink-muted text-xs">Anonymized stories — solo creator, agency, brand account.</p>
+          <Link href="/studio" className="border border-rule hover:border-ink-secondary rounded-md p-5 bg-surface transition-colors block">
+            <Kicker className="mb-2">Skip the DIY tooling</Kicker>
+            <p className="font-display text-base font-semibold text-ink-primary mb-1.5">Have us make the video instead</p>
+            <p className="text-ink-muted text-xs">Send one photo — get a QC-checked clip in 2–3 days. From $59.</p>
           </Link>
           <Link href="/graveyard" className="border border-rule hover:border-ink-secondary rounded-md p-5 bg-surface transition-colors block">
             <Kicker className="mb-2">AI tool graveyard</Kicker>

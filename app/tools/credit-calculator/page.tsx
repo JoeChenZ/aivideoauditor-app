@@ -347,7 +347,7 @@ export default function CreditCalculatorPage() {
               estimatedAnnualised: calc.annualisedAdditional,
             }}
             heading={`Get notified when AVA Pro is live + grab the 30% discount${calc.additionalRecovery > 0 ? ` (save another $${Math.round(calc.additionalRecovery * 0.3)} on your first year)` : ''}`}
-            blurb="AVA Pro pays back the calculator estimate in week 1 for most users. Drop your email — one notification on launch day with a 30% lifetime discount code. No marketing list. No spam."
+            blurb="Based on the estimate above, AVA Pro is designed to pay for itself within the first week. Drop your email — one notification on launch day with a 30% lifetime discount code. No marketing list. No spam."
           />
         </div>
 
@@ -370,10 +370,10 @@ export default function CreditCalculatorPage() {
               Install Free Extension →
             </a>
             <Link
-              href="/case-studies"
+              href="/studio"
               className="inline-flex items-center justify-center gap-2 bg-elevated hover:bg-elevated/80 border border-border text-ink-secondary font-mono font-semibold px-6 py-3 rounded-xl transition-all text-sm"
             >
-              Read case studies
+              Skip it — have us make the video
             </Link>
           </div>
         </div>
