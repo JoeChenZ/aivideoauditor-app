@@ -63,12 +63,12 @@ export default function StudioPage() {
               <span className="inline-flex items-center px-3 py-1 rounded-full bg-surface border border-border text-ink-secondary text-xs font-mono">2–3 business day turnaround</span>
               <span className="inline-flex items-center px-3 py-1 rounded-full bg-surface border border-border text-ink-secondary text-xs font-mono">Preview before final delivery</span>
             </div>
-            <a
-              href="#get-sample"
+            <Link
+              href="/wall"
               className="inline-flex items-center gap-2 bg-neon-amber text-zinc-950 font-mono font-bold text-sm px-6 py-3 rounded-md hover:bg-neon-amber/90 transition-colors"
             >
-              Get a free sample video →
-            </a>
+              See example videos →
+            </Link>
           </div>
 
           <hr className="border-rule mb-16" />
@@ -208,8 +208,8 @@ export default function StudioPage() {
             <p className="text-xs font-mono tracking-kicker uppercase text-ink-muted mb-6">Portfolio</p>
             <h2 className="text-2xl font-display font-bold text-ink-primary mb-6">Sample work</h2>
             <div className="w-full h-48 rounded-md border border-dashed border-border bg-surface flex flex-col items-center justify-center gap-2">
-              <p className="text-sm text-ink-muted">Portfolio samples coming soon</p>
-              <p className="text-xs text-ink-muted">DM <span className="text-neon-amber">@AIVideoAuditor</span> for a free sample</p>
+              <p className="text-sm text-ink-muted">More portfolio pieces coming soon</p>
+              <p className="text-xs text-ink-muted"><Link href="/wall" className="text-neon-amber hover:underline">See example videos on our Wall</Link></p>
             </div>
           </div>
 
@@ -254,9 +254,9 @@ export default function StudioPage() {
           <div id="get-sample" className="mb-16">
             <LeadCaptureForm
               source="studio"
-              heading="Get a free sample video for your product"
-              blurb="Send us your product photos and we'll produce a free sample AI video — no commitment. See the quality before you pay."
-              cta="Request free sample →"
+              heading="Get a quote for your product video"
+              blurb="See example videos on our Wall, then send us your product photos and brand details — we'll quote your project and get back to you within 1 business day."
+              cta="Get a quote →"
               successMessage="Request received! We'll be in touch within 1 business day."
             />
           </div>

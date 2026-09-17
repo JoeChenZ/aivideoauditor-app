@@ -149,8 +149,8 @@ export default function AlternativesIndex() {
         <LeadCaptureForm
           source="alternatives-index"
           heading="Don't want to pick a tool at all? We'll just make the video."
-          blurb="These guides help you pick a substitute and do it yourself. Send us your product photos instead and we'll produce a free sample AI video — no commitment. See the quality before you pay."
-          cta="Request free sample →"
+          blurb="These guides help you pick a substitute and do it yourself. See example videos on our Wall, then send us your product photos instead and we'll quote your project."
+          cta="Get a quote →"
         />
       </section>
 

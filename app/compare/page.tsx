@@ -146,8 +146,8 @@ export default function CompareIndex() {
             <LeadCaptureForm
               source="compare-index"
               heading="Don't want to pick a tool at all? We'll just make the video."
-              blurb="These pairwise comparisons help you pick one tool and do it yourself. Send us your product photos instead and we'll produce a free sample AI video — no commitment. See the quality before you pay."
-              cta="Request free sample →"
+              blurb="These pairwise comparisons help you pick one tool and do it yourself. See example videos on our Wall, then send us your product photos instead and we'll quote your project."
+              cta="Get a quote →"
             />
           </div>
 

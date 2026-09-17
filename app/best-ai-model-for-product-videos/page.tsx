@@ -236,7 +236,7 @@ export default function BestAIModelForProductVideos() {
             source="pillar-product-models"
             heading="Skip the model research — we pick the right one per shot"
             blurb="Send us your brief and product photos. We select the model, run the generation, QA for failure modes, and deliver platform-ready video. From $59, 2–3 days."
-            cta="Get a free sample video →"
+            cta="Get a quote →"
             successMessage="Request received! We'll be in touch within 1 business day."
           />
         </section>

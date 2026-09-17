@@ -14,9 +14,9 @@ type LeadCaptureFormProps = {
 export default function LeadCaptureForm({
   source,
   metadata,
-  heading = 'Get a free sample video for your product',
-  blurb = "Send us your product photos and we'll produce a free sample AI video — no commitment. See the quality before you pay.",
-  cta = 'Request free sample →',
+  heading = 'Get a quote for your product video',
+  blurb = 'See example videos on our Wall, then send us your product photos and brand details — we\'ll quote your project and get back to you within 1 business day.',
+  cta = 'Get a quote →',
   successMessage = "Request received! We'll be in touch within 1 business day.",
 }: LeadCaptureFormProps) {
   const [email, setEmail] = useState('');
