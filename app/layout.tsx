@@ -71,6 +71,9 @@ export const metadata: Metadata = {
     icon: '/favicon-32.png',
     apple: '/icon-192.png',
   },
+  verification: {
+    google: 'FJtkR0eyU_o6Sk6llfdLWGjfoB6p1N74gsxl_aIr26s',
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
