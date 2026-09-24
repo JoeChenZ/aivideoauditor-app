@@ -87,6 +87,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/best-ai-model-for-product-videos`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.88 },
     { url: `${BASE}/veo-vs-runway-vs-kling-for-product-videos`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.88 },
     { url: `${BASE}/product-videos`, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 0.92 },
+    { url: `${BASE}/ai-video-prompt-structure`, lastModified: new Date('2026-09-24'), changeFrequency: 'monthly' as const, priority: 0.88 },
     ...failurePages,
     ...graveyardPages,
     ...comparePages,
