@@ -4,7 +4,7 @@ export type ShutdownRecord = {
   parentCompany: string;
   category: 'ai-video' | 'ai-audio' | 'ai-image' | 'ai-agent' | 'ai-dev-tool' | 'other';
   categoryLabel: string;
-  status: 'active' | 'deprecated' | 'sunsetting' | 'dead';
+  status: 'active' | 'deprecated' | 'sunsetting' | 'dead' | 'unknown';
   shutdownAnnounced: string;
   shutdownComplete: string | null;
   refundWindowClose: string | null;
@@ -66,70 +66,42 @@ export const SHUTDOWNS: ShutdownRecord[] = [
   {
     slug: 'yopisora-bot',
     toolName: 'Yopisora Discord Bot',
-    parentCompany: 'Independent (Yopi Labs)',
+    parentCompany: 'Independent (operator never publicly identified)',
     category: 'ai-video',
     categoryLabel: 'AI Video',
-    status: 'dead',
-    shutdownAnnounced: '2026-04-26',
-    shutdownComplete: '2026-04-26',
-    refundWindowClose: '2026-09-30',
-    refundStatus: 'active',
-    metaTitle: 'Yopisora Bot Shutdown — Sora 2 Discord Wrapper Refund Path',
-    metaDesc: 'Yopisora Discord bot died with Sora 2 in May 2026. How to recover unspent credits + migrate to Pika Discord or Veo 3.',
-    summary: 'A Discord bot that wrapped OpenAI\'s Sora 2 API, allowing users to generate video clips from Discord without an OpenAI account. When OpenAI killed Sora 2 in early May 2026, Yopisora went down the same day — the wrapper had no local fallback and couldn\'t survive past the upstream shutdown. If you had unspent Yopisora credits, contact the bot operator directly via the original Discord server — many wrapper operators received partial refunds from OpenAI during the wind-down and have been passing them through.',
-    refundFlow: [
-      'Open the original Yopisora Discord server (link in your Yopisora account history).',
-      'DM the operator account directly — most indie bot operators are responsive in the first 30 days post-shutdown.',
-      'Provide your Discord account ID + Yopisora user ID (if shown in the bot\'s /profile or /credits history).',
-      'Wait 5-14 days for response — these are not commercial support teams, response time is bursty.',
-      'If the operator is unresponsive after 14 days, the refund is likely unrecoverable. Yopisora\'s pricing terms did not include a parent-company refund guarantee — your refund pathway died with the bot.',
-    ],
-    migration: {
-      name: 'Pika 2.0 Discord OR Veo 3 (no Discord wrapper yet)',
-      whyClose: 'For Discord-native workflow: Pika has maintained Discord-native generation since 2024. For Sora-equivalent quality: Veo 3 via Google AI Studio (no Discord wrapper exists yet).',
-      whatDiffers: 'Aesthetic differs from Sora-via-Yopisora; many Sora-specific features users wanted aren\'t in any surviving Discord-integrated model.',
-    },
-    whatThisToolMeant: 'Yopisora was part of a small ecosystem of indie Discord wrappers around hosted AI APIs. Wrappers existed because hosted APIs charged consumer-credit pricing while wrappers could pool API requests at developer-tier pricing then resell at a margin. Yopisora\'s specific value was Sora 2 access at lower per-clip pricing than OpenAI\'s direct consumer tier. When Sora went down, Yopisora had no fallback — no local model, no multi-provider routing, no diversification. The same fate hit several other Sora wrappers. This is a recurring pattern: indie wrappers around hosted AI APIs are inherently fragile to upstream changes.',
-    sources: [
-      { label: 'r/SoraAi shutdown thread', url: 'https://www.reddit.com/r/SoraAi/comments/1tcfwng/yopisora_bot_in_discord_has_shutdown/' },
-    ],
-    verificationStatus: 'DRAFT_REQUIRES_VERIFY',
-    verificationNote: 'Operator identity and exact refund window need verification before publishing claims about specific dates or amounts.',
-    tags: ['video', 'discord', 'wrapper', 'sora', 'indie'],
-  },
-  {
-    slug: 'elevenlabs-sora-wrapper',
-    toolName: 'ElevenLabs Sora Integration',
-    parentCompany: 'ElevenLabs',
-    category: 'ai-video',
-    categoryLabel: 'AI Video',
-    status: 'dead',
-    shutdownAnnounced: '2026-04-26',
-    shutdownComplete: '2026-04-26',
+    status: 'unknown',
+    shutdownAnnounced: '',
+    shutdownComplete: null,
     refundWindowClose: null,
-    refundStatus: 'closed',
-    metaTitle: 'ElevenLabs Sora Integration Shutdown — Credit Adjustment Flow',
-    metaDesc: 'ElevenLabs Sora 2 integration ended May 2026. How to request subscription adjustment + migrate to ElevenLabs voice + Veo 3.',
-    summary: 'ElevenLabs reportedly operated a Sora 2 integration as part of their multi-modal content workflow — text → ElevenLabs voice → Sora 2 visuals. When Sora 2 shut down in early May 2026, the integration was removed from the ElevenLabs platform. Users who built workflows around the combined pipeline lost the video half. If your subscription bundled Sora generations, contact ElevenLabs support — they have been processing partial credits for the lost capability.',
+    refundStatus: 'unknown',
+    metaTitle: 'Yopisora Bot: What Is Actually Verifiable About Its Shutdown',
+    metaDesc: 'Yopisora was a single-server Discord video bot. The thread announcing its shutdown was deleted by its author, so here is exactly what the surviving evidence supports and what it does not.',
+    summary: 'Yopisora was a Discord bot that generated video clips from slash commands. Beyond that, the public record is unusually thin, and this page exists mainly to say so clearly. The r/SoraAi thread that announced the shutdown was deleted by its own author, so the original claim can no longer be read. The comments that survive on that thread do not describe a paid product winding down at all. They describe a free-access route into a hosted video API being closed off: one commenter explains that people were generating past the free demo limit by clearing cookies, with no API key, and that this was "finally patched." Nobody in the surviving thread mentions paying for Yopisora, holding credits in it, or seeking a refund. A public GitHub repository named yopisora carries a README for a "single-server Discord bot" whose only commands are /flux-3 (FLUX 3), /sd2 (Seedance 2.0), /sd2-5 (Seedance 2.5) and /wan-3 (WAN 3.0). There is no Sora command in it. If that repository is the same bot, then Yopisora routed to FLUX, Seedance and WAN rather than to Sora, which would make the common assumption that it "died with Sora 2" wrong. Separately, YouTube clips crediting "yopisora" are dated as late as June 2026, after the date the shutdown is usually placed, so even the claim that the bot is gone for good is not firmly established.',
     refundFlow: [
-      'Open an ElevenLabs support ticket at https://elevenlabs.io/support.',
-      'Title: "Sora integration shutdown — credit adjustment request"',
-      'Include your ElevenLabs account email + subscription tier + approximate Sora-integration usage from your account history.',
-      'ElevenLabs has been adjusting subscription pricing prorated to the lost Sora capability.',
-      'Note: this is a credit adjustment, not a cash refund. Expect partial subscription rebate or extended renewal date as the resolution.',
+      'No refund path is documented, because no evidence has been found that Yopisora ever charged money. Treat any page that gives you a confident Yopisora refund procedure, including earlier versions of this one, with suspicion.',
+      'If you personally did pay for Yopisora access, the payment almost certainly went to an individual operator rather than a company, via whatever method that operator chose. Your recourse is the dispute process of the payment method you used, not a vendor support desk.',
+      'Check your card or PayPal statement for the actual payee name. That name, not "Yopisora," is the only thing a dispute can be filed against.',
+      'Do not expect an upstream provider to make you whole. OpenAI, Black Forest Labs, ByteDance and Alibaba have no relationship with a third-party Discord bot that resold or wrapped access to their models, and no published program for compensating that bot\'s users.',
     ],
     migration: {
-      name: 'ElevenLabs voice + Veo 3 (manual pipeline)',
-      whyClose: 'ElevenLabs hasn\'t announced a Veo 3 integration. Continue ElevenLabs for voice (unchanged), generate visuals separately in Google AI Studio (Veo 3) or Runway Gen-4, composite voice + video in your editor.',
-      whatDiffers: 'Manual pipeline is more work but produces higher quality — the Sora 2 + ElevenLabs sync was imperfect on lip sync past 3 seconds anyway.',
+      name: 'Call the underlying models directly',
+      whyClose: 'The commands in the public yopisora README map onto models you can reach without a middleman: FLUX 3, Seedance 2.0 and 2.5, and WAN 3.0. If that command set is what you actually used, none of those models depended on the bot and all of them outlived it.',
+      whatDiffers: 'You lose the Discord-native convenience, which was the bot\'s real product: prompting from a chat window, shared output in a channel, and no account setup or billing of your own. Going direct means your own API credentials and your own per-generation cost, at whatever each provider charges.',
     },
-    whatThisToolMeant: 'The ElevenLabs Sora integration was an early example of multi-modal AI workflow consolidation — voice + video from a single platform. The pattern was correct (creators want integrated workflows, not 8 separate logins), but the underlying model dependencies were fragile. When Sora 2 died, every multi-modal integration that included Sora as the video layer broke simultaneously. The lesson for AI multi-modal: depend on architectures, not specific models. Or: build adapter abstractions so swapping a dead model for a live one is config-change rather than rebuild.',
-    sources: [
-      { label: 'r/SoraAi mention of related wrapper shutdowns', url: 'https://www.reddit.com/r/SoraAi/comments/1tcfwng/yopisora_bot_in_discord_has_shutdown/' },
+    alternativesShortlist: [
+      { useCase: 'Discord-native generation without running your own bot', recommendation: 'Pika has offered Discord-native generation since 2024 and is not dependent on any single upstream model' },
+      { useCase: 'The same models the yopisora README lists', recommendation: 'Reach FLUX, Seedance and WAN through their own providers or a hosted playground rather than a wrapper' },
+      { useCase: 'Avoiding a repeat of this situation', recommendation: 'Prefer a provider that publishes its own status page and deprecation notices, so a shutdown is not announced in a Reddit post that can be deleted' },
     ],
-    verificationStatus: 'DRAFT_REQUIRES_VERIFY',
-    verificationNote: 'Existence of the integration is inferred from conversation context. If ElevenLabs never shipped a Sora wrapper and this is shorthand for something else, the record needs reframing.',
-    tags: ['video', 'audio', 'wrapper', 'elevenlabs', 'sora'],
+    whatThisToolMeant: 'The useful lesson from Yopisora is not about Sora, and it is not about refunds. It is about what happens to the record when a tool is run by one anonymous person. Yopisora had no status page, no changelog, no company, and no announcement of its own. The closest thing to a shutdown notice was a Reddit post, and when its author deleted it, the primary source for the entire event disappeared with it. What remains is a handful of comments, an unverified GitHub upload, and some YouTube clips. That is why confident, specific accounts of Yopisora keep circulating, including the one this page used to carry: with no authoritative source to contradict them, plausible detail fills the vacuum and then gets repeated. Single-operator Discord wrappers are fragile in the obvious way, because they sit on an upstream API they do not control. They are also fragile in a less obvious way, which is that they leave almost nothing behind for the people who relied on them. If you depend on a tool whose only public presence is a Discord invite, assume you will not be able to reconstruct what happened to it later, and keep your own copies of anything you care about.',
+    sources: [
+      { label: 'r/SoraAi shutdown thread (original post DELETED by its author; only comments survive)', url: 'https://www.reddit.com/r/SoraAi/comments/1tcfwng/yopisora_bot_in_discord_has_shutdown/' },
+      { label: 'GitHub: yopisora README listing the bot\'s actual commands (FLUX 3, Seedance 2.0/2.5, WAN 3.0)', url: 'https://github.com/yopixyopix6-lab/yopisora' },
+      { label: 'AVA failure-mode reference', url: '/failures' },
+    ],
+    verificationStatus: 'HIGH_CONFIDENCE',
+    verificationNote: 'Rewritten 2026-09-30 after checking this page\'s own cited source for the first time. The prior version of this page was substantially unsupported and has been replaced rather than patched. It asserted that Yopisora "wrapped OpenAI\'s Sora 2 API" and "went down the same day" Sora 2 died, named "Yopi Labs" as the parent company, gave a precise announced and completed date of 2026-04-26, stated that Yopisora had sold Sora access "at lower per-clip pricing than OpenAI\'s direct consumer tier," listed an OPEN refund window closing 2026-09-30, and set out a five-step refund procedure including the claim that "many wrapper operators received partial refunds from OpenAI during the wind-down and have been passing them through." None of that was supported by the single source the page cited. Checked this run: the cited r/SoraAi thread loads as "[deleted by user]" with the original post gone; its surviving comments describe a cookie-clearing free-access workaround being patched, with no mention of payment, credits, refunds, or an operator named Yopi Labs. A web search for "yopisora" returns no pricing page, no operator identity, and no refund announcement; AVA\'s own page was the third result, meaning this site was itself a leading source for claims it could not support. The GitHub repository yopixyopix6-lab/yopisora publishes a README for a single-server Discord bot whose commands are FLUX 3, Seedance 2.0, Seedance 2.5 and WAN 3.0, with no Sora command; that repository is a single-commit upload by an unverified account, so its identity with the bot in the Reddit thread is plausible but NOT proven, and this page says so rather than asserting it. Status is recorded as unknown, not dead, because YouTube clips crediting "yopisora" are dated to June 2026, later than the date the shutdown is usually given, and no shutdown was ever confirmed by the operator. Dates are left blank rather than estimated: the Reddit thread is timestamped only as roughly five months before 2026-09-30, which does not support a specific day. No API calls were made and no money was spent in this verification.',
+    tags: ['video', 'discord', 'wrapper', 'indie', 'unverifiable-shutdown'],
   },
   {
     slug: 'stable-video-diffusion-hosted',

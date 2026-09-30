@@ -23,6 +23,7 @@ const STATUS_LABEL: Record<string, string> = {
   deprecated: 'Deprecated',
   sunsetting: 'Sunsetting',
   dead: 'Dead',
+  unknown: 'Status unconfirmed',
 };
 
 const STATUS_COLOR: Record<string, string> = {
@@ -30,6 +31,7 @@ const STATUS_COLOR: Record<string, string> = {
   deprecated: 'bg-neon-amber/10 border-neon-amber/30 text-neon-amber',
   sunsetting: 'bg-neon-amber/10 border-neon-amber/30 text-neon-amber',
   dead: 'bg-neon-red/10 border-neon-red/30 text-neon-red',
+  unknown: 'bg-elevated border-border text-ink-muted',
 };
 
 const REFUND_LABEL: Record<string, string> = {
