@@ -18,6 +18,7 @@ export type AlternativesPage = {
   whyLookingForAlternatives: string;
   options: AlternativeOption[];
   finalAdvice: string;
+  pickedBy?: string;
 };
 
 export const ALTERNATIVES: AlternativesPage[] = [
@@ -483,6 +484,48 @@ export const ALTERNATIVES: AlternativesPage[] = [
       },
     ],
     finalAdvice: 'Vidu is the right pick when reference-locking matters more than anything else. The moment you need multi-shot continuity (→ Runway), native audio (→ Veo), or cinematic camera (→ Luma), the right answer is a different tool. Don\'t fight Vidu\'s shape — pick the model whose strength matches your shot.',
+  },
+  {
+    slug: 'golpo-ai',
+    toolName: 'Golpo AI',
+    toolFullName: 'Golpo AI',
+    toolStatus: 'active',
+    pickedBy: 'picked by budget and how much control you want',
+    metaTitle: 'Golpo AI Alternatives 2026: Whiteboard Explainer Video Tools Compared',
+    metaDesc: 'Golpo AI starts at $39.99/mo for 20 video minutes. Four alternatives for document-to-explainer and whiteboard video, from free (NotebookLM) to one-time (Doodly), with prices checked October 2026.',
+    toolSummary: 'Golpo AI turns a document, PDF, script, audio file or plain prompt into a narrated whiteboard-style explainer video. It writes the script, draws the scenes and adds AI narration in 45+ languages, with 10+ visual styles (dry erase, crayon, infographics, chalk and others). Pricing is per video minute: the free plan gives one 1-minute video that is watermarked and cannot be downloaded, Starter is $39.99/mo for 20 minutes, Creator $99.99/mo for 60, Growth $199.99/mo for 150, and video length caps rise with the plan (2 minutes on Free and Starter, 4 on Creator and Growth, 10 on Business and Scale). Prices are from golpoai.com as checked on 2026-10-01.',
+    whyLookingForAlternatives: 'You\'re probably here for one of three reasons: the free plan won\'t let you download anything, $39.99/mo for 20 minutes is a lot if you only need a few explainers, or the 2-minute cap on the lower plans is too short for a real lesson. The useful split is whether you want the AI to build the whole video from a document (Golpo, NotebookLM, Vyond) or you\'re happy to arrange the scenes yourself for a much lower price (VideoScribe, Doodly).',
+    options: [
+      {
+        name: 'NotebookLM Video Overviews (Google)',
+        shortPitch: 'Free document-to-explainer video, including a whiteboard style.',
+        bestForUseCase: 'Study material, internal explainers, turning a PDF or slide deck into a narrated summary at zero cost',
+        whyClose: 'Closest match to what Golpo does: you upload sources and it produces a narrated explainer video that pulls diagrams, quotes and numbers from them. Whiteboard is one of its visual styles, and Video Overviews are part of NotebookLM\'s free tier.',
+        whatDiffers: 'Much less control over individual scenes, voice or branding. You steer it with a focus prompt rather than editing a timeline, and output is built around summarising your sources rather than a script you wrote.',
+      },
+      {
+        name: 'VideoScribe (Sparkol)',
+        shortPitch: 'Classic hand-drawn whiteboard animation from $12.50/mo.',
+        bestForUseCase: 'Whiteboard explainers where you want to control every scene and draw order',
+        whyClose: 'The long-running whiteboard animation tool. Its paid plans include AI script and image generation, and the Core plan ($21.25/mo billed yearly at $255) adds AI voiceover, so you can get close to a generated workflow.',
+        whatDiffers: 'You assemble the scenes yourself rather than getting a finished video from a PDF. AI voiceover is not on the Lite plan. 7-day free trial, no credit card.',
+      },
+      {
+        name: 'Vyond',
+        shortPitch: 'Character-based business animation with doc-to-video AI.',
+        bestForUseCase: 'Corporate training and L&D teams who want characters, not just sketches',
+        whyClose: 'Vyond can generate a video from a prompt, .doc, .pdf, .ppt, .txt or URL, and its character library includes a Whiteboard style alongside Contemporary and Business Friendly.',
+        whatDiffers: 'More expensive: Starter is $58/mo billed yearly or $99 month to month, per user. It is a full animation editor, so expect more setup than a one-step document-to-video tool.',
+      },
+      {
+        name: 'Doodly',
+        shortPitch: 'Desktop whiteboard software sold on a one-time price offer.',
+        bestForUseCase: 'Making many short whiteboard videos without a monthly bill',
+        whyClose: 'Pure whiteboard, blackboard and glassboard animation with a large doodle library and a draw-in effect on your own images.',
+        whatDiffers: 'Desktop app for Mac and PC, no AI script, narration or document import listed. Its site currently shows a one-time $67 offer against a normal $468/yr price, so check the price at checkout.',
+      },
+    ],
+    finalAdvice: 'If you just need a document turned into a watchable explainer, try NotebookLM first because it costs nothing. If you need downloadable, branded whiteboard videos regularly, compare Golpo\'s per-minute price against VideoScribe\'s flat subscription: at 20 minutes a month Golpo Starter is $39.99, while VideoScribe Core is $21.25/mo on an annual plan with unlimited projects, at the cost of building scenes yourself. Prices change often in this category, so confirm on each vendor\'s pricing page before paying.',
   },
 ];
 

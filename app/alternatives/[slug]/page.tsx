@@ -84,7 +84,7 @@ export default function AlternativesPage({ params }: { params: { slug: string } 
             <h1 className="font-display text-4xl md:text-5xl font-semibold text-ink-primary mb-3 leading-tight tracking-tight">
               {a.toolFullName} alternatives
             </h1>
-            <p className="text-ink-muted mb-6">{a.options.length} ranked alternatives, picked by shot type</p>
+            <p className="text-ink-muted mb-6">{a.options.length} ranked alternatives, {a.pickedBy ?? 'picked by shot type'}</p>
 
             <p className="text-ink-secondary leading-relaxed mb-6">{a.toolSummary}</p>
             <div className="bg-elevated border border-border rounded-xl p-5">
