@@ -1,13 +1,13 @@
 {
-  "runAt": "2026-10-12T22:42:57.640Z",
+  "runAt": "2026-10-19T20:51:57.112Z",
   "threshold": 0.05,
   "results": [
     {
       "slug": "runway",
       "url": "https://runwayml.com/terms-of-use",
-      "status": "CHANGED",
-      "ratio": 0.9321,
-      "oldLen": 79149,
+      "status": "STABLE",
+      "ratio": 0,
+      "oldLen": 79228,
       "newLen": 79228
     },
     {
@@ -55,7 +55,7 @@
       "status": "UNRELIABLE",
       "ratio": null,
       "oldLen": 394,
-      "newLen": 288
+      "newLen": 274
     },
     {
       "slug": "hailuo",
@@ -66,9 +66,7 @@
       "newLen": 15
     }
   ],
-  "changed": [
-    "runway"
-  ],
+  "changed": [],
   "fetchFailed": [
     "openai"
   ],
@@ -78,5 +76,5 @@
     "pika",
     "hailuo"
   ],
-  "alert": true
+  "alert": false
 }
