@@ -238,6 +238,7 @@ export default function CheapestAIVideoPage() {
             <li className="flex gap-3"><span className="text-neon-green font-mono mt-1 shrink-0">→</span><span>Never judge by the free tier — price the cheapest <em>watermark-free</em> tier as your floor.</span></li>
             <li className="flex gap-3"><span className="text-neon-green font-mono mt-1 shrink-0">→</span><span>Check rollover. If credits don&apos;t roll over, buy the smallest tier that covers your real output, not the &ldquo;safe&rdquo; big one.</span></li>
             <li className="flex gap-3"><span className="text-neon-green font-mono mt-1 shrink-0">→</span><span>Cross-check the vendor on our <Link href="/billing-pattern-watch" className="text-neon-purple hover:underline">billing pattern watch</Link> before committing credits.</span></li>
+            <li className="flex gap-3"><span className="text-neon-green font-mono mt-1 shrink-0">→</span><span>Pricing raw generated clips instead? See <Link href="/are-ai-videos-cheap" className="text-neon-purple hover:underline">are AI videos cheap</Link> for per-second costs and the keep-rate multiplier.</span></li>
           </ul>
         </section>
 

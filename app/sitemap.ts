@@ -78,6 +78,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/sora-alternatives`, lastModified: new Date('2026-07-12'), changeFrequency: 'monthly', priority: 0.88 },
     { url: `${BASE}/best/ai-video-for-real-estate`, lastModified: new Date('2026-07-12'), changeFrequency: 'monthly', priority: 0.87 },
     { url: `${BASE}/cheapest-ai-video-generator`, lastModified: new Date('2026-07-12'), changeFrequency: 'monthly', priority: 0.88 },
+    { url: `${BASE}/are-ai-videos-cheap`, lastModified: new Date('2026-10-22'), changeFrequency: 'monthly', priority: 0.85 },
     { url: `${BASE}/invideo-alternatives`, lastModified: new Date('2026-07-12'), changeFrequency: 'monthly', priority: 0.87 },
     { url: `${BASE}/runway-unlimited-slowdown`, lastModified: new Date('2026-05-21'), changeFrequency: 'daily', priority: 0.95 },
     { url: `${BASE}/vendor-changelog`, lastModified: new Date('2026-05-20'), changeFrequency: 'weekly', priority: 0.92 },
