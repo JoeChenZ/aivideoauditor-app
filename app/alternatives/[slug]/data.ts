@@ -527,6 +527,41 @@ export const ALTERNATIVES: AlternativesPage[] = [
     ],
     finalAdvice: 'If you just need a document turned into a watchable explainer, try NotebookLM first because it costs nothing. If you need downloadable, branded whiteboard videos regularly, compare Golpo\'s per-minute price against VideoScribe\'s flat subscription: at 20 minutes a month Golpo Starter is $39.99, while VideoScribe Core is $21.25/mo on an annual plan with unlimited projects, at the cost of building scenes yourself. Prices change often in this category, so confirm on each vendor\'s pricing page before paying.',
   },
+  {
+    slug: 'openshorts',
+    toolName: 'OpenShorts',
+    toolFullName: 'OpenShorts (open-source AI clip generator)',
+    toolStatus: 'active',
+    pickedBy: 'picked by whether you want to self-host and how many minutes you clip a month',
+    metaTitle: 'OpenShorts Alternatives 2026: Opus Clip, Vizard and Klap Compared',
+    metaDesc: 'OpenShorts is free to self-host or $12/mo hosted for 100 minutes. Three hosted long-to-short clip tools compared on price, minutes and watermark, prices checked October 2026.',
+    toolSummary: 'OpenShorts turns a long video (podcast, stream, interview) into 9:16 clips. It transcribes the video, uses Google Gemini to pick the 3 to 15 strongest moments, reframes around the people talking and burns in captions. The core is open source under the MIT license and can be self-hosted with Docker (8GB+ RAM, your own Gemini key, plus fal.ai, ElevenLabs and Upload-Post keys for AI actors, dubbing and auto-posting). The hosted version at openshorts.app has a free plan of 20 minutes a month with a watermark and 7-day clip expiry (your first video is free up to 60 minutes), then Starter $12/mo for 100 minutes, Creator $29/mo for 300 and Pro $59/mo for 750, all without watermark. Prices are from openshorts.app as checked on 2026-10-23.',
+    whyLookingForAlternatives: 'You\'re probably here because self-hosting means running Docker and managing four API keys, because the hosted free plan watermarks clips and deletes them after 7 days, or because you want a more established editor with brand templates and team seats. On price per minute the picture is mixed: OpenShorts Starter works out to $0.12 a minute, while Vizard Creator\'s 600 minutes for $29 is about $0.05, so a heavy uploader can pay less by switching.',
+    options: [
+      {
+        name: 'Opus Clip',
+        shortPitch: 'The best-known hosted clipper, from $15/mo.',
+        bestForUseCase: 'Creators who want a polished editor, virality scores and captions in 20+ languages without touching any setup',
+        whyClose: 'Same core job: paste a long video, get ranked vertical clips with animated captions and auto-reframe, then post to YouTube Shorts, TikTok or Reels. The free plan gives 60 credits a month with a watermark.',
+        whatDiffers: 'Not open source and cannot be self-hosted. Starter is $15/mo for 150 credits (monthly billing only); Pro is $29/mo monthly or $14.50/mo billed yearly ($174) for 300 credits with 2 team seats and 2 brand templates.',
+      },
+      {
+        name: 'Vizard',
+        shortPitch: 'Hosted clipper with clear per-minute credits and 4K export.',
+        bestForUseCase: 'Longer source videos, where you want a known minute allowance and 4K output',
+        whyClose: 'AI-picked clips, full editor and social scheduling. Pricing is simple: 1 credit equals 1 minute of uploaded video. The free plan includes 60 credits a month at 720p export.',
+        whatDiffers: 'Creator is $29/mo monthly or $14.50/mo billed yearly ($174), from 600 credits a month, no watermark, 4K export. Business is $39/mo or $19.50/mo yearly ($234) and adds a shared workspace and brand kit, with extra seats at $5/mo each.',
+      },
+      {
+        name: 'Klap',
+        shortPitch: 'Priced per clip generated rather than per minute uploaded.',
+        bestForUseCase: 'People who clip a lot of long footage but only keep a fixed number of shorts a month',
+        whyClose: 'Turns long videos into shorts with AI clipping, posts to TikTok, Instagram and LinkedIn with unlimited connected accounts, and also offers an API and MCP server, like OpenShorts does.',
+        whatDiffers: 'Billed by clips, not minutes: Basic $14/mo for 100 clips, Pro $39/mo for 300, Pro+ $94/mo for 1,000, all billed yearly. Klap advertises yearly billing as saving 50%, so expect month-to-month to cost more. Not self-hostable.',
+      },
+    ],
+    finalAdvice: 'If you are comfortable with Docker and only need clipping, self-hosted OpenShorts costs nothing beyond your Gemini usage, and its hosted Starter at $12 is the cheapest entry price here if you clip under 100 minutes a month. Above that, Vizard gives the most minutes per dollar (from 600 a month at $29, or $14.50 on yearly billing). Pick Opus Clip if you want its editor, virality scores and team seats on the same $14.50/mo yearly price for 300 credits. Pick Klap if you upload long footage but only want a set number of clips each month. Prices in this category change often, so confirm on each pricing page before paying.',
+  },
 ];
 
 export function getAlternativesPage(slug: string): AlternativesPage | undefined {
